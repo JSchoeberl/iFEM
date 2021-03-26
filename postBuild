@@ -1,0 +1,5 @@
+
+jupyter nbextension install --py widgetsnbextension
+jupyter nbextension enable --py widgetsnbextension
+jupyter nbextension install --user --py ngsolve
+jupyter nbextension enable --user --py ngsolve

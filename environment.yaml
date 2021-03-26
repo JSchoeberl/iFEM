@@ -1,0 +1,10 @@
+name: ngsolve-environment
+channels:
+  - conda-forge
+  - ngsolve
+dependencies:
+  - ngsolve-nogui
+  - numpy
+  - matplotlib
+  - scipy
+  - ipywidgets
