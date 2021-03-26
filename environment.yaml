@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - ngsolve
 dependencies:
-  - ngsolve-nogui
+  - ngsolve
   - numpy
   - matplotlib
   - scipy
