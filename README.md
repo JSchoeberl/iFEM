@@ -10,5 +10,10 @@ can launch the course on binder by clicking on the 'launch binder' logo:
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/JSchoeberl/iFEM/master?filepath=iFEM.ipynb)
 
+The first time launching iFEM may take a few minutes. When it's ready,
+you can work through the tutorials pressing "shift-enter"
+
+This interactive lecture material got possible by the embedded
+webgui-visualization developed by M. Hochsteger in home-office.
 
 Note: this material has nothing to do with the excellent matlab finite element package iFEM by Long Chen
