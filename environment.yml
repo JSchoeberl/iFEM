@@ -9,3 +9,5 @@ dependencies:
   - scipy
   - ipywidgets
   - ipympl
+  - pymetis
+  
