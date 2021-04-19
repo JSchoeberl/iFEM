@@ -10,6 +10,5 @@ dependencies:
   - ipywidgets
   - ipympl
   - pymetis
-  - webgui_jupyter_widgets
 
   
