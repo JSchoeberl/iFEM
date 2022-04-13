@@ -224,7 +224,7 @@ SetNumThreads(1)
 i = 0
 n = 5
 # VideoStart("test.mp4")
-with TaskManager(pajetrace=100*1000*1000):
+with TaskManager(): # pajetrace=100*1000*1000):
     while t < tend:
         # print(t)
         w.data = -fullB.T * gfu.vec
