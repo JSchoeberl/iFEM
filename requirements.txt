@@ -1,0 +1,7 @@
+numpy
+scipy
+matplotlib
+mpi4py
+petsc4py
+ngsolve>=6.2.2202.dev0
+webgui_jupyter_widgets 

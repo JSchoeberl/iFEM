@@ -1,5 +1,4 @@
-pip install webgui_jupyter_widgets
-jupyter nbextension install --user --py ngsolve
-jupyter nbextension enable --user --py ngsolve
-jupyter nbextension install --py --user webgui_jupyter_widgets
-jupyter nbextension enable --py --user webgui_jupyter_widgets
+jupyter nbextension install --user --py widgetsnbextension
+jupyter nbextension enable --user --py widgetsnbextension
+jupyter nbextension install --user --py webgui_jupyter_widgets
+jupyter nbextension enable --user --py webgui_jupyter_widgets
