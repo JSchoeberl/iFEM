@@ -1,6 +1,6 @@
-tk-dev
-tcl-dev
-libxmu-dev
-libglu1-mesa-dev
+# tk-dev
+# tcl-dev
+# libxmu-dev
+# libglu1-mesa-dev
 # openmpi-bin
 # libopenmpi-dev
