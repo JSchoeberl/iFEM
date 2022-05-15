@@ -3,5 +3,5 @@ scipy
 matplotlib
 # mpi4py
 # ipyparallel
-ngsolve>=6.2.2202.dev290
+ngsolve>=6.2.2203.dev0
 webgui_jupyter_widgets 
