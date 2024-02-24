@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>24. Preconditioning &#8212; Introduction to Scientific Computing</title>
+    <title>30. Preconditioning &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'iterative/preconditioning';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="26. The Chebyshev Method" href="Chebyshev.html" />
-    <link rel="prev" title="23. The Gradient Method" href="gradientmethod.html" />
+    <link rel="next" title="32. The Chebyshev Method" href="Chebyshev.html" />
+    <link rel="prev" title="29. The Gradient Method" href="gradientmethod.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -205,17 +205,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">17. Fourth Order Equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">18. H(div)-conforming Stokes</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">19. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">20. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">21. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">22. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">23. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">24. Hybridization Techniques</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="simple.html">19. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Richardson.html">20. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple.html">25. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Richardson.html">26. The Richardson Iteration</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="gradientmethod.html">23. The Gradient Method</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">24. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradientmethod.html">29. The Gradient Method</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">30. Preconditioning</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Chebyshev.html">26. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conjugategradients.html">27. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chebyshev.html">32. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conjugategradients.html">33. Conjugate Gradients</a></li>
 </ul>
 
     </div>
@@ -364,12 +373,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">24. Preconditioning</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-richardson-iteration">24.1. The preconditioned Richardson iteration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-gradient-method">24.2. The preconditioned gradient method</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">30. Preconditioning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-richardson-iteration">30.1. The preconditioned Richardson iteration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-gradient-method">30.2. The preconditioned gradient method</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-and-gauss-seidel-preconditioners">25. Jacobi and Gauss Seidel Preconditioners</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-and-gauss-seidel-preconditioners">31. Jacobi and Gauss Seidel Preconditioners</a></li>
 </ul>
 
             </nav>
@@ -383,7 +392,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="preconditioning">
-<h1><span class="section-number">24. </span>Preconditioning<a class="headerlink" href="#preconditioning" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">30. </span>Preconditioning<a class="headerlink" href="#preconditioning" title="Link to this heading">#</a></h1>
 <p>We call <span class="math notranslate nohighlight">\(C\)</span> a preconditioner to the matrix <span class="math notranslate nohighlight">\(A\)</span> if</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(C^{-1} A \approx I\)</span></p></li>
@@ -403,7 +412,7 @@ A x = \lambda C x
 \]</div>
 <p>If <span class="math notranslate nohighlight">\(\lambda_i\)</span> is an eigenvalue with eigenvector <span class="math notranslate nohighlight">\(x_i\)</span>, then <span class="math notranslate nohighlight">\(x_i^T A x_i = \lambda_i x_i^T C x_i\)</span>, and thus <span class="math notranslate nohighlight">\(\lambda_i \in [\gamma_1, \gamma_2]\)</span></p>
 <section id="the-preconditioned-richardson-iteration">
-<h2><span class="section-number">24.1. </span>The preconditioned Richardson iteration<a class="headerlink" href="#the-preconditioned-richardson-iteration" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.1. </span>The preconditioned Richardson iteration<a class="headerlink" href="#the-preconditioned-richardson-iteration" title="Link to this heading">#</a></h2>
 <p>We use the preconditioner to obtain the correction from the residuum:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1775,7 +1784,7 @@ A(u,v) = \int_\Omega \nabla u \nabla v \, dx + 10^8 \int_{\Gamma_R} u v \, ds,
 <p>the Jacobi preconditioner captures these parameters (experiment in  excercise, theory soon).</p>
 </section>
 <section id="the-preconditioned-gradient-method">
-<h2><span class="section-number">24.2. </span>The preconditioned gradient method<a class="headerlink" href="#the-preconditioned-gradient-method" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.2. </span>The preconditioned gradient method<a class="headerlink" href="#the-preconditioned-gradient-method" title="Link to this heading">#</a></h2>
 <p>To introduce the preconditioner into the gradient method we proceed as follows. Since <span class="math notranslate nohighlight">\(C\)</span> is SPD, we are allowed to form its square-root</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2488,7 +2497,7 @@ needed 610 iterations
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="jacobi-and-gauss-seidel-preconditioners">
-<h1><span class="section-number">25. </span>Jacobi and Gauss Seidel Preconditioners<a class="headerlink" href="#jacobi-and-gauss-seidel-preconditioners" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">31. </span>Jacobi and Gauss Seidel Preconditioners<a class="headerlink" href="#jacobi-and-gauss-seidel-preconditioners" title="Link to this heading">#</a></h1>
 <p>For a given residual <span class="math notranslate nohighlight">\(r\)</span>, the Jacobi preconditioner computes</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2613,7 +2622,7 @@ of the forward and backward GS are <span class="math notranslate nohighlight">\(
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">23. </span>The Gradient Method</p>
+        <p class="prev-next-title"><span class="section-number">29. </span>The Gradient Method</p>
       </div>
     </a>
     <a class="right-next"
@@ -2621,7 +2630,7 @@ of the forward and backward GS are <span class="math notranslate nohighlight">\(
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">26. </span>The Chebyshev Method</p>
+        <p class="prev-next-title"><span class="section-number">32. </span>The Chebyshev Method</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2641,12 +2650,12 @@ of the forward and backward GS are <span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">24. Preconditioning</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-richardson-iteration">24.1. The preconditioned Richardson iteration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-gradient-method">24.2. The preconditioned gradient method</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">30. Preconditioning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-richardson-iteration">30.1. The preconditioned Richardson iteration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-gradient-method">30.2. The preconditioned gradient method</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-and-gauss-seidel-preconditioners">25. Jacobi and Gauss Seidel Preconditioners</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-and-gauss-seidel-preconditioners">31. Jacobi and Gauss Seidel Preconditioners</a></li>
 </ul>
 
   </nav></div>
