@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Abstract Theory &#8212; Introduction to Scientific Computing</title>
+    <title>8. Abstract Theory &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'mixed/abstract';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Abstract theory for mixed finite element methods" href="abstractfem.html" />
+    <link rel="prev" title="7. Mixed Methods for second order equations" href="secondorder.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -174,7 +174,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Introduction to Scientific Computing
+                    An Interactive Introduction to the Finite Element Method
                 </a>
             </li>
         </ul>
@@ -184,6 +184,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stokes.html">5. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary.html">6. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secondorder.html">7. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstractfem.html">9. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pardep.html">10. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">11. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">12. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">13. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">15. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">16. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">17. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">18. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">19. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">20. The Richardson Iteration</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">23. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">24. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">26. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">27. Conjugate Gradients</a></li>
 </ul>
 
     </div>
@@ -332,10 +364,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-minimization-problem">Constrained minimization problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stokes-equation-within-the-abstract-theory">Stokes equation within the abstract theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet-boundary-conditions-as-mixed-system">Dirichlet boundary conditions as mixed system</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-method-for-second-order-equation">Mixed method for second order equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-minimization-problem">8.1. Constrained minimization problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stokes-equation-within-the-abstract-theory">8.2. Stokes equation within the abstract theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet-boundary-conditions-as-mixed-system">8.3. Dirichlet boundary conditions as mixed system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-method-for-second-order-equation">8.4. Mixed method for second order equation</a></li>
 </ul>
             </nav>
         </div>
@@ -348,7 +380,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="abstract-theory">
-<h1>Abstract Theory<a class="headerlink" href="#abstract-theory" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>Abstract Theory<a class="headerlink" href="#abstract-theory" title="Link to this heading">#</a></h1>
 <p><span class="math notranslate nohighlight">\(\DeclareMathOperator{\opdiv}{div}\)</span>
 We have seen a couple of examples leading to variational problems of the form:</p>
 <p><em>Mixed variational problem</em>: Find <span class="math notranslate nohighlight">\(u \in V\)</span> and <span class="math notranslate nohighlight">\(p \in Q\)</span> such that</p>
@@ -426,7 +458,7 @@ A(v,v) \geq \alpha \| v \|_V^2 \quad \forall \, v \in V_0.
 \| u \|_V + \| p \|_Q \leq c \, ( \| f \|_{V^\ast} + \| g \|_{Q^\ast})
 \]</div>
 <section id="constrained-minimization-problem">
-<h2>Constrained minimization problem<a class="headerlink" href="#constrained-minimization-problem" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1. </span>Constrained minimization problem<a class="headerlink" href="#constrained-minimization-problem" title="Link to this heading">#</a></h2>
 <p>Now assume that <span class="math notranslate nohighlight">\(a(.,.)\)</span> is symmetric and coercive. Consider the constrained minimization problem</p>
 <div class="math notranslate nohighlight">
 \[
@@ -445,7 +477,7 @@ L(v,q) &amp; = &amp;  \tfrac{1}{2} a(v,v) - f(v) + \left&lt;Bv-g,q\right&gt; \
 <p>The mixed variational problem is recovered from the Karush Kuhn Tucker (KKT) conditions.</p>
 </section>
 <section id="stokes-equation-within-the-abstract-theory">
-<h2>Stokes equation within the abstract theory<a class="headerlink" href="#stokes-equation-within-the-abstract-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2. </span>Stokes equation within the abstract theory<a class="headerlink" href="#stokes-equation-within-the-abstract-theory" title="Link to this heading">#</a></h2>
 <p>The Hilbert spaces are <span class="math notranslate nohighlight">\(V := [H_0^1(\Omega)]^d\)</span> and <span class="math notranslate nohighlight">\(Q = L_2^0\)</span>, and
 the forms</p>
 <p>\begin{eqnarray*}
@@ -467,7 +499,7 @@ V_0 = \{ v \in [H_0^1]^d : \operatorname{div} v = 0 \},
 <p>the bilinear-form <span class="math notranslate nohighlight">\(a(.,.)\)</span> is coercive on the whole space <span class="math notranslate nohighlight">\(V\)</span>, and so also on the sub-space <span class="math notranslate nohighlight">\(V_0\)</span>.</p>
 </section>
 <section id="dirichlet-boundary-conditions-as-mixed-system">
-<h2>Dirichlet boundary conditions as mixed system<a class="headerlink" href="#dirichlet-boundary-conditions-as-mixed-system" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3. </span>Dirichlet boundary conditions as mixed system<a class="headerlink" href="#dirichlet-boundary-conditions-as-mixed-system" title="Link to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(V = H^1(\Omega)\)</span>, <span class="math notranslate nohighlight">\(Q = H^{-1/2}(\partial \Omega)\)</span>
 \begin{eqnarray*}
 a(u,v) &amp;= &amp; \int \nabla u \nabla v \
@@ -490,7 +522,7 @@ V_0 = \{ v \in H^1(\Omega) : v_{|\partial \Omega} = 0 \} = H_0^1
 <p>On <span class="math notranslate nohighlight">\(H_0^1\)</span>, the bilinear-form <span class="math notranslate nohighlight">\(a(.,.)\)</span> is continuous by Friedrichs’ inequality.</p>
 </section>
 <section id="mixed-method-for-second-order-equation">
-<h2>Mixed method for second order equation<a class="headerlink" href="#mixed-method-for-second-order-equation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4. </span>Mixed method for second order equation<a class="headerlink" href="#mixed-method-for-second-order-equation" title="Link to this heading">#</a></h2>
 <p>Our Hilbert-spaces are <span class="math notranslate nohighlight">\(\Sigma \times V = H(\operatorname{div}) \times L_2\)</span>, the forms are</p>
 <p>\begin{eqnarray*}
 a(\sigma,\tau) &amp;= &amp; \int \sigma \cdot \tau  \
@@ -564,6 +596,24 @@ a(\tau, \tau) = \| \tau \|^2_{L_2} = \| \tau \|^2_{L_2} + \| \opdiv \tau \|_{L
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="secondorder.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Mixed Methods for second order equations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="abstractfem.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Abstract theory for mixed finite element methods</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -580,10 +630,10 @@ a(\tau, \tau) = \| \tau \|^2_{L_2} = \| \tau \|^2_{L_2} + \| \opdiv \tau \|_{L
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-minimization-problem">Constrained minimization problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stokes-equation-within-the-abstract-theory">Stokes equation within the abstract theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet-boundary-conditions-as-mixed-system">Dirichlet boundary conditions as mixed system</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-method-for-second-order-equation">Mixed method for second order equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-minimization-problem">8.1. Constrained minimization problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stokes-equation-within-the-abstract-theory">8.2. Stokes equation within the abstract theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet-boundary-conditions-as-mixed-system">8.3. Dirichlet boundary conditions as mixed system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-method-for-second-order-equation">8.4. Mixed method for second order equation</a></li>
 </ul>
   </nav></div>
 
@@ -608,7 +658,7 @@ By J. Schöberl
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

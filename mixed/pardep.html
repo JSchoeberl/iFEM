@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Parameter Dependent Problems &#8212; Introduction to Scientific Computing</title>
+    <title>10. Parameter Dependent Problems &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'mixed/pardep';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Stationary Transport Equation" href="../DG/stationary.html" />
+    <link rel="prev" title="9. Abstract theory for mixed finite element methods" href="abstractfem.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -174,7 +174,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Introduction to Scientific Computing
+                    An Interactive Introduction to the Finite Element Method
                 </a>
             </li>
         </ul>
@@ -184,6 +184,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stokes.html">5. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary.html">6. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secondorder.html">7. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">8. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstractfem.html">9. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">11. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">12. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">13. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">15. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">16. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">17. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">18. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">19. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">20. The Richardson Iteration</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">23. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">24. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">26. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">27. Conjugate Gradients</a></li>
 </ul>
 
     </div>
@@ -332,8 +364,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dirichlet-boundary-condition-by-penalty">Example: Dirichlet boundary condition by penalty</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nearly-incompressible-materials">Example: Nearly incompressible materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dirichlet-boundary-condition-by-penalty">10.1. Example: Dirichlet boundary condition by penalty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nearly-incompressible-materials">10.2. Example: Nearly incompressible materials</a></li>
 </ul>
             </nav>
         </div>
@@ -346,7 +378,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="parameter-dependent-problems">
-<h1>Parameter Dependent Problems<a class="headerlink" href="#parameter-dependent-problems" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">10. </span>Parameter Dependent Problems<a class="headerlink" href="#parameter-dependent-problems" title="Link to this heading">#</a></h1>
 <p>Many problems from mechanics are of the form</p>
 <div class="math notranslate nohighlight">
 \[
@@ -389,7 +421,7 @@ p^{(\varepsilon)} = \frac{1}{\varepsilon} T u^{(\varepsilon)}
 \rightarrow p^{(0)}
 \]</div>
 <section id="example-dirichlet-boundary-condition-by-penalty">
-<h2>Example: Dirichlet boundary condition by penalty<a class="headerlink" href="#example-dirichlet-boundary-condition-by-penalty" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1. </span>Example: Dirichlet boundary condition by penalty<a class="headerlink" href="#example-dirichlet-boundary-condition-by-penalty" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 \int \nabla u \nabla v + \frac{1}{\varepsilon} \int_{\Gamma_D} u v = \int f v
@@ -401,7 +433,7 @@ p^{(\varepsilon)} = \frac{1}{\varepsilon} T u^{(\varepsilon)}
 \]</div>
 </section>
 <section id="example-nearly-incompressible-materials">
-<h2>Example: Nearly incompressible materials<a class="headerlink" href="#example-nearly-incompressible-materials" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2. </span>Example: Nearly incompressible materials<a class="headerlink" href="#example-nearly-incompressible-materials" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 \int 2 \mu \nabla^S u  : \nabla^S v + \int \lambda \operatorname{div} u \operatorname{div} v = \int f v
@@ -440,6 +472,24 @@ p^{(\varepsilon)} = \frac{1}{\varepsilon} T u^{(\varepsilon)}
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="abstractfem.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Abstract theory for mixed finite element methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../DG/stationary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Stationary Transport Equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -456,8 +506,8 @@ p^{(\varepsilon)} = \frac{1}{\varepsilon} T u^{(\varepsilon)}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dirichlet-boundary-condition-by-penalty">Example: Dirichlet boundary condition by penalty</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nearly-incompressible-materials">Example: Nearly incompressible materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dirichlet-boundary-condition-by-penalty">10.1. Example: Dirichlet boundary condition by penalty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-nearly-incompressible-materials">10.2. Example: Nearly incompressible materials</a></li>
 </ul>
   </nav></div>
 
@@ -482,7 +532,7 @@ By J. Schöberl
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

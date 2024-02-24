@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Gradient Method &#8212; Introduction to Scientific Computing</title>
+    <title>23. The Gradient Method &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'iterative/gradientmethod';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="24. Preconditioning" href="preconditioning.html" />
+    <link rel="prev" title="20. The Richardson Iteration" href="Richardson.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -174,7 +174,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Introduction to Scientific Computing
+                    An Interactive Introduction to the Finite Element Method
                 </a>
             </li>
         </ul>
@@ -184,6 +184,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">5. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">6. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">7. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">8. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">9. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">10. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">11. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">12. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">13. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">15. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">16. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">17. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">18. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="simple.html">19. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Richardson.html">20. The Richardson Iteration</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preconditioning.html">24. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Chebyshev.html">26. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conjugategradients.html">27. Conjugate Gradients</a></li>
 </ul>
 
     </div>
@@ -335,7 +367,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-gradient-method">
-<h1>The Gradient Method<a class="headerlink" href="#the-gradient-method" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">23. </span>The Gradient Method<a class="headerlink" href="#the-gradient-method" title="Link to this heading">#</a></h1>
 <p>In this section we assume that <span class="math notranslate nohighlight">\(A\)</span> is SPD.</p>
 <p>We define the function <span class="math notranslate nohighlight">\(f : {\mathbb R}^n \rightarrow {\mathbb R}\)</span> as
 $<span class="math notranslate nohighlight">\(
@@ -440,6 +472,728 @@ for <span class="math notranslate nohighlight">\(k = 0, 1, 2, \ldots\)</span> <b
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iteration 0 res= 0.02948894632867606
+iteration 1 res= 0.06791995975712485
+iteration 2 res= 0.03300125136092373
+iteration 3 res= 0.026814591140556135
+iteration 4 res= 0.023337804574069775
+iteration 5 res= 0.023286509288959374
+iteration 6 res= 0.021355108513277838
+iteration 7 res= 0.02165226219690209
+iteration 8 res= 0.01999473366620558
+iteration 9 res= 0.02032568130615626
+iteration 10 res= 0.01880740525681351
+iteration 11 res= 0.01913452755048257
+iteration 12 res= 0.01772199686334556
+iteration 13 res= 0.01803833511145182
+iteration 14 res= 0.016716585272848326
+iteration 15 res= 0.017020689706431807
+iteration 16 res= 0.015780287582732772
+iteration 17 res= 0.016071994850263654
+iteration 18 res= 0.014905840870141079
+iteration 19 res= 0.015185341791197467
+iteration 20 res= 0.014087593720555187
+iteration 21 res= 0.01435519136227381
+iteration 22 res= 0.013320810906922019
+iteration 23 res= 0.013576849768606167
+iteration 24 res= 0.012601377631937262
+iteration 25 res= 0.012846220102887518
+iteration 26 res= 0.011925649091628234
+iteration 27 res= 0.012159666120065441
+iteration 28 res= 0.011290361332920355
+iteration 29 res= 0.01151392773041459
+iteration 30 res= 0.010692571469754457
+iteration 31 res= 0.010906062899525079
+iteration 32 res= 0.010129613669028021
+iteration 33 res= 0.010333404364765975
+iteration 34 res= 0.009599064562401591
+iteration 35 res= 0.009793525457649286
+iteration 36 res= 0.009098714869233809
+iteration 37 res= 0.009284212023383023
+iteration 38 res= 0.008626545466392178
+iteration 39 res= 0.008803438739940465
+iteration 40 res= 0.008180706854560684
+iteration 41 res= 0.008349348806693196
+iteration 42 res= 0.007759501342716949
+iteration 43 res= 0.00792023632985912
+iteration 44 res= 0.0073613674783874605
+iteration 45 res= 0.007514530933685438
+iteration 46 res= 0.006984866372974708
+iteration 47 res= 0.007130784247150682
+iteration 48 res= 0.00662866964848084
+iteration 49 res= 0.006767657993164756
+iteration 50 res= 0.006291548784145773
+iteration 51 res= 0.006423913459772389
+iteration 52 res= 0.005972365679134899
+iteration 53 res= 0.006098402170747008
+iteration 54 res= 0.0056700642759645835
+iteration 55 res= 0.005790057601668
+iteration 56 res= 0.005383663111924455
+iteration 57 res= 0.005497887810201045
+iteration 58 res= 0.005112248684144848
+iteration 59 res= 0.005220968867677012
+iteration 60 res= 0.004854969529269907
+iteration 61 res= 0.00495843899431734
+iteration 62 res= 0.004611030931643515
+iteration 63 res= 0.004709493313313558
+iteration 64 res= 0.004379690184978928
+iteration 65 res= 0.004473379149930562
+iteration 66 res= 0.0041602523420074325
+iteration 67 res= 0.004249391811220281
+iteration 68 res= 0.003952066394841866
+iteration 69 res= 0.00403687079006556
+iteration 70 res= 0.0037545218359454234
+iteration 71 res= 0.0038351963443247184
+iteration 72 res= 0.0035670455558219952
+iteration 73 res= 0.003643786407975383
+iteration 74 res= 0.0033890990389708656
+iteration 75 res= 0.003462093796491849
+iteration 76 res= 0.003220175824383241
+iteration 77 res= 0.0032896036733418193
+iteration 78 res= 0.003059799200992042
+iteration 79 res= 0.0031258312485470357
+iteration 80 res= 0.0029075201120976157
+iteration 81 res= 0.0029703196837956836
+iteration 82 res= 0.0027629152459476155
+iteration 83 res= 0.0028226381816894995
+iteration 84 res= 0.0026255852924073697
+iteration 85 res= 0.002682380239412835
+iteration 86 res= 0.0024951533480683757
+iteration 87 res= 0.0025491620494744733
+iteration 88 res= 0.0023712634542508767
+iteration 89 res= 0.0024226210322394436
+iteration 90 res= 0.0022535792542005026
+iteration 91 res= 0.0023024144867751666
+iteration 92 res= 0.00214178275739208
+iteration 93 res= 0.0021882183481170842
+iteration 94 res= 0.002035573200265282
+iteration 95 res= 0.002079726040442311
+iteration 96 res= 0.0019346659939524686
+iteration 97 res= 0.0019766474168509307
+iteration 98 res= 0.001838791750641121
+iteration 99 res= 0.0018787077775152562
+iteration 100 res= 0.0017476953811613378
+iteration 101 res= 0.0017856469588869192
+iteration 102 res= 0.0016611352572199133
+iteration 103 res= 0.0016972184874666674
+iteration 104 res= 0.0015788824324314795
+iteration 105 res= 0.0016131887923568798
+iteration 106 res= 0.0015007199169370365
+iteration 107 res= 0.0015333364714446994
+iteration 108 res= 0.001426442000962263
+iteration 109 res= 0.0014574516066155289
+iteration 110 res= 0.0013558536231621354
+iteration 111 res= 0.0013853351238819226
+iteration 112 res= 0.0012887697800332365
+iteration 113 res= 0.0013167981947402657
+iteration 114 res= 0.001225014973058191
+iteration 115 res= 0.0012516616754442167
+iteration 116 res= 0.0011644226905844477
+iteration 117 res= 0.0011897555812162251
+iteration 118 res= 0.001106834921737884
+iteration 119 res= 0.0011309185927120076
+iteration 120 res= 0.001052101699935345
+iteration 121 res= 0.001074997592312579
+iteration 122 res= 0.0010000806737936298
+iteration 123 res= 0.0010218472280484991
+iteration 124 res= 0.0009506367034393103
+iteration 125 res= 0.0009713295031651033
+iteration 126 res= 0.0009036414804074749
+iteration 127 res= 0.0009233133895188196
+iteration 128 res= 0.0008589731694808065
+iteration 129 res= 0.0008776744631560949
+iteration 130 res= 0.000816516070965909
+iteration 131 res= 0.0008342945605703206
+iteration 132 res= 0.0007761603020335981
+iteration 133 res= 0.0007930614542606701
+iteration 134 res= 0.0007378014958659223
+iteration 135 res= 0.000753868546331724
+iteration 136 res= 0.0007013405174565911
+iteration 137 res= 0.0007166145789758281
+iteration 138 res= 0.0006666831950047311
+iteration 139 res= 0.0006812033607727018
+iteration 140 res= 0.0006337400659257233
+iteration 141 res= 0.0006475435078241309
+iteration 142 res= 0.0006024261365783906
+iteration 143 res= 0.0006155481988166942
+iteration 144 res= 0.0005726606548759695
+iteration 145 res= 0.0005851349431733752
+iteration 146 res= 0.0005443668950099787
+iteration 147 res= 0.0005562253615163847
+iteration 148 res= 0.0005174719535719682
+iteration 149 res= 0.0005287449777193041
+iteration 150 res= 0.0004919065564089368
+iteration 151 res= 0.0005026230218773851
+iteration 152 res= 0.00046760487559439613
+iteration 153 res= 0.00047779224357107395
+iteration 154 res= 0.0004445043559392307
+iteration 155 res= 0.00045418873484003155
+iteration 156 res= 0.00042254555050504067
+iteration 157 res= 0.00043175176232354567
+iteration 158 res= 0.0004016719646179347
+iteration 159 res= 0.00041042360805864145
+iteration 160 res= 0.0003818299079131465
+iteration 161 res= 0.00039014941845973063
+iteration 162 res= 0.00036296835397062047
+iteration 163 res= 0.00037087706103357563
+iteration 164 res= 0.0003450388071291648
+iteration 165 res= 0.0003525569884109709
+iteration 166 res= 0.0003279951760920909
+iteration 167 res= 0.0003351421093020406
+iteration 168 res= 0.0003117936539606835
+iteration 169 res= 0.00031858766600567694
+iteration 170 res= 0.0002963926043535398
+iteration 171 res= 0.0003028511181255234
+iteration 172 res= 0.00028175245328994434
+iteration 173 res= 0.00028789203216523883
+iteration 174 res= 0.0002678355865341537
+iteration 175 res= 0.00027367197669468006
+iteration 176 res= 0.00025460625211487417
+iteration 177 res= 0.00026015442279625153
+iteration 178 res= 0.00024203046775044315
+iteration 179 res= 0.0002473046495170916
+iteration 180 res= 0.000230075932925373
+iteration 181 res= 0.0002350896540681067
+iteration 182 res= 0.00021871194537806924
+iteration 183 res= 0.00022347806652520908
+iteration 184 res= 0.00020790932177278012
+iteration 185 res= 0.00021244006880154502
+iteration 186 res= 0.00019764032234124534
+iteration 187 res= 0.0002019473176720891
+iteration 188 res= 0.00018787857929114597
+iteration 189 res= 0.00019197287164379506
+iteration 190 res= 0.00017859902878938295
+iteration 191 res= 0.00018249112147558657
+iteration 192 res= 0.00016977784633847746
+iteration 193 res= 0.00017347772416290386
+iteration 194 res= 0.00016139238537403987
+iteration 195 res= 0.00016490954021133612
+iteration 196 res= 0.00015342111892034327
+iteration 197 res= 0.0001567645740331113
+iteration 198 res= 0.0001458435841495981
+iteration 199 res= 0.00014902191730892608
+iteration 200 res= 0.00013864032969859431
+iteration 201 res= 0.00014166169516580918
+iteration 202 res= 0.00013179286560399212
+iteration 203 res= 0.0001346650150294649
+iteration 204 res= 0.00012528361572472716
+iteration 205 res= 0.00012801391801685983
+iteration 206 res= 0.0001190958725267835
+iteration 207 res= 0.00012169133274172885
+iteration 208 res= 0.00011321375411200166
+iteration 209 res= 0.00011568103141221169
+iteration 210 res= 0.00010762216337865107
+iteration 211 res= 0.00010996758810601088
+iteration 212 res= 0.00010230674920723285
+iteration 213 res= 0.00010453633911430603
+iteration 214 res= 9.725386957040364e-05
+iteration 215 res= 9.937334525119363e-05
+iteration 216 res= 9.245055647104966e-05
+iteration 217 res= 9.446535603065962e-05
+iteration 218 res= 8.7884482617403e-05
+iteration 219 res= 8.979977561805117e-05
+iteration 220 res= 8.354392974870069e-05
+iteration 221 res= 8.536463046771659e-05
+iteration 222 res= 7.941775852925234e-05
+iteration 223 res= 8.114853856293415e-05
+iteration 224 res= 7.549537993291984e-05
+iteration 225 res= 7.714068017847356e-05
+iteration 226 res= 7.176672804393563e-05
+iteration 227 res= 7.33307700901369e-05
+iteration 228 res= 6.822223420370561e-05
+iteration 229 res= 6.970903115942069e-05
+iteration 230 res= 6.48528024367702e-05
+iteration 231 res= 6.626616922504345e-05
+iteration 232 res= 6.164978609244406e-05
+iteration 233 res= 6.299334923649793e-05
+iteration 234 res= 5.860496564183035e-05
+iteration 235 res= 5.98821725680282e-05
+iteration 236 res= 5.57105275729179e-05
+iteration 237 res= 5.6924655454510064e-05
+iteration 238 res= 5.2959044329330075e-05
+iteration 239 res= 5.411320849363053e-05
+iteration 240 res= 5.034345524100799e-05
+iteration 241 res= 5.1440617161535644e-05
+iteration 242 res= 4.785704839768829e-05
+iteration 243 res= 4.8900023291746633e-05
+iteration 244 res= 4.5493443418482053e-05
+iteration 245 res= 4.648490746964288e-05
+iteration 246 res= 4.3246575073184506e-05
+iteration 247 res= 4.418907229718326e-05
+iteration 248 res= 4.1110677713152156e-05
+iteration 249 res= 4.200662648479017e-05
+iteration 250 res= 3.908027047167835e-05
+iteration 251 res= 3.993196972946077e-05
+iteration 252 res= 3.7150143195789246e-05
+iteration 253 res= 3.7959778340202986e-05
+iteration 254 res= 3.5315343073271956e-05
+iteration 255 res= 3.6084991573823933e-05
+iteration 256 res= 3.357116192054294e-05
+iteration 257 res= 3.4302798645933496e-05
+iteration 258 res= 3.1913124098669753e-05
+iteration 259 res= 3.26086263837676e-05
+iteration 260 res= 3.03369750264812e-05
+iteration 261 res= 3.099812748909188e-05
+iteration 262 res= 2.8838670261239483e-05
+iteration 263 res= 2.946716938101907e-05
+iteration 264 res= 2.7414365118811876e-05
+iteration 265 res= 2.801182359006793e-05
+iteration 266 res= 2.606040480666925e-05
+iteration 267 res= 2.6628355676212224e-05
+iteration 268 res= 2.47733150443598e-05
+iteration 269 res= 2.531321564501679e-05
+iteration 270 res= 2.3549793147361368e-05
+iteration 271 res= 2.406302883724116e-05
+iteration 272 res= 2.2386699551408942e-05
+iteration 273 res= 2.2874587268508927e-05
+iteration 274 res= 2.128104975552709e-05
+iteration 275 res= 2.1744841396799558e-05
+iteration 276 res= 2.023000666307457e-05
+iteration 277 res= 2.067089229662e-05
+iteration 278 res= 1.9230873301132005e-05
+iteration 279 res= 1.964998421975903e-05
+iteration 280 res= 1.8281085899536646e-05
+iteration 281 res= 1.86794975235217e-05
+iteration 282 res= 1.7378207311792714e-05
+iteration 283 res= 1.7756941948285797e-05
+iteration 284 res= 1.6519920760964997e-05
+iteration 285 res= 1.6879950227120322e-05
+iteration 286 res= 1.57040238944984e-05
+iteration 287 res= 1.6046272011059373e-05
+iteration 288 res= 1.4928423132700251e-05
+iteration 289 res= 1.5253768094435814e-05
+iteration 290 res= 1.4191128296376766e-05
+iteration 291 res= 1.4500404925450517e-05
+iteration 292 res= 1.3490247499832086e-05
+iteration 293 res= 1.3784249387885247e-05
+iteration 294 res= 1.282398229612038e-05
+iteration 295 res= 1.3103463840564224e-05
+iteration 296 res= 1.2190623062089119e-05
+iteration 297 res= 1.2456301401831238e-05
+iteration 298 res= 1.1588544611367724e-05
+iteration 299 res= 1.1841101466938476e-05
+iteration 300 res= 1.1016202024041269e-05
+iteration 301 res= 1.1256285446841506e-05
+iteration 302 res= 1.0472126682305165e-05
+iteration 303 res= 1.0700352717463344e-05
+iteration 304 res= 9.954922501925904e-06
+iteration 305 res= 1.0171876769030931e-05
+iteration 306 res= 9.463262349835614e-06
+iteration 307 res= 9.669501545601191e-06
+iteration 308 res= 8.995884638666104e-06
+iteration 309 res= 9.19193796538207e-06
+iteration 310 res= 8.551590089482377e-06
+iteration 311 res= 8.73796061291806e-06
+iteration 312 res= 8.129238654407412e-06
+iteration 313 res= 8.30640459465114e-06
+iteration 314 res= 7.727746591240403e-06
+iteration 315 res= 7.896162549787221e-06
+iteration 316 res= 7.346083682561007e-06
+iteration 317 res= 7.5061818087970354e-06
+iteration 318 res= 6.9832705921828445e-06
+iteration 319 res= 7.135461692259338e-06
+iteration 320 res= 6.638376352172194e-06
+iteration 321 res= 6.783050943114457e-06
+iteration 322 res= 6.3105159739828845e-06
+iteration 323 res= 6.448045285738761e-06
+iteration 324 res= 5.998848177577032e-06
+iteration 325 res= 6.129585105576075e-06
+iteration 326 res= 5.7025732327040535e-06
+iteration 327 res= 5.826853243371508e-06
+iteration 328 res= 5.420930906798225e-06
+iteration 329 res= 5.539072898347295e-06
+iteration 330 res= 5.153198514228789e-06
+iteration 331 res= 5.265505634939879e-06
+iteration 332 res= 4.8986890618966795e-06
+iteration 333 res= 5.005449487983199e-06
+iteration 334 res= 4.656749486419162e-06
+iteration 335 res= 4.758237161475859e-06
+iteration 336 res= 4.426758978378869e-06
+iteration 337 res= 4.523234316310012e-06
+iteration 338 res= 4.2081273893369765e-06
+iteration 339 res= 4.2998379425680835e-06
+iteration 340 res= 4.00029371752284e-06
+iteration 341 res= 4.087474812210482e-06
+iteration 342 res= 3.802724668314205e-06
+iteration 343 res= 3.8856000081838e-06
+iteration 344 res= 3.614913285814063e-06
+iteration 345 res= 3.693695526175086e-06
+iteration 346 res= 3.436377652012726e-06
+iteration 347 res= 3.5112689454241666e-06
+iteration 348 res= 3.2666596501970495e-06
+iteration 349 res= 3.3378521651833164e-06
+iteration 350 res= 3.1053237894336867e-06
+iteration 351 res= 3.1730002035819116e-06
+iteration 352 res= 2.951956087109932e-06
+iteration 353 res= 3.016290055813929e-06
+iteration 354 res= 2.806163006664712e-06
+iteration 355 res= 2.8673196087183873e-06
+iteration 356 res= 2.667570447783909e-06
+iteration 357 res= 2.7257066089674622e-06
+iteration 358 res= 2.535822786468842e-06
+iteration 359 res= 2.591087682214674e-06
+iteration 360 res= 2.4105819625146926e-06
+iteration 361 res= 2.4631174006862345e-06
+iteration 362 res= 2.2915266120573344e-06
+iteration 363 res= 2.341467396822982e-06
+iteration 364 res= 2.178351242962676e-06
+iteration 365 res= 2.2258255206985165e-06
+iteration 366 res= 2.07076545094255e-06
+iteration 367 res= 2.115895039051459e-06
+iteration 368 res= 1.9684931743857065e-06
+iteration 369 res= 2.0113938738765385e-06
+iteration 370 res= 1.8712719859918164e-06
+iteration 371 res= 1.912053878620746e-06
+iteration 372 res= 1.7788524193907872e-06
+iteration 373 res= 1.8176201501272756e-06
+iteration 374 res= 1.6909973290195395e-06
+iteration 375 res= 1.727850374561701e-06
+iteration 376 res= 1.607481281613662e-06
+iteration 377 res= 1.642514205642038e-06
+iteration 378 res= 1.5280899777525392e-06
+iteration 379 res= 1.5613926735772451e-06
+iteration 380 res= 1.4526197019736257e-06
+iteration 381 res= 1.484277623197499e-06
+iteration 382 res= 1.3808768000448825e-06
+iteration 383 res= 1.4109711798345022e-06
+iteration 384 res= 1.3126771820540553e-06
+iteration 385 res= 1.3412852415812712e-06
+iteration 386 res= 1.2478458500397346e-06
+iteration 387 res= 1.2750409966285617e-06
+iteration 388 res= 1.1862164489521056e-06
+iteration 389 res= 1.2120684644394174e-06
+iteration 390 res= 1.1276308397911643e-06
+iteration 391 res= 1.1522060595845156e-06
+iteration 392 res= 1.071938693827074e-06
+iteration 393 res= 1.0953001771191073e-06
+iteration 394 res= 1.0189971068614522e-06
+iteration 395 res= 1.041204798437649e-06
+iteration 396 res= 9.686702325397808e-07
+iteration 397 res= 9.897811165947534e-07
+iteration 398 res= 9.20828933774035e-07
+iteration 399 res= 9.408971801310444e-07
+iteration 400 res= 8.753504513810833e-07
+iteration 401 res= 8.944275544899768e-07
+iteration 402 res= 8.321180890865988e-07
+iteration 403 res= 8.502530001568323e-07
+iteration 404 res= 7.910209140862082e-07
+iteration 405 res= 8.082601666940008e-07
+iteration 406 res= 7.519534723955252e-07
+iteration 407 res= 7.683413018874486e-07
+iteration 408 res= 7.148155182586634e-07
+iteration 409 res= 7.303939752580552e-07
+iteration 410 res= 6.795117569209044e-07
+iteration 411 res= 6.943208152283532e-07
+iteration 412 res= 6.459516001054739e-07
+iteration 413 res= 6.60029259270249e-07
+iteration 414 res= 6.140489335669948e-07
+iteration 415 res= 6.274313163926138e-07
+iteration 416 res= 5.837218961251595e-07
+iteration 417 res= 5.964433413592913e-07
+iteration 418 res= 5.548926696116326e-07
+iteration 419 res= 5.669858200581712e-07
+iteration 420 res= 5.274872791911928e-07
+iteration 421 res= 5.389831654705989e-07
+iteration 422 res= 5.01435403544743e-07
+iteration 423 res= 5.123635237175762e-07
+iteration 424 res= 4.76670194427125e-07
+iteration 425 res= 4.870585896850795e-07
+iteration 426 res= 4.5312810513673027e-07
+iteration 427 res= 4.6300343175539336e-07
+iteration 428 res= 4.3074872745676226e-07
+iteration 429 res= 4.401363251947264e-07
+iteration 430 res= 4.0947463664975147e-07
+iteration 431 res= 4.1839859376958594e-07
+iteration 432 res= 3.892512441075786e-07
+iteration 433 res= 3.9773445918550586e-07
+iteration 434 res= 3.7002665727891417e-07
+iteration 435 res= 3.780908979617911e-07
+iteration 436 res= 3.517515465146516e-07
+iteration 437 res= 3.5941750537502286e-07
+iteration 438 res= 3.3437901848966264e-07
+iteration 439 res= 3.4166636612221083e-07
+iteration 440 res= 3.178644958760812e-07
+iteration 441 res= 3.247919313717151e-07
+iteration 442 res= 3.0216560295935946e-07
+iteration 443 res= 3.0875090188645624e-07
+iteration 444 res= 2.8724205690359073e-07
+iteration 445 res= 2.9350211691951094e-07
+iteration 446 res= 2.73055564387091e-07
+iteration 447 res= 2.7900644859700284e-07
+iteration 448 res= 2.595697233430076e-07
+iteration 449 res= 2.6522670151727804e-07
+iteration 450 res= 2.467499295528256e-07
+iteration 451 res= 2.5212751730874146e-07
+iteration 452 res= 2.3456328785309372e-07
+iteration 453 res= 2.396752839014505e-07
+iteration 454 res= 2.229785277275286e-07
+iteration 455 res= 2.2783804927966214e-07
+iteration 456 res= 2.119659230679104e-07
+iteration 457 res= 2.1658543949402282e-07
+iteration 458 res= 2.0149721589787799e-07
+iteration 459 res= 2.0588858072302559e-07
+iteration 460 res= 1.9154554386390203e-07
+iteration 461 res= 1.9572002518374484e-07
+iteration 462 res= 1.8208537130738008e-07
+iteration 463 res= 1.8605368070173925e-07
+iteration 464 res= 1.7309242374098638e-07
+iteration 465 res= 1.768647437594005e-07
+iteration 466 res= 1.6454362556114597e-07
+iteration 467 res= 1.681296358509532e-07
+iteration 468 res= 1.564170408368041e-07
+iteration 469 res= 1.598259429807943e-07
+iteration 470 res= 1.4869181702255783e-07
+iteration 471 res= 1.5193235814992696e-07
+iteration 472 res= 1.4134813145171891e-07
+iteration 473 res= 1.4442862668291073e-07
+iteration 474 res= 1.3436714047201184e-07
+iteration 475 res= 1.3729549425503927e-07
+iteration 476 res= 1.277309310933895e-07
+iteration 477 res= 1.305146574863846e-07
+iteration 478 res= 1.214224750238976e-07
+iteration 479 res= 1.2406871697593416e-07
+iteration 480 res= 1.1542558497564515e-07
+iteration 481 res= 1.1794113265530753e-07
+iteration 482 res= 1.09724873128763e-07
+iteration 483 res= 1.1211618134749221e-07
+iteration 484 res= 1.0430571164677095e-07
+iteration 485 res= 1.0657891642169545e-07
+iteration 486 res= 9.91541951420369e-08
+iteration 487 res= 1.013151294407878e-07
+iteration 488 res= 9.425710499501555e-08
+iteration 489 res= 9.631131370292703e-08
+iteration 490 res= 8.960187543571136e-08
+iteration 491 res= 9.15546295838115e-08
+iteration 492 res= 8.517656130033166e-08
+iteration 493 res= 8.703287159063208e-08
+iteration 494 res= 8.096980738039443e-08
+iteration 495 res= 8.273443704318461e-08
+iteration 496 res= 7.697081928564206e-08
+iteration 497 res= 7.864829630177924e-08
+iteration 498 res= 7.316933574599566e-08
+iteration 499 res= 7.476396446555289e-08
+iteration 500 res= 6.95556022814783e-08
+iteration 501 res= 7.10714744685628e-08
+iteration 502 res= 6.612034617254447e-08
+iteration 503 res= 6.75613515046282e-08
+iteration 504 res= 6.285475266659099e-08
+iteration 505 res= 6.42245887152931e-08
+iteration 506 res= 5.975044235959575e-08
+iteration 507 res= 6.105262407852808e-08
+iteration 508 res= 5.679944969484631e-08
+iteration 509 res= 5.803731843886711e-08
+iteration 510 res= 5.399420252358717e-08
+iteration 511 res= 5.517093462260609e-08
+iteration 512 res= 5.1327502675138306e-08
+iteration 513 res= 5.244611758447313e-08
+iteration 514 res= 4.879250748662941e-08
+iteration 515 res= 4.9855875534827703e-08
+iteration 516 res= 4.638271224495513e-08
+iteration 517 res= 4.739356199896139e-08
+iteration 518 res= 4.4091933495898077e-08
+iteration 519 res= 4.505285876246566e-08
+iteration 520 res= 4.191429317759161e-08
+iteration 521 res= 4.2827759658904287e-08
+iteration 522 res= 3.9844203537609004e-08
+iteration 523 res= 4.071255515819049e-08
+iteration 524 res= 3.7876352794977175e-08
+iteration 525 res= 3.870181771612333e-08
+iteration 526 res= 3.600569151032373e-08
+iteration 527 res= 3.679038784749011e-08
+iteration 528 res= 3.422741962918403e-08
+iteration 529 res= 3.4973360886999476e-08
+iteration 530 res= 3.2536974165221506e-08
+iteration 531 res= 3.324607440407384e-08
+iteration 532 res= 3.093001749175682e-08
+iteration 533 res= 3.160409623920802e-08
+iteration 534 res= 2.940242621156253e-08
+iteration 535 res= 3.004321313119573e-08
+iteration 536 res= 2.795028057636331e-08
+iteration 537 res= 2.8559419906041864e-08
+iteration 538 res= 2.6569854428892624e-08
+iteration 539 res= 2.71489091998196e-08
+iteration 540 res= 2.5257605641697368e-08
+iteration 541 res= 2.5808061689101555e-08
+iteration 542 res= 2.4010167028157074e-08
+iteration 543 res= 2.4533436803896536e-08
+iteration 544 res= 2.2824337702395247e-08
+iteration 545 res= 2.332176389926172e-08
+iteration 546 res= 2.169707486591303e-08
+iteration 547 res= 2.216993386293683e-08
+iteration 548 res= 2.062548599986969e-08
+iteration 549 res= 2.107499113746573e-08
+iteration 550 res= 1.960682144297574e-08
+iteration 551 res= 2.003412613633461e-08
+iteration 552 res= 1.863846733595384e-08
+iteration 553 res= 1.904466803466666e-08
+iteration 554 res= 1.7717938914462987e-08
+iteration 555 res= 1.810407791597451e-08
+iteration 556 res= 1.6842874133276164e-08
+iteration 557 res= 1.720994225738524e-08
+iteration 558 res= 1.6011027605350997e-08
+iteration 559 res= 1.635996673662114e-08
+iteration 560 res= 1.522026484024154e-08
+iteration 561 res= 1.5551970344845307e-08
+iteration 562 res= 1.4468556767066967e-08
+iteration 563 res= 1.4783879790265702e-08
+iteration 564 res= 1.3753974527983358e-08
+iteration 565 res= 1.4053724178137518e-08
+iteration 566 res= 1.3074684528798829e-08
+iteration 567 res= 1.3359629953513065e-08
+iteration 568 res= 1.2428943734031961e-08
+iteration 569 res= 1.2699816093762213e-08
+iteration 570 res= 1.1815095194340904e-08
+iteration 571 res= 1.2072589538527745e-08
+iteration 572 res= 1.1231563794846636e-08
+iteration 573 res= 1.1476340845388954e-08
+iteration 574 res= 1.0676852213440688e-08
+iteration 575 res= 1.0909540060086053e-08
+iteration 576 res= 1.0149537078706607e-08
+iteration 577 res= 1.0370732790708593e-08
+iteration 578 res= 9.648265317596309e-09
+iteration 579 res= 9.85853647577431e-09
+iteration 580 res= 9.171750683489822e-09
+iteration 581 res= 9.371636836622493e-09
+iteration 582 res= 8.718770455729333e-09
+iteration 583 res= 8.908784505018746e-09
+iteration 584 res= 8.288162302158766e-09
+iteration 585 res= 8.468791817317806e-09
+iteration 586 res= 7.87882129661824e-09
+iteration 587 res= 8.05052976695821e-09
+iteration 588 res= 7.489697083740388e-09
+iteration 589 res= 7.652925107469133e-09
+iteration 590 res= 7.119791183773515e-09
+iteration 591 res= 7.2749575985557405e-09
+iteration 592 res= 6.768154430515881e-09
+iteration 593 res= 6.915657388196596e-09
+iteration 594 res= 6.433884535786848e-09
+iteration 595 res= 6.574102524035757e-09
+iteration 596 res= 6.116123774185534e-09
+iteration 597 res= 6.2494165876837496e-09
+iteration 598 res= 5.814056782196025e-09
+iteration 599 res= 5.940766445857234e-09
+iteration 600 res= 5.526908465991797e-09
+iteration 601 res= 5.64736011258677e-09
+iteration 602 res= 5.2539420125708e-09
+iteration 603 res= 5.368444717007244e-09
+iteration 604 res= 4.994456999117883e-09
+iteration 605 res= 5.103304571516332e-09
+iteration 606 res= 4.7477875957431944e-09
+iteration 607 res= 4.851259335344e-09
+iteration 608 res= 4.513300856984907e-09
+iteration 609 res= 4.611662268820762e-09
+iteration 610 res= 4.290395097692264e-09
+iteration 611 res= 4.3838985738652655e-09
+iteration 612 res= 4.078498349121558e-09
+iteration 613 res= 4.1673838164329166e-09
+iteration 614 res= 3.877066891283406e-09
+iteration 615 res= 3.961562426877617e-09
+iteration 616 res= 3.6855838577753927e-09
+iteration 617 res= 3.76590627437859e-09
+iteration 618 res= 3.5035579095201218e-09
+iteration 619 res= 3.579913311774293e-09
+iteration 620 res= 3.3305219740055337e-09
+iteration 621 res= 3.4031062873261557e-09
+iteration 622 res= 3.166032046792411e-09
+iteration 623 res= 3.2350315201065416e-09
+iteration 624 res= 3.0096660522138033e-09
+iteration 625 res= 3.075257735868607e-09
+iteration 626 res= 2.8610227603429404e-09
+iteration 627 res= 2.923374960410976e-09
+iteration 628 res= 2.7197207574506218e-09
+iteration 629 res= 2.7789934675976132e-09
+iteration 630 res= 2.58539746731031e-09
+iteration 631 res= 2.6417427793335563e-09
+iteration 632 res= 2.457708220839628e-09
+iteration 633 res= 2.511270714930479e-09
+iteration 634 res= 2.3363253716909865e-09
+iteration 635 res= 2.387242487422794e-09
+iteration 636 res= 2.220937455521986e-09
+iteration 637 res= 2.269339844515465e-09
+iteration 638 res= 2.1112483907883025e-09
+iteration 639 res= 2.1572602519592308e-09
+iteration 640 res= 2.006976719008319e-09
+iteration 641 res= 2.0507161172578146e-09
+iteration 642 res= 1.9078548825500506e-09
+iteration 643 res= 1.9494340517151698e-09
+iteration 644 res= 1.8136285380871835e-09
+iteration 645 res= 1.8531541689292016e-09
+iteration 646 res= 1.7240559039625827e-09
+iteration 647 res= 1.761629417931932e-09
+iteration 648 res= 1.6389071397846271e-09
+iteration 649 res= 1.6746249492649519e-09
+iteration 650 res= 1.5579637566644271e-09
+iteration 651 res= 1.5919175123635469e-09
+iteration 652 res= 1.4810180565806218e-09
+iteration 653 res= 1.5132948827031924e-09
+iteration 654 res= 1.4078725994331884e-09
+iteration 655 res= 1.4385553172385025e-09
+iteration 656 res= 1.3383396964187282e-09
+iteration 657 res= 1.3675070367373048e-09
+iteration 658 res= 1.2722409284272562e-09
+iteration 659 res= 1.2999677336815251e-09
+iteration 660 res= 1.209406688224717e-09
+iteration 661 res= 1.2357641044721813e-09
+iteration 662 res= 1.1496757452464792e-09
+iteration 663 res= 1.1747314047381234e-09
+iteration 664 res= 1.0928948318850833e-09
+iteration 665 res= 1.1167130266074749e-09
+iteration 666 res= 1.038918250210674e-09
+iteration 667 res= 1.0615600968570555e-09
+iteration 668 res= 9.87607498114971e-10
+iteration 669 res= 1.0091310949086567e-09
+iteration 670 res= 9.388309139194786e-10
+iteration 671 res= 9.592914896919583e-10
+iteration 672 res= 8.924633385360109e-10
+iteration 673 res= 9.119133944422888e-10
+iteration 674 res= 8.483857943126437e-10
+iteration 675 res= 8.668752385474531e-10
+iteration 676 res= 8.064851797410314e-10
+iteration 677 res= 8.240614556015946e-10
+iteration 678 res= 7.666539792417061e-10
+iteration 679 res= 7.833621868656547e-10
+iteration 680 res= 7.287899872826877e-10
+iteration 681 res= 7.44672999373511e-10
+iteration 682 res= 6.927960461234977e-10
+iteration 683 res= 7.078946179604703e-10
+iteration 684 res= 6.58579796511638e-10
+iteration 685 res= 6.729326705265068e-10
+iteration 686 res= 6.260534406918286e-10
+iteration 687 res= 6.396974458806003e-10
+iteration 688 res= 5.951335171198969e-10
+iteration 689 res= 6.081036635448131e-10
+iteration 690 res= 5.657406863032377e-10
+iteration 691 res= 5.780702549274283e-10
+iteration 692 res= 5.377995272183236e-10
+iteration 693 res= 5.495201553036462e-10
+iteration 694 res= 5.112383437828715e-10
+iteration 695 res= 5.223801060700719e-10
+iteration 696 res= 4.859889808860888e-10
+iteration 697 res= 4.965804667655817e-10
+iteration 698 res= 4.6198664950493167e-10
+iteration 699 res= 4.720550363762232e-10
+iteration 700 res= 4.3916976045763246e-10
+iteration 701 res= 4.4874088346562045e-10
+iteration 702 res= 4.1747976636791445e-10
+iteration 703 res= 4.265781846950086e-10
+iteration 704 res= 3.9686101143437545e-10
+iteration 705 res= 4.0551007131854113e-10
+iteration 706 res= 3.7726058861955906e-10
+iteration 707 res= 3.8548248325998474e-10
+iteration 708 res= 3.5862820389226123e-10
+iteration 709 res= 3.6644403039636705e-10
+iteration 710 res= 3.4091604717472303e-10
+iteration 711 res= 3.4834586069263457e-10
+iteration 712 res= 3.240786696635655e-10
+iteration 713 res= 3.3114153484896144e-10
+iteration 714 res= 3.0807286720967693e-10
+iteration 715 res= 3.147869071390532e-10
+iteration 716 res= 2.928575694578068e-10
+needed 716 iterations
+</pre></div>
+</div>
+</div>
 </div>
 <p>We observe that the gradient method converges similar fast as the Richardson iteration, but without the need of a good chosen relaxation parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 <p>The comparison to Richardson iteration allows also to estimate the error reduction of the gradient method. Let
@@ -485,6 +1239,24 @@ be one step of Richardson. Then</p>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Richardson.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>The Richardson Iteration</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="preconditioning.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">24. </span>Preconditioning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -513,7 +1285,7 @@ By J. Schöberl
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

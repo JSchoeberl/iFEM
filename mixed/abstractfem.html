@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Abstract theory for mixed finite element methods &#8212; Introduction to Scientific Computing</title>
+    <title>9. Abstract theory for mixed finite element methods &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'mixed/abstractfem';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Parameter Dependent Problems" href="pardep.html" />
+    <link rel="prev" title="8. Abstract Theory" href="abstract.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -174,7 +174,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Introduction to Scientific Computing
+                    An Interactive Introduction to the Finite Element Method
                 </a>
             </li>
         </ul>
@@ -184,6 +184,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stokes.html">5. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary.html">6. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secondorder.html">7. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstract.html">8. Abstract Theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pardep.html">10. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">11. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">12. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">13. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">15. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">16. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">17. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">18. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">19. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">20. The Richardson Iteration</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">23. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">24. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">26. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">27. Conjugate Gradients</a></li>
 </ul>
 
     </div>
@@ -332,9 +364,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-element-error-estimates">Finite element error estimates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proving-discrete-lbb-by-the-fortin-operator">Proving discrete LBB by the Fortin operator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-finite-elements-for-stokes">Example: Finite elements for Stokes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-element-error-estimates">9.1. Finite element error estimates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proving-discrete-lbb-by-the-fortin-operator">9.2. Proving discrete LBB by the Fortin operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-finite-elements-for-stokes">9.3. Example: Finite elements for Stokes</a></li>
 </ul>
             </nav>
         </div>
@@ -347,7 +379,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="abstract-theory-for-mixed-finite-element-methods">
-<h1>Abstract theory for mixed finite element methods<a class="headerlink" href="#abstract-theory-for-mixed-finite-element-methods" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Abstract theory for mixed finite element methods<a class="headerlink" href="#abstract-theory-for-mixed-finite-element-methods" title="Link to this heading">#</a></h1>
 <p>In the finite element method we replace the spaces <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> by sub-spaces <span class="math notranslate nohighlight">\(V_h\)</span> and <span class="math notranslate nohighlight">\(Q_h\)</span>.</p>
 <p>We want to apply Brezzi’s theorem for the discrete setting: The (discrete) spaces are Hilbert-spaces,  continuity of the forms is inherited to the discrete level. But, the LBB condition and kernel ellipticity must be verified on the discrete level case by case.</p>
 <p>We write the system as one big equation:</p>
@@ -367,7 +399,7 @@ F(v_h, q_h) &amp; = &amp; f(v_h) + g(q_h)
 \inf_{u_h,p_h} \sup_{v_h,q_h} \frac{ B(u_h,p_h; v_h, q_h) } { (\| u_h \| + \|p_h \|) (\| v_h \| + \| q_h \|) } \geq \beta
 \]</div>
 <section id="finite-element-error-estimates">
-<h2>Finite element error estimates<a class="headerlink" href="#finite-element-error-estimates" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Finite element error estimates<a class="headerlink" href="#finite-element-error-estimates" title="Link to this heading">#</a></h2>
 <p>We compare the finite element solution <span class="math notranslate nohighlight">\(u_h, p_h\)</span> to the interpolated true solution <span class="math notranslate nohighlight">\(I_h u, I_h p\)</span>. The difference is a finite function, for which we apply the <span class="math notranslate nohighlight">\(\inf-\sup\)</span> condition. Then we use the Galerkin orthogonality, and continuity of the big-B:</p>
 <p>\begin{eqnarray*}
 | u_h - I_h u |_V + | p_h - I_h p |<em>A
@@ -388,7 +420,7 @@ F(v_h, q_h) &amp; = &amp; f(v_h) + g(q_h)
 <p>We see that the error in both variables depend on the approximation of both fields. Later we will see cases where the discretization error of the first variable only depends on the approximation error for the first field.</p>
 </section>
 <section id="proving-discrete-lbb-by-the-fortin-operator">
-<h2>Proving discrete LBB by the Fortin operator<a class="headerlink" href="#proving-discrete-lbb-by-the-fortin-operator" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>Proving discrete LBB by the Fortin operator<a class="headerlink" href="#proving-discrete-lbb-by-the-fortin-operator" title="Link to this heading">#</a></h2>
 <p>A Fortin-operator <span class="math notranslate nohighlight">\(I^F : V \rightarrow V_h\)</span> is a continuous operator (wrt to <span class="math notranslate nohighlight">\(\| \cdot \|_V\)</span>) which preservers the constraint in mean:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -414,7 +446,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 </section>
 <section id="example-finite-elements-for-stokes">
-<h2>Example: Finite elements for Stokes<a class="headerlink" href="#example-finite-elements-for-stokes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>Example: Finite elements for Stokes<a class="headerlink" href="#example-finite-elements-for-stokes" title="Link to this heading">#</a></h2>
 <p>2D. Take the finite element pair <span class="math notranslate nohighlight">\([P^2]^2 \times P^0\)</span>:</p>
 <p>We define the Fortin operator such that</p>
 <ul class="simple">
@@ -466,6 +498,24 @@ b(I^F u, q_h) &amp; = &amp;
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="abstract.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Abstract Theory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pardep.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Parameter Dependent Problems</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -482,9 +532,9 @@ b(I^F u, q_h) &amp; = &amp;
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-element-error-estimates">Finite element error estimates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proving-discrete-lbb-by-the-fortin-operator">Proving discrete LBB by the Fortin operator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-finite-elements-for-stokes">Example: Finite elements for Stokes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-element-error-estimates">9.1. Finite element error estimates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proving-discrete-lbb-by-the-fortin-operator">9.2. Proving discrete LBB by the Fortin operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-finite-elements-for-stokes">9.3. Example: Finite elements for Stokes</a></li>
 </ul>
   </nav></div>
 
@@ -509,7 +559,7 @@ By J. Schöberl
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

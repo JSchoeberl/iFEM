@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Splitting Methods for the time-dependent convection diffusion equation &#8212; Introduction to Scientific Computing</title>
+    <title>16. Splitting Methods for the time-dependent convection diffusion equation &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'DG/splitting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="17. Fourth Order Equation" href="fourthorder.html" />
+    <link rel="prev" title="15. Hybrid DG for elliptic equations" href="elliptic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -174,7 +174,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Introduction to Scientific Computing
+                    An Interactive Introduction to the Finite Element Method
                 </a>
             </li>
         </ul>
@@ -184,6 +184,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">5. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">6. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">7. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">8. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">9. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">10. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="stationary.html">11. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instationary.html">12. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Nitsche.html">13. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="elliptic.html">15. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fourthorder.html">17. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stokes.html">18. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">19. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">20. The Richardson Iteration</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">23. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">24. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">26. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">27. Conjugate Gradients</a></li>
 </ul>
 
     </div>
@@ -335,7 +367,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="splitting-methods-for-the-time-dependent-convection-diffusion-equation">
-<h1>Splitting Methods for the time-dependent convection diffusion equation<a class="headerlink" href="#splitting-methods-for-the-time-dependent-convection-diffusion-equation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">16. </span>Splitting Methods for the time-dependent convection diffusion equation<a class="headerlink" href="#splitting-methods-for-the-time-dependent-convection-diffusion-equation" title="Link to this heading">#</a></h1>
 <p><span class="math notranslate nohighlight">\(\DeclareMathOperator{\opdiv}{div}\)</span></p>
 <p>We now want to solve a time-dependent convection diffusion equation:</p>
 <div class="math notranslate nohighlight">
@@ -426,6 +458,11 @@ f
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ngsolve.comp.LinearForm at 0x1169ba630&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -450,6 +487,20 @@ f
     <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">cnt</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "4c9a4999127847e6a09c8ac8f920a567"}</script><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">tend</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">t</span> <span class="o">+=</span> <span class="n">tau</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="n">aconv</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">convu</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">r</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span> <span class="o">-</span> <span class="n">convu</span> <span class="o">-</span> <span class="n">adiff</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">w</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">inv</span> <span class="o">*</span> <span class="n">r</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -488,6 +539,24 @@ f
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="elliptic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Hybrid DG for elliptic equations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fourthorder.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Fourth Order Equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -516,7 +585,7 @@ By J. Schöberl
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>
