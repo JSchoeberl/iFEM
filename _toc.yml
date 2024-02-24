@@ -1,0 +1,62 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: The Galerkin Method
+    numbered: True
+    chapters:
+    - file: primal/first_example.ipynb
+    - file: primal/boundary_conditions.ipynb
+    - file: primal/subdomains.ipynb         
+    - file: primal/solvers.ipynb         
+
+
+  - caption: Mixed Finite Element Methods
+    numbered: True
+    chapters:
+    - file: mixed/stokes.ipynb  
+    - file: mixed/boundary.ipynb  
+    - file: mixed/secondorder.ipynb  
+    - file: mixed/abstract.ipynb  
+    - file: mixed/abstractfem.ipynb
+    - file: mixed/pardep.ipynb      
+
+  - caption: Discontinuous Galerkin Methods
+    numbered: True
+    chapters:
+    - file: DG/stationary.ipynb
+    - file: DG/instationary.ipynb
+    - file: DG/Nitsche.ipynb
+    - file: DG/elliptic.ipynb        
+    - file: DG/splitting.ipynb        
+    - file: DG/fourthorder.ipynb        
+    - file: DG/stokes.ipynb        
+
+  - caption: Mixed Methods for Second Order Equations
+    numbered: True
+    chapters:
+    - file: secondorder/framework.ipynb
+    - file: secondorder/hdiv.ipynb
+    - file: secondorder/finiteelements.ipynb    
+    - file: secondorder/erroranalysis.ipynb    
+    - file: secondorder/erroranalysisl2h1.ipynb    
+    - file: secondorder/hybridization.ipynb    
+
+#  - caption: Mixed Methods for Elasticity
+
+#  - captionn: Mixed Methods for Plates and Shells
+
+#  - caption: The Helmholtz equation
+
+  - caption: Iteration Methods
+    numbered: True
+    chapters:
+    - file: iterative/simple.ipynb
+    - file: iterative/Richardson.ipynb
+    - file: iterative/gradientmethod.ipynb
+    - file: iterative/preconditioning.ipynb
+    - file: iterative/Chebyshev.ipynb
+    - file: iterative/conjugategradients.ipynb
+
