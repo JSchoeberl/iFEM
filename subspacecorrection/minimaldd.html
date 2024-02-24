@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Domain Decomposition with minimal overlap &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'subspacecorrection/minimaldd';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/subspacecorrection/minimaldd.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Domain Decomposition with minimal overlap</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-method">Analysis of the method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-coarse-grid-space">Adding a coarse grid space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-based-mesh-partitioning">Graph-based mesh partitioning</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="domain-decomposition-with-minimal-overlap">
+<h1>Domain Decomposition with minimal overlap<a class="headerlink" href="#domain-decomposition-with-minimal-overlap" title="Link to this heading">#</a></h1>
+<p>With domain decomposition (DD) methods one splits a large problem on a big domain <span class="math notranslate nohighlight">\(\Omega\)</span> into smaller problems on sub-domains <span class="math notranslate nohighlight">\(\Omega_i\)</span>.
+One advantage is that direct factorization on each sub-domain is cheaper than factorization of the global problem. Assume that the global problem is of size <span class="math notranslate nohighlight">\(N\)</span>, and we use <span class="math notranslate nohighlight">\(m\)</span> sub-domains. Assume the  (sparse) factorization of a problem of size <span class="math notranslate nohighlight">\(n\)</span> has costs <span class="math notranslate nohighlight">\(O(n^\alpha)\)</span>. Then the advantage is</p>
+<div class="math notranslate nohighlight">
+\[
+m \, \big( \tfrac{N}{m} \big)^\alpha = \frac{1}{m^{\alpha-1}} N^\alpha \leq N^\alpha
+\]</div>
+<p>For sparse direct solvers based on nested dissection <span class="math notranslate nohighlight">\(\alpha = 1.5\)</span> for 2D problems, and <span class="math notranslate nohighlight">\(\alpha = 2\)</span> for 3D.</p>
+<p>We sub-divide the unit-square into <span class="math notranslate nohighlight">\(m_x \times m_y\)</span> sub-domains. On the lower boundary we assign a boundary condition label:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+<span class="kn">from</span> <span class="nn">netgen.geom2d</span> <span class="kn">import</span> <span class="n">CSG2d</span><span class="p">,</span> <span class="n">Rectangle</span>
+
+<span class="n">geo</span> <span class="o">=</span> <span class="n">CSG2d</span><span class="p">()</span>
+
+<span class="n">mx</span><span class="p">,</span> <span class="n">my</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mx</span><span class="p">):</span> 
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">my</span><span class="p">):</span>
+        <span class="n">rect</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="n">pmin</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="n">mx</span><span class="p">,</span><span class="n">j</span><span class="o">/</span><span class="n">my</span><span class="p">),</span> \
+                         <span class="n">pmax</span><span class="o">=</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">mx</span><span class="p">,(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">mx</span><span class="p">),</span> \
+                         <span class="n">mat</span><span class="o">=</span><span class="s1">&#39;mat&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> \
+                         <span class="n">bc</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> \
+                         <span class="n">bottom</span> <span class="o">=</span> <span class="s1">&#39;bot&#39;</span> <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+                  
+        <span class="n">geo</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+        
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mf">0.05</span><span class="p">))</span>
+<span class="c1"># print (mesh.GetMaterials())</span>
+<span class="c1"># print (mesh.GetBoundaries())</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>setup a standard problem, Dirichlet b.c. on the bottom boundary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fes</span> <span class="o">=</span> <span class="n">H1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dirichlet</span><span class="o">=</span><span class="s1">&#39;bot&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;ndof =&quot;</span><span class="p">,</span> <span class="n">fes</span><span class="o">.</span><span class="n">ndof</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We build a precontioner as the sum of inverses on sub-domains:</p>
+<ol class="arabic simple">
+<li><p>We iterate over the individual sub-domains. The function <code class="docutils literal notranslate"><span class="pre">mesh.Materials</span></code> returns one volume region, which can be split into a list of regions.</p></li>
+<li><p>A finite element space can provide a <code class="docutils literal notranslate"><span class="pre">BitArray</span></code> marking the dofs of a certain region. Logical and with the non-Dirichet dofs.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Inverse(domaindofs)</span></code> takes the sub-matrix corresponding to the domain dofs, inverts it with a sparse direct solver, and inserts the small inverse into the large by padding with zeros. The costs are  <span class="math notranslate nohighlight">\(O(N + N_{\text{used}}^\alpha)\)</span>, where the constant for the <span class="math notranslate nohighlight">\(O(N)\)</span> term is very small.</p></li>
+<li><p>The final preconditioner is the sum of sub-domain inverses.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">dom</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">Materials</span><span class="p">(</span><span class="s2">&quot;.*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Split</span><span class="p">():</span>
+    <span class="n">domaindofs</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">GetDofs</span><span class="p">(</span><span class="n">dom</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">()</span>
+    <span class="c1"># print (domaindofs)</span>
+    <span class="c1"># print (&quot;num dofs:&quot;, domaindofs.NumSet())</span>
+    <span class="n">invi</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">Inverse</span><span class="p">(</span><span class="n">domaindofs</span><span class="p">)</span>
+    <span class="n">pre</span> <span class="o">=</span> <span class="n">invi</span> <span class="k">if</span> <span class="n">pre</span> <span class="o">==</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">pre</span> <span class="o">+</span> <span class="n">invi</span>
+    
+<span class="kn">from</span> <span class="nn">ngsolve.la</span> <span class="kn">import</span> <span class="n">EigenValues_Preconditioner</span>
+<span class="n">lami</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">mat</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;condition number = &quot;</span><span class="p">,</span> <span class="n">lami</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lami</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To check the solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">CGSolver</span><span class="p">(</span><span class="n">mat</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Experiment with number of subdomains, and mesh-size. You should observe a condition number <span class="math notranslate nohighlight">\(O( h^{-1} H^{-1} )\)</span>, where <span class="math notranslate nohighlight">\(H\)</span> is the sub-domain size, and <span class="math notranslate nohighlight">\(H\)</span> is the element-size.</p>
+<section id="analysis-of-the-method">
+<h2>Analysis of the method<a class="headerlink" href="#analysis-of-the-method" title="Link to this heading">#</a></h2>
+<p>We apply the ASM theory, where sub-spaces are</p>
+<div class="math notranslate nohighlight">
+\[
+V_i = \operatorname{span} \{ \varphi_i  : \text{dof}_i \text{ supported in } \overline{\Omega_i} \}
+\]</div>
+<p>By the ASM Lemma, the preconditioner norm is</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{C_{ASM}}^2 = \inf_{u = \sum u_i : u_i \in V_i } \sum \| u_i \|_A^2
+\]</div>
+<p>Since one sub-space <span class="math notranslate nohighlight">\(V_i\)</span> has overlap with at most 9 spaces <span class="math notranslate nohighlight">\(V_j\)</span>, there immediately follows</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_A^2 \leq 9 \, \| u \|_{C_{ASM}}^2
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_{max} (C_{ASM}^{-1} A) \leq 9
+\]</div>
+<p>For the other bound we have to find a decomposition, and bound the norm:</p>
+<p><strong>Lemma</strong> Let <span class="math notranslate nohighlight">\(u \in H^1(\Omega)\)</span>, and <span class="math notranslate nohighlight">\(u_i = u\)</span> in <span class="math notranslate nohighlight">\(\Omega_i\)</span>, and all other dofs set to zero. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_i \|_{H_1(\Omega)}^2 \preceq \tfrac{1}{hH} \| u \|_{H^1(\Omega_i)}^2
+\]</div>
+<p><em>Proof:</em> Follows from</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_i \|_{L_2(\partial \Omega)}^2  \preceq \frac{1}{H} \| u \|_{H^1(\Omega)}^2
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_i \|_{H^1(\Omega \setminus \Omega_i)}^2 \preceq \frac{1}{h} \| u_i \|_{L_2(\partial \Omega_i)}^2 
+\]</div>
+<div style="text-align: right"> $\Box$</div>
+<p>Choosing this <span class="math notranslate nohighlight">\(u_i\)</span> for every sub-domain does not lead to a decomposition <span class="math notranslate nohighlight">\(u = \sum{u_i}\)</span> since dofs at the interface contribute to several sub-space functions.
+So, we have to divide each coefficient by the number of sub-domains it belongs to, to obtain <span class="math notranslate nohighlight">\(\tilde u_i\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gfi</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">domi</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">Materials</span><span class="p">(</span><span class="s2">&quot;.*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Split</span><span class="p">()[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="n">Projector</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">GetDofs</span><span class="p">(</span><span class="n">domi</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">gfi</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">proj</span> <span class="o">*</span> <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-a-coarse-grid-space">
+<h2>Adding a coarse grid space<a class="headerlink" href="#adding-a-coarse-grid-space" title="Link to this heading">#</a></h2>
+<p>We build a coarse space of functions being constant inside each sub-domain. Since the functions are continuous, they decay within one layer of elements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">=</span> <span class="n">MultiVector</span><span class="p">(</span><span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="n">Projector</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">(),</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">dom</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">Materials</span><span class="p">(</span><span class="s2">&quot;.*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Split</span><span class="p">():</span>
+    <span class="n">consti</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+    <span class="n">consti</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">definedon</span><span class="o">=</span><span class="n">dom</span><span class="p">)</span>
+    <span class="n">proj</span><span class="o">.</span><span class="n">Project</span><span class="p">(</span><span class="n">consti</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+    <span class="n">Draw</span> <span class="p">(</span><span class="n">consti</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+    <span class="n">mv</span><span class="o">.</span><span class="n">Append</span> <span class="p">(</span><span class="n">consti</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mv</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We add the space spanned by these (essentially) piecewise constant
+functions as additional sub-space, and define a coarse grid correction step:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a0</span> <span class="o">=</span> <span class="n">InnerProduct</span><span class="p">(</span><span class="n">mv</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">mv</span><span class="p">)</span>
+<span class="c1"># print (a0)</span>
+<span class="n">inva0</span> <span class="o">=</span> <span class="n">BaseMatrix</span><span class="p">(</span><span class="n">a0</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="n">E0</span> <span class="o">=</span> <span class="n">BaseMatrix</span><span class="p">(</span><span class="n">mv</span><span class="p">)</span>
+<span class="n">coarsegrid</span> <span class="o">=</span> <span class="n">E0</span> <span class="o">@</span> <span class="n">inva0</span> <span class="o">@</span> <span class="n">E0</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre2</span> <span class="o">=</span> <span class="n">pre</span> <span class="o">+</span> <span class="n">coarsegrid</span>
+<span class="n">lami</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">mat</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre2</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;condition number = &quot;</span><span class="p">,</span> <span class="n">lami</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lami</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>… it does not work very well</p>
+<p>We can improve it by scaling the coarse grid functions by the
+number of domains it belongs to. Thanks to this scaling a globally
+constant function can be represented within the coarse space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ones</span> <span class="o">=</span> <span class="n">mv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">CreateVector</span><span class="p">()</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="n">mv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">CreateVector</span><span class="p">()</span>
+<span class="n">cnt</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ones</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">dom</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">Materials</span><span class="p">(</span><span class="s2">&quot;.*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Split</span><span class="p">():</span>
+    <span class="n">cnt</span> <span class="o">+=</span> <span class="n">Projector</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">GetDofs</span><span class="p">(</span><span class="n">dom</span><span class="p">),</span><span class="kc">True</span><span class="p">)</span><span class="o">*</span><span class="n">ones</span>
+
+<span class="n">idiag</span> <span class="o">=</span> <span class="n">DiagonalMatrix</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span><span class="o">.</span><span class="n">Inverse</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mv</span><span class="p">:</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">idiag</span><span class="o">*</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">Evaluate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a0</span> <span class="o">=</span> <span class="n">InnerProduct</span><span class="p">(</span><span class="n">mv</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">mv</span><span class="p">)</span>
+<span class="c1"># print (a0)</span>
+<span class="c1"># print (a0 * Vector( (1,)*len(mv)))</span>
+<span class="n">inva0</span> <span class="o">=</span> <span class="n">BaseMatrix</span><span class="p">(</span><span class="n">a0</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="n">E0</span> <span class="o">=</span> <span class="n">BaseMatrix</span><span class="p">(</span><span class="n">mv</span><span class="p">)</span>
+<span class="n">coarsegrid</span> <span class="o">=</span> <span class="n">E0</span> <span class="o">@</span> <span class="n">inva0</span> <span class="o">@</span> <span class="n">E0</span><span class="o">.</span><span class="n">T</span>
+<span class="n">pre3</span> <span class="o">=</span> <span class="n">pre</span> <span class="o">+</span> <span class="n">coarsegrid</span>
+<span class="n">lami</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">mat</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre3</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;condition number = &quot;</span><span class="p">,</span> <span class="n">lami</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lami</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gfu0</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">gfu0</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">coarsegrid</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Exercise (for experts)</em>:
+The condition number can be estimated by:
+$<span class="math notranslate nohighlight">\(
+\kappa \{C^{-1} A \} \prec \frac{H}{h}
+\)</span>$</p>
+</section>
+<section id="graph-based-mesh-partitioning">
+<h2>Graph-based mesh partitioning<a class="headerlink" href="#graph-based-mesh-partitioning" title="Link to this heading">#</a></h2>
+<p>The geometric decomposition of a domain into <em>nice</em> sub-domains as we have done above is usually not feasible. In practice, one often uses graph-based mesh partitioning tools. The mesh connectivity is represented as a graph, where the</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">netgen.geom2d</span> <span class="kn">import</span> <span class="n">unit_square</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">unit_square</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Draw</span> <span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">Elements</span><span class="p">(</span><span class="n">VOL</span><span class="p">):</span>
+    <span class="n">nbs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">el</span><span class="o">.</span><span class="n">facets</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">nb</span> <span class="ow">in</span> <span class="n">mesh</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">nb</span> <span class="o">!=</span> <span class="n">el</span><span class="p">:</span>
+                <span class="n">nbs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nb</span><span class="o">.</span><span class="n">nr</span><span class="p">)</span>
+    <span class="n">nbels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nbs</span><span class="p">)</span>
+<span class="c1"># print (nbels)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Metis is such a graph partitioning tool. Python bindings are provided via the package pymetis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymetis</span>
+<span class="n">ndom</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">n_cuts</span><span class="p">,</span> <span class="n">membership</span> <span class="o">=</span> <span class="n">pymetis</span><span class="o">.</span><span class="n">part_graph</span><span class="p">(</span><span class="n">ndom</span><span class="p">,</span> <span class="n">adjacency</span><span class="o">=</span><span class="n">nbels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gfdom</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">L2</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">gfdom</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">BaseVector</span><span class="p">(</span><span class="n">membership</span><span class="p">)</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfdom</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A basic method for graph partitioning is spectral bisection: One computes the eigenfunction to the smallest non-zero eigenvalue of the  Laplace-operator with Neumann boundary conditions. Two sub-domains are defined for the points where the eigenfunction is positive, or negative. Consider as an example a long rectangle: The eigenfunction is a sine-function in the long direction, and the interface between the sub-domains is as short as possible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fes</span> <span class="o">=</span> <span class="n">H1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dirichlet</span><span class="o">=</span><span class="s1">&#39;bot&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;ndof =&quot;</span><span class="p">,</span> <span class="n">fes</span><span class="o">.</span><span class="n">ndof</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+
+<span class="n">domdofs</span> <span class="o">=</span> <span class="p">[</span><span class="n">BitArray</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">ndof</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndom</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">domdofs</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">fes</span><span class="o">.</span><span class="n">Elements</span><span class="p">(</span><span class="n">VOL</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">el</span><span class="o">.</span><span class="n">dofs</span><span class="p">:</span>
+        <span class="n">domdofs</span><span class="p">[</span><span class="n">membership</span><span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">nr</span><span class="p">]]</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">dd</span> <span class="ow">in</span> <span class="n">domdofs</span><span class="p">:</span>
+    <span class="n">invi</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">Inverse</span><span class="p">(</span><span class="n">dd</span> <span class="o">&amp;</span> <span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">())</span>
+    <span class="n">pre</span> <span class="o">=</span> <span class="n">invi</span> <span class="k">if</span> <span class="n">pre</span> <span class="o">==</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">pre</span> <span class="o">+</span> <span class="n">invi</span>
+    
+<span class="kn">from</span> <span class="nn">ngsolve.la</span> <span class="kn">import</span> <span class="n">EigenValues_Preconditioner</span>
+<span class="n">lami</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">mat</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;condition number = &quot;</span><span class="p">,</span> <span class="n">lami</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lami</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">=</span> <span class="n">MultiVector</span><span class="p">(</span><span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="n">Projector</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">(),</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndom</span><span class="p">):</span>
+    <span class="n">consti</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+    <span class="n">consti</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">IfPos</span><span class="p">(</span> <span class="n">Norm</span><span class="p">(</span><span class="n">gfdom</span><span class="o">-</span><span class="n">i</span><span class="p">)</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">proj</span><span class="o">.</span><span class="n">Project</span><span class="p">(</span><span class="n">consti</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+    <span class="n">Draw</span> <span class="p">(</span><span class="n">consti</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+    <span class="n">mv</span><span class="o">.</span><span class="n">Append</span> <span class="p">(</span><span class="n">consti</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mv</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a0</span> <span class="o">=</span> <span class="n">InnerProduct</span><span class="p">(</span><span class="n">mv</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">mv</span><span class="p">)</span>
+<span class="c1"># print (a0)</span>
+<span class="c1"># print (a0 * Vector( (1,)*len(mv)))</span>
+<span class="n">inva0</span> <span class="o">=</span> <span class="n">BaseMatrix</span><span class="p">(</span><span class="n">a0</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="n">E0</span> <span class="o">=</span> <span class="n">BaseMatrix</span><span class="p">(</span><span class="n">mv</span><span class="p">)</span>
+<span class="n">coarsegrid</span> <span class="o">=</span> <span class="n">E0</span> <span class="o">@</span> <span class="n">inva0</span> <span class="o">@</span> <span class="n">E0</span><span class="o">.</span><span class="n">T</span>
+<span class="n">pre3</span> <span class="o">=</span> <span class="n">pre</span> <span class="o">+</span> <span class="n">coarsegrid</span>
+<span class="n">lami</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">mat</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre3</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;condition number = &quot;</span><span class="p">,</span> <span class="n">lami</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lami</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mvgf</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">,</span> <span class="n">multidim</span><span class="o">=</span><span class="n">ndom</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndom</span><span class="p">):</span>
+    <span class="n">mvgf</span><span class="o">.</span><span class="n">vecs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">mv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">mvgf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./subspacecorrection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-method">Analysis of the method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-coarse-grid-space">Adding a coarse grid space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-based-mesh-partitioning">Graph-based mesh partitioning</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

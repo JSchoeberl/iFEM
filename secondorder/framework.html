@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Application of the abstract theory &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'secondorder/framework';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/secondorder/framework.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Application of the abstract theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-mixed-formulation">Dual mixed formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-mixed-formulation">Primal mixed formulation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="application-of-the-abstract-theory">
+<h1>Application of the abstract theory<a class="headerlink" href="#application-of-the-abstract-theory" title="Link to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(\DeclareMathOperator{\opdiv}{div}\)</span></p>
+<p>We consider now second order equations with mixed boundary conditions, and variable coefficients:</p>
+<p>Find <span class="math notranslate nohighlight">\(u\)</span> such that
+\begin{eqnarray*}
+-\opdiv \lambda(x) \nabla u &amp; = &amp; f \quad ; ; ; \text{ in } \Omega \
+u &amp; = &amp; u_D \quad \text{ on } \Gamma_D \
+\lambda \frac{\partial u}{\partial n} &amp; = &amp; g \quad ; ; ; \text{ on } \Gamma_N
+\end{eqnarray*}</p>
+<p>Introduce <span class="math notranslate nohighlight">\(\sigma = \lambda \nabla u\)</span> to obtain the system</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda^{-1} \sigma - \nabla u = 0 \quad \quad \opdiv \sigma = -f
+\]</div>
+<p>and boundary conditions</p>
+<div class="math notranslate nohighlight">
+\[
+u = u_D \; \; \text{ on } \Gamma_D \qquad \sigma \cdot n = g \; \; \text{ on } \Gamma_N
+\]</div>
+<p>We test the first equation by <span class="math notranslate nohighlight">\(\tau\)</span>, the second by <span class="math notranslate nohighlight">\(v\)</span> and get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccccll}
+\int \lambda^{-1} \sigma \tau &amp; - &amp; \int \nabla u \tau &amp; = &amp; 0 &amp; \forall \, \tau \\
+\int \opdiv \sigma \, v &amp; &amp; &amp; = &amp; - \int f v &amp; \forall \, v
+\end{array}
+\end{split}\]</div>
+<p>To get a mixed system with the same bilinear-form at the lower left and upper right blocks, we have to integrate by parts either one of the terms.</p>
+<section id="dual-mixed-formulation">
+<h2>Dual mixed formulation<a class="headerlink" href="#dual-mixed-formulation" title="Link to this heading">#</a></h2>
+<p>Integration by parts of the upper right term we get</p>
+<div class="math notranslate nohighlight">
+\[
+- \int_\Omega \nabla u \tau = 
+\int_\Omega u \opdiv \tau - \int_{\Gamma_D} u \, \tau_n - \int_{\Gamma_N} u \, \tau_n
+\]</div>
+<p>Now, we can plug in the boundary condition <span class="math notranslate nohighlight">\(u = u_D\)</span> for the Dirichlet boundary, and move the term to the right hand side. On the Neumann boundary, we have to restrict the test-function to <span class="math notranslate nohighlight">\(\tau_n = 0\)</span>. Neumann boundary conditions become now essential ones.</p>
+<p>The problem is now formulated as:</p>
+<p>Find <span class="math notranslate nohighlight">\(\sigma \in H(\opdiv)\)</span> and <span class="math notranslate nohighlight">\(u \in L_2\)</span> such that
+<span class="math notranslate nohighlight">\(\sigma_n = g\)</span> on <span class="math notranslate nohighlight">\(\Gamma_N\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccccll}
+\int \lambda^{-1} \sigma \tau &amp; + &amp; \int \opdiv \tau \, u  &amp; = &amp; \int_{\Gamma_D} u_D \tau_n &amp; \forall \, \tau, \; \tau_n = 0 \text{ on } \Gamma_N \\
+\int \opdiv \sigma \, v &amp; &amp; &amp; = &amp; - \int f v &amp; \forall \, v
+\end{array}
+\end{split}\]</div>
+<p>Note that the role of essential and natural boundary conditions is now swapped.</p>
+<p>There are some issues left to verify:</p>
+<ul class="simple">
+<li><p>Is it allowed to take boundary values of <span class="math notranslate nohighlight">\(H(\opdiv)\)</span> functions ?</p></li>
+<li><p>What kind of essential Neumann boundary data can we prescribe ?</p></li>
+<li><p>Is <span class="math notranslate nohighlight">\(\int u_D \tau_n\)</span> a continuous linear form ?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+
+<span class="kn">from</span> <span class="nn">netgen.geom2d</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">geo</span> <span class="o">=</span> <span class="n">SplineGeometry</span><span class="p">()</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">AddRectangle</span><span class="p">(</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">leftdomain</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rightdomain</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+                 <span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="s1">&#39;l&#39;</span><span class="p">])</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">AddCircle</span><span class="p">(</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.7</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">leftdomain</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">rightdomain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">AddRectangle</span> <span class="p">(</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.3</span><span class="p">),</span> <span class="n">leftdomain</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">rightdomain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">SetMaterial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">)</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">SetMaterial</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">)</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">SetMaterial</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mf">0.03</span><span class="p">))</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">Curve</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fes</span> <span class="o">=</span> <span class="n">H1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dirichlet</span><span class="o">=</span><span class="s2">&quot;b|r&quot;</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TrialFunction</span><span class="p">()</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TestFunction</span><span class="p">()</span>
+
+<span class="n">lam</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">MaterialCF</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;bar&quot;</span> <span class="p">:</span> <span class="mi">100</span> <span class="p">},</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span> <span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">*</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span><span class="n">dx</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">Inverse</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">())</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;stdtemp&quot;</span><span class="p">)</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="o">-</span><span class="n">lam</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">gfu</span><span class="p">),</span> <span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;stdflux&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sigma</span> <span class="o">=</span> <span class="n">HDiv</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dirichlet</span><span class="o">=</span><span class="s2">&quot;t|l&quot;</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">L2</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">Sigma</span><span class="o">*</span><span class="n">V</span>
+
+<span class="n">sigma</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">TrialFunction</span><span class="p">()</span>
+<span class="n">tau</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">TestFunction</span><span class="p">()</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">lam</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">tau</span> <span class="o">+</span> <span class="n">div</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span><span class="o">*</span><span class="n">v</span> <span class="o">+</span> <span class="n">div</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">)</span> <span class="o">*</span> <span class="n">dx</span>
+<span class="n">a</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span><span class="n">dx</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">Inverse</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">())</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;mixedflux&quot;</span><span class="p">)</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="o">-</span><span class="n">gfu</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mesh</span><span class="p">,</span> <span class="s2">&quot;mixedtemp&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We observe that the normal component of the flux is continuous arcross discontinuous coefficients. As we will see, this is a property of the function space <span class="math notranslate nohighlight">\(H(\opdiv)\)</span>.</p>
+</section>
+<section id="primal-mixed-formulation">
+<h2>Primal mixed formulation<a class="headerlink" href="#primal-mixed-formulation" title="Link to this heading">#</a></h2>
+<p>We can also integrate the lower left term by part. This leads to the formulation</p>
+<p>Find <span class="math notranslate nohighlight">\(u \in H^1\)</span> and <span class="math notranslate nohighlight">\(\sigma \in [L_2]^d\)</span> such that <span class="math notranslate nohighlight">\(u = u_D\)</span> on <span class="math notranslate nohighlight">\(\Gamma_D\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccccll}
+\int \lambda^{-1} \sigma \tau &amp; - &amp; \int \tau \nabla u   &amp; = &amp; 0 &amp; \forall \, \tau \\
+-\int \sigma \nabla v &amp; &amp; &amp; = &amp; - \int f v - \int_{\Gamma_N} g v &amp; \forall \, v, \; \; v = 0 \text{ on } \Gamma_D
+\end{array}
+\end{split}\]</div>
+<p>This formulation is very close to the primal method.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./secondorder"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dual-mixed-formulation">Dual mixed formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primal-mixed-formulation">Primal mixed formulation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analysis of the multi-level preconditioner &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'multigrid/analysisML';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/multigrid/analysisML.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analysis of the multi-level preconditioner</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearly-optimal-analysis-of-the-ml-preconditioner">Nearly optimal analysis of the ML - preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">Optimal analysis of the multi-level preconditioner</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analysis-of-the-multi-level-preconditioner">
+<h1>Analysis of the multi-level preconditioner<a class="headerlink" href="#analysis-of-the-multi-level-preconditioner" title="Link to this heading">#</a></h1>
+<p>We apply the Additive Schwarz Theory to prove an optimal conditioner number of the multi-level preconditioner.</p>
+<p>The outline is as follows. Provided that the <span class="math notranslate nohighlight">\(A\)</span>-norm is equivalent to the <span class="math notranslate nohighlight">\(H^1\)</span>-norm we will show easily that</p>
+<div class="math notranslate nohighlight">
+\[
+\| \underline u \|_{C_{ML}}^2 \approx \inf_{u = u_0 + \sum_{l=1}^L w_l \atop u_0 \in V_0,  w_l \in V_l} \| u_0 \|_{H^1}^2 + \sum_{l=1}^L h_l^{-2} \| w_l \|_{L_2}^2 
+\]</div>
+<p>We call the norm on the right hand side the multi-level norm.
+Then we prove that the multi-level norm is equivalent to the <span class="math notranslate nohighlight">\(H^1\)</span>-norm.</p>
+<p>The idea is similar to Fourier-analysis. We decompose the function <span class="math notranslate nohighlight">\(u\)</span> into components <span class="math notranslate nohighlight">\(w_l\)</span> of different frequencies. For the particular frequency component <span class="math notranslate nohighlight">\(w_l\)</span> within the finite element space on the level-l mesh there holds</p>
+<div class="math notranslate nohighlight">
+\[
+ \| w_l \|_{H^1}^2 \approx h_l^{-2} \| w_l \|_{L_2}^2.
+\]</div>
+<p>Taking one derivative on the left hand side corresponds to scaling with the inverse mesh-size <span class="math notranslate nohighlight">\(h_l^{-1}\)</span>.</p>
+<p><strong>Theorem:</strong> The multi-level preconditioner can be expressed as above.</p>
+<p><em>Proof:</em> The multi-level preconditioner is recursively defined as</p>
+<div class="math notranslate nohighlight">
+\[
+C_{ML,0}^{-1} = A_0^{-1} \qquad C_{ML,l}^{-1} = P_l C_{ML,{l-1}}^{-1} P_l^T + D_l^{-1}
+\]</div>
+<p>By combining all prolongations from level <span class="math notranslate nohighlight">\(l\)</span> to the finest level <span class="math notranslate nohighlight">\(L\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+E_l := P_L \, P_{L-1} \cdots P_{l+1}
+\]</div>
+<p>we can replace the recursive definition of <span class="math notranslate nohighlight">\(C_{ML}^{-1}\)</span> by the sum</p>
+<div class="math notranslate nohighlight">
+\[
+C_{ML,L}^{-1} = E_0 A_0^{-1} E_0^T + \sum_{l=1}^L E_l D_l^{-1} E_l^T
+\]</div>
+<p>By a generalization of the ASM - lemma (replacing sub-space inverses <span class="math notranslate nohighlight">\(A_l\)</span> by the preconditioner <span class="math notranslate nohighlight">\(D_l\)</span>) we can represent the norm of the additive preconditioner by a minimal decomposition:</p>
+<div class="math notranslate nohighlight">
+\[
+\| \underline u \|_{C_{ML,L}}^2 = \min_{u = E_0 u_0 + \sum E_l w_l} 
+\| \underline u_0 \|_{A_0}^2 + \sum_{l=1}^L \| \underline w_l \|_{D_l}^2
+\]</div>
+<p>We have already shown that the Jacobi-preconditioner <span class="math notranslate nohighlight">\(D_l\)</span> satisfies</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{D_l}^2 \approx h_l^{-2} \| u \|_{L_2}^2,
+\]</div>
+<p>which proves the result. <span class="math notranslate nohighlight">\(\Box\)</span></p>
+<section id="nearly-optimal-analysis-of-the-ml-preconditioner">
+<h2>Nearly optimal analysis of the ML - preconditioner<a class="headerlink" href="#nearly-optimal-analysis-of-the-ml-preconditioner" title="Link to this heading">#</a></h2>
+<p>Define the multi-level norm</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{ML}^2 := \inf_{u = u_0 + \sum w_l}  \Big\{ \| u_0 \|_{H^1}^2 + \sum_{l=1}^L h_l^{-2} \| w_l \|_{L_2}^2 \Big\}
+\]</div>
+<p><strong>Theorem:</strong> There holds</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{L} \| u \|_{ML}^2 \preceq \| u \|_{H^1}^2 \preceq L \, \| u \|_{ML}^2.
+\]</div>
+<p>Thus, the condition number of the ML-preconditioner is bounded as</p>
+<div class="math notranslate nohighlight">
+\[
+\kappa \{ C_{ML}^{-1} A \} \preceq L^2 \approx (\log N)^2
+\]</div>
+<p><em>Proof:</em> We start with the estimate <span class="math notranslate nohighlight">\(\| u \|_{ML}^2 \preceq L \| u \|_{H^1}^2\)</span>. Let <span class="math notranslate nohighlight">\(\pi_l\)</span> be a Clément-type operator projecting to <span class="math notranslate nohighlight">\(V_l\)</span> with the properties</p>
+<div class="math notranslate nohighlight">
+\[
+\| \pi_l u \|_{H^1}^2 + h_l^{-2} \| u - \pi_l u \|_{L_2}^2 \preceq \| u \|_{H^1}^2
+\]</div>
+<p>We define</p>
+<p>\begin{eqnarray*}
+u_0 &amp; := &amp; \pi_0 u \
+w_l &amp; := &amp; \pi_l u - \pi_{l-1} u
+\end{eqnarray*}</p>
+<p>There holds (a telescopic sum):</p>
+<div class="math notranslate nohighlight">
+\[
+u_0 + \sum_{l=1}^L w_l = \pi_0 u + \sum_{l=1}^L (\pi_l - \pi_{l-1}) u 
+= \pi_l u = u,
+\]</div>
+<p>i.e. we have a decomposition into sub-spaces. Furthermore there holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_0 \|_{H^1}^2 \preceq \| u \|_{H^1}^2 
+\]</div>
+<p>and</p>
+<p>\begin{eqnarray*}
+| w_l |<em>{L_2}^2 &amp; = &amp; | \pi_l u - \pi</em>{l-1} u |<em>{L_2}^2 \
+&amp; \preceq &amp; | \pi_l u - u |</em>{L_2}^2 + | u - \pi_{l-1} u |^2 \
+&amp; \preceq &amp; h_l^2 | u |_{H^1}^2
+\end{eqnarray*}</p>
+<p>Thus, every single term of the <span class="math notranslate nohighlight">\(L+1\)</span> terms of the <span class="math notranslate nohighlight">\(ML\)</span>-norm can be bounded by <span class="math notranslate nohighlight">\(\| u \|_{H^1}\)</span>, and thus the estimate <span class="math notranslate nohighlight">\(\| u \|_{ML}^2 \preceq  (L+1) \, \| u \|_{H^1}^2\)</span> is proven.</p>
+<p>For the other estimate, let <span class="math notranslate nohighlight">\(u = \sum_{l=0}^L u_l\)</span>, with <span class="math notranslate nohighlight">\(u_l \in V_l\)</span> be an arbitrary decomposition. There holds</p>
+<p>\begin{eqnarray*}
+| u |<em>A^2 &amp; = &amp; A( \sum_l u_l, \sum_k u_k) \
+&amp; = &amp; \sum</em>{l,k} A(u_l, u_k) \
+&amp; \leq &amp; \sum_{l,k = 0}^L \frac{1}{2} ( | u_l |_A^2 + | u_k |<em>A^2 ) \
+&amp; = &amp; (L+1) \sum</em>{l=0}^L | u_l |<em>A^2 \
+&amp; \preceq &amp; (L+1) \Big{ | u_0 |<em>A^2 + \sum</em>{l=1}^L h_l^{-2} | u_l |</em>{L_2}^2 \Big}
+\end{eqnarray*}</p>
+<p>Since this holds for an arbitrary decomposition <span class="math notranslate nohighlight">\(u = \sum u_l\)</span>, it holds also for the minimal one.</p>
+</section>
+<section id="optimal-analysis-of-the-multi-level-preconditioner">
+<h2>Optimal analysis of the multi-level preconditioner<a class="headerlink" href="#optimal-analysis-of-the-multi-level-preconditioner" title="Link to this heading">#</a></h2>
+<p>By a refined analysis, both <span class="math notranslate nohighlight">\(L\)</span>-dependent estimates can be improved to uniform estimates. However, this requires more problem-specific assumptions, as well as advanced tools from interpolation spaces.</p>
+<p><strong>Theorem:</strong> There holds <span class="math notranslate nohighlight">\(\| u \|_{H^1} \preceq \| u \|_{ML}\)</span>.</p>
+<p>We first show that the estimate of <span class="math notranslate nohighlight">\(A\)</span>-inner products of functions from very different levels can be improved essentially:</p>
+<p><strong>Lemma:</strong> For <span class="math notranslate nohighlight">\(u_l \in V_l\)</span> and <span class="math notranslate nohighlight">\(v_k \in V_k\)</span> there holds</p>
+<div class="math notranslate nohighlight">
+\[
+A(u_l, v_k) \preceq 2^{-|l-k|/2} h_l^{-1} \| u_l \|_{L_2} h_k^{-1} \| v_k \|_{L_2}
+\]</div>
+<p><em>Proof:</em> Assume <span class="math notranslate nohighlight">\(l \leq k\)</span>, i.e., <span class="math notranslate nohighlight">\(u_l\)</span> is a function on a coarser level than <span class="math notranslate nohighlight">\(v_k\)</span>. The idea is to apply integration by parts to put all derivatives to <span class="math notranslate nohighlight">\(u_l\)</span>. Integration by parts can only be done element-by-element on the coarser mesh:</p>
+<p>\begin{eqnarray*}
+A(u_l, v_k) &amp; = &amp; \int_\Omega \nabla u_l \nabla v_k , dx \
+&amp; = &amp; \sum_{T_l \in {\mathcal T_l}} \int_{T_l} \nabla u_l \nabla v_k , dx \
+&amp; = &amp; \sum_{T_l} -\int_{T_l} \Delta u_l v_k , dx + \int_{\partial T_l} \frac{\partial u_l}{\partial n} v_k ds \
+&amp; \leq &amp; \sum_{T_l} | \Delta u_l |<em>{L_2(T_l)} | v_k |</em>{L_2(T_l)} +
+| \partial_n u_l |<em>{L_2(\partial T_l)} | v_k |</em>{L_2(\partial T_l)} \
+&amp; \preceq &amp; \sum_{T_l} h_l^{-2} | u_l |<em>{L_2(T_l)} | v_k |</em>{L_2(T_l)}</p>
+<ul class="simple">
+<li><p>h_l^{-3/2} | u_l |<em>{L_2(T_l)} h_k^{-1/2} | v_k |</em>{L_2(T_l)} \
+&amp; \leq &amp; \frac{h_k}{h_l}  h_l^{-1} | u_l |<em>{L_2} h_k^{-1} | v_k |</em>{L_2} + \sqrt{ \frac{h_k}{h_l}}  h_l^{-1} | u_l |<em>{L_2} h_k^{-1} | v_k |</em>{L_2} \
+&amp; \leq &amp; 2^{-|l-k|/2}  h_l^{-1} | u_l |<em>{L_2} h_k^{-1} | v_k |</em>{L_2}
+\end{eqnarray*}</p></li>
+</ul>
+<p><em>Proof of the theorem:</em></p>
+<p>We start as above with an arbitrary decomposition <span class="math notranslate nohighlight">\(u = \sum u_l\)</span>, and use the improved estimate for the inner product:</p>
+<p>\begin{eqnarray*}
+| u |<em>A^2 &amp; = &amp; \sum</em>{l,k = 0}^L A(u_l, v_k) \
+&amp; \preceq &amp; \sum_{l,k} 2^{-|l-k|/2}  \left( h_l^{-2} | u_l |^2_{L_2} + h_k^{-2} | u_k |<em>{L_2}^2 \right) \
+&amp; = &amp; 2 \sum</em>{l,k} 2^{-|l-k|/2}  h_l^{-2} | u_l |^2_{L_2} \
+&amp; \preceq &amp; \sum_l h_l^{-2} | u_l |_{L_2}^2
+\end{eqnarray*}</p>
+<p>We used that <span class="math notranslate nohighlight">\(\sum_k 2^{-|l-k|/2}\)</span> is a convergent, geometric series. The term from the coarsest level was skipped for convenience of notation.</p>
+<p><strong>Definition: Full regularity assumption:</strong> The underlying differential equation satisfies full elliptic regularity if for arbitrary right hand side <span class="math notranslate nohighlight">\(f \in L_2\)</span> the solution <span class="math notranslate nohighlight">\(u\)</span> is <span class="math notranslate nohighlight">\(H^2\)</span>-regular with the estimate</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{H^2} \preceq \| f \|_{L_2}.
+\]</div>
+<p>This assumption is satisfied if the domain <span class="math notranslate nohighlight">\(\Omega\)</span> is either convex, or its boundary is <span class="math notranslate nohighlight">\(C^1\)</span>-continuous.</p>
+<p><strong>Nitsche-lemma:</strong> Assume that the differential equation satisfies full elliptic regularity. Then there holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| u - u_h \|_{L_2} \preceq h \| u - u_h \|_{H^1},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(u_h\)</span> is the Galerkin approximation of <span class="math notranslate nohighlight">\(u\)</span>, i.e. <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+A(u_h, v_h) = A(u, v_h) \qquad \forall \, v_h
+\]</div>
+<p><em>Proof:</em> finite element class.</p>
+<p><strong>Theorem:</strong> Assume full elliptic regularity. Then there holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{ML} \preceq \| u \|_{H^1}
+\]</div>
+<p><em>Proof:</em> Given an arbitrary <span class="math notranslate nohighlight">\(u \in V_L\)</span>. We decompose <span class="math notranslate nohighlight">\(u\)</span> by <span class="math notranslate nohighlight">\(A\)</span>-orthogonal projections.</p>
+<p>Define <span class="math notranslate nohighlight">\(u_l = \Pi_l u\)</span> as <span class="math notranslate nohighlight">\(u_l \in V_l\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+A(u_l, v_l) = A(u, v_l) \qquad \forall \, v_l \in V_l
+\]</div>
+<p>By the Nitsche-lemma we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+\| u - u_l \|_{L_2} \preceq h_l \| u - u_l \|_A
+\]</div>
+<p>Since the spaces are nested we get <span class="math notranslate nohighlight">\(u_{l-1} = \Pi_{l-1} u = \Pi_{l-1} \Pi_l u = \Pi_{l-1} u_l\)</span>, and by Nitsche</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_{l-1} - u_l \|_{L_2} \preceq h_l \| u_{l-1} - u_l \|_A
+\]</div>
+<p>Now define the decomposition <span class="math notranslate nohighlight">\(u = u_0 + \sum w_l\)</span> via orthogonal projections:</p>
+<div class="math notranslate nohighlight">
+\[
+u_0 = \Pi_0 u \qquad \text{and} \qquad w_l := \Pi_l u - \Pi_{l-1} u.
+\]</div>
+<p>Thus</p>
+<p>\begin{eqnarray*}
+| u_0 |<em>A^2 + \sum_l h_l^{-2} | w_l |</em>{L_2}
+&amp; \preceq &amp; | \Pi_0 u |<em>A^2 + \sum_l | (\Pi_l - \Pi</em>{l-1}) u |_A^2 \
+&amp; = &amp; | u |_A^2,
+\end{eqnarray*}
+and the proof is complete.</p>
+<p>For the case of non full elliptic regularity we refer to literature: Xu, Jinchao: Iterative methods by space decomposition and subspace correction. SIAM Rev. 34 (1992), no. 4, 581–613 <a class="reference external" href="https://epubs.siam.org/doi/10.1137/1034116">https://epubs.siam.org/doi/10.1137/1034116</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./multigrid"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearly-optimal-analysis-of-the-ml-preconditioner">Nearly optimal analysis of the ML - preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">Optimal analysis of the multi-level preconditioner</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

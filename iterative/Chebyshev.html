@@ -1,0 +1,783 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Chebyshev Method &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'iterative/Chebyshev';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/iterative/Chebyshev.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Chebyshev Method</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chebyshev-polynomials">Chebyshev polynomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-chebyshev-iteration">The Chebyshev iteration</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-chebyshev-method">
+<h1>The Chebyshev Method<a class="headerlink" href="#the-chebyshev-method" title="Link to this heading">#</a></h1>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> be SPD, and <span class="math notranslate nohighlight">\(C\)</span> an SPD preconditioner. If we perform <span class="math notranslate nohighlight">\(n\)</span> steps of the Richardson iteration with damping parameter <span class="math notranslate nohighlight">\(\tau\)</span>, the error <span class="math notranslate nohighlight">\(e^n\)</span> follows from the initial error <span class="math notranslate nohighlight">\(e^0\)</span> via</p>
+<div class="math notranslate nohighlight">
+\[
+e^n = (I - \tau C^{-1} A)^n e^0.
+\]</div>
+<p>Now, we allow to use different damping parameters <span class="math notranslate nohighlight">\(\tau_k\)</span> in every iteration. Then</p>
+<div class="math notranslate nohighlight">
+\[
+e^n = (I - \tau_n C^{-1} A) \cdots (I - \tau_2 C^{-1} A )(I - \tau_1 C^{-1} A) e^0.
+\]</div>
+<p>With the polynomial</p>
+<div class="math notranslate nohighlight">
+\[
+p(\lambda) = \Pi_{i=1}^n (1 - \tau_i \lambda)
+\]</div>
+<p>we can write</p>
+<div class="math notranslate nohighlight">
+\[
+e^n = p(C^{-1} A) e^0
+\]</div>
+<p>We observe that <span class="math notranslate nohighlight">\(p(.)\)</span> is a polynomial of degree <span class="math notranslate nohighlight">\(n\)</span>, such that <span class="math notranslate nohighlight">\(p(0) = 1\)</span>. Let <span class="math notranslate nohighlight">\((\lambda_i, z^i)\)</span> be the eigen-system of <span class="math notranslate nohighlight">\(C^{-1} A\)</span>, and expand errors with respect to the <span class="math notranslate nohighlight">\(C\)</span>-orthonormal eigen-basis:</p>
+<div class="math notranslate nohighlight">
+\[
+\| e^n \|_C^2 = \sum_{i=1}^N (e^n_i)^2 = \sum_{i=1}^N \big( p(\lambda_i) {e^0_i} \big)^2 \leq \max_{\lambda_i \in \sigma(C^{-1} A)} p(\lambda_i)^2 \; \| e^0 \|_C^2
+\]</div>
+<p>The goal is now to find damping parameters <span class="math notranslate nohighlight">\(\tau_1, \ldots \tau_n\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\max_{\lambda_i \in \sigma(C^{-1} A)} | p(\lambda_i) |
+\]</div>
+<p>is minimal. It is rarely feasible to work with the precise spectrum. But often we have bounds such that <span class="math notranslate nohighlight">\(\sigma(C^{-1} A) \subset [\gamma_1, \gamma_2]\)</span> with <span class="math notranslate nohighlight">\(0 &lt; \gamma_1 &lt; \gamma_2\)</span>. Then, we can simplify the problem to optimize the polynomial such that</p>
+<div class="math notranslate nohighlight">
+\[
+\min_{p \in \text{Pol(n)} \atop p(0) = 1} \max_{\lambda \in [\gamma_1, \gamma_2]}
+ | p(\lambda) |
+\]</div>
+<p>The solution to this min-max problem is given by Chebyshev polynomials.</p>
+<section id="chebyshev-polynomials">
+<h2>Chebyshev polynomials<a class="headerlink" href="#chebyshev-polynomials" title="Link to this heading">#</a></h2>
+<p>Chebyshev polynomials (of the first kind) are defined via the three-term recurrence relation</p>
+<p>\begin{eqnarray*}
+T_0(x) &amp; = &amp; 1 \
+T_1(x) &amp; = &amp; x \
+T_{n+1}(x) &amp; = &amp; 2 x T_n(x) - T_{n-1}(x) \qquad n \geq 1
+\end{eqnarray*}</p>
+<p>Using induction and trigonometric addition formulas one easily
+shows that</p>
+<div class="math notranslate nohighlight">
+\[
+T_n(x) = \cos( n \arccos (x)) \qquad \text{for} \; x \in [-1,1]
+\]</div>
+<p>and thus</p>
+<div class="math notranslate nohighlight">
+\[
+\sup_{x \in [-1,1]} T_n(x) = 1
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Cheby</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">,</span><span class="n">Told</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mi">0</span><span class="o">*</span><span class="n">x</span>     <span class="c1"># for vectorization</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">T</span><span class="p">,</span><span class="n">Told</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">T</span><span class="o">-</span><span class="n">Told</span><span class="p">,</span> <span class="n">T</span>
+    <span class="k">return</span> <span class="n">Told</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> widget
+
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">toolbar_visible</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">header_visible</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Cheby</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We rescale</p>
+<ul class="simple">
+<li><p>the argument such that <span class="math notranslate nohighlight">\(\lambda = \gamma_1\)</span> is mapped to <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(\lambda = \gamma_2\)</span> is mapped to <span class="math notranslate nohighlight">\(+1\)</span>,</p></li>
+<li><p>and scale the range such that <span class="math notranslate nohighlight">\(\widetilde T_n(0) = 1\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\widetilde T_n(\lambda) = \frac{1}{T_n \left(\tfrac{-\gamma_1-\gamma_2}{\gamma_2-\gamma_1}\right)} 
+T_n \left(\tfrac{2 \lambda -\gamma_1-\gamma_2}{\gamma_2-\gamma_1}\right)
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ScaledCheby</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">lam</span><span class="p">,</span><span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">gamma2</span><span class="o">-</span><span class="n">gamma1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gamma2</span><span class="o">-</span><span class="n">gamma1</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">gamma2</span><span class="o">-</span><span class="n">gamma1</span><span class="p">)</span><span class="o">*</span><span class="n">lam</span>
+    <span class="n">fac</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Cheby</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">gamma2</span><span class="o">-</span><span class="n">gamma1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gamma2</span><span class="o">-</span><span class="n">gamma1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">fac</span><span class="o">*</span><span class="n">Cheby</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We compare the scaled Chebyshev polynomial to the error reduction of <span class="math notranslate nohighlight">\(n\)</span> steps Richardson iteration for the error component in the eigen-space corresponding to an eigen-value <span class="math notranslate nohighlight">\(\lambda\)</span>:
+$<span class="math notranslate nohighlight">\(
+(1 - \tau_{\text{opt}} \lambda)^n \qquad \text{with} \qquad \tau_\text{opt} = \frac{2}{\gamma_1 + \gamma_2}
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> widget
+
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">toolbar_visible</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">header_visible</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># ax.set_title(&quot;&quot;)</span>
+ 
+<span class="n">gamma2</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="nd">@widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">gamma1</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">gamma1</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">gamma1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">):</span> <span class="n">l</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">ScaledCheby</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">s1</span><span class="p">,</span><span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="n">ScaledCheby</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cheby&#39;</span><span class="p">)</span>
+    <span class="n">tauopt</span> <span class="o">=</span> <span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">gamma1</span><span class="o">+</span><span class="n">gamma2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tauopt</span><span class="o">*</span><span class="n">s1</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tauopt</span><span class="o">*</span><span class="n">s2</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Richardson&#39;</span><span class="p">)</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The maximum of <span class="math notranslate nohighlight">\(\widetilde T\)</span> on the interval <span class="math notranslate nohighlight">\([\gamma_1, \gamma_2]\)</span> is
+$<span class="math notranslate nohighlight">\(
+\rho_n := \frac{1}{T_n \big(\tfrac{-\gamma_1-\gamma_2}{\gamma_2-\gamma_1}\big)}
+\)</span>$</p>
+<p>A representation of Chebyshev polynomials for <span class="math notranslate nohighlight">\(x \not\in [-1,1]\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+T_n(x) = \frac{1}{2} \, \left[ \big(x+\sqrt{x^2-1}\big)^n + \big(x+\sqrt{x^2-1}\big)^{-n} \right]
+\]</div>
+<p>which is also easily proven by induction. From this we get</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_n = \frac{2 c^n}{1 + c^{2n}} \qquad \text{with} \qquad 
+c = \frac{\sqrt{\gamma_2} - \sqrt{\gamma_1}}
+{ \sqrt{\gamma_2}+\sqrt{\gamma_1}}
+\]</div>
+<p>With the condition number <span class="math notranslate nohighlight">\(\kappa = \gamma_2 / \gamma_2\)</span> there is</p>
+<div class="math notranslate nohighlight">
+\[
+c \approx 1 - \frac{2}{\sqrt{\kappa}} \qquad \text{and} \qquad
+\rho_n \approx \big( 1 - \tfrac{2}{\sqrt{\kappa}} \big) ^n
+\]</div>
+<p>To achieve an error reduction by <span class="math notranslate nohighlight">\(\rho_n = \varepsilon\)</span> one needs</p>
+<div class="math notranslate nohighlight">
+\[
+n \approx \log \varepsilon^{-1} \sqrt{\kappa}
+\]</div>
+<p>iterations.</p>
+</section>
+<section id="the-chebyshev-iteration">
+<h2>The Chebyshev iteration<a class="headerlink" href="#the-chebyshev-iteration" title="Link to this heading">#</a></h2>
+<p>If we choose the optimal damping parameters <span class="math notranslate nohighlight">\(\tau_i\)</span> for <span class="math notranslate nohighlight">\(n\)</span> steps we obtain an error</p>
+<div class="math notranslate nohighlight">
+\[
+e^n = \widetilde T_n(C^{-1} A) e^0
+\]</div>
+<p>or substituting back</p>
+<div class="math notranslate nohighlight">
+\[
+e^n = \frac{1}{T_n\big(\tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1}\big)} T_n\big( \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} I
++ \tfrac{2}{\gamma_2-\gamma_1} C^{-1} A \big) e^0
+\]</div>
+<p>defining <span class="math notranslate nohighlight">\(t_n = T_{n} \big( \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} \big)\)</span> and shifting the index we have</p>
+<div class="math notranslate nohighlight">
+\[
+t_{n+1} e^{n+1} = T_{n+1} \big( \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} I
++ \tfrac{2}{\gamma_2-\gamma_1} C^{-1} A \big) e^0
+\]</div>
+<p>using the three-term recurrence we obtain</p>
+<p>\begin{eqnarray*}
+t_{n+1} e^{n+1}
+&amp; = &amp; 2 \big( \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} I</p>
+<ul class="simple">
+<li><p>\tfrac{2}{\gamma_2-\gamma_1} C^{-1} A \big) T_n \big( \ldots \big) e^0 - T_{n-1} \big( \ldots \big) e^0 \
+&amp; = &amp; 2 \big( \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} I</p></li>
+<li><p>\tfrac{2}{\gamma_2-\gamma_1} C^{-1} A \big) t_n e^n  - t_{n-1} e^{n-1}
+\end{eqnarray*}</p></li>
+</ul>
+<p>inserting also the recurrence for the <span class="math notranslate nohighlight">\(t_n\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
+\big( 2 \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} t_n - t_{n-1} \big) e^{n+1} 
+= 2 \big( \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} I
++ \tfrac{2}{\gamma_2-\gamma_1} C^{-1} A \big) t_n e^n  - t_{n-1} e^{n-1}
+\]</div>
+<p>Now, we use that the error is <span class="math notranslate nohighlight">\(e^n = x^n - x^\ast\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\big( 2 \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} t_n - t_{n-1} \big) (x^{n+1} - x^\ast)
+= 2 \big( \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} I
++ \tfrac{2}{\gamma_2-\gamma_1} C^{-1} A \big) t_n (x^n-x^\ast)  - t_{n-1} (x^{n-1} - x^\ast)
+\]</div>
+<p>Most <span class="math notranslate nohighlight">\(x^\ast\)</span> cancel out, and thus</p>
+<div class="math notranslate nohighlight">
+\[
+t_{n+1} x^{n+1} = 2 \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} t_n x^n - t_{n-1} x^{n-1} + \tfrac{4 t_n}{\gamma_2 - \gamma_1} C^{-1} (A x^n - 
+\underbrace{A x^\ast}_b)
+\]</div>
+<p>This is an algorithm to compute the iterates <span class="math notranslate nohighlight">\(x^n\)</span>. The new iterate follows from the previous two, and from the (preconditioned) residual <span class="math notranslate nohighlight">\(C^{-1} (b - A x^n)\)</span></p>
+<p>Instead of working with three iterates <span class="math notranslate nohighlight">\(x^k\)</span>, we can introduce the increment</p>
+<div class="math notranslate nohighlight">
+\[
+d^n = x^{n+1}-x^n
+\]</div>
+<p>Using <span class="math notranslate nohighlight">\(x^{n+1} = x^n + d^n\)</span> and <span class="math notranslate nohighlight">\(x^{n-1} = x^n - d^{n-1}\)</span> we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+t_{n+1} (x^{n}+d^n) = 2 \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} t_n x^n - t_{n-1} (x^{n}-d^{n-1}) + \tfrac{4 t_n}{\gamma_2 - \gamma_1} C^{-1} (A x^n - b).
+\]</div>
+<p>By the three-term recurrence for <span class="math notranslate nohighlight">\(t_n\)</span> there is <span class="math notranslate nohighlight">\(t_{n+1} = 2 \tfrac{-\gamma_2-\gamma_1}{\gamma_2-\gamma_1} t_n - t_{n-1}\)</span>.  Thus, <span class="math notranslate nohighlight">\(x^n\)</span> cancel out and we have an update formula for <span class="math notranslate nohighlight">\(d\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+t_{n+1} d^n = t_{n-1} d^{n-1} + \tfrac{4 t_n}{\gamma_2 - \gamma_1} C^{-1} (A x^n - b)
+\]</div>
+<p>Finally, we define <span class="math notranslate nohighlight">\(\rho_n = \frac{t_n}{t_{n+1}}\)</span> which satisfies the recurrence
+<span class="math notranslate nohighlight">\(\rho_n = \big( 2 \tfrac{-\gamma_1-\gamma_2}{\gamma2-\gamma1} - \rho_{n-1}\big)^{-1}\)</span></p>
+<p>The final algorithm is taken from Yousef Saad: “Iterative Methods for Sparse Linear Systems” <br>
+Algorithm 12.1 on page 399:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ChebyIteration</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">CreateVector</span><span class="p">()</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">CreateVector</span><span class="p">()</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">CreateVector</span><span class="p">()</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">CreateVector</span><span class="p">()</span>
+   
+    <span class="n">x</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">A</span><span class="o">*</span><span class="n">x</span>
+    
+    <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">gamma1</span><span class="o">+</span><span class="n">gamma2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">gamma2</span><span class="o">-</span><span class="n">gamma1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">sigma1</span> <span class="o">=</span> <span class="n">theta</span><span class="o">/</span><span class="n">delta</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sigma1</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">pre</span><span class="o">*</span><span class="n">r</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">theta</span> <span class="o">*</span> <span class="n">w</span>
+    
+    <span class="n">err0</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">InnerProduct</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">w</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxit</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">d</span>
+        <span class="n">r</span> <span class="o">-=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">d</span>
+        <span class="n">w</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">pre</span> <span class="o">*</span> <span class="n">r</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">InnerProduct</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">r</span><span class="p">))</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Iteration&quot;</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="s2">&quot;err=&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">data</span> <span class="o">*=</span> <span class="n">rho</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">/</span><span class="n">delta</span> <span class="o">*</span> <span class="n">pre</span> <span class="o">*</span> <span class="n">r</span>
+        <span class="n">rho</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma1</span><span class="o">-</span><span class="n">rho</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">data</span> <span class="o">*=</span> <span class="n">rho</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="o">*</span><span class="n">err0</span><span class="p">:</span> <span class="k">break</span>
+        
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">netgen.geom2d</span> <span class="kn">import</span> <span class="n">unit_square</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">unit_square</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">fes</span> <span class="o">=</span> <span class="n">H1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="o">+</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">pre</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">CreateSmoother</span><span class="p">()</span>   <span class="c1"># Jacobi preconditioner</span>
+<span class="c1"># pre = IdentityMatrix(a.mat.height)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve.la</span> <span class="kn">import</span> <span class="n">EigenValues_Preconditioner</span>
+<span class="n">lams</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">mat</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">))</span>
+<span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span> <span class="o">=</span> <span class="n">lams</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lams</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">gamma1</span><span class="p">,</span><span class="n">gamma2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">ChebyIteration</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Experiments:</p>
+<ul class="simple">
+<li><p>modify the mesh-size</p></li>
+<li><p>how sensitive is the method when under/over-estimating <span class="math notranslate nohighlight">\(\gamma_1\)</span> ?</p></li>
+<li><p>and <span class="math notranslate nohighlight">\(\gamma_2\)</span> ?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./iterative"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chebyshev-polynomials">Chebyshev polynomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-chebyshev-iteration">The Chebyshev iteration</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

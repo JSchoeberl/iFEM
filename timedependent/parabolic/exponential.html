@@ -1,0 +1,596 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Exponential Integrators for Parabolic Equations &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'timedependent/parabolic/exponential';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/timedependent/parabolic/exponential.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exponential Integrators for Parabolic Equations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exponential-integrators-for-parabolic-equations">
+<h1>Exponential Integrators for Parabolic Equations<a class="headerlink" href="#exponential-integrators-for-parabolic-equations" title="Link to this heading">#</a></h1>
+<p>Exponential integrators combine low order time-stepping methods to obtain high order in time.</p>
+<p>We consider the discretized linear homogeneous parabolic equation:</p>
+<div class="math notranslate nohighlight">
+\[
+M \frac{d}{dt} u + A u = 0 \qquad \text{on} \; [0,T]
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(u(0) = u_0\)</span>. For the general case see  M. Hochbruck and A. Ostermann, <em>Exponential integrators</em>, Acta Numerical, p209-286, 2010.</p>
+<p>First, we perform <span class="math notranslate nohighlight">\(m\)</span> steps of the implicit Euler method with time-step <span class="math notranslate nohighlight">\(\tau = \frac{T}{m}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+u_{i+1} = u_i - \tau (M + \tau A)^{-1} A u_i \qquad 0 \leq i &lt; m
+\]</div>
+<p>We define the low dimensional space <span class="math notranslate nohighlight">\(V_m\)</span> (of dimensions m+1) spanned by all time-steps:</p>
+<div class="math notranslate nohighlight">
+\[
+V_m = \text{span} \{ u_0, \ldots u_m \}
+\]</div>
+<p>The idea is that the true solution of the ODE can be well approximated in <span class="math notranslate nohighlight">\(V_m\)</span>. Thus, in the second step we perform a Galerkin discretization of the ODE in <span class="math notranslate nohighlight">\(V_m\)</span>:</p>
+<p>Find <span class="math notranslate nohighlight">\(u^m : [0,T] \rightarrow V_m\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+v^T M \frac{d u^m}{dt} + v^T A u^m = 0 \qquad \forall \, v \in V_m
+\]</div>
+<p>For implementation, we put the <span class="math notranslate nohighlight">\(m+1\)</span> basis vectors <span class="math notranslate nohighlight">\(u_i\)</span> as column vectors into the representation matrix</p>
+<div class="math notranslate nohighlight">
+\[
+V_m = \Big( u_0, u_1, \ldots u_m \Big)
+\]</div>
+<p>It is a high rectangular matrix of dimension <span class="math notranslate nohighlight">\(N \times (m+1)\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the dimension of the FE - space.</p>
+<p>Every <span class="math notranslate nohighlight">\(u \in V_m\)</span> can be written as <span class="math notranslate nohighlight">\(V_m y\)</span>, with a short vector <span class="math notranslate nohighlight">\(y \in {\mathbb R}^{m+1}\)</span>, and test-functions <span class="math notranslate nohighlight">\(v = V_m z\)</span>. Thus, the Galerkin-solution in <span class="math notranslate nohighlight">\(V_m\)</span> can be obtained via</p>
+<p>Find <span class="math notranslate nohighlight">\(y : [0,T] \rightarrow {\mathbb R}^{m+1}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+z^T V_m^T M V_m \frac{d y}{dt} + V_m^T A V_m y = 0 \qquad \forall \, z \in {\mathbb R}^{m+1}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(u_0\)</span> is in the space <span class="math notranslate nohighlight">\(V_m\)</span>, the initial condition can be represented as <span class="math notranslate nohighlight">\(u_0 = V_m y_0\)</span>.</p>
+<p>In short:</p>
+<div class="math notranslate nohighlight">
+\[
+M^s \frac{d y}{dt} + A^s y = 0
+\]</div>
+<p>with the small matrices</p>
+<p>\begin{eqnarray*}
+M^s &amp; = &amp; V_m^T M V_m \
+A^s &amp; = &amp; V_m^T A V_m \
+\end{eqnarray*}</p>
+<p>This low-dimensional ODE can be solved exactly by its eigensystem.</p>
+<p>For implementation, there is a stability issue: Since all sample vectors <span class="math notranslate nohighlight">\(u_i\)</span> are similar, the matrix <span class="math notranslate nohighlight">\(V_m\)</span> is very ill-conditioned.
+Thus, the sample vectors must be orthogonalized (by Gram-Schmidt or QR - decomposition).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+<span class="kn">from</span> <span class="nn">netgen.occ</span> <span class="kn">import</span> <span class="n">unit_square</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigh</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">unit_square</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mf">0.05</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u0</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">fes</span> <span class="o">=</span> <span class="n">H1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+<span class="n">mform</span> <span class="o">=</span> <span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span>
+<span class="n">aform</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ExponentialPropagation</span> <span class="p">(</span><span class="n">mform</span><span class="p">,</span> <span class="n">aform</span><span class="p">,</span> <span class="n">gfu</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">steps</span><span class="p">):</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">T</span><span class="o">/</span><span class="n">steps</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">mform</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">aform</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+    <span class="n">mstar</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">mform</span><span class="o">+</span><span class="n">tau</span><span class="o">*</span><span class="n">aform</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+    <span class="n">mstarinv</span> <span class="o">=</span> <span class="n">mstar</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">Inverse</span><span class="p">()</span>
+    <span class="n">un</span> <span class="o">=</span> <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">CreateVector</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">vecs</span> <span class="o">=</span> <span class="n">MultiVector</span><span class="p">(</span><span class="n">un</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">vecs</span><span class="o">.</span><span class="n">Append</span> <span class="p">(</span><span class="n">un</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+        <span class="n">un</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">mstarinv</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">un</span><span class="p">)</span>
+        <span class="n">vecs</span><span class="o">.</span><span class="n">Append</span> <span class="p">(</span><span class="n">un</span><span class="p">)</span>
+    
+    <span class="n">vecs</span><span class="o">.</span><span class="n">Orthogonalize</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">mat</span><span class="p">)</span>
+    <span class="n">vecs</span><span class="o">.</span><span class="n">Orthogonalize</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">mat</span><span class="p">)</span> <span class="c1"># improves orthogonality</span>
+
+    <span class="n">asmall</span> <span class="o">=</span> <span class="n">InnerProduct</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">vecs</span><span class="p">)</span>
+    <span class="n">msmall</span> <span class="o">=</span> <span class="n">InnerProduct</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">vecs</span><span class="p">)</span> <span class="c1"># identity</span>
+    
+    <span class="c1"># print (&quot;msmall =&quot;, msmall)</span>
+    <span class="c1"># print (&quot;asmall =&quot;, asmall)</span>
+    
+    <span class="n">lams</span><span class="p">,</span><span class="n">evec</span> <span class="o">=</span> <span class="n">eigh</span><span class="p">(</span><span class="n">asmall</span><span class="p">)</span>
+    <span class="n">evec</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">evec</span><span class="p">)</span>
+    <span class="c1"># print (lams, evec)</span>
+    
+    <span class="n">mu0</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">mat</span><span class="o">*</span><span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span><span class="o">.</span><span class="n">Evaluate</span><span class="p">()</span>
+    <span class="c1"># u0s = InnerProduct(vecs, mu0)    # available since Feb 10, 2022</span>
+    <span class="n">u0s</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">([</span><span class="n">InnerProduct</span><span class="p">(</span><span class="n">mu0</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vecs</span><span class="p">])</span>
+    <span class="n">u0s</span> <span class="o">=</span> <span class="n">evec</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">u0s</span>
+    <span class="n">uTs</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">([</span><span class="n">u0</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lam</span><span class="o">*</span><span class="n">T</span><span class="p">)</span> <span class="k">for</span> <span class="n">u0</span><span class="p">,</span><span class="n">lam</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">u0s</span><span class="p">,</span><span class="n">lams</span><span class="p">)])</span>
+    <span class="n">uTs</span> <span class="o">=</span> <span class="n">evec</span> <span class="o">*</span> <span class="n">uTs</span>
+    <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">vecs</span> <span class="o">*</span> <span class="n">uTs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+
+<span class="n">gfu</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">u0</span><span class="p">)</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">)</span>
+
+<span class="n">ExponentialPropagation</span> <span class="p">(</span><span class="n">mform</span><span class="p">,</span> <span class="n">aform</span><span class="p">,</span> <span class="n">gfu</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a07d47d33cb84cc889e48f1d1537f0ec", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "6a9d9b349708483a93a785f07e6238da", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Convergence plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tend</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">mmax</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">gfuref</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">gfuref</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">u0</span><span class="p">)</span>
+<span class="n">ExponentialPropagation</span> <span class="p">(</span><span class="n">mform</span><span class="p">,</span> <span class="n">aform</span><span class="p">,</span> <span class="n">gfuref</span><span class="p">,</span> <span class="n">Tend</span><span class="p">,</span> <span class="n">mmax</span><span class="p">)</span>
+
+<span class="n">err</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">mmax</span><span class="p">):</span>
+    <span class="n">gfu</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">u0</span><span class="p">)</span>
+    <span class="n">ExponentialPropagation</span> <span class="p">(</span><span class="n">mform</span><span class="p">,</span> <span class="n">aform</span><span class="p">,</span> <span class="n">gfu</span><span class="p">,</span> <span class="n">Tend</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">err</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="n">Norm</span><span class="p">(</span><span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">-</span><span class="n">gfuref</span><span class="o">.</span><span class="n">vec</span><span class="p">))</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.20600328199376758, 0.06978025266715498, 0.03049776255121646, 0.011407488793323194, 0.0035849111823151934, 0.0007281408027218528, 0.00016400656081982313, 0.0002207732294693555, 0.00010127534375465337, 2.2105692323236415e-05, 6.378919613280206e-06, 7.240522273706592e-07, 7.612651755831167e-07, 4.143020583810261e-07, 1.8219274917452472e-07, 3.968077666128608e-08, 9.11208822466509e-09, 3.34534586041024e-09, 1.4499449472635008e-09]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;steps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s2">&quot;-*&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./timedependent/parabolic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

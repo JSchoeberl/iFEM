@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Consistent and Distributed Vectors &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MPIparallel/vectypes';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/MPIparallel/vectypes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Consistent and Distributed Vectors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-vectors">Consistent vectors:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-vectors-and-matrices">Distributed vectors and matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products">Inner products:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-multiplication">Matrix vector multiplication:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector operations:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="consistent-and-distributed-vectors">
+<h1>Consistent and Distributed Vectors<a class="headerlink" href="#consistent-and-distributed-vectors" title="Link to this heading">#</a></h1>
+<p>CC Douglas, G Haase, U Langer: <em>A tutorial on elliptic PDE solvers and their parallelization</em>, SIAM (2003)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipyparallel</span> <span class="kn">import</span> <span class="n">Cluster</span>
+<span class="n">c</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Cluster</span><span class="p">(</span><span class="n">engines</span><span class="o">=</span><span class="s2">&quot;mpi&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">start_and_connect</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">activate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ids</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting 4 engines with &lt;class &#39;ipyparallel.cluster.launcher.MPIEngineSetLauncher&#39;&gt;
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4f093dd273234073a1c1c0b69f7ff6ce", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+from mpi4py import MPI
+comm = MPI.COMM_WORLD
+
+from ngsolve import *
+
+mesh = Mesh(unit_square.GenerateMesh(maxh=0.2, comm=comm))
+</pre></div>
+</div>
+</div>
+</div>
+<section id="consistent-vectors">
+<h2>Consistent vectors:<a class="headerlink" href="#consistent-vectors" title="Link to this heading">#</a></h2>
+<p>All local coefficient vectors of a <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code> store the same value. We call this <em>consistent</em> or <em>cumulated</em> representation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+fes = H1(mesh, order=1)
+gfu = GridFunction(fes)
+gfu.Set(1)
+print (&quot;parallel vector:&quot;, gfu.vec)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] parallel vector: CUMULATED
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] parallel vector: CUMULATED
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] parallel vector: CUMULATED
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] parallel vector: CUMULATED
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distributed-vectors-and-matrices">
+<h2>Distributed vectors and matrices<a class="headerlink" href="#distributed-vectors-and-matrices" title="Link to this heading">#</a></h2>
+<p>Recall the finite element assembling of the matrix and the right hand side vector. One computes element-vectors <span class="math notranslate nohighlight">\(f_T\)</span> and element-matrices <span class="math notranslate nohighlight">\(A_T\)</span> as the contribution from each single element to the integral, and assembles them together using connectivity matrices <span class="math notranslate nohighlight">\(C_T\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+f = \sum_T C_T f_T \qquad A = \sum_T C_T A_T C_T^T
+\]</div>
+<p>The matrices <span class="math notranslate nohighlight">\(C_T\)</span> are high rectangular matrices of shape <span class="math notranslate nohighlight">\(\operatorname{dim}(V_h) \times \operatorname{dim}(V_T)\)</span>, and look like</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left( \begin{array}{ccc} 
+. &amp; . &amp; . \\
+1 &amp; . &amp; . \\
+. &amp; . &amp; . \\
+. &amp; 1 &amp; . \\
+. &amp; . &amp; . \\
+. &amp; . &amp; 1
+\end{array} \right)
+\end{split}\]</div>
+<p>They are represented by the dof nrs of the element, and are never formed as dense matrices.</p>
+<p>Very similarly, in the distributed parallel framework, the right
+hand side vector and the matrix are formed by sub-domain wise sub-assembled vectors and matrices:</p>
+<div class="math notranslate nohighlight">
+\[
+f = \sum_{\Omega_i} C_{\Omega_i} f_{\Omega_i} \qquad
+A = \sum_{\Omega_i} C_{\Omega_i} A_{\Omega_i} C_{\Omega_i}^T
+\]</div>
+<p>But now, only the sub-domain local vectors <span class="math notranslate nohighlight">\(f_{\Omega_i}\)</span> and local matrices <span class="math notranslate nohighlight">\(A_{\Omega_i}\)</span> are assembled from the element vectors and matrices. The connectivity between sub-domains is represented by the <code class="docutils literal notranslate"><span class="pre">ParallelDofs</span></code> - class.</p>
+<p>The values of the global vector <span class="math notranslate nohighlight">\(f\)</span> are understood as the sum of all processor-wise local entries of identified dofs. We call this type of vector storage <em>distributed</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+u,v = fes.TnT()
+f = LinearForm(v*dx).Assemble()
+print (f.vec)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] DISTRIBUTED
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] DISTRIBUTED
+ 0.00666667
+ 0.00436698
+ 0.0243206
+ 0.0233311
+ 0.00641114
+ 0.0134663
+ 0.0174519
+ 0.0231253
+ 0.0241589
+ 0.0596323
+ 0.0233791
+ 0.00976904
+ 0.0123374
+ 0.030805
+ 0.0421362
+ 0.0232821
+ 0.0185708
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] DISTRIBUTED
+ 0.00929141
+ 0.0115905
+ 0.0143129
+ 0.0157114
+ 0.012363
+ 0.0183463
+ 0.0327422
+ 0.0232373
+ 0.0382184
+ 0.0151684
+ 0.0134339
+ 0.0339567
+ 0.0187142
+ 0.0148526
+ 0.0133493
+ 0.0228366
+ 0.0344815
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] DISTRIBUTED
+ 0.00666667
+ 0.00444576
+ 0.00532115
+ 0.0159095
+ 0.019749
+ 0.0263138
+ 0.0185867
+ 0.019659
+ 0.0139698
+ 0.0156347
+ 0.0344221
+ 0.0278865
+ 0.0320692
+ 0.0231229
+ 0.00838466
+ 0.0152942
+ 0.00674705
+</pre></div>
+</div>
+</div>
+</div>
+<p>If <span class="math notranslate nohighlight">\(u\)</span> is a global vector of a gridfunction, then the sub-domain wise
+local vectors are</p>
+<div class="math notranslate nohighlight">
+\[
+u_{\Omega_i} = C_{\Omega_i}^T u
+\]</div>
+<p>These <span class="math notranslate nohighlight">\(u_{\Omega_i}\)</span> are stored as consistent vectors.</p>
+</section>
+<section id="inner-products">
+<h2>Inner products:<a class="headerlink" href="#inner-products" title="Link to this heading">#</a></h2>
+<p>It is natural to form the Euclidean inner product of a distributed vector and a consistent vector:</p>
+<p>\begin{eqnarray*}
+\left&lt; f, u \right&gt; &amp; = &amp; \left&lt; \sum C_{\Omega_i} f_i, u \right&gt; \
+&amp; = &amp; \sum \left&lt; f_i, C_{\Omega_i}^T u \right&gt; \
+&amp; = &amp; \sum \left&lt; f_i, u_i \right&gt;
+\end{eqnarray*}</p>
+<p>The global inner product is the sum of inner products of the local vectors. It does not work as simple to compute the inner product of two consistent, or of two distributed vectors.</p>
+<p>The ngsolve built-in inner product returns the same value as a sequential computation, and it returns the same value for every processor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+print (InnerProduct(f.vec,gfu.vec))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] 1.0000000000000002
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] 1.0000000000000002
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] 1.0000000000000002
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] 1.0000000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<p>This inner product can be easily formed from local ips by summing up the local contributions. The required communication is summing up one double value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+localip = InnerProduct(f.vec.local_vec, gfu.vec.local_vec)
+print (&quot;local=&quot;, localip, &quot;global=&quot;, comm.allreduce(localip))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrix-vector-multiplication">
+<h2>Matrix vector multiplication:<a class="headerlink" href="#matrix-vector-multiplication" title="Link to this heading">#</a></h2>
+<p>Assume <span class="math notranslate nohighlight">\(A\)</span> is stored as distributed matrix, and <span class="math notranslate nohighlight">\(u\)</span> is a consistent vector. Then</p>
+<div class="math notranslate nohighlight">
+\[
+r = A u = \sum C_{\Omega_i} A_i C_{\Omega_i}^T u 
+= \sum C_{\Omega_i} A_i u_i = \sum C_{\Omega_i} r_i
+\]</div>
+<p>We perform local matrix-vector products <span class="math notranslate nohighlight">\(r_i = A_i u_i\)</span>, and interpret the results <span class="math notranslate nohighlight">\(r_i\)</span> as local vectors of the global result in distributed storage. Here, no communication is needed at all.</p>
+</section>
+<section id="vector-operations">
+<h2>Vector operations:<a class="headerlink" href="#vector-operations" title="Link to this heading">#</a></h2>
+<p><strong>Adding</strong> vectors of the same type is a purely local operation. One can simple add the local vectors, if both are either stored consistently, or distributed.</p>
+<p><strong>Distributed to Consistent</strong> conversion:</p>
+<p>This operation requires global communication. All local values identified as the same global dof are summed up, and all processors get the same value.</p>
+<p><strong>Consistent to Distributed</strong> conversion:</p>
+<p>This operation can be performed locally. It is not unique: One can divide a value by the number of processes sharing this dof, or just give the value to one process, e.g. the one with the smallest rank, and give 0 to all other processes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+gfu.vec.Distribute()
+print (gfu.vec)
+gfu.vec.Cumulate()
+print (gfu.vec)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MPIparallel"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-vectors">Consistent vectors:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-vectors-and-matrices">Distributed vectors and matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products">Inner products:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-multiplication">Matrix vector multiplication:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">Vector operations:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

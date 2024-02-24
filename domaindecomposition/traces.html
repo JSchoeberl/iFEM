@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Traces spaces &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'domaindecomposition/traces';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/domaindecomposition/traces.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Traces spaces</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Traces spaces</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-trace-space">Natural trace space</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-space-h-s">Interpolation space <span class="math notranslate nohighlight">\(H^s\)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-norm-on-bottom-edge">Trace norm on bottom edge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-norm-on-boundary-sub-domains">Trace norm on boundary sub-domains</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="traces-spaces">
+<h1>Traces spaces<a class="headerlink" href="#traces-spaces" title="Link to this heading">#</a></h1>
+<p>We are going to show that we can pose Dirichlet boundary conditions of an <span class="math notranslate nohighlight">\(H^1\)</span>-elliptic problem in the space <span class="math notranslate nohighlight">\(H^{1/2}(\partial \Omega)\)</span>, and Neumann boundary conditions are allowed exactly in its dual.</p>
+<section id="natural-trace-space">
+<h2>Natural trace space<a class="headerlink" href="#natural-trace-space" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\operatorname{tr} u\)</span> be the trace operator taking boundary values. We already know that the trace operator is well defined on <span class="math notranslate nohighlight">\(H^1\)</span>, and its range is contained in <span class="math notranslate nohighlight">\(L_2(\partial \Omega)\)</span>. We can define the trace norm in abstract form as follows: For a given <span class="math notranslate nohighlight">\(w \in W := \operatorname{tr} H^1\)</span>, we set</p>
+<div class="math notranslate nohighlight">
+\[
+\| w \|_W = \inf_{v \in H^1 \atop \operatorname{tr} v = w } \| v \|_{H^1}
+\]</div>
+<p>This minimizer is exactly realized by the solution of the Dirichlet problem: Find <span class="math notranslate nohighlight">\(u \in H^1\)</span> such that <span class="math notranslate nohighlight">\(\operatorname{tr} u = w\)</span>, and
+$<span class="math notranslate nohighlight">\(
+\int \nabla u \nabla v = 0 \qquad \forall \, v \in H_0^1
+\)</span>$</p>
+<p>The proper norm for Neumann boundary condition is the dual-norm:</p>
+<p>\begin{eqnarray*}
+| g | &amp; = &amp; \sup_{v \in H^1(\Omega)} \frac{\int_{\Gamma} g \operatorname{tr} v }{| v|<em>{H^1}} \
+&amp; = &amp; \sup</em>{w \in W} \sup_{v \in H^1 \atop \operatorname{tr} v = w}
+\frac{\int_{\Gamma} g w }{| v|<em>{H^1}} \
+&amp; = &amp; \sup</em>{w \in W}
+\frac{\int_{\Gamma} g w }{\inf_{v \in H^1 \atop \operatorname{tr} v = w} | v|<em>{H^1}} \
+&amp; = &amp; \sup</em>{w \in W}  \frac{\int_{\Gamma} g w }{| w |<em>W} \
+&amp; = &amp; | g |</em>{W^{\ast}}
+\end{eqnarray*}</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="interpolation-space-h-s">
+<h1>Interpolation space <span class="math notranslate nohighlight">\(H^s\)</span><a class="headerlink" href="#interpolation-space-h-s" title="Link to this heading">#</a></h1>
+<p>Let <span class="math notranslate nohighlight">\(I = (0,\pi)\)</span>. For <span class="math notranslate nohighlight">\(s \in (0,1)\)</span> we define the interpolation norm <span class="math notranslate nohighlight">\(H^s(I)\)</span> as interpolation norm between <span class="math notranslate nohighlight">\(H^0(I) = L_2(I)\)</span> and <span class="math notranslate nohighlight">\(H^1(I)\)</span>.</p>
+<p>We pose the eigen-value problem: Find <span class="math notranslate nohighlight">\(z \in H^1\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+(z, v)_{H^1(I)} = \lambda \, (z,v)_{L_2(I)} \qquad \forall \, v \in H^1
+\]</div>
+<p>We can easily compute the <span class="math notranslate nohighlight">\(L_2\)</span>-orthonormal eigen-functions <span class="math notranslate nohighlight">\(z_k = \frac{\sqrt{2}}{\pi} \cos (k x)\)</span> for <span class="math notranslate nohighlight">\(k \in {\mathbf N}\)</span> and <span class="math notranslate nohighlight">\(z_0 = \frac{1}{\pi}\)</span>, and corresponding eigen-values <span class="math notranslate nohighlight">\(\lambda_k = 1 + k^2\)</span>. A given function <span class="math notranslate nohighlight">\(u \in L_2(I)\)</span> can be expanded in this eigen-system</p>
+<div class="math notranslate nohighlight">
+\[
+u = \sum u_k z_k
+\]</div>
+<p>and its norm is
+$<span class="math notranslate nohighlight">\(
+\| u \|_{L_2}^2 = \sum u_k^2.
+\)</span>$</p>
+<p>If <span class="math notranslate nohighlight">\(u\)</span> is also in the sub-space <span class="math notranslate nohighlight">\(H^1 \subset L_2\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{H^1}^2 = \sum \lambda_k u_k^2.
+\]</div>
+<p>Indeed, the series on the right hand side converges if and only if <span class="math notranslate nohighlight">\(u \in H^1\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(s \in (0,1)\)</span>, we define the <span class="math notranslate nohighlight">\(s\)</span>-norm as</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{H^s}^2 = \sum \lambda_k^s u_k^2.
+\]</div>
+<p>This is consistent with the limits <span class="math notranslate nohighlight">\(L_2\)</span> for <span class="math notranslate nohighlight">\(s \rightarrow 0\)</span> and <span class="math notranslate nohighlight">\(H^1\)</span> for <span class="math notranslate nohighlight">\(s \rightarrow 1\)</span>.</p>
+<section id="trace-norm-on-bottom-edge">
+<h2>Trace norm on bottom edge<a class="headerlink" href="#trace-norm-on-bottom-edge" title="Link to this heading">#</a></h2>
+<p>On the domain <span class="math notranslate nohighlight">\(\Omega = (0,\pi)^2\)</span> we consider the Laplace equation <span class="math notranslate nohighlight">\(\Delta u = 0\)</span>, with Dirichlet boundary conditions <span class="math notranslate nohighlight">\(u = u_D\)</span> on the bottom edge <span class="math notranslate nohighlight">\(I = (0,\pi)\)</span>, and homogeneous Neumann boundary conditions else. The canonical trace norm on <span class="math notranslate nohighlight">\(I \subset \partial \Omega\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_D \|_W^2 = \inf_{u \in H^1(\Omega) \atop \operatorname{tr} u = u_D} \| u \|_{H^1(\Omega)}^2
+\]</div>
+<p>We expand the Dirichlet data in the Fourier-cos series:</p>
+<div class="math notranslate nohighlight">
+\[
+u_D = \sum_{k=0^\infty} u_k \cos (k x)
+\]</div>
+<p>We use a separation Ansatz to compute the solution.</p>
+<p><em>Exercise:</em> Show that a boundary data <span class="math notranslate nohighlight">\(\cos (kx)\)</span> has the solution</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde u_k(x,y) = \cos(kx) \frac{\cosh k(y-\pi)}{\cosh k \pi}
+\]</div>
+<p>Compute the <span class="math notranslate nohighlight">\(H^1\)</span> norm, and verify</p>
+<div class="math notranslate nohighlight">
+\[
+\| \tilde u_k \|_{H^1(\Omega)}^2 \approx 1 + k
+\]</div>
+<p>The functions <span class="math notranslate nohighlight">\(\tilde u_k\)</span> are also orthogonal with respect to <span class="math notranslate nohighlight">\((.,.)_{H^1(\Omega)}\)</span>.</p>
+<p>We have computed that the trace norm of <span class="math notranslate nohighlight">\(u_D\)</span> is</p>
+<p>\begin{eqnarray*}
+| u_D |<em>W^2 &amp; = &amp; \sum</em>{k=0}^\infty u_k^2 | \tilde u_k  |<em>{H^1(\Omega)}^2 \
+&amp; \approx &amp; u_k^2 (1+k) \approx u_k^2 (1+k^2)^{1/2} \
+&amp; = &amp; | u |</em>{H^{1/2}(I)}^2
+\end{eqnarray*}</p>
+<p>The trace space has norm <span class="math notranslate nohighlight">\(H^{1/2}(I)\)</span>, and the space is the closure of <span class="math notranslate nohighlight">\(H^1(I)\)</span> with respect to this norm.</p>
+</section>
+<section id="trace-norm-on-boundary-sub-domains">
+<h2>Trace norm on boundary sub-domains<a class="headerlink" href="#trace-norm-on-boundary-sub-domains" title="Link to this heading">#</a></h2>
+<p>For <span class="math notranslate nohighlight">\(\Omega = \Omega_1 \cup \Omega_2\)</span> with disjoint <span class="math notranslate nohighlight">\(\Omega_1\)</span> and <span class="math notranslate nohighlight">\(\Omega_2\)</span>, there holds <span class="math notranslate nohighlight">\(\| u \|_{L_2(\Omega)}^2 = \| u \|_{L_2(\Omega_1)}^2 + \| u \|_{L_2(\Omega_2)}^2\)</span>, and the same for the <span class="math notranslate nohighlight">\(H^1\)</span>-norm. However, the <span class="math notranslate nohighlight">\(H^{1/2}\)</span>-norm is not additive.</p>
+<p>We modify the example on the square <span class="math notranslate nohighlight">\(\Omega = (0,\pi)^2\)</span> such that we prescribe Dirichlet boundary conditions left and right. Then we have to use also some kind of homogeneous boundary conditions for the boundary data on the bottom edge. We use the eigen-system from the Dirichlet-eigenvalue problem: find <span class="math notranslate nohighlight">\(z \in H_0^1(I)\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+(z, v)_{H^1} = \lambda (z, v) \qquad \forall \, v \in H_0^1(I)
+\]</div>
+<p>Eigenfunctions are now <span class="math notranslate nohighlight">\(z_k = \sin (k x)\)</span>. We can now define the interpolation space by the expansion with <span class="math notranslate nohighlight">\(\sin\)</span>-functions, and the interpolation space as closure of <span class="math notranslate nohighlight">\(H_0^1\)</span> with respect to the interpolation norm.</p>
+<p>One obtains that</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{[L_2, H_0^1]_{1/2}}^2 =
+\| u \|_{[L_2, H^1]_{1/2}}^2 + \int_I \frac{1}{\operatorname{dist}(x, \partial I) } u^2
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(I_1 = (-1,0)\)</span> and <span class="math notranslate nohighlight">\(I_2 = (0,1)\)</span>, the <span class="math notranslate nohighlight">\(H^{1/2}\)</span>-norm on <span class="math notranslate nohighlight">\(I=(-1,1)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{H^{1/2}(I)}^2 = \| u \|_{H^{1/2}(I_1)}^2 + \| u \|_{H^{1/2}(I_2)}^2 + \int_0^1 \frac{1}{x} (u(x)-u(-x))^2 \, dx
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(u\)</span> is smooth on both sub-intervals, and can be continuously extended to <span class="math notranslate nohighlight">\(0\)</span>, the function must be continuous on <span class="math notranslate nohighlight">\(I\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./domaindecomposition"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Traces spaces</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-trace-space">Natural trace space</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-space-h-s">Interpolation space <span class="math notranslate nohighlight">\(H^s\)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-norm-on-bottom-edge">Trace norm on bottom edge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-norm-on-boundary-sub-domains">Trace norm on boundary sub-domains</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

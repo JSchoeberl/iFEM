@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Distributed Meshes and Spaces &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MPIparallel/distmesh';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/MPIparallel/distmesh.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Distributed Meshes and Spaces</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Distributed Meshes and Spaces</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-finite-element-spaces">Distributed finite element spaces</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-paralleldofs-class">The <code class="docutils literal notranslate"><span class="pre">ParallelDofs</span></code> class</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="distributed-meshes-and-spaces">
+<h1>Distributed Meshes and Spaces<a class="headerlink" href="#distributed-meshes-and-spaces" title="Link to this heading">#</a></h1>
+<p>Setting up the client and the world-communiactor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipyparallel</span> <span class="kn">import</span> <span class="n">Cluster</span>
+<span class="n">c</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Cluster</span><span class="p">(</span><span class="n">engines</span><span class="o">=</span><span class="s2">&quot;mpi&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">start_and_connect</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">activate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ids</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting 4 engines with &lt;class &#39;ipyparallel.cluster.launcher.MPIEngineSetLauncher&#39;&gt;
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "20f70a2d7a8743adba5c7a8f38785661", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+from mpi4py import MPI
+comm = MPI.COMM_WORLD
+</pre></div>
+</div>
+</div>
+</div>
+<p>The master generates a mesh, which is then distributed within the team of processors. The master process calls the graph partitioning library metis, which assigns a process id to each element. Then, elements are sent to the process with according rank.</p>
+<p>The master process does not keep elements itself, it is kept free for special administrative work.</p>
+<p>The distribution is done for the Netgen mesh. Parallel uniform refinement of the Netgen-mesh is also possible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+from ngsolve import *
+
+if comm.rank == 0:
+    ngmesh = unit_square.GenerateMesh(maxh=0.1)
+    print (&quot;global num els =&quot;, len(ngmesh.Elements2D()))
+    ngmesh.Distribute(comm)
+else:
+    ngmesh = netgen.meshing.Mesh.Receive(comm)
+
+for l in range(2):
+    ngmesh.Refine()
+    
+mesh = Mesh(ngmesh)
+print (&quot;process&quot;, comm.rank, &quot;got elements:&quot;, mesh.GetNE(VOL))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] global num els = 226
+process 0 got elements: 0
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] process 2 got elements: 1232
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] process 3 got elements: 1184
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] process 1 got elements: 1200
+</pre></div>
+</div>
+</div>
+</div>
+<p>The collective communication <code class="docutils literal notranslate"><span class="pre">reduce</span></code> combines data from each process to one global value. Default reduction operation is summation. Only the root process gets the result. Alternatively, use ‘allreduce’ to broadcast the result to all team members:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+sumup = comm.reduce(mesh.GetNE(VOL))
+print (&quot;summing up num els: &quot;, sumup)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] summing up num els:  None
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] summing up num els:  3616
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] summing up num els:  None
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] summing up num els:  None
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can retriev the <code class="docutils literal notranslate"><span class="pre">mesh</span></code> variable from each node of the cluster. The master process returns the global mesh, each worker only its local part. The list ‘meshes’ obtains the list of meshes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+<span class="n">meshes</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:][</span><span class="s1">&#39;mesh&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">meshes</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;mesh of rank&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">Draw</span> <span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mesh of rank 0
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "71d104c4684146c58c49e2d2e1d87081", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mesh of rank 1
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3799c0a5e40741b2b4d5e821cc429682", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mesh of rank 2
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "87a8c16a8f3e43648f5c723726f1eba1", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mesh of rank 3
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "eb2e66fbfc9845639974222f7c2b44b9", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="distributed-finite-element-spaces">
+<h1>Distributed finite element spaces<a class="headerlink" href="#distributed-finite-element-spaces" title="Link to this heading">#</a></h1>
+<p>We can define finite element spaces on the distributed mesh.
+Every process only defines dofs on its subset of elements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+fes = H1(mesh, order=2)
+print (&quot;ndof local =&quot;, fes.ndof, &quot;, ndof global =&quot;, fes.ndofglobal)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] ndof local = 2465 , ndof global = 7393
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] ndof local = 2509 , ndof global = 7393
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] ndof local = 0 , ndof global = 7393
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] ndof local = 2565 , ndof global = 7393
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+sumlocdofs = comm.reduce (fes.ndof)
+if comm.rank == 0:
+    print (&quot;sum of local dofs:&quot;, sumlocdofs)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] sum of local dofs: 7539
+</pre></div>
+</div>
+</div>
+</div>
+<p>The sum of local dofs is larger than the global number of dofs, since dofs at interface nodes are counted multiplel times.</p>
+<p>We can define distributed grid-functions. Global operations like the <code class="docutils literal notranslate"><span class="pre">Integrate</span></code> function performs local integration, and sum up the result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+gfu = GridFunction(fes)
+gfu.Set(x*y)
+print (&quot;integrate:&quot;, Integrate(gfu, mesh))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] integrate: 0.24999999999999922
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] integrate: 0.24999999999999922
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] integrate: 0.24999999999999922
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] integrate: 0.24999999999999922
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can retrieve the gridfunction to the local Python scope:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gfus</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:][</span><span class="s1">&#39;gfu&#39;</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;integrate locally:&quot;</span><span class="p">,</span> <span class="n">Integrate</span><span class="p">(</span><span class="n">gfus</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gfus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">mesh</span><span class="p">))</span>
+
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfus</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfus</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>integrate locally: 0.2499999999999994
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "92b1e5dbc33e42e1913e8d82e1db5531", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "a7420c487dd048d89a035ca035ccaf35", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>We can use a piece-wise constant space to visualize the mesh partitioning:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+gfl2 = GridFunction(L2(mesh, order=0))
+gfl2.vec[:] = comm.rank
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Draw</span> <span class="p">(</span><span class="n">c</span><span class="p">[:][</span><span class="s1">&#39;gfl2&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0f1e23284af349779ea9fb24812a034d", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<section id="the-paralleldofs-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">ParallelDofs</span></code> class<a class="headerlink" href="#the-paralleldofs-class" title="Link to this heading">#</a></h2>
+<p>The back-bone of connection of dofs is the <code class="docutils literal notranslate"><span class="pre">ParallelDofs</span></code> class. It is provided by a distributed finite element space, based on the connectivity of the mesh. The pardofs object knows with which other processes the dof is shared. We can ask for all dof numbers shared with a particular process, and obtain a list of local dof nrs. The ordering is consistent for both partners.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+pardofs = fes.ParallelDofs()
+for otherp in range(comm.size):
+    print (&quot;with process&quot;, otherp, &quot;I share dofs&quot;, \
+           list(pardofs.Proc2Dof(otherp)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] with process 0 I share dofs []
+with process 1 I share dofs []
+with process 2 I share dofs []
+with process 3 I share dofs []
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] with process 0 I share dofs []
+with process 1 I share dofs []
+with process 2 I share dofs [6, 20, 32, 43, 48, 50, 51, 68, 104, 137, 164, 174, 177, 198, 256, 258, 324, 326, 384, 386, 412, 415, 424, 426, 429, 675, 733, 735, 801, 803, 861, 863, 889, 892, 901, 903, 906, 985, 986, 1179, 1180, 1373, 1374, 1531, 1532, 1589, 1590, 1605, 1606]
+with process 3 I share dofs [5, 18, 19, 30, 41, 51, 66, 100, 101, 132, 160, 196, 250, 251, 254, 255, 314, 316, 374, 377, 427, 673, 727, 728, 731, 732, 791, 793, 851, 854, 904, 977, 978, 1159, 1160, 1163, 1164, 1345, 1346, 1509, 1510]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] with process 0 I share dofs []
+with process 1 I share dofs [12, 23, 32, 39, 44, 46, 48, 52, 53, 54, 55, 56, 57, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 713, 772, 773, 822, 823, 859, 860, 884, 885, 894, 895, 903, 923, 924, 927, 928, 931, 932, 935, 936, 939, 940, 943, 944]
+with process 2 I share dofs []
+with process 3 I share dofs [1, 13, 24, 33, 34, 42, 48, 49, 61, 93, 121, 141, 143, 165, 175, 195, 239, 241, 298, 300, 346, 348, 349, 351, 394, 396, 417, 420, 421, 670, 715, 717, 776, 778, 826, 828, 829, 831, 876, 878, 904, 907, 908, 959, 960, 1131, 1132, 1297, 1298, 1415, 1416, 1425, 1426, 1555, 1556, 1613, 1614]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] with process 0 I share dofs []
+with process 1 I share dofs [1, 13, 14, 26, 43, 47, 50, 51, 52, 53, 54, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 644, 689, 690, 691, 692, 760, 761, 854, 855, 874, 887, 888, 891, 892, 895, 896, 899, 900, 903, 904]
+with process 2 I share dofs [12, 25, 35, 40, 41, 45, 47, 49, 55, 56, 57, 58, 59, 60, 61, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 687, 756, 757, 811, 812, 840, 841, 845, 846, 864, 865, 875, 884, 885, 907, 908, 911, 912, 915, 916, 919, 920, 923, 924, 927, 928, 931, 932]
+with process 3 I share dofs []
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MPIparallel"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Distributed Meshes and Spaces</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-finite-element-spaces">Distributed finite element spaces</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-paralleldofs-class">The <code class="docutils literal notranslate"><span class="pre">ParallelDofs</span></code> class</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

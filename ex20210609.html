@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Implement a parallel BDDC preconditioner &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ex20210609';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ex20210609.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Implement a parallel BDDC preconditioner</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="implement-a-parallel-bddc-preconditioner">
+<h1>Implement a parallel BDDC preconditioner<a class="headerlink" href="#implement-a-parallel-bddc-preconditioner" title="Link to this heading">#</a></h1>
+<p>Implement a MPI - parallel preconditioner</p>
+<div class="math notranslate nohighlight">
+\[
+C^{-1} = R \widetilde A^{-1} R^T.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(R\)</span> is an averaging operator across sub-domains, and <span class="math notranslate nohighlight">\(\widetilde A\)</span> consists of local inverses, and a coarse grid system.</p>
+<ul class="simple">
+<li><p>Team A:<br>
+Implement the <span class="math notranslate nohighlight">\(R\)</span> operator. Use bilinear-form <span class="math notranslate nohighlight">\(A(u,v) = \int \nabla u \nabla v + \frac{1}{H^2} u v\)</span>, and use local inverses for <span class="math notranslate nohighlight">\(\widetilde A\)</span>.</p></li>
+<li><p>Team B:<br>
+Use bilinear-form <span class="math notranslate nohighlight">\(A(u,v) = \int \nabla u \nabla v\)</span>, and define and implement the <span class="math notranslate nohighlight">\(\widetilde A^{-1}\)</span>. Add mean-values for every sub-domain interface <span class="math notranslate nohighlight">\(\gamma_{ij}\)</span> (one constant <span class="math notranslate nohighlight">\(u_{ij}\)</span> per interface). Define the bilinear-form
+$<span class="math notranslate nohighlight">\(
+\tilde A(u,v) = \sum_{\Omega_i} \int_{\Omega_i} \nabla u \nabla v + \int_{\partial \Omega_i} \frac{1}{H^2} (u_i - u_{ij}) (v_i - v_{ij})
+\)</span>$</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipyparallel</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ids</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+from mpi4py import MPI
+comm = MPI.COMM_WORLD
+
+from ngsolve import *
+
+from netgen.geom2d import unit_square
+comm = MPI.COMM_WORLD
+if comm.rank == 0:
+    mesh = Mesh(unit_square.GenerateMesh(maxh=0.05).Distribute(comm))
+else:
+    mesh = Mesh(netgen.meshing.Mesh.Receive(comm))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+fes = H1(mesh, dirichlet=&#39;.*&#39;)
+u,v = fes.TnT()
+a = BilinearForm(grad(u)*grad(v)*dx + 0.001*u*v*dx).Assemble()
+f = LinearForm(10*x*v*dx).Assemble()
+gfu = GridFunction(fes)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Building the R operator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+
+pardofs = fes.ParallelDofs()
+scaling = CreateVVector(pardofs.ndoflocal)
+for i in range(pardofs.ndoflocal):
+    scaling[i] = 1.0 / (1+len(pardofs.Dof2Proc(i)))
+# print (scaling)
+
+scalingmat = DiagonalMatrix(scaling)
+
+# input: local vector, output: consistent global vector
+def Averaging(x, y):
+    y.local_vec.data = scalingmat * x
+    y.SetParallelStatus(PARALLEL_STATUS.DISTRIBUTED)
+    y.Cumulate()
+ 
+# input: distributed vector, output: local vector
+def AveragingT(x,y):
+    x.Cumulate()   
+    y.data = scalingmat * x.local_vec
+</pre></div>
+</div>
+</div>
+</div>
+<p>Testing the averaging:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+hv = gfu.vec.local_vec.CreateVector()
+hv.data = a.mat.local_mat.Inverse() * f.vec.local_vec
+Averaging (hv, gfu.vec)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+class ParallelPreconditioner(BaseMatrix):
+    def __init__ (self, atilde):
+        super().__init__()
+        self.atilde = atilde
+        self.inv = atilde.local_mat.Inverse()
+        
+    def Mult (self, x, y):
+        hv1 = x.local_vec.CreateVector()
+        hv2 = x.local_vec.CreateVector()
+        
+        AveragingT(x,hv1)
+        hv2.data = self.inv * hv1
+        Averaging(hv2, y)
+
+    def Shape (self):
+        return self.atilde.shape
+    def CreateVector (self, col):
+        return self.atilde.CreateVector(col)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+pre = ParallelPreconditioner(a.mat)
+
+from ngsolve.krylovspace import CGSolver
+inv = CGSolver(a.mat, pre, printrates=comm.rank==0)
+gfu.vec.data = inv * f.vec
+
+from ngsolve.la import EigenValues_Preconditioner
+lam = EigenValues_Preconditioner(a.mat, pre)
+if comm.rank == 0:
+    print (&quot;lam min/max = &quot;, min(lam), max(lam))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:][</span><span class="s1">&#39;gfu&#39;</span><span class="p">]</span>
+<span class="n">Draw</span><span class="p">(</span><span class="n">gfu</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+from ngsolve.la import ParallelDofs
+from ngsolve.la import SparseMatrixd
+
+pardofs = fes.ParallelDofs()
+exprocs = pardofs.ExchangeProcs()
+
+skel_dof2proc = [ [p] for p in exprocs]
+skel_pardofs = ParallelDofs(skel_dof2proc, comm)
+
+hmat = a.mat.local_mat.CreateMatrix()
+hmat.AsVector().data = a.mat.local_mat.AsVector()
+
+coupling = MultiVector(hmat.CreateVector(True), len(exprocs))
+couplingmat = BaseMatrix(coupling) # high rectangular
+for vec in coupling:
+    vec[:] = 0
+
+dense = Matrix(len(exprocs), len(exprocs))
+dense[:,:] = 0
+
+H = 1
+for nr, exproc in enumerate(exprocs):
+    for dof in pardofs.Proc2Dof(exproc):
+        hmat[dof,dof] += 1/H
+        coupling[nr][dof] += -1/H
+        dense[nr,nr] += 1/H
+        
+        
+hinv = hmat.Inverse()
+Schur = InnerProduct(coupling, hinv*coupling)
+dense -= Schur
+
+if comm.rank != 0:
+    coo = [(i,j,dense[i,j]) for i in range(dense.h) for j in range(dense.w)]
+    i,j,val = zip(*coo)
+else:
+    i,j,val = [], [], []
+    
+sparseschur = SparseMatrixd.CreateFromCOO(indi=list(i),indj=list(j),values=list(val), h=dense.h, w=dense.w)
+globschur = ParallelMatrix(sparseschur, skel_pardofs) 
+globinv = globschur.Inverse()
+
+# dummypardofs = ParallelDofs([[]]*fes.ndof, comm)
+# globcoupling = ParallelMatrix(couplingmat, row_pardofs=skel_pardofs,
+#                              col_pardofs=dummypardofs)
+# ainv = hinv + globcouplingmat @ globinv @ globcouplingmat.T
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+class ParallelPreconditioner2(BaseMatrix):
+    def __init__ (self, invloc, invglob, coupling):
+        super().__init__()
+        self.invloc = invloc
+        self.invglob = invglob
+        self.coupling = coupling
+        
+    def Mult (self, x, y):
+        hv1 = x.local_vec.CreateVector()
+        hv2 = x.local_vec.CreateVector()
+        hv1glob = self.invglob.CreateRowVector()
+        hv2glob = self.invglob.CreateColVector()
+        
+        AveragingT(x,hv1)
+        hv2.data = self.invloc * hv1
+        hv1glob.local_vec.data = self.coupling.T * hv1
+        hv2glob.data = self.invglob * hv1glob
+        hv2.data += self.coupling * hv2.local_vec
+        Averaging(hv2, y)
+
+    def Shape (self):
+        return self.atilde.shape
+    def CreateVector (self, col):
+        return self.atilde.CreateVector(col)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">px</span>
+pre = ParallelPreconditioner2(hinv, globinv, couplingmat)
+
+from ngsolve.krylovspace import CGSolver
+inv = CGSolver(a.mat, pre, printrates=comm.rank==0)
+gfu.vec.data = inv * f.vec
+
+from ngsolve.la import EigenValues_Preconditioner
+lam = EigenValues_Preconditioner(a.mat, pre)
+if comm.rank == 0:
+    print (&quot;lam min/max = &quot;, min(lam), max(lam))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.la</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="nb">dir</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

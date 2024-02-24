@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>An Interactive Introduction to the Finite Element Method &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'iFEM';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/iFEM.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>An Interactive Introduction to the Finite Element Method</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">An Interactive Introduction to the Finite Element Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-galerkin-method">The Galerkin Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-finite-element-methods">Mixed Finite Element Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discontinuous-galerkin-methods">Discontinuous Galerkin Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-methods-for-second-order-equations">Mixed Methods for Second Order Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-methods-for-elasticity">Mixed Methods for Elasticity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-methods-for-plates-and-shells">Mixed Methods for Plates and Shells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-helmholtz-equation">The Helmholtz equation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-solvers">Iterative Solvers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-methods">Iteration Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-space-correction-methods">Sub-space Correction Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigrid-methods">Multigrid Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saddle-point-problems">Saddle-point Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-overlapping-domain-decomposition-methods">Non-overlapping Domain Decomposition Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-solvers">Parallel Solvers</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-problems">Time-dependent Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-practical-introduction">A practical introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-differential-equations">Ordinary differential equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-analysis-of-parabolic-equations">Numerical analysis of Parabolic Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-analysis-of-wave-equations">Numerical analysis of Wave Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-methods">Additional methods</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-inequalities-in-sobolev-spaces">Some inequalities in Sobolev spaces</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="an-interactive-introduction-to-the-finite-element-method">
+<h1>An Interactive Introduction to the Finite Element Method<a class="headerlink" href="#an-interactive-introduction-to-the-finite-element-method" title="Link to this heading">#</a></h1>
+<p>Joachim Schöberl, TU Wien</p>
+<p><a class="reference internal" href="preamble.html"><span class="std std-doc">Preamble</span></a></p>
+<section id="the-galerkin-method">
+<h2>The Galerkin Method<a class="headerlink" href="#the-galerkin-method" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="primal/first_example.html"><span class="std std-doc">Solving the Poisson Equation</span></a></p></li>
+<li><p><a class="reference internal" href="primal/boundary_conditions.html"><span class="std std-doc">Boundary conditions</span></a></p></li>
+<li><p><a class="reference internal" href="primal/subdomains.html"><span class="std std-doc">Different materials</span></a></p></li>
+<li><p><a class="reference internal" href="primal/solvers.html"><span class="std std-doc">Iterative solvers</span></a></p></li>
+</ul>
+</section>
+<section id="mixed-finite-element-methods">
+<h2>Mixed Finite Element Methods<a class="headerlink" href="#mixed-finite-element-methods" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="mixed/stokes.html"><span class="std std-doc">Stokes equation</span></a></p></li>
+<li><p><a class="reference internal" href="mixed/boundary.html"><span class="std std-doc">Boundary conditions</span></a></p></li>
+<li><p><a class="reference internal" href="mixed/secondorder.html"><span class="std std-doc">Mixed methods for second order equations</span></a></p></li>
+<li><p><a class="reference internal" href="mixed/abstract.html"><span class="std std-doc">Abstract theory</span></a></p></li>
+<li><p><a class="reference internal" href="mixed/abstractfem.html"><span class="std std-doc">Abstract theory for finite elements</span></a></p></li>
+<li><p><a class="reference internal" href="mixed/pardep.html"><span class="std std-doc">Parameter dependent problems</span></a></p></li>
+</ul>
+</section>
+<section id="discontinuous-galerkin-methods">
+<h2>Discontinuous Galerkin Methods<a class="headerlink" href="#discontinuous-galerkin-methods" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="DG/stationary.html"><span class="std std-doc">Stationary transport equation</span></a></p></li>
+<li><p><a class="reference internal" href="DG/instationary.html"><span class="std std-doc">Instationary transport equation</span></a></p></li>
+<li><p><a class="reference internal" href="DG/Nitsche.html"><span class="std std-doc">Nitsche’s method</span></a></p></li>
+<li><p><a class="reference internal" href="DG/elliptic.html"><span class="std std-doc">Hybrid DG for elliptic operators</span></a></p></li>
+<li><p><a class="reference internal" href="DG/splitting.html"><span class="std std-doc">Splitting methods for time-dependent convection diffusion</span></a></p></li>
+<li><p><a class="reference internal" href="DG/fourthorder.html"><span class="std std-doc">Fourth order equation</span></a></p></li>
+<li><p><a class="reference internal" href="DG/stokes.html"><span class="std std-doc">H(div)-conforming Stokes</span></a></p></li>
+</ul>
+</section>
+<section id="mixed-methods-for-second-order-equations">
+<h2>Mixed Methods for Second Order Equations<a class="headerlink" href="#mixed-methods-for-second-order-equations" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="secondorder/framework.html"><span class="std std-doc">Application of the abstract theory</span></a></p></li>
+<li><p><a class="reference internal" href="secondorder/hdiv.html"><span class="std std-doc">The function space H(div)</span></a></p></li>
+<li><p><a class="reference internal" href="secondorder/finiteelements.html"><span class="std std-doc">Finite elements for H(div)</span></a></p></li>
+<li><p><a class="reference internal" href="secondorder/erroranalysis.html"><span class="std std-doc">Finite element error analysis</span></a></p></li>
+<li><p><a class="reference internal" href="secondorder/erroranalysisl2h1.html"><span class="std std-doc">Eror analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></span></a></p></li>
+<li><p><a class="reference internal" href="secondorder/hybridization.html"><span class="std std-doc">Hybridization techniques</span></a></p></li>
+</ul>
+</section>
+<section id="mixed-methods-for-elasticity">
+<h2>Mixed Methods for Elasticity<a class="headerlink" href="#mixed-methods-for-elasticity" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="mixedelasticity/hellingerreissner.html"><span class="std std-doc">Hellinger Reissner Formulation</span></a></p></li>
+<li><p><a class="reference internal" href="mixedelasticity/reducedsymmetry.html"><span class="std std-doc">Reduced symmetry Methods</span></a></p></li>
+<li><p><a class="reference internal" href="mixedelasticity/tdnns.html"><span class="std std-doc">The TDNNS method</span></a></p></li>
+<li><p><a class="reference internal" href="mixedelasticity/dynamics.html"><span class="std std-doc">TDNNS for non-linear dynamics</span></a></p></li>
+</ul>
+</section>
+<section id="mixed-methods-for-plates-and-shells">
+<h2>Mixed Methods for Plates and Shells<a class="headerlink" href="#mixed-methods-for-plates-and-shells" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="plates/hhj.html"><span class="std std-doc">The Hellan Herrmann Johnson method</span></a></p></li>
+<li><p><a class="reference internal" href="plates/hhj-tdnns.html"><span class="std std-doc">Relationship between HHJ and TDNNS</span></a></p></li>
+<li><p><a class="reference internal" href="plates/reissnermindlin.html"><span class="std std-doc">TDNNS for Reissner Mindlin plates</span></a></p></li>
+<li><p><a class="reference internal" href="plates/tdnnsplate.html"><span class="std std-doc">3D-TDNNS and Reissner Mindlin elements</span></a></p></li>
+<li><p><a class="reference internal" href="plates/shells.html"><span class="std std-doc">Nonlinear shells</span></a></p></li>
+</ul>
+</section>
+<section id="the-helmholtz-equation">
+<h2>The Helmholtz equation<a class="headerlink" href="#the-helmholtz-equation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="helmholtz/absorbing.html"><span class="std std-doc">Absorbing boundary conditions</span></a></p></li>
+<li><p><a class="reference internal" href="helmholtz/grating.html"><span class="std std-doc">Grating</span></a></p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="iterative-solvers">
+<h1>Iterative Solvers<a class="headerlink" href="#iterative-solvers" title="Link to this heading">#</a></h1>
+<section id="iteration-methods">
+<h2>Iteration Methods<a class="headerlink" href="#iteration-methods" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="iterative/simple.html"><span class="std std-doc">Basic iterative methods</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="iterative/Richardson.html"><span class="std std-doc">The Richardson method</span></a> <br></p></li>
+<li><p><a class="reference internal" href="iterative/gradientmethod.html"><span class="std std-doc">The Gradient method</span></a> <br></p></li>
+<li><p><a class="reference internal" href="iterative/preconditioning.html"><span class="std std-doc">Preconditioning</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="iterative/Chebyshev.html"><span class="std std-doc">Chebyshev method</span></a></p></li>
+<li><p><a class="reference internal" href="iterative/conjugategradients.html"><span class="std std-doc">Conjugate Gradients</span></a></p></li>
+</ul>
+</section>
+<section id="sub-space-correction-methods">
+<h2>Sub-space Correction Methods<a class="headerlink" href="#sub-space-correction-methods" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="subspacecorrection/asm.html"><span class="std std-doc">Additive Schwarz Lemma</span></a></p></li>
+<li><p><a class="reference internal" href="subspacecorrection/examples.html"><span class="std std-doc">Examples for ASM preconditioners</span></a></p></li>
+<li><p><a class="reference internal" href="subspacecorrection/minimaldd.html"><span class="std std-doc">Domain decomposition with minimal overlap</span></a></p></li>
+<li><p><a class="reference internal" href="subspacecorrection/overlapping.html"><span class="std std-doc">Overlapping domain decomposition methods</span></a></p></li>
+</ul>
+</section>
+<section id="multigrid-methods">
+<h2>Multigrid Methods<a class="headerlink" href="#multigrid-methods" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="multigrid/algorithms.html"><span class="std std-doc">Algorithms</span></a></p></li>
+<li><p><a class="reference internal" href="multigrid/analysisML.html"><span class="std std-doc">Analysis of ML-preconditioner</span></a></p></li>
+<li><p><a class="reference internal" href="multigrid/analysisMG.html"><span class="std std-doc">Analysis of MG-preconditioner</span></a></p></li>
+<li><p><a class="reference internal" href="multigrid/multilevel-extension.html"><span class="std std-doc">ML-extension operator</span></a></p></li>
+</ul>
+</section>
+<section id="saddle-point-problems">
+<h2>Saddle-point Problems<a class="headerlink" href="#saddle-point-problems" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="saddlepoint/structure.html"><span class="std std-doc">Structure of saddle-point problems</span></a></p></li>
+<li><p><a class="reference internal" href="saddlepoint/augmented.html"><span class="std std-doc">Augmented Lagrangian</span></a></p></li>
+<li><p><a class="reference internal" href="saddlepoint/bramblepasciak.html"><span class="std std-doc">Bramble-Pasciak Transformation</span></a></p></li>
+<li><p><a class="reference internal" href="saddlepoint/fewconstraints.html"><span class="std std-doc">Small number of constrainsts</span></a></p></li>
+<li><p><a class="reference internal" href="saddlepoint/parameterdependent.html"><span class="std std-doc">Parameter dependent problems</span></a></p></li>
+</ul>
+</section>
+<section id="non-overlapping-domain-decomposition-methods">
+<h2>Non-overlapping Domain Decomposition Methods<a class="headerlink" href="#non-overlapping-domain-decomposition-methods" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="domaindecomposition/introduction.html"><span class="std std-doc">Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="domaindecomposition/traces.html"><span class="std std-doc">Trace spaces</span></a></p></li>
+<li><p><a class="reference internal" href="domaindecomposition/FETI.html"><span class="std std-doc">FETI methods</span></a></p></li>
+<li><p><a class="reference internal" href="domaindecomposition/FETI-DP.html"><span class="std std-doc">FETI-DP methods</span></a></p></li>
+<li><p><a class="reference internal" href="domaindecomposition/BDDC.html"><span class="std std-doc">BDDC preconditioner</span></a></p></li>
+</ul>
+</section>
+<section id="parallel-solvers">
+<h2>Parallel Solvers<a class="headerlink" href="#parallel-solvers" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="MPIparallel/intro.html"><span class="std std-doc">Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="MPIparallel/distmesh.html"><span class="std std-doc">Distributing meshes and spaces</span></a></p></li>
+<li><p><a class="reference internal" href="MPIparallel/vectypes.html"><span class="std std-doc">Consistent and distributed vectors</span></a></p></li>
+<li><p><a class="reference internal" href="MPIparallel/paralleliteration.html"><span class="std std-doc">Iteration methods in parallel</span></a></p></li>
+<li><p><a class="reference internal" href="MPIparallel/petsc.html"><span class="std std-doc">Using PETSc</span></a></p></li>
+<li><p><a class="reference internal" href="MPIparallel/PETSc_interface.html"><span class="std std-doc">The PETSc interface</span></a></p></li>
+<li><p><a class="reference internal" href="MPIparallel/parallelstokes.html"><span class="std std-doc">Solving Stokes in parallel</span></a></p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="time-dependent-problems">
+<h1>Time-dependent Problems<a class="headerlink" href="#time-dependent-problems" title="Link to this heading">#</a></h1>
+<section id="a-practical-introduction">
+<h2>A practical introduction<a class="headerlink" href="#a-practical-introduction" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="timedependent/intro/heatequation.html"><span class="std std-doc">Heat equation</span></a></p></li>
+<li><p><a class="reference internal" href="timedependent/intro/waveequation.html"><span class="std std-doc">Wave equation</span></a></p></li>
+<li><p><a class="reference internal" href="DG/instationary.html"><span class="std std-doc">Transport equation</span></a></p></li>
+</ul>
+</section>
+<section id="ordinary-differential-equations">
+<h2>Ordinary differential equations<a class="headerlink" href="#ordinary-differential-equations" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="timedependent/ODEs/singlestep.html"><span class="std std-doc">Single step methods</span></a></p></li>
+<li><p><a class="reference internal" href="timedependent/ODEs/runge_kutta.html"><span class="std std-doc">Runge Kutta methods</span></a></p></li>
+<li><p>[Multistep methods]</p></li>
+<li><p>[DG methods]</p></li>
+</ul>
+</section>
+<section id="numerical-analysis-of-parabolic-equations">
+<h2>Numerical analysis of Parabolic Equations<a class="headerlink" href="#numerical-analysis-of-parabolic-equations" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[Classical analysis based on elliptic projectors]</p></li>
+<li><p>[Space-time methods]</p></li>
+<li><p><a class="reference internal" href="timedependent/parabolic/exponential.html"><span class="std std-doc">Exponential integrators</span></a></p></li>
+</ul>
+</section>
+<section id="numerical-analysis-of-wave-equations">
+<h2>Numerical analysis of Wave Equations<a class="headerlink" href="#numerical-analysis-of-wave-equations" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[Energy conservation]</p></li>
+<li><p>[Explicit methods] (lumping, DG)</p></li>
+<li><p><a class="reference internal" href="timedependent/waves/wave-leapfrogDG.html"><span class="std std-doc">Explicit DG</span></a></p></li>
+<li><p><a class="reference internal" href="timedependent/waves/lts.html"><span class="std std-doc">Local time-stepping</span></a></p></li>
+<li><p>[HHT, …]</p></li>
+</ul>
+</section>
+<section id="additional-methods">
+<h2>Additional methods<a class="headerlink" href="#additional-methods" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Splitting methods</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="appendix">
+<h1>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h1>
+<section id="some-inequalities-in-sobolev-spaces">
+<h2>Some inequalities in Sobolev spaces<a class="headerlink" href="#some-inequalities-in-sobolev-spaces" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="sobolev/trace.html"><span class="std std-doc">Trace inequality</span></a></p></li>
+<li><p><span class="xref myst">Friedrichs’ inequality</span></p></li>
+<li><p><span class="xref myst">Poincaré inequality</span></p></li>
+<li><p><a class="reference internal" href="#sobolev/tartar.ipynb"><span class="xref myst">Equivalent Norms - Tartar’s threorem</span></a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">An Interactive Introduction to the Finite Element Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-galerkin-method">The Galerkin Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-finite-element-methods">Mixed Finite Element Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discontinuous-galerkin-methods">Discontinuous Galerkin Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-methods-for-second-order-equations">Mixed Methods for Second Order Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-methods-for-elasticity">Mixed Methods for Elasticity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-methods-for-plates-and-shells">Mixed Methods for Plates and Shells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-helmholtz-equation">The Helmholtz equation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-solvers">Iterative Solvers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-methods">Iteration Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-space-correction-methods">Sub-space Correction Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multigrid-methods">Multigrid Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saddle-point-problems">Saddle-point Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-overlapping-domain-decomposition-methods">Non-overlapping Domain Decomposition Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-solvers">Parallel Solvers</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-dependent-problems">Time-dependent Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-practical-introduction">A practical introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-differential-equations">Ordinary differential equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-analysis-of-parabolic-equations">Numerical analysis of Parabolic Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-analysis-of-wave-equations">Numerical analysis of Wave Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-methods">Additional methods</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-inequalities-in-sobolev-spaces">Some inequalities in Sobolev spaces</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Additive Schwarz Methods &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'subspacecorrection/asm';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/subspacecorrection/asm.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Additive Schwarz Methods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-jacobi-and-general-additive-schwarz-preconditioners">Block-Jacobi and general additive Schwarz preconditioners</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-spaces-of-mathbb-r-n-and-of-hilbert-spaces">Sub-spaces of <span class="math notranslate nohighlight">\({\mathbb R}^N\)</span> and of Hilbert-spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-additive-schwarz-lemma">The Additive Schwarz Lemma</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-upper-bound-by-the-overlap">The upper-bound by the overlap</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="additive-schwarz-methods">
+<h1>Additive Schwarz Methods<a class="headerlink" href="#additive-schwarz-methods" title="Link to this heading">#</a></h1>
+<p>In this lecture</p>
+<ul class="simple">
+<li><p>we define additive and multiplicative sub-space correction methods</p></li>
+<li><p>prove the Additive Schwarz Lemma as tool for the analysis of additive Schwarz methods</p></li>
+</ul>
+<p>The method is named after Hermann Schwarz, who used this technique for proving the existence of solutions of PDEs.</p>
+<p>Literature: Xu, Jinchao: Iterative methods by space decomposition and subspace correction. <em>SIAM Rev.</em> 34 (1992), no. 4, 581–613
+<a class="reference external" href="https://epubs.siam.org/doi/10.1137/1034116">https://epubs.siam.org/doi/10.1137/1034116</a></p>
+<section id="block-jacobi-and-general-additive-schwarz-preconditioners">
+<h2>Block-Jacobi and general additive Schwarz preconditioners<a class="headerlink" href="#block-jacobi-and-general-additive-schwarz-preconditioners" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(e_i\)</span> be the <span class="math notranslate nohighlight">\(i^{th}\)</span> unit vector. The diagonal entry of the matrix <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(a_{ii} = e_i^T A e_i\)</span>. We can represent the Jacobi-preconditioner as</p>
+<div class="math notranslate nohighlight">
+\[
+C_{Jac}^{-1} = (\operatorname{diag} A)^{-1} = \sum_{i=1}^N e_i \frac{1}{e_i^T A e_i} e_i^T
+\]</div>
+<p>A block-Jacobi preconditioner is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+C_{bJac} = \left( \begin{array}{cccc}
+  A_{11} &amp; 0 &amp; \ldots &amp; 0 \\
+  0 &amp; A_{22} &amp; \ddots &amp; \vdots \\
+  \vdots &amp; \ddots &amp; \ddots &amp; 0 \\
+  0 &amp; \cdots &amp; 0 &amp; A_{mm}
+  \end{array} \right),
+\end{split}\]</div>
+<p>where we have <span class="math notranslate nohighlight">\(m\)</span> diagonal blocks, of sizes <span class="math notranslate nohighlight">\(N_i\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(i = 1 \ldots m\)</span> we define embedding matrices <span class="math notranslate nohighlight">\(E_i\)</span> consisting of the unit-vectors corresponding to the <span class="math notranslate nohighlight">\(i^{th}\)</span> block:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+E_i = \left( \begin{array}{c}
+    0 \\ I_{N_i} \\ 0  \end{array} \right) = 
+    \left( e_{i,1}, \ldots, e_{i,N_i} \right) \in {\mathbb R}^{N \times N_i}
+\end{split}\]</div>
+<p>We can write the diagonal blocks as</p>
+<div class="math notranslate nohighlight">
+\[
+A_{ii} = E_i^T A E_i \in {\mathbb R}^{N_i \times N_i}
+\]</div>
+<p>and the whole Block-Jacobi preconditioner as</p>
+<div class="math notranslate nohighlight">
+\[
+C_{bJac} = \sum_{i=1}^m E_i A_{ii} E_i^T,
+\]</div>
+<p>and the preconditioning action</p>
+<div class="math notranslate nohighlight">
+\[
+C_{bJac}^{-1} = \sum_{i=1}^m E_i A_{ii}^{-1} E_i^T
+\]</div>
+<p>Next, we let the <span class="math notranslate nohighlight">\(E_i\)</span> be more general full rank, typically tall rectangular matrices. Let <span class="math notranslate nohighlight">\(A_{i} = E_i^T A E_i \in {\mathbb R}^{N_i}\)</span>. Then we call the preconditioner defined by the action</p>
+<div class="math notranslate nohighlight">
+\[
+C_{ASM}^{-1} = \sum_{i=1}^m E_i A_{i}^{-1} E_i^T
+\]</div>
+<p>an additive Schwarz preconditioner <span class="math notranslate nohighlight">\(C_{ASM}\)</span>. In general we don’t have the simple representation as for the block-Jacobi preconditioner for <span class="math notranslate nohighlight">\(C_{ASM}\)</span> itself.</p>
+<p>The action</p>
+<div class="math notranslate nohighlight">
+\[
+C_{ASM}^{-1} : {\mathbb R}^N \rightarrow {\mathbb R}^N : r \mapsto w
+\]</div>
+<p>can be split into the following steps:</p>
+<p><span class="math notranslate nohighlight">\(\qquad\)</span> <span class="math notranslate nohighlight">\(r_i = E_i^T r \qquad\)</span>  extract residual on sub-space <br>
+<span class="math notranslate nohighlight">\(\qquad\)</span> <span class="math notranslate nohighlight">\(w_i = A_{i}^{-1}r_i \qquad\)</span> solve problem on sub-space<br>
+<span class="math notranslate nohighlight">\(\qquad\)</span> <span class="math notranslate nohighlight">\(w = \sum_{i=1}^m E_i w_i \qquad\)</span> embed and combine sub-space solution</p>
+</section>
+<section id="sub-spaces-of-mathbb-r-n-and-of-hilbert-spaces">
+<h2>Sub-spaces of <span class="math notranslate nohighlight">\({\mathbb R}^N\)</span> and of Hilbert-spaces<a class="headerlink" href="#sub-spaces-of-mathbb-r-n-and-of-hilbert-spaces" title="Link to this heading">#</a></h2>
+<p>The definition and implementation of the ASM - preconditioner happens in linear algebra, i.e. in <span class="math notranslate nohighlight">\({\mathbb R}^N\)</span>. But for the analysis of the preconditioner we reformulate it in finite element space <span class="math notranslate nohighlight">\(V_h\)</span> and sub-spaces.</p>
+<p>We define the so called Galerkin isomorphismus</p>
+<p>\begin{eqnarray*}
+G : {\mathbb R}^N &amp; \rightarrow &amp; V_h \
+\underline{u} &amp; \mapsto &amp; u_h = \sum_{i=1}^N u_i \varphi_i.
+\end{eqnarray*}</p>
+<p>Every finite element function <span class="math notranslate nohighlight">\(u_h\)</span> can be identified with its coefficient vector <span class="math notranslate nohighlight">\(\underline u\)</span> with respect to the basis functions <span class="math notranslate nohighlight">\(\{\varphi_i\}\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(\underline u, \underline v \in {\mathbb R}^N\)</span>, there holds</p>
+<div class="math notranslate nohighlight">
+\[
+\underline v^T A \underline u = A(G \underline u, G \underline v),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is the Galerkin discretization matrix with entries <span class="math notranslate nohighlight">\(A_{ji} = A(\varphi_i, \varphi_j)\)</span>.</p>
+<p>The adjoint of the Galerkin isomorphism is a mapping from the dual of <span class="math notranslate nohighlight">\(V_h\)</span>, i.e. from the linear forms on <span class="math notranslate nohighlight">\(V_h\)</span>, into <span class="math notranslate nohighlight">\({\mathbb R}^N\)</span>:</p>
+<p>\begin{eqnarray*}
+G^\ast : V_h^\ast &amp; \rightarrow &amp; {\mathbb R}^N \
+r(.) &amp; \mapsto &amp; \big(r(\varphi_i) \big)_{i=1\ldots N}
+\end{eqnarray*}</p>
+<p>The embedding matrices <span class="math notranslate nohighlight">\(E_i \subset {\mathbb R}^{N \times N_i}\)</span> define sub-spaces</p>
+<div class="math notranslate nohighlight">
+\[
+V_i = G \operatorname{range} \{ E_i \} = \{ G E \underline v : \underline v \in {\mathbb R}^{N_i} \} \subset V_h
+\]</div>
+<p>The ASM preconditioner can be reformulated by means of variational
+problems on sub-spaces:</p>
+<p><strong>Lemma</strong>: Let <span class="math notranslate nohighlight">\(r(.) \in V_h^\ast\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+w = G C_{ASM}^{-1} G^* r \; \; \in V_h
+\]</div>
+<p>is given as
+$<span class="math notranslate nohighlight">\(
+w = \sum_{i=1}^m w_i \quad \text{with} \quad w_i \in V_i : A(w_i,v_i) = r(v_i) \; \forall \, v_i \in V_i
+\)</span>$</p>
+<p>Proof: Express <span class="math notranslate nohighlight">\(w_i = G E_i \underline w_i\)</span> and <span class="math notranslate nohighlight">\(v_i = G E_i \underline v_i\)</span> with <span class="math notranslate nohighlight">\(\underline w_i, \underline v_i \in {\mathbb R}^{N_i}\)</span>. Then the defining equation of <span class="math notranslate nohighlight">\(w_i\)</span> reads as</p>
+<div class="math notranslate nohighlight">
+\[
+A(G E_i \underline w_i, G E_i \underline v_i) = r(G E_i \underline v_i) 
+\qquad \forall \, \underline v_i \in {\mathbb R}^{N_i}
+\]</div>
+<p>and thus as</p>
+<div class="math notranslate nohighlight">
+\[
+\underline v_i^T E_i^T A E_i \underline w_i = v_i^T E_i^T G^* r,
+\]</div>
+<p>i.e. <span class="math notranslate nohighlight">\(w_i = A_i^{-1} E_i^T (G^* r)\)</span>.</p>
+<p>Finally, <span class="math notranslate nohighlight">\(w = \sum w_i = \sum G E_i \underline w_i = G \sum E_i \underline w_i  = G \sum E_i A_i^{-1} E_i^T (G^* r)\)</span>.</p>
+<p><strong>Lemma</strong> Let <span class="math notranslate nohighlight">\(\underline{w}_i = E_i A_{i}^{-1} E_i^T A \underline{v}\)</span>, and <span class="math notranslate nohighlight">\(w_i = G E_i \underline{w}_i\)</span> and <span class="math notranslate nohighlight">\(v = G \underline v\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+w_i = P_i v
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(P_i\)</span> the <span class="math notranslate nohighlight">\(A(.,.)\)</span> orthogonal projector onto <span class="math notranslate nohighlight">\(V_i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+P_i : V_h \rightarrow V_i : A(P_i v, z) = A(v,z) \quad \forall \, v \in V_h, z \in V_i
+\]</div>
+<p><em>Proof:</em> Follows from the Lemma above using <span class="math notranslate nohighlight">\(r(\cdot) = A(v,\cdot)\)</span>.</p>
+<p><strong>Lemma</strong> There holds
+$<span class="math notranslate nohighlight">\(
+G \, C_{ASM}^{-1} A  = \sum_{i=1}^M P_i  \, G
+\)</span><span class="math notranslate nohighlight">\(
+This implies that the condition number \)</span>\kappa_A {C_{ASM}^{-1} A}<span class="math notranslate nohighlight">\( equals \)</span>\kappa_A { \sum P_i }<span class="math notranslate nohighlight">\(. The ideal case is that all sub-spaces are \)</span>A<span class="math notranslate nohighlight">\(-orthogonal, then \)</span>\sum P_i = Id$.</p>
+<p><strong>Lemma</strong> For the error propagation matrix there holds</p>
+<div class="math notranslate nohighlight">
+\[
+G \; (I - \tau C_{ASM}^{-1} A)   = (I - \tau \sum_{i=1}^M P_i) \; G
+\]</div>
+<p>A block-Gauss-Seidel iteration leads to the so called multiplicative Schwarz preconditioner, with the error propagation operator</p>
+<div class="math notranslate nohighlight">
+\[
+M_{MSM} = (I-P_m) \, \ldots \, (I-P_2) (I-P_1)
+\]</div>
+<p>As a product of <span class="math notranslate nohighlight">\(A\)</span>-orthogonal projectors it has <span class="math notranslate nohighlight">\(||M_{MSM}||_A \leq 1\)</span>. Its <span class="math notranslate nohighlight">\(&lt;.,.&gt;_A\)</span>-adjoint is the product in reverse ordering.</p>
+</section>
+<section id="the-additive-schwarz-lemma">
+<h2>The Additive Schwarz Lemma<a class="headerlink" href="#the-additive-schwarz-lemma" title="Link to this heading">#</a></h2>
+<p>We have defined the action of the ASM preconditioner. To analyze the condition number via bounds of the Rayleigh quotient</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma_1 \leq \frac{ u^T A u } { u^T C_{ASM} u } \leq \gamma_2
+\]</div>
+<p>it is of useful to have an representation of the quadratic form generated by <span class="math notranslate nohighlight">\(C_{ASM}\)</span> itself. This is given by the <em>Additive Schwarz Lemma</em>. Since it was reformulated and reproven by many authors it is also called <em>Lemma of many parents</em>. In some variants it is also know as Lions’s Lemma, or fictitious space lemma by Nepomnyashchikh.</p>
+<p>We assume that <span class="math notranslate nohighlight">\(E_i\)</span> are embedding matrices as above such that</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^m \operatorname{range} \{ E_i \} = {\mathbb R}^N
+\]</div>
+<p>This means that every <span class="math notranslate nohighlight">\(u \in {\mathbb R}^N\)</span> can be decomposed into
+vectors in the range of <span class="math notranslate nohighlight">\(E_i\)</span>.</p>
+<p><strong>Theorem</strong> [ASM-lemma, Linear Algebra version]:</p>
+<div class="math notranslate nohighlight">
+\[
+u^T C_{ASM} u = \inf_{u_i \in {\mathbb R}^{N_i} \atop u = \sum E_i u_i} \sum_{i=1}^m u_i^T A_{i} u_i
+\]</div>
+<p><strong>Theorem</strong> [ASM-lemma, sub-space version]:</p>
+<div class="math notranslate nohighlight">
+\[
+u^T C_{ASM} u = \inf_{u_i \in V_i \atop G u = \sum u_i} \sum_{i=1}^m  \| u_i \|_A^2
+\]</div>
+<p><em>Proof:</em> We prove the version in linear algebra notation, the other follows using the Galerkin isomorphism as above.</p>
+<p>Fix <span class="math notranslate nohighlight">\(u \in {\mathbb R}^N\)</span>. The form <span class="math notranslate nohighlight">\(u^T C_{ASM} u\)</span> is given as the minimum of the constraint minimization problem</p>
+<div class="math notranslate nohighlight">
+\[
+\inf_{u_i \in {\mathbb R}^{N_i} \atop u = \sum E_i u_i} \sum_{i=1}^m u_i^T A_{i} u_i.
+\]</div>
+<p>The feasible set is non-empty and convex, and the goal function is convex. Thus, the unique minimizer can be found by the method of Lagrange multipliers. The Lagrange function is</p>
+<div class="math notranslate nohighlight">
+\[
+L( (u_i), \lambda) = \sum u_i^T A_i u_i + \lambda^T (u - \sum E_i u_i)
+\]</div>
+<p>There exists a unique Lagrange multiplier <span class="math notranslate nohighlight">\(\lambda\)</span> such that <span class="math notranslate nohighlight">\(L\)</span> has a stationary point <span class="math notranslate nohighlight">\(((u_i), \lambda)\)</span>.</p>
+<p>Differentiating <span class="math notranslate nohighlight">\(L\)</span> with respect an individual <span class="math notranslate nohighlight">\(u_i\)</span> we get</p>
+<div class="math notranslate nohighlight">
+\[
+2 A_i u_i - E_i^T \lambda = 0
+\]</div>
+<p>and thus</p>
+<div class="math notranslate nohighlight">
+\[
+u_i = \tfrac{1}{2} A_i^{-1} E_i^T \lambda.
+\]</div>
+<p>Differentiating with respect to <span class="math notranslate nohighlight">\(\lambda\)</span> we recover the constraint</p>
+<div class="math notranslate nohighlight">
+\[
+u = \sum_i E_i u_i.
+\]</div>
+<p>Inserting leads to</p>
+<div class="math notranslate nohighlight">
+\[
+u = \tfrac{1}{2} \sum_i E_i A_i^{-1} E_i^T \lambda
+\]</div>
+<p>We find the definition of the preconditiong action</p>
+<div class="math notranslate nohighlight">
+\[
+u = \tfrac{1}{2} C_{ASM}^{-1} \lambda
+\]</div>
+<p>Since for every <span class="math notranslate nohighlight">\(u\)</span> there exists a unique <span class="math notranslate nohighlight">\(\lambda\)</span>, <span class="math notranslate nohighlight">\(C_{ASM}^{-1}\)</span> is indeed the inverse of a regular matrix <span class="math notranslate nohighlight">\(C_{ASM}\)</span>, and we can write</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = 2 C_{ASM} u
+\]</div>
+<p>The value of the minimum is</p>
+<p>\begin{eqnarray*}
+\sum u_i^T A_i u_i &amp; = &amp; \sum (\tfrac{1}{2}  A_i^{-1} E_i^T \lambda) A_i (\tfrac{1}{2}  A_i^{-1} E_i^T \lambda) \
+&amp; = &amp; \tfrac{1}{4} \lambda^T \big( \sum E_i A_i^{-1} E_i^T \big)
+\lambda \
+&amp; = &amp; \tfrac{1}{4} \lambda^T C_{ASM}^{-1} \lambda \
+&amp; = &amp; u^T C_{ASM} C_{ASM}^{-1} C_{ASM} u \
+&amp; = &amp; u^T C_{ASM} u
+\end{eqnarray*}</p>
+</section>
+<section id="the-upper-bound-by-the-overlap">
+<h2>The upper-bound by the overlap<a class="headerlink" href="#the-upper-bound-by-the-overlap" title="Link to this heading">#</a></h2>
+<p>Typically, proving the estimate</p>
+<div class="math notranslate nohighlight">
+\[
+\inf_{u_i \in V_i \atop u = \sum u_i} \sum \| u_i \|_A^2 
+\leq \frac{1}{\gamma_1} \| u \|_A^2
+\]</div>
+<p>is the hard part of the analysis, which has to be shown by
+explicitly constructing a decomposition. The other estimate can often follows immediately from finite overlap of sub-spaces:</p>
+<p>We define the overlap matrix <span class="math notranslate nohighlight">\({\mathcal O} \in {\mathbb R}^{m \times m}\)</span> with entries</p>
+<div class="math notranslate nohighlight">
+\[
+{\mathcal O}_{i,j} := \sup_{u_i \in V_i, v_j \in V_j} \frac{A(u_i,v_j)}{\| u_i \|_A \, \| v_j \|_A} 
+\]</div>
+<p>By the Cauchy-Schwarz inequality there is <span class="math notranslate nohighlight">\(0 \leq {\mathcal O}_{i,j} \leq 1\)</span>. The value <span class="math notranslate nohighlight">\({\mathcal O}_{i,j}\)</span> leads to the so called strengthened Cauchy-Schwarz inequality</p>
+<div class="math notranslate nohighlight">
+\[
+| A(u_i, v_j) | \leq {\mathcal O}_{i,j} \, \| u_i \|_A \, \| v_j \|_A
+\]</div>
+<p>If two sub-spaces are <span class="math notranslate nohighlight">\(A\)</span>-orthogonal, then <span class="math notranslate nohighlight">\({\mathcal O}_{i,j} = 0\)</span>.</p>
+<p><strong>Lemma</strong> There holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_A^2 \leq \rho({\mathcal O}) \, \| u \|_{C_{ASM}}^2
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\rho({\mathcal O})\)</span> is the spectral radius of <span class="math notranslate nohighlight">\({\mathcal O}\)</span>.</p>
+<p>Proof: Let <span class="math notranslate nohighlight">\(u \in V_h\)</span> be given, and let <span class="math notranslate nohighlight">\(u = \sum u_i\)</span> be an
+arbitrary sub-space decomposition. Then</p>
+<p>\begin{eqnarray*}
+| u |<em>A^2 &amp; = &amp; A(\sum_i u_i, \sum_j u_i) \
+&amp; = &amp; \sum</em>{i,j} A(u_i, u_j) \
+&amp; \leq &amp; \sum_{i,j} {\mathcal O}_{i,j} , | u_i |_A , | u_j |_A
+\end{eqnarray*}</p>
+<p>Next, we define <span class="math notranslate nohighlight">\(z \in {\mathbb R}^N\)</span> as <span class="math notranslate nohighlight">\(z_i = \| u_i \|_A\)</span>. We use</p>
+<div class="math notranslate nohighlight">
+\[
+z^T {\mathcal O} z \leq \rho( {\mathcal O} ) \| z \|_2^2
+\]</div>
+<p>to bound</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_A^2 \leq \rho( {\mathcal O} ) \, \sum_i \| u_i \|_A^2.
+\]</div>
+<p>Since the estimate holds for any decomposition, it holds also for the one leading to the minimal right hand side, what is exactly <span class="math notranslate nohighlight">\(\| u \|_{C_{ASM}}^2\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./subspacecorrection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-jacobi-and-general-additive-schwarz-preconditioners">Block-Jacobi and general additive Schwarz preconditioners</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-spaces-of-mathbb-r-n-and-of-hilbert-spaces">Sub-spaces of <span class="math notranslate nohighlight">\({\mathbb R}^N\)</span> and of Hilbert-spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-additive-schwarz-lemma">The Additive Schwarz Lemma</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-upper-bound-by-the-overlap">The upper-bound by the overlap</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

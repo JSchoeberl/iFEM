@@ -1,0 +1,61 @@
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 685, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+scene = Draw (gfu.components[0], order=3, min=-0.05, max=0.05, autoscale=False)
+
+from time import time
+ts = time()
+i = 0
+with TaskManager(): 
+    while t < tend:
+        w.data = -fullB.T * gfu.vec
+        w.data += Envelope(t)*Lsrc.vec
+        w.data -= sigma * dampingp * gfu.vec
+        w.data -= emb_p @ Bstab.mat.T * gfstab.vec
+
+        gfu.vec.data += tau * invp * w
+        
+        w.data = fullB * gfu.vec
+        w.data -= sigma * dampingu * gfu.vec
+        gfu.vec.data += tau * invu * w        
+
+        gfstab.vec.data += tau * Mstabinv@Bstab.mat@emb_p.T * gfu.vec
+
+        t += tau
+        i += 1
+        if i%20 == 0:
+            scene.Redraw()
+
+
+print ("total time", time()-ts)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[3], line 9[0m
+[1;32m      7[0m [38;5;28;01mwhile[39;00m t [38;5;241m<[39m tend:
+[1;32m      8[0m     w[38;5;241m.[39mdata [38;5;241m=[39m [38;5;241m-[39mfullB[38;5;241m.[39mT [38;5;241m*[39m gfu[38;5;241m.[39mvec
+[0;32m----> 9[0m     w[38;5;241m.[39mdata [38;5;241m+[39m[38;5;241m=[39m [43mEnvelope[49m(t)[38;5;241m*[39mLsrc[38;5;241m.[39mvec
+[1;32m     10[0m     w[38;5;241m.[39mdata [38;5;241m-[39m[38;5;241m=[39m sigma [38;5;241m*[39m dampingp [38;5;241m*[39m gfu[38;5;241m.[39mvec
+[1;32m     11[0m     w[38;5;241m.[39mdata [38;5;241m-[39m[38;5;241m=[39m emb_p [38;5;241m@[39m Bstab[38;5;241m.[39mmat[38;5;241m.[39mT [38;5;241m*[39m gfstab[38;5;241m.[39mvec
+
+[0;31mNameError[0m: name 'Envelope' is not defined
+

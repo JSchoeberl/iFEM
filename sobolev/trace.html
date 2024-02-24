@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Trace Inequality &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sobolev/trace';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sobolev/trace.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Trace Inequality</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-verification">Numerical verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-the-trace-inequality">Proof of the trace inequality:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-trace-inequality">
+<h1>The Trace Inequality<a class="headerlink" href="#the-trace-inequality" title="Link to this heading">#</a></h1>
+<p>Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span> with a Lipschitz-continuous boundary. If <span class="math notranslate nohighlight">\(u \in H^1(\Omega)\)</span>, then <span class="math notranslate nohighlight">\(u\)</span> has well-defined boundary
+values <span class="math notranslate nohighlight">\(u_{|\partial \Omega}\)</span>, called the trace of <span class="math notranslate nohighlight">\(u\)</span>. There holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_{|\partial \Omega} \|_{L_2(\partial \Omega)} \leq c \, \| u \|_{H^1(\Omega)}
+\]</div>
+<p>We call <span class="math notranslate nohighlight">\(\operatorname{tr} : u \mapsto u_{|\partial \Omega}\)</span> the trace operator.</p>
+<section id="numerical-verification">
+<h2>Numerical verification<a class="headerlink" href="#numerical-verification" title="Link to this heading">#</a></h2>
+<p>We setup two bilinear-forms</p>
+<p>\begin{eqnarray*}
+T(u,v) &amp; = &amp; \int_{\partial \Omega} u v , ds \
+N(u,v) &amp; = &amp; \int_{\Omega} \nabla u \nabla v + u v ; dx
+\end{eqnarray*}</p>
+<p>for which there holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| \operatorname{tr} \|_{H^1(\Omega)\rightarrow L_2(\partial\Omega)}^2 = \sup_{u \in H^1} \frac{T(u,u)}{N(u,u)}.
+\]</div>
+<p>Which is the largest eigenvalue of the generalized eigenvalue-problem</p>
+<div class="math notranslate nohighlight">
+\[
+T u = \lambda N u,
+\]</div>
+<p>or the smallest eigenvalue of</p>
+<div class="math notranslate nohighlight">
+\[
+N u = \frac{1}{\lambda} T u.
+\]</div>
+<p>We use the PINVIT - algorithm in NGSolve to compute the smallest few eigenvalue of the last evp:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.meshes</span> <span class="kn">import</span> <span class="n">MakeStructured2DMesh</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span> 
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">MakeStructured2DMesh</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+<span class="n">fes</span> <span class="o">=</span> <span class="n">H1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+
+<span class="n">H1Norm</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="o">+</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">TraceNorm</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">ds</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">pre</span> <span class="o">=</span> <span class="n">H1Norm</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">Inverse</span><span class="p">()</span>
+<span class="n">evals</span><span class="p">,</span><span class="n">evecs</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">PINVIT</span><span class="p">(</span><span class="n">H1Norm</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">TraceNorm</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">printrates</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;eigenvalues: &quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">evals</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Norm of trace operator: ||tr||^2 = &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">evals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">evecs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">/=</span> <span class="n">Integrate</span><span class="p">(</span><span class="n">gfu</span><span class="o">*</span><span class="n">dx</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span> <span class="c1"># normalize eigenfunction</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do experiments with</p>
+<ul class="simple">
+<li><p>the discretization parameters</p></li>
+<li><p>scaling of the <span class="math notranslate nohighlight">\(\nabla u \nabla v\)</span> and <span class="math notranslate nohighlight">\(u v\)</span> terms in the <span class="math notranslate nohighlight">\(H^1\)</span>-norm</p></li>
+<li><p>the domain size</p></li>
+<li><p>if we scale the domain-size by a factor <span class="math notranslate nohighlight">\(a\)</span>, then we have to scale the norms as … to obtain the same <span class="math notranslate nohighlight">\(\| \operatorname{tr} \|\)</span>.</p></li>
+<li><p>investigate the first and second eigenvalues</p></li>
+</ul>
+</section>
+<section id="proof-of-the-trace-inequality">
+<h2>Proof of the trace inequality:<a class="headerlink" href="#proof-of-the-trace-inequality" title="Link to this heading">#</a></h2>
+<p>The construction of the trace operator follows the following plan:</p>
+<ul class="simple">
+<li><p>We use that <span class="math notranslate nohighlight">\(C^1\)</span> is dense in <span class="math notranslate nohighlight">\(H^1\)</span>.</p></li>
+<li><p>We prove the inequality in <span class="math notranslate nohighlight">\(C^1\)</span>.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(u \in H^1\)</span> we choose a sequence <span class="math notranslate nohighlight">\((u_n)\)</span> in <span class="math notranslate nohighlight">\(C^1\)</span> such that
+<span class="math notranslate nohighlight">\(u_n \rightarrow u\)</span> in <span class="math notranslate nohighlight">\(H^1\)</span>.</p></li>
+<li><p>This <span class="math notranslate nohighlight">\((u_n)\)</span> is a Cauchy-sequence in <span class="math notranslate nohighlight">\(H^1\)</span>-norm. Since the trace inequality is proven in <span class="math notranslate nohighlight">\(C^1\)</span>, the sequence <span class="math notranslate nohighlight">\((u_{n|\partial \Omega})\)</span> is Cauchy in <span class="math notranslate nohighlight">\(L_2(\partial \Omega)\)</span>.</p></li>
+<li><p>Finally we define <span class="math notranslate nohighlight">\(u_{|\partial \Omega}\)</span> as the limit of <span class="math notranslate nohighlight">\((u_{n|\partial \Omega})\)</span>. It does not depend on the chosen approximation sequence.</p></li>
+</ul>
+<p><strong>Proof in 1D:</strong> <br>
+Let <span class="math notranslate nohighlight">\(\Omega = (0,a)\)</span>. Let <span class="math notranslate nohighlight">\(u \in C^1(\overline \Omega)\)</span>. Define</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde u(x) = u(x) (1 - x/a)
+\]</div>
+<p>There is</p>
+<p>\begin{eqnarray}
+|u(0)| &amp; = &amp; | , \tilde u(0) - \tilde u(a) , |
+= \Big| , \int_0^a \tilde u^\prime(x) , dx  , \Big| \
+&amp; = &amp; \Big| , \int_0^a u^\prime(x) (1-x/a) + u(x) , (1-x/a)^\prime , dx , \Big| \
+&amp; \leq &amp; | u^\prime |<em>{L_2(0,a)} | (1-x/a) |</em>{L_2(0,a)}
++ | u |<em>{L_2(0,a)} | 1/a |</em>{L_2(0,a)} \
+&amp; \leq &amp; \sqrt{a} , | u^\prime |<em>{L_2(0,a)} + \tfrac{1}{\sqrt{a}} , | u |</em>{L_2(0,a)} \qquad \qquad \Box
+\end{eqnarray}</p>
+<p>The proof shows the scaling in the domain size.</p>
+<p><strong>Proof on the rectangle</strong> <br>
+Let <span class="math notranslate nohighlight">\(\Omega = (0,a) \times (0,1)\)</span>, and <span class="math notranslate nohighlight">\(u \in C^1(\overline \Omega)\)</span>.</p>
+<p>We use the 1D results for every fix <span class="math notranslate nohighlight">\(y \in [0,1]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+| u(0,y) | \leq \sqrt{a} \, \| u^\prime(\cdot,y) \|_{L_2(0,a)} + \tfrac{1}{\sqrt{a}} \, \| u(\cdot,y) \|_{L_2(0,a)}
+\]</div>
+<p>Integrating in <span class="math notranslate nohighlight">\(y\)</span>-direction and Fubini leads to</p>
+<p>\begin{eqnarray}
+\int_0^1 |u(0,y)|^2 , dy &amp; \leq &amp; 2  a \int_0^1 \int_0^a | \partial_x u(x,y) |^2  + \frac{1}{a} \int_0^1 \int_0^a |u(x,y)|^2
+\end{eqnarray}</p>
+<p>i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+\| u(0,\cdot) \|_{L_2} \leq \sqrt{a} \, \| \nabla u \|_{L_2(\Omega)} 
++ \frac{1}{\sqrt{a}}  \, \| u \|_{L_2(\Omega)}
+\]</div>
+<p>The same proof generalizes for <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span>.</p>
+<p><strong>Proof on general domains in <span class="math notranslate nohighlight">\({\mathbb R}^d\)</span></strong> <br>
+We use a mapping from the rectangle into the domain, such that the left boundary of the rectangle ends up the the boundary of <span class="math notranslate nohighlight">\(\Omega\)</span>. We need a mapping such <span class="math notranslate nohighlight">\(\Phi\)</span> that <span class="math notranslate nohighlight">\(\nabla \Phi\)</span> and <span class="math notranslate nohighlight">\((\nabla \Phi)^{-1}\)</span> is bounded. Then we can transform and estimate norms between the rectangle and the general domain.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sobolev"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-verification">Numerical verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-the-trace-inequality">Proof of the trace inequality:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

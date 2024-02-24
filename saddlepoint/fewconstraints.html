@@ -1,0 +1,710 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>A Small Number of Constraints &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'saddlepoint/fewconstraints';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/saddlepoint/fewconstraints.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>A Small Number of Constraints</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A Small Number of Constraints</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-preconditioner">Projected preconditioner</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="a-small-number-of-constraints">
+<h1>A Small Number of Constraints<a class="headerlink" href="#a-small-number-of-constraints" title="Link to this heading">#</a></h1>
+<p>There are many examples where we have only a small number of constraints. An example is a three-phase transformer, where the voltage is prescribed for each coil. This gives three scalar constraints to the field problem.</p>
+<p>We consider now saddle-point problems</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left( \begin{array}{cc}
+A &amp; B^T \\
+B &amp; 
+\end{array} \right) 
+\left( \begin{array}{c}
+u \\ p 
+\end{array} \right) =
+\left( \begin{array}{c}
+f \\ g 
+\end{array} \right), 
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(B \in {\mathbb R}^{m \times n}\)</span> with <span class="math notranslate nohighlight">\(m\)</span> small.</p>
+<p>Let us reduce the problem to the Schur complement system</p>
+<div class="math notranslate nohighlight">
+\[
+S p = B A^{-1} f - g.
+\]</div>
+<p>Now, the Schur complement</p>
+<div class="math notranslate nohighlight">
+\[
+S = B A^{-1} B^T 
+\]</div>
+<p>is a small matrix, which can be actually computed by solving <span class="math notranslate nohighlight">\(m\)</span> problems with the row vectors of <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+<span class="kn">from</span> <span class="nn">netgen.geom2d</span> <span class="kn">import</span> <span class="n">CSG2d</span><span class="p">,</span> <span class="n">Circle</span><span class="p">,</span> <span class="n">Rectangle</span>
+<span class="n">geo</span> <span class="o">=</span> <span class="n">CSG2d</span><span class="p">()</span>
+<span class="n">rect</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span> <span class="n">pmin</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">pmax</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">bottom</span><span class="o">=</span><span class="s2">&quot;free&quot;</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s2">&quot;free&quot;</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s2">&quot;right&quot;</span> <span class="p">)</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="n">Draw</span><span class="p">(</span><span class="n">mesh</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We consider an elasticity problem on a rectangular domain, fixed at the left end, and loaded by a force at the right boundary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fes</span> <span class="o">=</span> <span class="n">VectorH1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dirichlet</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="n">InnerProduct</span><span class="p">(</span><span class="n">Sym</span><span class="p">(</span><span class="n">Grad</span><span class="p">(</span><span class="n">u</span><span class="p">)),</span> <span class="n">Sym</span><span class="p">(</span><span class="n">Grad</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">div</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">div</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span>
+<span class="n">a</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="mf">1e-3</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">ds</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">Inverse</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">())</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">,</span> <span class="n">deformation</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, instead of the loading, we want to prescribe an average displacement at the right end:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{|\Gamma_r|} \int_{\Gamma_r} u_x = U_x \qquad \text{and} \qquad
+\frac{1}{|\Gamma_r|} \int_{\Gamma_r} u_y = U_y
+\]</div>
+<p>these constraints can be described by linear-forms</p>
+<div class="math notranslate nohighlight">
+\[
+b_x(u) = U_x \qquad \text{and} \qquad b_y(u) = U_y
+\]</div>
+<p>Assemble the two constraint-vectors, and write into a MultiVector:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bx</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">ds</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">by</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">ds</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">MultiVector</span><span class="p">(</span><span class="n">bx</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">bx</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">by</span><span class="o">.</span><span class="n">vec</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute the Schur complement:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">InnerProduct</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">Inverse</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">())</span> <span class="o">*</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Solve for the Lagrange parameter. It has the physical meaning of a force:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Uxy</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">force</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">I</span> <span class="o">*</span> <span class="n">Uxy</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">force</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and reconstruct the solution <span class="math notranslate nohighlight">\(u\)</span> from the computed Lagrange parameter:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fvec</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="n">force</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">Inverse</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">())</span> <span class="o">*</span> <span class="n">fvec</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">,</span> <span class="n">deformation</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This method requires to solve one linear system with right hand side <span class="math notranslate nohighlight">\(f\)</span>, and <span class="math notranslate nohighlight">\(m\)</span> linerar systems for the Schur complement, one for each scalar constraint. We can use a preconditioner for <span class="math notranslate nohighlight">\(A\)</span>, and solve these <span class="math notranslate nohighlight">\(m+1\)</span> systems by conjugate gradient iterations.</p>
+</section>
+<section id="projected-preconditioner">
+<h1>Projected preconditioner<a class="headerlink" href="#projected-preconditioner" title="Link to this heading">#</a></h1>
+<p>Next we present a method to solve these problem at the cost of one unconstrained problem, plus <span class="math notranslate nohighlight">\(m\)</span> applications of the preconditioner.</p>
+<p>It consists of two steps:</p>
+<ul class="simple">
+<li><p>Reduction to homogeneous constraints</p></li>
+<li><p>Construct a preconditioner on the kernel of <span class="math notranslate nohighlight">\(B\)</span></p></li>
+</ul>
+<p><strong>Reduction to homogeneous constraints</strong></p>
+<p>We solve the problem in two steps: First we find an <span class="math notranslate nohighlight">\(u_0\)</span> such that <span class="math notranslate nohighlight">\(B u_0 = g\)</span>. We could do so by solving</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left( \begin{array}{cc}
+A &amp; B^T \\
+B &amp; 
+\end{array} \right) 
+\left( \begin{array}{c}
+u_0 \\ p 
+\end{array} \right) =
+\left( \begin{array}{c}
+0 \\ g 
+\end{array} \right)
+\end{split}\]</div>
+<p>using the Schur complement. However, this still requires the solution of <span class="math notranslate nohighlight">\(m\)</span> problems for the Schur complement.</p>
+<p>A cheaper way is to solve</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left( \begin{array}{cc}
+\hat{A} &amp; B^T \\
+B &amp; 
+\end{array} \right) 
+\left( \begin{array}{c}
+u_0 \\ p 
+\end{array} \right) =
+\left( \begin{array}{c}
+0 \\ g 
+\end{array} \right), 
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat A\)</span> is a preconditioner to <span class="math notranslate nohighlight">\(A\)</span>. This can be solved by the inexact Schur complement, where <span class="math notranslate nohighlight">\(A^{-1}\)</span> is replace by <span class="math notranslate nohighlight">\(\hat A^{-1}\)</span>. We use the very cheap Jacobi preconditioner:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prea</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">CreateSmoother</span><span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">())</span>
+<span class="n">Shat</span> <span class="o">=</span> <span class="n">InnerProduct</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">prea</span> <span class="o">*</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">Shat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">force</span> <span class="o">=</span> <span class="n">Shat</span><span class="o">.</span><span class="n">I</span> <span class="o">*</span> <span class="n">Uxy</span>
+
+<span class="n">fvec</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="n">force</span>
+<span class="n">gfu0</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">gfu0</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">prea</span> <span class="o">*</span> <span class="n">fvec</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu0</span><span class="p">,</span> <span class="n">deformation</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have to solve the correction problem <span class="math notranslate nohighlight">\(u = u_0 + u_1\)</span>, where <span class="math notranslate nohighlight">\(u_1\)</span> solves the saddle-point problem with homogeneous constraint:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left( \begin{array}{cc}
+A &amp; B^T \\
+B &amp; 
+\end{array} \right) 
+\left( \begin{array}{c}
+u_1 \\ p 
+\end{array} \right) =
+\left( \begin{array}{c}
+f - A u_0 \\ 0
+\end{array} \right)
+\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(V_0 = \operatorname{ker} \{ B \}\)</span> be the null-space of <span class="math notranslate nohighlight">\(B\)</span>. Instead of solving the problem with constraints, we could solve the variational problem on the linear sub-space <span class="math notranslate nohighlight">\(V_0\)</span>: find <span class="math notranslate nohighlight">\(u_1 \in V_0\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+v^T A u_1 = v^T (f - A u_0) \qquad v \in V_0
+\]</div>
+<p>We solve this problem on the sub-space <span class="math notranslate nohighlight">\(V_0\)</span> by a preconditioned conjugate gradient method, where the range of the projected preconditioner-action <span class="math notranslate nohighlight">\(\hat A^{-1}\)</span> spans the sub-space <span class="math notranslate nohighlight">\(V_0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+Proj(\hat A^{-1}) : d \mapsto w \qquad \text{such that}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+w \in V_0 :  \quad v^T \hat A w = v^T d \qquad \forall v \in V_0
+\]</div>
+<p>The projected problem for the preconditioned system can be solved by the saddle point problem</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left( \begin{array}{cc}
+\hat{A} &amp; B^T \\
+B &amp; 
+\end{array} \right) 
+\left( \begin{array}{c}
+w \\ p 
+\end{array} \right) =
+\left( \begin{array}{c}
+d \\ 0
+\end{array} \right).
+\end{split}\]</div>
+<p>With the inexact Schur complement <span class="math notranslate nohighlight">\(\hat S = B \hat A^{-1} B^T\)</span> this is</p>
+<div class="math notranslate nohighlight">
+\[
+\hat S p = B \hat A^{-1} d
+\]</div>
+<p>and then</p>
+<div class="math notranslate nohighlight">
+\[
+w = \hat A^{-1} (d - B^T p) = \hat A^{-1} (I - B^T S^{-1} B \hat A^{-1})
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Bmat</span> <span class="o">=</span> <span class="n">BaseMatrix</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">projpre</span> <span class="o">=</span> <span class="n">prea</span> <span class="o">@</span> <span class="p">(</span><span class="n">IdentityMatrix</span><span class="p">()</span> <span class="o">-</span> <span class="n">Bmat</span> <span class="o">@</span> <span class="n">BaseMatrix</span><span class="p">(</span><span class="n">Shat</span><span class="o">.</span><span class="n">I</span><span class="p">)</span> <span class="o">@</span> <span class="n">Bmat</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">prea</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">gfu0</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">Evaluate</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">ngsolve.krylovspace</span> <span class="kn">import</span> <span class="n">CGSolver</span>
+<span class="n">projinv</span> <span class="o">=</span> <span class="n">CGSolver</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">projpre</span><span class="p">,</span> <span class="n">printrates</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">gfu1</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">gfu1</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">projinv</span> <span class="o">*</span> <span class="n">res</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu1</span><span class="p">,</span> <span class="n">deformation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">gfu1</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">gfu0</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu1</span><span class="p">,</span> <span class="n">deformation</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some remarks:</p>
+<ul class="simple">
+<li><p>instead of applying the preconditioner <span class="math notranslate nohighlight">\(\hat A\)</span> twice, one could store the matrix <span class="math notranslate nohighlight">\(\hat A^{-1} B\)</span></p></li>
+<li><p>the Lagrange parameter <span class="math notranslate nohighlight">\(p\)</span> can be computed by multiplying the equation <span class="math notranslate nohighlight">\(A u + B^T p = f\)</span> from left with <span class="math notranslate nohighlight">\(B \hat A^{-1}\)</span>, and then solving with the inexact Schur complement
+$<span class="math notranslate nohighlight">\(
+p = (B \hat A^{-1} B^T)^{-1} (B \hat A^{-1} (f - A u))
+\)</span>$</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./saddlepoint"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A Small Number of Constraints</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-preconditioner">Projected preconditioner</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

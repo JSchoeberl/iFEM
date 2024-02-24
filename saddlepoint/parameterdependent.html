@@ -1,0 +1,907 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Parameter Dependent Problems &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'saddlepoint/parameterdependent';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/saddlepoint/parameterdependent.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Parameter Dependent Problems</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Parameter Dependent Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet-boundary-conditions-by-penalty">Dirichlet boundary conditions by penalty:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation-for-the-flux">Penalty formulation for the flux:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maxwell-equations">Maxwell equations:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation-for-the-stokes-equation">Penalty formulation for the Stokes equation:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-two-level-methods-for-parameter-dependent-problems">Robust two-level methods for parameter dependent problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-smoothers">Robust smoothers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-coarse-grid-correction">Robust coarse-grid correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-analysis-for-maxwell-equations">Two-level analysis for Maxwell equations</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="parameter-dependent-problems">
+<h1>Parameter Dependent Problems<a class="headerlink" href="#parameter-dependent-problems" title="Link to this heading">#</a></h1>
+<p>We have observed that adding the constraint to the A-block may improve the convergence of saddle-point solvers. If we add the constraint with a large factor <span class="math notranslate nohighlight">\(1/\varepsilon\)</span>, we may consider the augmented problem as penalty formulation for the constrained minimization problem, and skip the second equation and the Lagrange parameter completely. We call this a parameter dependent problem:</p>
+<div class="math notranslate nohighlight">
+\[
+\big(A + \frac{1}{\varepsilon} B^T C^{-1} B \big) u = f
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(V_0 = \operatorname{ker} B\)</span> the null-space of the <span class="math notranslate nohighlight">\(B\)</span>-matrix.</p>
+<p>On the null-space <span class="math notranslate nohighlight">\(V_0\)</span> only the <span class="math notranslate nohighlight">\(A\)</span>-operator is seen. On its complement <span class="math notranslate nohighlight">\(V_0^\bot\)</span>, the second part <span class="math notranslate nohighlight">\(\frac{1}{\varepsilon} B^T C^{-1} B\)</span> dominates for small <span class="math notranslate nohighlight">\(\varepsilon\)</span>. Unless <span class="math notranslate nohighlight">\(V_0\)</span> is trivial, the condition number degenerates with <span class="math notranslate nohighlight">\(O(\varepsilon^{-1})\)</span>.</p>
+<p>The goal is to develop preconditioners for the parameter dependent problems which are robust in <span class="math notranslate nohighlight">\(\varepsilon\)</span>.</p>
+<section id="dirichlet-boundary-conditions-by-penalty">
+<h2>Dirichlet boundary conditions by penalty:<a class="headerlink" href="#dirichlet-boundary-conditions-by-penalty" title="Link to this heading">#</a></h2>
+<p>Adding the Dirichlet condition <span class="math notranslate nohighlight">\(u = u_D\)</span> on <span class="math notranslate nohighlight">\(\Gamma_D\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\int \nabla u \nabla v + \int_{\Gamma_D} \alpha u v = \int f v + \int_{\Gamma_D}  \alpha u_D v
+\]</div>
+<p>with large parameter <span class="math notranslate nohighlight">\(\alpha = \varepsilon^{-1}\)</span>, or depending on the mesh-size <span class="math notranslate nohighlight">\(\alpha = h^{-1}\)</span>.</p>
+<p>The null-space <span class="math notranslate nohighlight">\(V_0\)</span> is the finite element sub-space of <span class="math notranslate nohighlight">\(H_{0,D}^1 = \{ v \in H^1 : v = 0 \text{ on } \Gamma_D \}\)</span>.</p>
+</section>
+<section id="penalty-formulation-for-the-flux">
+<h2>Penalty formulation for the flux:<a class="headerlink" href="#penalty-formulation-for-the-flux" title="Link to this heading">#</a></h2>
+<p>Approximating the mixed formulation <span class="math notranslate nohighlight">\(\sigma = \nabla u\)</span>, and <span class="math notranslate nohighlight">\(\operatorname{div} \sigma = -f\)</span> by penalty leads to:</p>
+<div class="math notranslate nohighlight">
+\[
+\int \sigma \tau + \frac{1}{\varepsilon} \int \operatorname{div} \sigma \operatorname{div} \tau = \frac{-1}{\varepsilon} \int f \operatorname{div} \tau
+\]</div>
+<p>This is a variational formulation on the Hilbert-space <span class="math notranslate nohighlight">\(H(\operatorname{div}) := \{ \tau \in [L_2]^d : \operatorname{div} \tau \in L_2\}\)</span>.</p>
+<p>The null-space <span class="math notranslate nohighlight">\(V_0\)</span> consists of all <span class="math notranslate nohighlight">\(\operatorname{div}\)</span>-free functions.</p>
+</section>
+<section id="maxwell-equations">
+<h2>Maxwell equations:<a class="headerlink" href="#maxwell-equations" title="Link to this heading">#</a></h2>
+<p>Very similar is the equation for the magnetic field, a special case of the Maxwell equations. Given a divergence-free current density <span class="math notranslate nohighlight">\(j\)</span>, search for a divergence-free magnetic field <span class="math notranslate nohighlight">\(B\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{curl} \mu^{-1} B = j,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the so called permeability, a kind of conductivity for the magnetic field. Since we search for a <span class="math notranslate nohighlight">\(\operatorname{div}\)</span>-free <span class="math notranslate nohighlight">\(B\)</span>, and assuming a simply connected domain, we may introduce a vector-potential <span class="math notranslate nohighlight">\(u\)</span> such that <span class="math notranslate nohighlight">\(B = \operatorname{curl} u\)</span>. Together we have the second order equation</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{curl} \mu^{-1} \operatorname{curl} u = j.
+\]</div>
+<p>Its weak formulation (skipping discussion of boundary conditions) is</p>
+<div class="math notranslate nohighlight">
+\[
+\int \mu^{-1} \operatorname{curl} u \, \operatorname{curl} v = \int j v \qquad \forall \, v
+\]</div>
+<p>There is no unique solution: adding an arbitrary gradient field to a solution is also a solution. One way out is Coloumb - gauging, where we add the constraint <span class="math notranslate nohighlight">\(\int u \nabla \psi = 0\)</span>, i.e. a weak formulation of <span class="math notranslate nohighlight">\(\operatorname{div} u = 0\)</span>. Another, very simple method is to regularize with a small <span class="math notranslate nohighlight">\(L_2\)</span>-term:</p>
+<div class="math notranslate nohighlight">
+\[
+\int \mu^{-1} \operatorname{curl} u \, \operatorname{curl} v 
++ \int \varepsilon u v = \int j v
+\]</div>
+<p>Again, we have a parameter dependent problem, with the fictitious regularization parameter <span class="math notranslate nohighlight">\(\varepsilon\)</span>.  The canonical space is</p>
+<div class="math notranslate nohighlight">
+\[
+H(\operatorname{curl}) = \{ u \in [L_2]^3 : \operatorname{curl} u \in [L_2]^3 \},
+\]</div>
+<p>equipped with the norm
+$<span class="math notranslate nohighlight">\(
+\| u \|_{H(\operatorname{curl})}^2 = \| u \|_{L_2}^2 + \| \operatorname{curl} u \|_{L_2}^2
+\)</span>$</p>
+<p>The null-space is
+$<span class="math notranslate nohighlight">\(
+V_0 = \{ v : \operatorname{curl} v = 0 \} = \nabla H^1
+\)</span>$</p>
+</section>
+<section id="penalty-formulation-for-the-stokes-equation">
+<h2>Penalty formulation for the Stokes equation:<a class="headerlink" href="#penalty-formulation-for-the-stokes-equation" title="Link to this heading">#</a></h2>
+<p>We approximate the div-free condition by penalty:</p>
+<p>Find <span class="math notranslate nohighlight">\(u \in [H_{0,D}]^d\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\int \nu \nabla u : \nabla v + \frac{1}{\varepsilon} \int \operatorname{div} u \operatorname{div} v = \int f v
+\]</div>
+<p>It looks similar as the penalty formulation for the flux, but now the  A-form is a <span class="math notranslate nohighlight">\(H^1\)</span>-inner product instead of an <span class="math notranslate nohighlight">\(L_2\)</span>-inner product. Now, conforming low order methods lead to bad approximations (called locking effect). Robust discretizations are constructed and analyzed by by mixed formulations. If the pressure space consists of discontinuous finite elements, and the <span class="math notranslate nohighlight">\(C\)</span> matrix is chosen as <span class="math notranslate nohighlight">\(L_2\)</span>-inner product, it can be cheaply inverted. We end up with the discretization of the parameter dependent problem. However, the detour over the mixed mixed formulation leads to a projection operator <span class="math notranslate nohighlight">\(R_h\)</span>:</p>
+<p>Find <span class="math notranslate nohighlight">\(u_h \in V_h \subset [H_{0,D}]^d\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\int \nu \nabla u_h : \nabla v_h + \frac{1}{\varepsilon} \int R_h \operatorname{div} u_h \operatorname{div} v_h = \int f v_h
+\]</div>
+<p>A stable example is to choose <span class="math notranslate nohighlight">\(V_h\)</span> a <span class="math notranslate nohighlight">\(P^2\)</span> finite element space. Then <span class="math notranslate nohighlight">\(\operatorname{div} u_h\)</span> is a <span class="math notranslate nohighlight">\(P^1\)</span> function. Choosing a <span class="math notranslate nohighlight">\(P^0\)</span> pressure leads to a projection operator <span class="math notranslate nohighlight">\(R_h\)</span> which is the <span class="math notranslate nohighlight">\(L_2\)</span>-orthogonal projection from <span class="math notranslate nohighlight">\(P^1\)</span> onto <span class="math notranslate nohighlight">\(P^0\)</span>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="robust-two-level-methods-for-parameter-dependent-problems">
+<h1>Robust two-level methods for parameter dependent problems<a class="headerlink" href="#robust-two-level-methods-for-parameter-dependent-problems" title="Link to this heading">#</a></h1>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[
+A_h^\varepsilon = A + \frac{1}{\varepsilon} B^T C^{-1} B
+\]</div>
+<p>be the discretization matrix of the parameter dependent problem on the finite element space <span class="math notranslate nohighlight">\(V_h\)</span>. We are going to analyze two-level preconditioners</p>
+<div class="math notranslate nohighlight">
+\[
+C_{2L}^{-1} = D_h^{-1} + P \, ( A_H^\varepsilon ) ^{-1} P^T,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A_H^\varepsilon\)</span> is the discretization matrix on the coarse space <span class="math notranslate nohighlight">\(V_H\)</span>, <span class="math notranslate nohighlight">\(P : V_H \rightarrow V_h\)</span> is the prolongation matrix, and <span class="math notranslate nohighlight">\(D_h\)</span> is a local block-Jacobi preconditioner on <span class="math notranslate nohighlight">\(V_h\)</span>.</p>
+<section id="robust-smoothers">
+<h2>Robust smoothers<a class="headerlink" href="#robust-smoothers" title="Link to this heading">#</a></h2>
+<p>By the ASM - lemma, we can represent the norm generated by the smoother <span class="math notranslate nohighlight">\(D_h\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{D_h}^2 = \inf_{u = \sum u_i} \sum \| u_i \|_{A + \frac{1}{\varepsilon} B^T C^{-1} B}^2,
+\]</div>
+<p>where we have the sub-space splitting</p>
+<div class="math notranslate nohighlight">
+\[
+V_h = \sum V_i.
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(u\)</span> is a function in the finite-element null-space <span class="math notranslate nohighlight">\(V_0\)</span>, then its norm <span class="math notranslate nohighlight">\(\| u \|_{A + \frac{1}{\varepsilon} B^T C^{-1} B}^2\)</span> is independent of the small parameter <span class="math notranslate nohighlight">\(\varepsilon\)</span>. Only if we can split <span class="math notranslate nohighlight">\(u\)</span> into local null-space functions <span class="math notranslate nohighlight">\(u_i\)</span>, the <span class="math notranslate nohighlight">\(D_h\)</span> norm is also independent of <span class="math notranslate nohighlight">\(\varepsilon\)</span>. Thus, we want a splitting compatible with the null-space:</p>
+<div class="math notranslate nohighlight">
+\[
+V_0 = \sum V_i \cap V_0
+\]</div>
+<p><strong>Example: Maxwell equations</strong></p>
+<p>For a compatible discretization with Nedelec finite elements, the discrete null-space consists of discrete gradients:</p>
+<div class="math notranslate nohighlight">
+\[
+\{ v_h \in V_h : \operatorname{curl} v_h = 0 \} = \{ \nabla \psi_h : \psi_h \in W_h \subset H^1 \} 
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(u_h \in V_0\)</span>, and <span class="math notranslate nohighlight">\(\psi_h\)</span> such that <span class="math notranslate nohighlight">\(\nabla \psi_h = u_h\)</span>. Now, decompose <span class="math notranslate nohighlight">\(\psi_h = \sum \psi_i\)</span>. Then, <span class="math notranslate nohighlight">\(\sum \nabla \psi_i\)</span> is a decomposition of <span class="math notranslate nohighlight">\(u_h\)</span> into null-space functions <span class="math notranslate nohighlight">\(u_i = \nabla \psi_i\)</span>. The block-Jacobi must consist of blocks large enough such that each component <span class="math notranslate nohighlight">\(\nabla \psi_i\)</span> is contained in one block. If <span class="math notranslate nohighlight">\(\psi_i\)</span> is a vertex-hat basis function, then its gradient is contained in the vertex patch. These block-smoothers are called AFW-blocks, due to Arnold, Falk, and Winther: <em>Multigrid in H(div) and H(curl)</em>, Numerische Mathematik, 2000.</p>
+<p>Lets try:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">netgen.csg</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geo</span> <span class="o">=</span> <span class="n">CSGeometry</span><span class="p">()</span>
+<span class="n">magnet</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">Pnt</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">Pnt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">0.3</span><span class="p">)</span> \
+    <span class="o">*</span> <span class="n">OrthoBrick</span><span class="p">(</span><span class="n">Pnt</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">Pnt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">box</span> <span class="o">=</span> <span class="n">OrthoBrick</span><span class="p">(</span><span class="n">Pnt</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">),</span> <span class="n">Pnt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">Add</span> <span class="p">(</span><span class="n">magnet</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="s2">&quot;magnet&quot;</span><span class="p">))</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">Add</span> <span class="p">((</span><span class="n">box</span><span class="o">-</span><span class="n">magnet</span><span class="p">)</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="s2">&quot;air&quot;</span><span class="p">))</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1"># mesh.ngmesh.Refine()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipping</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;pnt&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;function&quot;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">clipping</span><span class="o">=</span><span class="n">clipping</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fes</span> <span class="o">=</span> <span class="n">HCurl</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># one dof per edge</span>
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-3</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">curl</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">curl</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">eps</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">MaterialCF</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;magnet&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)}</span> <span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="n">M</span><span class="o">*</span><span class="n">curl</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="p">(</span><span class="s2">&quot;magnet&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span> <span class="o">=</span> <span class="n">Preconditioner</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pre</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">ngsolve.krylovspace</span> <span class="kn">import</span> <span class="n">CGSolver</span>
+
+<span class="n">inv</span> <span class="o">=</span> <span class="n">CGSolver</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">printrates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">maxsteps</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">inv</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Draw</span> <span class="p">(</span><span class="n">curl</span><span class="p">(</span><span class="n">gfu</span><span class="p">),</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">clipping</span><span class="o">=</span><span class="n">clipping</span><span class="p">,</span> \
+      <span class="n">vectors</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;grid_size&quot;</span> <span class="p">:</span> <span class="mi">40</span> <span class="p">},</span> <span class="n">draw_surf</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve.la</span> <span class="kn">import</span> <span class="n">EigenValues_Preconditioner</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">.</span><span class="n">mat</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;lammin, lammax=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;kappa=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We observe that the condition number of the block-Jacobi preconditioner</p>
+<ul class="simple">
+<li><p>is robust in <span class="math notranslate nohighlight">\(\varepsilon\)</span></p></li>
+<li><p>depends on the mesh-size</p></li>
+</ul>
+<p>We observe the the condition number of the Jacobi preconditioner</p>
+<ul class="simple">
+<li><p>depends on <span class="math notranslate nohighlight">\(\varepsilon\)</span></p></li>
+<li><p>depends on the mesh-size</p></li>
+</ul>
+</section>
+<section id="robust-coarse-grid-correction">
+<h2>Robust coarse-grid correction<a class="headerlink" href="#robust-coarse-grid-correction" title="Link to this heading">#</a></h2>
+<p>If the penalty term involves a projection, then the coarse-grid null-space <span class="math notranslate nohighlight">\(V_{H,0}\)</span> is not a sub-space of the fine-grid null-space <span class="math notranslate nohighlight">\(V_{h,0}\)</span>. An example is Stokes with penalty:</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_H \|_{A_H^\varepsilon}^2 = \| u_H \|_A^2 + \frac{1}{\varepsilon} \| R_H \operatorname{div} u_H \|_{L_2}^2
+\]</div>
+<p>The operator-norm of the prolongation is
+$<span class="math notranslate nohighlight">\(
+\| P \|_{(V_H, A_H^\varepsilon) \rightarrow (V_h, A_h^\varepsilon)}
+ = \sup_{v_H} \frac{ \| P v_H \|_{A_h^\varepsilon}}{\| v_H \|_{A_H^\varepsilon}}
+\)</span>$</p>
+<p>To be robust in the parameter, the prolongation operator <span class="math notranslate nohighlight">\(P : V_H \rightarrow V_h\)</span> must map the coarse-grid null-space into the fine-grid null-space:</p>
+<div class="math notranslate nohighlight">
+\[
+P V_{H,0} \subset V_{h,0}
+\]</div>
+<p>If the null-spaces are nested (as for Maxwell equations), the prolongation is canonical embedding.</p>
+<p>For the ASM - analysis we need the existence of stable interpolation operators from fine to coarse: <span class="math notranslate nohighlight">\(I_H : V_h \rightarrow V_H\)</span>. It must be compatible with null-spaces, i.e. <span class="math notranslate nohighlight">\(I_H V_{h,0} \subset V_{H,0}\)</span>.</p>
+</section>
+<section id="two-level-analysis-for-maxwell-equations">
+<h2>Two-level analysis for Maxwell equations<a class="headerlink" href="#two-level-analysis-for-maxwell-equations" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(V_h\)</span> be a Nedelec finite element sub-space of <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span>, and consider the bilinear-form</p>
+<div class="math notranslate nohighlight">
+\[
+A^\varepsilon(u,v) = \int \operatorname{curl} u \operatorname{curl} v + \varepsilon u v 
+\]</div>
+<p>We prove that a two-level method with an AFW block-Jacobi smoother provides an optimal preconditioner.</p>
+<p>Let <span class="math notranslate nohighlight">\(W_H \subset W_h \subset H^1\)</span> be compatible finite element spaces such that <span class="math notranslate nohighlight">\(\nabla W_h = V_{h,0} = \{ v \in V_h : \operatorname{curl} v_h = 0 \}\)</span>, and <span class="math notranslate nohighlight">\(\nabla W_H = W_{H,0}\)</span>.</p>
+<p>We need a few technical tools:</p>
+<p><strong>Theorem: (Regular Decomposition):</strong> There holds</p>
+<div class="math notranslate nohighlight">
+\[
+H(\operatorname{curl}) = [H^1]^3 + \nabla H^1
+\]</div>
+<p>For every function <span class="math notranslate nohighlight">\(u\)</span> from <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span> there exists a decomposition</p>
+<div class="math notranslate nohighlight">
+\[
+u = z + \nabla \phi
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(z \in [H^1]^3\)</span> and <span class="math notranslate nohighlight">\(\phi \in H^1\)</span>, and which is stable in the sense</p>
+<p>\begin{eqnarray*}
+| \phi |<em>{H^1} &amp; \preceq &amp; | u |</em>{H(\operatorname{curl})} \
+| z |<em>{H^1}  &amp; \preceq &amp; | \operatorname{curl} u |</em>{L_2} \
+\end{eqnarray*}</p>
+<p>On the other hand, every function from <span class="math notranslate nohighlight">\([H^1]^3\)</span>, and every gradient from <span class="math notranslate nohighlight">\(H^1\)</span> is in <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span>.</p>
+<p><em>Proof:</em> Pasciak, J. E.; Zhao, J.: Overlapping Schwarz methods in H(curl) on polyhedral domains. J. Numer. Math. 10 (2002)</p>
+<p><strong>Theorem: (Commuting quasi-interpolation operators)</strong> There exist projections <span class="math notranslate nohighlight">\(\pi_{V_h} : H(\operatorname{curl}) \rightarrow V_h \)</span> and <span class="math notranslate nohighlight">\(\pi_{W_h} : H^1 \rightarrow W_h\)</span> which commute with the gradient:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi_{V_h} \nabla = \nabla \pi_{W_h}
+\]</div>
+<p>They are stable in norms and semi-norms, and provide optimal approximation error estimates.</p>
+<p><em>Proof:</em> Schöberl, A multilevel decomposition result in H(curl). in Multigrid, Multilevel and Multiscale Methods, EMG 2005</p>
+<p>We are ready to prove that the condition-number of the two-level preconditioner is robust in the mesh-size <span class="math notranslate nohighlight">\(h\)</span>, as well as the regularization parameter <span class="math notranslate nohighlight">\(\varepsilon\)</span>. We assume that <span class="math notranslate nohighlight">\(H = ch\)</span>. We transfer results from the <span class="math notranslate nohighlight">\(H^1\)</span>-case to the <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span> case.</p>
+<p>In the <span class="math notranslate nohighlight">\(H^1\)</span>-case, we have shown that the coarse grid interpolation error satisfies</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_h - \pi_{W_H} u_h \|_{L_2} \preceq h \| \nabla u_h \|
+\]</div>
+<p>The corresponding lemma for the <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span> case is:</p>
+<p><strong>Lemma:</strong> For the coarse-grid interpolation error there exists a decomposition</p>
+<div class="math notranslate nohighlight">
+\[
+u_h - \pi_{V_H} u_h = r + \nabla \psi,
+\]</div>
+<p>where
+$<span class="math notranslate nohighlight">\(
+\| r \|_{L_2}^2 \preceq h^2 \| \operatorname{curl} u \|^2
+\)</span><span class="math notranslate nohighlight">\(
+and
+\)</span><span class="math notranslate nohighlight">\(
+\varepsilon \| \psi \|_{L_2}^2 \preceq h^2 \| u \|_{A^\varepsilon}^2
+\)</span>$</p>
+<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(u_h \in V_h \subset H(\operatorname{curl})\)</span>. There exists a regular decomposition</p>
+<div class="math notranslate nohighlight">
+\[
+u_h = z + \nabla \Phi,
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\| z \|_{H^1}^2 \preceq \| \operatorname{curl} u \|_{L_2}^2
+\]</div>
+<p>and
+$<span class="math notranslate nohighlight">\(
+\varepsilon \| \Phi \|_{H^1}^2 \preceq \| u \|_{A^\varepsilon}^2
+\)</span>$</p>
+<p>By the commutativity of the interpolation operator we obtain</p>
+<p>\begin{eqnarray*}
+u_h - \pi_{V_H} u_h &amp; = &amp; z - \pi_{V_H} z + \nabla \Phi - \pi_{V_H} \nabla \Phi \
+&amp; = &amp; z - \pi_{V_H} z + \nabla ( \Phi - \pi_{W_H} \Phi )
+\end{eqnarray*}</p>
+<p>By setting</p>
+<div class="math notranslate nohighlight">
+\[
+r = z - \pi_{V_H} z \qquad \text{and} \qquad \psi = \Phi - \pi_{W_H} \Phi
+\]</div>
+<p>and using the approximation properties of the interpolation operators we obtain the splitting.</p>
+<p><strong>Lemma:</strong> For the coarse-grid interpolation error there exists a discrete decomposition</p>
+<div class="math notranslate nohighlight">
+\[
+u_h - \pi_{V_H} u_h = r_h + \nabla \psi_h.
+\]</div>
+<p><em>Proof:</em> Apply the commuting projection operator <span class="math notranslate nohighlight">\(\pi_{V_h}\)</span> to the previous lemma to obtain</p>
+<p>\begin{eqnarray}
+u_h - \pi_{V_H} u_h &amp; = &amp; \pi_{V_h} ( u_h - \pi_{V_H} u_h ) \
+&amp; = &amp; \pi_{V_h} r + \pi_{V_h} \nabla \psi \
+&amp; = &amp; \pi_{V_h} r + \nabla \pi_{W_h} \psi
+\end{eqnarray}</p>
+<p>The discrete decomposition is now <span class="math notranslate nohighlight">\(r_h = \pi_{V_h} r\)</span> and <span class="math notranslate nohighlight">\(\psi_h = \pi_{W_h} \psi\)</span>.</p>
+<p>In the <span class="math notranslate nohighlight">\(H^1\)</span>-case, we can apply the ASM lemma to analyze the Jacobi preconditioner <span class="math notranslate nohighlight">\(D\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_D^2 = \inf_{u = \sum u_i} \sum \| u_i \|_{H^1}^2 
+\preceq \inf_{u = \sum u_i} h^{-2} \sum \| u_i \|_{L_2}^2 \preceq h^{-2} \| u \|_{L_2}^2
+\]</div>
+<p><strong>Lemma:</strong> For the AFW block-Jacobi preconditioner <span class="math notranslate nohighlight">\(D\)</span> there holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_h \|_D^2 \preceq \inf_{u_h = r_h + \nabla \psi_h} h^{-2} \| r_h \|_{L_2}^2 + \varepsilon h^{-2} \| \psi_h \|_{L_2}^2
+\]</div>
+<p>Proof: Let <span class="math notranslate nohighlight">\(u_h = r_h + \nabla \psi_h\)</span> be an arbitrary decomposition.
+Then the triangle inequality implies</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_h \|_D \leq \| r_h \|_D + \| \nabla \psi_h \|_D
+\]</div>
+<p>Now we apply the ASM lemma for both terms:</p>
+<p>\begin{eqnarray*}
+| r_h |<em>D^2 &amp; = &amp; \inf</em>{r = \sum r_i} \sum | r_i |<em>{A^\varepsilon}^2 \
+&amp; = &amp; \inf</em>{r = \sum r_i} \sum | \operatorname{curl} r_i |<em>{L_2}^2 + \varepsilon | r_i |</em>{L_2}^2 \
+&amp; \preceq &amp; \inf_{r = \sum r_i} h^{-2} | r_i |<em>{L_2}^2 \
+&amp; \approx &amp; h^{-2} | r |</em>{L_2}^2
+\end{eqnarray*}</p>
+<p>For the decomposition of <span class="math notranslate nohighlight">\(\nabla \psi\)</span> we use that we can decompose <span class="math notranslate nohighlight">\(\psi = \sum \psi_i\)</span> with <span class="math notranslate nohighlight">\(\psi_i \in W_i\)</span>, where <span class="math notranslate nohighlight">\(\nabla W_i \subset V_i\)</span>:</p>
+<p>\begin{eqnarray*}
+\varepsilon | \nabla \psi_h |<em>D^2 &amp; = &amp; \inf</em>{\nabla \psi_h = \sum v_i} \sum | v_i |<em>{A^\varepsilon}^2 \
+&amp; \leq &amp; \inf</em>{\psi_h = \sum \psi_i} \sum | \nabla \psi_i |<em>{A^\varepsilon}^2 \
+&amp; = &amp; \inf</em>{\psi_h = \sum \psi_i} \sum \varepsilon | \nabla \psi_i |<em>{L_2}^2 \
+&amp; \preceq &amp; \inf</em>{\psi_h = \sum \psi_i} \sum \varepsilon h^{-2} | \psi_i |<em>{L_2}^2 \
+&amp; \approx &amp; \varepsilon h^{-2} | \psi_h |</em>{L_2}^2
+\end{eqnarray*}</p>
+<p>Since <span class="math notranslate nohighlight">\(\| u \|_D\)</span> is bounded by any such decomposition of <span class="math notranslate nohighlight">\(u_h\)</span>, it holds also for the infimum, and the lemma is proven.</p>
+<p><strong>Theorem</strong> The two-level preconditioner with AFW block-smoothers provide a optimal condition number <span class="math notranslate nohighlight">\(\kappa = O(1)\)</span>.</p>
+<p>Proof: We have to verify that</p>
+<div class="math notranslate nohighlight">
+\[
+\inf_{u_h = u_H + \sum u_i} \left\{ \| u_H \|_{A^\varepsilon}^2 + \sum \| u_i \|_{A^\varepsilon}^2 \right\} \preceq \| u_h \|_{A^\varepsilon}^2
+\]</div>
+<p>We choose <span class="math notranslate nohighlight">\(u_H := \pi_{V_H} u_h\)</span>. Continuity in energy-norm of the projector bounds the first term. The interpolation rest provides a stable splitting</p>
+<div class="math notranslate nohighlight">
+\[
+u_f = u_h - u_H = r_h + \nabla \psi_h,
+\]</div>
+<p>where the components <span class="math notranslate nohighlight">\(r_h\)</span> and <span class="math notranslate nohighlight">\(\psi_h\)</span> are bounded in <span class="math notranslate nohighlight">\(L_2\)</span>-norms. This <span class="math notranslate nohighlight">\(u_f\)</span> can be further split into local functions as <span class="math notranslate nohighlight">\(u_f = \sum u_i\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">netgen.csg</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+
+<span class="n">geo</span> <span class="o">=</span> <span class="n">CSGeometry</span><span class="p">()</span>
+<span class="n">magnet</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">Pnt</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">Pnt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">0.3</span><span class="p">)</span> \
+    <span class="o">*</span> <span class="n">OrthoBrick</span><span class="p">(</span><span class="n">Pnt</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">Pnt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">box</span> <span class="o">=</span> <span class="n">OrthoBrick</span><span class="p">(</span><span class="n">Pnt</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">),</span> <span class="n">Pnt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">Add</span> <span class="p">(</span><span class="n">magnet</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="s2">&quot;magnet&quot;</span><span class="p">))</span>
+<span class="n">geo</span><span class="o">.</span><span class="n">Add</span> <span class="p">((</span><span class="n">box</span><span class="o">-</span><span class="n">magnet</span><span class="p">)</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="s2">&quot;air&quot;</span><span class="p">))</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fes</span> <span class="o">=</span> <span class="n">HCurl</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">autoupdate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;ndof =&quot;</span><span class="p">,</span> <span class="n">fes</span><span class="o">.</span><span class="n">ndof</span><span class="p">)</span>
+
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-3</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">curl</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">curl</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">eps</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+<span class="n">pre</span> <span class="o">=</span> <span class="n">Preconditioner</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&quot;multigrid&quot;</span><span class="p">,</span> <span class="n">smoother</span><span class="o">=</span><span class="s2">&quot;block&quot;</span><span class="p">)</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">MaterialCF</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;magnet&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)}</span> <span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="n">M</span><span class="o">*</span><span class="n">curl</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="p">(</span><span class="s2">&quot;magnet&quot;</span><span class="p">))</span>
+
+<span class="k">with</span> <span class="n">TaskManager</span><span class="p">():</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">mesh</span><span class="o">.</span><span class="n">Refine</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;ndof =&quot;</span><span class="p">,</span> <span class="n">fes</span><span class="o">.</span><span class="n">ndof</span><span class="p">)</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve.krylovspace</span> <span class="kn">import</span> <span class="n">CGSolver</span>
+
+<span class="n">inv</span> <span class="o">=</span> <span class="n">CGSolver</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">printrates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">TaskManager</span><span class="p">():</span>
+    <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">inv</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipping</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;pnt&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;function&quot;</span> <span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">curl</span><span class="p">(</span><span class="n">gfu</span><span class="p">),</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">clipping</span><span class="o">=</span><span class="n">clipping</span><span class="p">,</span> \
+      <span class="n">vectors</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;grid_size&quot;</span> <span class="p">:</span> <span class="mi">40</span> <span class="p">},</span> <span class="n">draw_surf</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./saddlepoint"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Parameter Dependent Problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dirichlet-boundary-conditions-by-penalty">Dirichlet boundary conditions by penalty:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation-for-the-flux">Penalty formulation for the flux:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maxwell-equations">Maxwell equations:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation-for-the-stokes-equation">Penalty formulation for the Stokes equation:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-two-level-methods-for-parameter-dependent-problems">Robust two-level methods for parameter dependent problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-smoothers">Robust smoothers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-coarse-grid-correction">Robust coarse-grid correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-level-analysis-for-maxwell-equations">Two-level analysis for Maxwell equations</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

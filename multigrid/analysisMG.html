@@ -1,0 +1,710 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analysis of the Multigrid Iteration &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'multigrid/analysisMG';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Scientific Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/multigrid/analysisMG.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analysis of the Multigrid Iteration</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-approximation-property">The Approximation Property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-smothing-property">The Smothing Property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-convergence-of-the-v-cycle">Optimal convergence of the <span class="math notranslate nohighlight">\(V\)</span>-cycle</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analysis-of-the-multigrid-iteration">
+<h1>Analysis of the Multigrid Iteration<a class="headerlink" href="#analysis-of-the-multigrid-iteration" title="Link to this heading">#</a></h1>
+<p>We analyze the the condition number of the multigrid preconditioner. It uses the interplay of the smoothing iteration, and the coarse grid correction. The smoother is well suited for damping out high-frequency components of the error, while low frequency components can be well approximated on the coarse grid.
+We formulate the
+<em>smoothing property</em> satisfied by the smoother, and the <em>approximation property</em> due to the coarse-grid step.</p>
+<p>We present the technique developed by Braess and Hackbusch, 83, which proves the optimal convergence of the V-cycle iteration, and even shows the improvement of convergence with increased number of smoothing-steps. However, it is based on the strong assumption of full elliptic regularity. There are many generalizations of the method and the analysis, like</p>
+<ul class="simple">
+<li><p>W-cycle: the coarse grid correction step is preformed twice</p></li>
+<li><p>variable V-cycle: the number of smoothing steps increase geometric for coarser levels</p></li>
+<li><p>non-nested setting: the coasre grid matrices only satisfy  <span class="math notranslate nohighlight">\(A_{l-1} \approx P_l^T A_l P_l\)</span></p></li>
+</ul>
+<p>We refer to literature: Hackbusch 85, Bramble 93, Trottenberg et al 01</p>
+<section id="the-algorithm">
+<h2>The Algorithm<a class="headerlink" href="#the-algorithm" title="Link to this heading">#</a></h2>
+<p>The multigrid iteration matrix <span class="math notranslate nohighlight">\(M_l\)</span> and the multigrid preconditioner <span class="math notranslate nohighlight">\(C_l\)</span> are linked by</p>
+<div class="math notranslate nohighlight">
+\[
+M_l = I - C_l^{-1} A_l
+\]</div>
+<p>They are recursively defined as</p>
+<div class="math notranslate nohighlight">
+\[
+M_l = (I-D_l^{-1} A_l)^m (I - P_l C_{l-1}^{-1} P_l^T A_l) (I -D_l^{-1} A_l)^m,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_0 := A_0\)</span>. The iteration matrix of the smoother <span class="math notranslate nohighlight">\(D_l\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+S_l = I - D_l^{-1} A_l
+\]</div>
+<p>We assume that the smoother <span class="math notranslate nohighlight">\(D_l\)</span> is spd, and scaled such that</p>
+<div class="math notranslate nohighlight">
+\[
+D_l \geq A_l
+\]</div>
+<p>(in the sense of <span class="math notranslate nohighlight">\(u^T D_l u \geq u^T A_l u \; \forall u\)</span>) and thus</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma (I - D_l^{-1} A_l) \subset [0,1]
+\]</div>
+<p>We assume that the smoother is related to the <span class="math notranslate nohighlight">\(L_2\)</span>-norm as</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_l \|_{D_l}^2 \preceq h_l^{-2} \| u_l \|_{L_2}^2.
+\]</div>
+<p>This estimate holds for the (block-)Jacobi or symmetric (block-)Gauss-Seidel smoothers applied to finite element matrix of the Laplace operator.</p>
+</section>
+<section id="the-approximation-property">
+<h2>The Approximation Property<a class="headerlink" href="#the-approximation-property" title="Link to this heading">#</a></h2>
+<p>We start with a function <span class="math notranslate nohighlight">\(u_l\)</span>, and perform a coarse-grid correction step with exact coarse-grid solve:</p>
+<div class="math notranslate nohighlight">
+\[
+e_l = (I - P_l A_{l-1}^{-1} P_l^T A_l) u_l
+\]</div>
+<p>If the coarse grid discretization is consistent, then this projection error <span class="math notranslate nohighlight">\(e_l\)</span> is small in <span class="math notranslate nohighlight">\(L_2\)</span>-norm:</p>
+<div class="math notranslate nohighlight">
+\[
+\| (I - P_l A_{l-1}^{-1} P_l^T A_l) u_l \|_{L_2} \preceq h \, \| u_l \|_{H^1}
+\]</div>
+<p>We can prove this similar to the Nitsche-lemma using full elliptic regularity.</p>
+<p>We introduce the coarse grid projector</p>
+<div class="math notranslate nohighlight">
+\[
+\Pi_{l-1} = P_l A_{l-1}^{-1} P_l^T A_l
+\]</div>
+<p><strong>Theorem [Approximation property]</strong> There holds with a constant <span class="math notranslate nohighlight">\(C &gt; 0\)</span> independent of the refinement level:</p>
+<div class="math notranslate nohighlight">
+\[
+\forall \, u_l \in V_l : \qquad 
+\| u_l - \Pi_{l-1} u_l \|_{D_l}^2 \leq C \, \| u_l - \Pi_{l-1} u_l \|_{A_l}^2
+\]</div>
+<p><em>Proof:</em> We write <span class="math notranslate nohighlight">\(u_l\)</span> for the coefficient vector as well as for the corresponding finite element function in <span class="math notranslate nohighlight">\(V_l\)</span>. For a given <span class="math notranslate nohighlight">\(u_l\)</span>, define the <span class="math notranslate nohighlight">\(A(.,.)\)</span>-orthogonal projection <span class="math notranslate nohighlight">\(u_{l-1} \in V_{l-1}\)</span> via</p>
+<div class="math notranslate nohighlight">
+\[
+A(u_{l-1}, v_{l-1}) = A(u_l, v_{l-1}) \qquad \forall \, v_{l-1} \in V_{l-1}
+\]</div>
+<p>The error <span class="math notranslate nohighlight">\(e_l = u_l - u_{l-1}\)</span> is <span class="math notranslate nohighlight">\(A(.,.)\)</span>-orthogonal to <span class="math notranslate nohighlight">\(V_{l-1}\)</span>. As in the Nitsche-Lemma we define an artificial problem with the error as right hand side: find <span class="math notranslate nohighlight">\(\varphi \in H^1\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+A(\varphi, \psi) = (e_l, \psi)_{L_2} \qquad \forall \, \psi \in H^1.
+\]</div>
+<p>Thanks to the regularity assumption the solution <span class="math notranslate nohighlight">\(\varphi\)</span> is in <span class="math notranslate nohighlight">\(H^2\)</span>, and satisfies the regularity estimate</p>
+<div class="math notranslate nohighlight">
+\[
+\| \varphi \|_{H^2} \preceq \| e_l \|_{L_2}
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\varphi_l\)</span> and <span class="math notranslate nohighlight">\(\varphi_{l-1}\)</span> be the corresponding finite element solutions defined by <span class="math notranslate nohighlight">\(A(\varphi_l, \psi_l) = (e_l, \psi_l)_{L_2}\)</span>, and <span class="math notranslate nohighlight">\(A(\varphi_{l-1}, \psi_{l-1}) = (e_l, \psi_{l-1})_{L_2}\)</span>. They satisfy (by Cea’s Lemma):</p>
+<p>\begin{eqnarray*}
+| \varphi_l - \varphi_{l-1} |<em>A &amp; \leq &amp;
+| \varphi_l  - \varphi |<em>A + | \varphi</em>{l-1}  - \varphi |<em>A \
+&amp; \preceq &amp; h , | \varphi |</em>{H^2} \preceq  h , | e |</em>{L_2}
+\end{eqnarray*}</p>
+<p>Now we use <span class="math notranslate nohighlight">\(e_l = u_l - u_{l-1}\)</span> as test-function, and use orthogonality several times:</p>
+<p>\begin{eqnarray*}
+| e_l |<em>{L_2}^2 &amp; = &amp; (e_l, u_l - u</em>{l-1})<em>{L_2} \
+&amp; = &amp; A(\varphi_l, u_l) - A(\varphi</em>{l-1}, u_{l-1}) \
+&amp; = &amp; A(\varphi_l, u_l) - A(\varphi_{l-1}, u_l) \
+&amp; = &amp; A(\varphi_l - \varphi_{l-1}, u_l) \
+&amp; = &amp; A(\varphi_l - \varphi_{l-1}, u_l - u_{l-1}) \
+&amp; \leq &amp; | \varphi_l - \varphi_{l-1} |<em>A , | u_l - u</em>{l-1} |<em>A \
+&amp; \preceq &amp; h , | e_l |</em>{L_2} | e_l |_A
+\end{eqnarray*}</p>
+<p>We have shown that</p>
+<div class="math notranslate nohighlight">
+\[
+h^{-1} \, \| u_l - u_{l-1} \|_{L_2} \preceq \| u_l - u_{l-1} \|_A
+\]</div>
+<p>Since the smoother is dominated by the scaled <span class="math notranslate nohighlight">\(L_2\)</span>-norm there holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_l - \Pi_{l-1} u_l \|_{D_l} \preceq h^{-1} \| u_l - \Pi_{l-1} u_l \|_{L_2} = h^{-1} \| u_l - u_{l-1} \|_{L_2},
+\]</div>
+<p>and the theorem is proven.</p>
+</section>
+<section id="the-smothing-property">
+<h2>The Smothing Property<a class="headerlink" href="#the-smothing-property" title="Link to this heading">#</a></h2>
+<p>We have already seen that a basic iteration method with local preconditioners does not reduce the error well, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+\| S u \|_{A_l} \leq (1-c h^2) \| u \|_{A_l}
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(\lambda \in \sigma(D_l^{-1} A_l)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+1 - \lambda \in \sigma (S). 
+\]</div>
+<p>Components in the eigen-spaces of eigen-values close to 1 are reduced well by the smoothing iteration, but error-components of eigen-values close to 0 are barely reduced. The large eigenvalues correspond to highly oscillating functions, smaller ones to smooth functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+<span class="kn">from</span> <span class="nn">netgen.geom2d</span> <span class="kn">import</span> <span class="n">unit_square</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">unit_square</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mf">0.02</span><span class="p">))</span>
+
+<span class="n">fes</span> <span class="o">=</span> <span class="n">H1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+<span class="n">Dinv</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">CreateSmoother</span><span class="p">()</span>
+
+<span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+
+<span class="c1"># we start with a rough random function</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">SetRandom</span><span class="p">()</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">)</span>
+
+<span class="c1"># performing some smoothing steps</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">-=</span> <span class="n">Dinv</span> <span class="o">@</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span>
+    
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The technique to quantify that is to use different norms for the input and the output of the smoothing iteration. We use a norm similar to the stronger <span class="math notranslate nohighlight">\(H^2\)</span> Sobolev-norm.</p>
+<p><strong>Theorem [Smoothing property]</strong>
+$<span class="math notranslate nohighlight">\(
+\| (I - D^{-1} A)^m u \|_{A D^{-1} A}^2 \leq \frac{1}{2m+1} \| u \|_A^2
+\)</span>$</p>
+<p><em>Proof:</em> We use spectral theory. Expanding <span class="math notranslate nohighlight">\(u\)</span> in the eigensystem of <span class="math notranslate nohighlight">\(A z = \lambda D z\)</span> we can reformulate the inequality as
+$<span class="math notranslate nohighlight">\(
+\sum \lambda_i^2 (1 - \lambda_i)^{2m} u_i^2 \leq \frac{1}{2m+1} \sum \lambda_i u_i^2
+\)</span>$</p>
+<p>The estimate follows from estimating</p>
+<div class="math notranslate nohighlight">
+\[
+\max_{\lambda \in [0,1]} \lambda (1-\lambda)^{2m} \leq \frac{1}{2m+1},
+\]</div>
+<p>where the maximizer of the function on the left hand side is easily found and estimated by curve discussion.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">m</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Lemma [Improved smoothing property]</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\| (I - D^{-1} A)^m u \|_{A D^{-1} A}^2 \leq \frac{1}{2m} \left( \| u \|_A^2 - \| (I-D^{-1} A)^m u \|_A^2 \right)
+\]</div>
+<p><em>Proof:</em> Very similar, we have to verify
+$<span class="math notranslate nohighlight">\(
+\lambda^2 (1-\lambda)^{2m} \leq \frac{1}{2m} \left( \lambda - \lambda (1-\lambda)^{2m} \right)
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">m</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="optimal-convergence-of-the-v-cycle">
+<h2>Optimal convergence of the <span class="math notranslate nohighlight">\(V\)</span>-cycle<a class="headerlink" href="#optimal-convergence-of-the-v-cycle" title="Link to this heading">#</a></h2>
+<p>We can now combine these properties to analyze the multigrid iteration:</p>
+<p><strong>Theorem:</strong> Assume that the approximation property and the smoothing property are satisfied. Then there holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| M_l \|_A \leq \delta 
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+\delta = \frac{C}{C+2m} &lt; 1.
+\]</div>
+<p><em>Proof</em>: We prove the claim per induction. For <span class="math notranslate nohighlight">\(l=\)</span> there holds <span class="math notranslate nohighlight">\(M_0 = 0\)</span>.</p>
+<p>From <span class="math notranslate nohighlight">\(M_{l-1} = I - C_{l-1}^{-1} A_{l-1}\)</span> there follows <span class="math notranslate nohighlight">\(C_{l-1}^{-1} = (I - M_{l-1}) A_{l-1}^{-1}\)</span>.</p>
+<p>We carefully split the iteration matrix into an iteration matrix with exact coarse grid solve, plus its perturbation:</p>
+<p>\begin{eqnarray*}
+(M_l u, u)<em>{A_l} &amp; = &amp; \big( S_l^m (I - P_l C</em>{l-1}^{-1} P_l^T A_l) S_l^m u, u \big)<em>{A_l} \
+&amp; = &amp; \big( (I - P_l C</em>{l-1}^{-1} P_l^T A_l) S_l^m u, S_l^m u \big)<em>{A_l} \
+&amp; = &amp; \big( (I - P_l (I-M</em>{l-1}) A_{l-1}^{-1} P_l^T A_l) S_l^m u, S_l^m u)<em>{A_l} \
+&amp; = &amp; ((I-P_l A</em>{l-1}^{-1} P_l^T A_l) S_l^m u, S_l^m u)<em>{A_l} \
+&amp; &amp; \quad + (P_l M</em>{l-1} A_{l-1}^{-1} P_l^T A_l S_l^m u, S_l^m u)<em>{A_l} \
+&amp; = &amp; ( (I-\Pi</em>{l-1}) S_l^m u, S_l^m u)<em>{A_l}  \
+&amp; &amp; + (M</em>{l-1} A_{l-1}^{-1} P_l^T A_l S_l^m u, A_{l-1}^{-1} P_l^T A_l S_l^m u)<em>{A</em>{l-1}}
+\end{eqnarray*}</p>
+<p>We use the induction assumption <span class="math notranslate nohighlight">\(\| M_{l-1} \|_{A_{l-1}} \leq \delta\)</span> for the second term:</p>
+<p>\begin{eqnarray*}
+(M_l u, u)<em>{A_l} &amp; \leq &amp; (I-\Pi</em>{l-1}) S_l^m u, S_l^m u)<em>{A_l}^2 + \delta , ( \Pi</em>{l-1} S_l^m u, S_l^m u)<em>{A_l} \
+&amp; = &amp; (1-\delta) \big( (I-\Pi</em>{l-1}) S_l^m u, S_l^m u \big)_A^2 + \delta , ( S_l^m u, S_l^m u)
+\end{eqnarray*}</p>
+<p>We continue with the first term, apply Cauchy-Schwarz for the <span class="math notranslate nohighlight">\((.,.)_{D_l}\)</span> inner product, and use approximation and smoothing properties:</p>
+<p>\begin{eqnarray*}
+\big( (I-\Pi_{l-1}) S_l^m u, S_l^m u \big)<em>{A_l}
+&amp; = &amp; | (I-\Pi</em>{l-1}) S_l^m u |<em>{A_l}^2 \
+&amp; = &amp; \big( (I-\Pi</em>{l-1}) S_l^m u, D_l^{-1} A_l S_l^m u \big)<em>{D_l} \
+&amp; \leq &amp; | (I-\Pi</em>{l-1}) S_l^m u |<em>{D_l} | S_l^m u |</em>{AD^{-1} A} \
+&amp; \leq &amp; \sqrt{C}  | (I-\Pi_{l-1}) S_l^m u |<em>{A_l}  \sqrt{\frac{1}{2m} \big( | u |</em>{A_l}^2 - | S_l^m u |_{A_l}^2 \big)}
+\end{eqnarray*}</p>
+<p>Dividing by one factor <span class="math notranslate nohighlight">\(\| (I-\Pi_{l-1}) S_l^m u \|_{A_l}\)</span> we get</p>
+<div class="math notranslate nohighlight">
+\[
+\| (I-\Pi_{l-1}) S_l^m u \|_{A_l}^2 \leq \frac{C}{2m} \big( \| u \|_{A_l}^2 - \| S_l^m u \|_{A_l}^2 \big)
+\]</div>
+<p>Combining both estimates and using <span class="math notranslate nohighlight">\(\| S_l u \|_{A_l} \leq \|u \|_{A_l}\)</span> we get</p>
+<p>\begin{eqnarray*}
+(M_l u, u)<em>A &amp; \leq &amp; (1-\delta) \frac{C}{2m} ( | u |</em>{A_l}^2 - | S_l^m u |<em>{A_l}^2 ) + \delta , | S_l^m u |</em>{A_l}^2 \
+&amp; \leq &amp; \frac{(1-\delta) C}{2m} | u |<em>A^2 + \big( \delta - \frac{(1-\delta) C}{2m} \big)  | S_l^m u |<em>A^2 \
+&amp; \leq &amp; \frac{(1-\delta) C}{2m} | u |</em>{A_l}^2 + \big( \delta - \frac{(1-\delta) C}{2m} \big)  | u |</em>{A_l}^2 \
+&amp; = &amp; \delta , | u |_{A_l}^2
+\end{eqnarray*}</p>
+<p>We used that by the choice of <span class="math notranslate nohighlight">\(\delta\)</span> the factor <span class="math notranslate nohighlight">\(\delta - \frac{(1-\delta) C}{2m}\)</span> is positive. The proof is complete.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./multigrid"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-approximation-property">The Approximation Property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-smothing-property">The Smothing Property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-convergence-of-the-v-cycle">Optimal convergence of the <span class="math notranslate nohighlight">\(V\)</span>-cycle</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
