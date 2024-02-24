@@ -218,13 +218,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">25. Basic Iterative Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Richardson.html">26. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradientmethod.html">27. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preconditioning.html">28. Preconditioning</a></li>
 
-
-<li class="toctree-l1"><a class="reference internal" href="gradientmethod.html">29. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preconditioning.html">30. Preconditioning</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Chebyshev.html">32. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conjugategradients.html">33. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chebyshev.html">30. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conjugategradients.html">31. Conjugate Gradients</a></li>
 </ul>
 
     </div>
@@ -392,9 +390,15 @@ A x = b.
 Although this section applies to linear systems in general, we think
 of equations arising from finite element discretization. Other numerical methods for partial differential equations lead to similar systems. Matrices from graph networks are another example.</p>
 <p>The situation is advantageous if the matrix is</p>
-<ul class="simple">
-<li><p>symmetric:  $<span class="math notranslate nohighlight">\(A = A^T\)</span>$</p></li>
-<li><p>positive definite: $<span class="math notranslate nohighlight">\(x^T A x &gt; 0 \qquad \forall \, 0 \neq x \in {\mathbb R}^n\)</span>$</p></li>
+<ul>
+<li><p>symmetric:</p>
+<div class="math notranslate nohighlight">
+\[A = A^T\]</div>
+</li>
+<li><p>positive definite:</p>
+<div class="math notranslate nohighlight">
+\[x^T A x &gt; 0 \qquad \forall \, 0 \neq x \in {\mathbb R}^n\]</div>
+</li>
 </ul>
 <p>We call symmetric and positive definite matrices SPD.</p>
 <p>SPD matrices lead to the energy norm and the energy inner product defined  as</p>
