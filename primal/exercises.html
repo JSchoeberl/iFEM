@@ -395,12 +395,10 @@ document.write(`
 <section id="get-started-with-netgen-opencascade-geometric-modeling">
 <h2><span class="section-number">6.1. </span>Get started with Netgen-Opencascade geometric modeling<a class="headerlink" href="#get-started-with-netgen-opencascade-geometric-modeling" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Consult the documentation:
-<a class="reference external" href="https://docu.ngsolve.org/latest/i-tutorials/unit-4.4-occ/occ.html">https://docu.ngsolve.org/latest/i-tutorials/unit-4.4-occ/occ.html</a> <br>
-and subsections 4.4.1 and 4.4.2</p></li>
+<li><p>Consult the documentation, Section 4.4: <a class="reference external" href="https://docu.ngsolve.org/latest/i-tutorials/index.html#Geometric-modeling-and-mesh-generation">https://docu.ngsolve.org/latest/i-tutorials/index.html#Geometric-modeling-and-mesh-generation</a></p></li>
 <li><p>Create some geometric models of your choice in 2D and 3D</p></li>
 <li><p>Generate meshes</p></li>
-<li><p>Give names to material and boundary regions. Execute <code class="docutils literal notranslate"><span class="pre">mesh.Materials()</span></code> and <code class="docutils literal notranslate"><span class="pre">mesh.Boundaries()</span></code>.</p></li>
+<li><p>Give names to material and boundary regions. Execute <code class="docutils literal notranslate"><span class="pre">mesh.Materials()</span></code> and <code class="docutils literal notranslate"><span class="pre">mesh.Boundaries()</span></code> for verification.</p></li>
 </ul>
 </section>
 <section id="experiment-with-coefficientfunctions">
@@ -413,11 +411,12 @@ and subsections 4.4.1 and 4.4.2</p></li>
 <section id="work-with-gridfunctions">
 <h2><span class="section-number">6.3. </span>Work with GridFunctions<a class="headerlink" href="#work-with-gridfunctions" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Define an <span class="math notranslate nohighlight">\(H^1\)</span> finite element space of some order, and a <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code> in this space</p></li>
-<li><p>Choose <span class="math notranslate nohighlight">\(\Omega = (0,1)^2\)</span>, and interpolate <span class="math notranslate nohighlight">\(u(x,y) = \exp(-x^2 - y^2)\)</span></p></li>
-<li><p>Compute the <span class="math notranslate nohighlight">\(L_2\)</span>-norm of the interpolation error <span class="math notranslate nohighlight">\(u - gfu\)</span>.</p></li>
-<li><p>Study convergence of the interpolation error depending on the mesh-size, and the order of the finite element space (generate plots)!</p></li>
-<li><p>Find a way to compute <span class="math notranslate nohighlight">\(\int_{\partial \Omega} | \partial_n u- \partial_n gfu) |^2\)</span></p></li>
+<li><p>Define an <span class="math notranslate nohighlight">\(H^1\)</span> finite element space of some order on <span class="math notranslate nohighlight">\(\Omega = (0,1)^2\)</span></p></li>
+<li><p>Define a <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code> in this space, and interpolate <span class="math notranslate nohighlight">\(u(x,y) = \exp(-x^2 - y^2)\)</span></p></li>
+<li><p>Compute the <span class="math notranslate nohighlight">\(L_2\)</span>-norm of the interpolation error <span class="math notranslate nohighlight">\(u - I_h u\)</span>.</p></li>
+<li><p>Study convergence of the interpolation error depending on the mesh-size and the polynomial order of the space (generate plots).</p></li>
+<li><p>Study convergence in the <span class="math notranslate nohighlight">\(H^1\)</span>-norm</p></li>
+<li><p>Find a way to compute <span class="math notranslate nohighlight">\(\int_{\partial \Omega} | \partial_n u- \partial_n I_h u) |^2\)</span>.</p></li>
 </ul>
 </section>
 <section id="linear-algebra">
@@ -447,7 +446,7 @@ and subsections 4.4.1 and 4.4.2</p></li>
 \[
   \| f \|_{V^\ast} := \sup_{v \in V} \frac{f(v)}{\|v \|_V}.
   \]</div>
-<p>Proof that the supremum is attained for <span class="math notranslate nohighlight">\(w\)</span> satisfying <span class="math notranslate nohighlight">\((w,v)_V = f(v) \; \forall \, v \in V\)</span>m, i.e. the solution of the variational problem.</p>
+<p>Proof that the supremum is attained for <span class="math notranslate nohighlight">\(w\)</span> satisfying <span class="math notranslate nohighlight">\((w,v)_V = f(v) \; \forall \, v \in V\)</span>, i.e. the solution of a variational problem.</p>
 </li>
 <li><p>Compute the dual norm by replacing the space <span class="math notranslate nohighlight">\(V\)</span> by a sequence of finite element spaces (refinement in <span class="math notranslate nohighlight">\(h\)</span> and/or <span class="math notranslate nohighlight">\(p\)</span>). Try with norms <span class="math notranslate nohighlight">\(\| \cdot \|_{L_2}\)</span> and <span class="math notranslate nohighlight">\(\| \cdot \|_{H^1}\)</span>.</p></li>
 </ul>
