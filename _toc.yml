@@ -10,7 +10,9 @@ parts:
     - file: primal/first_example.ipynb
     - file: primal/boundary_conditions.ipynb
     - file: primal/subdomains.ipynb         
-    - file: primal/solvers.ipynb         
+    - file: primal/elasticity3D.ipynb         
+    - file: primal/solvers.ipynb
+    - file: primal/exercises.ipynb             
 
 
   - caption: Mixed Finite Element Methods
