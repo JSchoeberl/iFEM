@@ -18,9 +18,9 @@ behind.
 
 In this class we follow an approach in between: We aim explaining the
 mathematical theory, and giving students the possibility to try all
-methods on the computer. For this we using the finite element package
-Netgen/NGSolve, which can be conveniently used via its Python frontend
-in jupyter-notebooks.
+methods on the computer. For this we are using the open source finite
+element package Netgen/NGSolve, which can be conveniently used via its
+Python frontend in jupyter-notebooks.
 
 This lecture is given in this form the first time in summer term 24.
 If you have suggestions for improvements, or found some errors, please send them per mail
