@@ -46,7 +46,7 @@ Books:
 Install a recent Python. Then it should be easy to install NGSolve using
 
     pip install jupyter numpy scipy matplotlib
-    pip install ngsolve
+    pip install --pre ngsolve
     pip install webgui_jupyter_widgets
 
 
@@ -80,8 +80,7 @@ If local installation does not work, there are alternatives:
 
 - run NGSolve online within jupyter-lite:
 
-  [![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https:n.ipynb)
-
+  [![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://jschoeberl.github.io/iFEM-lite/lab?path=iFEM.ipynb)
 
   [https://ngsolve.github.io/jupyterlite_ngsolve/lab?path=poisson.ipynb](https://jschoeberl.github.io/iFEM-lite/lab?path=iFEM.ipynb)
 
