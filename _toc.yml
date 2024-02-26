@@ -15,6 +15,16 @@ parts:
     - file: primal/exercises.ipynb             
 
 
+  - caption: Abstract Theory
+    numbered: True
+    chapters:
+    - file: abstracttheory/BasicProperties.ipynb
+    - file: abstracttheory/subspaceprojection.ipynb
+    - file: abstracttheory/RieszRepresentation.ipynb
+    - file: abstracttheory/Coercive.ipynb    
+
+
+
   - caption: Mixed Finite Element Methods
     numbered: True
     chapters:

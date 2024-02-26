@@ -49,9 +49,13 @@ html:
   use_repository_button: false
 
 
-# parse:
-#  myst_enable_extensions:
+parse:
+  myst_enable_extensions:
 #    # don't forget to list any other extensions you want enabled,
 #    # including those that are enabled by default! See here: https://jupyterbook.org/en/stable/customize/config.html
-#    - html_image
+    - html_image
+    - dollarmath
+    - amsmath
+    - linkify
+    - colon_fence
         
