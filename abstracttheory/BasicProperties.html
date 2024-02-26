@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. Basic properties &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'abstracttheory/BasicProperties';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Projection onto subspaces" href="subspaceprojection.html" />
+    <link rel="prev" title="6. Exercises" href="../primal/exercises.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An Interactive Introduction to the Finite Element Method
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">4. 3D Solid Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">5. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RieszRepresentation.html">9. Riesz Representation Theorem</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">10. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">11. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">12. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">13. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">14. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">15. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">16. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">17. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">18. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">20. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">21. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">22. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">23. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">24. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">25. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">26. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">27. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">28. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">29. Hybridization Techniques</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">30. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">31. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">32. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">33. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">35. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">36. Conjugate Gradients</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/abstracttheory/BasicProperties.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Basic properties</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-properties">
+<h1><span class="section-number">7. </span>Basic properties<a class="headerlink" href="#basic-properties" title="Link to this heading">#</a></h1>
+<p><strong>Definition:</strong> A <strong>vector space</strong> <span class="math notranslate nohighlight">\(V\)</span> is a set with
+the operations <span class="math notranslate nohighlight">\(+ : V \times V \rightarrow V\)</span> and <span class="math notranslate nohighlight">\(\cdot : {\mathbb R}
+\rightarrow V\)</span> such that for all <span class="math notranslate nohighlight">\(u,v \in V\)</span> and <span class="math notranslate nohighlight">\(\lambda, \mu \in {\mathbb R}\)</span>
+there holds</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u + v = v + u\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((u+v)+w = u + (v+w)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda \cdot (u+v) = 
+\lambda \cdot u + \lambda \cdot v, \quad 
+(\lambda + \mu) \cdot u = \lambda \cdot u + \mu \cdot u\)</span>
+\end{itemize}</p></li>
+</ul>
+<p>Examples are <span class="math notranslate nohighlight">\({\mathbf R}^n\)</span>, the continuous functions <span class="math notranslate nohighlight">\(C^0([0,1])\)</span>, or the Lebesgue space <span class="math notranslate nohighlight">\(L_2\)</span>.</p>
+<p><strong>Definition:</strong> A <strong>normed</strong> vector space <span class="math notranslate nohighlight">\((V,\|\cdot\|)\)</span> is a vector
+space with the operation <span class="math notranslate nohighlight">\(\| . \| : V \rightarrow {\mathbb R}\)</span> being a norm, i.e.,
+for <span class="math notranslate nohighlight">\(u,v \in V\)</span> and <span class="math notranslate nohighlight">\(\lambda \in {\mathbb R}\)</span> there holds</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\| u + v \| \leq \| u \| + \| v \|\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| \lambda \, u \| = | \lambda | \, \| u \|\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\| u \| = 0 \Leftrightarrow u = 0\)</span></p></li>
+</ul>
+<p>Examples are <span class="math notranslate nohighlight">\((C^0, \|\cdot\|_{\sup})\)</span>, or <span class="math notranslate nohighlight">\((C^0, \|\cdot\|_{L_2})\)</span>.</p>
+<p><strong>Definition:</strong> In a <strong>complete</strong> normed vector space, Cauchy sequences
+<span class="math notranslate nohighlight">\((u_n) \in V^{\mathbb N}\)</span> converge to an <span class="math notranslate nohighlight">\(u \in V\)</span>. A complete normed vector space
+is called <strong>Banach space</strong>.</p>
+<p>Examples of Banach spaces are <span class="math notranslate nohighlight">\((L_2, \|\cdot\|_{L_2})\)</span>,
+<span class="math notranslate nohighlight">\((C^0, \|\cdot\|_{\sup})\)</span>, but not <span class="math notranslate nohighlight">\((C^0, \|\cdot\|_{L_2})\)</span>.</p>
+<p><strong>Definition:</strong> The <strong>closure</strong> of a normed vector-space <span class="math notranslate nohighlight">\((W, \| \cdot \|_V)\)</span>,
+denoted as <span class="math notranslate nohighlight">\(\overline{W}^{\| \cdot \|_V}\)</span> is the smallest complete space containing <span class="math notranslate nohighlight">\(W\)</span>.</p>
+<p>Example: <span class="math notranslate nohighlight">\(\overline{ C }^{\| \cdot \|_{L_2}} = L_2\)</span>.</p>
+<p><strong>Definition:</strong> A <strong>functional</strong> or a <strong>linear form</strong> <span class="math notranslate nohighlight">\(l(\cdot)\)</span> on <span class="math notranslate nohighlight">\(V\)</span> is a linear mapping
+<span class="math notranslate nohighlight">\(l(\cdot) : V \rightarrow {\mathbb R}\)</span>.
+The canonical norm for linear forms is the <strong>dual norm</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\| l \|_{V^\ast} := \sup_{0 \neq v \in V} \frac{l(v)}{\|v\|}.
+\]</div>
+<p>A linear form <span class="math notranslate nohighlight">\(l(\cdot)\)</span> is called bounded if the norm is finite.
+The vector space of all bounded linear forms on <span class="math notranslate nohighlight">\(V\)</span> is called the
+dual space <span class="math notranslate nohighlight">\(V^\ast\)</span>.</p>
+<p>An example for a bounded linear form is
+<span class="math notranslate nohighlight">\(l(\cdot) : L_2 \rightarrow {\mathbf R} : v \rightarrow \int v \, dx\)</span>.</p>
+<p><strong>Definition:</strong> A <strong>bilinear form</strong> <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> on <span class="math notranslate nohighlight">\(V\)</span> is a mapping
+<span class="math notranslate nohighlight">\(A : V \times V \rightarrow {\mathbb R}\)</span> which is linear in <span class="math notranslate nohighlight">\(u\)</span> and in <span class="math notranslate nohighlight">\(v\)</span>. It
+is called <strong>symmetric</strong> if <span class="math notranslate nohighlight">\(A(u,v) = A(v,u)\)</span> for all <span class="math notranslate nohighlight">\(u,v \in V\)</span>.</p>
+<p>Examples are the bilinear form <span class="math notranslate nohighlight">\(A(u,v) = \int u v \, dx\)</span> on <span class="math notranslate nohighlight">\(L_2\)</span>, or
+<span class="math notranslate nohighlight">\(A(u,v) := u^T A v\)</span> on <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>, where <span class="math notranslate nohighlight">\(A\)</span> is a (symmetric) matrix.</p>
+<p><strong>Definition:</strong> A symmetric bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is
+called an <strong>inner product</strong> if it satisfies</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A(v,v) \geq 0 \; \forall  \, v \in V\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A(v,v) = 0 \Leftrightarrow v = 0\)</span></p></li>
+</ul>
+<p>Often, is is denoted as <span class="math notranslate nohighlight">\((\cdot,\cdot)_A\)</span>, <span class="math notranslate nohighlight">\((\cdot,\cdot)_V\)</span>, or simply <span class="math notranslate nohighlight">\((\cdot,\cdot)\)</span>.</p>
+<p>An example on <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span> is <span class="math notranslate nohighlight">\(u^T A v\)</span>, where <span class="math notranslate nohighlight">\(A\)</span> is a symmetric and positive
+definite matrix.</p>
+<p><strong>Definition:</strong> An <strong>inner product space</strong> is a vector space <span class="math notranslate nohighlight">\(V\)</span> together
+with an inner product <span class="math notranslate nohighlight">\((\cdot, \cdot)_V\)</span>.</p>
+<p><strong>Lemma:</strong> <strong>Cauchy Schwarz inequality.</strong> If <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is a symmetric
+bilinear form such that <span class="math notranslate nohighlight">\(A(v,v) \geq 0\)</span> for all <span class="math notranslate nohighlight">\(v \in V\)</span>, then there holds</p>
+<div class="math notranslate nohighlight">
+\[
+A(u,v) \leq A(u,u)^{1/2} A(v,v)^{1/2}
+\]</div>
+<p><em>Proof:</em> For <span class="math notranslate nohighlight">\(t \in {\mathbb R}\)</span> there holds</p>
+<div class="math notranslate nohighlight">
+\[
+0 \leq A(u-tv, u-tv) = A(u,u) - 2 t A(u,v) + t^2 A(v,v)
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(A(v,v) = 0\)</span>, then <span class="math notranslate nohighlight">\(A(u,u)-2tA(u,v) \geq 0\)</span> for all <span class="math notranslate nohighlight">\(t \in {\mathbb R}\)</span>, which
+forces <span class="math notranslate nohighlight">\(A(u,v) = 0\)</span>, and the inequality holds trivially. Else, if <span class="math notranslate nohighlight">\(A(v,v) \neq 0\)</span>, set <span class="math notranslate nohighlight">\(t = A(u,v) / A(v,v)\)</span>, and obtain</p>
+<div class="math notranslate nohighlight">
+\[
+0 \leq A(u,u) - A(u,v)^2 / A(v,v),
+\]</div>
+<p>which is equivalent to the statement.
+\hfill <span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p><strong>Lemma:</strong> <span class="math notranslate nohighlight">\(\| v \|_V := (v,v)_V^{1/2}\)</span> defines a norm on the inner product
+space <span class="math notranslate nohighlight">\((V, (\cdot,\cdot)_V)\)</span>.</p>
+<p><strong>Definition:</strong> An inner product space <span class="math notranslate nohighlight">\((V,(\cdot,\cdot)_V)\)</span> which is
+complete with respect to <span class="math notranslate nohighlight">\(\|\cdot\|_V\)</span> is called a <strong>Hilbert space</strong>.</p>
+<p><strong>Definition:</strong> A <strong>closed subspace</strong> <span class="math notranslate nohighlight">\(S\)</span> of an Hilbert space <span class="math notranslate nohighlight">\(V\)</span>
+is a subset which is a vector space, and which is complete with respect to
+<span class="math notranslate nohighlight">\(\|\cdot \|_V\)</span>.</p>
+<p>A finite dimensional subspace is always a closed subspace.</p>
+<p><strong>Lemma:</strong>
+Let <span class="math notranslate nohighlight">\(T\)</span> be a continuous linear operator from the Hilbert space <span class="math notranslate nohighlight">\(V\)</span>
+to the Hilbert space <span class="math notranslate nohighlight">\(W\)</span>. The kernel of <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(\operatorname{ker} T := \{ v \in V : T v = 0 \}\)</span> is a closed subspace of <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<p><em>Proof:</em> First we observe that <span class="math notranslate nohighlight">\(\operatorname{ker} T\)</span> is a vector space.
+Now, let <span class="math notranslate nohighlight">\((u_n) \in \operatorname{ker} T^{\mathbb N}\)</span> converge to <span class="math notranslate nohighlight">\(u \in V\)</span>. Since
+<span class="math notranslate nohighlight">\(T\)</span> is continuous, <span class="math notranslate nohighlight">\(T u_n \rightarrow T u\)</span>, and thus <span class="math notranslate nohighlight">\(T u = 0\)</span> and <span class="math notranslate nohighlight">\(u \in \operatorname{ker} T\)</span>.
+\hfill <span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p><strong>Lemma:</strong> Let <span class="math notranslate nohighlight">\(S\)</span> be a subspace (not necessarily closed) of <span class="math notranslate nohighlight">\(V\)</span>. Then
+$<span class="math notranslate nohighlight">\(
+S^\bot := \{ v \in V : (v,w) = 0 \; \forall \, w \in S \}
+\)</span>$
+is a closed subspace.</p>
+<p>The proof is similar to the Lemma above.</p>
+<p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(W\)</span> be vector spaces. A <strong>linear operator</strong> <span class="math notranslate nohighlight">\(T : V \rightarrow W\)</span> is a linear mapping from <span class="math notranslate nohighlight">\(V\)</span> to <span class="math notranslate nohighlight">\(W\)</span>. The operator is called <strong>bounded</strong> if its operator-norm</p>
+<div class="math notranslate nohighlight">
+\[
+\| T \|_{V \rightarrow W} := \sup_{0 \neq v \in V} \frac{ \| T v \|_W } { \| v \|_V}
+\]</div>
+<p>is finite.</p>
+<p>An example is the differential operator on the according space <span class="math notranslate nohighlight">\(\frac{d}{dx} : (C^1(0,1), \| \cdot \|_{sup} + \| \frac{d}{dx} \cdot \|_{sup}) \rightarrow ( C(0,1), \| \cdot \|_{sup})\)</span>.</p>
+<p><strong>Lemma:</strong> A bounded linear operator is continuous.</p>
+<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(v_n \rightarrow v\)</span>, i.e. <span class="math notranslate nohighlight">\(\| v_n - v \|_V \rightarrow 0\)</span>.<br />
+Then <span class="math notranslate nohighlight">\(\| T v_n - T v \| \leq \| T \|_{V \rightarrow W } \| v_n - v \|_V\)</span> converges to 0,
+i.e. <span class="math notranslate nohighlight">\(T v_n \rightarrow T v\)</span>. Thus <span class="math notranslate nohighlight">\(T\)</span> is continuous.</p>
+<p><strong>Definition:</strong> A <strong>dense subspace</strong> <span class="math notranslate nohighlight">\(S\)</span> of <span class="math notranslate nohighlight">\(V\)</span> is such that every element of <span class="math notranslate nohighlight">\(V\)</span>
+can be approximated by elements of <span class="math notranslate nohighlight">\(S\)</span>, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+\forall {\varepsilon &gt; 0} \,  \forall { u \in V }  \, \exists { v \in S }  \mbox{ such that } \| u - v \|_V \leq \varepsilon.
+\]</div>
+<p><strong>Lemma:</strong> <strong>(extension principle)</strong> Let <span class="math notranslate nohighlight">\(S\)</span> be a dense subspace of the normed space <span class="math notranslate nohighlight">\(V\)</span>,
+and let <span class="math notranslate nohighlight">\(W\)</span> be a complete space. Let <span class="math notranslate nohighlight">\(T : S \rightarrow W\)</span> be a bounded linear operator
+with respect to the norm <span class="math notranslate nohighlight">\(\| T \|_{V \rightarrow W}\)</span>. Then, the operator can be uniquely extended onto <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(u \in V\)</span>, and let <span class="math notranslate nohighlight">\(v_n\)</span> be a sequence such that <span class="math notranslate nohighlight">\(v_n \rightarrow u\)</span>. Thus, <span class="math notranslate nohighlight">\(v_n\)</span> is Cauchy. <span class="math notranslate nohighlight">\(T v_n\)</span> is a well defined sequence in <span class="math notranslate nohighlight">\(W\)</span>. Since <span class="math notranslate nohighlight">\(T\)</span> is continuous, <span class="math notranslate nohighlight">\(T v_n\)</span> is also Cauchy. Since <span class="math notranslate nohighlight">\(W\)</span> is complete, there exists a limit <span class="math notranslate nohighlight">\(w\)</span> such that <span class="math notranslate nohighlight">\(T v_n \rightarrow w\)</span>. The limit is independent of the sequence, and thus <span class="math notranslate nohighlight">\(T u\)</span> can be defined as the limit <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<p><strong>Definition:</strong> A bounded linear operator <span class="math notranslate nohighlight">\(T : V \rightarrow W\)</span> is called <strong>compact</strong> if for every bounded sequence <span class="math notranslate nohighlight">\((u_n) \in V^{\mathbb N}\)</span>, the sequence <span class="math notranslate nohighlight">\((T u_n)\)</span> contains a convergent sub-sequence.</p>
+<p><strong>Lemma:</strong> Let <span class="math notranslate nohighlight">\(V, W\)</span> be Hilbert spaces. An operator is
+compact if and only if there exists a complete orthogonal system
+<span class="math notranslate nohighlight">\((u_n)\)</span> for <span class="math notranslate nohighlight">\((\operatorname{ker} T)^\bot\)</span> and values <span class="math notranslate nohighlight">\(\lambda_n \rightarrow 0\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+(u_n, u_m)_V = \delta_{n,m} \qquad (T u_n, T u_m)_W = \lambda_n \delta_{n,m}
+\]</div>
+<p>This is the eigensystem of the operator <span class="math notranslate nohighlight">\(K : V \rightarrow V^\ast : u \mapsto (T u, T \cdot)_W\)</span>.</p>
+<p><em>Proof:</em> (sketch) There exists an maximizing element of <span class="math notranslate nohighlight">\(\frac{ (Tv, Tv)_W } { (v,v)_V }\)</span>.
+Scale it to <span class="math notranslate nohighlight">\(\| v \|_V = 1 \)</span> and call it <span class="math notranslate nohighlight">\(u_1\)</span>, and <span class="math notranslate nohighlight">\(\lambda_1 = \frac{ (Tu_1, Tu_1)_W } { (u_1,u_1)_V }\)</span>. Repeat the procedure on the <span class="math notranslate nohighlight">\(V\)</span>-complement of <span class="math notranslate nohighlight">\(u_1\)</span> to generate <span class="math notranslate nohighlight">\(u_2\)</span>, and so on.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./abstracttheory"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../primal/exercises.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Exercises</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="subspaceprojection.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Projection onto subspaces</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

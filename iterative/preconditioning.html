@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>30. Preconditioning &#8212; Introduction to Scientific Computing</title>
+    <title>33. Preconditioning &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'iterative/preconditioning';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="32. The Chebyshev Method" href="Chebyshev.html" />
-    <link rel="prev" title="29. The Gradient Method" href="gradientmethod.html" />
+    <link rel="next" title="35. The Chebyshev Method" href="Chebyshev.html" />
+    <link rel="prev" title="32. The Gradient Method" href="gradientmethod.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,44 +187,50 @@
 <li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">5. Iterative Solvers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/BasicProperties.html">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/RieszRepresentation.html">9. Riesz Representation Theorem</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">7. Stokes Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">8. Boundary Conditions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">9. Mixed Methods for second order equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">10. Abstract Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">11. Abstract theory for mixed finite element methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">12. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">10. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">11. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">12. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">13. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">14. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">15. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">13. Stationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">14. Instationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">15. Nitsche’s Method for boundary and interface conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">16. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">17. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">18. Nitsche’s Method for boundary and interface conditions</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">17. Hybrid DG for elliptic equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">18. Splitting Methods for the time-dependent convection diffusion equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">19. Fourth Order Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">20. H(div)-conforming Stokes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">20. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">21. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">22. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">23. H(div)-conforming Stokes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">21. Application of the abstract theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">22. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">23. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">24. Finite Element Error Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">25. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">26. Hybridization Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">24. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">25. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">26. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">27. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">28. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">29. Hybridization Techniques</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="simple.html">27. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Richardson.html">28. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gradientmethod.html">29. The Gradient Method</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">30. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple.html">30. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Richardson.html">31. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradientmethod.html">32. The Gradient Method</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">33. Preconditioning</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Chebyshev.html">32. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conjugategradients.html">33. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chebyshev.html">35. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conjugategradients.html">36. Conjugate Gradients</a></li>
 </ul>
 
     </div>
@@ -373,12 +379,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">30. Preconditioning</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-richardson-iteration">30.1. The preconditioned Richardson iteration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-gradient-method">30.2. The preconditioned gradient method</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">33. Preconditioning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-richardson-iteration">33.1. The preconditioned Richardson iteration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-gradient-method">33.2. The preconditioned gradient method</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-and-gauss-seidel-preconditioners">31. Jacobi and Gauss Seidel Preconditioners</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-and-gauss-seidel-preconditioners">34. Jacobi and Gauss Seidel Preconditioners</a></li>
 </ul>
 
             </nav>
@@ -392,7 +398,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="preconditioning">
-<h1><span class="section-number">30. </span>Preconditioning<a class="headerlink" href="#preconditioning" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">33. </span>Preconditioning<a class="headerlink" href="#preconditioning" title="Link to this heading">#</a></h1>
 <p>We call <span class="math notranslate nohighlight">\(C\)</span> a preconditioner to the matrix <span class="math notranslate nohighlight">\(A\)</span> if</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(C^{-1} A \approx I\)</span></p></li>
@@ -412,7 +418,7 @@ A x = \lambda C x
 \]</div>
 <p>If <span class="math notranslate nohighlight">\(\lambda_i\)</span> is an eigenvalue with eigenvector <span class="math notranslate nohighlight">\(x_i\)</span>, then <span class="math notranslate nohighlight">\(x_i^T A x_i = \lambda_i x_i^T C x_i\)</span>, and thus <span class="math notranslate nohighlight">\(\lambda_i \in [\gamma_1, \gamma_2]\)</span></p>
 <section id="the-preconditioned-richardson-iteration">
-<h2><span class="section-number">30.1. </span>The preconditioned Richardson iteration<a class="headerlink" href="#the-preconditioned-richardson-iteration" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">33.1. </span>The preconditioned Richardson iteration<a class="headerlink" href="#the-preconditioned-richardson-iteration" title="Link to this heading">#</a></h2>
 <p>We use the preconditioner to obtain the correction from the residuum:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -424,23 +430,25 @@ A x = \lambda C x
 e^{k+1} = M e^k = (I - \alpha C^{-1} A) e^k
 \]</div>
 <p>If we could use the ideal preconditioner <span class="math notranslate nohighlight">\(C = A\)</span>, and set <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, then <span class="math notranslate nohighlight">\(M = 0\)</span>, and we converge in one iteration.</p>
-<p>The error-propagation matrix <span class="math notranslate nohighlight">\(M\)</span> is self-adjoint in the energy inner product
-\begin{eqnarray*}
-\left&lt; M x, y \right&gt;_A &amp; = &amp; (A M x)^T y \
-&amp; = &amp; \left{ A (x - \alpha C^{-1} A x) \right}^T y  \
-&amp; = &amp; x^T (A - \alpha A C^{-1} A) y \
+<p>The error-propagation matrix <span class="math notranslate nohighlight">\(M\)</span> is self-adjoint in the energy inner product</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\left&lt; M x, y \right&gt;_A &amp; = &amp; (A M x)^T y \\
+&amp; = &amp; \left\{ A (x - \alpha C^{-1} A x) \right\}^T y  \\
+&amp; = &amp; x^T (A - \alpha A C^{-1} A) y \\
 &amp; = &amp; \left&lt; x, M y \right&gt;_A
-\end{eqnarray*}</p>
+\end{eqnarray*}\]</div>
 <p>as well as in the inner products</p>
 <div class="math notranslate nohighlight">
 \[
 \left&lt; x, y \right&gt;_C \qquad \text{and} \qquad \left&lt; x, y \right&gt;_{AC^{-1} A}.
 \]</div>
 <p>The error is monotonically decreased in the corresponding norms. In particular the last one is practically interesting since it is computationally available:</p>
-<p>\begin{eqnarray*}
-| x - x^\ast |<em>{AC^{-1} A}^2 &amp; = &amp; | A (x - x^\ast) |</em>{C^{-1}}^2 \
-&amp; = &amp; | A x - b |_{C^{-1}}^2
-\end{eqnarray*}</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| x - x^\ast \|_{AC^{-1} A}^2 &amp; = &amp; \| A (x - x^\ast) \|_{C^{-1}}^2 \\
+&amp; = &amp; \| A x - b \|_{C^{-1}}^2
+\end{eqnarray*}\]</div>
 <p>With the residuum <span class="math notranslate nohighlight">\(r\)</span> and preconditioned residuum <span class="math notranslate nohighlight">\(w\)</span>, i.e.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1784,7 +1792,7 @@ A(u,v) = \int_\Omega \nabla u \nabla v \, dx + 10^8 \int_{\Gamma_R} u v \, ds,
 <p>the Jacobi preconditioner captures these parameters (experiment in  excercise, theory soon).</p>
 </section>
 <section id="the-preconditioned-gradient-method">
-<h2><span class="section-number">30.2. </span>The preconditioned gradient method<a class="headerlink" href="#the-preconditioned-gradient-method" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">33.2. </span>The preconditioned gradient method<a class="headerlink" href="#the-preconditioned-gradient-method" title="Link to this heading">#</a></h2>
 <p>To introduce the preconditioner into the gradient method we proceed as follows. Since <span class="math notranslate nohighlight">\(C\)</span> is SPD, we are allowed to form its square-root</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2497,7 +2505,7 @@ needed 610 iterations
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="jacobi-and-gauss-seidel-preconditioners">
-<h1><span class="section-number">31. </span>Jacobi and Gauss Seidel Preconditioners<a class="headerlink" href="#jacobi-and-gauss-seidel-preconditioners" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">34. </span>Jacobi and Gauss Seidel Preconditioners<a class="headerlink" href="#jacobi-and-gauss-seidel-preconditioners" title="Link to this heading">#</a></h1>
 <p>For a given residual <span class="math notranslate nohighlight">\(r\)</span>, the Jacobi preconditioner computes</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2534,18 +2542,20 @@ A = L + D + R
 \]</div>
 <p>This means we can interpret the Gauss-Seidel iteration as a preconditioned Richardson iteration, with preconditioner <span class="math notranslate nohighlight">\(C = L+D\)</span>. In general, this is not a symmetric preconditioner.</p>
 <p>If we run the backward Gauss-Seidel iteration, the preconditioner becomes <span class="math notranslate nohighlight">\(C = D + R\)</span>. Now, we combine one step forward, with one step backward Gauss-Seidel:</p>
-<p>\begin{eqnarray*}
-\tilde x &amp; = &amp; x + (L+D)^{-1} (b - A x) \
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\tilde x &amp; = &amp; x + (L+D)^{-1} (b - A x) \\
 \hat x &amp; = &amp; \tilde x + (D+R)^{-1} (b - A \tilde x)
-\end{eqnarray*}</p>
+\end{eqnarray*}\]</div>
 <p>we can write</p>
-<p>\begin{eqnarray*}
-\hat x &amp; = &amp; (D+R)^{-1} (b - L \tilde x) \
-&amp; = &amp; (D+R)^{-1} \big(b - L (L+D)^{-1} (b - R x) \big) \
-&amp; = &amp; (D+R)^{-1} \big( (L+D)(L+D)^{-1} b - L (L+D)^{-1} b \big) + \ldots x \
-&amp; = &amp; (D+R)^{-1} D (L+D)^{-1} b + \ldots x \
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\hat x &amp; = &amp; (D+R)^{-1} (b - L \tilde x) \\
+&amp; = &amp; (D+R)^{-1} \big(b - L (L+D)^{-1} (b - R x) \big) \\
+&amp; = &amp; (D+R)^{-1} \big( (L+D)(L+D)^{-1} b - L (L+D)^{-1} b \big) + \ldots x \\
+&amp; = &amp; (D+R)^{-1} D (L+D)^{-1} b + \ldots x \\
 &amp; = &amp; x + (D+R)^{-1} D (L+D)^{-1} (b - A x)
-\end{eqnarray*}</p>
+\end{eqnarray*}\]</div>
 <p>and observe that the combined forward-backward Gauss-Seidel iteration is a Richardson method with preconditioner</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2557,12 +2567,13 @@ C_{FBGS}^{-1} = (D+R)^{-1} D (L+D)^{-1}.
 x^T C_{FBGS} x \geq x^T A x  \qquad \forall \, x
 \]</div>
 <p>i.e. the spectral constant <span class="math notranslate nohighlight">\(\gamma_2 = 1\)</span>, and choosing a damping parameter <span class="math notranslate nohighlight">\(\alpha = 1\)</span> is guaranteed to converge.</p>
-<p>We prove this by calculation:
-\begin{eqnarray*}
-C_{FBGS} &amp; = &amp; (L+D) D^{-1} (D+R) \
-&amp; = &amp; L + D + R + L D^{-1} R \
+<p>We prove this by calculation:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+C_{FBGS} &amp; = &amp; (L+D) D^{-1} (D+R) \\
+&amp; = &amp; L + D + R + L D^{-1} R \\
 &amp; = &amp; A + L D^{-1} R
-\end{eqnarray*}</p>
+\end{eqnarray*}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(x^T L D^{-1} R x = (R x)^T D^{-1} (R x) = \| R x \|_{D^{-1}}^2 \geq 0\)</span> we have proven that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2622,7 +2633,7 @@ of the forward and backward GS are <span class="math notranslate nohighlight">\(
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">29. </span>The Gradient Method</p>
+        <p class="prev-next-title"><span class="section-number">32. </span>The Gradient Method</p>
       </div>
     </a>
     <a class="right-next"
@@ -2630,7 +2641,7 @@ of the forward and backward GS are <span class="math notranslate nohighlight">\(
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">32. </span>The Chebyshev Method</p>
+        <p class="prev-next-title"><span class="section-number">35. </span>The Chebyshev Method</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2650,12 +2661,12 @@ of the forward and backward GS are <span class="math notranslate nohighlight">\(
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">30. Preconditioning</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-richardson-iteration">30.1. The preconditioned Richardson iteration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-gradient-method">30.2. The preconditioned gradient method</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">33. Preconditioning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-richardson-iteration">33.1. The preconditioned Richardson iteration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-preconditioned-gradient-method">33.2. The preconditioned gradient method</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-and-gauss-seidel-preconditioners">31. Jacobi and Gauss Seidel Preconditioners</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi-and-gauss-seidel-preconditioners">34. Jacobi and Gauss Seidel Preconditioners</a></li>
 </ul>
 
   </nav></div>
