@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Inf-sup stable variational problems &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'abstracttheory/infsup';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An Interactive Introduction to the Finite Element Method
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">4. 3D Solid Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">5. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="BasicProperties.html">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RieszRepresentation.html">9. Riesz representation theorem and symmetric variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Coercive.html">10. Coercive variational problems and their approximation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">11. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">12. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">13. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">14. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">15. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">16. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">17. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">18. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">19. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">21. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">22. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">23. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">24. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">25. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">26. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">27. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">28. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">29. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">30. Hybridization Techniques</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">31. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">32. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">33. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">34. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/abstracttheory/infsup.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Inf-sup stable variational problems</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-of-inf-sup-stable-variational-problems">Approximation of inf-sup stable variational problems</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="inf-sup-stable-variational-problems">
+<h1>Inf-sup stable variational problems<a class="headerlink" href="#inf-sup-stable-variational-problems" title="Link to this heading">#</a></h1>
+<p>The coercivity condition is by no means a necessary condition for a
+stable solvable system. A simple, stable problem with non-coercive
+bilinear form is to choose <span class="math notranslate nohighlight">\(V = {\mathbb R}^2\)</span>, and the bilinear form
+<span class="math notranslate nohighlight">\(B(u,v) = u_1 v_1 - u_2 v_2\)</span>. The solution of <span class="math notranslate nohighlight">\(B(u,v) = f^T v\)</span> is
+<span class="math notranslate nohighlight">\(u_1 = f_1\)</span> and <span class="math notranslate nohighlight">\(u_2 = -f_2\)</span>. We will follow the convention to call
+coercive bilinear forms <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span>, and the more general ones <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(W\)</span> be Hilbert spaces, and <span class="math notranslate nohighlight">\(B(\cdot,\cdot) : V \times W \rightarrow {\mathbb R}\)</span> be a continuous bilinear form with bound</p>
+<div class="math notranslate nohighlight">
+\[
+B(u,v) \leq \beta_2 \| u \|_V \| v \|_W \qquad \forall \, u \in V, \; \forall \, v \in W.
+\]</div>
+<p>The general condition is the <strong>inf-sup condition</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\inf_{u \in V \atop u \neq 0} \sup_{v \in W \atop v \neq 0}
+\frac{ B(u,v) } { \| u \|_V \, \| v \|_W } \geq \beta_1.
+\]</div>
+<p>Define the linear operator <span class="math notranslate nohighlight">\(B : V \rightarrow W^\ast\)</span> by <span class="math notranslate nohighlight">\(\left&lt; B u, v \right&gt;_{W^\ast \times W} = B(u,v)\)</span>. The inf-sup condition can be reformulated as</p>
+<div class="math notranslate nohighlight">
+\[
+\sup_{v \in W} \frac{ \left&lt; B u, v \right&gt; } { \| v \|_W } \geq \beta_1 \| u \|_V, \qquad \forall \, u \in V
+\]</div>
+<p>and, using the definition of the dual norm,
+$<span class="math notranslate nohighlight">\(
+\| B u \|_{W^\ast} \geq \beta_1 \| u \|_V.
+\)</span>$</p>
+<p>We immediately obtain that <span class="math notranslate nohighlight">\(B\)</span> is one to one, since</p>
+<div class="math notranslate nohighlight">
+\[
+B u = 0 \Rightarrow u = 0
+\]</div>
+<p><strong>Lemma:</strong> Assume that the continuous bilinear form <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the
+inf-sup condition (\ref{equ_infsup}). Then the according operator <span class="math notranslate nohighlight">\(B\)</span> has
+closed range.</p>
+<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(B u^n\)</span> be a Cauchy sequence in <span class="math notranslate nohighlight">\(W^\ast\)</span>. From (\ref{equ_stabb}) we conclude that also <span class="math notranslate nohighlight">\(u^n\)</span> is Cauchy in <span class="math notranslate nohighlight">\(V\)</span>. Since <span class="math notranslate nohighlight">\(V\)</span> is complete, <span class="math notranslate nohighlight">\(u_n\)</span>
+converges to some <span class="math notranslate nohighlight">\(u \in V\)</span>. By continuity of <span class="math notranslate nohighlight">\(B\)</span>, the sequence <span class="math notranslate nohighlight">\(B u^n\)</span> converges to <span class="math notranslate nohighlight">\(B u \in W^\ast\)</span>.
+<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>The inf-sup condition (\ref{equ_infsup}) does not imply that <span class="math notranslate nohighlight">\(B\)</span> is onto <span class="math notranslate nohighlight">\(W^\ast\)</span>. To insure that, we can pose an inf-sup condition the other way around:</p>
+<div class="math notranslate nohighlight">
+\[
+\inf_{v \in W \atop v \neq 0} \sup_{u \in V \atop u \neq 0}
+\frac{ B(u,v) } { \| u \|_V \, \| v \|_W } \geq \beta_1.
+\]</div>
+<p>It will be sufficient to state the weaker condition</p>
+<div class="math notranslate nohighlight">
+\[ 
+\sup_{u \in V \atop u \neq 0}
+\frac{ B(u,v) } { \| u \|_V  } &gt; 0 \qquad \forall \, v \neq 0 \in W.
+\]</div>
+<p><strong>Theorem: (Babuska Aziz)</strong></p>
+<p>Assume that the continuous bilinear form <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills
+the inf-sup condition (\ref{equ_infsup}) and condition (\ref{equ_infsup2}).
+Then, the variational problem: find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+B(u,v) = f(v) \qquad \forall \, v \in W
+\]</div>
+<p>has a unique solution. The solution depends continuously on the right hand
+side:</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_V \leq \beta_1^{-1} \| f \|_{W^\ast}
+\]</div>
+<p><em>Proof:</em> We have to show that the range <span class="math notranslate nohighlight">\(R(B) = W^\ast\)</span>. The Hilbert
+space <span class="math notranslate nohighlight">\(W^\ast\)</span> can be split into the orthogonal, closed subspaces
+$<span class="math notranslate nohighlight">\(
+W^\ast = R(B) \oplus R(B)^\bot.
+\)</span><span class="math notranslate nohighlight">\(
+Assume that there exists some \)</span>0 \neq g \in R(B)^\bot<span class="math notranslate nohighlight">\(. This means that
+\)</span><span class="math notranslate nohighlight">\(
+(B u, g)_{W^\ast} = 0 \qquad \forall \, u \in V.
+\)</span><span class="math notranslate nohighlight">\(
+Let \)</span>v_g \in W<span class="math notranslate nohighlight">\( be the Riesz representation of \)</span>g<span class="math notranslate nohighlight">\(, i.e., \)</span>(v_g, w)_W = g(w)<span class="math notranslate nohighlight">\( for all \)</span>w \in W<span class="math notranslate nohighlight">\(. This \)</span>v_g<span class="math notranslate nohighlight">\( is in contradiction to the assumption 
+(\ref{equ_infsup2})
+\)</span><span class="math notranslate nohighlight">\(
+\sup_{u \in V} \frac{B(u,v_g)}{ \| u \|_V} = 
+\sup_{u \in V} \frac{(Bu,g)_{W^\ast}}{ \| u \|_V} = 
+0.
+\)</span><span class="math notranslate nohighlight">\(
+Thus, \)</span>R(B)^\bot = { 0 }<span class="math notranslate nohighlight">\( and \)</span>R(B) = W^\ast<span class="math notranslate nohighlight">\(.
+\)</span>\Box$</p>
+<p><strong>Example:</strong> A coercive bilinear form is inf-sup stable.</p>
+<p><strong>Example:</strong> A complex symmetric variational problem:
+Consider the complex valued PDE</p>
+<div class="math notranslate nohighlight">
+\[
+-\Delta u + i u = f,
+\]</div>
+<p>with Dirichlet boundary conditions, <span class="math notranslate nohighlight">\(f \in L_2\)</span>, and <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span>. The
+weak form for the real system <span class="math notranslate nohighlight">\(u = (u_{r}, u_i) \in V^2\)</span> is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b45ac40d-ee1d-4f8a-93f6-0d3d15502b70">
+<span class="eqno">()<a class="headerlink" href="#equation-b45ac40d-ee1d-4f8a-93f6-0d3d15502b70" title="Permalink to this equation">#</a></span>\[\begin{align}
+(\nabla u_{r}, \nabla v_{r})_{L_2} &amp;+ (u_i, v_{r})_{L_2} &amp;= 
+        (f,v_{r}) &amp; \forall \, v_r \in V \\
+(u_{r}, v_i)_{L_2} &amp;- (\nabla u_i, \nabla v_i)_{L_2} &amp;=
+        -(f,v_i) &amp; \forall \, v_i \in V
+\end{align}\]</div>
+<p>We can add up both lines, and define the large bilinear form <span class="math notranslate nohighlight">\(B(\cdot,\cdot) : V^2 \times V^2 \rightarrow {\mathbb R}\)</span> by
+$<span class="math notranslate nohighlight">\(
+B ((u_r,u_i), (v_r, v_i)) = 
+(\nabla u_{r}, \nabla v_{r}) + (u_i, v_{r}) + (u_{r}, v_i) -(\nabla u_i, \nabla v_i)
+\)</span><span class="math notranslate nohighlight">\(
+With respect to the norm \)</span>|v|<em>V = ( | v |</em>{L_2}^2 + | \nabla v |_{L_2}^2)^{1/2}<span class="math notranslate nohighlight">\(, the bilinear form is continuous, and fulfills the inf-sup conditions
+(exercises !)
+Thus, the variational formulation: find \)</span>u \in V^2<span class="math notranslate nohighlight">\( such that
+\)</span><span class="math notranslate nohighlight">\(
+B(u,v) = (f,v_r) - (f,v_i) \qquad \forall \, v \in V^2
+\)</span>$
+is stable solvable.</p>
+<section id="approximation-of-inf-sup-stable-variational-problems">
+<h2>Approximation of inf-sup stable variational problems<a class="headerlink" href="#approximation-of-inf-sup-stable-variational-problems" title="Link to this heading">#</a></h2>
+<p>Again, to approximate (\ref{equ_bigsystem}), we pick finite dimensional
+subspaces <span class="math notranslate nohighlight">\(V_h \subset V\)</span> and <span class="math notranslate nohighlight">\(W_h \subset W\)</span>, and pose the finite dimensional
+variational problem: find <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> such that
+$<span class="math notranslate nohighlight">\(
+B(u_h, v_h) = f(v_h) \qquad \forall \, v_h \in W_h.
+\)</span><span class="math notranslate nohighlight">\(
+But now, in contrast to the coercive case, the solvability of the 
+finite dimensional equation does not follow from the solvability conditions
+of the original problem on \)</span>V \times W<span class="math notranslate nohighlight">\(. E.g., take the example in \)</span>{\mathbb R}^2<span class="math notranslate nohighlight">\(
+above, and choose the subspaces \)</span>V_h = W_h = \mbox{span} { (1,1) }$.</p>
+<p>We have to pose an extra inf-sup condition for the discrete problem:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\inf_{u_h \in V_h \atop u_h \neq 0} \sup_{v_h \in W_h \atop v_h \neq 0}
+\frac{ B(u_h,v_h) } { \| u_h \|_V \, \| v_h \|_W } \geq \beta_{1h}.
+\]</div>
+<p>On a finite dimensional space, one to one is equivalent to onto, and we
+can skip the second condition.</p>
+<p><strong>Theorem:</strong> {theo_approxinfsup}
+Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and
+<span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
+Then there holds the quasi-optimal error estimate</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4f7b8117-cba0-442e-9f4e-657d1965e2b9">
+<span class="eqno">()<a class="headerlink" href="#equation-4f7b8117-cba0-442e-9f4e-657d1965e2b9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
+\end{equation}\]</div>
+<p><em>Proof:</em> Again, there holds the Galerkin orthogonality <span class="math notranslate nohighlight">\(B(u,w_h) = B(u_h,w_h)\)</span> for all <span class="math notranslate nohighlight">\(w_h \in V_h\)</span>. Again, choose an arbitrary <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\| u - u_h \|_V &amp; \leq  \| u - v_h \|_V + \| v_h - u_h \|_V \\
+        &amp; \leq \| u - v_h \|_V + \beta_{1h}^{-1} 
+                \sup_{w_h \in W_h} \frac{ B(v_h-u_h, w_h) } { \| w_h \|_V } \\
+        &amp; =   \| u - v_h \|_V + \beta_{1h}^{-1} 
+                \sup_{w_h \in W_h} \frac{ B(v_h-u, w_h) } { \| w_h \|_V } \\
+        &amp; \leq \| u - v_h \|_V + \beta_{1h}^{-1}
+                \sup_{w_h \in W_h} \frac{ \beta_2 \| v_h-u \|_V \, \| w_h \|_W } { \| w_h \|_W } \\
+        &amp; = (1 + \beta_2 / \beta_{1h}) \| u - v_h\|_V.
+\end{align*}\]</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./abstracttheory"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-of-inf-sup-stable-variational-problems">Approximation of inf-sup stable variational problems</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

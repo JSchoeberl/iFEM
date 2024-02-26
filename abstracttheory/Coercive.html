@@ -400,18 +400,17 @@ a bilinear form which is</p>
 <ul class="simple">
 <li><p>coercive (also known as elliptic)</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-5dcb6a40-0aac-481b-8ddf-388d706fcd8e">
-<span class="eqno">(10.1)<a class="headerlink" href="#equation-5dcb6a40-0aac-481b-8ddf-388d706fcd8e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ec442d89-956b-48b5-b9e4-d6153c72d64b">
+<span class="eqno">(10.1)<a class="headerlink" href="#equation-ec442d89-956b-48b5-b9e4-d6153c72d64b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A(u,u) \geq \alpha_1 \| u \|_V^2 \qquad \forall \, u \in V,
 \end{equation}\]</div>
 <ul class="simple">
 <li><p>and continuous</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-636ae972-d1ab-48ef-b09d-3d6490355d18">
-<span class="eqno">(10.2)<a class="headerlink" href="#equation-636ae972-d1ab-48ef-b09d-3d6490355d18" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2352a3aa-d5a0-41e9-adfc-3e8099e2553a">
+<span class="eqno">(10.2)<a class="headerlink" href="#equation-2352a3aa-d5a0-41e9-adfc-3e8099e2553a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A(u,v) \leq \alpha_2 \| u \|_V  \, \| v \|_V \qquad \forall \, u , v \in V,
 \end{equation}\]</div>
-<p>\end{itemize}</p>
 <p>with bounds <span class="math notranslate nohighlight">\(\alpha_1\)</span> and <span class="math notranslate nohighlight">\(\alpha_2\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^+\)</span>. It is not necessarily symmetric.
 Let <span class="math notranslate nohighlight">\(f(.) : V \rightarrow {\mathbb R}\)</span> be a continuous linear form on <span class="math notranslate nohighlight">\(V\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
@@ -461,7 +460,7 @@ fields (<span class="math notranslate nohighlight">\(\operatorname{div} \, b = 0
 \[
 \left&lt; f , v \right&gt;_{V^\ast \times V} = f(v).
 \]</div>
-<p><strong>Lemma:</strong> A continuous bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot) : V \times V \rightarrow \setR\)</span>
+<p><strong>Lemma:</strong> A continuous bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot) : V \times V \rightarrow {\mathbb R}\)</span>
 induces a continuous linear operator <span class="math notranslate nohighlight">\(A : V \rightarrow V^\ast\)</span> via</p>
 <div class="math notranslate nohighlight">
 \[
@@ -479,96 +478,104 @@ $<span class="math notranslate nohighlight">\(
 Thus, we can define the operator \)</span>A : u \in V \rightarrow A(u,\cdot) \in V^\ast$.
 It is linear, and its operator norm is bounded by</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\| A \|_{V \rightarrow V^\ast} &amp; = &amp;
+\[\begin{align*}
+\| A \|_{V \rightarrow V^\ast} &amp;= 
 \sup_{u\in V} \frac{ \| A u \|_{V^\ast}}{\| u \|_V} =
 \sup_{u\in V} \sup_{v \in V} \frac{ \left&lt; A u, v\right&gt;_{V^\ast \times V} } {\| u \|_V \, \| v \|_V} \\
-&amp; = &amp; \sup_{u\in V} \sup_{v \in V} \frac{ A (u,v) } {\| u \|_V \, \| v \|_V} \leq
+&amp;= \sup_{u\in V} \sup_{v \in V} \frac{ A (u,v) } {\| u \|_V \, \| v \|_V} \leq
 \sup_{u\in V} \sup_{v\in V} \frac{ \alpha_2 \| u \|_V \| v \|_V } {\| u \|_V \, \| v \|_V} = \alpha_2.
-\end{eqnarray*}\]</div>
+\end{align*}\]</div>
 <p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>Using this notation, we can write the variational problem as operator equation: find <span class="math notranslate nohighlight">\(u \in V\)</span> such that
 $<span class="math notranslate nohighlight">\(
 A u = f \qquad (\mbox{in } V^\ast).
 \)</span>$</p>
-<p>\begin{theorem}[Banach’s contraction mapping theorem] Given a Banach space
-<span class="math notranslate nohighlight">\(V\)</span> and a mapping <span class="math notranslate nohighlight">\(T : V \rightarrow V\)</span>, satisfying the Lipschitz condition
-$<span class="math notranslate nohighlight">\(
+<p><strong>Theorem: (Banach’s contraction mapping theorem)</strong> Given a Banach space
+<span class="math notranslate nohighlight">\(V\)</span> and a mapping <span class="math notranslate nohighlight">\(T : V \rightarrow V\)</span>, satisfying the Lipschitz condition</p>
+<div class="math notranslate nohighlight">
+\[
 \| T(v_1) - T(v_2) \| \leq L \, \| v_1 - v_2 \| \qquad \forall  \, v_1, v_2 \in V
-\)</span><span class="math notranslate nohighlight">\(
-for a fixed \)</span>L \in [0,1)<span class="math notranslate nohighlight">\(. Then there exists a unique \)</span>u \in V<span class="math notranslate nohighlight">\( such that
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>for a fixed <span class="math notranslate nohighlight">\(L \in [0,1)\)</span>. Then there exists a unique <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
 u = T(u),
-\)</span><span class="math notranslate nohighlight">\(
-i.e. the mapping \)</span>T<span class="math notranslate nohighlight">\( has a unique fixed point \)</span>u<span class="math notranslate nohighlight">\(. The iteration \)</span>u^1 \in V<span class="math notranslate nohighlight">\( given, compute
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>i.e. the mapping <span class="math notranslate nohighlight">\(T\)</span> has a unique fixed point <span class="math notranslate nohighlight">\(u\)</span>. The iteration <span class="math notranslate nohighlight">\(u^1 \in V\)</span> given, compute</p>
+<div class="math notranslate nohighlight">
+\[
 u^{k+1} := T(u^k)
-\)</span><span class="math notranslate nohighlight">\(
-converges to \)</span>u<span class="math notranslate nohighlight">\( with convergence rate \)</span>L<span class="math notranslate nohighlight">\(:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>converges to <span class="math notranslate nohighlight">\(u\)</span> with convergence rate <span class="math notranslate nohighlight">\(L\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - u^{k+1} \| \leq L \| u - u^k \|
-\)</span>$
-\end{theorem}</p>
-<p>\begin{theorem}[Lax Milgram] Given a Hilbert space <span class="math notranslate nohighlight">\(V\)</span>, a coercive and continuous bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span>, and a continuous linear form <span class="math notranslate nohighlight">\(f(.)\)</span>. Then there exists a unique <span class="math notranslate nohighlight">\(u \in V\)</span> solving
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p><strong>Theorem:(Lax Milgram)</strong> Given a Hilbert space <span class="math notranslate nohighlight">\(V\)</span>, a coercive and continuous bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span>, and a continuous linear form <span class="math notranslate nohighlight">\(f(.)\)</span>. Then there exists a unique <span class="math notranslate nohighlight">\(u \in V\)</span> solving</p>
+<div class="math notranslate nohighlight">
+\[
 A(u,v) = f(v) \qquad \forall \, v \in V.
-\)</span>$
-There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2332e09d-86d0-4f84-af2b-1f479ff83116">
-<span class="eqno">(10.3)<a class="headerlink" href="#equation-2332e09d-86d0-4f84-af2b-1f479ff83116" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{equ_lax_milgram_bound}
+\]</div>
+<p>There holds</p>
+<div class="math notranslate nohighlight">
+\[
 \| u \|_V \leq \alpha_1^{-1} \| f \|_{V^\ast}
-\end{equation}\]</div>
-<p>\end{theorem}
-{\em Proof:} Start from the operator equation <span class="math notranslate nohighlight">\(A u = f\)</span>. Let <span class="math notranslate nohighlight">\(J_V : V^\ast \rightarrow V\)</span> be the Riesz isomorphism defined by
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p><em>Proof:</em> Start from the operator equation <span class="math notranslate nohighlight">\(A u = f\)</span>. Let <span class="math notranslate nohighlight">\(J_V : V^\ast \rightarrow V\)</span> be the Riesz isomorphism defined by</p>
+<div class="math notranslate nohighlight">
+\[
 (J_V g, v)_V = g(v) \qquad \forall \, v \in V, \;  \forall \, g \in V^\ast.
-\)</span><span class="math notranslate nohighlight">\(
-Then the operator equation is equivalent to
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Then the operator equation is equivalent to</p>
+<div class="math notranslate nohighlight">
+\[
 J_V A u = J_V f \qquad (\mbox{in } V),
-\)</span><span class="math notranslate nohighlight">\(
-and to the fixed point equation (with some \)</span>0 \neq \tau \in \setR$ chosen below)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-67cd8ae8-eec9-4d50-beaf-ae59f610777d">
-<span class="eqno">(10.4)<a class="headerlink" href="#equation-67cd8ae8-eec9-4d50-beaf-ae59f610777d" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{equ_fixedpointequ}
+\]</div>
+<p>and to the fixed point equation (with some <span class="math notranslate nohighlight">\(0 \neq \tau \in {\mathbb R}\)</span> chosen below)</p>
+<div class="math notranslate nohighlight">
+\[
 u = u - \tau J_V (A u - f).
-\end{equation}\]</div>
-<p>We will verify that
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>We will verify that</p>
+<div class="math notranslate nohighlight">
+\[
 T (v) := v - \tau J_V (A v - f)
-\)</span><span class="math notranslate nohighlight">\(
-is a contraction mapping, i.e., \)</span>| T (v_1) - T (v_2) |_V \leq L | v_1 - v_2 |_V<span class="math notranslate nohighlight">\( 
-with some Lipschitz constant \)</span>L \in [0,1)<span class="math notranslate nohighlight">\(.
-Let \)</span>v_1, v_2 \in V<span class="math notranslate nohighlight">\(, and set \)</span>v = v_1 - v_2$. Then</p>
+\]</div>
+<p>is a contraction mapping, i.e., <span class="math notranslate nohighlight">\(\| T (v_1) - T (v_2) \|_V \leq L \| v_1 - v_2 \|_V\)</span>
+with some Lipschitz constant <span class="math notranslate nohighlight">\(L \in [0,1)\)</span>.
+Let <span class="math notranslate nohighlight">\(v_1, v_2 \in V\)</span>, and set <span class="math notranslate nohighlight">\(v = v_1 - v_2\)</span>. Then</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
+\[\begin{align*}
 \| T (v_1) - T (v_2) \|_V^2 
-&amp; = &amp; \| \{ v_1 - \tau J_V (A v_1 - f) \} - \{ v_2 - \tau J_V (A v_2 -f) \} \|_V^2 \\
-&amp; = &amp; \| v - \tau J_V A v \|_V^2 \\
-&amp; = &amp; \| v \|_V^2 - 2 \tau (J_V A v, v)_V + \tau^2 \| J_V A v \|_V^2 \\
-&amp; = &amp; \| v \|_V^2 - 2 \tau \left&lt; A v , v \right&gt; + \tau^2 \| A v \|_{V^\ast}^2 \\
-&amp; = &amp; \| v \|_V^2 - 2 \tau A(v,v) + \tau^2 \| A v \|_{V^\ast}^2 \\
-&amp; \leq &amp; \| v \|_V^2 - 2 \tau \alpha_1 \| v \|_V^2 + \tau^2 \alpha_2^2 \| v \|_V^2 \\
-&amp; = &amp; (1 - 2 \tau \alpha_1 + \tau^2 \alpha_2^2) \| v_1 - v_2 \|_V^2
-\end{eqnarray*}\]</div>
-<p>Now, we choose <span class="math notranslate nohighlight">\(\tau = \alpha_1 / \alpha_2^2\)</span>, and obtain a Lipschitz constant
-$<span class="math notranslate nohighlight">\(
+&amp;=  \| \{ v_1 - \tau J_V (A v_1 - f) \} - \{ v_2 - \tau J_V (A v_2 -f) \} \|_V^2 \\
+&amp;=  \| v - \tau J_V A v \|_V^2 \\
+&amp;=  \| v \|_V^2 - 2 \tau (J_V A v, v)_V + \tau^2 \| J_V A v \|_V^2 \\
+&amp;=  \| v \|_V^2 - 2 \tau \left&lt; A v , v \right&gt; + \tau^2 \| A v \|_{V^\ast}^2 \\
+&amp;=  \| v \|_V^2 - 2 \tau A(v,v) + \tau^2 \| A v \|_{V^\ast}^2 \\
+&amp; \leq  \| v \|_V^2 - 2 \tau \alpha_1 \| v \|_V^2 + \tau^2 \alpha_2^2 \| v \|_V^2 \\
+&amp;=  (1 - 2 \tau \alpha_1 + \tau^2 \alpha_2^2) \| v_1 - v_2 \|_V^2
+\end{align*}\]</div>
+<p>Now, we choose <span class="math notranslate nohighlight">\(\tau = \alpha_1 / \alpha_2^2\)</span>, and obtain a Lipschitz constant</p>
+<div class="math notranslate nohighlight">
+\[
 L^2 = 1 - \alpha_1^2 / \alpha_2^2 \in [0,1).
-\)</span><span class="math notranslate nohighlight">\(
-Banach's contraction mapping theorem state that (\ref{equ_fixedpointequ}) 
-has a unique fixed point. Finally, we obtain the bound (\ref{equ_lax_milgram_bound}) from
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Banach’s contraction mapping theorem state that (\ref{equ_fixedpointequ})
+has a unique fixed point. Finally, we obtain the bound (\ref{equ_lax_milgram_bound}) from</p>
+<div class="math notranslate nohighlight">
+\[
 \| u \|_V^2 \leq \alpha_1^{-1} A(u,u) = \alpha_1^{-1} \, f(u) \leq \alpha_1^{-1} \| f\|_{V^\ast} \| u \|_V,
-\)</span><span class="math notranslate nohighlight">\(
-and dividing by one factor \)</span>|u|<span class="math notranslate nohighlight">\(.
-\hfill \)</span>\Box$</p>
+\]</div>
+<p>and dividing by one factor <span class="math notranslate nohighlight">\(\|u\|\)</span>.
+<span class="math notranslate nohighlight">\(\Box\)</span></p>
 <section id="approximation-of-coercive-variational-problems">
 <h2><span class="section-number">10.1. </span>Approximation of coercive variational problems<a class="headerlink" href="#approximation-of-coercive-variational-problems" title="Link to this heading">#</a></h2>
 <p>Now, let <span class="math notranslate nohighlight">\(V_h\)</span> be a closed subspace of <span class="math notranslate nohighlight">\(V\)</span>. We compute the
 approximation <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> by the Galerkin method</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e5275208-dda9-48b4-af90-16515f69a3ce">
-<span class="eqno">(10.5)<a class="headerlink" href="#equation-e5275208-dda9-48b4-af90-16515f69a3ce" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 A(u_h, v_h) = f(v_h) \qquad \forall \, v_h \in V_h.
-\end{equation}\]</div>
+\]</div>
 <p>This variational problem is uniquely solvable by Lax-Milgram,
 since, <span class="math notranslate nohighlight">\((V_h,\|.\|_V)\)</span> is
 a Hilbert space, and continuity and coercivity on <span class="math notranslate nohighlight">\(V_h\)</span> are inherited
@@ -576,43 +583,45 @@ from the original problem on <span class="math notranslate nohighlight">\(V\)</s
 <p>The next theorem says, that the solution defined by the Galerkin method is,
 up to a constant factor, as good as the best possible approximation in the
 finite dimensional space.</p>
-<p>\begin{theorem}[Cea] The approximation error of the Galerkin method
-is quasi optimal
-$<span class="math notranslate nohighlight">\(
+<p><strong>Theorem:(Cea)</strong> The approximation error of the Galerkin method
+is quasi optimal</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_V \leq \alpha_2 / \alpha_1 \inf_{v \in V_h} \| u - v_h \|_V
-\)</span><span class="math notranslate nohighlight">\(
-\end{theorem}
-{\em Proof:} A fundamental property is the Galerkin orthogonality
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p><em>Proof:</em> A fundamental property is the Galerkin orthogonality</p>
+<div class="math notranslate nohighlight">
+\[
 A(u-u_h, w_h) = A(u,w_h) - A(u_h, w_h) = f(w_h) - f(w_h) = 0
 \qquad \forall \, w_h \in V_h.
-\)</span><span class="math notranslate nohighlight">\(
-Now, pick an arbitrary \)</span>v_h \in V_h$, and bound</p>
+\]</div>
+<p>Now, pick an arbitrary <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>, and bound</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\| u - u_h \|_V^2 &amp; \leq &amp; \alpha_1^{-1} A(u-u_h, u-u_h) \\
-&amp; = &amp; \alpha_1^{-1} A(u-u_h, u-v_h) + \alpha_1^{-1} A(u-u_h, \underbrace{v_h-u_h}_{\in V_h}) \\
-&amp; \leq &amp;  \alpha_2 / \alpha_1 \, \| u - u_h \|_V \| u - v_h \|_V.
-\end{eqnarray*}\]</div>
+\[\begin{align*}
+\| u - u_h \|_V^2 &amp; \leq  \alpha_1^{-1} A(u-u_h, u-u_h) \\
+&amp; =  \alpha_1^{-1} A(u-u_h, u-v_h) + \alpha_1^{-1} A(u-u_h, \underbrace{v_h-u_h}_{\in V_h}) \\
+&amp; \leq   \alpha_2 / \alpha_1 \, \| u - u_h \|_V \| u - v_h \|_V.
+\end{align*}\]</div>
 <p>Divide one factor <span class="math notranslate nohighlight">\(\|u - u_h\|\)</span>. Since <span class="math notranslate nohighlight">\(v_h \in V_h\)</span> was arbitrary, the estimation
 holds true also for the infimum in <span class="math notranslate nohighlight">\(V_h\)</span>.
-\hfill <span class="math notranslate nohighlight">\(\Box\)</span></p>
-<p>\bigskip
-If <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is additionally symmetric, then it is an inner product. In this
-case, the coercivity and continuity properties are equivalent to
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>If <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is additionally symmetric, then it is an inner product. In this
+case, the coercivity and continuity properties are equivalent to</p>
+<div class="math notranslate nohighlight">
+\[
 \alpha_1 \| u \|_V^2 \leq A(u,u) \leq \alpha_2 \, \| u \|_V^2
 \qquad \forall \, u \in V.
-\)</span><span class="math notranslate nohighlight">\(
-The generated norm \)</span>|.|_A<span class="math notranslate nohighlight">\( is an equivalent norm to \)</span>|.|_V<span class="math notranslate nohighlight">\(. In the 
-symmetric case, we can use the orthogonal projection with respect to 
-\)</span>(.,.)_A<span class="math notranslate nohighlight">\( to improve the bounds to
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The generated norm <span class="math notranslate nohighlight">\(\|.\|_A\)</span> is an equivalent norm to <span class="math notranslate nohighlight">\(\|.\|_V\)</span>. In the
+symmetric case, we can use the orthogonal projection with respect to
+<span class="math notranslate nohighlight">\((.,.)_A\)</span> to improve the bounds to</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_V^2 \leq \alpha_1^{-1} \| u - u_h \|_A^2 \leq
         \alpha_1^{-1} \inf_{v_h \in V_h} \| u - v_h \|_A^2 \leq
         \alpha_2 / \alpha_1 \| u - v_h \|_V^2.
-\)</span>$
-The factor in the quasi-optimality estimate is now the square root of the
+\]</div>
+<p>The factor in the quasi-optimality estimate is now the square root of the
 general, non-symmetric case.</p>
 </section>
 </section>
