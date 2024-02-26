@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. Riesz Representation Theorem &#8212; Introduction to Scientific Computing</title>
+    <title>9. Riesz representation theorem and symmetric variational problems &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'abstracttheory/RieszRepresentation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Stokes Equation" href="../mixed/stokes.html" />
+    <link rel="next" title="10. Coercive variational problems and their approximation" href="Coercive.html" />
     <link rel="prev" title="8. Projection onto subspaces" href="subspaceprojection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,46 +191,47 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="BasicProperties.html">7. Basic properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="subspaceprojection.html">8. Projection onto subspaces</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Riesz Representation Theorem</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Riesz representation theorem and symmetric variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Coercive.html">10. Coercive variational problems and their approximation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">10. Stokes Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">11. Boundary Conditions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">12. Mixed Methods for second order equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">13. Abstract Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">14. Abstract theory for mixed finite element methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">15. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">11. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">12. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">13. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">14. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">15. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">16. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">16. Stationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">17. Instationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">18. Nitsche’s Method for boundary and interface conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">17. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">18. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">19. Nitsche’s Method for boundary and interface conditions</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">20. Hybrid DG for elliptic equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">21. Splitting Methods for the time-dependent convection diffusion equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">22. Fourth Order Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">23. H(div)-conforming Stokes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">21. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">22. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">23. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">24. H(div)-conforming Stokes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">24. Application of the abstract theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">25. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">26. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">27. Finite Element Error Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">28. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">29. Hybridization Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">25. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">26. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">27. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">28. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">29. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">30. Hybridization Techniques</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">30. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">31. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">32. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">33. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">31. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">32. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">33. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">34. Preconditioning</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">35. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">36. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
 </ul>
 
     </div>
@@ -356,7 +357,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -367,11 +370,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Riesz Representation Theorem</h1>
+    <h1>Riesz representation theorem and symmetric variational problems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-variational-problems">9.1. Symmetric variational problems</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -381,8 +392,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="riesz-representation-theorem">
-<h1><span class="section-number">9. </span>Riesz Representation Theorem<a class="headerlink" href="#riesz-representation-theorem" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="riesz-representation-theorem-and-symmetric-variational-problems">
+<h1><span class="section-number">9. </span>Riesz representation theorem and symmetric variational problems<a class="headerlink" href="#riesz-representation-theorem-and-symmetric-variational-problems" title="Link to this heading">#</a></h1>
 <p>Let <span class="math notranslate nohighlight">\(u \in V\)</span>. Then, we can define the related continuous linear
 functional <span class="math notranslate nohighlight">\(l_u(\cdot) \in V^\ast\)</span> by</p>
 <div class="math notranslate nohighlight">
@@ -391,10 +402,10 @@ l_u (v) := (u,v)_V \qquad \forall \, v \in V.
 \]</div>
 <p>The opposite is also true:</p>
 <p><strong>Theorem:</strong> <strong>(Riesz Representation Theorem)</strong> Any continuous linear
-functional <span class="math notranslate nohighlight">\(l\)</span> on a Hilbert space <span class="math notranslate nohighlight">\(V\)</span> can be represented uniquely as</p>
+functional <span class="math notranslate nohighlight">\(l(\cdot)\)</span> on a Hilbert space <span class="math notranslate nohighlight">\(V\)</span> can be represented uniquely as</p>
 <div class="math notranslate nohighlight">
 \[
-l(v) = (u_l,v)
+l(v) = (u_l,v)_V
 \]</div>
 <p>for some <span class="math notranslate nohighlight">\(u_l \in V\)</span>. Furthermore, we have</p>
 <div class="math notranslate nohighlight">
@@ -402,9 +413,9 @@ l(v) = (u_l,v)
 \| l \|_{V^\ast} = \| u_l \|_V.
 \]</div>
 <p><em>Proof:</em> First, we show uniqueness. Assume that <span class="math notranslate nohighlight">\(u_1 \neq u_2\)</span> both
-fulfill (\ref{equ_rieszrep}). This leads to the contradiction</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e4c66668-b7f9-43a9-a46a-bf744e70b939">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-e4c66668-b7f9-43a9-a46a-bf744e70b939" title="Permalink to this equation">#</a></span>\[\begin{align}
+fulfill <span class="math notranslate nohighlight">\(l(v) = (u_1,v)_V = (u_2,v)_V\)</span>. This leads to the contradiction</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1367fffa-0ed4-4e28-a39e-eb13ed0d1f83">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-1367fffa-0ed4-4e28-a39e-eb13ed0d1f83" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp;=  l(u_1-u_2) - l(u_1-u_2) \\
   &amp;=  (u_1,u_1-u2) - (u_2,u_1-u_2) = \| u_1 - u_2 \|^2.
 \end{align}\]</div>
@@ -419,8 +430,8 @@ Now define</p>
 u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
 \]</div>
 <p>Then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9aa04bc4-38e0-448b-bd37-37f9b879d1c2">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-9aa04bc4-38e0-448b-bd37-37f9b879d1c2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-db1a7099-832c-4eaa-aea1-d37dce91957e">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-db1a7099-832c-4eaa-aea1-d37dce91957e" title="Permalink to this equation">#</a></span>\[\begin{align}
 (u_l,v) &amp;= (\underbrace{u_l}_{S^\bot}, \underbrace{v - l(v)/l(z) z}_S) + (u_l,l(v)/l(z)z) \\
 &amp;=  l(z) / \| z\|^2 (z,l(v)/l(z) z) \\
 &amp;= l(v)
@@ -437,6 +448,59 @@ u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
 \| u_l \| = \frac{l(z)}{\|z\|^2}  \|z\| = \frac{l(z)}{\|z\|} \leq \| l \|_{V^\ast}.
 \]</div>
 <p><span class="math notranslate nohighlight">\(\Box\)</span></p>
+<section id="symmetric-variational-problems">
+<h2><span class="section-number">9.1. </span>Symmetric variational problems<a class="headerlink" href="#symmetric-variational-problems" title="Link to this heading">#</a></h2>
+<p>Take the function space <span class="math notranslate nohighlight">\(C^1(\Omega)\)</span>, and define the bilinear form</p>
+<div class="math notranslate nohighlight">
+\[
+A(u,v) := \int_\Omega \nabla u \nabla v + \int_\Gamma u v \, ds
+\]</div>
+<p>and the linear form</p>
+<div class="math notranslate nohighlight">
+\[
+f(v) := \int_\Omega f v \, dx
+\]</div>
+<p>The bilinear form is non-negative, and <span class="math notranslate nohighlight">\(A(u,u) = 0\)</span> implies <span class="math notranslate nohighlight">\(u = 0\)</span>.
+Thus <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is an inner product, and provides the
+norm <span class="math notranslate nohighlight">\(\|v\|_A := A(v,v)^{1/2}\)</span>. The normed vector space <span class="math notranslate nohighlight">\((C^1, \|.\|_A)\)</span>
+is not complete. Define</p>
+<div class="math notranslate nohighlight">
+\[
+V := \overline{C^1(\Omega)}^{\|.\|_A},
+\]</div>
+<p>which is a Hilbert space per definition. If we can show that there exists
+a constant <span class="math notranslate nohighlight">\(c\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+f(v) = \int_\Omega f v \, dx \leq c \, \| v \|_A \qquad \forall \, v \in V
+\]</div>
+<p>then <span class="math notranslate nohighlight">\(f(.)\)</span> is a continuous linear functional on <span class="math notranslate nohighlight">\(V\)</span>.
+We will prove this later. In this case, the Riesz representation theorem
+tells that there exists an unique <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+A(u,v) = f(v).
+\]</div>
+<p>This shows that the weak form has a unique solution in <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<p>Next, take the finite dimensional (<span class="math notranslate nohighlight">\(\Rightarrow\)</span> closed) finite element subspace <span class="math notranslate nohighlight">\(V_h \subset V\)</span>.
+The finite element solution <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> is defined by</p>
+<div class="math notranslate nohighlight">
+\[
+A(u_h,v_h) = f(v_h) \qquad \forall \, v_h \in V_h.
+\]</div>
+<p>This means</p>
+<div class="math notranslate nohighlight">
+\[
+A(u-u_h, v_h) = A(u,v_h) - A(u_h,v_h) = f(v_h) - f(v_h) = 0.
+\]</div>
+<p><span class="math notranslate nohighlight">\(u_h\)</span> is the projection of <span class="math notranslate nohighlight">\(u\)</span> onto <span class="math notranslate nohighlight">\(V_h\)</span>, this means that the error is minimal
+within all elements from the finite element space:</p>
+<div class="math notranslate nohighlight">
+\[
+\| u - u_h \|_A \leq \| u - v_h \|_A \qquad \forall \, v_h \in V_h
+\]</div>
+<p>The error <span class="math notranslate nohighlight">\(u - u_h\)</span> is orthogonal to <span class="math notranslate nohighlight">\(V_h\)</span>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -479,11 +543,11 @@ u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
       </div>
     </a>
     <a class="right-next"
-       href="../mixed/stokes.html"
+       href="Coercive.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Stokes Equation</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Coercive variational problems and their approximation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -494,7 +558,20 @@ u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-variational-problems">9.1. Symmetric variational problems</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

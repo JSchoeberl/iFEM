@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. Coercive variational problems and their approximation &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'abstracttheory/Coercive';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Stokes Equation" href="../mixed/stokes.html" />
+    <link rel="prev" title="9. Riesz representation theorem and symmetric variational problems" href="RieszRepresentation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An Interactive Introduction to the Finite Element Method
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">4. 3D Solid Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">5. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="BasicProperties.html">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RieszRepresentation.html">9. Riesz representation theorem and symmetric variational problems</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Coercive variational problems and their approximation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">11. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">12. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">13. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">14. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">15. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">16. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">17. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">18. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">19. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">21. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">22. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">23. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">24. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">25. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">26. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">27. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">28. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">29. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">30. Hybridization Techniques</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">31. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">32. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">33. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">34. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/abstracttheory/Coercive.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Coercive variational problems and their approximation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-of-coercive-variational-problems">10.1. Approximation of coercive variational problems</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="coercive-variational-problems-and-their-approximation">
+<h1><span class="section-number">10. </span>Coercive variational problems and their approximation<a class="headerlink" href="#coercive-variational-problems-and-their-approximation" title="Link to this heading">#</a></h1>
+<p>In this chapter we discuss variational problems posed in Hilbert spaces.
+Let <span class="math notranslate nohighlight">\(V\)</span> be a Hilbert space, and let <span class="math notranslate nohighlight">\(A(\cdot,\cdot) : V \times V \rightarrow {\mathbb R}\)</span> be
+a bilinear form which is</p>
+<ul class="simple">
+<li><p>coercive (also known as elliptic)</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-5dcb6a40-0aac-481b-8ddf-388d706fcd8e">
+<span class="eqno">(10.1)<a class="headerlink" href="#equation-5dcb6a40-0aac-481b-8ddf-388d706fcd8e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+A(u,u) \geq \alpha_1 \| u \|_V^2 \qquad \forall \, u \in V,
+\end{equation}\]</div>
+<ul class="simple">
+<li><p>and continuous</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-636ae972-d1ab-48ef-b09d-3d6490355d18">
+<span class="eqno">(10.2)<a class="headerlink" href="#equation-636ae972-d1ab-48ef-b09d-3d6490355d18" title="Permalink to this equation">#</a></span>\[\begin{equation}
+A(u,v) \leq \alpha_2 \| u \|_V  \, \| v \|_V \qquad \forall \, u , v \in V,
+\end{equation}\]</div>
+<p>\end{itemize}</p>
+<p>with bounds <span class="math notranslate nohighlight">\(\alpha_1\)</span> and <span class="math notranslate nohighlight">\(\alpha_2\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^+\)</span>. It is not necessarily symmetric.
+Let <span class="math notranslate nohighlight">\(f(.) : V \rightarrow {\mathbb R}\)</span> be a continuous linear form on <span class="math notranslate nohighlight">\(V\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+f(v) \leq \| f \|_{V^\ast} \| v \|_V.
+\]</div>
+<p>We are posing the variational problem: find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+A(u,v) = f(v) \qquad \forall \, v \in V.
+\]</div>
+<p><strong>Example:</strong>
+Diffusion-reaction equation:</p>
+<p>Consider the PDE</p>
+<div class="math notranslate nohighlight">
+\[
+-\operatorname{div} (a(x) \nabla u) + c(x) u = f \qquad \mbox{in } \Omega,
+\]</div>
+<p>with Neumann boundary conditions. Let <span class="math notranslate nohighlight">\(V\)</span> be the Hilbert space generated
+by the inner product <span class="math notranslate nohighlight">\((u,v)_V := (u,v)_{L_2}+ (\nabla u , \nabla v)_{L_2}\)</span>.
+The variational formulation of the PDE involves the bilinear form</p>
+<div class="math notranslate nohighlight">
+\[
+A(u,v) = \int_{\Omega} (a(x) \nabla u) \cdot \nabla v \, dx + \int_\Omega c(x) u v \, dx.
+\]</div>
+<p>Assume that the coefficients <span class="math notranslate nohighlight">\(a(x)\)</span> and <span class="math notranslate nohighlight">\(c(x)\)</span> fulfill
+<span class="math notranslate nohighlight">\(a(x) \in {\mathbb R}^{d \times d}\)</span>, <span class="math notranslate nohighlight">\(a(x)\)</span> symmetric and <span class="math notranslate nohighlight">\(\lambda_1 \leq \lambda_{\min} (a(x)) \leq \lambda_{\max} (a(x)) \leq \lambda_2\)</span>, and
+<span class="math notranslate nohighlight">\(c(x)\)</span> such that <span class="math notranslate nohighlight">\(\gamma_1 \leq c(x) \leq \gamma_2\)</span> almost everywhere.
+Then <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is coercive with constant
+<span class="math notranslate nohighlight">\(\alpha_1 = \min \{ \lambda_1, \gamma_1 \}\)</span> and <span class="math notranslate nohighlight">\(\alpha_2 = \max \{ \lambda_2, \gamma_2 \}\)</span>.</p>
+<p><strong>Example:</strong> Diffusion-convection-reaction equation:</p>
+<p>The partial differential equation</p>
+<div class="math notranslate nohighlight">
+\[
+-\Delta u + b \cdot \nabla u + u  = f \qquad \mbox{in} \; \Omega
+\]</div>
+<p>with Dirichlet boundary conditions <span class="math notranslate nohighlight">\(u = 0\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span> leads to the
+bilinear form</p>
+<div class="math notranslate nohighlight">
+\[
+A(u,v) = \int \nabla u \, \nabla v \, dx + \int b \cdot \nabla u \, v \, dx + \int u v \, dx.
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(\operatorname{div} \, b \leq 0\)</span>, what is an important case arising from incompressible flow
+fields (<span class="math notranslate nohighlight">\(\operatorname{div} \, b = 0\)</span>), then <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is coercive and continuous w.r.t. the same norm as above.</p>
+<p>Instead of the linear form <span class="math notranslate nohighlight">\(f(\cdot)\)</span>, we will often write <span class="math notranslate nohighlight">\(f \in V^\ast\)</span>. The evaluation is written as the duality product</p>
+<div class="math notranslate nohighlight">
+\[
+\left&lt; f , v \right&gt;_{V^\ast \times V} = f(v).
+\]</div>
+<p><strong>Lemma:</strong> A continuous bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot) : V \times V \rightarrow \setR\)</span>
+induces a continuous linear operator <span class="math notranslate nohighlight">\(A : V \rightarrow V^\ast\)</span> via</p>
+<div class="math notranslate nohighlight">
+\[
+\left&lt; A u, v \right&gt; = A(u,v) \qquad \forall \, u,v \in V.
+\]</div>
+<p>The operator norm <span class="math notranslate nohighlight">\(\| A \|_{V \rightarrow V^\ast}\)</span> is bounded by the continuity bound <span class="math notranslate nohighlight">\(\alpha_2\)</span> of <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span>.</p>
+<p><em>Proof:</em> For every <span class="math notranslate nohighlight">\(u \in V\)</span>, <span class="math notranslate nohighlight">\(A(u,\cdot)\)</span> is a bounded linear form on <span class="math notranslate nohighlight">\(V\)</span>
+with norm
+$<span class="math notranslate nohighlight">\(
+\| A(u,\cdot) \|_{V^\ast} = 
+\sup_{v \in V} \frac{A(u,v)}{ \| v \|_V} 
+\leq \sup_{v \in V} \frac{\alpha_2 \| u \|_V \, \| v \|_V }{ \| v \|_V} 
+= \alpha_2 \| u \|_V
+\)</span><span class="math notranslate nohighlight">\(
+Thus, we can define the operator \)</span>A : u \in V \rightarrow A(u,\cdot) \in V^\ast$.
+It is linear, and its operator norm is bounded by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| A \|_{V \rightarrow V^\ast} &amp; = &amp;
+\sup_{u\in V} \frac{ \| A u \|_{V^\ast}}{\| u \|_V} =
+\sup_{u\in V} \sup_{v \in V} \frac{ \left&lt; A u, v\right&gt;_{V^\ast \times V} } {\| u \|_V \, \| v \|_V} \\
+&amp; = &amp; \sup_{u\in V} \sup_{v \in V} \frac{ A (u,v) } {\| u \|_V \, \| v \|_V} \leq
+\sup_{u\in V} \sup_{v\in V} \frac{ \alpha_2 \| u \|_V \| v \|_V } {\| u \|_V \, \| v \|_V} = \alpha_2.
+\end{eqnarray*}\]</div>
+<p><span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>Using this notation, we can write the variational problem as operator equation: find <span class="math notranslate nohighlight">\(u \in V\)</span> such that
+$<span class="math notranslate nohighlight">\(
+A u = f \qquad (\mbox{in } V^\ast).
+\)</span>$</p>
+<p>\begin{theorem}[Banach’s contraction mapping theorem] Given a Banach space
+<span class="math notranslate nohighlight">\(V\)</span> and a mapping <span class="math notranslate nohighlight">\(T : V \rightarrow V\)</span>, satisfying the Lipschitz condition
+$<span class="math notranslate nohighlight">\(
+\| T(v_1) - T(v_2) \| \leq L \, \| v_1 - v_2 \| \qquad \forall  \, v_1, v_2 \in V
+\)</span><span class="math notranslate nohighlight">\(
+for a fixed \)</span>L \in [0,1)<span class="math notranslate nohighlight">\(. Then there exists a unique \)</span>u \in V<span class="math notranslate nohighlight">\( such that
+\)</span><span class="math notranslate nohighlight">\(
+u = T(u),
+\)</span><span class="math notranslate nohighlight">\(
+i.e. the mapping \)</span>T<span class="math notranslate nohighlight">\( has a unique fixed point \)</span>u<span class="math notranslate nohighlight">\(. The iteration \)</span>u^1 \in V<span class="math notranslate nohighlight">\( given, compute
+\)</span><span class="math notranslate nohighlight">\(
+u^{k+1} := T(u^k)
+\)</span><span class="math notranslate nohighlight">\(
+converges to \)</span>u<span class="math notranslate nohighlight">\( with convergence rate \)</span>L<span class="math notranslate nohighlight">\(:
+\)</span><span class="math notranslate nohighlight">\(
+\| u - u^{k+1} \| \leq L \| u - u^k \|
+\)</span>$
+\end{theorem}</p>
+<p>\begin{theorem}[Lax Milgram] Given a Hilbert space <span class="math notranslate nohighlight">\(V\)</span>, a coercive and continuous bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span>, and a continuous linear form <span class="math notranslate nohighlight">\(f(.)\)</span>. Then there exists a unique <span class="math notranslate nohighlight">\(u \in V\)</span> solving
+$<span class="math notranslate nohighlight">\(
+A(u,v) = f(v) \qquad \forall \, v \in V.
+\)</span>$
+There holds</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2332e09d-86d0-4f84-af2b-1f479ff83116">
+<span class="eqno">(10.3)<a class="headerlink" href="#equation-2332e09d-86d0-4f84-af2b-1f479ff83116" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{equ_lax_milgram_bound}
+\| u \|_V \leq \alpha_1^{-1} \| f \|_{V^\ast}
+\end{equation}\]</div>
+<p>\end{theorem}
+{\em Proof:} Start from the operator equation <span class="math notranslate nohighlight">\(A u = f\)</span>. Let <span class="math notranslate nohighlight">\(J_V : V^\ast \rightarrow V\)</span> be the Riesz isomorphism defined by
+$<span class="math notranslate nohighlight">\(
+(J_V g, v)_V = g(v) \qquad \forall \, v \in V, \;  \forall \, g \in V^\ast.
+\)</span><span class="math notranslate nohighlight">\(
+Then the operator equation is equivalent to
+\)</span><span class="math notranslate nohighlight">\(
+J_V A u = J_V f \qquad (\mbox{in } V),
+\)</span><span class="math notranslate nohighlight">\(
+and to the fixed point equation (with some \)</span>0 \neq \tau \in \setR$ chosen below)</p>
+<div class="amsmath math notranslate nohighlight" id="equation-67cd8ae8-eec9-4d50-beaf-ae59f610777d">
+<span class="eqno">(10.4)<a class="headerlink" href="#equation-67cd8ae8-eec9-4d50-beaf-ae59f610777d" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{equ_fixedpointequ}
+u = u - \tau J_V (A u - f).
+\end{equation}\]</div>
+<p>We will verify that
+$<span class="math notranslate nohighlight">\(
+T (v) := v - \tau J_V (A v - f)
+\)</span><span class="math notranslate nohighlight">\(
+is a contraction mapping, i.e., \)</span>| T (v_1) - T (v_2) |_V \leq L | v_1 - v_2 |_V<span class="math notranslate nohighlight">\( 
+with some Lipschitz constant \)</span>L \in [0,1)<span class="math notranslate nohighlight">\(.
+Let \)</span>v_1, v_2 \in V<span class="math notranslate nohighlight">\(, and set \)</span>v = v_1 - v_2$. Then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| T (v_1) - T (v_2) \|_V^2 
+&amp; = &amp; \| \{ v_1 - \tau J_V (A v_1 - f) \} - \{ v_2 - \tau J_V (A v_2 -f) \} \|_V^2 \\
+&amp; = &amp; \| v - \tau J_V A v \|_V^2 \\
+&amp; = &amp; \| v \|_V^2 - 2 \tau (J_V A v, v)_V + \tau^2 \| J_V A v \|_V^2 \\
+&amp; = &amp; \| v \|_V^2 - 2 \tau \left&lt; A v , v \right&gt; + \tau^2 \| A v \|_{V^\ast}^2 \\
+&amp; = &amp; \| v \|_V^2 - 2 \tau A(v,v) + \tau^2 \| A v \|_{V^\ast}^2 \\
+&amp; \leq &amp; \| v \|_V^2 - 2 \tau \alpha_1 \| v \|_V^2 + \tau^2 \alpha_2^2 \| v \|_V^2 \\
+&amp; = &amp; (1 - 2 \tau \alpha_1 + \tau^2 \alpha_2^2) \| v_1 - v_2 \|_V^2
+\end{eqnarray*}\]</div>
+<p>Now, we choose <span class="math notranslate nohighlight">\(\tau = \alpha_1 / \alpha_2^2\)</span>, and obtain a Lipschitz constant
+$<span class="math notranslate nohighlight">\(
+L^2 = 1 - \alpha_1^2 / \alpha_2^2 \in [0,1).
+\)</span><span class="math notranslate nohighlight">\(
+Banach's contraction mapping theorem state that (\ref{equ_fixedpointequ}) 
+has a unique fixed point. Finally, we obtain the bound (\ref{equ_lax_milgram_bound}) from
+\)</span><span class="math notranslate nohighlight">\(
+\| u \|_V^2 \leq \alpha_1^{-1} A(u,u) = \alpha_1^{-1} \, f(u) \leq \alpha_1^{-1} \| f\|_{V^\ast} \| u \|_V,
+\)</span><span class="math notranslate nohighlight">\(
+and dividing by one factor \)</span>|u|<span class="math notranslate nohighlight">\(.
+\hfill \)</span>\Box$</p>
+<section id="approximation-of-coercive-variational-problems">
+<h2><span class="section-number">10.1. </span>Approximation of coercive variational problems<a class="headerlink" href="#approximation-of-coercive-variational-problems" title="Link to this heading">#</a></h2>
+<p>Now, let <span class="math notranslate nohighlight">\(V_h\)</span> be a closed subspace of <span class="math notranslate nohighlight">\(V\)</span>. We compute the
+approximation <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> by the Galerkin method</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e5275208-dda9-48b4-af90-16515f69a3ce">
+<span class="eqno">(10.5)<a class="headerlink" href="#equation-e5275208-dda9-48b4-af90-16515f69a3ce" title="Permalink to this equation">#</a></span>\[\begin{equation}
+A(u_h, v_h) = f(v_h) \qquad \forall \, v_h \in V_h.
+\end{equation}\]</div>
+<p>This variational problem is uniquely solvable by Lax-Milgram,
+since, <span class="math notranslate nohighlight">\((V_h,\|.\|_V)\)</span> is
+a Hilbert space, and continuity and coercivity on <span class="math notranslate nohighlight">\(V_h\)</span> are inherited
+from the original problem on <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<p>The next theorem says, that the solution defined by the Galerkin method is,
+up to a constant factor, as good as the best possible approximation in the
+finite dimensional space.</p>
+<p>\begin{theorem}[Cea] The approximation error of the Galerkin method
+is quasi optimal
+$<span class="math notranslate nohighlight">\(
+\| u - u_h \|_V \leq \alpha_2 / \alpha_1 \inf_{v \in V_h} \| u - v_h \|_V
+\)</span><span class="math notranslate nohighlight">\(
+\end{theorem}
+{\em Proof:} A fundamental property is the Galerkin orthogonality
+\)</span><span class="math notranslate nohighlight">\(
+A(u-u_h, w_h) = A(u,w_h) - A(u_h, w_h) = f(w_h) - f(w_h) = 0
+\qquad \forall \, w_h \in V_h.
+\)</span><span class="math notranslate nohighlight">\(
+Now, pick an arbitrary \)</span>v_h \in V_h$, and bound</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| u - u_h \|_V^2 &amp; \leq &amp; \alpha_1^{-1} A(u-u_h, u-u_h) \\
+&amp; = &amp; \alpha_1^{-1} A(u-u_h, u-v_h) + \alpha_1^{-1} A(u-u_h, \underbrace{v_h-u_h}_{\in V_h}) \\
+&amp; \leq &amp;  \alpha_2 / \alpha_1 \, \| u - u_h \|_V \| u - v_h \|_V.
+\end{eqnarray*}\]</div>
+<p>Divide one factor <span class="math notranslate nohighlight">\(\|u - u_h\|\)</span>. Since <span class="math notranslate nohighlight">\(v_h \in V_h\)</span> was arbitrary, the estimation
+holds true also for the infimum in <span class="math notranslate nohighlight">\(V_h\)</span>.
+\hfill <span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>\bigskip
+If <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is additionally symmetric, then it is an inner product. In this
+case, the coercivity and continuity properties are equivalent to
+$<span class="math notranslate nohighlight">\(
+\alpha_1 \| u \|_V^2 \leq A(u,u) \leq \alpha_2 \, \| u \|_V^2
+\qquad \forall \, u \in V.
+\)</span><span class="math notranslate nohighlight">\(
+The generated norm \)</span>|.|_A<span class="math notranslate nohighlight">\( is an equivalent norm to \)</span>|.|_V<span class="math notranslate nohighlight">\(. In the 
+symmetric case, we can use the orthogonal projection with respect to 
+\)</span>(.,.)_A<span class="math notranslate nohighlight">\( to improve the bounds to
+\)</span><span class="math notranslate nohighlight">\(
+\| u - u_h \|_V^2 \leq \alpha_1^{-1} \| u - u_h \|_A^2 \leq
+        \alpha_1^{-1} \inf_{v_h \in V_h} \| u - v_h \|_A^2 \leq
+        \alpha_2 / \alpha_1 \| u - v_h \|_V^2.
+\)</span>$
+The factor in the quasi-optimality estimate is now the square root of the
+general, non-symmetric case.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./abstracttheory"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="RieszRepresentation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Riesz representation theorem and symmetric variational problems</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../mixed/stokes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Stokes Equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-of-coercive-variational-problems">10.1. Approximation of coercive variational problems</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
