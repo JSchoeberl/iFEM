@@ -248,6 +248,35 @@
 <li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">45. Analysis of the Multigrid Iteration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">46. Multi-level Extension</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">47. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">48. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">49. A Small Number of Constraints</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">51. Parameter Dependent Problems</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">53. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">54. Traces spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">56. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">57. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">58. BDDC - Preconditioner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">59. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">60. Distributed Meshes and Spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">62. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">63. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">64. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">65. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">66. Solving Stokes in parallel</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -499,8 +528,8 @@ Consider the complex valued PDE</p>
 \]</div>
 <p>with Dirichlet boundary conditions, <span class="math notranslate nohighlight">\(f \in L_2\)</span>, and <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span>. The
 weak form for the real system <span class="math notranslate nohighlight">\(u = (u_{r}, u_i) \in V^2\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50afbf77-4d37-4819-a108-086aca26a4cd">
-<span class="eqno">()<a class="headerlink" href="#equation-50afbf77-4d37-4819-a108-086aca26a4cd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f59f9939-6cce-4be7-ab52-916dc4c0c41c">
+<span class="eqno">()<a class="headerlink" href="#equation-f59f9939-6cce-4be7-ab52-916dc4c0c41c" title="Permalink to this equation">#</a></span>\[\begin{align}
 (\nabla u_{r}, \nabla v_{r})_{L_2} &amp;+ (u_i, v_{r})_{L_2} &amp;= 
         (f,v_{r}) &amp; \forall \, v_r \in V \\
 (u_{r}, v_i)_{L_2} &amp;- (\nabla u_i, \nabla v_i)_{L_2} &amp;=
@@ -542,8 +571,8 @@ can skip the second condition.</p>
 Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89d86a2d-7cb9-49d3-b367-5e7847d5aab4">
-<span class="eqno">()<a class="headerlink" href="#equation-89d86a2d-7cb9-49d3-b367-5e7847d5aab4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-97eb933e-46be-4909-92fd-c5cde5d350a5">
+<span class="eqno">()<a class="headerlink" href="#equation-97eb933e-46be-4909-92fd-c5cde5d350a5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
 \end{equation}\]</div>
 <p><em>Proof:</em> Again, there holds the Galerkin orthogonality <span class="math notranslate nohighlight">\(B(u,w_h) = B(u_h,w_h)\)</span> for all <span class="math notranslate nohighlight">\(w_h \in V_h\)</span>. Again, choose an arbitrary <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>:</p>
