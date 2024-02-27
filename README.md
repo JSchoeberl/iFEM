@@ -18,6 +18,7 @@ The first time launching iFEM may take a few minutes. When it's ready,
 you can work through the tutorials pressing "shift-enter". 
 
 A new, experimental way to run the notebooks online is within jupyter-lite:
+
   [![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://jschoeberl.github.io/iFEM-lite/lab?path=iFEM.ipynb)
 
   [https://ngsolve.github.io/jupyterlite_ngsolve/lab?path=iFEM.ipynb](https://jschoeberl.github.io/iFEM-lite/lab?path=iFEM.ipynb)
