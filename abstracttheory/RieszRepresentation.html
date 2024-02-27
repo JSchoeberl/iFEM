@@ -233,6 +233,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">38. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">39. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">40. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -414,8 +422,8 @@ l(v) = (u_l,v)_V
 \]</div>
 <p><em>Proof:</em> First, we show uniqueness. Assume that <span class="math notranslate nohighlight">\(u_1 \neq u_2\)</span> both
 fulfill <span class="math notranslate nohighlight">\(l(v) = (u_1,v)_V = (u_2,v)_V\)</span>. This leads to the contradiction</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6b456e6b-d326-4270-8014-0f482b205983">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-6b456e6b-d326-4270-8014-0f482b205983" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f09c9b1a-bc6e-464a-b4a0-4806cec25dbe">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-f09c9b1a-bc6e-464a-b4a0-4806cec25dbe" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp;=  l(u_1-u_2) - l(u_1-u_2) \\
   &amp;=  (u_1,u_1-u2) - (u_2,u_1-u_2) = \| u_1 - u_2 \|^2.
 \end{align}\]</div>
@@ -430,8 +438,8 @@ Now define</p>
 u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
 \]</div>
 <p>Then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8dab69a9-1d56-41ac-be14-2f24aee9024f">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-8dab69a9-1d56-41ac-be14-2f24aee9024f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bbd847dd-2bdf-4f5b-9fde-85c1037a9acc">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-bbd847dd-2bdf-4f5b-9fde-85c1037a9acc" title="Permalink to this equation">#</a></span>\[\begin{align}
 (u_l,v) &amp;= (\underbrace{u_l}_{S^\bot}, \underbrace{v - l(v)/l(z) z}_S) + (u_l,l(v)/l(z)z) \\
 &amp;=  l(z) / \| z\|^2 (z,l(v)/l(z) z) \\
 &amp;= l(v)

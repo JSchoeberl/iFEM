@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Same Examples of ASM preconditioners &#8212; Introduction to Scientific Computing</title>
+    <title>39. Same Examples of ASM preconditioners &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'subspacecorrection/examples';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="40. Domain Decomposition with minimal overlap" href="minimaldd.html" />
+    <link rel="prev" title="38. Additive Schwarz Methods" href="asm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -232,6 +232,14 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="asm.html">38. Additive Schwarz Methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">39. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimaldd.html">40. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise.html">42. Exercise: Robust preconditioners</a></li>
 </ul>
 
     </div>
@@ -380,9 +388,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-preconditioner-for-l-2-norm">Diagonal preconditioner for <span class="math notranslate nohighlight">\(L_2\)</span>-norm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-preconditioner-for-the-h-1-norm">Diagonal preconditioner for the <span class="math notranslate nohighlight">\(H^1\)</span> norm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-1-norm-with-small-l-2-term"><span class="math notranslate nohighlight">\(H^1\)</span>-norm with small <span class="math notranslate nohighlight">\(L_2\)</span>-term</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-preconditioner-for-l-2-norm">39.1. Diagonal preconditioner for <span class="math notranslate nohighlight">\(L_2\)</span>-norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-preconditioner-for-the-h-1-norm">39.2. Diagonal preconditioner for the <span class="math notranslate nohighlight">\(H^1\)</span> norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-1-norm-with-small-l-2-term">39.3. <span class="math notranslate nohighlight">\(H^1\)</span>-norm with small <span class="math notranslate nohighlight">\(L_2\)</span>-term</a></li>
 </ul>
             </nav>
         </div>
@@ -395,9 +403,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="same-examples-of-asm-preconditioners">
-<h1>Same Examples of ASM preconditioners<a class="headerlink" href="#same-examples-of-asm-preconditioners" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">39. </span>Same Examples of ASM preconditioners<a class="headerlink" href="#same-examples-of-asm-preconditioners" title="Link to this heading">#</a></h1>
 <section id="diagonal-preconditioner-for-l-2-norm">
-<h2>Diagonal preconditioner for <span class="math notranslate nohighlight">\(L_2\)</span>-norm<a class="headerlink" href="#diagonal-preconditioner-for-l-2-norm" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">39.1. </span>Diagonal preconditioner for <span class="math notranslate nohighlight">\(L_2\)</span>-norm<a class="headerlink" href="#diagonal-preconditioner-for-l-2-norm" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span>, and <span class="math notranslate nohighlight">\(M\)</span> be the finite element
 discretization matrix of</p>
 <div class="math notranslate nohighlight">
@@ -451,7 +459,6 @@ of the transformation rule of integrals:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">netgen.geom2d</span> <span class="kn">import</span> <span class="n">unit_square</span>
 <span class="kn">from</span> <span class="nn">ngsolve.la</span> <span class="kn">import</span> <span class="n">EigenValues_Preconditioner</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">unit_square</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">))</span>
 <span class="n">fes</span> <span class="o">=</span> <span class="n">H1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -465,11 +472,17 @@ of the transformation rule of integrals:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.5084873825636222 1.9999985124304929
+kappa= 3.9332313465619806
+</pre></div>
+</div>
+</div>
 </div>
 <p><em>Exercise:</em> Do some experiments with the mesh-size <span class="math notranslate nohighlight">\(h\)</span> and the order <span class="math notranslate nohighlight">\(p\)</span>.</p>
 </section>
 <section id="diagonal-preconditioner-for-the-h-1-norm">
-<h2>Diagonal preconditioner for the <span class="math notranslate nohighlight">\(H^1\)</span> norm<a class="headerlink" href="#diagonal-preconditioner-for-the-h-1-norm" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">39.2. </span>Diagonal preconditioner for the <span class="math notranslate nohighlight">\(H^1\)</span> norm<a class="headerlink" href="#diagonal-preconditioner-for-the-h-1-norm" title="Link to this heading">#</a></h2>
 <p>Now let <span class="math notranslate nohighlight">\(V_h \subset H_0^1(\Omega)\)</span>, and the bilinear-form</p>
 <div class="math notranslate nohighlight">
 \[
@@ -534,6 +547,12 @@ and together with the transformation rule we get</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.04897732520654302 1.5008305152546493
+kappa= 30.643374437568287
+</pre></div>
+</div>
+</div>
 </div>
 <p>Exercise:</p>
 <ul class="simple">
@@ -544,7 +563,7 @@ and together with the transformation rule we get</p>
 Then <span class="math notranslate nohighlight">\(\| u \|_{C}^2 = \sum u_i^2 \| \nabla \varphi_i \|^2\)</span>. There holds <span class="math notranslate nohighlight">\(u_i \approx 1\)</span> and <span class="math notranslate nohighlight">\(\| \nabla \varphi_i \|^2 \approx h^{d-2}\)</span>, and there are <span class="math notranslate nohighlight">\(h^{-d}\)</span> summands, which verifies that the estimate is sharp.</p>
 </section>
 <section id="h-1-norm-with-small-l-2-term">
-<h2><span class="math notranslate nohighlight">\(H^1\)</span>-norm with small <span class="math notranslate nohighlight">\(L_2\)</span>-term<a class="headerlink" href="#h-1-norm-with-small-l-2-term" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">39.3. </span><span class="math notranslate nohighlight">\(H^1\)</span>-norm with small <span class="math notranslate nohighlight">\(L_2\)</span>-term<a class="headerlink" href="#h-1-norm-with-small-l-2-term" title="Link to this heading">#</a></h2>
 <p>We now consider <span class="math notranslate nohighlight">\(V_h \subset H^1\)</span>, and the bilinear-form</p>
 <div class="math notranslate nohighlight">
 \[
@@ -563,6 +582,12 @@ A(u,v) = \int_\Omega \nabla u \nabla v \, dx + \varepsilon \int_\Omega u v \, dx
 <span class="n">lam</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;lammin, lam2, lammax=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;kappa=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lam2, lammax= 2.445649917934279e-05 0.02174192758618282 1.691719831029388
+kappa= 69172.60800999273
 </pre></div>
 </div>
 </div>
@@ -602,6 +627,13 @@ C_{ASM}^{-1} = E_0 \, (E_0^T A E_0)^{-1} E_0^T  + C_{Jac}^{-1},
 <span class="n">lam</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;lammin, lam2, lammax=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;kappa=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a0= 0.010000000000006034
+lammin, lam2, lammax= 0.021639697370106015 0.04467208226450642 1.6917198213704379
+kappa= 78.1766857658301
 </pre></div>
 </div>
 </div>
@@ -688,6 +720,24 @@ u_0 = \frac{1}{|\Omega|} \int_\Omega u \, dx
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="asm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">38. </span>Additive Schwarz Methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="minimaldd.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">40. </span>Domain Decomposition with minimal overlap</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -704,9 +754,9 @@ u_0 = \frac{1}{|\Omega|} \int_\Omega u \, dx
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-preconditioner-for-l-2-norm">Diagonal preconditioner for <span class="math notranslate nohighlight">\(L_2\)</span>-norm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-preconditioner-for-the-h-1-norm">Diagonal preconditioner for the <span class="math notranslate nohighlight">\(H^1\)</span> norm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-1-norm-with-small-l-2-term"><span class="math notranslate nohighlight">\(H^1\)</span>-norm with small <span class="math notranslate nohighlight">\(L_2\)</span>-term</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-preconditioner-for-l-2-norm">39.1. Diagonal preconditioner for <span class="math notranslate nohighlight">\(L_2\)</span>-norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-preconditioner-for-the-h-1-norm">39.2. Diagonal preconditioner for the <span class="math notranslate nohighlight">\(H^1\)</span> norm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-1-norm-with-small-l-2-term">39.3. <span class="math notranslate nohighlight">\(H^1\)</span>-norm with small <span class="math notranslate nohighlight">\(L_2\)</span>-term</a></li>
 </ul>
   </nav></div>
 

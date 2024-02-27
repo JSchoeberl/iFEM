@@ -233,6 +233,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">38. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">39. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">40. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -478,8 +486,8 @@ Let <span class="math notranslate nohighlight">\(\Omega = (0,a)\)</span>. Let <s
 \tilde u(x) = u(x) (1 - x/a)
 \]</div>
 <p>There is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-22c60cdb-004a-41f4-b52f-c2470c49e6e5">
-<span class="eqno">()<a class="headerlink" href="#equation-22c60cdb-004a-41f4-b52f-c2470c49e6e5" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-22b98808-e919-47cf-b297-2c7f4cc8cc70">
+<span class="eqno">()<a class="headerlink" href="#equation-22b98808-e919-47cf-b297-2c7f4cc8cc70" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 |u(0)| &amp; = &amp; | \, \tilde u(0) - \tilde u(a) \, | 
   = \Big| \, \int_0^a \tilde u^\prime(x) \, dx  \, \Big| \\
   &amp; = &amp; \Big| \, \int_0^a u^\prime(x) (1-x/a) + u(x) \, (1-x/a)^\prime \, dx \, \Big| \\
@@ -496,8 +504,8 @@ Let <span class="math notranslate nohighlight">\(\Omega = (0,a) \times (0,1)\)</
 | u(0,y) | \leq \sqrt{a} \, \| u^\prime(\cdot,y) \|_{L_2(0,a)} + \tfrac{1}{\sqrt{a}} \, \| u(\cdot,y) \|_{L_2(0,a)}
 \]</div>
 <p>Integrating in <span class="math notranslate nohighlight">\(y\)</span>-direction and Fubini leads to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09f024f3-4b80-4e71-ae93-61bcee86f773">
-<span class="eqno">()<a class="headerlink" href="#equation-09f024f3-4b80-4e71-ae93-61bcee86f773" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-72bd7af0-1891-40fa-a411-d6893c40e1d3">
+<span class="eqno">()<a class="headerlink" href="#equation-72bd7af0-1891-40fa-a411-d6893c40e1d3" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \int_0^1 |u(0,y)|^2 \, dy &amp; \leq &amp; 2  a \int_0^1 \int_0^a | \partial_x u(x,y) |^2  + \frac{1}{a} \int_0^1 \int_0^a |u(x,y)|^2
 \end{eqnarray}\]</div>
 <p>i.e.</p>

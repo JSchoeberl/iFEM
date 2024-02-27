@@ -233,6 +233,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">38. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">39. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">40. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -484,8 +492,8 @@ Consider the complex valued PDE</p>
 \]</div>
 <p>with Dirichlet boundary conditions, <span class="math notranslate nohighlight">\(f \in L_2\)</span>, and <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span>. The
 weak form for the real system <span class="math notranslate nohighlight">\(u = (u_{r}, u_i) \in V^2\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ff5b36a2-83fa-4350-aef7-c195f0d45cd6">
-<span class="eqno">()<a class="headerlink" href="#equation-ff5b36a2-83fa-4350-aef7-c195f0d45cd6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d679e76d-0485-4f3f-be66-1ca3679c0ff4">
+<span class="eqno">()<a class="headerlink" href="#equation-d679e76d-0485-4f3f-be66-1ca3679c0ff4" title="Permalink to this equation">#</a></span>\[\begin{align}
 (\nabla u_{r}, \nabla v_{r})_{L_2} &amp;+ (u_i, v_{r})_{L_2} &amp;= 
         (f,v_{r}) &amp; \forall \, v_r \in V \\
 (u_{r}, v_i)_{L_2} &amp;- (\nabla u_i, \nabla v_i)_{L_2} &amp;=
@@ -527,8 +535,8 @@ can skip the second condition.</p>
 Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-443cd365-2232-468a-8e16-2c2af9d35460">
-<span class="eqno">()<a class="headerlink" href="#equation-443cd365-2232-468a-8e16-2c2af9d35460" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a63a475e-c62c-4277-952d-6af4df09410a">
+<span class="eqno">()<a class="headerlink" href="#equation-a63a475e-c62c-4277-952d-6af4df09410a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
 \end{equation}\]</div>
 <p><em>Proof:</em> Again, there holds the Galerkin orthogonality <span class="math notranslate nohighlight">\(B(u,w_h) = B(u_h,w_h)\)</span> for all <span class="math notranslate nohighlight">\(w_h \in V_h\)</span>. Again, choose an arbitrary <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>:</p>

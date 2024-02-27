@@ -233,6 +233,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">38. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">39. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">40. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -721,8 +729,8 @@ r = z - \pi_{V_H} z \qquad \text{and} \qquad \psi = \Phi - \pi_{W_H} \Phi
 u_h - \pi_{V_H} u_h = r_h + \nabla \psi_h.
 \]</div>
 <p><em>Proof:</em> Apply the commuting projection operator <span class="math notranslate nohighlight">\(\pi_{V_h}\)</span> to the previous lemma to obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-daa6fea5-d14c-425b-9dc1-858154106317">
-<span class="eqno">()<a class="headerlink" href="#equation-daa6fea5-d14c-425b-9dc1-858154106317" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-0de34733-4f03-4248-b88a-7e7cb97803a9">
+<span class="eqno">()<a class="headerlink" href="#equation-0de34733-4f03-4248-b88a-7e7cb97803a9" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 u_h - \pi_{V_H} u_h &amp; = &amp; \pi_{V_h} ( u_h - \pi_{V_H} u_h ) \\
  &amp; = &amp; \pi_{V_h} r + \pi_{V_h} \nabla \psi \\
  &amp; = &amp; \pi_{V_h} r + \nabla \pi_{W_h} \psi

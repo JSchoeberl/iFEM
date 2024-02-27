@@ -233,6 +233,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">38. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">39. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">40. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -400,15 +408,15 @@ a bilinear form which is</p>
 <ul class="simple">
 <li><p>coercive (also known as elliptic)</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-b13862e7-5cf5-48b8-b9e1-d5f6e9f7a756">
-<span class="eqno">(10.1)<a class="headerlink" href="#equation-b13862e7-5cf5-48b8-b9e1-d5f6e9f7a756" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-adb69c3a-34b0-4daa-911c-87d0e7e7c696">
+<span class="eqno">(10.1)<a class="headerlink" href="#equation-adb69c3a-34b0-4daa-911c-87d0e7e7c696" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A(u,u) \geq \alpha_1 \| u \|_V^2 \qquad \forall \, u \in V,
 \end{equation}\]</div>
 <ul class="simple">
 <li><p>and continuous</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-d14c52fa-cadb-4f3f-af1a-d1be0a729491">
-<span class="eqno">(10.2)<a class="headerlink" href="#equation-d14c52fa-cadb-4f3f-af1a-d1be0a729491" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-37704e68-219b-432b-9c62-9dd728dac89e">
+<span class="eqno">(10.2)<a class="headerlink" href="#equation-37704e68-219b-432b-9c62-9dd728dac89e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A(u,v) \leq \alpha_2 \| u \|_V  \, \| v \|_V \qquad \forall \, u , v \in V,
 \end{equation}\]</div>
 <p>with bounds <span class="math notranslate nohighlight">\(\alpha_1\)</span> and <span class="math notranslate nohighlight">\(\alpha_2\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^+\)</span>. It is not necessarily symmetric.

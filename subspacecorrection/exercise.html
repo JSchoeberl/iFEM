@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Introduction to Scientific Computing</title>
+    <title>42. Exercise: Robust preconditioners &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -57,9 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'subspacecorrection/Untitled';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'subspacecorrection/exercise';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="41. Overlapping Domain Decomposition Methods" href="overlapping.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -120,8 +123,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -231,6 +232,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">36. The Chebyshev Method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">37. Conjugate Gradients</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="asm.html">38. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">39. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimaldd.html">40. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">42. Exercise: Robust preconditioners</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -284,7 +293,7 @@
       
       
       
-      <li><a href="../_sources/subspacecorrection/Untitled.ipynb" target="_blank"
+      <li><a href="../_sources/subspacecorrection/exercise.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Exercise: Robust preconditioners</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -377,9 +386,10 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a">42.1. Exercise A:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-b">42.2. Exercise B:</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -390,7 +400,46 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-robust-preconditioners">
+<h1><span class="section-number">42. </span>Exercise: Robust preconditioners<a class="headerlink" href="#exercise-robust-preconditioners" title="Link to this heading">#</a></h1>
+<p>Develop <span class="math notranslate nohighlight">\(\varepsilon\)</span>-robust preconditioners for the following problems:</p>
+<section id="exercise-a">
+<h2><span class="section-number">42.1. </span>Exercise A:<a class="headerlink" href="#exercise-a" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\Omega = (0,3) \times (0,1) \setminus (1,2) \times (\varepsilon , 1)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Gamma_D = \{ 0 \} \times (0,1)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+A(u,v) = \int \nabla u \nabla v \, dx
+\]</div>
+</section>
+<section id="exercise-b">
+<h2><span class="section-number">42.2. </span>Exercise B:<a class="headerlink" href="#exercise-b" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\Omega_1 = (0,1) \times (0,1), \quad \Omega_2 = (1,2) \times (0,1) 
+\]</div>
+<p>Interface:
+$<span class="math notranslate nohighlight">\(
+\gamma = \overline{\Omega_1} \cap \overline{\Omega_2} 
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+V = H^1(\Omega_1) \times H^1(\Omega_2)  \text{with Dirichlet at the bottomo}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+A(u,v) = \int_{\Omega_1 \cup \Omega_2} \nabla u \, \nabla v \, dx
+ + \frac{1}{\varepsilon} \int_\gamma (u_1-u_2) (v_1 - v_2) \, ds
+\]</div>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -421,6 +470,15 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="overlapping.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">41. </span>Overlapping Domain Decomposition Methods</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -436,9 +494,10 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-a">42.1. Exercise A:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-b">42.2. Exercise B:</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
