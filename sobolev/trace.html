@@ -319,6 +319,21 @@
 <div class="article-header-buttons">
 
 
+<a href="https://github.com/JSchoeberl/iFEM" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
 
 
 
@@ -522,8 +537,8 @@ Let <span class="math notranslate nohighlight">\(\Omega = (0,a)\)</span>. Let <s
 \tilde u(x) = u(x) (1 - x/a)
 \]</div>
 <p>There is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-76e9c876-6815-481a-97f9-9de77c75bab2">
-<span class="eqno">()<a class="headerlink" href="#equation-76e9c876-6815-481a-97f9-9de77c75bab2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-144d9a6f-5412-4a08-b046-923a09e09e1f">
+<span class="eqno">()<a class="headerlink" href="#equation-144d9a6f-5412-4a08-b046-923a09e09e1f" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 |u(0)| &amp; = &amp; | \, \tilde u(0) - \tilde u(a) \, | 
   = \Big| \, \int_0^a \tilde u^\prime(x) \, dx  \, \Big| \\
   &amp; = &amp; \Big| \, \int_0^a u^\prime(x) (1-x/a) + u(x) \, (1-x/a)^\prime \, dx \, \Big| \\
@@ -540,8 +555,8 @@ Let <span class="math notranslate nohighlight">\(\Omega = (0,a) \times (0,1)\)</
 | u(0,y) | \leq \sqrt{a} \, \| u^\prime(\cdot,y) \|_{L_2(0,a)} + \tfrac{1}{\sqrt{a}} \, \| u(\cdot,y) \|_{L_2(0,a)}
 \]</div>
 <p>Integrating in <span class="math notranslate nohighlight">\(y\)</span>-direction and Fubini leads to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-910f54c9-b0d0-4425-99eb-3581e36fbb35">
-<span class="eqno">()<a class="headerlink" href="#equation-910f54c9-b0d0-4425-99eb-3581e36fbb35" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-935fd0ff-2cbb-4ae2-a0f2-4c67e3c47807">
+<span class="eqno">()<a class="headerlink" href="#equation-935fd0ff-2cbb-4ae2-a0f2-4c67e3c47807" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \int_0^1 |u(0,y)|^2 \, dy &amp; \leq &amp; 2  a \int_0^1 \int_0^a | \partial_x u(x,y) |^2  + \frac{1}{a} \int_0^1 \int_0^a |u(x,y)|^2
 \end{eqnarray}\]</div>
 <p>i.e.</p>
