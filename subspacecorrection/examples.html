@@ -241,6 +241,13 @@
 <li class="toctree-l1"><a class="reference internal" href="overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise.html">42. Exercise: Robust preconditioners</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">43. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">44. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">45. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">46. Multi-level Extension</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -419,22 +426,26 @@ c_1 \, u^T C_{Jac} u \leq u^T M u \leq c_2 \, u^T C_{Jac} u.
 \]</div>
 <p>with constants independent of the mesh-size <span class="math notranslate nohighlight">\(h\)</span>, but dependent on <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p><em>Proof:</em>
-The sub-space decomposition is
-$<span class="math notranslate nohighlight">\(
+The sub-space decomposition is</p>
+<div class="math notranslate nohighlight">
+\[
 V_h = \sum_{i=1}^N \operatorname{span} \{ \varphi_i \}
-\)</span><span class="math notranslate nohighlight">\(
-With the basis function \)</span>\varphi_i<span class="math notranslate nohighlight">\( we have
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>With the basis function <span class="math notranslate nohighlight">\(\varphi_i\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[
 u = \sum_{i=1}^N u_i \varphi_i,
-\)</span><span class="math notranslate nohighlight">\(
-and the norms are
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and the norms are</p>
+<div class="math notranslate nohighlight">
+\[
 \| u \|_M^2 = \big\| \sum_i u_i \varphi_i \big\|_{L_2(\Omega)}^2
-\)</span><span class="math notranslate nohighlight">\(
-and
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
 \| u \|_{C_{Jac}}^2 = \sum_i \| u_i \varphi_i \|_{L_2(\Omega)}^2.
-\)</span>$</p>
+\]</div>
 <p>We use <span class="math notranslate nohighlight">\(\Omega = \cup \, T\)</span> to split the integral into integrals on elements, and use that elements are mapped from the reference element <span class="math notranslate nohighlight">\(T = \Phi_T (\hat T)\)</span>. We assume that <span class="math notranslate nohighlight">\(J_T = \operatorname{det} \Phi_T^\prime \approx h^d\)</span> is element-wise constant (otherwise we have to replace it by the element-wise min/max). For any function <span class="math notranslate nohighlight">\(v \in L_2(\Omega)\)</span> there holds by means
 of the transformation rule of integrals:</p>
 <div class="math notranslate nohighlight">

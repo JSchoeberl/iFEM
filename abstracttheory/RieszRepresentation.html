@@ -241,6 +241,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">43. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">44. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">45. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">46. Multi-level Extension</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -422,8 +429,8 @@ l(v) = (u_l,v)_V
 \]</div>
 <p><em>Proof:</em> First, we show uniqueness. Assume that <span class="math notranslate nohighlight">\(u_1 \neq u_2\)</span> both
 fulfill <span class="math notranslate nohighlight">\(l(v) = (u_1,v)_V = (u_2,v)_V\)</span>. This leads to the contradiction</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f09c9b1a-bc6e-464a-b4a0-4806cec25dbe">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-f09c9b1a-bc6e-464a-b4a0-4806cec25dbe" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-41f9299b-e0e1-4226-abc7-ea5c7b93a020">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-41f9299b-e0e1-4226-abc7-ea5c7b93a020" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp;=  l(u_1-u_2) - l(u_1-u_2) \\
   &amp;=  (u_1,u_1-u2) - (u_2,u_1-u_2) = \| u_1 - u_2 \|^2.
 \end{align}\]</div>
@@ -438,8 +445,8 @@ Now define</p>
 u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
 \]</div>
 <p>Then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bbd847dd-2bdf-4f5b-9fde-85c1037a9acc">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-bbd847dd-2bdf-4f5b-9fde-85c1037a9acc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-06f30bf7-89e2-477e-8d50-c70f3e4ad9b5">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-06f30bf7-89e2-477e-8d50-c70f3e4ad9b5" title="Permalink to this equation">#</a></span>\[\begin{align}
 (u_l,v) &amp;= (\underbrace{u_l}_{S^\bot}, \underbrace{v - l(v)/l(z) z}_S) + (u_l,l(v)/l(z)z) \\
 &amp;=  l(z) / \| z\|^2 (z,l(v)/l(z) z) \\
 &amp;= l(v)

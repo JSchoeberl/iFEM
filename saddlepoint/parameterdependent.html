@@ -241,6 +241,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">43. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">44. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">45. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">46. Multi-level Extension</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -729,8 +736,8 @@ r = z - \pi_{V_H} z \qquad \text{and} \qquad \psi = \Phi - \pi_{W_H} \Phi
 u_h - \pi_{V_H} u_h = r_h + \nabla \psi_h.
 \]</div>
 <p><em>Proof:</em> Apply the commuting projection operator <span class="math notranslate nohighlight">\(\pi_{V_h}\)</span> to the previous lemma to obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0de34733-4f03-4248-b88a-7e7cb97803a9">
-<span class="eqno">()<a class="headerlink" href="#equation-0de34733-4f03-4248-b88a-7e7cb97803a9" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-200be475-c23b-4b06-9cd1-2a215882da45">
+<span class="eqno">()<a class="headerlink" href="#equation-200be475-c23b-4b06-9cd1-2a215882da45" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 u_h - \pi_{V_H} u_h &amp; = &amp; \pi_{V_h} ( u_h - \pi_{V_H} u_h ) \\
  &amp; = &amp; \pi_{V_h} r + \pi_{V_h} \nabla \psi \\
  &amp; = &amp; \pi_{V_h} r + \nabla \pi_{W_h} \psi

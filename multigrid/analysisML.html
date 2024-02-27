@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Analysis of the multi-level preconditioner &#8212; Introduction to Scientific Computing</title>
+    <title>44. Analysis of the multi-level preconditioner &#8212; Introduction to Scientific Computing</title>
   
   
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'multigrid/analysisML';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="45. Analysis of the Multigrid Iteration" href="analysisMG.html" />
+    <link rel="prev" title="43. Multigrid and Multilevel Methods" href="algorithms.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -240,6 +240,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">40. Domain Decomposition with minimal overlap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">43. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">44. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysisMG.html">45. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multilevel-extension.html">46. Multi-level Extension</a></li>
 </ul>
 
     </div>
@@ -388,8 +395,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearly-optimal-analysis-of-the-ml-preconditioner">Nearly optimal analysis of the ML - preconditioner</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">Optimal analysis of the multi-level preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearly-optimal-analysis-of-the-ml-preconditioner">44.1. Nearly optimal analysis of the ML - preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">44.2. Optimal analysis of the multi-level preconditioner</a></li>
 </ul>
             </nav>
         </div>
@@ -402,7 +409,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analysis-of-the-multi-level-preconditioner">
-<h1>Analysis of the multi-level preconditioner<a class="headerlink" href="#analysis-of-the-multi-level-preconditioner" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">44. </span>Analysis of the multi-level preconditioner<a class="headerlink" href="#analysis-of-the-multi-level-preconditioner" title="Link to this heading">#</a></h1>
 <p>We apply the Additive Schwarz Theory to prove an optimal conditioner number of the multi-level preconditioner.</p>
 <p>The outline is as follows. Provided that the <span class="math notranslate nohighlight">\(A\)</span>-norm is equivalent to the <span class="math notranslate nohighlight">\(H^1\)</span>-norm we will show easily that</p>
 <div class="math notranslate nohighlight">
@@ -446,7 +453,7 @@ C_{ML,L}^{-1} = E_0 A_0^{-1} E_0^T + \sum_{l=1}^L E_l D_l^{-1} E_l^T
 \]</div>
 <p>which proves the result. <span class="math notranslate nohighlight">\(\Box\)</span></p>
 <section id="nearly-optimal-analysis-of-the-ml-preconditioner">
-<h2>Nearly optimal analysis of the ML - preconditioner<a class="headerlink" href="#nearly-optimal-analysis-of-the-ml-preconditioner" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">44.1. </span>Nearly optimal analysis of the ML - preconditioner<a class="headerlink" href="#nearly-optimal-analysis-of-the-ml-preconditioner" title="Link to this heading">#</a></h2>
 <p>Define the multi-level norm</p>
 <div class="math notranslate nohighlight">
 \[
@@ -504,7 +511,7 @@ u_0 + \sum_{l=1}^L w_l = \pi_0 u + \sum_{l=1}^L (\pi_l - \pi_{l-1}) u
 <p>Since this holds for an arbitrary decomposition <span class="math notranslate nohighlight">\(u = \sum u_l\)</span>, it holds also for the minimal one.</p>
 </section>
 <section id="optimal-analysis-of-the-multi-level-preconditioner">
-<h2>Optimal analysis of the multi-level preconditioner<a class="headerlink" href="#optimal-analysis-of-the-multi-level-preconditioner" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">44.2. </span>Optimal analysis of the multi-level preconditioner<a class="headerlink" href="#optimal-analysis-of-the-multi-level-preconditioner" title="Link to this heading">#</a></h2>
 <p>By a refined analysis, both <span class="math notranslate nohighlight">\(L\)</span>-dependent estimates can be improved to uniform estimates. However, this requires more problem-specific assumptions, as well as advanced tools from interpolation spaces.</p>
 <p><strong>Theorem:</strong> There holds <span class="math notranslate nohighlight">\(\| u \|_{H^1} \preceq \| u \|_{ML}\)</span>.</p>
 <p>We first show that the estimate of <span class="math notranslate nohighlight">\(A\)</span>-inner products of functions from very different levels can be improved essentially:</p>
@@ -621,6 +628,24 @@ u_0 = \Pi_0 u \qquad \text{and} \qquad w_l := \Pi_l u - \Pi_{l-1} u.
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="algorithms.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">43. </span>Multigrid and Multilevel Methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="analysisMG.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">45. </span>Analysis of the Multigrid Iteration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -637,8 +662,8 @@ u_0 = \Pi_0 u \qquad \text{and} \qquad w_l := \Pi_l u - \Pi_{l-1} u.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearly-optimal-analysis-of-the-ml-preconditioner">Nearly optimal analysis of the ML - preconditioner</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">Optimal analysis of the multi-level preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearly-optimal-analysis-of-the-ml-preconditioner">44.1. Nearly optimal analysis of the ML - preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">44.2. Optimal analysis of the multi-level preconditioner</a></li>
 </ul>
   </nav></div>
 

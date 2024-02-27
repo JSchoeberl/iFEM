@@ -241,6 +241,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">43. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">44. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">45. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">46. Multi-level Extension</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -415,8 +422,8 @@ f(x) = \tfrac{1}{2} x^T A x - b^T x.
 f(x) = f(x^\ast) + \tfrac{1}{2} \| x - x^\ast \|_A^2,
 \]</div>
 <p>which is simply verified by calculation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-379ac848-1035-41c1-9f1a-03cb6aa76ee2">
-<span class="eqno">(33.1)<a class="headerlink" href="#equation-379ac848-1035-41c1-9f1a-03cb6aa76ee2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-0ef014d0-c5a3-4881-b57b-4d0aa9a4bc9d">
+<span class="eqno">(33.1)<a class="headerlink" href="#equation-0ef014d0-c5a3-4881-b57b-4d0aa9a4bc9d" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 f(x^\ast) + \tfrac{1}{2} \| x - x^\ast \|_A^2  
 &amp; = &amp; \tfrac{1}{2} {x^\ast}^T A x^\ast - b^T x^\ast + \tfrac{1}{2}(x - x^\ast)^T A (x - x^\ast) \\
 &amp; = &amp; x^\ast A x^\ast - b^T x^\ast + \tfrac{1}{2} x^T A x - x^T A x^\ast \\

@@ -241,6 +241,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">43. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">44. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">45. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">46. Multi-level Extension</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -408,15 +415,15 @@ a bilinear form which is</p>
 <ul class="simple">
 <li><p>coercive (also known as elliptic)</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-adb69c3a-34b0-4daa-911c-87d0e7e7c696">
-<span class="eqno">(10.1)<a class="headerlink" href="#equation-adb69c3a-34b0-4daa-911c-87d0e7e7c696" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bea9978f-d64c-4ea0-be96-6e6906c50ffd">
+<span class="eqno">(10.1)<a class="headerlink" href="#equation-bea9978f-d64c-4ea0-be96-6e6906c50ffd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A(u,u) \geq \alpha_1 \| u \|_V^2 \qquad \forall \, u \in V,
 \end{equation}\]</div>
 <ul class="simple">
 <li><p>and continuous</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-37704e68-219b-432b-9c62-9dd728dac89e">
-<span class="eqno">(10.2)<a class="headerlink" href="#equation-37704e68-219b-432b-9c62-9dd728dac89e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-76987233-e8dd-4ff6-b2c3-fcbe57666656">
+<span class="eqno">(10.2)<a class="headerlink" href="#equation-76987233-e8dd-4ff6-b2c3-fcbe57666656" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A(u,v) \leq \alpha_2 \| u \|_V  \, \| v \|_V \qquad \forall \, u , v \in V,
 \end{equation}\]</div>
 <p>with bounds <span class="math notranslate nohighlight">\(\alpha_1\)</span> and <span class="math notranslate nohighlight">\(\alpha_2\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^+\)</span>. It is not necessarily symmetric.

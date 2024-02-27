@@ -241,6 +241,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/overlapping.html">41. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/exercise.html">42. Exercise: Robust preconditioners</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/algorithms.html">43. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisML.html">44. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisMG.html">45. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/multilevel-extension.html">46. Multi-level Extension</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -448,8 +455,8 @@ b(p,v) = \sum_{T}
 \)</span><span class="math notranslate nohighlight">\(
 for some \)</span>\alpha \in {\mathbb R}<span class="math notranslate nohighlight">\(, the form is consistent for the gradient. If \)</span>p<span class="math notranslate nohighlight">\( is globally continuous, then \)</span>p = { p }<span class="math notranslate nohighlight">\(, and the boundary term cancels out, even for discontinuous test-functions \)</span>v$.</p>
 <p>From integration by parts we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5635e958-b60f-4157-a7a3-630ff02a4a4b">
-<span class="eqno">()<a class="headerlink" href="#equation-5635e958-b60f-4157-a7a3-630ff02a4a4b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-06f7979f-5268-4667-a4b7-1e311d709d37">
+<span class="eqno">()<a class="headerlink" href="#equation-06f7979f-5268-4667-a4b7-1e311d709d37" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 b(p,v) = \sum_{T}
 \Big\{ -\int_T p \operatorname{div} \, v + 
 \alpha \int_{\partial T} \{ p \} \, v_n \, ds +
