@@ -183,8 +183,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">4. 3D Solid Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">5. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">5. 3D Solid Mechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
@@ -458,8 +458,8 @@ l(v) = (u_l,v)_V
 \]</div>
 <p><em>Proof:</em> First, we show uniqueness. Assume that <span class="math notranslate nohighlight">\(u_1 \neq u_2\)</span> both
 fulfill <span class="math notranslate nohighlight">\(l(v) = (u_1,v)_V = (u_2,v)_V\)</span>. This leads to the contradiction</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d59bd4c5-7785-49be-a27d-bba38a629db7">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-d59bd4c5-7785-49be-a27d-bba38a629db7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-806cfc60-719a-42a7-aa05-0f5f1cc15475">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-806cfc60-719a-42a7-aa05-0f5f1cc15475" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp;=  l(u_1-u_2) - l(u_1-u_2) \\
   &amp;=  (u_1,u_1-u2) - (u_2,u_1-u_2) = \| u_1 - u_2 \|^2.
 \end{align}\]</div>
@@ -474,8 +474,8 @@ Now define</p>
 u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
 \]</div>
 <p>Then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cbe04511-5c91-482e-84a4-54ab11fbd8c5">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-cbe04511-5c91-482e-84a4-54ab11fbd8c5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7cf7eea5-6c20-4818-bed3-00828ad0557b">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-7cf7eea5-6c20-4818-bed3-00828ad0557b" title="Permalink to this equation">#</a></span>\[\begin{align}
 (u_l,v) &amp;= (\underbrace{u_l}_{S^\bot}, \underbrace{v - l(v)/l(z) z}_S) + (u_l,l(v)/l(z)z) \\
 &amp;=  l(z) / \| z\|^2 (z,l(v)/l(z) z) \\
 &amp;= l(v)

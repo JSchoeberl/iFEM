@@ -183,8 +183,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">4. 3D Solid Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">5. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">5. 3D Solid Mechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
@@ -528,8 +528,8 @@ Consider the complex valued PDE</p>
 \]</div>
 <p>with Dirichlet boundary conditions, <span class="math notranslate nohighlight">\(f \in L_2\)</span>, and <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span>. The
 weak form for the real system <span class="math notranslate nohighlight">\(u = (u_{r}, u_i) \in V^2\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f59f9939-6cce-4be7-ab52-916dc4c0c41c">
-<span class="eqno">()<a class="headerlink" href="#equation-f59f9939-6cce-4be7-ab52-916dc4c0c41c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f60bb74f-7c77-4d74-a7e0-02415aa151b2">
+<span class="eqno">()<a class="headerlink" href="#equation-f60bb74f-7c77-4d74-a7e0-02415aa151b2" title="Permalink to this equation">#</a></span>\[\begin{align}
 (\nabla u_{r}, \nabla v_{r})_{L_2} &amp;+ (u_i, v_{r})_{L_2} &amp;= 
         (f,v_{r}) &amp; \forall \, v_r \in V \\
 (u_{r}, v_i)_{L_2} &amp;- (\nabla u_i, \nabla v_i)_{L_2} &amp;=
@@ -571,8 +571,8 @@ can skip the second condition.</p>
 Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-97eb933e-46be-4909-92fd-c5cde5d350a5">
-<span class="eqno">()<a class="headerlink" href="#equation-97eb933e-46be-4909-92fd-c5cde5d350a5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dc530278-8fa3-4022-94e7-c9953a42fd9c">
+<span class="eqno">()<a class="headerlink" href="#equation-dc530278-8fa3-4022-94e7-c9953a42fd9c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
 \end{equation}\]</div>
 <p><em>Proof:</em> Again, there holds the Galerkin orthogonality <span class="math notranslate nohighlight">\(B(u,w_h) = B(u_h,w_h)\)</span> for all <span class="math notranslate nohighlight">\(w_h \in V_h\)</span>. Again, choose an arbitrary <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>:</p>
