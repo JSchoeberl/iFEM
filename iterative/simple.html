@@ -386,9 +386,11 @@ document.write(`
 <h1><span class="section-number">31. </span>Basic Iterative Methods<a class="headerlink" href="#basic-iterative-methods" title="Link to this heading">#</a></h1>
 <p>In this chapter we learn</p>
 <ul class="simple">
-<li><p>The Richardson Iteration</p></li>
-<li><p>The Gradient Method</p></li>
-<li><p>Using Preconditioners</p></li>
+<li><p>The Richardson iteration</p></li>
+<li><p>The gradient method</p></li>
+<li><p>The Chebyshev method</p></li>
+<li><p>The conjugate gradients method</p></li>
+<li><p>Using preconditioners</p></li>
 </ul>
 <p>We are given a linear system of equations</p>
 <div class="math notranslate nohighlight">
@@ -426,9 +428,6 @@ y := A * x
 <p>Typically, the algorithmic complexity of the matrix-vector product is <span class="math notranslate nohighlight">\(O(n)\)</span>.</p>
 <p>Often one stores the matrix in a sparse matrix format, such as the CSR (Compressed Sparse Row) format. <a class="reference external" href="https://de.wikipedia.org/wiki/Compressed_Row_Storage">https://de.wikipedia.org/wiki/Compressed_Row_Storage</a> <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html</a></p>
 <p>More general, the matrix-vector product can be any linear operator. We can think of the sum or product of linear operators, multiplying with the inverse of the diagonal, or solving a triangular (sparse) system by forward/backward substitution</p>
-<p><a class="reference internal" href="Richardson.html"><span class="std std-doc">The Richardson method</span></a> <br>
-<a class="reference internal" href="gradientmethod.html"><span class="std std-doc">The Gradient method</span></a> <br>
-<a class="reference internal" href="preconditioning.html"><span class="std std-doc">Preconditioning</span></a></p>
 </section>
 
     <script type="text/x-thebe-config">
