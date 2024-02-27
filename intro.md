@@ -3,7 +3,7 @@
 
 [Joachim Schöberl](https://www.asc.tuwien.ac.at/~schoeberl)
 
-TU Wien, [Institute of Analysis and Scientific Computing](https://www.asc.tuwien.ac.at)
+TU Wien, [Institute of Analysis and Scientific Computing](https://www.tuwien.at/en/mg/asc)
 
 The finite element method is a powerful tool for computer simulation of problems in engineering and sciences.
 Such problems are often described mathematically by means of partial
@@ -19,7 +19,7 @@ behind.
 In this class we follow an approach in between: We aim explaining the
 mathematical theory, and giving students the possibility to try all
 methods on the computer. For this we are using the open source finite
-element package Netgen/NGSolve, which can be conveniently used via its
+element package [Netgen/NGSolve](https://www.ngsolve.org), which can be conveniently used via its
 Python frontend in jupyter-notebooks.
 
 This lecture is given in this form the first time in summer term 24.
@@ -34,10 +34,10 @@ Many section are still in draft version, and will be cleaned as the class procee
 
 Books:
 
-* D.Boffi, F.Brezzi, M.Fortin: Mixed Finite Element Methods and Applications
 * D.Braess: Finite Elements. Theory, Fast Solvers, and Applications in Solid Mechanics
-* S.Brenner, R.Scott: The Mathematical Theory of Finite Element Methods
 * C. Johnson: Numerical solution of partial differential equations by the finite element method
+* D.Boffi, F.Brezzi, M.Fortin: Mixed Finite Element Methods and Applications
+* S.Brenner, R.Scott: The Mathematical Theory of Finite Element Methods
 * A. Ern, J.-L.Guermond: Finite Elements I-III
 
 

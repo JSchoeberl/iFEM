@@ -10,8 +10,8 @@ parts:
     - file: primal/first_example.ipynb
     - file: primal/boundary_conditions.ipynb
     - file: primal/subdomains.ipynb         
-    - file: primal/elasticity3D.ipynb         
     - file: primal/solvers.ipynb
+    - file: primal/elasticity3D.ipynb         
     - file: primal/exercises.ipynb             
 
 
@@ -72,3 +72,49 @@ parts:
     - file: iterative/Chebyshev.ipynb
     - file: iterative/conjugategradients.ipynb
 
+  - caption: Sub-space Correction Methods
+    numbered: True
+    chapters:
+    - file: subspacecorrection/asm.ipynb
+    - file: subspacecorrection/examples.ipynb
+    - file: subspacecorrection/minimaldd.ipynb
+    - file: subspacecorrection/overlapping.ipynb
+    - file: subspacecorrection/exercise.ipynb
+
+  - caption: Multigrid Methods
+    numbered: True
+    chapters:
+    - file: multigrid/algorithms.ipynb
+    - file: multigrid/analysisML.ipynb
+    - file: multigrid/analysisMG.ipynb
+    - file: multigrid/multilevel-extension.ipynb
+
+  - caption: Saddle-point Problems
+    numbered: True
+    chapters:
+    - file: saddlepoint/structure.ipynb
+    - file: saddlepoint/bramblepasciak.ipynb
+    - file: saddlepoint/fewconstraints.ipynb
+    - file: saddlepoint/parameterdependent.ipynb    
+
+
+  - caption: Non-overlapping Domain Decomposition Methods
+    numbered: True
+    chapters:
+    - file: domaindecomposition/introduction.ipynb
+    - file: domaindecomposition/traces.ipynb
+    - file: domaindecomposition/FETI.ipynb
+    - file: domaindecomposition/FETI-DP.ipynb
+    - file: domaindecomposition/BDDC.ipynb
+
+  - caption: Parallel Solvers
+    numbered: True
+    chapters:
+    - file: MPIparallel/intro.ipynb
+    - file: MPIparallel/distmesh.ipynb
+    - file: MPIparallel/vectypes.ipynb
+    - file: MPIparallel/paralleliteration.ipynb
+    - file: MPIparallel/petsc.ipynb
+    - file: MPIparallel/PETSc_interface.ipynb
+    - file: MPIparallel/parallelstokes.ipynb     
+    

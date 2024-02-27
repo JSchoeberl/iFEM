@@ -6,6 +6,8 @@ author: J. Schöberl
 logo: ASC_Logo_transparent_300ppi_RGB.png
 copyright : "2024"  # Copyright year to be placed in the footer
 
+repository:
+  url: https://github.com/JSchoeberl/iFEM
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -14,16 +16,11 @@ execute:
   exclude_patterns:
         - "iFEM.ipynb"    
         - "ex*"  
-        - "MPIparallel/*"
         - "MPIparallel/*/*"
-        - "domaindecomposition/*"
-        - "saddlepoint/*"
         - "helmholtz/*"
         - "mixedelasticity/*"
-        - "multigrid/*"
         - "plates/*"                        
         - "sobolev/*"
-        - "subspacecorrection/*"
         - "timedependent/*"
         - "timedependent/*/*"                
   
@@ -46,7 +43,7 @@ execute:
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   use_issues_button: false
-  use_repository_button: false
+  use_repository_button: true
 
 
 parse:
