@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>14. Equivalent norms on \(H^1\) and on sub-spaces &#8212; Introduction to Scientific Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sobolevspaces/equivalentnorms';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15. Stokes Equation" href="../mixed/stokes.html" />
+    <link rel="prev" title="13. Trace theorems and their applications" href="Traces.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An Interactive Introduction to the Finite Element Method
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">5. 3D Solid Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/BasicProperties.html">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/RieszRepresentation.html">9. Riesz representation theorem and symmetric variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/Coercive.html">10. Coercive variational problems and their approximation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sobolev Spaces</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeneralizedDerivatives.html">11. Generalized derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SobolevSpaces.html">12. Sobolev spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Traces.html">13. Trace theorems and their applications</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">15. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">16. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">17. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">18. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">19. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">20. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">21. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">22. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">23. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">25. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">26. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">27. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">28. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">29. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">30. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">31. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">32. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">33. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">34. Hybridization Techniques</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">35. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">36. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">37. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">38. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">40. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">41. Conjugate Gradients</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">42. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">43. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">44. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">45. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">46. Exercise: Robust preconditioners</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">47. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">48. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">49. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">50. Multi-level Extension</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">51. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">52. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">53. A Small Number of Constraints</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">55. Parameter Dependent Problems</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">57. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">58. Traces spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">60. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">61. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">62. BDDC - Preconditioner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">63. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">64. Distributed Meshes and Spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">66. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">67. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">68. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">69. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">70. Solving Stokes in parallel</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/JSchoeberl/iFEM" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sobolevspaces/equivalentnorms.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Equivalent norms on H^1 and on sub-spaces</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="equivalent-norms-on-h-1-and-on-sub-spaces">
+<h1><span class="section-number">14. </span>Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces<a class="headerlink" href="#equivalent-norms-on-h-1-and-on-sub-spaces" title="Link to this heading">#</a></h1>
+<p>The intention is to formulate <span class="math notranslate nohighlight">\(2^{nd}\)</span> order variational problems in the
+Hilbert space <span class="math notranslate nohighlight">\(H^1\)</span>. We want to apply the Lax-Milgram theory for continuous
+and coercive bilinear forms <span class="math notranslate nohighlight">\(A(.,.)\)</span>. We present techniques to prove
+coercivity.</p>
+<p>The idea is the following. In the norm
+$<span class="math notranslate nohighlight">\(
+\| v \|_{H^1}^2 = \| v \|_{L_2}^2 + \| \nabla v \|_{L_2}^2,
+\)</span>$</p>
+<p>the <span class="math notranslate nohighlight">\(\| \nabla \cdot \|_{L_2}\)</span>-semi-norm is the dominating part up to
+the constant functions. The <span class="math notranslate nohighlight">\(L_2\)</span> norm is necessary to obtain a
+norm. We want to replace the <span class="math notranslate nohighlight">\(L_2\)</span> norm by some different term (e.g.,
+the <span class="math notranslate nohighlight">\(L_2\)</span>-norm on a part of <span class="math notranslate nohighlight">\(\Omega\)</span>, or the <span class="math notranslate nohighlight">\(L_2\)</span>-norm on <span class="math notranslate nohighlight">\(\partial
+\Omega\)</span>), and want to obtain an equivalent norm.</p>
+<p>We formulate an abstract theorem relating a norm <span class="math notranslate nohighlight">\(\|.\|_V\)</span> to a semi-norm
+<span class="math notranslate nohighlight">\(\|.\|_A\)</span>. An equivalent theorem was proven by Tartar.</p>
+<p><strong>Theorem: (Tartar)</strong> \label{theo_tartar}
+Let <span class="math notranslate nohighlight">\((V, (.,.)_V)\)</span> and <span class="math notranslate nohighlight">\((W, (.,.)_W)\)</span> be Hilbert spaces, such that
+the embedding <span class="math notranslate nohighlight">\(id : V \rightarrow W\)</span> is compact.
+Let <span class="math notranslate nohighlight">\(A(.,.)\)</span> be a non-negative, symmetric and <span class="math notranslate nohighlight">\(V\)</span>-continuous bilinear form
+with kernel <span class="math notranslate nohighlight">\(V_0 = \{ v : A(v,v) = 0 \}\)</span>. Assume that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ea28592e-4e7c-4916-97a1-e60abd3a074c">
+<span class="eqno">(14.1)<a class="headerlink" href="#equation-ea28592e-4e7c-4916-97a1-e60abd3a074c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_tartar_cond}
+\| v \|_V^2 \simeq \| v \|_W^2 + \| v \|_A^2 \qquad \forall \, v \in V
+\end{equation}\]</div>
+<p>Then there holds
+\begin{enumerate}
+\item
+The kernel <span class="math notranslate nohighlight">\(V_0\)</span> is finite dimensional. On the factor space <span class="math notranslate nohighlight">\(V/V_0\)</span>,
+<span class="math notranslate nohighlight">\(A(.,.)\)</span> is an equivalent norm to the quotient norm</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bb7fbf1b-99a6-42c9-b0c6-a084e25d6faf">
+<span class="eqno">(14.2)<a class="headerlink" href="#equation-bb7fbf1b-99a6-42c9-b0c6-a084e25d6faf" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{equ_factor}
+\| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_V \qquad \forall \, u \in V
+\end{equation}\]</div>
+<p>\item
+Let <span class="math notranslate nohighlight">\(B(.,.)\)</span> be a continuous, non-negative, symmetric bilinear form
+on <span class="math notranslate nohighlight">\(V\)</span> such that <span class="math notranslate nohighlight">\(A(.,.) + B(.,.)\)</span> is an inner product. Then there
+holds
+$<span class="math notranslate nohighlight">\(
+\| v \|_V^2 \simeq \| v \|_A^2 + \| v \|_B^2 \qquad \forall \, v \in V
+\)</span><span class="math notranslate nohighlight">\(
+\item
+Let \)</span>V_1 \subset V<span class="math notranslate nohighlight">\( be a closed sub-space such that \)</span>V_0 \cap V_1 = { 0 }<span class="math notranslate nohighlight">\(.
+Then there holds
+\)</span><span class="math notranslate nohighlight">\(
+\| v \|_V \simeq \| v \|_A \qquad \forall \, v \in V_1
+\)</span>$
+\end{enumerate}</p>
+<p><em>Proof:</em> 1. Assume that <span class="math notranslate nohighlight">\(V_0\)</span> is not finite dimensional. Then
+there exists an <span class="math notranslate nohighlight">\((.,.)_V\)</span>-orthonormal sequence <span class="math notranslate nohighlight">\(u_k \in V_0\)</span>. Since
+the embedding <span class="math notranslate nohighlight">\(id : V \rightarrow W\)</span> is compact, it has a sub-sequence
+converging in <span class="math notranslate nohighlight">\(\|. \|_W\)</span>. But, since
+$<span class="math notranslate nohighlight">\(
+2 = \| u_k - u_l \|_V^2 \simeq \| u_k - u_l \|_W^2 + \| u_k - u_l \|_A
+        = \| u_k - u_l \|_W^2
+\)</span><span class="math notranslate nohighlight">\( 
+for \)</span>k \neq l<span class="math notranslate nohighlight">\(, \)</span>u_k<span class="math notranslate nohighlight">\( is not Cauchy in \)</span>W<span class="math notranslate nohighlight">\(. This is a contradiction to
+an infinite dimensional kernel space \)</span>V_0<span class="math notranslate nohighlight">\(.
+We prove the equivalence (\ref{equ_factor}). To bound the left hand side
+by the right hand side, we use that \)</span>V_0 = \operatorname {ker} A<span class="math notranslate nohighlight">\(, and
+norm equivalence (\ref{equ_tartar_cond}):
+\)</span><span class="math notranslate nohighlight">\(
+\| u \|_A = \inf_{v \in V_0} \| u - v \|_A \leq \inf_{v \in V_0} \| u - v \|_V 
+\)</span><span class="math notranslate nohighlight">\(
+The quotient norm is equal to \)</span>| P_{V_0^\bot} u |<span class="math notranslate nohighlight">\(. We have to prove that 
+\)</span>| P_{V_0^\bot} u |<em>V \leq | P</em>{V_0^\bot} u |_A<span class="math notranslate nohighlight">\( for all \)</span>u \in V<span class="math notranslate nohighlight">\(.
+This follows after proving \)</span>| u |_V \leq | u |_A<span class="math notranslate nohighlight">\( for all \)</span>u \in V_0^\bot<span class="math notranslate nohighlight">\(.
+Assume that this is not true. I.e., there exists a \)</span>V<span class="math notranslate nohighlight">\(-orthogonal sequence 
+\)</span>(u_k)<span class="math notranslate nohighlight">\( such that \)</span>| u_k |_A \leq k^{-1} | u_k |_V<span class="math notranslate nohighlight">\(. Extract a sub-sequence
+converging in \)</span>| . |_W<span class="math notranslate nohighlight">\(, and call it \)</span>u_k<span class="math notranslate nohighlight">\( again. From the norm
+equivalence (\ref{equ_tartar_cond}) there follows
+\)</span><span class="math notranslate nohighlight">\(
+2 = \| u_k - u_l \|_V^2 \leqc \| u_k - u_l \|_W + \| u_k - u_l \|_A \rightarrow 0
+\)</span><span class="math notranslate nohighlight">\(
+2. On \)</span>V_0<span class="math notranslate nohighlight">\(, \)</span>| . |_B<span class="math notranslate nohighlight">\( is a norm. Since \)</span>V_0<span class="math notranslate nohighlight">\( is finite dimensional, it
+is equivalent to \)</span>|.|_V<span class="math notranslate nohighlight">\(, say with bounds
+\)</span><span class="math notranslate nohighlight">\(
+c_1 \, \| v \|_{V}^2 \leq \| v \|_B^2 \leq c_2 \, \| v \|_V^2 \qquad \forall \, v \in V_0
+\)</span><span class="math notranslate nohighlight">\(
+From 1. we know that
+\)</span><span class="math notranslate nohighlight">\(
+c_3 \, \| v \|_V^2 \leq \| v \|_A^2 \leq c_4 \, \| v \|_V^2 \qquad \forall \, v \in V_0^\bot.
+\)</span>$
+Now, we bound</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| u \|_V^2 &amp; = &amp; \| P_{V_0} u \|_V^2 + \| P_{V_0^\bot} u \|_V^2 \\
+        &amp; \leq &amp; \frac{1}{c_1} \| \underbrace{P_{V_0} u }_{u - P_{V_0^\bot} u } \|_B^2 + \| P_{V_0^\bot} \|_V^2 \\
+        &amp; \leq &amp; \frac{2}{c_1} \left( \| u \|_B^2 + c_2 \| P_{V_0^\bot} u \|_V^2 \right) + \| P_{V_0^\bot} u \|_V^2 \\
+        &amp; = &amp; \frac{2}{c_1} \| u \|_B^2 + \frac{1}{c_2} \left(1 + \frac{2 c_2}{c_1} \right) \| P_{V_0^\bot} u \|_A^2 \\
+        &amp; \leqc &amp; \| u \|_B^2 + \| u \|_A^2
+\end{eqnarray*}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Define <span class="math notranslate nohighlight">\(B(u,v) = (P_{V_1}^\bot u, P_{V_1}^\bot u)_V\)</span>. Then <span class="math notranslate nohighlight">\(A(.,.)+B(.,.)\)</span>
+is an inner product: <span class="math notranslate nohighlight">\(A(u,u)+B(u,u) = 0\)</span> implies that <span class="math notranslate nohighlight">\(u \in V_0\)</span> and <span class="math notranslate nohighlight">\(u \in V_1\)</span>, thus <span class="math notranslate nohighlight">\(u = \{ 0 \}\)</span>. From 2. there follows that <span class="math notranslate nohighlight">\(A(.,.)+B(.,.)\)</span> is
+equivalent to <span class="math notranslate nohighlight">\((.,.)_V\)</span>. The result follows from reducing the equivalence
+to <span class="math notranslate nohighlight">\(V_1\)</span>.</p></li>
+</ol>
+<p>\hfill <span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>We want to apply Tartar’s theorem to the case <span class="math notranslate nohighlight">\(V = H^1\)</span>, <span class="math notranslate nohighlight">\(W = L_2\)</span>,
+and <span class="math notranslate nohighlight">\(\|v \|_A = \| \nabla v \|_{L_2}\)</span>.
+The theorem requires that the embedding <span class="math notranslate nohighlight">\(id : H^1 \rightarrow L_2\)</span> is
+compact. This is indeed true for bounded domains <span class="math notranslate nohighlight">\(\Omega\)</span>:</p>
+<p><strong>Theorem</strong> The embedding of <span class="math notranslate nohighlight">\(H^k \rightarrow H^l\)</span> for <span class="math notranslate nohighlight">\(k &gt; l\)</span> is
+compact.</p>
+<p>We sketch a proof for the embedding <span class="math notranslate nohighlight">\(H^1 \subset L_2\)</span>.
+First, prove the compact embedding <span class="math notranslate nohighlight">\(H_0^1(Q) \rightarrow L_2(Q)\)</span> for
+a square <span class="math notranslate nohighlight">\(Q\)</span>, w.l.o.g. set <span class="math notranslate nohighlight">\(Q = (0,1)^2\)</span>.
+The eigen-value problem: Find <span class="math notranslate nohighlight">\(z \in H_0^1(Q)\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+(z,v)_{L_2} + (\nabla z, \nabla v)_{L_2} = \lambda (u,v)_{L_2} \qquad 
+\forall \, v \in H_0^1(Q)
+\]</div>
+<p>has eigen-vectors <span class="math notranslate nohighlight">\(z_{k,l} = sin (k \pi x) sin (l \pi y)\)</span>, and eigen-values
+<span class="math notranslate nohighlight">\(1+k^2 \pi^2 + l^2 \pi^2 \rightarrow \infty\)</span>. The eigen-vectors are dense
+in <span class="math notranslate nohighlight">\(L_2\)</span>. Thus, the embedding is compact.</p>
+<p>On a general domain <span class="math notranslate nohighlight">\(\Omega \subset Q\)</span>, we can extend <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span>
+into <span class="math notranslate nohighlight">\(H_0^1(Q)\)</span>, embed <span class="math notranslate nohighlight">\(H_0^1(Q)\)</span> into <span class="math notranslate nohighlight">\(L_2(Q)\)</span>, and restrict <span class="math notranslate nohighlight">\(L_2(Q)\)</span>
+onto <span class="math notranslate nohighlight">\(L_2(\Omega)\)</span>. This is the composite of two continuous and a compact
+mapping, and thus is compact.
+<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>The kernel <span class="math notranslate nohighlight">\(V_0\)</span> of the semi-norm <span class="math notranslate nohighlight">\(\| \nabla v \|\)</span> is the constant function.</p>
+<p><strong>Theorem: (Friedrichs inequality)</strong>
+Let <span class="math notranslate nohighlight">\(\Gamma_D \subset \partial \Omega\)</span> be of positive measure <span class="math notranslate nohighlight">\(|\Gamma_D|\)</span>.
+Let <span class="math notranslate nohighlight">\(V_D = \{ v \in H^1(\Omega) : \optr_{\Gamma_D} v = 0 \}\)</span>. Then
+$<span class="math notranslate nohighlight">\(
+\| v \|_{L_2} \leqc \| \nabla v \|_{L_2} \qquad \forall \, v \in V_D
+\)</span><span class="math notranslate nohighlight">\(
+\end{theorem}
+{\em Proof:} The intersection \)</span>V_0 \cap V_D<span class="math notranslate nohighlight">\( is trivial \)</span>{ 0 }<span class="math notranslate nohighlight">\(. 
+Thus, Theorem~\ref{theo_tartar}, 3. implies the equivalence  
+\)</span><span class="math notranslate nohighlight">\(
+\| v \|_V^2 = \| v \|_{L_2}^2 + \| \nabla v \|_{L_2}^2 \simeq
+\| \nabla v \|_{L_2}.
+\)</span><span class="math notranslate nohighlight">\(
+\hfill \)</span>\Box$</p>
+<p><strong>Theorem: (Poincar’e inequality)</strong>
+There holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| v \|_{H^1(\Omega)}^2 \leqc \| \nabla v \|_{L_2}^2 + (\int_\Omega v \, dx)^2
+\]</div>
+<p><em>Proof:</em> <span class="math notranslate nohighlight">\(B(u,v) := (\int_\Omega u \, dx) (\int_\Omega v \, dx)\)</span> is
+a continuous bilinear form on <span class="math notranslate nohighlight">\(H^1\)</span>, and <span class="math notranslate nohighlight">\((\nabla u, \nabla v) + B(u,v)\)</span> is
+an inner product. Thus, Theorem~\ref{theo_tartar}, 2. implies the
+stated equivalence.
+<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>\begin{itemize}
+\item
+Let <span class="math notranslate nohighlight">\(\omega \subset \Omega\)</span> have positive measure <span class="math notranslate nohighlight">\(| \omega|\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^d\)</span>.
+Then
+$<span class="math notranslate nohighlight">\(
+\| u \|_{H^1(\Omega)}^2 \simeq
+ \| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\omega)},
+\)</span><span class="math notranslate nohighlight">\(
+\item
+Let \)</span>\gamma \subset \partial \Omega<span class="math notranslate nohighlight">\( have positive measure \)</span>| \gamma|<span class="math notranslate nohighlight">\( in \)</span>{\mathbb R}^{d-1}<span class="math notranslate nohighlight">\(. Then
+\)</span><span class="math notranslate nohighlight">\(
+\| u \|_{H^1(\Omega)}^2 \simeq
+\| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\gamma)},
+\)</span>$
+\end{itemize}</p>
+<p><strong>Theorem: (Bramble Hilbert lemma)</strong> \label{lemma_bh}
+Let <span class="math notranslate nohighlight">\(U\)</span> be some Hilbert space, and
+<span class="math notranslate nohighlight">\(L : H^k \rightarrow U\)</span> be a continuous linear operator such that
+<span class="math notranslate nohighlight">\(L q = 0\)</span> for polynomials <span class="math notranslate nohighlight">\(q \in P^{k-1}\)</span>. Then there holds
+$<span class="math notranslate nohighlight">\(
+\| L v \|_U \leq | v |_{H^k}.
+\)</span><span class="math notranslate nohighlight">\(
+*Proof:* The embedding \)</span>H^k \rightarrow H^{k-1}$ is compact.</p>
+<p>The <span class="math notranslate nohighlight">\(V\)</span>-continuous, symmetric and non-negative bilinear form
+<span class="math notranslate nohighlight">\(A(u,v) = \sum_{\alpha : | \alpha | = k} (\partial^\alpha u, \partial^\alpha v)\)</span> has the kernel <span class="math notranslate nohighlight">\(P^{k-1}\)</span>. Decompose <span class="math notranslate nohighlight">\(\| u \|_{H^k}^2 = \| u \|_{H^{k-1}}^2 + A(u,u)\)</span>. By Theorem~\ref{theo_tartar}, 1, there holds</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_{H^k}
+\]</div>
+<p>The same holds for the bilinear-form</p>
+<div class="math notranslate nohighlight">
+\[
+A_2(u,v) := (L u, Lv)_U + A(u,v)
+\]</div>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{A_2} \simeq  \inf_{v \in V_0} \| u - v \|_{H^k} \qquad \forall \, u \in V
+\]</div>
+<p>Equalizing both  implies that</p>
+<div class="math notranslate nohighlight">
+\[
+(L u, Lu)_U \leq \| u \|_{A_2}^2 \simeq \| u \|_A^2  \qquad \forall \, u \in V,
+\]</div>
+<p>i.e., the claim.</p>
+<p>We will need point evaluation of functions in Sobolev spaces <span class="math notranslate nohighlight">\(H^s\)</span>. This is
+possible, we <span class="math notranslate nohighlight">\(u \in H^s\)</span> implies that <span class="math notranslate nohighlight">\(u\)</span> is continuous.</p>
+<p><strong>Theorem: (Sobolev’s embedding theorem)</strong> Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span> with Lipschitz boundary. If <span class="math notranslate nohighlight">\(u \in H^s\)</span> with <span class="math notranslate nohighlight">\(s &gt; d/2\)</span>, then <span class="math notranslate nohighlight">\(u \in L_\infty\)</span>
+with</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{L_\infty} \leqc \| u \|_{H^s}
+\]</div>
+<p>There is a function in <span class="math notranslate nohighlight">\(C^0\)</span> within the <span class="math notranslate nohighlight">\(L_\infty\)</span> equivalence class.
+\end{theorem}</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sobolevspaces"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Traces.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Trace theorems and their applications</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../mixed/stokes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Stokes Equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
