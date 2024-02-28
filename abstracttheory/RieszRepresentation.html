@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. Riesz representation theorem and symmetric variational problems &#8212; Introduction to Scientific Computing</title>
+    <title>9. Riesz representation theorem and symmetric variational problems &#8212; Interactive Finite Elements</title>
   
   
   
@@ -152,8 +152,8 @@
       
     
     
-    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
-    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Interactive Finite Elements - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Interactive Finite Elements - Home"/>`);</script>
   
   
 </a></div>
@@ -467,7 +467,7 @@ functional <span class="math notranslate nohighlight">\(l_u(\cdot) \in V^\ast\)<
 l_u (v) := (u,v)_V \qquad \forall \, v \in V.
 \]</div>
 <p>The opposite is also true:</p>
-<p><strong>Theorem:</strong> <strong>(Riesz Representation Theorem)</strong> Any continuous linear
+<p><strong>Theorem: (Riesz Representation Theorem)</strong> Any continuous linear
 functional <span class="math notranslate nohighlight">\(l(\cdot)\)</span> on a Hilbert space <span class="math notranslate nohighlight">\(V\)</span> can be represented uniquely as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -480,8 +480,8 @@ l(v) = (u_l,v)_V
 \]</div>
 <p><em>Proof:</em> First, we show uniqueness. Assume that <span class="math notranslate nohighlight">\(u_1 \neq u_2\)</span> both
 fulfill <span class="math notranslate nohighlight">\(l(v) = (u_1,v)_V = (u_2,v)_V\)</span>. This leads to the contradiction</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fb707c06-c95f-4f7f-83a0-307416a10867">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-fb707c06-c95f-4f7f-83a0-307416a10867" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c5d348d2-f0e7-43c3-b1da-c1807a7dc701">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-c5d348d2-f0e7-43c3-b1da-c1807a7dc701" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp;=  l(u_1-u_2) - l(u_1-u_2) \\
   &amp;=  (u_1,u_1-u2) - (u_2,u_1-u_2) = \| u_1 - u_2 \|^2.
 \end{align}\]</div>
@@ -496,8 +496,8 @@ Now define</p>
 u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
 \]</div>
 <p>Then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-240d6f90-ecc9-40a7-b4f6-7daeba474630">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-240d6f90-ecc9-40a7-b4f6-7daeba474630" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-72b0b446-4703-4042-8d5c-5d9073acc502">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-72b0b446-4703-4042-8d5c-5d9073acc502" title="Permalink to this equation">#</a></span>\[\begin{align}
 (u_l,v) &amp;= (\underbrace{u_l}_{S^\bot}, \underbrace{v - l(v)/l(z) z}_S) + (u_l,l(v)/l(z)z) \\
 &amp;=  l(z) / \| z\|^2 (z,l(v)/l(z) z) \\
 &amp;= l(v)

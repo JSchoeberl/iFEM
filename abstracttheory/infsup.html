@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Inf-sup stable variational problems &#8212; Introduction to Scientific Computing</title>
+    <title>Inf-sup stable variational problems &#8212; Interactive Finite Elements</title>
   
   
   
@@ -152,8 +152,8 @@
       
     
     
-    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Introduction to Scientific Computing - Home"/>
-    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Introduction to Scientific Computing - Home"/>`);</script>
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Interactive Finite Elements - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Interactive Finite Elements - Home"/>`);</script>
   
   
 </a></div>
@@ -550,8 +550,8 @@ Consider the complex valued PDE</p>
 \]</div>
 <p>with Dirichlet boundary conditions, <span class="math notranslate nohighlight">\(f \in L_2\)</span>, and <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span>. The
 weak form for the real system <span class="math notranslate nohighlight">\(u = (u_{r}, u_i) \in V^2\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0e135150-6036-44b2-84d8-b69a74ccb9a1">
-<span class="eqno">()<a class="headerlink" href="#equation-0e135150-6036-44b2-84d8-b69a74ccb9a1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c0ab0d83-0bc9-4634-b731-6ffb27333ece">
+<span class="eqno">()<a class="headerlink" href="#equation-c0ab0d83-0bc9-4634-b731-6ffb27333ece" title="Permalink to this equation">#</a></span>\[\begin{align}
 (\nabla u_{r}, \nabla v_{r})_{L_2} &amp;+ (u_i, v_{r})_{L_2} &amp;= 
         (f,v_{r}) &amp; \forall \, v_r \in V \\
 (u_{r}, v_i)_{L_2} &amp;- (\nabla u_i, \nabla v_i)_{L_2} &amp;=
@@ -593,8 +593,8 @@ can skip the second condition.</p>
 Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-636cb0a2-413d-4f47-9dd6-4ec95e577814">
-<span class="eqno">()<a class="headerlink" href="#equation-636cb0a2-413d-4f47-9dd6-4ec95e577814" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-69deddd6-aeaa-45e4-a92a-76959b0f252e">
+<span class="eqno">()<a class="headerlink" href="#equation-69deddd6-aeaa-45e4-a92a-76959b0f252e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
 \end{equation}\]</div>
 <p><em>Proof:</em> Again, there holds the Galerkin orthogonality <span class="math notranslate nohighlight">\(B(u,w_h) = B(u_h,w_h)\)</span> for all <span class="math notranslate nohighlight">\(w_h \in V_h\)</span>. Again, choose an arbitrary <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>:</p>
