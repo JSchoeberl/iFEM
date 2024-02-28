@@ -22,6 +22,7 @@ parts:
     - file: abstracttheory/subspaceprojection.ipynb
     - file: abstracttheory/RieszRepresentation.ipynb
     - file: abstracttheory/Coercive.ipynb    
+    - file: abstracttheory/infsup.ipynb    
 
   - caption: Sobolev Spaces
     numbered: True
@@ -29,7 +30,7 @@ parts:
     - file: sobolevspaces/GeneralizedDerivatives.ipynb
     - file: sobolevspaces/SobolevSpaces.ipynb
     - file: sobolevspaces/Traces.ipynb        
-    - file: sobolevspaces/equivalentnorms.ipynb        
+    - file: sobolevspaces/equivalentnorms.ipynb  
 
 
   - caption: Mixed Finite Element Methods
