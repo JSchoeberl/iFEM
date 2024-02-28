@@ -23,6 +23,13 @@ parts:
     - file: abstracttheory/RieszRepresentation.ipynb
     - file: abstracttheory/Coercive.ipynb    
 
+  - caption: Sobolev Spaces
+    numbered: True
+    chapters:
+    - file: sobolevspaces/GeneralizedDerivatives.ipynb
+    - file: sobolevspaces/SobolevSpaces.ipynb
+    - file: sobolevspaces/Traces.ipynb        
+    - file: sobolevspaces/equivalentnorms.ipynb        
 
 
   - caption: Mixed Finite Element Methods
