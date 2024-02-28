@@ -1,0 +1,987 @@
+\chapter{Sobolev Spaces}
+\label{sec_sobolev}
+%
+In this section, we introduce the concept of generalized derivatives, we
+define families of normed function spaces, and prove inequalities between
+them.
+Let $\Omega$ be an open subset of ${\mathbb R}^d$, either bounded or unbounded.
+
+
+
+
+
+
+\section{Generalized derivatives}
+
+Let $\alpha = (\alpha_1, \ldots , \alpha_d) \in {\mathbb N}_0^d$ be a multi-index,
+$| \alpha | = \sum \alpha_i$, 
+and define the classical differential operator for functions in $C^\infty (\Omega)$
+$$
+D^\alpha = 
+        \left( \frac{\partial}{\partial x_1} \right)^{\alpha_1} \cdots
+        \left( \frac{\partial}{\partial x_n} \right)^{\alpha_d}.
+$$
+%
+For a function $u \in C(\Omega)$, the support is defined as 
+$$
+\operatorname{supp} \{ u \} := \overline{ \{ x \in \Omega : u(x) \neq 0 \} }.
+$$
+This is a compact set if and only if it is bounded. We say $u$ has
+compact support in $\Omega$, if $\operatorname{supp} u \subset \Omega$.
+If $\Omega$ is a bounded domain, then $u$ has compact support in $\Omega$
+if and only if $u$ vanishes in a neighbourhood of $\partial \Omega$.
+
+\medskip
+\noindent
+The space of smooth functions with compact support is denoted as
+\begin{equation}
+{\cal D} (\Omega) := C_0^\infty (\Omega) := 
+\{ u \in C^\infty(\Omega) : \mbox{ $u$ has compact support in $\Omega$} \}.
+\end{equation}
+%
+For a smooth function $u \in C^{|\alpha|}(\Omega)$, there holds the
+formula of integration by parts
+\begin{equation} \label{equ_intbyparts}
+\int_\Omega D^\alpha u \varphi \, dx = (-1)^{|\alpha|} \int_\Omega u D^\alpha \varphi \, dx 
+\qquad \forall \, \varphi \in {\cal D}(\Omega).
+\end{equation}
+The $L_2$ inner product with a function $u$ in $C(\Omega)$ defines the linear
+functional on ${\cal D}$
+$$
+u(\varphi) := \left< u, \varphi \right>_{{\cal D}^\prime \times {\cal D}} := \int_\Omega u \varphi \, dx.
+$$
+We call these functionals in ${\cal D}^\prime$ distributions.
+When $u$ is a function, we identify it with the generated distribution.
+The formula (\ref{equ_intbyparts}) is valid for functions $u \in C^\alpha$.
+The strong regularity is needed only on the left hand side. Thus, we use
+the less demanding right hand side to extend the definition of differentiation
+for distributions:
+
+\begin{definition} For $u \in {\cal D}^\prime$, we define 
+$g \in {\cal D}^\prime$ to be the generalized 
+derivative $D_g^\alpha u$ of $u$ by
+$$
+\left<g, \varphi \right>_{{\cal D}^\prime \times {\cal D}} = 
+(-1)^{|\alpha|} \left<u, D^\alpha \varphi \right>_{{\cal D}^\prime \times {\cal D}}  \qquad \forall \, \varphi \in {\cal D}
+$$
+\end{definition}
+%
+\noindent
+If $u \in C^\alpha$, then $D_g^\alpha$ coincides with $D^\alpha$. 
+
+\noindent
+The function space of {\bf locally integrable} functions on $\Omega$ 
+is called
+$$
+L_1^{loc} (\Omega) = \{ u : u_K \in L_1(K) \; \forall \mbox{ compact } K 
+\subset \Omega \}.
+$$
+It contains functions which can behave very badly near $\partial \Omega$.
+E.g., $e^{e^{1/x}}$ is in $L_{loc}^1 (0,1)$. If $\Omega$ is unbounded, then
+the constant function $1$ is in $L_1^{loc}$, but not in $L_1$.
+
+
+\begin{definition} For $u \in L_1^{loc}$, we call $g$ the weak derivative
+$D_w^\alpha u$, if $g \in L_1^{loc}$ satisfies
+$$
+\int_\Omega g(x) \varphi(x) \, dx =
+(-1)^{|\alpha|} \int_\Omega u(x) D^\alpha \varphi (x) \, dx  \qquad \forall \, \varphi \in {\cal D}.
+$$
+\end{definition}
+The weak derivative is more general than the classical derivative, but more
+restrictive than the generalized derivative.
+
+
+\begin{example} 
+Let $\Omega = (-1,1)$ and 
+$$
+u(x) = \left\{ 
+        \begin{array}{cl}
+        1+x & \quad x \leq 0 \\
+        1-x & \quad x > 0
+        \end{array}
+        \right\}
+$$
+Then, 
+$$
+g(x) = \left\{ 
+        \begin{array}{cl}
+        1 & \quad x \leq 0 \\
+        -1 & \quad x > 0
+        \end{array}
+        \right\}
+$$
+is the first generalized derivative $D^1_g$ of $u$, which is also
+a weak derivative. The second generalized derivative $h$ is 
+$$
+\left< h, \varphi \right> = -2 \varphi(0)  \qquad \forall \, \varphi \in {\cal D}
+$$
+It is not a weak derivative.
+\end{example}
+
+In the following, we will focus on weak derivatives. Unless it is essential
+we will skip the sub-scripts $w$ and $g$.
+
+
+
+
+
+
+
+
+
+
+
+\section{Sobolev spaces}
+
+For $k \in {\mathbb N}_0$ and $1 \leq p < \infty$, we define the Sobolev norms 
+$$
+\| u \|_{W_p^k(\Omega)} := \left( \sum_{|\alpha| \leq k} \| D^\alpha u \|_{L_p}^p \right)^{1/p},
+$$
+for $k \in {\mathbb N}_0$ we set
+$$
+\| u \|_{W_\infty^k(\Omega)} := \max_{|\alpha| \leq k}  \| D^\alpha u \|_{L_\infty}.
+$$
+In both cases, we define the {\bf Sobolev spaces} via
+$$
+W_p^k(\Omega) = \{ u \in L_1^{loc} : \| u \|_{W_p^k} < \infty \}
+$$
+
+In the previous chapter we have seen the importance of complete spaces.
+This is the case for Sobolev spaces:
+\begin{theorem} The Sobolev space $W_p^k(\Omega)$ is a Banach space.
+\end{theorem}
+\noindent
+{\em Proof:} Let $v_j$ be a Cauchy sequence with respect to $\| \cdot \|_{W_p^k}$. This implies that $D^\alpha v_j$ is a Cauchy sequence in $L_p$, and 
+thus converges to some $v^\alpha$ in $\|. \|_{L_p}$. 
+
+We verify that $D^\alpha v_j \rightarrow v^\alpha$ implies 
+$\int_\Omega D^\alpha v_j \varphi \, dx \rightarrow \int_\Omega v^\alpha \varphi \, dx$ for all $\varphi \in {\cal D}$. Let $K$ be the compact support 
+of $\varphi$. There holds 
+\begin{eqnarray*}
+\int_\Omega (D^\alpha v_j - v^\alpha) \varphi \, dx & = & 
+\int_{K} (D^\alpha v_j - v^\alpha) \varphi \, dx  \\
+& \leq & \| D^\alpha v_j - v^\alpha \|_{L_1(K)} \| \varphi \|_{L_\infty} \\
+& \leq & \| D^\alpha v_j - v^\alpha \|_{L_p(K)} \| \varphi \|_{L_\infty}
+\rightarrow 0
+\end{eqnarray*}
+Finally, we have to check that $v^\alpha$ is the weak derivative of $v$:
+\begin{eqnarray*}
+\int v^\alpha \varphi \, dx & = & 
+        \lim_{j\rightarrow \infty} \int_\Omega D^\alpha v_j \varphi \, dx \\
+        & = & \lim_{j\rightarrow \infty} (-1)^{|\alpha|} \int_\Omega v_j D^\alpha \varphi \, dx = \\
+        & = & (-1)^\alpha \int_\Omega v  D^\alpha \varphi \, dx.
+\end{eqnarray*}
+\hfill $\Box$
+
+\bigskip
+
+An alternative definition of Sobolev spaces were to take the closure
+of smooth functions in the domain, i.e.,
+$$
+\widetilde W_p^k := \overline{ \{ C^\infty (\Omega) : \|.\|_{W_p^k} \leq \infty \} }^{\|.\|_{W_p^k}}.
+$$
+A third one is to take continuously differentiable functions up to the boundary
+$$
+\widehat W_p^k := \overline{ C^\infty (\overline{\Omega}) }^{\|.\|_{W_p^k}}.
+$$
+
+Under moderate restrictions, these definitions lead to the same spaces:
+\begin{theorem} Let $1 \leq p < \infty$. Then $\widetilde W_p^k  = W_p^k$.
+\end{theorem}
+
+\begin{definition} The domain $\Omega$ has a {\bf Lipschitz boundary}, $\partial \Omega$, if there exists a collection of open sets $O_i$, a positive parameter $\varepsilon$, an integer $N$ and a finite number $L$, such that for all $x \in \partial \Omega$ the ball of radius $\varepsilon$ centered at $x$ is contained in some $O_i$, no more than $N$ of the sets $O_i$ intersect non-trivially, and each 
+part of the boundary $O_i \cap \Omega$ is a graph of a Lipschitz function $\varphi_i : {\mathbb R}^{d-1} \rightarrow {\mathbb R}$ with Lipschitz norm bounded by $L$.
+\end{definition}
+
+\begin{theorem} Assume that $\Omega$ has a Lipschitz boundary, and let $1 \leq p < \infty$. Then  $\widehat W_p^k  = W_p^k$.
+\end{theorem}
+
+
+The case $W_2^k$ is special, it is a Hilbert space. We denote it by
+$$
+H^k(\Omega) := W_2^k(\Omega).
+$$
+The inner product is 
+$$
+(u,v)_{H^k} := \sum_{|\alpha| \leq k} (D^\alpha u, D^\alpha v)_{L_2}
+$$
+In the following, we will prove most theorems for the Hilbert spaces $H^k$,
+and state the general results for $W_p^k$.
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Trace theorems and their applications}
+We consider boundary values of functions in Sobolev spaces. Clearly,
+this is not well defined for $H^0 = L_2$. But, as we will see, in
+$H^1$ and higher order Sobolev spaces, it makes sense to talk about $u
+|_{\partial \Omega}$. The definition of traces is essential to
+formulate boundary conditions of PDEs in weak form.
+
+
+We start in one dimension. Let $u \in C^1 ([0,h])$ with some $h > 0$. Then,
+we can bound 
+\begin{eqnarray*}
+u(0) & = & \left(1 - \frac{x}{h} \right) u(x) |_{x=0} = 
+        - \int_0^h \left\{ \left(1-\frac{x}{h} \right) u(x) \right\}^\prime \, dx \\
+        & = & -\int_0^h  \frac{-1}{h} u(x) + \left(1-\frac{x}{h} \right) u^\prime(x)  \, dx \\
+        & \leq & \left\| \frac{1}{h} \right\|_{L_2} \| u \|_{L_2} + 
+                \left\| 1-\frac{x}{h} \right\|_{L_2} \| u^\prime \|_{L_2} \\
+        & \eqc & h^{-1/2} \| u \|_{L_2(0,h)} + h^{1/2} \| u^\prime \|_{L_2(0,h)}.
+\end{eqnarray*}
+This estimate includes the scaling with the interval length $h$. 
+If we are not interested in the scaling, we apply Cauchy-Schwarz in ${\mathbb R}^2$,
+and combine the $L_2$ norm and the $H^1$ semi-norm $\|u^\prime\|_{L_2}$ to the full $H^1$ norm and obtain
+$$
+|u(0)| \leq \sqrt{h^{-1/2} + h^{1/2} } \sqrt{ \| u \|_{L_2}^2 + \| u^\prime \|_{L_2}^2 } = c \, \| u \|_{H^1}.
+$$
+Next, we extend the trace operator to the whole Sobolev space $H^1$:
+\begin{theorem} There is a well defined and continuous trace operator
+$$
+\optr : H^1((0,h)) \rightarrow {\mathbb R}
+$$
+whose restriction to $C^1([0,h])$ coincides with
+$$
+u \rightarrow u(0).
+$$
+\end{theorem}
+{\em Proof:} Use that $C^1([0,h])$ is dense in $H^1(0,h)$. Take a sequence
+$u_j$ in $C^1([0,h])$ converging to $u$ in $H^1$-norm. The values 
+$u_j(0)$ are Cauchy, and thus converge to an $u_0$. The limit is independent 
+of the choice of the sequence $u_j$. This allows to define $\optr u := u_0$.
+\hfill $\Box$
+
+\medskip
+
+Now, we extend this 1D result to domains in more dimensions. Let
+$\Omega$ be bounded, $\partial \Omega$ be Lipschitz, and consists of
+$M$ pieces $\Gamma_i$ of smoothness $C^1$. 
+
+We can construct the following covering of a neighbourhood of 
+$\partial \Omega$ in $\Omega$: Let $Q = (0,1)^2$. For $1 \leq i \leq M$, 
+let $s_i \in C^1 (Q, \Omega)$ be invertible and such that $\left\| s_i^\prime \right\|_{L_\infty} \leq c$,
+ $\| (s_i^\prime)^{-1} \|_{L_\infty} \leq c$, and $\operatorname{det} s_i^\prime > 0$. The domains $S_i := s_i(Q)$ are
+such that $s_i( (0,1) \times \{ 0 \} ) = \Gamma_i$, and the parameterizations
+match on $s_i( \{ 0,1 \} \times (0,1) )$.
+
+\begin{theorem}
+There exists a well defined and continuous operator
+$$
+\optr : H^1 (\Omega) \rightarrow L_2(\partial \Omega)
+$$
+which coincides with $u|_{\partial \Omega}$ for $u \in C^1(\overline{\Omega})$.
+\end{theorem}
+\noindent
+{\em Proof:} Again, we prove that 
+$$
+\optr : C^1(\overline{\Omega}) \rightarrow L_2(\partial \Omega)
+        : u \rightarrow u |_{\partial \Omega}
+$$
+is a bounded operator w.r.t. the norms $\|.\|_{H^1}$ and $L_2$, and conclude by
+density.
+We use the partitioning of $\partial \Omega$ into the pieces $\Gamma_i$, and
+transform to the simple square domain $Q = (0,1)^2$. 
+Define the functions $u_i$ on $Q = (0,1)^2$ as
+$$
+\tilde u_i (\tilde x) = u(s_i(\tilde x))
+$$
+We transfer the $L_2$ norm to the simple domain:
+\begin{eqnarray*}
+\| \optr u \|_{L_2(\partial \Omega)}^2 & = & 
+%       \sum_{i=1}^M \| u \|_{L_2(\Gamma_i)}^2 =
+        \sum_{i=1}^M \int_{\Gamma_i} u(x)^2 \, dx \\
+        & = & 
+        \sum_{i=1}^M \int_0^1 u(s_i(\xi,0))^2 \left| \frac{\partial s_i}{\partial \xi} (\xi, 0) \right| \, d \xi \\
+        & \leq & c \sum_{i=1}^M \int_0^1 \tilde u_i(\xi,0)^2  \, d \xi  
+\end{eqnarray*}
+To transform the $H^1$-norm, 
+we differentiate with respect to $\tilde x$ by applying the chain rule
+$$
+\frac{d \tilde u_i}{d \tilde x} (\tilde x) = \frac{d u}{d x} (s_i(\tilde x))
+ \frac{d s_i}{d \tilde x} (\tilde x).
+$$
+Solving for $\frac{d u }{d x}$ is
+$$
+\frac{d u }{dx} (s_i(\tilde x)) = \frac{ d \tilde u_i}{d \tilde x}(\tilde x)
+\left( \frac{ds }{d \tilde x} \right)^{-1} (\tilde x)
+% \nabla_x u(s_i(\xi,\eta)) = \nabla_{(\xi,\eta)} \tilde u_i (\xi,\eta)\, (\nabla s)^{-1}.
+$$
+The bounds onto $s^\prime$ and $(s^\prime)^{-1}$ imply that
+$$
+c^{-1} \, |\nabla_x u | \leq | \nabla_{\tilde x} \tilde u | \leq c \, | \nabla_x u |
+$$
+We start from the right hand side of the stated estimate:
+\begin{eqnarray*}
+\| u \|_{H^1(\Omega)}^2 & \geq &
+ \sum_{i=1}^M \int_{S_i} | \nabla_x u |^2 \, dx \\
+ & = & \sum_{i=1}^M \int_Q \left| \nabla_x u (s_i (\tilde x)) \right|^2    \det ( s^\prime ) \, d \tilde x \\
+ & \geq & c \,  \sum_{i=1}^M \int_Q \left| \nabla_{\tilde x} \tilde u (\tilde x) \right| ^2  \, d \tilde x
+\end{eqnarray*}
+We got a lower bound for $\det (s^\prime) = (\det (s^\prime)^{-1})^{-1}$ from the upper bound for $(s^\prime)^{-1}$.
+
+It remains to prove the trace estimate on $Q$. Here, we apply the previous
+one dimensional result 
+$$
+| u(\xi, 0)|^2 \leq c \int_0^1 \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u(\xi,\eta)}{\partial \eta}\right)^2 \right\} \, d \eta
+\qquad \forall \, \xi \in (0,1)
+$$
+The result follows from integrating over $\xi$
+\begin{eqnarray*}
+\int_0^1 |  u(\xi, 0)|^2 \, d\xi & \leq & 
+ c \, \int_0^1  \int_0^1  \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u(\xi,\eta)}{\partial \eta}\right)^2 \right\} \, d \eta \, d \xi \\
+        & \leq & c \, \| u \|_{H^1(Q)}^2.
+\end{eqnarray*}
+\hfill $\Box$
+
+
+\bigskip
+
+Considering the trace operator from $H^1(\Omega)$ to $L_2(\partial \Omega)$ is
+not sharp with respect to the norms. We will improve the embedding later.
+
+\bigskip
+
+By means of the trace operator we can define the sub-space
+$$
+H_0^1(\Omega) = \{ u \in H^1(\Omega) : \optr \, u = 0 \}
+$$
+It is a true sub-space, since $u = 1$ does belong to $H^1$, but not to $H_0^1$.
+It is a closed sub-space, since it is the kernel of a continuous operator.
+
+
+\bigskip
+
+By means of the trace inequality, one verifies that the linear functional
+$$
+g(v) := \int_{\Gamma_N} g \, \optr \, v \, dx
+$$
+is bounded on $H^1$. 
+
+
+\subsubsection{Integration by parts}
+The definition of the trace allows us to perform integration by
+parts in $H^1$:
+$$
+\int_{\Omega} \nabla u \varphi \, dx = -\int_\Omega u \opdiv \, \varphi \, dx 
+        + \int_{\partial \Omega} \optr u \, \varphi \cdot n \, dx 
+\qquad \forall \, \varphi \in [C^1(\overline{\Omega})]^2
+$$
+The definition of the weak derivative (e.g. the weak gradient) looks similar.
+It allows only test functions $\varphi$ with compact support in $\Omega$, i.e.,
+having zero boundary values. Only by choosing a normed space, for which the 
+trace operator is well defined, we can state and prove integration by parts.
+Again, the short proof is based on the density of $C^1(\overline \Omega)$ 
+in $H^1$.
+
+\subsubsection{Sobolev spaces over sub-domains}
+Let $\Omega$ consist of $M$ Lipschitz-continuous sub-domains $\Omega_i$ 
+such that
+\begin{itemize}
+\item $\overline \Omega = \cup_{i=1}^M \overline \Omega_i$
+\item $\Omega_i \cap \Omega_j = \emptyset \quad \mbox{ if } i \neq j$
+\end{itemize}
+The interfaces are $\gamma_{ij} = \overline \Omega_i \cap \overline \Omega_j$.
+The outer normal vector of $\Omega_i$ is $n_i$.
+
+\begin{theorem} \label{theo_subdomainh1}
+Let $u \in L_2(\Omega)$ such that
+\begin{itemize}
+\item
+$u_i := u|_{\Omega_i}$ is in $H^1(\Omega_i)$, and $g_i = \nabla u_i$ is its
+weak gradient
+\item
+the traces on common interfaces coincide:
+$$
+\optr_{\gamma_{ij}} u_i = 
+\optr_{\gamma_{ij}} u_j 
+$$
+\end{itemize}
+Then $u$ belongs to $H^1(\Omega)$. Its weak gradient $g = \nabla u$ fulfills
+$g|_{\Omega_i} = g_i$.
+\end{theorem}
+{\em Proof:} We have to verify that $g \in L_2(\Omega)^d$, defined by $g |_{\Omega_i} = g_i$,
+is the weak gradient of $u$, i.e.,
+$$
+\int_\Omega g \cdot \varphi \, dx = - \int_\Omega u \, \opdiv \varphi \, dx
+\qquad \forall \, \varphi \in [C_0^\infty(\Omega)]^d
+$$
+We are using Green's formula on the sub-domains
+\begin{eqnarray*}
+\int_\Omega g \cdot \varphi \, dx & = & 
+        \sum_{i=1}^M \int_{\Omega_i} g_i \cdot \varphi \, dx =
+        \sum_{i=1}^M \int_{\Omega_i} \nabla u_i \cdot \varphi \, dx \\
+        & = & 
+        \sum_{i=1}^M -\int_{\Omega_i} u_i  \opdiv \varphi \, dx 
+           + \int_{\partial \Omega_i} \optr u_i \, \varphi \cdot n_i \, ds \\
+        & = & -\int_\Omega u \opdiv \varphi \, dx 
+        + \sum_{\gamma_{ij}} \int_{\gamma_{ij}} 
+        \left\{ \optr_{\gamma_{ij}} u_i \, \varphi \cdot n_i +
+                \optr_{\gamma_{ij}} u_j \, \varphi \cdot n_j
+        \right\} \, ds \\
+        & = & -\int_\Omega u \, \opdiv \varphi \, dx
+\end{eqnarray*}
+We have used that $\varphi = 0$ on $\partial \Omega$, and $n_i = -n_j$ on $\gamma_{ij}$.
+\hfill $\Box$
+
+\bigskip
+
+Applications of this theorem are (conforming nodal) finite element
+spaces. The partitioning $\Omega_i$ is the mesh. On each sub-domain,
+i.e., on each element $T$, the functions are polynomials and thus in
+$H^1(T)$. The finite element functions are constructed to be
+continuous, i.e., the traces match on the interfaces. Thus, the finite
+element space is a sub-space of $H^1$.
+
+\subsubsection{Extension operators}
+Some estimates are elementary to verify on simple domains such as squares $Q$. 
+One technique to transfer these results to general domains is to extend 
+a function $u \in H^1(\Omega)$ onto a larger square $Q$, apply the result 
+for the  square, and restrict the result onto the general domain $\Omega$.
+This is now the motivation to study extension operators.
+
+We construct a non-overlapping covering $\{ S_i \}$ of a neighbourhood 
+of $\partial \Omega$ on both sides. 
+Let $\partial \Omega = \cup \Gamma_i$ consist of smooth parts.
+Let $s : (0,1) \times (-1,1) \rightarrow S_i : (\xi, \eta) \rightarrow x$ be
+an invertible function such that 
+\begin{eqnarray*}
+s_i ( (0,1) \times (0,1) ) & = & S_i \cap \Omega \\
+s_i ( (0,1) \times \{ 0 \} ) & = & \Gamma_i \\
+s_i ( (0,1) \times (-1,0) ) & = & S_i \setminus \overline \Omega 
+\end{eqnarray*}
+Assume that $\| \frac{ds_i}{dx} \|_{L_\infty}$ and $\| \left( \frac{ds_i}{dx} \right)^{-1} \|_{L_\infty}$ are bounded. 
+
+This defines an invertible mapping $x \rightarrow \hat x (x)$ from the inside 
+to the outside by
+$$
+\hat x(x) = s_i (\xi(x), -\eta(x)).
+$$
+The mapping preserve the boundary $\Gamma_i$.
+The transformations $s_i$ should be such that $x \rightarrow \hat x$ is
+consistent at the interfaces between $S_i$ and $S_j$.
+
+With the flipping operator $f : (\xi, \eta) \rightarrow (\xi, -\eta)$, the
+mapping is the composite $\hat x(x) = s_i (f(s_i^{-1}))$. From that, we
+obtain the bound
+$$
+\left\| \frac{d \hat x}{d x } \right\| \leq
+         \left\| \frac{ds}{dx} \right\|
+         \left\| \left( \frac{ds}{dx} \right)^{-1} \right\|.
+$$
+Define the domain $\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M$.
+
+We define the extension operator by
+\begin{equation} \label{extension}
+\begin{array}{rcll}
+(E u) (\hat x) & = & u(x) & \qquad \forall \, x \in \cup S_i \\
+(Eu) (x) & = & u(x) & \qquad \forall \, x \in \Omega
+\end{array}
+\end{equation}
+
+\begin{theorem} The extension operator $E : H^1(\Omega) \rightarrow H^1(\widetilde \Omega)$ is well defined and bounded with respect to the norms
+$$
+\| E u \|_{L_2(\widetilde \Omega)} \leq c \, \| u \|_{L_2(\Omega)}
+$$
+and
+$$
+\| \nabla E u \|_{L_2(\widetilde \Omega)} \leq c \, \| \nabla u \|_{L_2(\Omega)}
+$$
+\end{theorem}
+{\em Proof:} Let $u \in C^1(\overline \Omega)$. First, we prove the estimates
+for the individual pieces $S_i$:
+$$
+\int_{S_i \setminus \Omega} E u (\hat x)^2 \, d \hat x =
+\int_{S_i \cap \Omega} u (x)^2 \, \det \left( \frac{d \hat x}{d x} \right) d x \leq
+c \| u \|_{L_2(S_i \cap \Omega)}^2 
+$$
+For the derivatives we use
+$$
+\frac{d E u(\hat x)}{d\hat x} = \frac{d u(x(\hat x))}{d \hat x} =
+        \frac{d u}{dx} \frac{dx}{d \hat x}.
+$$
+Since $\frac{d x}{d \hat x}$ and $(\frac{d x}{d \hat x})^{-1} = \frac{d \hat x}{dx}$ are bounded, one obtains
+$$
+| \nabla_{\hat x} E u (\hat x) | \eqc | \nabla_x u(x) |,
+$$
+and 
+$$
+\int_{S_i \setminus \Omega} | \nabla_{\hat x} E u |^2 \, d \hat x \leq 
+        c \int_{S_i \cap \Omega} | \nabla u |^2 \, dx
+$$
+These estimates prove that $E$ is a bounded operator into $H^1$ on the
+sub-domains $S_i \setminus \Omega$. The construction 
+was such that for $u \in C^1(\overline \Omega)$, the extension $E u$ is 
+continuous across $\partial \Omega$, and also across the individual $S_i$.
+By Theorem~\ref{theo_subdomainh1}, $E u $ belongs
+to $H^1 (\widetilde \Omega)$, and
+$$
+\| \nabla E u \|_{L_2(\widetilde \Omega)}^2 = 
+\| \nabla u \|_{\Omega}^2 + \sum_{i=1}^M \| \nabla u \|_{S_i \setminus \Omega}^2 \leq c \| \nabla u \|_{L_2(\Omega)}^2,
+$$
+By density, we get the result for $H^1(\Omega)$. Let $u_j  \in C^1(\overline \Omega) \rightarrow  u$, than $u_j$ is Cauchy, $E u_j$ is Cauchy in $H^1(\widetilde \Omega)$, and thus converges to $u \in H^1(\widetilde \Omega)$.
+
+\bigskip
+
+The extension of functions from $H_0^1(\Omega)$ onto larger domains is
+trivial: Extension by $0$ is a bounded operator.
+One can extend functions from $H^1(\Omega)$ into $H_0^1(\widetilde \Omega)$,
+and further, to an arbitrary domain by extension by $0$.
+
+For $\hat x = s_i(\xi, -\eta)$, $\xi, \eta \in (0,1)^2$, define the extension
+$$
+E_0 u (\hat x) = (1-\eta) \, u(x) 
+$$
+This extension vanishes at $\partial \widetilde \Omega$
+
+\begin{theorem}
+The extension $E_0$ is an extension from $H^1(\Omega)$ to $H_0^1(\widetilde \Omega)$. It is bounded w.r.t. 
+$$
+\| E_0 u \|_{H^1(\widetilde \Omega)} \leq c \| u \|_{H^1(\Omega)}
+$$
+\end{theorem}
+\noindent
+{\em Proof:} Exercises
+
+In this case, it is not possible to bound the gradient term only by gradients.
+To see this, take the constant function on $\Omega$. The gradient vanishes,
+but the extension is not constant.
+
+
+\subsection{The trace space $H^{1/2}$ }
+\label{sec_traceh1}
+%
+The trace operator is continuous from $H^1(\Omega)$ into $L_2(\partial \Omega)$. But, not every $g \in L_2(\partial \Omega)$ is a trace of some $u \in H^1(\Omega)$. We will motivate why the trace space is the fractional order Sobolev 
+space $H^{1/2}(\partial \Omega)$.
+
+We introduce a stronger space, such that the trace operator is still
+continuous, and onto. 
+Let $V = H^1(\Omega)$, and define the trace space as the range of the 
+trace operator
+$$
+W = \{ \optr \, u : u \in H^1(\Omega) \}
+$$
+with the norm
+\begin{equation}
+\label{equ_tracenorm}
+\| \optr u \|_W = \inf_{v \in V \atop \optr \, u = \optr \, v } \| v \|_V.
+\end{equation}
+This is indeed a norm on $W$. The trace operator is continuous from $V \rightarrow W$ with norm $1$. 
+
+\begin{lemma} The space $(W, \|.\|_W)$ is a Banach space. For all $g \in W$
+there exists an $u \in V$ such that $\optr \, u = g$ and $\| u \|_V = \| g \|_W$
+\end{lemma}
+\noindent {\em Proof:}
+The kernel space $V_0 := \{ v : \optr \, v = 0 \}$ is a closed sub-space of 
+$V$. If $\optr \, u = \optr \, v$, then $z := u - v \in V_0$. We can rewrite
+$$
+\| \optr \, u \|_W = \inf_{z \in V_0} \| u - z \|_V = \| u - P_{V_0} u \|_V
+\qquad  \forall \, u \in V
+$$
+Now, let $g_n = \optr \, u_n \in W$ be a Cauchy sequence. This does not
+imply that $u_n$ is Cauchy, but $P_{V_0^\bot} u_n$ is 
+Cauchy in $V$:
+$$
+\| P_{V_0^\bot} (u_n - u_m) \|_V = \| \optr \, (u_n - u_m) \|_W.
+$$
+The $P_{V_0^\bot} u_n$ converge to some $u \in V_0^\bot$, and $g_n$ converge
+to $g := \optr \, u$. 
+\hfill $\Box$
+
+
+The minimizer in (\ref{equ_tracenorm}) fulfills
+$$
+\optr \, u = g \qquad \mbox{and} \qquad (u,v)_V = 0 \qquad \forall \, v \in V_0.
+$$
+This means that $u$ is the solution of the weak form of the
+Dirichlet problem 
+$$
+\begin{array}{rcll}
+-\Delta u + u & = & 0 \qquad & \mbox{ in }  \Omega \\
+u & = & g \qquad & \mbox{ on } \partial \Omega.
+\end{array}
+$$
+
+
+\bigskip
+
+To give an explicit characterization of the norm $\|.\|_W$, we introduce
+{\bf Hilbert space interpolation}:
+
+Let $V_1 \subset V_0$ be two Hilbert spaces, such that $V_1$ is dense 
+in $V_0$, and the embedding operator $id : V_1 \rightarrow V_0$
+is compact. We can pose the eigen-value problem: Find $z \in V_1$, $\lambda \in {\mathbb R}$ such that
+$$
+(z, v)_{V_1} = \lambda (z, v)_{V_0} \qquad \forall \, v \in V_1.
+$$
+There exists a sequence of eigen-pairs $(z_k, \lambda_k)$ such that $\lambda_k
+\rightarrow \infty$. The $z_k$ form an orthonormal basis in $V_0$, and
+an orthogonal basis in $V_1$. 
+
+\bigskip
+
+The converse is also true. If $z_k$ is a basis for $V_0$, and the eigenvalues
+$\lambda_k \rightarrow \infty$, then the embedding $V_1 \subset V_0$ is compact.
+
+\bigskip
+
+Given $u \in V_0$, it can be expanded in the orthonormal eigen-vector basis:
+$$
+u = \sum_{k=0}^\infty u_k z_k \qquad \mbox{with} \qquad u_k = (u, z_k)_{V_0}
+$$
+The $\|.\|_{V_0}$ - norm of $u$ is 
+$$
+\| u \|_{V_0}^2 = (\sum_k u_k z_k, \sum_l u_l z_l)_{V_0} = 
+        \sum_{k,l} u_k u_l (z_k,z_l)_{V_0} = \sum_k u_k^2.
+$$
+If $u \in V_1$, then 
+$$
+\| u \|_{V_1}^2 = (\sum_k u_k z_k, \sum_l u_l z_l)_{V_1} = 
+        \sum_{k,l} u_k u_l (z_k,z_l)_{V_1} = 
+        \sum_{k,l} u_k u_l \lambda_k (z_k,z_l)_{V_0} = 
+        \sum_k u_k^2 \lambda_k
+$$
+The sub-space space $V_1$ consists of all $u = \sum u_k z_k$ such 
+that $\sum_k \lambda_k u_k^2$ is finite. This suggests the definition
+of the interpolation norm
+$$
+\| u \|_{V_s}^2 = \sum_k (u, z_k)_{V_0}^2 \lambda_k^s,
+$$
+and the interpolation space $V_s = [V_0, V_1]_s$ as
+$$
+V_s = \{ u \in V_0 : \| u \|_{V_s} < \infty \}.
+$$
+We have been fast with using infinite sums. To make everything precise,
+one first works with finite dimensional sub-spaces $\{ u : \exists n \in {\mathbb N} \mbox{ and } u = \sum_{k=1}^n u_k z_k \}$, and takes the closure.
+
+
+\bigskip
+
+In our case, we apply Hilbert space interpolation to $H^1(0,1) \subset L_2(0,1)$. The eigen-value problem is to find $z_k \in H^1$ and $\lambda_k \in {\mathbb R}$
+such that
+$$
+(z_k, v)_{L_2} + (z_k^\prime, v^\prime)_{L_2} = \lambda_k \, 
+        (z_k, v)_{L_2} \qquad \forall \, v \in H^1
+$$
+By definition of the weak derivative, there holds $(z_k^\prime)^\prime = (1-\lambda_k) z_k$, i.e., $z^k \in H^2$. Since $H^2 \subset C^0$, there holds also
+$z \in C^2$, and a weak solution is also a solution of the strong form
+\begin{equation}
+\begin{array}{rcll}
+z_k - z_k^{\prime \prime} & = & \lambda_k z_k \qquad & \mbox{ on } (0,1) \\
+z_k^\prime(0) = z_k^\prime(1) & = & 0
+\end{array}
+\end{equation}
+All solutions, normalized to $\| z_k \|_{L_2} = 1$, are
+$$
+z_0 = 1 \qquad \lambda_0 = 1
+$$
+and, for $k \in {\mathbb N}$,
+$$
+z_k(x) = \sqrt{2} \cos (k \pi x) \qquad \lambda_k = 1 + k^2 \pi^2.
+$$
+Indeed, expanding $u \in L_2$ in the $\cos$-basis $u = u_0 + \sum_{k=1}^\infty
+u_k \sqrt2 \cos (k \pi x)$, one has
+$$
+\| u \|_{L_2}^2 = \sum_{k=0}^\infty (u, z_k)_{L_2}^2
+$$
+and
+$$
+\| u \|_{H^1}^2 = \sum_{k=0}^\infty (1+k^2 \pi^2) (u, z_k)_{L_2}^2
+$$
+Differentiation adds a factor $k \pi$.
+Hilbert space interpolation allows to define the fractional order Sobolev
+norm ($s \in (0,1)$)
+$$
+\| u \|_{H^s(0,1)}^2 = \sum_{k=0}^\infty (1+k^2 \pi^2)^s (u,z_k)_{L_2}^2
+$$
+
+
+
+
+\bigskip
+We consider the trace $\optr|_E$ of $H^1((0,1)^2)$ onto one edge $E = (0,1) \times \{ 0 \}$. For $g \in W_E := \optr H^1((0,1)^2)$, the norm $\| g \|_W$ is 
+defined by 
+$$
+\| g \|_W = \| u_g \|_{H^1}.
+$$
+Here, $u_g$ solves the Dirichlet problem $u_g|_E = g$, and $(u_g,v)_{H^1} = 0 \; \forall \, v \in H^1$ such that $\optr_E v = 0$.
+
+Since $W \subset L_2(E)$, we can expand $g$ in the $L_2$-orthonormal cosine basis $z_k$
+$$
+g(x) = \sum g_n z_k(x)
+$$
+The Dirichlet problems for the $z_k$,
+$$
+\begin{array}{rcll}
+-\Delta u_k + u_k & = & 0  \qquad & \mbox{in } \Omega \\
+ u_k & = & z_k \qquad & \mbox{on } E \\
+\frac{\partial u_k}{\partial n} & = & 0 \qquad & \mbox{on } \partial \Omega \setminus E,
+\end{array}
+$$
+have the explicit solution
+$$
+u_0(x,y) = 1
+$$
+and
+$$
+u_k(x,y) = \sqrt 2 \cos (k \pi x) \frac{e^{k \pi (1-y)} + e^{-k \pi (1-y)}}{e^{k \pi} + e^{-k \pi}}.
+$$
+The asymptotic is
+$$
+\| u_k \|_{L_2}^2 \eqc (k+1)^{-1}
+$$
+and
+$$
+\| \nabla u_k \|_{L_2}^2 \eqc k 
+$$
+Furthermore, the $u_k$ are orthogonal in $(.,.)_{H^1}$. Thus $u_g = \sum_n g_n u_k$ has the norm
+$$
+\| u_g \|_{H^1}^2 = \sum g_n^2 \| u_k \|_{H^1}^2 \eqc \sum g_n^2 (1+k).
+$$
+This norm is equivalent to $H^{1/2}(E)$. 
+
+
+We have proven that the trace space onto one edge is the interpolation 
+space $H^{1/2}(E)$. This is also true for general domains (Lipschitz, with piecewise smooth boundary). 
+
+
+
+
+
+
+
+
+
+
+\section{Equivalent norms on $H^1$ and on sub-spaces}
+
+The intention is to formulate $2^{nd}$ order variational problems in the 
+Hilbert space $H^1$. We want to apply the Lax-Milgram theory for continuous
+and coercive bilinear forms $A(.,.)$. We present techniques to prove
+coercivity.
+
+The idea is the following. In the norm
+$$
+\| v \|_{H^1}^2 = \| v \|_{L_2}^2 + \| \nabla v \|_{L_2}^2,
+$$
+%
+the $\| \nabla \cdot \|_{L_2}$-semi-norm is the dominating part up to
+the constant functions. The $L_2$ norm is necessary to obtain a
+norm. We want to replace the $L_2$ norm by some different term (e.g.,
+the $L_2$-norm on a part of $\Omega$, or the $L_2$-norm on $\partial
+\Omega$), and want to obtain an equivalent norm.
+
+
+We formulate an abstract theorem relating a norm $\|.\|_V$ to a semi-norm
+$\|.\|_A$. An equivalent theorem was proven by Tartar.
+\begin{theorem} [Tartar] \label{theo_tartar}
+Let $(V, (.,.)_V)$ and $(W, (.,.)_W)$ be Hilbert spaces, such that
+the embedding $id : V \rightarrow W$ is compact.
+Let $A(.,.)$ be a non-negative, symmetric and $V$-continuous bilinear form 
+with kernel $V_0 = \{ v : A(v,v) = 0 \}$. Assume that
+\begin{equation}
+\label{equ_tartar_cond}
+\| v \|_V^2 \eqc \| v \|_W^2 + \| v \|_A^2 \qquad \forall \, v \in V
+\end{equation}
+Then there holds
+\begin{enumerate}
+\item
+The kernel $V_0$ is finite dimensional. On the factor space $V/V_0$, 
+$A(.,.)$ is an equivalent norm to the quotient norm
+\begin{equation} \label{equ_factor}
+\| u \|_A \eqc \inf_{v \in V_0} \| u - v \|_V \qquad \forall \, u \in V
+\end{equation}
+\item
+Let $B(.,.)$ be a continuous, non-negative, symmetric bilinear form 
+on $V$ such that $A(.,.) + B(.,.)$ is an inner product. Then there
+holds
+$$
+\| v \|_V^2 \eqc \| v \|_A^2 + \| v \|_B^2 \qquad \forall \, v \in V
+$$
+\item
+Let $V_1 \subset V$ be a closed sub-space such that $V_0 \cap V_1 = \{ 0 \}$.
+Then there holds
+$$
+\| v \|_V \eqc \| v \|_A \qquad \forall \, v \in V_1
+$$
+\end{enumerate}
+\end{theorem}
+\noindent
+{\em Proof:} 1. Assume that $V_0$ is not finite dimensional. Then 
+there exists an $(.,.)_V$-orthonormal sequence $u_k \in V_0$. Since
+the embedding $id : V \rightarrow W$ is compact, it has a sub-sequence
+converging in $\|. \|_W$. But, since
+$$
+2 = \| u_k - u_l \|_V^2 \eqc \| u_k - u_l \|_W^2 + \| u_k - u_l \|_A
+        = \| u_k - u_l \|_W^2
+$$ 
+for $k \neq l$, $u_k$ is not Cauchy in $W$. This is a contradiction to
+an infinite dimensional kernel space $V_0$.
+We prove the equivalence (\ref{equ_factor}). To bound the left hand side
+by the right hand side, we use that $V_0 = \operatorname {ker} A$, and
+norm equivalence (\ref{equ_tartar_cond}):
+$$
+\| u \|_A = \inf_{v \in V_0} \| u - v \|_A \leq \inf_{v \in V_0} \| u - v \|_V 
+$$
+The quotient norm is equal to $\| P_{V_0^\bot} u \|$. We have to prove that 
+$\| P_{V_0^\bot} u \|_V \leq \| P_{V_0^\bot} u \|_A$ for all $u \in V$.
+This follows after proving $\| u \|_V \leq \| u \|_A$ for all $u \in V_0^\bot$.
+Assume that this is not true. I.e., there exists a $V$-orthogonal sequence 
+$(u_k)$ such that $\| u_k \|_A \leq k^{-1} \| u_k \|_V$. Extract a sub-sequence
+converging in $\| . \|_W$, and call it $u_k$ again. From the norm
+equivalence (\ref{equ_tartar_cond}) there follows
+$$
+2 = \| u_k - u_l \|_V^2 \leqc \| u_k - u_l \|_W + \| u_k - u_l \|_A \rightarrow 0
+$$
+2. On $V_0$, $\| . \|_B$ is a norm. Since $V_0$ is finite dimensional, it
+is equivalent to $\|.\|_V$, say with bounds
+$$
+c_1 \, \| v \|_{V}^2 \leq \| v \|_B^2 \leq c_2 \, \| v \|_V^2 \qquad \forall \, v \in V_0
+$$
+From 1. we know that
+$$
+c_3 \, \| v \|_V^2 \leq \| v \|_A^2 \leq c_4 \, \| v \|_V^2 \qquad \forall \, v \in V_0^\bot.
+$$
+Now, we bound
+\begin{eqnarray*}
+\| u \|_V^2 & = & \| P_{V_0} u \|_V^2 + \| P_{V_0^\bot} u \|_V^2 \\
+        & \leq & \frac{1}{c_1} \| \underbrace{P_{V_0} u }_{u - P_{V_0^\bot} u } \|_B^2 + \| P_{V_0^\bot} \|_V^2 \\
+        & \leq & \frac{2}{c_1} \left( \| u \|_B^2 + c_2 \| P_{V_0^\bot} u \|_V^2 \right) + \| P_{V_0^\bot} u \|_V^2 \\
+        & = & \frac{2}{c_1} \| u \|_B^2 + \frac{1}{c_2} \left(1 + \frac{2 c_2}{c_1} \right) \| P_{V_0^\bot} u \|_A^2 \\
+        & \leqc & \| u \|_B^2 + \| u \|_A^2
+\end{eqnarray*}
+
+3. Define $B(u,v) = (P_{V_1}^\bot u, P_{V_1}^\bot u)_V$. Then $A(.,.)+B(.,.)$
+is an inner product: $A(u,u)+B(u,u) = 0$ implies that $u \in V_0$ and $u \in V_1$, thus $u = \{ 0 \}$. From 2. there follows that $A(.,.)+B(.,.)$ is
+equivalent to $(.,.)_V$. The result follows from reducing the equivalence 
+to $V_1$.
+
+\hfill $\Box$
+
+We want to apply Tartar's theorem to the case $V = H^1$, $W = L_2$,
+and $\|v \|_A = \| \nabla v \|_{L_2}$.
+The theorem requires that the embedding $id : H^1 \rightarrow L_2$ is
+compact. This is indeed true for bounded domains $\Omega$:
+
+\begin{theorem} The embedding of $H^k \rightarrow H^l$ for $k > l$ is 
+compact.
+\end{theorem}
+We sketch a proof for the embedding $H^1 \subset L_2$.
+First, prove the compact embedding $H_0^1(Q) \rightarrow L_2(Q)$ for
+a square $Q$, w.l.o.g. set $Q = (0,1)^2$. 
+The eigen-value problem: Find $z \in H_0^1(Q)$ and $\lambda$ such that
+$$
+(z,v)_{L_2} + (\nabla z, \nabla v)_{L_2} = \lambda (u,v)_{L_2} \qquad 
+\forall \, v \in H_0^1(Q)
+$$
+has eigen-vectors $z_{k,l} = sin (k \pi x) sin (l \pi y)$, and eigen-values
+$1+k^2 \pi^2 + l^2 \pi^2 \rightarrow \infty$. The eigen-vectors are dense 
+in $L_2$. Thus, the embedding is compact.
+
+On a general domain $\Omega \subset Q$, we can extend $H^1(\Omega)$ 
+into $H_0^1(Q)$, embed $H_0^1(Q)$ into $L_2(Q)$, and restrict $L_2(Q)$
+onto $L_2(\Omega)$. This is the composite of two continuous and a compact
+mapping, and thus is compact.
+\hfill $\Box$
+
+\bigskip
+\noindent
+
+The kernel $V_0$ of the semi-norm $\| \nabla v \|$ is the constant function.
+
+\begin{theorem} [Friedrichs inequality]
+Let $\Gamma_D \subset \partial \Omega$ be of positive measure $|\Gamma_D|$.
+Let $V_D = \{ v \in H^1(\Omega) : \optr_{\Gamma_D} v = 0 \}$. Then
+$$
+\| v \|_{L_2} \leqc \| \nabla v \|_{L_2} \qquad \forall \, v \in V_D
+$$
+\end{theorem}
+{\em Proof:} The intersection $V_0 \cap V_D$ is trivial $\{ 0 \}$. 
+Thus, Theorem~\ref{theo_tartar}, 3. implies the equivalence  
+$$
+\| v \|_V^2 = \| v \|_{L_2}^2 + \| \nabla v \|_{L_2}^2 \eqc
+\| \nabla v \|_{L_2}.
+$$
+\hfill $\Box$
+
+
+\begin{theorem} [Poincar\'e inequality]
+There holds
+$$
+\| v \|_{H^1(\Omega)}^2 \leqc \| \nabla v \|_{L_2}^2 + (\int_\Omega v \, dx)^2
+$$
+\end{theorem}
+{\em Proof:} $B(u,v) := (\int_\Omega u \, dx) (\int_\Omega v \, dx)$ is
+a continuous bilinear form on $H^1$, and $(\nabla u, \nabla v) + B(u,v)$ is
+an inner product. Thus, Theorem~\ref{theo_tartar}, 2. implies the 
+stated equivalence.
+\hfill $\Box$
+
+\begin{itemize}
+\item
+Let $\omega \subset \Omega$ have positive measure $| \omega|$ in ${\mathbb R}^d$.
+Then
+$$
+\| u \|_{H^1(\Omega)}^2 \eqc
+ \| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\omega)},
+$$
+\item
+Let $\gamma \subset \partial \Omega$ have positive measure $| \gamma|$ in ${\mathbb R}^{d-1}$. Then
+$$
+\| u \|_{H^1(\Omega)}^2 \eqc
+\| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\gamma)},
+$$
+\end{itemize}
+
+
+\begin{theorem}[Bramble Hilbert lemma] \label{lemma_bh} 
+Let $U$ be some Hilbert space, and
+$L : H^k \rightarrow U$ be a continuous linear operator such that 
+$L q = 0$ for polynomials $q \in P^{k-1}$. Then there holds
+$$
+\| L v \|_U \leq | v |_{H^k}.
+$$
+\end{theorem}
+{\em Proof:} The embedding $H^k \rightarrow H^{k-1}$ is compact. 
+The $V$-continuous, symmetric and non-negative bilinear form
+$A(u,v) = \sum_{\alpha : | \alpha | = k} (\partial^\alpha u, \partial^\alpha v)$ has the kernel $P^{k-1}$. Decompose $\| u \|_{H^k}^2 = \| u \|_{H^{k-1}}^2 + A(u,u)$. By Theorem~\ref{theo_tartar}, 1, there holds
+$$
+\| u \|_A \eqc \inf_{v \in V_0} \| u - v \|_{H^k}
+$$
+The same holds for the bilinear-form
+$$
+A_2(u,v) := (L u, Lv)_U + A(u,v)
+$$
+Thus
+$$
+\| u \|_{A_2} \eqc  \inf_{v \in V_0} \| u - v \|_{H^k} \qquad \forall \, u \in V
+$$
+Equalizing both  implies that
+$$
+(L u, Lu)_U \leq \| u \|_{A_2}^2 \eqc \| u \|_A^2  \qquad \forall \, u \in V,
+$$
+i.e., the claim.
+
+\bigskip
+
+
+We will need point evaluation of functions in Sobolev spaces $H^s$. This is
+possible, we $u \in H^s$ implies that $u$ is continuous. 
+\begin{theorem}[Sobolev's embedding theorem] Let $\Omega \subset {\mathbb R}^d$ with Lipschitz boundary. If $u \in H^s$ with $s > d/2$, then $u \in L_\infty$
+with
+$$
+\| u \|_{L_\infty} \leqc \| u \|_{H^s}
+$$
+There is a function in $C^0$ within the $L_\infty$ equivalence class.
+\end{theorem}
+
+
+\input{interpolation.tex}
