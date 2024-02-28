@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Introduction to Scientific Computing
+title: Interactive Finite Elements
 author: J. Schöberl
 logo: ASC_Logo_transparent_300ppi_RGB.png
 copyright : "2024"  # Copyright year to be placed in the footer
@@ -55,4 +55,5 @@ parse:
     - amsmath
     - linkify
     - colon_fence
-        
+  myst_dmath_double_inline: true
+  
