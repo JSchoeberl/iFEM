@@ -467,17 +467,17 @@ a bilinear form which is</p>
 <ul class="simple">
 <li><p>coercive (also known as elliptic)</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-72708ea0-a83b-493c-8c1d-065f4efd4acb">
-<span class="eqno">()<a class="headerlink" href="#equation-72708ea0-a83b-493c-8c1d-065f4efd4acb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 A(u,u) \geq \alpha_1 \| u \|_V^2 \qquad \forall \, u \in V,
-\end{equation}\]</div>
+\]</div>
 <ul class="simple">
 <li><p>and continuous</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-dd58c538-dd00-4795-b347-e7eb650d95e5">
-<span class="eqno">()<a class="headerlink" href="#equation-dd58c538-dd00-4795-b347-e7eb650d95e5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 A(u,v) \leq \alpha_2 \| u \|_V  \, \| v \|_V \qquad \forall \, u , v \in V,
-\end{equation}\]</div>
+\]</div>
 <p>with bounds <span class="math notranslate nohighlight">\(\alpha_1\)</span> and <span class="math notranslate nohighlight">\(\alpha_2\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^+\)</span>. It is not necessarily symmetric.
 Let <span class="math notranslate nohighlight">\(f(.) : V \rightarrow {\mathbb R}\)</span> be a continuous linear form on <span class="math notranslate nohighlight">\(V\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
@@ -504,8 +504,8 @@ The variational formulation of the PDE involves the bilinear form</p>
 A(u,v) = \int_{\Omega} (a(x) \nabla u) \cdot \nabla v \, dx + \int_\Omega c(x) u v \, dx.
 \]</div>
 <p>Assume that the coefficients <span class="math notranslate nohighlight">\(a(x)\)</span> and <span class="math notranslate nohighlight">\(c(x)\)</span> fulfill
-<span class="math notranslate nohighlight">\(a(x) \in {\mathbb R}^{d \times d}\)</span>, <span class="math notranslate nohighlight">\(a(x)\)</span> symmetric and <span class="math notranslate nohighlight">\(\lambda_1 \leq \lambda_{\min} (a(x)) \leq \lambda_{\max} (a(x)) \leq \lambda_2\)</span>, and
-<span class="math notranslate nohighlight">\(c(x)\)</span> such that <span class="math notranslate nohighlight">\(\gamma_1 \leq c(x) \leq \gamma_2\)</span> almost everywhere.
+<span class="math notranslate nohighlight">\(a(x) \in {\mathbb R}^{d \times d}\)</span>, <span class="math notranslate nohighlight">\(a(x)\)</span> symmetric and <span class="math notranslate nohighlight">\(0 &lt; \lambda_1 \leq \lambda_{\min} (a(x)) \leq \lambda_{\max} (a(x)) \leq \lambda_2\)</span>, and
+<span class="math notranslate nohighlight">\(c(x)\)</span> such that <span class="math notranslate nohighlight">\(0 &lt; \gamma_1 \leq c(x) \leq \gamma_2\)</span> almost everywhere.
 Then <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is coercive with constant
 <span class="math notranslate nohighlight">\(\alpha_1 = \min \{ \lambda_1, \gamma_1 \}\)</span> and <span class="math notranslate nohighlight">\(\alpha_2 = \max \{ \lambda_2, \gamma_2 \}\)</span>.</p>
 <p><strong>Example:</strong> Diffusion-convection-reaction equation:</p>
@@ -560,7 +560,8 @@ It is linear, and its operator norm is bounded by</p>
 A u = f \qquad (\mbox{in } V^\ast).
 \]</div>
 <blockquote>
-<div><p><strong>Theorem: (Banach’s contraction mapping theorem)</strong> Given a Banach space
+<div><p><strong>Banach’s contraction mapping theorem:</strong></p>
+<p>Given a Banach space
 <span class="math notranslate nohighlight">\(V\)</span> and a mapping <span class="math notranslate nohighlight">\(T : V \rightarrow V\)</span>, satisfying the Lipschitz condition</p>
 <div class="math notranslate nohighlight">
 \[
@@ -583,7 +584,8 @@ A u = f \qquad (\mbox{in } V^\ast).
   \]</div>
 </div></blockquote>
 <blockquote>
-<div><p><strong>Theorem:(Lax Milgram)</strong> Given a Hilbert space <span class="math notranslate nohighlight">\(V\)</span>, a coercive and continuous bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span>, and a continuous linear form <span class="math notranslate nohighlight">\(f(.)\)</span>. Then there exists a unique <span class="math notranslate nohighlight">\(u \in V\)</span> solving</p>
+<div><p><strong>Theorem by Lax and Milgram:</strong></p>
+<p>Given a Hilbert space <span class="math notranslate nohighlight">\(V\)</span>, a coercive and continuous bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span>, and a continuous linear form <span class="math notranslate nohighlight">\(f(.)\)</span>. Then there exists a unique <span class="math notranslate nohighlight">\(u \in V\)</span> solving</p>
 <div class="math notranslate nohighlight">
 \[
   A(u,v) = f(v) \qquad \forall \, v \in V.
@@ -605,16 +607,16 @@ A u = f \qquad (\mbox{in } V^\ast).
 J_V A u = J_V f \qquad (\mbox{in } V),
 \]</div>
 <p>and to the fixed point equation (with some <span class="math notranslate nohighlight">\(0 \neq \tau \in {\mathbb R}\)</span> chosen below)</p>
-<div class="math notranslate nohighlight">
-\[
-u = u - \tau J_V (A u - f).
-\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+u = u - \tau J_V (A u - f). 
+\end{align*}\]</div>
 <p>We will verify that</p>
 <div class="math notranslate nohighlight">
 \[
 T (v) := v - \tau J_V (A v - f)
 \]</div>
-<p>is a contraction mapping, i.e., <span class="math notranslate nohighlight">\(\| T (v_1) - T (v_2) \|_V \leq L \| v_1 - v_2 \|_V\)</span>
+<p>is a contractive mapping, i.e., <span class="math notranslate nohighlight">\(\| T (v_1) - T (v_2) \|_V \leq L \| v_1 - v_2 \|_V\)</span>
 with some Lipschitz constant <span class="math notranslate nohighlight">\(L \in [0,1)\)</span>.
 Let <span class="math notranslate nohighlight">\(v_1, v_2 \in V\)</span>, and set <span class="math notranslate nohighlight">\(v = v_1 - v_2\)</span>. Then</p>
 <div class="amsmath math notranslate nohighlight">
@@ -657,7 +659,8 @@ from the original problem on <span class="math notranslate nohighlight">\(V\)</s
 up to a constant factor, as good as the best possible approximation in the
 finite dimensional space.</p>
 <blockquote>
-<div><p><strong>Theorem:(Cea)</strong> The approximation error of the Galerkin method
+<div><p><strong>Céa’s Lemma:</strong></p>
+<p>The approximation error of Galerkin’s method
 is quasi optimal</p>
 <div class="math notranslate nohighlight">
 \[

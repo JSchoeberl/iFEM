@@ -513,7 +513,7 @@ converges to some <span class="math notranslate nohighlight">\(u \in V\)</span>.
 \frac{ B(u,v) } { \| u \|_V  } &gt; 0 \qquad \forall \, v \neq 0 \in W.
 \]</div>
 <blockquote>
-<div><p><strong>Theorem (Babuška Aziz):</strong></p>
+<div><p><strong>Theorem by Babuška and Aziz:</strong></p>
 <p>Assume that the continuous bilinear form <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills
 the inf-sup condition (\ref{equ_infsup}) and condition (\ref{equ_infsup2}).
 Then, the variational problem: find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
@@ -550,7 +550,7 @@ W^\ast = R(B) \oplus R(B)^\bot.
 <p>Thus, <span class="math notranslate nohighlight">\(R(B)^\bot = \{ 0 \}\)</span> and <span class="math notranslate nohighlight">\(R(B) = W^\ast\)</span>.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p><strong>Example:</strong> A coercive bilinear form is inf-sup stable.</p>
-<p><strong>Example:</strong> A complex symmetric variational problem:
+<p><strong>Example:</strong> A complex-valued symmetric variational problem:
 Consider the complex valued PDE</p>
 <div class="math notranslate nohighlight">
 \[
@@ -558,8 +558,8 @@ Consider the complex valued PDE</p>
 \]</div>
 <p>with Dirichlet boundary conditions, <span class="math notranslate nohighlight">\(f \in L_2\)</span>, and <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span>. The
 weak form for the real system <span class="math notranslate nohighlight">\(u = (u_{r}, u_i) \in V^2\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27958453-27cf-4979-a4c9-12272f8fc030">
-<span class="eqno">()<a class="headerlink" href="#equation-27958453-27cf-4979-a4c9-12272f8fc030" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-255c2041-d8b1-4df8-9bf1-eff5bc505684">
+<span class="eqno">()<a class="headerlink" href="#equation-255c2041-d8b1-4df8-9bf1-eff5bc505684" title="Permalink to this equation">#</a></span>\[\begin{align}
 (\nabla u_{r}, \nabla v_{r})_{L_2} &amp;+ (u_i, v_{r})_{L_2} &amp;= 
         (f,v_{r}) &amp; \forall \, v_r \in V \\
 (u_{r}, v_i)_{L_2} &amp;- (\nabla u_i, \nabla v_i)_{L_2} &amp;=
@@ -605,8 +605,8 @@ can skip the second condition.</p>
 Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c605401b-1926-47a5-b794-253dba039d4e">
-<span class="eqno">()<a class="headerlink" href="#equation-c605401b-1926-47a5-b794-253dba039d4e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8502a664-19f5-40d4-93e7-4de3f3264a1c">
+<span class="eqno">()<a class="headerlink" href="#equation-8502a664-19f5-40d4-93e7-4de3f3264a1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
   \end{equation}\]</div>
 </div></blockquote>

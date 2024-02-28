@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -469,7 +469,7 @@ l_u (v) := (u,v)_V \qquad \forall \, v \in V.
 \]</div>
 <p>The opposite is also true:</p>
 <blockquote>
-<div><p><strong><em>Theorem: (Riesz Representation Theorem)</em></strong></p>
+<div><p><strong><em>Riesz Representation Theorem:</em></strong></p>
 <p>Any continuous linear functional <span class="math notranslate nohighlight">\(l(\cdot)\)</span> on a Hilbert space <span class="math notranslate nohighlight">\(V\)</span> can be represented uniquely as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -483,11 +483,11 @@ l_u (v) := (u,v)_V \qquad \forall \, v \in V.
 </div></blockquote>
 <p><em>Proof:</em> First, we show uniqueness. Assume that <span class="math notranslate nohighlight">\(u_1 \neq u_2\)</span> both
 fulfill <span class="math notranslate nohighlight">\(l(v) = (u_1,v)_V = (u_2,v)_V\)</span>. This leads to the contradiction</p>
-<div class="amsmath math notranslate nohighlight" id="equation-03559b39-e772-4342-ac93-e9d574c668ee">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-03559b39-e772-4342-ac93-e9d574c668ee" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 0 &amp;=  l(u_1-u_2) - l(u_1-u_2) \\
-  &amp;=  (u_1,u_1-u2) - (u_2,u_1-u_2) = \| u_1 - u_2 \|^2.
-\end{align}\]</div>
+  &amp;=  (u_1,u_1-u_2) - (u_2,u_1-u_2) = \| u_1 - u_2 \|^2.
+\end{align*}\]</div>
 <p>Next, we construct the <span class="math notranslate nohighlight">\(u_l\)</span>. For this, define
 <span class="math notranslate nohighlight">\(S := \operatorname{ker} l\)</span>. This is a closed subspace.</p>
 <p>Case 1: <span class="math notranslate nohighlight">\(S^\bot = \{ 0 \}\)</span>. Then, <span class="math notranslate nohighlight">\(S = V\)</span>, i.e., <span class="math notranslate nohighlight">\(l = 0\)</span>. So take <span class="math notranslate nohighlight">\(u_l = 0\)</span>.</p>
@@ -499,12 +499,12 @@ Now define</p>
 u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
 \]</div>
 <p>Then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-669126c0-8d69-4007-8f8c-dfcfa4959618">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-669126c0-8d69-4007-8f8c-dfcfa4959618" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 (u_l,v) &amp;= (\underbrace{u_l}_{S^\bot}, \underbrace{v - l(v)/l(z) z}_S) + (u_l,l(v)/l(z)z) \\
 &amp;=  l(z) / \| z\|^2 (z,l(v)/l(z) z) \\
 &amp;= l(v)
-\end{align}\]</div>
+\end{align*}\]</div>
 <p>Finally, we prove <span class="math notranslate nohighlight">\(\|l\|_{V^\ast} = \| u_l \|_V\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -522,7 +522,7 @@ u_l := \frac{l(z)}{\|z\|^2} z \qquad \in S^\bot
 <p>Take the function space <span class="math notranslate nohighlight">\(C^1(\Omega)\)</span>, and define the bilinear form</p>
 <div class="math notranslate nohighlight">
 \[
-A(u,v) := \int_\Omega \nabla u \nabla v + \int_\Gamma u v \, ds
+A(u,v) := \int_\Omega \nabla u \nabla v \, dx + \int_\Gamma u v \, ds
 \]</div>
 <p>and the linear form</p>
 <div class="math notranslate nohighlight">
