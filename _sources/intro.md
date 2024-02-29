@@ -27,7 +27,7 @@ If you have suggestions for improvements, or found some errors, please send them
 to the author.
 Many section are still in draft version, and will be cleaned as the class proceeds.
 
-If you like the material, show it by giving a start on github.
+If you like the material, show it by giving a star on github.
 
 
 ## Literature
