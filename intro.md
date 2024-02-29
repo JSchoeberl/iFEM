@@ -24,13 +24,15 @@ Python frontend in jupyter-notebooks.
 
 This lecture is given in this form the first time in summer term 24.
 If you have suggestions for improvements, or found some errors, please send them per mail
-to the author, or open a pull request on the source repo of the book.
+to the author.
 Many section are still in draft version, and will be cleaned as the class proceeds.
+
+If you like the material, show it by giving a start on github.
 
 
 ## Literature
 
-* Lecture notes Schöberl and Faustmann+Schöberl
+* Lecture notes Schöberl and Faustmann+Schöberl 
 
 Books:
 
