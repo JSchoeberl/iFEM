@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -558,8 +558,8 @@ Consider the complex valued PDE</p>
 \]</div>
 <p>with Dirichlet boundary conditions, <span class="math notranslate nohighlight">\(f \in L_2\)</span>, and <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span>. The
 weak form for the real system <span class="math notranslate nohighlight">\(u = (u_{r}, u_i) \in V^2\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-255c2041-d8b1-4df8-9bf1-eff5bc505684">
-<span class="eqno">()<a class="headerlink" href="#equation-255c2041-d8b1-4df8-9bf1-eff5bc505684" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8498932d-f4ff-4269-9f00-281513d6f5ee">
+<span class="eqno">(11.1)<a class="headerlink" href="#equation-8498932d-f4ff-4269-9f00-281513d6f5ee" title="Permalink to this equation">#</a></span>\[\begin{align}
 (\nabla u_{r}, \nabla v_{r})_{L_2} &amp;+ (u_i, v_{r})_{L_2} &amp;= 
         (f,v_{r}) &amp; \forall \, v_r \in V \\
 (u_{r}, v_i)_{L_2} &amp;- (\nabla u_i, \nabla v_i)_{L_2} &amp;=
@@ -605,8 +605,8 @@ can skip the second condition.</p>
 Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8502a664-19f5-40d4-93e7-4de3f3264a1c">
-<span class="eqno">()<a class="headerlink" href="#equation-8502a664-19f5-40d4-93e7-4de3f3264a1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1bf1eb52-e609-49ba-a000-fc041ceac7e2">
+<span class="eqno">(11.2)<a class="headerlink" href="#equation-1bf1eb52-e609-49ba-a000-fc041ceac7e2" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
   \end{equation}\]</div>
 </div></blockquote>
