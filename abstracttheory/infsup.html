@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -494,13 +494,13 @@ B(u,v) \leq \beta_2 \| u \|_V \| v \|_W \qquad \forall \, u \in V, \; \forall \,
 B u = 0 \Rightarrow u = 0
 \]</div>
 <blockquote>
-<div><p><strong>Lemma:</strong> Assume that the continuous bilinear form <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the inf-sup condition (\ref{equ_infsup}). Then the according operator <span class="math notranslate nohighlight">\(B\)</span> has
+<div><p><strong>Lemma:</strong> Assume that the continuous bilinear form <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the inf-sup condition. Then the according operator <span class="math notranslate nohighlight">\(B\)</span> has
 closed range.</p>
 </div></blockquote>
-<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(B u^n\)</span> be a Cauchy sequence in <span class="math notranslate nohighlight">\(W^\ast\)</span>. From (\ref{equ_stabb}) we conclude that also <span class="math notranslate nohighlight">\(u^n\)</span> is Cauchy in <span class="math notranslate nohighlight">\(V\)</span>. Since <span class="math notranslate nohighlight">\(V\)</span> is complete, <span class="math notranslate nohighlight">\(u_n\)</span>
+<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(B u^n\)</span> be a Cauchy sequence in <span class="math notranslate nohighlight">\(W^\ast\)</span>. From <span class="math notranslate nohighlight">\(\| Bu \| \geq \beta_1 \| u \|\)</span> we conclude that also <span class="math notranslate nohighlight">\(u^n\)</span> is Cauchy in <span class="math notranslate nohighlight">\(V\)</span>. Since <span class="math notranslate nohighlight">\(V\)</span> is complete, <span class="math notranslate nohighlight">\(u_n\)</span>
 converges to some <span class="math notranslate nohighlight">\(u \in V\)</span>. By continuity of <span class="math notranslate nohighlight">\(B\)</span>, the sequence <span class="math notranslate nohighlight">\(B u^n\)</span> converges to <span class="math notranslate nohighlight">\(B u \in W^\ast\)</span>.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
-<p>The inf-sup condition (\ref{equ_infsup}) does not imply that <span class="math notranslate nohighlight">\(B\)</span> is onto <span class="math notranslate nohighlight">\(W^\ast\)</span>. To insure that, we can pose an inf-sup condition the other way around:</p>
+<p>The inf-sup condition does not imply that <span class="math notranslate nohighlight">\(B\)</span> is onto <span class="math notranslate nohighlight">\(W^\ast\)</span>. To insure that, we can pose an inf-sup condition the other way around:</p>
 <div class="math notranslate nohighlight">
 \[
 \inf_{v \in W \atop v \neq 0} \sup_{u \in V \atop u \neq 0}
@@ -515,8 +515,17 @@ converges to some <span class="math notranslate nohighlight">\(u \in V\)</span>.
 <blockquote>
 <div><p><strong>Theorem by Babuška and Aziz:</strong></p>
 <p>Assume that the continuous bilinear form <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills
-the inf-sup condition (\ref{equ_infsup}) and condition (\ref{equ_infsup2}).
-Then, the variational problem: find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
+the inf-sup condition
+$<span class="math notranslate nohighlight">\(
+  \inf_{u \in V \atop u \neq 0} \sup_{v \in W \atop v \neq 0}
+  \frac{ B(u,v) } { \| u \|_V \, \| v \|_W } \geq \beta_1.
+  \)</span><span class="math notranslate nohighlight">\(
+and the condition
+\)</span><span class="math notranslate nohighlight">\( 
+  \sup_{u \in V \atop u \neq 0}
+  \frac{ B(u,v) } { \| u \|_V  } &gt; 0 \qquad \forall \, v \neq 0 \in W.
+\)</span><span class="math notranslate nohighlight">\(
+Then, the variational problem: find \)</span>u \in V$ such that</p>
 <div class="math notranslate nohighlight">
 \[
   B(u,v) = f(v) \qquad \forall \, v \in W
@@ -558,13 +567,13 @@ Consider the complex valued PDE</p>
 \]</div>
 <p>with Dirichlet boundary conditions, <span class="math notranslate nohighlight">\(f \in L_2\)</span>, and <span class="math notranslate nohighlight">\(i = \sqrt{-1}\)</span>. The
 weak form for the real system <span class="math notranslate nohighlight">\(u = (u_{r}, u_i) \in V^2\)</span> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aba8cda6-f4de-4400-a093-183053f7e521">
-<span class="eqno">(11.1)<a class="headerlink" href="#equation-aba8cda6-f4de-4400-a093-183053f7e521" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 (\nabla u_{r}, \nabla v_{r})_{L_2} &amp;+ (u_i, v_{r})_{L_2} &amp;= 
-        (f,v_{r}) &amp; \forall \, v_r \in V \\
+        (f,v_{r}) \quad &amp; \forall \, v_r \in V \\
 (u_{r}, v_i)_{L_2} &amp;- (\nabla u_i, \nabla v_i)_{L_2} &amp;=
-        -(f,v_i) &amp; \forall \, v_i \in V
-\end{align}\]</div>
+        -(f,v_i) \quad &amp; \forall \, v_i \in V
+\end{align*}\]</div>
 <p>We can add up both lines, and define the large bilinear form <span class="math notranslate nohighlight">\(B(\cdot,\cdot) : V^2 \times V^2 \rightarrow {\mathbb R}\)</span> by</p>
 <div class="math notranslate nohighlight">
 \[
@@ -581,8 +590,9 @@ B(u,v) = (f,v_r) - (f,v_i) \qquad \forall \, v \in V^2
 <p>is stable solvable.</p>
 <section id="approximation-of-inf-sup-stable-variational-problems">
 <h2><span class="section-number">11.1. </span>Approximation of inf-sup stable variational problems<a class="headerlink" href="#approximation-of-inf-sup-stable-variational-problems" title="Link to this heading">#</a></h2>
-<p>Again, to approximate (\ref{equ_bigsystem}), we pick finite dimensional
-subspaces <span class="math notranslate nohighlight">\(V_h \subset V\)</span> and <span class="math notranslate nohighlight">\(W_h \subset W\)</span>, and pose the finite dimensional
+<p>Again, to approximate the variational problem <span class="math notranslate nohighlight">\(B(u,v) = f(v)\)</span>, we pick finite dimensional
+subspaces <span class="math notranslate nohighlight">\(V_h \subset V\)</span> and <span class="math notranslate nohighlight">\(W_h \subset W\)</span> with <span class="math notranslate nohighlight">\(\operatorname{dim} V_h = \operatorname{dim} W_h\)</span>
+, and pose the finite dimensional
 variational problem: find <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -602,15 +612,16 @@ above, and choose the subspaces <span class="math notranslate nohighlight">\(V_h
 can skip the second condition.</p>
 <blockquote>
 <div><p><strong>Theorem:</strong>
-Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and
+Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and fulfills the conditions
+of the Babuška-Aziz theorem. Furhtermore,
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fb216506-4a88-4162-a0f1-466b18956cb2">
-<span class="eqno">(11.2)<a class="headerlink" href="#equation-fb216506-4a88-4162-a0f1-466b18956cb2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d6220149-0e0c-44f6-bf86-ff5d70985bfa">
+<span class="eqno">()<a class="headerlink" href="#equation-d6220149-0e0c-44f6-bf86-ff5d70985bfa" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
   \end{equation}\]</div>
 </div></blockquote>
-<p><em>Proof:</em> Again, there holds the Galerkin orthogonality <span class="math notranslate nohighlight">\(B(u,w_h) = B(u_h,w_h)\)</span> for all <span class="math notranslate nohighlight">\(w_h \in V_h\)</span>. Again, choose an arbitrary <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>:</p>
+<p><em>Proof:</em> Again, there holds the Galerkin orthogonality <span class="math notranslate nohighlight">\(B(u,w_h) = B(u_h,w_h)\)</span> for all <span class="math notranslate nohighlight">\(w_h \in V_h\)</span>. Again, we choose an arbitrary <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \| u - u_h \|_V &amp; \leq  \| u - v_h \|_V + \| v_h - u_h \|_V \\
@@ -622,6 +633,9 @@ Then there holds the quasi-optimal error estimate</p>
                 \sup_{w_h \in W_h} \frac{ \beta_2 \| v_h-u \|_V \, \| w_h \|_W } { \| w_h \|_W } \\
         &amp; = (1 + \beta_2 / \beta_{1h}) \| u - v_h\|_V.
 \end{align*}\]</div>
+<p><span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p><strong>Note:</strong> Actually, the factor <span class="math notranslate nohighlight">\((1 + \beta_2 / \beta_{1h})\)</span> can be improved to <span class="math notranslate nohighlight">\(\beta_2 / \beta_{1h}\)</span>,
+see <a class="reference external" href="https://link.springer.com/article/10.1007/s002110100308">Some observations on Babuška and Brezzi theories, J. Xu and L. Zikatanov</a>.</p>
 </section>
 </section>
 
