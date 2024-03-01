@@ -84,7 +84,7 @@ If local installation does not work, there are alternatives:
 
   [![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://jschoeberl.github.io/iFEM-lite/lab?path=iFEM.ipynb)
 
-  [https://ngsolve.github.io/jupyterlite_ngsolve/lab?path=iFEM.ipynb](https://jschoeberl.github.io/iFEM-lite/lab?path=iFEM.ipynb)
+  [https://jschoeberl.github.io/iFEM-lite/lab?path=iFEM.ipynb](https://jschoeberl.github.io/iFEM-lite/lab?path=iFEM.ipynb)
 
   The first time it might take a few minutes to start, and then again to import ngsolve.
   
