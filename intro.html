@@ -487,7 +487,7 @@ Many section are still in draft version, and will be cleaned as the class procee
 <section id="literature">
 <h2>Literature<a class="headerlink" href="#literature" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Lecture notes Schöberl and Faustmann+Schöberl</p></li>
+<li><p>Lecture notes Schöberl and Faustmann+Schöberl (available in TU-Wien TUWEL)</p></li>
 </ul>
 <p>Books:</p>
 <ul class="simple">
@@ -517,10 +517,22 @@ Draw (unit_cube.shape);
 </pre></div>
 </div>
 <p>Known issues are</p>
-<ul class="simple">
+<ul>
 <li><p>Use pip3 instead of pip if there is no pip</p></li>
 <li><p>If you get an error like <code class="docutils literal notranslate"><span class="pre">externally-managed-environment</span></code>, then either use
 virtual environments, or add the flag <code class="docutils literal notranslate"><span class="pre">--break-system-packages</span></code> to the pip command, see <a class="reference external" href="https://veronneau.org/python-311-pip-and-breaking-system-packages.html">explanation</a></p></li>
+<li><p>If you have conflicts with other packages, you may install NGSolve in a <a class="reference external" href="https://docs.python.org/3/library/venv.html#creating-virtual-environments">virtual environment</a>. For example I did</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m venv /Users/joachim/numpde
+source /Users/joachim/numpde/bin/activate
+</pre></div>
+</div>
+</li>
+<li><p>If NGSolve compuatations are working, but you don’t get the rendering: For jupyter notebook version &lt; 7.0.0 you have to run additionally</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jupyter nbextension install --user --py webgui_jupyter_widgets
+jupyter nbextension enable --user --py webgui_jupyter_widgets
+</pre></div>
+</div>
+</li>
 </ul>
 <p>If local installation does not work, there are alternatives:</p>
 <ul>

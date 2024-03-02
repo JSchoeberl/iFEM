@@ -32,7 +32,7 @@ If you like the material, show it by giving a star on github.
 
 ## Literature
 
-* Lecture notes Schöberl and Faustmann+Schöberl 
+* Lecture notes Schöberl and Faustmann+Schöberl (available in TU-Wien TUWEL)
 
 Books:
 
@@ -67,6 +67,17 @@ Known issues are
 - Use pip3 instead of pip if there is no pip
 - If you get an error like `externally-managed-environment`, then either use
 virtual environments, or add the flag `--break-system-packages` to the pip command, see [explanation](https://veronneau.org/python-311-pip-and-breaking-system-packages.html)
+
+- If you have conflicts with other packages, you may install NGSolve in a [virtual environment](https://docs.python.org/3/library/venv.html#creating-virtual-environments). For example I did
+
+      python3 -m venv /Users/joachim/numpde
+      source /Users/joachim/numpde/bin/activate
+
+- If NGSolve compuatations are working, but you don't get the rendering: For jupyter notebook version < 7.0.0 you have to run additionally
+
+      jupyter nbextension install --user --py webgui_jupyter_widgets
+      jupyter nbextension enable --user --py webgui_jupyter_widgets
+  
 
 
 If local installation does not work, there are alternatives:
