@@ -56,7 +56,7 @@ To check the installation of NGSolve run in the console:
 
     python3 -c "import ngsolve; print(ngsolve.__version__)"
 
-Then, open jupyter-notebook, create a new notebook, create and execute a cell with
+Then, open jupyter-notebook (or jupyter-lab or VS Code), create a new notebook, create and execute a cell with
 
     from ngsolve import *
     from ngsolve.webgui import Draw
