@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -532,17 +532,19 @@ converges to some <span class="math notranslate nohighlight">\(u \in V\)</span>.
 <blockquote>
 <div><p><strong>Theorem by Babuška and Aziz:</strong></p>
 <p>Assume that the continuous bilinear form <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills
-the inf-sup condition
-$<span class="math notranslate nohighlight">\(
+the inf-sup condition</p>
+<div class="math notranslate nohighlight">
+\[
   \inf_{u \in V \atop u \neq 0} \sup_{v \in W \atop v \neq 0}
   \frac{ B(u,v) } { \| u \|_V \, \| v \|_W } \geq \beta_1.
-  \)</span><span class="math notranslate nohighlight">\(
-and the condition
-\)</span><span class="math notranslate nohighlight">\( 
+  \]</div>
+<p>and the condition</p>
+<div class="math notranslate nohighlight">
+\[ 
   \sup_{u \in V \atop u \neq 0}
   \frac{ B(u,v) } { \| u \|_V  } &gt; 0 \qquad \forall \, v \neq 0 \in W.
-\)</span><span class="math notranslate nohighlight">\(
-Then, the variational problem: find \)</span>u \in V$ such that</p>
+\]</div>
+<p>Then, the variational problem: find <span class="math notranslate nohighlight">\(u \in V\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[
   B(u,v) = f(v) \qquad \forall \, v \in W
@@ -633,8 +635,8 @@ Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span>
 of the Babuška-Aziz theorem. Furhtermore,
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ddf73646-e904-4ede-a9d1-294925cfccca">
-<span class="eqno">(11.1)<a class="headerlink" href="#equation-ddf73646-e904-4ede-a9d1-294925cfccca" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-48418447-4f4a-4893-bc04-97a0bc571ea5">
+<span class="eqno">()<a class="headerlink" href="#equation-48418447-4f4a-4893-bc04-97a0bc571ea5" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
   \end{equation}\]</div>
 </div></blockquote>

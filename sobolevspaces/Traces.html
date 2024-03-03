@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -481,7 +481,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="trace-theorems-and-their-applications">
 <h1><span class="section-number">14. </span>Trace theorems and their applications<a class="headerlink" href="#trace-theorems-and-their-applications" title="Link to this heading">#</a></h1>
-<p>(WIP)</p>
 <p>We consider boundary values of functions in Sobolev spaces. Clearly,
 this is not well defined for <span class="math notranslate nohighlight">\(H^0 = L_2\)</span>. But, as we will see, in
 <span class="math notranslate nohighlight">\(H^1\)</span> and higher order Sobolev spaces, it makes sense to talk about <span class="math notranslate nohighlight">\(u
@@ -490,14 +489,14 @@ formulate boundary conditions of PDEs in weak form.</p>
 <p>We start in one dimension. Let <span class="math notranslate nohighlight">\(u \in C^1 ([0,h])\)</span> with some <span class="math notranslate nohighlight">\(h &gt; 0\)</span>. Then,
 we can bound</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-u(0) &amp; = &amp; \left(1 - \frac{x}{h} \right) u(x) |_{x=0} = 
+\[\begin{align*}
+u(0) &amp; =  \left(1 - \frac{x}{h} \right) u(x) |_{x=0} = 
         - \int_0^h \left\{ \left(1-\frac{x}{h} \right) u(x) \right\}^\prime \, dx \\
-        &amp; = &amp; -\int_0^h  \frac{-1}{h} u(x) + \left(1-\frac{x}{h} \right) u^\prime(x)  \, dx \\
-        &amp; \leq &amp; \left\| \frac{1}{h} \right\|_{L_2} \| u \|_{L_2} + 
+        &amp; =  -\int_0^h  \frac{-1}{h} u(x) + \left(1-\frac{x}{h} \right) u^\prime(x)  \, dx \\
+        &amp; \leq  \left\| \frac{1}{h} \right\|_{L_2} \| u \|_{L_2} + 
                 \left\| 1-\frac{x}{h} \right\|_{L_2} \| u^\prime \|_{L_2} \\
-        &amp; \simeq &amp; h^{-1/2} \| u \|_{L_2(0,h)} + h^{1/2} \| u^\prime \|_{L_2(0,h)}.
-\end{eqnarray*}\]</div>
+        &amp; \simeq h^{-1/2} \| u \|_{L_2(0,h)} + h^{1/2} \| u^\prime \|_{L_2(0,h)}.
+\end{align*}\]</div>
 <p>This estimate includes the scaling with the interval length <span class="math notranslate nohighlight">\(h\)</span>.
 If we are not interested in the scaling, we apply Cauchy-Schwarz in <span class="math notranslate nohighlight">\({\mathbb R}^2\)</span>,
 and combine the <span class="math notranslate nohighlight">\(L_2\)</span> norm and the <span class="math notranslate nohighlight">\(H^1\)</span> semi-norm <span class="math notranslate nohighlight">\(\|u^\prime\|_{L_2}\)</span> to the full <span class="math notranslate nohighlight">\(H^1\)</span> norm and obtain</p>
@@ -505,19 +504,21 @@ and combine the <span class="math notranslate nohighlight">\(L_2\)</span> norm a
 \[
 |u(0)| \leq \sqrt{h^{-1/2} + h^{1/2} } \sqrt{ \| u \|_{L_2}^2 + \| u^\prime \|_{L_2}^2 } = c \, \| u \|_{H^1}.
 \]</div>
-<p>Next, we extend the trace operator to the whole Sobolev space <span class="math notranslate nohighlight">\(H^1\)</span>:
-\begin{theorem} There is a well defined and continuous trace operator</p>
+<p>Next, we extend the trace operator to the whole Sobolev space <span class="math notranslate nohighlight">\(H^1\)</span>:</p>
+<blockquote>
+<div><p><strong>Trace theorem in 1D:</strong>
+There is a well defined and continuous trace operator</p>
 <div class="math notranslate nohighlight">
 \[
-\operatorname{tr} : H^1((0,h)) \rightarrow {\mathbb R}
-\]</div>
+  \operatorname{tr} : H^1((0,h)) \rightarrow {\mathbb R}
+  \]</div>
 <p>whose restriction to <span class="math notranslate nohighlight">\(C^1([0,h])\)</span> coincides with</p>
 <div class="math notranslate nohighlight">
 \[
-u \rightarrow u(0).
-\]</div>
-<p>\end{theorem}
-<em>Proof:</em> Use that <span class="math notranslate nohighlight">\(C^1([0,h])\)</span> is dense in <span class="math notranslate nohighlight">\(H^1(0,h)\)</span>. Take a sequence
+  u \rightarrow u(0).
+  \]</div>
+</div></blockquote>
+<p><em>Proof:</em> Use that <span class="math notranslate nohighlight">\(C^1([0,h])\)</span> is dense in <span class="math notranslate nohighlight">\(H^1(0,h)\)</span>. Take a sequence
 <span class="math notranslate nohighlight">\(u_j\)</span> in <span class="math notranslate nohighlight">\(C^1([0,h])\)</span> converging to <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(H^1\)</span>-norm. The values
 <span class="math notranslate nohighlight">\(u_j(0)\)</span> are Cauchy, and thus converge to an <span class="math notranslate nohighlight">\(u_0\)</span>. The limit is independent
 of the choice of the sequence <span class="math notranslate nohighlight">\(u_j\)</span>. This allows to define <span class="math notranslate nohighlight">\(\operatorname{tr} u := u_0\)</span>.
@@ -531,13 +532,15 @@ let <span class="math notranslate nohighlight">\(s_i \in C^1 (Q, \Omega)\)</span
 <span class="math notranslate nohighlight">\(\| (s_i^\prime)^{-1} \|_{L_\infty} \leq c\)</span>, and <span class="math notranslate nohighlight">\(\operatorname{det} s_i^\prime &gt; 0\)</span>. The domains <span class="math notranslate nohighlight">\(S_i := s_i(Q)\)</span> are
 such that <span class="math notranslate nohighlight">\(s_i( (0,1) \times \{ 0 \} ) = \Gamma_i\)</span>, and the parameterizations
 match on <span class="math notranslate nohighlight">\(s_i( \{ 0,1 \} \times (0,1) )\)</span>.</p>
-<p><strong>Theorem:</strong>
+<blockquote>
+<div><p><strong>Trace Theorem:</strong>
 There exists a well defined and continuous operator</p>
 <div class="math notranslate nohighlight">
 \[
-\operatorname{tr} : H^1 (\Omega) \rightarrow L_2(\partial \Omega)
-\]</div>
+&gt; \operatorname{tr} : H^1 (\Omega) \rightarrow L_2(\partial \Omega)
+&gt; \]</div>
 <p>which coincides with <span class="math notranslate nohighlight">\(u|_{\partial \Omega}\)</span> for <span class="math notranslate nohighlight">\(u \in C^1(\overline{\Omega})\)</span>.</p>
+</div></blockquote>
 <p><em>Proof:</em> Again, we prove that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -623,47 +626,47 @@ g(v) := \int_{\Gamma_N} g \, \operatorname{tr} \, v \, dx
 <section id="integration-by-parts">
 <h2><span class="section-number">14.1. </span>Integration by parts<a class="headerlink" href="#integration-by-parts" title="Link to this heading">#</a></h2>
 <p>The definition of the trace allows us to perform integration by
-parts in <span class="math notranslate nohighlight">\(H^1\)</span>:
-$<span class="math notranslate nohighlight">\(
+parts in <span class="math notranslate nohighlight">\(H^1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \int_{\Omega} \nabla u \varphi \, dx = -\int_\Omega u \opdiv \, \varphi \, dx 
         + \int_{\partial \Omega} \operatorname{tr} u \, \varphi \cdot n \, dx 
 \qquad \forall \, \varphi \in [C^1(\overline{\Omega})]^2
-\)</span><span class="math notranslate nohighlight">\(
-The definition of the weak derivative (e.g. the weak gradient) looks similar.
-It allows only test functions \)</span>\varphi<span class="math notranslate nohighlight">\( with compact support in \)</span>\Omega<span class="math notranslate nohighlight">\(, i.e.,
-having zero boundary values. Only by choosing a normed space, for which the 
+\]</div>
+<p>The definition of the weak derivative (e.g. the weak gradient) looks similar.
+It allows only test functions <span class="math notranslate nohighlight">\(\varphi\)</span> with compact support in <span class="math notranslate nohighlight">\(\Omega\)</span>, i.e.,
+having zero boundary values. Only by choosing a normed space, for which the
 trace operator is well defined, we can state and prove integration by parts.
-Again, the short proof is based on the density of \)</span>C^1(\overline \Omega)<span class="math notranslate nohighlight">\( 
-in \)</span>H^1$.</p>
+Again, the short proof is based on the density of <span class="math notranslate nohighlight">\(C^1(\overline \Omega)\)</span>
+in <span class="math notranslate nohighlight">\(H^1\)</span>.</p>
 </section>
 <section id="sobolev-spaces-over-sub-domains">
 <h2><span class="section-number">14.2. </span>Sobolev spaces over sub-domains}<a class="headerlink" href="#sobolev-spaces-over-sub-domains" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> consist of <span class="math notranslate nohighlight">\(M\)</span> Lipschitz-continuous sub-domains <span class="math notranslate nohighlight">\(\Omega_i\)</span>
-such that
-\begin{itemize}
-\item <span class="math notranslate nohighlight">\(\overline \Omega = \cup_{i=1}^M \overline \Omega_i\)</span>
-\item <span class="math notranslate nohighlight">\(\Omega_i \cap \Omega_j = \emptyset \quad \mbox{ if } i \neq j\)</span>
-\end{itemize}
-The interfaces are <span class="math notranslate nohighlight">\(\gamma_{ij} = \overline \Omega_i \cap \overline \Omega_j\)</span>.
+such that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\overline \Omega = \cup_{i=1}^M \overline \Omega_i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Omega_i \cap \Omega_j = \emptyset \quad \mbox{ if } i \neq j\)</span></p></li>
+</ul>
+<p>The interfaces are <span class="math notranslate nohighlight">\(\gamma_{ij} = \overline \Omega_i \cap \overline \Omega_j\)</span>.
 The outer normal vector of <span class="math notranslate nohighlight">\(\Omega_i\)</span> is <span class="math notranslate nohighlight">\(n_i\)</span>.</p>
-<p>\begin{theorem} \label{theo_subdomainh1}
-Let <span class="math notranslate nohighlight">\(u \in L_2(\Omega)\)</span> such that
-\begin{itemize}
-\item
-<span class="math notranslate nohighlight">\(u_i := u|_{\Omega_i}\)</span> is in <span class="math notranslate nohighlight">\(H^1(\Omega_i)\)</span>, and <span class="math notranslate nohighlight">\(g_i = \nabla u_i\)</span> is its
-weak gradient
-\item
-the traces on common interfaces coincide:</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+Let <span class="math notranslate nohighlight">\(u \in L_2(\Omega)\)</span> such that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u_i := u|_{\Omega_i}\)</span> is in <span class="math notranslate nohighlight">\(H^1(\Omega_i)\)</span>, and <span class="math notranslate nohighlight">\(g_i = \nabla u_i\)</span> is its
+weak gradient</p></li>
+<li><p>the traces on common interfaces coincide:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
-\operatorname{tr}_{\gamma_{ij}} u_i = 
-\operatorname{tr}_{\gamma_{ij}} u_j 
-\]</div>
-<p>\end{itemize}
-Then <span class="math notranslate nohighlight">\(u\)</span> belongs to <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span>. Its weak gradient <span class="math notranslate nohighlight">\(g = \nabla u\)</span> fulfills
-<span class="math notranslate nohighlight">\(g|_{\Omega_i} = g_i\)</span>.
-\end{theorem}
-{\em Proof:} We have to verify that <span class="math notranslate nohighlight">\(g \in L_2(\Omega)^d\)</span>, defined by <span class="math notranslate nohighlight">\(g |_{\Omega_i} = g_i\)</span>,
+  \operatorname{tr}_{\gamma_{ij}} u_i = 
+  \operatorname{tr}_{\gamma_{ij}} u_j 
+  \]</div>
+<p>Then <span class="math notranslate nohighlight">\(u\)</span> belongs to <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span>. Its weak gradient <span class="math notranslate nohighlight">\(g = \nabla u\)</span> fulfills
+<span class="math notranslate nohighlight">\(g|_{\Omega_i} = g_i\)</span>.</p>
+</div></blockquote>
+<p><em>Proof:</em> We have to verify that <span class="math notranslate nohighlight">\(g \in L_2(\Omega)^d\)</span>, defined by <span class="math notranslate nohighlight">\(g |_{\Omega_i} = g_i\)</span>,
 is the weak gradient of <span class="math notranslate nohighlight">\(u\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -672,23 +675,22 @@ is the weak gradient of <span class="math notranslate nohighlight">\(u\)</span>,
 \]</div>
 <p>We are using Green’s formula on the sub-domains</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\int_\Omega g \cdot \varphi \, dx &amp; = &amp; 
+\[\begin{align*}
+\int_\Omega g \cdot \varphi \, dx &amp; =  
         \sum_{i=1}^M \int_{\Omega_i} g_i \cdot \varphi \, dx =
         \sum_{i=1}^M \int_{\Omega_i} \nabla u_i \cdot \varphi \, dx \\
-        &amp; = &amp; 
+        &amp; =  
         \sum_{i=1}^M -\int_{\Omega_i} u_i  \opdiv \varphi \, dx 
            + \int_{\partial \Omega_i} \operatorname{tr} u_i \, \varphi \cdot n_i \, ds \\
-        &amp; = &amp; -\int_\Omega u \opdiv \varphi \, dx 
+        &amp; =  -\int_\Omega u \opdiv \varphi \, dx 
         + \sum_{\gamma_{ij}} \int_{\gamma_{ij}} 
         \left\{ \operatorname{tr}_{\gamma_{ij}} u_i \, \varphi \cdot n_i +
                 \operatorname{tr}_{\gamma_{ij}} u_j \, \varphi \cdot n_j
         \right\} \, ds \\
-        &amp; = &amp; -\int_\Omega u \, \opdiv \varphi \, dx
-\end{eqnarray*}\]</div>
+        &amp; =  -\int_\Omega u \, \opdiv \varphi \, dx
+\end{align*}\]</div>
 <p>We have used that <span class="math notranslate nohighlight">\(\varphi = 0\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, and <span class="math notranslate nohighlight">\(n_i = -n_j\)</span> on <span class="math notranslate nohighlight">\(\gamma_{ij}\)</span>.
-\hfill <span class="math notranslate nohighlight">\(\Box\)</span></p>
-<p>\bigskip</p>
+<span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>Applications of this theorem are (conforming nodal) finite element
 spaces. The partitioning <span class="math notranslate nohighlight">\(\Omega_i\)</span> is the mesh. On each sub-domain,
 i.e., on each element <span class="math notranslate nohighlight">\(T\)</span>, the functions are polynomials and thus in
@@ -733,8 +735,8 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 Define the domain \)</span>\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M$.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a204198c-75f2-4e5f-a16a-b0055c6aadfe">
-<span class="eqno">(14.1)<a class="headerlink" href="#equation-a204198c-75f2-4e5f-a16a-b0055c6aadfe" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
+<div class="amsmath math notranslate nohighlight" id="equation-33b43cb5-7838-47f2-8716-25c9dbad1353">
+<span class="eqno">()<a class="headerlink" href="#equation-33b43cb5-7838-47f2-8716-25c9dbad1353" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
@@ -816,8 +818,8 @@ $<span class="math notranslate nohighlight">\(
 W = \{ \operatorname{tr} \, u : u \in H^1(\Omega) \}
 \)</span>$
 with the norm</p>
-<div class="amsmath math notranslate nohighlight" id="equation-14d9cc41-33c3-4304-bf07-bbecdb56b2ed">
-<span class="eqno">(14.2)<a class="headerlink" href="#equation-14d9cc41-33c3-4304-bf07-bbecdb56b2ed" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7590d353-edea-4d29-95b6-2b601015e44c">
+<span class="eqno">()<a class="headerlink" href="#equation-7590d353-edea-4d29-95b6-2b601015e44c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_tracenorm}
 \| \operatorname{tr} u \|_W = \inf_{v \in V \atop \operatorname{tr} \, u = \operatorname{tr} \, v } \| v \|_V.
 \end{equation}\]</div>
@@ -906,8 +908,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d41601c5-61e0-497a-ad0e-df2ec70291f2">
-<span class="eqno">(14.3)<a class="headerlink" href="#equation-d41601c5-61e0-497a-ad0e-df2ec70291f2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cc7e766d-ff20-4d7f-b89b-2a7b9d349872">
+<span class="eqno">()<a class="headerlink" href="#equation-cc7e766d-ff20-4d7f-b89b-2a7b9d349872" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
