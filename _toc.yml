@@ -40,6 +40,7 @@ parts:
     - file: FEM/sytemassembling.ipynb        
     - file: FEM/erroranalysis.ipynb
     - file: FEM/nonconforming.ipynb
+    - file: FEM/myFiniteElement.ipynb
 
   - caption: A posteriori error estimates
     numbered: True
