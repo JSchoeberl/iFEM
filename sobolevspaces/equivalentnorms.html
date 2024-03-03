@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -472,10 +472,11 @@ document.write(`
 Hilbert space <span class="math notranslate nohighlight">\(H^1\)</span>. We want to apply the Lax-Milgram theory for continuous
 and coercive bilinear forms <span class="math notranslate nohighlight">\(A(.,.)\)</span>. We present techniques to prove
 coercivity.</p>
-<p>The idea is the following. In the norm
-$<span class="math notranslate nohighlight">\(
+<p>The idea is the following. In the norm</p>
+<div class="math notranslate nohighlight">
+\[
 \| v \|_{H^1}^2 = \| v \|_{L_2}^2 + \| \nabla v \|_{L_2}^2,
-\)</span>$</p>
+\]</div>
 <p>the <span class="math notranslate nohighlight">\(\| \nabla \cdot \|_{L_2}\)</span>-semi-norm is the dominating part up to
 the constant functions. The <span class="math notranslate nohighlight">\(L_2\)</span> norm is necessary to obtain a
 norm. We want to replace the <span class="math notranslate nohighlight">\(L_2\)</span> norm by some different term (e.g.,
@@ -483,90 +484,101 @@ the <span class="math notranslate nohighlight">\(L_2\)</span>-norm on a part of 
 \Omega\)</span>), and want to obtain an equivalent norm.</p>
 <p>We formulate an abstract theorem relating a norm <span class="math notranslate nohighlight">\(\|.\|_V\)</span> to a semi-norm
 <span class="math notranslate nohighlight">\(\|.\|_A\)</span>. An equivalent theorem was proven by Tartar.</p>
-<p><strong>Theorem: (Tartar)</strong> \label{theo_tartar}
-Let <span class="math notranslate nohighlight">\((V, (.,.)_V)\)</span> and <span class="math notranslate nohighlight">\((W, (.,.)_W)\)</span> be Hilbert spaces, such that
+<blockquote>
+<div><p><strong>Theorem by Tartar:</strong></p>
+<p>Let <span class="math notranslate nohighlight">\((V, (.,.)_V)\)</span> and <span class="math notranslate nohighlight">\((W, (.,.)_W)\)</span> be Hilbert spaces, such that
 the embedding <span class="math notranslate nohighlight">\(id : V \rightarrow W\)</span> is compact.
 Let <span class="math notranslate nohighlight">\(A(.,.)\)</span> be a non-negative, symmetric and <span class="math notranslate nohighlight">\(V\)</span>-continuous bilinear form
 with kernel <span class="math notranslate nohighlight">\(V_0 = \{ v : A(v,v) = 0 \}\)</span>. Assume that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5134eabd-06f3-4e2f-9451-61ad38a7a38b">
-<span class="eqno">(15.1)<a class="headerlink" href="#equation-5134eabd-06f3-4e2f-9451-61ad38a7a38b" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\label{equ_tartar_cond}
-\| v \|_V^2 \simeq \| v \|_W^2 + \| v \|_A^2 \qquad \forall \, v \in V
-\end{equation}\]</div>
-<p>Then there holds
-\begin{enumerate}
-\item
-The kernel <span class="math notranslate nohighlight">\(V_0\)</span> is finite dimensional. On the factor space <span class="math notranslate nohighlight">\(V/V_0\)</span>,
-<span class="math notranslate nohighlight">\(A(.,.)\)</span> is an equivalent norm to the quotient norm</p>
-<div class="amsmath math notranslate nohighlight" id="equation-119abbeb-7fc6-42f5-86ef-6b05a7bced46">
-<span class="eqno">(15.2)<a class="headerlink" href="#equation-119abbeb-7fc6-42f5-86ef-6b05a7bced46" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{equ_factor}
-\| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_V \qquad \forall \, u \in V
-\end{equation}\]</div>
-<p>\item
-Let <span class="math notranslate nohighlight">\(B(.,.)\)</span> be a continuous, non-negative, symmetric bilinear form
+<div class="math notranslate nohighlight">
+\[
+  \| v \|_V^2 \simeq \| v \|_W^2 + \| v \|_A^2 \qquad \forall \, v \in V
+  \]</div>
+<p>Then there holds</p>
+<ol class="arabic simple">
+<li><p>The kernel <span class="math notranslate nohighlight">\(V_0\)</span> is finite dimensional. On the factor space <span class="math notranslate nohighlight">\(V/V_0\)</span>,
+<span class="math notranslate nohighlight">\(A(.,.)\)</span> is an equivalent norm to the quotient norm</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-7fd6f242-ce06-41f1-a20f-87ad0c9a76fa">
+<span class="eqno">()<a class="headerlink" href="#equation-7fd6f242-ce06-41f1-a20f-87ad0c9a76fa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    \| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_V \qquad \forall \, u \in V
+    \end{equation}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Let <span class="math notranslate nohighlight">\(B(.,.)\)</span> be a continuous, non-negative, symmetric bilinear form
 on <span class="math notranslate nohighlight">\(V\)</span> such that <span class="math notranslate nohighlight">\(A(.,.) + B(.,.)\)</span> is an inner product. Then there
-holds
-$<span class="math notranslate nohighlight">\(
-\| v \|_V^2 \simeq \| v \|_A^2 + \| v \|_B^2 \qquad \forall \, v \in V
-\)</span><span class="math notranslate nohighlight">\(
-\item
-Let \)</span>V_1 \subset V<span class="math notranslate nohighlight">\( be a closed sub-space such that \)</span>V_0 \cap V_1 = { 0 }<span class="math notranslate nohighlight">\(.
-Then there holds
-\)</span><span class="math notranslate nohighlight">\(
-\| v \|_V \simeq \| v \|_A \qquad \forall \, v \in V_1
-\)</span>$
-\end{enumerate}</p>
+holds</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+&gt; \| v \|_V^2 \simeq \| v \|_A^2 + \| v \|_B^2 \qquad \forall \, v \in V
+&gt; \]</div>
+<ol class="arabic simple" start="3">
+<li><p>Let <span class="math notranslate nohighlight">\(V_1 \subset V\)</span> be a closed sub-space such that <span class="math notranslate nohighlight">\(V_0 \cap V_1 = \{ 0 \}\)</span>.
+Then there holds</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+  \| v \|_V \simeq \| v \|_A \qquad \forall \, v \in V_1
+  \]</div>
+</div></blockquote>
 <p><em>Proof:</em> 1. Assume that <span class="math notranslate nohighlight">\(V_0\)</span> is not finite dimensional. Then
 there exists an <span class="math notranslate nohighlight">\((.,.)_V\)</span>-orthonormal sequence <span class="math notranslate nohighlight">\(u_k \in V_0\)</span>. Since
 the embedding <span class="math notranslate nohighlight">\(id : V \rightarrow W\)</span> is compact, it has a sub-sequence
-converging in <span class="math notranslate nohighlight">\(\|. \|_W\)</span>. But, since
-$<span class="math notranslate nohighlight">\(
+converging in <span class="math notranslate nohighlight">\(\|. \|_W\)</span>. But, since</p>
+<div class="math notranslate nohighlight">
+\[
 2 = \| u_k - u_l \|_V^2 \simeq \| u_k - u_l \|_W^2 + \| u_k - u_l \|_A
         = \| u_k - u_l \|_W^2
-\)</span><span class="math notranslate nohighlight">\( 
-for \)</span>k \neq l<span class="math notranslate nohighlight">\(, \)</span>u_k<span class="math notranslate nohighlight">\( is not Cauchy in \)</span>W<span class="math notranslate nohighlight">\(. This is a contradiction to
-an infinite dimensional kernel space \)</span>V_0<span class="math notranslate nohighlight">\(.
+\]</div>
+<p>for <span class="math notranslate nohighlight">\(k \neq l\)</span>, <span class="math notranslate nohighlight">\(u_k\)</span> is not Cauchy in <span class="math notranslate nohighlight">\(W\)</span>. This is a contradiction to
+an infinite dimensional kernel space <span class="math notranslate nohighlight">\(V_0\)</span>.
 We prove the equivalence (\ref{equ_factor}). To bound the left hand side
-by the right hand side, we use that \)</span>V_0 = \operatorname {ker} A<span class="math notranslate nohighlight">\(, and
-norm equivalence (\ref{equ_tartar_cond}):
-\)</span><span class="math notranslate nohighlight">\(
+by the right hand side, we use that <span class="math notranslate nohighlight">\(V_0 = \operatorname {ker} A\)</span>, and
+norm equivalence (\ref{equ_tartar_cond}):</p>
+<div class="math notranslate nohighlight">
+\[
 \| u \|_A = \inf_{v \in V_0} \| u - v \|_A \leq \inf_{v \in V_0} \| u - v \|_V 
-\)</span><span class="math notranslate nohighlight">\(
-The quotient norm is equal to \)</span>| P_{V_0^\bot} u |<span class="math notranslate nohighlight">\(. We have to prove that 
-\)</span>| P_{V_0^\bot} u |<em>V \leq | P</em>{V_0^\bot} u |_A<span class="math notranslate nohighlight">\( for all \)</span>u \in V<span class="math notranslate nohighlight">\(.
-This follows after proving \)</span>| u |_V \leq | u |_A<span class="math notranslate nohighlight">\( for all \)</span>u \in V_0^\bot<span class="math notranslate nohighlight">\(.
-Assume that this is not true. I.e., there exists a \)</span>V<span class="math notranslate nohighlight">\(-orthogonal sequence 
-\)</span>(u_k)<span class="math notranslate nohighlight">\( such that \)</span>| u_k |_A \leq k^{-1} | u_k |_V<span class="math notranslate nohighlight">\(. Extract a sub-sequence
-converging in \)</span>| . |_W<span class="math notranslate nohighlight">\(, and call it \)</span>u_k<span class="math notranslate nohighlight">\( again. From the norm
-equivalence (\ref{equ_tartar_cond}) there follows
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The quotient norm is equal to <span class="math notranslate nohighlight">\(\| P_{V_0^\bot} u \|\)</span>. We have to prove that
+<span class="math notranslate nohighlight">\(\| P_{V_0^\bot} u \|_V \leq \| P_{V_0^\bot} u \|_A\)</span> for all <span class="math notranslate nohighlight">\(u \in V\)</span>.
+This follows after proving <span class="math notranslate nohighlight">\(\| u \|_V \leq \| u \|_A\)</span> for all <span class="math notranslate nohighlight">\(u \in V_0^\bot\)</span>.
+Assume that this is not true. I.e., there exists a <span class="math notranslate nohighlight">\(V\)</span>-orthogonal sequence
+<span class="math notranslate nohighlight">\((u_k)\)</span> such that <span class="math notranslate nohighlight">\(\| u_k \|_A \leq k^{-1} \| u_k \|_V\)</span>. Extract a sub-sequence
+converging in <span class="math notranslate nohighlight">\(\| . \|_W\)</span>, and call it <span class="math notranslate nohighlight">\(u_k\)</span> again. From the norm
+equivalence (\ref{equ_tartar_cond}) there follows</p>
+<div class="math notranslate nohighlight">
+\[
 2 = \| u_k - u_l \|_V^2 \leqc \| u_k - u_l \|_W + \| u_k - u_l \|_A \rightarrow 0
-\)</span><span class="math notranslate nohighlight">\(
-2. On \)</span>V_0<span class="math notranslate nohighlight">\(, \)</span>| . |_B<span class="math notranslate nohighlight">\( is a norm. Since \)</span>V_0<span class="math notranslate nohighlight">\( is finite dimensional, it
-is equivalent to \)</span>|.|_V<span class="math notranslate nohighlight">\(, say with bounds
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>On <span class="math notranslate nohighlight">\(V_0\)</span>, <span class="math notranslate nohighlight">\(\| . \|_B\)</span> is a norm. Since <span class="math notranslate nohighlight">\(V_0\)</span> is finite dimensional, it
+is equivalent to <span class="math notranslate nohighlight">\(\|.\|_V\)</span>, say with bounds</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
 c_1 \, \| v \|_{V}^2 \leq \| v \|_B^2 \leq c_2 \, \| v \|_V^2 \qquad \forall \, v \in V_0
-\)</span><span class="math notranslate nohighlight">\(
-From 1. we know that
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>From 1. we know that</p>
+<div class="math notranslate nohighlight">
+\[
 c_3 \, \| v \|_V^2 \leq \| v \|_A^2 \leq c_4 \, \| v \|_V^2 \qquad \forall \, v \in V_0^\bot.
-\)</span>$
-Now, we bound</p>
+\]</div>
+<p>Now, we bound</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\| u \|_V^2 &amp; = &amp; \| P_{V_0} u \|_V^2 + \| P_{V_0^\bot} u \|_V^2 \\
-        &amp; \leq &amp; \frac{1}{c_1} \| \underbrace{P_{V_0} u }_{u - P_{V_0^\bot} u } \|_B^2 + \| P_{V_0^\bot} \|_V^2 \\
-        &amp; \leq &amp; \frac{2}{c_1} \left( \| u \|_B^2 + c_2 \| P_{V_0^\bot} u \|_V^2 \right) + \| P_{V_0^\bot} u \|_V^2 \\
-        &amp; = &amp; \frac{2}{c_1} \| u \|_B^2 + \frac{1}{c_2} \left(1 + \frac{2 c_2}{c_1} \right) \| P_{V_0^\bot} u \|_A^2 \\
-        &amp; \leqc &amp; \| u \|_B^2 + \| u \|_A^2
-\end{eqnarray*}\]</div>
+\[\begin{align*}
+\| u \|_V^2 &amp; = \| P_{V_0} u \|_V^2 + \| P_{V_0^\bot} u \|_V^2 \\
+        &amp; \leq  \frac{1}{c_1} \| \underbrace{P_{V_0} u }_{u - P_{V_0^\bot} u } \|_B^2 + \| P_{V_0^\bot} \|_V^2 \\
+        &amp; \leq \frac{2}{c_1} \left( \| u \|_B^2 + c_2 \| P_{V_0^\bot} u \|_V^2 \right) + \| P_{V_0^\bot} u \|_V^2 \\
+        &amp; =  \frac{2}{c_1} \| u \|_B^2 + \frac{1}{c_2} \left(1 + \frac{2 c_2}{c_1} \right) \| P_{V_0^\bot} u \|_A^2 \\
+        &amp; \preceq \| u \|_B^2 + \| u \|_A^2
+\end{align*}\]</div>
 <ol class="arabic simple" start="3">
 <li><p>Define <span class="math notranslate nohighlight">\(B(u,v) = (P_{V_1}^\bot u, P_{V_1}^\bot u)_V\)</span>. Then <span class="math notranslate nohighlight">\(A(.,.)+B(.,.)\)</span>
 is an inner product: <span class="math notranslate nohighlight">\(A(u,u)+B(u,u) = 0\)</span> implies that <span class="math notranslate nohighlight">\(u \in V_0\)</span> and <span class="math notranslate nohighlight">\(u \in V_1\)</span>, thus <span class="math notranslate nohighlight">\(u = \{ 0 \}\)</span>. From 2. there follows that <span class="math notranslate nohighlight">\(A(.,.)+B(.,.)\)</span> is
 equivalent to <span class="math notranslate nohighlight">\((.,.)_V\)</span>. The result follows from reducing the equivalence
 to <span class="math notranslate nohighlight">\(V_1\)</span>.</p></li>
 </ol>
-<p>\hfill <span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>We want to apply Tartar’s theorem to the case <span class="math notranslate nohighlight">\(V = H^1\)</span>, <span class="math notranslate nohighlight">\(W = L_2\)</span>,
 and <span class="math notranslate nohighlight">\(\|v \|_A = \| \nabla v \|_{L_2}\)</span>.
 The theorem requires that the embedding <span class="math notranslate nohighlight">\(id : H^1 \rightarrow L_2\)</span> is
@@ -591,46 +603,52 @@ onto <span class="math notranslate nohighlight">\(L_2(\Omega)\)</span>. This is 
 mapping, and thus is compact.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>The kernel <span class="math notranslate nohighlight">\(V_0\)</span> of the semi-norm <span class="math notranslate nohighlight">\(\| \nabla v \|\)</span> is the constant function.</p>
-<p><strong>Theorem: (Friedrichs inequality)</strong>
+<blockquote>
+<div><p><strong>Theorem: (Friedrichs’ inequality)</strong>
 Let <span class="math notranslate nohighlight">\(\Gamma_D \subset \partial \Omega\)</span> be of positive measure <span class="math notranslate nohighlight">\(|\Gamma_D|\)</span>.
-Let <span class="math notranslate nohighlight">\(V_D = \{ v \in H^1(\Omega) : \optr_{\Gamma_D} v = 0 \}\)</span>. Then
+Let <span class="math notranslate nohighlight">\(V_D = \{ v \in H^1(\Omega) : \operatorname{tr}_{\Gamma_D} v = 0 \}\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+  \| v \|_{L_2} \preceq \| \nabla v \|_{L_2} \qquad \forall \, v \in V_D
+  \]</div>
+</div></blockquote>
+<p><em>Proof:</em> The intersection <span class="math notranslate nohighlight">\(V_0 \cap V_D\)</span> is trivial <span class="math notranslate nohighlight">\(\{ 0 \}\)</span>.
+Thus, Tartar’s Theorem, statement 3, implies the equivalence<br />
 $<span class="math notranslate nohighlight">\(
-\| v \|_{L_2} \leqc \| \nabla v \|_{L_2} \qquad \forall \, v \in V_D
-\)</span><span class="math notranslate nohighlight">\(
-\end{theorem}
-{\em Proof:} The intersection \)</span>V_0 \cap V_D<span class="math notranslate nohighlight">\( is trivial \)</span>{ 0 }<span class="math notranslate nohighlight">\(. 
-Thus, Theorem~\ref{theo_tartar}, 3. implies the equivalence  
-\)</span><span class="math notranslate nohighlight">\(
 \| v \|_V^2 = \| v \|_{L_2}^2 + \| \nabla v \|_{L_2}^2 \simeq
 \| \nabla v \|_{L_2}.
 \)</span><span class="math notranslate nohighlight">\(
-\hfill \)</span>\Box$</p>
-<p><strong>Theorem: (Poincar’e inequality)</strong>
-There holds</p>
+\)</span>\Box$</p>
+<blockquote>
+<div><p><strong>Theorem: (Poincaré inequality)</strong></p>
+<p>There holds</p>
 <div class="math notranslate nohighlight">
 \[
-\| v \|_{H^1(\Omega)}^2 \leqc \| \nabla v \|_{L_2}^2 + (\int_\Omega v \, dx)^2
-\]</div>
+  \| v \|_{H^1(\Omega)}^2 \preceq \| \nabla v \|_{L_2}^2 + (\int_\Omega v \, dx)^2
+  \]</div>
+</div></blockquote>
 <p><em>Proof:</em> <span class="math notranslate nohighlight">\(B(u,v) := (\int_\Omega u \, dx) (\int_\Omega v \, dx)\)</span> is
 a continuous bilinear form on <span class="math notranslate nohighlight">\(H^1\)</span>, and <span class="math notranslate nohighlight">\((\nabla u, \nabla v) + B(u,v)\)</span> is
 an inner product. Thus, Theorem~\ref{theo_tartar}, 2. implies the
 stated equivalence.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
-<p>\begin{itemize}
-\item
-Let <span class="math notranslate nohighlight">\(\omega \subset \Omega\)</span> have positive measure <span class="math notranslate nohighlight">\(| \omega|\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^d\)</span>.
-Then
-$<span class="math notranslate nohighlight">\(
-\| u \|_{H^1(\Omega)}^2 \simeq
- \| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\omega)},
-\)</span><span class="math notranslate nohighlight">\(
-\item
-Let \)</span>\gamma \subset \partial \Omega<span class="math notranslate nohighlight">\( have positive measure \)</span>| \gamma|<span class="math notranslate nohighlight">\( in \)</span>{\mathbb R}^{d-1}<span class="math notranslate nohighlight">\(. Then
-\)</span><span class="math notranslate nohighlight">\(
-\| u \|_{H^1(\Omega)}^2 \simeq
-\| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\gamma)},
-\)</span>$
-\end{itemize}</p>
+<ul>
+<li><p>Let <span class="math notranslate nohighlight">\(\omega \subset \Omega\)</span> have positive measure <span class="math notranslate nohighlight">\(| \omega|\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^d\)</span>.
+Then</p>
+<div class="math notranslate nohighlight">
+\[
+  \| u \|_{H^1(\Omega)}^2 \simeq
+  \| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\omega)},
+  \]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(\gamma \subset \partial \Omega\)</span> have positive measure <span class="math notranslate nohighlight">\(| \gamma|\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^{d-1}\)</span>.    Then</p>
+<div class="math notranslate nohighlight">
+\[
+  \| u \|_{H^1(\Omega)}^2 \simeq
+  \| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\gamma)},
+ \]</div>
+</li>
+</ul>
 <p><strong>Theorem: (Bramble Hilbert lemma)</strong> \label{lemma_bh}
 Let <span class="math notranslate nohighlight">\(U\)</span> be some Hilbert space, and
 <span class="math notranslate nohighlight">\(L : H^k \rightarrow U\)</span> be a continuous linear operator such that
@@ -663,11 +681,11 @@ A_2(u,v) := (L u, Lv)_U + A(u,v)
 <p>i.e., the claim.</p>
 <p>We will need point evaluation of functions in Sobolev spaces <span class="math notranslate nohighlight">\(H^s\)</span>. This is
 possible, we <span class="math notranslate nohighlight">\(u \in H^s\)</span> implies that <span class="math notranslate nohighlight">\(u\)</span> is continuous.</p>
-<p><strong>Theorem: (Sobolev’s embedding theorem)</strong> Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span> with Lipschitz boundary. If <span class="math notranslate nohighlight">\(u \in H^s\)</span> with <span class="math notranslate nohighlight">\(s &gt; d/2\)</span>, then <span class="math notranslate nohighlight">\(u \in L_\infty\)</span>
+<p><strong>Sobolev’s embedding theorem:</strong> Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span> with Lipschitz boundary. If <span class="math notranslate nohighlight">\(u \in H^s\)</span> with <span class="math notranslate nohighlight">\(s &gt; d/2\)</span>, then <span class="math notranslate nohighlight">\(u \in L_\infty\)</span>
 with</p>
 <div class="math notranslate nohighlight">
 \[
-\| u \|_{L_\infty} \leqc \| u \|_{H^s}
+\| u \|_{L_\infty} \preceq \| u \|_{H^s}
 \]</div>
 <p>There is a function in <span class="math notranslate nohighlight">\(C^0\)</span> within the <span class="math notranslate nohighlight">\(L_\infty\)</span> equivalence class.
 \end{theorem}</p>
