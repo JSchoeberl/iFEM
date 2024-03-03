@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>19. Non-conforming Finite Element Methods &#8212; Interactive Finite Elements</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FEM/nonconforming';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="20. A posteriori error estimates" href="../aposteriori/aposteriori.html" />
+    <link rel="prev" title="18. Finite element error analysis" href="erroranalysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Interactive Finite Elements - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Interactive Finite Elements - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An Interactive Introduction to the Finite Element Method
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">5. 3D Solid Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/BasicProperties.html">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/RieszRepresentation.html">9. Riesz representation theorem and symmetric variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/Coercive.html">10. Coercive variational problems and their approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/infsup.html">11. Inf-sup stable variational problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sobolev Spaces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/GeneralizedDerivatives.html">12. Generalized derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/SobolevSpaces.html">13. Sobolev spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/Traces.html">14. Trace theorems and their applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/equivalentnorms.html">15. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="finiteelements.html">16. Finite Element Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sytemassembling.html">17. Finite element system assembling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erroranalysis.html">18. Finite element error analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Non-conforming Finite Element Methods</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">A posteriori error estimates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/aposteriori.html">20. A posteriori error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">21. Equilibrated Residual Error Estimates</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pversion/hpfem.html">22. hp - Finite Elements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">23. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">24. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">25. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">26. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">27. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">28. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">29. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">30. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">31. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">33. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">34. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">35. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">36. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">37. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">38. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">39. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">40. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">41. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">42. Hybridization Techniques</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">43. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">44. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">45. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">46. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">48. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">49. Conjugate Gradients</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">50. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">51. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">52. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">53. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">54. Exercise: Robust preconditioners</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">55. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">56. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">57. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">58. Multi-level Extension</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">59. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">60. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">61. A Small Number of Constraints</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">63. Parameter Dependent Problems</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">65. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">66. Traces spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">68. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">69. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">70. BDDC - Preconditioner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">71. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">72. Distributed Meshes and Spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">74. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">75. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">76. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">77. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">78. Solving Stokes in parallel</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/JSchoeberl/iFEM" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/FEM/nonconforming.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Non-conforming Finite Element Methods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="non-conforming-finite-element-methods">
+<h1><span class="section-number">19. </span>Non-conforming Finite Element Methods<a class="headerlink" href="#non-conforming-finite-element-methods" title="Link to this heading">#</a></h1>
+<p>\label{sec_nonconforming}
+In a conforming finite element method, one chooses a sub-space <span class="math notranslate nohighlight">\(V_h \subset V\)</span>, and defines the finite element approximation as
+$<span class="math notranslate nohighlight">\(
+\mbox{Find } u_h \in V_h: \qquad A(u_h, v_h) = f(v_h) \qquad \forall \, v_h \in V_{h}
+\)</span><span class="math notranslate nohighlight">\(
+For reasons of simpler implementation, or even of higher accuracy, the 
+conforming framework is often violated. Examples are:
+\begin{itemize}
+\item
+The finite element space \)</span>V_h<span class="math notranslate nohighlight">\( is not a sub-space of \)</span>V = H^m<span class="math notranslate nohighlight">\(. 
+Examples are the non-conforming \)</span>P^1<span class="math notranslate nohighlight">\( triangle, and the Morley element for
+approximation of \)</span>H^2$.
+\item
+The Dirichlet boundary conditions are interpolated in the boundary vertices.
+\item
+The curved domain is approximated by straight sided elements
+\item
+The bilinear-form and the linear-form are approximated  by
+inexact numerical integration
+\end{itemize}</p>
+<p>\noindent
+The lemmas by Strang are the extension of Cea’s lemma to the
+non-conforming setting.</p>
+<p>\subsubsection{The First Lemma of Strang}
+In the first step, let <span class="math notranslate nohighlight">\(V_h \subset V\)</span>, but the bilinear-form and the linear-form are replaced by mesh-dependent forms
+$<span class="math notranslate nohighlight">\(
+A_h(.,.): V_h \times V_h \rightarrow {\mathbb R}
+\)</span><span class="math notranslate nohighlight">\( 
+and 
+\)</span><span class="math notranslate nohighlight">\(
+f_h(.) : V_h \rightarrow {\mathbb R}.
+\)</span><span class="math notranslate nohighlight">\(
+We do not assume that \)</span>A_h<span class="math notranslate nohighlight">\( and \)</span>f_h<span class="math notranslate nohighlight">\( are defined on \)</span>V<span class="math notranslate nohighlight">\(. 
+We assume that the bilinear-forms \)</span>A_h<span class="math notranslate nohighlight">\( are uniformly coercive, i.e.,
+there exists an \)</span>\alpha_1<span class="math notranslate nohighlight">\( independent of the mesh-size such that
+\)</span><span class="math notranslate nohighlight">\(
+A_h (v_h, v_h) \geq \alpha_1 \, \| v_h \|_V^2 \qquad \forall \, v_h \in V_h
+\)</span><span class="math notranslate nohighlight">\(
+The finite element problem is defined as 
+\)</span><span class="math notranslate nohighlight">\(
+\mbox{Find } u_h \in V_h: \qquad A_h (u_h, v_h) = f_h (v_h) \qquad \forall \, v_h \in V_h
+\)</span>$</p>
+<p>\begin{lemma}[First Lemma of Strang] Assume that
+\begin{itemize}
+\item <span class="math notranslate nohighlight">\(A(.,.)\)</span> is continuous on <span class="math notranslate nohighlight">\(V\)</span>
+\item <span class="math notranslate nohighlight">\(A_h(.,.)\)</span> is uniformly coercive
+\end{itemize}
+Then there holds</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| u - u_h \| &amp; \preceq &amp; \inf_{v_h \in V_h} \left\{
+        \| u - v_h \| + \sup_{w_h \in V_h} \frac{|A(v_h, w_h) - A_h (v_h, w_h)|}{\| w_h \|} \right\} \\
+        &amp; &amp; 
+        + \sup_{w_h \in V_h} \frac{f(w_h) - f_h (w_h)}{\| w_h \|}
+\end{eqnarray*}\]</div>
+<p>\end{lemma}<br />
+{\em Proof:}
+Choose an arbitrary <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>, and set <span class="math notranslate nohighlight">\(w_h := u_h - v_h\)</span>.
+We use the uniform coercivity, and the definitions of <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(u_h\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\alpha_1 \| u_h - v_h \|_V^2 &amp; \leq &amp; A_h (u_h - v_h, u_h - v_h) = A_h (u_h - v_h, w_h) \\
+        &amp; = &amp; A(u-v_h, w_h) + [ A(v_h, w_h) - A_h(v_h, w_h) ] + [ A_h (u_h, w_h) - A(u, w_h)] \\
+        &amp; = &amp; A(u-v_h, w_h) + [ A(v_h, w_h) - A_h(v_h, w_h) ] + [ f_h(w_h) - f(w_h)]
+\end{eqnarray*}\]</div>
+<p>Divide by <span class="math notranslate nohighlight">\(\| u_h - v_h \| = \| w_h \|\)</span>, and use the continuity of <span class="math notranslate nohighlight">\(A(.,.)\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a02b5ef4-f066-43c1-9e0b-6156de9eeb9c">
+<span class="eqno">(19.1)<a class="headerlink" href="#equation-a02b5ef4-f066-43c1-9e0b-6156de9eeb9c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_strang1a}
+\| u_h - v_h \| \preceq \| u - v_h \| + \frac{|A(v_h, w_h) - A_h(v_h, w_h)|}{\| w_h  \|} + \frac{ | f(w_h) - f_h(w_h) | } { \| w_h \| }
+\end{equation}\]</div>
+<p>Using the triangle inequality, the error <span class="math notranslate nohighlight">\(\| u - u_h \|\)</span> is bounded by
+$<span class="math notranslate nohighlight">\(
+\| u - u_h \| \leq \inf_{v_h \in V_h} \| u - v_h \| + \| v_h - u_h \|
+\)</span><span class="math notranslate nohighlight">\(
+The combination with (\ref{equ_strang1a}) proves the result. 
+\hfill \)</span>\Box$</p>
+<p>\bigskip</p>
+<p>{\bf Example:} Lumping of the <span class="math notranslate nohighlight">\(L_2\)</span> bilinear-form: \newline
+Define the <span class="math notranslate nohighlight">\(H^1\)</span> - bilinear-form
+$<span class="math notranslate nohighlight">\(
+A(u,v) = \int_\Omega \nabla u \cdot \nabla v + \int_\Omega u v \, dx,
+\)</span><span class="math notranslate nohighlight">\(
+and perform Galerkin discretization with \)</span>P^1<span class="math notranslate nohighlight">\( triangles.
+The second term leads to a non-diagonal matrix. 
+The vertex integration rule
+\)</span><span class="math notranslate nohighlight">\(
+\int_T v \, dx \approx \frac{|T|}{3} \sum_{\alpha = 1}^3 v(x_{T,\alpha})
+\)</span><span class="math notranslate nohighlight">\(
+is exact for \)</span>v \in P^1<span class="math notranslate nohighlight">\(. We apply this integration rule for the term
+\)</span>\int u v , dx<span class="math notranslate nohighlight">\(:
+\)</span><span class="math notranslate nohighlight">\(
+A_h(u,v) = \int \nabla u \cdot \nabla v + 
+\sum_{T \in {\cal T}} \frac{|T|}{3} \sum_{\alpha = 1}^3 u(x_{T,\alpha}) v(x_{T,\alpha})
+\)</span><span class="math notranslate nohighlight">\(
+The bilinear form is now defined only for \)</span>u, v \in V_h<span class="math notranslate nohighlight">\(.
+The integration is not exact, since \)</span>u v \in P^2$ on each triangle.</p>
+<p>Inserting the nodal basis <span class="math notranslate nohighlight">\(\varphi_i\)</span>, we obtain a diagonal matrix for
+the second term:
+$<span class="math notranslate nohighlight">\(
+\varphi_i (x_{T,\alpha}) \varphi_j (x_{T,\alpha}) = 
+        \left\{ \begin{array}{cl}
+                1 &amp; \mbox{for } x_i = x_j = x_{T,\alpha} \\
+                0 &amp; \mbox{else}
+        \end{array}
+        \right.
+\)</span>$</p>
+<p>To apply the first lemma of Strang, we have to verify the uniform coercivity</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4a348cc0-64fd-4f09-b43a-906c04bbf2c8">
+<span class="eqno">(19.2)<a class="headerlink" href="#equation-4a348cc0-64fd-4f09-b43a-906c04bbf2c8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_uniformell}
+\sum_T \frac{|T|}{3} \sum_{\alpha = 1}^3 |v_h(x_{T,\alpha})|^2 \geq 
+\alpha_1 \sum_T \int_T | v_h |^2 \, dx \qquad \forall \, v_h \in V_h,
+\end{equation}\]</div>
+<p>which is done by transformation to the reference element.
+The consistency error can be estimated by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f2b0fcee-2663-4cac-8a5c-e478f496ac72">
+<span class="eqno">(19.3)<a class="headerlink" href="#equation-f2b0fcee-2663-4cac-8a5c-e478f496ac72" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_consist}
+| \int_T u_h v_h \, dx - \frac{|T|}{3} \sum_{\alpha=1}^3 u_h(x_\alpha) v_h(x_\alpha) |
+ \preceq h_T^2 \, \| \nabla u_h \|_{L_2(T)} \, \| \nabla v_h \|_{L_2(T)}
+\end{equation}\]</div>
+<p>Summation over the elements give
+$<span class="math notranslate nohighlight">\(
+A(u_h, v_h) - A_h (u_h, v_h) \preceq h^2 \| u_h \|_{H^1(\Omega)} \, \| v_h \|_{H^1(\Omega)}
+\)</span>$
+The first lemma of Strang proves that this modification of the bilinear-form
+preserves the order of the discretization error:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| u - u_h \|_{H^1} &amp; \preceq &amp; 
+ \inf_{v_h \in V_h} \left\{
+        \| u - v_h \|_{H^1} + \sup_{w_h \in V_h} \frac{|A(v_h, w_h) - A_h (v_h, w_h)|}{\| w_h \|_{H^1}} \right\} \\
+ &amp; \preceq &amp; 
+        \| u - I_h u \|_{H^1} + \sup_{w_h \in V_h} \frac{|A(I_h u, w_h) - A_h (I_h u, w_h)|}{\| w_h \|_{H^1}} \\
+ &amp; \preceq &amp;  h \, \| u \|_{H^2} + \sup_{w_h \in V_h} \frac{h^2 \, \| I_h u \|_{H^1} \| w_h \|_{H^1}}{\| w_h \|_{H^1}} \\
+ &amp;  \preceq &amp; h \, \| u \|_{H^2}
+\end{eqnarray*}\]</div>
+<p>A diagonal <span class="math notranslate nohighlight">\(L_2\)</span> matrix has some advantages:
+\begin{itemize}
+\item It avoids oscillations in boundary layers (exercises!)
+\item In explicit time integration methods for parabolic or hyperbolic
+problems, one has to solve linear equations with the <span class="math notranslate nohighlight">\(L_2\)</span>-matrix. This
+becomes cheap for diagonal matrices.
+\end{itemize}</p>
+<p>\subsubsection{The Second Lemma of Strang}</p>
+<p>In the following, we will also skip the requirement <span class="math notranslate nohighlight">\(V_h \subset V\)</span>.
+Thus, the norm <span class="math notranslate nohighlight">\(\|.\|_V\)</span> cannot be used on <span class="math notranslate nohighlight">\(V_h\)</span>, and it will be replaced by
+mesh-dependent norms <span class="math notranslate nohighlight">\(\|.\|_h\)</span>. These norms must be defined for <span class="math notranslate nohighlight">\(V + V_h\)</span>.
+As well, the mesh-dependent forms <span class="math notranslate nohighlight">\(A_h(.,.)\)</span> and <span class="math notranslate nohighlight">\(f_h(.)\)</span> are defined
+on <span class="math notranslate nohighlight">\(V + V_h\)</span>. We assume
+\begin{itemize}
+\item uniform coercivity:
+$<span class="math notranslate nohighlight">\(
+A_h (v_h, v_h) \geq \alpha_1 \| v_h \|_h^2 \qquad \forall \, v_h \in V_h
+\)</span><span class="math notranslate nohighlight">\(
+\item continuity:
+\)</span><span class="math notranslate nohighlight">\(
+A_h (u, v_h) \leq \alpha_2 \| u \|_h \| v_h \|_h \qquad \forall \, u \in V + V_h, \; \forall \, v_h \in V_h
+\)</span>$
+\end{itemize}</p>
+<p>The error can now be measured only in the discrete norm <span class="math notranslate nohighlight">\(\| u - u_h \|_{V_h}\)</span>.
+\begin{lemma}
+Under the above assumptions there holds</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b3b951f9-a042-436b-b51c-c54976a9cb1b">
+<span class="eqno">(19.4)<a class="headerlink" href="#equation-b3b951f9-a042-436b-b51c-c54976a9cb1b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_strang2}
+\| u - u_h \|_h \preceq \inf_{v_h \in V_h} \| u - v_h \|_h +
+         \sup_{w_h \in V_h} \frac{| A_h(u,w_h) - f_h(w_h) |}{\| w_h \|_h}
+\end{equation}\]</div>
+<p>\end{lemma}
+{\em Remark}: The first term in (\ref{equ_strang2}) is the approximation
+error, the second one is called consistency error. \
+{\em Proof:} Let <span class="math notranslate nohighlight">\(v_h \in V_h\)</span>. Again, set <span class="math notranslate nohighlight">\(w_h = u_h - v_h\)</span>, and
+use the <span class="math notranslate nohighlight">\(V_h\)</span>-coercivity:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\alpha_1 \, \| u_h - v_h \|_h^2 &amp; \leq &amp; A_h (u_h - v_h, u_h - v_h) = A_h (u_h - v_h, w_h) \\
+        &amp; = &amp; A_h (u-v_h, w_h) + [f_h(w_h) - A_h(u,w_h)]
+\end{eqnarray*}\]</div>
+<p>Again, divide by <span class="math notranslate nohighlight">\(\| u_h - v_h\|\)</span>, and use continuity of <span class="math notranslate nohighlight">\(A_h(.,.)\)</span>:
+$<span class="math notranslate nohighlight">\(
+\| u_h - v_h \|_h \preceq \| u - v_h \|_h + \frac{A_h(u,w_h) - f_h(w_h)}{\| w_h \|_h}
+\)</span><span class="math notranslate nohighlight">\(
+The rest follows from the triangle inequality. \hfill \)</span>\Box$</p>
+<p>\subsubsection{The non-conforming <span class="math notranslate nohighlight">\(P^1\)</span> triangle}</p>
+<p>The non-conforming <span class="math notranslate nohighlight">\(P^1\)</span> triangle is also called the Crouzeix-Raviart element.</p>
+<p>The finite element space generated by the non-conforming <span class="math notranslate nohighlight">\(P^1\)</span> element
+is
+$<span class="math notranslate nohighlight">\(
+V_h^{nc} := \{ v \in L_2 : v_{|T} \in P^1(T), \mbox{and }v \mbox{ is continuous in edge mid-points} \}
+\)</span>$</p>
+<p>The functions in <span class="math notranslate nohighlight">\(V_h^{nc}\)</span> are not continuous across edges, and thus,
+<span class="math notranslate nohighlight">\(V_h^{nc}\)</span> is not a sub-space of <span class="math notranslate nohighlight">\(H^1\)</span>. We have to extend the bilinear-form and
+the norm in the following way:
+$<span class="math notranslate nohighlight">\(
+A_h (u,v) = \sum_{T \in {\cal T}} \int_T \nabla u \nabla v \, dx
+        \qquad \forall \, u, v \in V + V_h^{nc}
+\)</span><span class="math notranslate nohighlight">\(
+and
+\)</span><span class="math notranslate nohighlight">\(
+\| v \|_h^2 := \sum_{T \in {\cal T}}  \| \nabla v \|_{L_2(T)}^2 \qquad \forall \, v \in V + V_h^{nc}
+\)</span>$</p>
+<p>We consider the Dirichlet-problem with <span class="math notranslate nohighlight">\(u = 0\)</span> on <span class="math notranslate nohighlight">\(\Gamma_D\)</span>.</p>
+<p>We will apply the second lemma of Strang.</p>
+<p>The continuous <span class="math notranslate nohighlight">\(P^1\)</span> finite element space <span class="math notranslate nohighlight">\(V_h^c\)</span> is a sub-space of
+<span class="math notranslate nohighlight">\(V_h^{nc}\)</span>. Let <span class="math notranslate nohighlight">\(I_h : H^2 \rightarrow V_h^c\)</span> be the nodal interpolation
+operator.</p>
+<p>To bound the approximation term in (\ref{equ_strang2}), we use the
+inclusion <span class="math notranslate nohighlight">\(V_h^c \subset V_h^{nc}\)</span>:
+$<span class="math notranslate nohighlight">\(
+\inf_{v_h \in V_h^{nc}} \| u - v_h \|_h \leq \| u - I_h u \|_{H^1} \preceq h \, \| u \|_{H^2}
+\)</span>$</p>
+<p>We have to bound the consistency term</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+r(w_h) &amp; = &amp; A_h(u,w_h) - f(w_h) \\
+        &amp; = &amp; \sum_T \int_T \nabla u \nabla w_h - \sum_T \int_T f w_h \, dx \\
+        &amp; = &amp; \sum_T \int_{\partial T} \frac{\partial u}{\partial n} w_h \, ds 
+                - \sum_T \int_T (\Delta u + f) \, w_h \, ds \\
+        &amp; = &amp; \sum_T \int_{\partial T} \frac{\partial u}{\partial n} w_h \, ds 
+\end{eqnarray*}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(E\)</span> be an edge of the triangle <span class="math notranslate nohighlight">\(T\)</span>. Define the mean value <span class="math notranslate nohighlight">\(\overline{w_h}^E\)</span>.
+If <span class="math notranslate nohighlight">\(E\)</span> is an inner edge, then the mean value on the corresponding edge of
+the neighbor element is the same. The normal derivative <span class="math notranslate nohighlight">\(\frac{\partial u}{\partial n}\)</span> on the neighbor element is (up to the sign) the same.
+If <span class="math notranslate nohighlight">\(E\)</span> is an edge on the Dirichlet boundary, then the mean value is 0.
+This allows to subtract edge mean values:</p>
+<div class="math notranslate nohighlight">
+\[
+r(w_h) = \sum_T \sum_{E \subset T} \int_E \frac{\partial u}{\partial n} (w_h - \overline{w_h}^E) \, ds
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\int_E w_h - \overline{w_h}^E \, ds = 0\)</span>, we may insert the
+constant function <span class="math notranslate nohighlight">\(\frac{\partial I_h u}{\partial n}\)</span> on each edge:
+$<span class="math notranslate nohighlight">\(
+r(w_h) = \sum_T \sum_{E \subset T} \int_E 
+        \left(\frac{\partial u}{\partial n} - \frac{\partial I_h u}{\partial n} \right) (w_h - \overline{w_h}^E) \, ds
+\)</span><span class="math notranslate nohighlight">\(
+Apply Cauchy-Schwarz on \)</span>L_2(E)<span class="math notranslate nohighlight">\(:
+\)</span><span class="math notranslate nohighlight">\(
+r(w_h) = \sum_T \sum_{E \subset T} \| \nabla (u - I_h u) \|_{L_2(E)} \| w_h - \overline{w_h}^E \|_{L_2(E)}
+\)</span>$</p>
+<p>To estimate these terms, we transform to the reference element <span class="math notranslate nohighlight">\(\widehat T\)</span>,
+where we apply the Bramble Hilbert lemma. Let <span class="math notranslate nohighlight">\(T = F_T(\widehat T)\)</span>, and set
+$<span class="math notranslate nohighlight">\(
+\widehat u = u \circ F_T \qquad \widehat w_h = w_h \circ F_T
+\)</span>$
+There hold the scaling estimates</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+| w_h |_{H^1(T)} &amp; \simeq &amp; | \widehat w_h |_{H^1(\widehat T)} \\
+\| w_h - \overline {w_h}^E \|_{L_2(E)} &amp; \simeq &amp; h_E^{1/2} \| \widehat w_h - \overline{\widehat w_h}^{\widehat E} \|_{L_2(\widehat E)} \\
+| u |_{H^2(T)} &amp; \simeq &amp; h_T^{-1} |  \widehat u |_{H^2(\widehat T)} \\
+\| \nabla (u - I_h u) \|_{L_2(E)} &amp; \simeq &amp; h_E^{-1/2} \| \nabla (\widehat u - \widehat I_h \widehat u) \|_{L_2(E)}
+\end{eqnarray*}\]</div>
+<p>On the reference element, we apply the Bramble Hilbert lemma, once for <span class="math notranslate nohighlight">\(w_h\)</span>,
+and once for <span class="math notranslate nohighlight">\(u\)</span>. The linear operator
+$<span class="math notranslate nohighlight">\(
+L : H^1(\widehat T) \rightarrow L_2(\widehat E) :
+ \widehat w_h \rightarrow  \widehat w_h - \overline {\widehat w_h}^{\widehat E}
+\)</span><span class="math notranslate nohighlight">\(
+is bounded on \)</span>H^1(\widehat T)<span class="math notranslate nohighlight">\( (trace theorem), and \)</span>L w = 0<span class="math notranslate nohighlight">\( for \)</span>w \in P_0<span class="math notranslate nohighlight">\(,
+thus
+\)</span><span class="math notranslate nohighlight">\(
+\| \widehat w_h - \overline{\widehat w_h}^{\widehat E} \|_{L_2(\widehat E)}
+\preceq | \widehat w_h |_{H^1(\widehat T)}
+\)</span><span class="math notranslate nohighlight">\(
+Similar for the term in \)</span>u<span class="math notranslate nohighlight">\(: There is \)</span>| \nabla (u - I_h u) |<em>{L_2(E)} \preceq | u |</em>{H^2(T)}<span class="math notranslate nohighlight">\(, and \)</span>u - I_h u<span class="math notranslate nohighlight">\( vanishes for \)</span>u \in P^1$.</p>
+<p>Rescaling to the element <span class="math notranslate nohighlight">\(T\)</span> leads to</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| w_h - \overline{w_h}^E \|_{L_2(E)} &amp; \preceq &amp; h^{1/2} \, | w_h |_{H^1(T)} \\
+\| \nabla (u - I_h u) \|_{L_2(E)} &amp; \preceq &amp; h^{1/2} \, | u |_{H^2(T)}
+\end{eqnarray*}\]</div>
+<p>This bounds the consistency term
+$<span class="math notranslate nohighlight">\(
+r(w_h) \preceq \sum_T h \, | u |_{H^2(T)} | w_h |_{H^1(T)} \preceq h \, \| u \|_{H^2(\Omega)} \, \| w_h \|_h.
+\)</span><span class="math notranslate nohighlight">\(
+The second lemma of Strang gives the error estimate
+\)</span><span class="math notranslate nohighlight">\(
+\| u - u_h \| \preceq h \, \| u \|_{H^2}
+\)</span>$</p>
+<p>There are several applications where the non-conforming <span class="math notranslate nohighlight">\(P^1\)</span> triangle
+is of advantage:
+\begin{itemize}
+\item
+The <span class="math notranslate nohighlight">\(L_2\)</span> matrix is diagonal (exercises)
+\item
+It can be used for the approximation of problems in fluid dynamics
+described by the Navier Stokes equations (see later).
+\item
+The finite element matrix has exactly 5 non-zero entries in each row
+associated with inner edges. That allows simplifications in the matrix
+generation code.
+\end{itemize}</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./FEM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="erroranalysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Finite element error analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../aposteriori/aposteriori.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>A posteriori error estimates</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

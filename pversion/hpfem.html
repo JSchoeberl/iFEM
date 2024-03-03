@@ -1,0 +1,911 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>22. hp - Finite Elements &#8212; Interactive Finite Elements</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pversion/hpfem';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="23. Stokes Equation" href="../mixed/stokes.html" />
+    <link rel="prev" title="21. Equilibrated Residual Error Estimates" href="../aposteriori/equilibrated.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Interactive Finite Elements - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Interactive Finite Elements - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An Interactive Introduction to the Finite Element Method
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">5. 3D Solid Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/BasicProperties.html">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/RieszRepresentation.html">9. Riesz representation theorem and symmetric variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/Coercive.html">10. Coercive variational problems and their approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/infsup.html">11. Inf-sup stable variational problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sobolev Spaces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/GeneralizedDerivatives.html">12. Generalized derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/SobolevSpaces.html">13. Sobolev spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/Traces.html">14. Trace theorems and their applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/equivalentnorms.html">15. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../FEM/finiteelements.html">16. Finite Element Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/sytemassembling.html">17. Finite element system assembling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/erroranalysis.html">18. Finite element error analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/nonconforming.html">19. Non-conforming Finite Element Methods</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">A posteriori error estimates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/aposteriori.html">20. A posteriori error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">21. Equilibrated Residual Error Estimates</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">22. hp - Finite Elements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">23. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">24. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">25. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">26. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">27. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">28. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">29. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">30. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">31. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">33. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">34. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">35. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">36. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">37. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">38. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">39. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">40. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">41. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">42. Hybridization Techniques</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">43. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">44. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">45. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">46. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">48. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">49. Conjugate Gradients</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">50. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">51. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">52. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">53. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">54. Exercise: Robust preconditioners</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">55. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">56. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">57. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">58. Multi-level Extension</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">59. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">60. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">61. A Small Number of Constraints</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">63. Parameter Dependent Problems</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">65. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">66. Traces spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">68. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">69. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">70. BDDC - Preconditioner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">71. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">72. Distributed Meshes and Spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">74. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">75. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">76. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">77. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">78. Solving Stokes in parallel</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/JSchoeberl/iFEM" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pversion/hpfem.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>hp - Finite Elements</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hp-finite-elements">
+<h1><span class="section-number">22. </span>hp - Finite Elements<a class="headerlink" href="#hp-finite-elements" title="Link to this heading">#</a></h1>
+<p>Let <span class="math notranslate nohighlight">\(V_{hp}\)</span> be a <span class="math notranslate nohighlight">\(p\)</span>-th order finite element sub-space of <span class="math notranslate nohighlight">\(H^1\)</span>.
+By scaling and Bramble-Hilbert technique one obtains the best-approxiamtion error estimate
+$<span class="math notranslate nohighlight">\(
+\inf_{v_{hp} \in V_{hp}} \| u - v_{hp} \|_{H^1}  \leq c h^{m-1} \| u \|_{H^m}
+\)</span><span class="math notranslate nohighlight">\(
+for \)</span>m \leq p+1<span class="math notranslate nohighlight">\(. The constant \)</span>c<span class="math notranslate nohighlight">\( depends on the order \)</span>p<span class="math notranslate nohighlight">\(. If \)</span>m<span class="math notranslate nohighlight">\( is fixed, we do obtain reduction of the approximation error as we increase \)</span>p<span class="math notranslate nohighlight">\(. Next we develop methods to obtain so called \)</span>p<span class="math notranslate nohighlight">\(-version error estimates 
+\)</span><span class="math notranslate nohighlight">\(
+\inf_{v_{hp} \in V_{hp}} \| u - v_{hp} \|_{H^1}  \leq c \left( \sfrac{h}{p} \right) ^{m-1} \| u \|_{H^m},
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>c<span class="math notranslate nohighlight">\( is independent of \)</span>h<span class="math notranslate nohighlight">\( and \)</span>p<span class="math notranslate nohighlight">\(. This estimate proves also convergence of the \)</span>p<span class="math notranslate nohighlight">\(-version finite element method: One may fix the mesh, and increase the order \)</span>p$.</p>
+<p>A detailed analyis of local <span class="math notranslate nohighlight">\(H^m\)</span> norms allows an optimal balance of
+mesh-size <span class="math notranslate nohighlight">\(h\)</span> and polynomial order <span class="math notranslate nohighlight">\(p\)</span>. This <span class="math notranslate nohighlight">\(hp\)</span>-version leads to
+exponential convergence
+$<span class="math notranslate nohighlight">\(
+\inf_{v_{hp} \in V_{hp}} \| u - v_{hp} \|_{H^1}  \leq c e^{ -N^\alpha },
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>N$ is the number of unknowns.</p>
+<p>We will prove the <span class="math notranslate nohighlight">\(p\)</span>-version estimate, but not the <span class="math notranslate nohighlight">\(hp\)</span>-result.</p>
+<p>\subsection{Legendre Polynomials}
+Orthogonal polynomials are important to construct stable basis
+functions for the <span class="math notranslate nohighlight">\(p\)</span>-FEM, as well as for error estimates.</p>
+<p>Let <span class="math notranslate nohighlight">\(\Pi_n\)</span> denote the space of polynomials up to order <span class="math notranslate nohighlight">\(n\)</span>. We write <span class="math notranslate nohighlight">\(\pi_n\)</span> for
+a generic polynomial in <span class="math notranslate nohighlight">\(\Pi_n\)</span>, with a different value any time it appears.</p>
+<p>Definition of Legendre polynomials via Rodrigues’ formula:
+$<span class="math notranslate nohighlight">\(
+P_n(x) := \frac{1}{2^n n!} \frac{d^n}{dx^n} (x^2-1)^n.
+\)</span><span class="math notranslate nohighlight">\(
+It is a polynomial of degree \)</span>n$. The first few Legendre polynomials are</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+P_0(x) &amp; = &amp; 1 \\
+P_1(x) &amp; = &amp; x \\
+P_2(x) &amp; = &amp; \sfrac{3}{2} x^2 - \sfrac{1}{2}
+\end{eqnarray*}\]</div>
+<p><span class="math notranslate nohighlight">\(P_n\)</span> is even if <span class="math notranslate nohighlight">\(n\)</span> is even, and <span class="math notranslate nohighlight">\(P_n\)</span> is odd if <span class="math notranslate nohighlight">\(n\)</span> is odd.
+Since <span class="math notranslate nohighlight">\((x^2-1)^n = x^{2n} - n x^{2n-2} + \pi_{2n-4}\)</span> (with proper
+modification for small <span class="math notranslate nohighlight">\(n\)</span>) we have</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5a07446c-1fa0-4862-965a-4ae2fe5ad3d6">
+<span class="eqno">(22.1)<a class="headerlink" href="#equation-5a07446c-1fa0-4862-965a-4ae2fe5ad3d6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_leadingcoef}
+P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n-2)!} {(n-2)!} x^{n-2} + \pi_{n-4}
+\end{equation}\]</div>
+<p>\begin{lemma} \label{lemma_ortho} There holds</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2bbd09f0-ac10-49bb-8148-cedd455b4c3a">
+<span class="eqno">(22.2)<a class="headerlink" href="#equation-2bbd09f0-ac10-49bb-8148-cedd455b4c3a" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{equ_ortho}
+\int_{-1}^1 P_n(x) P_m(x) \, dx = \frac{2}{2n+1} \delta_{n,m}.
+\end{equation}\]</div>
+<p>\end{lemma}
+\begin{proof} W.l.o.g. let <span class="math notranslate nohighlight">\(n \leq m\)</span>. Multiple integration by parts gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\lefteqn{ 2^{n+m} n! m! \int_{-1}^1 P_n(x) P_m(x) \, dx = 
+\int_{-1}^1 \frac{d^n}{dx^n} (x^2-1)^n \frac{d^m}{dx^m} (x^2-1)^n  \, dx}
+\\
+&amp; = &amp; \int_{-1}^1 \frac{d^{n+1}}{dx^{n+1}} (x^2-1)^n \frac{d^{m-1}}{dx^{m-1}} (x^2-1)^m 
++ 
+\left[ \frac{d^n}{dx^{n}} (x^2-1)^n \underbrace{ \frac{d^{m-1}}{dx^{m-1}} (x^2-1)^m}_{= 0 \text{ for } x \in \{ -1, 1\}} \right]_{-1}^1 \\
+&amp; = &amp; \cdots \\
+&amp; = &amp; \int_{-1}^1 \frac{d^{n+m}}{dx^{n+m}} (x^2-1)^n (x^2-1)^m \, dx
+\end{eqnarray*}\]</div>
+<p>For <span class="math notranslate nohighlight">\(n &lt; m\)</span>, the first factor of the integrand vanishes, and we have orthogonality. For <span class="math notranslate nohighlight">\(n = m\)</span> this equals</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+2^{2n} (n!)^2 \| P_n \|_{L_2}^2 &amp;= &amp;\int_{-1}^1 (2n)! (x^2-1)^n \, dx = (2n)! \int_{-1}^1 (x-1)^n (x+1)^n \\
+&amp; = &amp; -(2n)! \int_{-1}^1 \frac{n}{n+1} (x-1)^{n+1} (x+1)^{n-1} \\
+&amp; = &amp; (2n)! \int_{-1}^1 \frac{ n (n-1) }{ (n+1) (n+2) } (x-1)^{n+2}(x+1)^{n-2} = ...  \\
+&amp; = &amp; (2n)! \frac{n!} {2n (2n-1) \cdots (n+1)} \int_{-1}^1 (x-1)^{2 n} \, dx = (n!)^2 \frac{1}{2n+1} \, 2^{2n+1},
+\end{eqnarray*}\]</div>
+<p>which proves the scaling.
+\end{proof}</p>
+<p>Next we prove the 3-term recurrency, which can be used for efficient evaluation.
+\begin{lemma} \label{lemma_threeterm} There holds</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fc2e9f99-7b40-4e00-b208-300163726583">
+<span class="eqno">(22.3)<a class="headerlink" href="#equation-fc2e9f99-7b40-4e00-b208-300163726583" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{equ_threeterm}
+(n+1) P_{n+1} (x) = (2n+1) x P_n(x) - n P_{n-1}(x).
+\end{equation}\]</div>
+<p>\end{lemma}
+\begin{proof} Set <span class="math notranslate nohighlight">\(r(x) = (n+1) P_{n+1} (x) - (2n+1) x P_n(x) + n P_{n-1}(x)\)</span>.
+Using (\ref{equ_leadingcoef}), we see that the leading coefficients cancel,
+and thus <span class="math notranslate nohighlight">\(r \in \Pi_{n-2}\)</span>. From Lemma~\ref{lemma_ortho} we get for
+any <span class="math notranslate nohighlight">\(q \in \Pi_{n-2}\)</span>
+$<span class="math notranslate nohighlight">\(
+\int_{-1}^1 r(x) q(x) \, dx = (n+1) \int_{-1}^1 P_{n+1} \, q - (2n+1) \int_{-1}^1 P_n \underbrace{x q}_{\in \Pi_{n-1}} + n \int_{-1}^1 P_{n-1} \, q = 0,
+\)</span><span class="math notranslate nohighlight">\(
+and thus \)</span>r = 0$.
+\end{proof}</p>
+<p>\begin{lemma} \label{lemma_sturmliouville} Legendre polynomials satisfy the Sturm-Liouville differential equation
+$<span class="math notranslate nohighlight">\(
+\frac{d}{dx} \big[ (x^2-1) \frac{d}{dx} P_n(x) \big] = n (n+1) P_n(x)
+\)</span><span class="math notranslate nohighlight">\(
+\end{lemma} 
+\begin{proof} Both sides are in \)</span>\Pi_n<span class="math notranslate nohighlight">\(. We compare leading coefficients, for this set \)</span>P_n = a_n x^n + \pi_{n-2}<span class="math notranslate nohighlight">\( (with \)</span>a_n =  \frac{1}{2^n n!} \frac{ (2n)! }{ n! }$).</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+lhs &amp; = &amp; \frac{d}{dx} \left[ (x^2-1) \frac{d}{dx} \left( a_n x^n + \pi_{n-2} \right) \right] \\
+&amp; = &amp; \frac{d}{dx} \left[ (x^2-1) (a_n n x^{n-1} + \pi_{n-3}) \right] \\
+&amp; = &amp; \frac{d}{dx} \left[ a_n n x^{n+1} + \pi_{n-1} \right] \\
+&amp; = &amp; n (n+1) a_n x^n + \pi_{n-2}, 
+\end{eqnarray*}\]</div>
+<p>and we get the same leading coefficient for rhs. Furthermore, for <span class="math notranslate nohighlight">\(q \in \Pi_{n-1}\)</span> there holds</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\int_{-1}^1 lhs \, q &amp; = &amp;-\int_{-1}^1 (x^2-1) P_n^\prime q^\prime \, dx + \underbrace{ \left[ (x^2-1) P_n^\prime q \right]_{-1}^1 }_{= 0} \\
+&amp; = &amp; \int_{-1}^1 P_n \underbrace{ \left( (x^2-1) q^\prime\right)^\prime}_{\in \Pi_{n-1}} \, dx - \left[ P_n (x^2-1) q^\prime \right]_{-1}^1 = 0,
+\end{eqnarray*}\]</div>
+<p>and the same for the rhs. Thus the identity is proven.
+\end{proof}</p>
+<p>Lemma~\ref{lemma_sturmliouville} implies that the Legendre polynomials are also orthogonal w.r.t. <span class="math notranslate nohighlight">\((u^\prime, v^\prime)_{L_2, 1-x^2}\)</span>, i.e.
+$<span class="math notranslate nohighlight">\(
+\int_{-1}^1 (1-x^2) P_n^\prime P_m^\prime = n(n+1) \| P_n \|_{L_2}^2 \delta_{n,m}
+\)</span>$</p>
+<p>\subsection{Error estimate of the <span class="math notranslate nohighlight">\(L_2\)</span> projection}
+Since polynomials are dense in <span class="math notranslate nohighlight">\(L_2(-1,1)\)</span>, we get
+$<span class="math notranslate nohighlight">\(
+u = \sum_{n=0}^\infty a_n P_n
+\)</span><span class="math notranslate nohighlight">\(
+with the generalized Fourier coefficients
+\)</span><span class="math notranslate nohighlight">\(
+a_n = \frac{ (u, P_n)_{L_2} } { \| P_n \|^2_{L_2} },
+\)</span><span class="math notranslate nohighlight">\(
+and
+\)</span><span class="math notranslate nohighlight">\(
+\| u \|_{L_2}^2 = \sum_{n=0}^\infty a_n^2 \| P_n \|^2.
+\)</span><span class="math notranslate nohighlight">\(
+Let \)</span>P_{L_2}^{\Pi_p}<span class="math notranslate nohighlight">\( denote the \)</span>L_2<span class="math notranslate nohighlight">\(-projection onto \)</span>\Pi_p<span class="math notranslate nohighlight">\(. There holds
+\)</span><span class="math notranslate nohighlight">\(
+P_{L_2}^{\Pi_p} u = \sum_{n=0}^p a_n P_n
+\)</span><span class="math notranslate nohighlight">\(
+The projection error is
+\)</span><span class="math notranslate nohighlight">\(
+\| u - P_{L_2}^{\Pi_p} u \|_{L_2}^2 = \sum_{n=p+1}^\infty a_n^2 \| P_n \|^2
+\)</span><span class="math notranslate nohighlight">\(
+\begin{lemma} \label{lemma_l2est}  The \)</span>L_2$-projection error satisfies</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6fd3b565-6f1b-4ac1-99c4-af15b21fb9bb">
+<span class="eqno">(22.4)<a class="headerlink" href="#equation-6fd3b565-6f1b-4ac1-99c4-af15b21fb9bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\| u - P_{L_2}^{\Pi_p} u \|_{L_2(-1,1)} \leq \frac{1}{\sqrt{(p+1)(p+2)}} \, | u |_{H^1(-1,1)}
+\end{equation}\]</div>
+<p>\end{lemma}
+\begin{proof} Since <span class="math notranslate nohighlight">\(P_n\)</span> are orthogonal also w.r.t. <span class="math notranslate nohighlight">\((u^\prime, v^\prime)_{L_2, 1-x^2}\)</span>,
+there holds
+$<span class="math notranslate nohighlight">\(
+\| u^\prime \|_{L_2, 1-x^2}^2 = \sum_{n \in \setN} a_n^2 \, \| P_n^\prime \|_{1-x^2}^2,
+\)</span><span class="math notranslate nohighlight">\(
+provided that \)</span>u<span class="math notranslate nohighlight">\( is in \)</span>H^1$.
+The projection error satisfies</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| u - P_{L_2}^{\Pi_p} u \|^2_{L_2} &amp; = &amp; \sum_{n &gt; p} a_n^2 \| P_n \|^2_{L_2} 
+ = \sum_{n &gt; p} a_n^2 \frac{1}{n (n+1)} \| P_n^\prime \|^2_{1-x^2} \\
+&amp; \leq &amp; \frac{1}{(p+1)(p+2)} \sum_{n &gt; p} a_n^2 \|P_n^\prime \|^2_{1-x^2} 
+\leq  \frac{1}{(p+1)(p+2)} \sum_{n \in \setN} a_n^2 \|P_n^\prime \|^2_{1-x^2} \\
+&amp; = &amp; \frac{1}{(p+1)(p+2)} \| u^\prime \|_{1-x^2}^2 \\
+\end{eqnarray*}\]</div>
+<p>Finally, the result follows from
+$<span class="math notranslate nohighlight">\(
+\int_{-1}^1 (1-x^2) (u^\prime)^2 \, dx \leq \int_{-1}^1 (u^\prime)^2 \, dx.
+\)</span><span class="math notranslate nohighlight">\(
+\end{proof}
+\newpage
+Similar as in Lemma~\ref{lemma_sturmliouville} on shows also
+\)</span><span class="math notranslate nohighlight">\(
+\frac{d^m}{dx^m} \big[ (x^2-1)^m \frac{d^m}{dx^m} P_n(x) \big] = (n+m)(n+m-1) \ldots (n-m+1) P_n(x)
+\)</span><span class="math notranslate nohighlight">\(
+for \)</span>m \leq n<span class="math notranslate nohighlight">\(, and, as in Lemma~\ref{lemma_l2est}
+\)</span><span class="math notranslate nohighlight">\(
+\| u - P_{L_2}^{\Pi_p} u \|_{L_2} \leq \sqrt{ \frac{ (p-m+1)! }{ (p+m+1)! } } | u |_{H^m}.
+\)</span>$</p>
+<p>\subsection{Orthogonal polynomials on triangles}</p>
+<p>Orthogonal polynomials on tensor product elements are simply
+constructed by tensorization. Orthogonal polynomials on simplicial
+elements are more advanced. They are based on Jacobi polynomials:</p>
+<p>For <span class="math notranslate nohighlight">\(\alpha, \beta &gt; -1\)</span>, Jacobi polynomials are defined by
+$<span class="math notranslate nohighlight">\(
+P_n^{(\alpha, \beta)}(x) := \frac{(-1)^n}{2^n n!} \frac{1}{w(x)} \frac{d^n}{dx^n} \big( w(x) (1-x^2)^n \big)
+\)</span><span class="math notranslate nohighlight">\(
+with the weight function 
+\)</span><span class="math notranslate nohighlight">\(
+w(x) = (1-x)^\alpha (1+x)^\beta.
+\)</span><span class="math notranslate nohighlight">\(
+Jacobi polynomials are orthogonal w.r.t. the weighted inner product
+\)</span><span class="math notranslate nohighlight">\(
+\int_{-1}^1 w(x) P_n^{(\alpha,\beta)}(x) P_m^{(\alpha, \beta)}(x) dx = \delta_{n,m} \frac{2^{\alpha+\beta+1}}{2n+\alpha+\beta+1} \frac{ \Gamma(n+\alpha+1) \, \Gamma (n+\beta+1) } { n! \Gamma (n+\alpha+\beta+1)}.
+\)</span><span class="math notranslate nohighlight">\(
+Note that \)</span>P^{(0,0)}_n = P_n$.</p>
+<p>Define the unit-triangle <span class="math notranslate nohighlight">\(T\)</span> with vertices <span class="math notranslate nohighlight">\((-1,0)\)</span>,  <span class="math notranslate nohighlight">\((1,0)\)</span> and <span class="math notranslate nohighlight">\((0,1)\)</span>.
+\begin{lemma} [Dubiner basis] The functions
+$<span class="math notranslate nohighlight">\(
+\varphi_{i,j} (x,y) := P_i \big( \sfrac{x}{1-y} \big) (1-y)^i P_j^{(2i+1,0)} (2y-1)
+\qquad i+j \leq p
+\)</span><span class="math notranslate nohighlight">\( 
+form an \)</span>L_2(T)<span class="math notranslate nohighlight">\(-orthogonal basis for \)</span>\Pi_p(T)<span class="math notranslate nohighlight">\(.
+\end{lemma}
+\begin{proof}
+Note that \)</span>\varphi_{i,j} \in \Pi_{i+j}<span class="math notranslate nohighlight">\(. Substitution \)</span>\xi = \frac{x}{1-y}$ leads to</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\lefteqn{ \int_T \varphi_{ij}(x,y) \varphi_{kl} (x,y) \, d(x,y) = } \\
+&amp; = &amp; \int_0^1 \int_{-1+y}^{1-y} 
+ P_i \big( \sfrac{x}{1-y} \big) (1-y)^i P_j^{(2i+1,0)} (2y-1)
+ P_k \big( \sfrac{x}{1-y} \big) (1-y)^k P_l^{(2k+1,0)} (2y-1) \, dx dy \\
+&amp; = &amp; \int_0^1 \int_{-1}^1 P_i(\xi) P_k(\xi) (1-y)^{i+k+1} P_j^{(2i+1,0)} (2y-1) P_l^{(2k+1,0)}(2y-1) \, d\xi dy \\
+&amp; = &amp; \delta_{i,k} \| P_i \|_{L_2}^2 \int_0^1 (1-y)^{2i+1} P_j^{(2i+1,0)}(2y-1) P_l^{(2i+1,0)}(2y-1) \, dy \\
+&amp; = &amp; C_{ij} \delta_{i,k} \delta_{j,l} 
+\end{eqnarray*}\]</div>
+<p>\end{proof}</p>
+<p>\subsection{Projection based interpolation}</p>
+<p>By means of the orthogonal polynomials one shows approximation error estimates
+of the form
+$<span class="math notranslate nohighlight">\(
+\inf_{q \in \Pi_p(T)} \| u - q \|_{H^k(T)} \leq c p^{k-m} | u |_{H^m(T)} \qquad m \geq k,
+\)</span><span class="math notranslate nohighlight">\(
+with \)</span>c \neq c(p)<span class="math notranslate nohighlight">\(, easily in 1D and tensor product elements, and also on \)</span>n$-dimensional simplices [Braess+Schwab: Approximation on simplices with respect to weighted Sobolev norms, J. Approximation Theory 103, 329-337 (2000)].</p>
+<p>But, an interpolation operator to an <span class="math notranslate nohighlight">\(H^1\)</span>-conforming finite element space has to satisfy continuity constraints across element boundaries. We show that we get the same rate of convergence under these constraints.</p>
+<p>\subsubsection{The 1D case}
+Let <span class="math notranslate nohighlight">\(I=(-1,1)\)</span>. We define the operator <span class="math notranslate nohighlight">\(I_p : H^1(I) \rightarrow \Pi_p\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2b7a14a5-d3de-4782-92c5-36dd36850f78">
+<span class="eqno">(22.5)<a class="headerlink" href="#equation-2b7a14a5-d3de-4782-92c5-36dd36850f78" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+I_p u(x) &amp; = &amp; u(x) \qquad x \in \{ -1, 1 \}   \label{equ_projbased1} \\
+\int_I (I_p u)^\prime q^\prime &amp; = &amp;  \int_I u^\prime q^\prime \qquad \forall \, q \in \Pi_{p,0}(I),   \label{equ_projbased2} 
+\end{eqnarray}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Pi_{p,0}(D) := \{ q \in \Pi_p(D) : q = 0 \text{ on } \partial D\}\)</span>.
+This procedure is exactly a <span class="math notranslate nohighlight">\(p\)</span>-version Galerkin-method for the
+Dirichlet problem.  Since boundary values are preserved, the
+interpolation operator produces a globally continuous function.  The
+operator <span class="math notranslate nohighlight">\(I_p\)</span> is a kind of mixture of interpolation and projection,
+thus the term {\em projection based interpolation} introduced by
+Demkowicz has been established.</p>
+<p>\begin{lemma}[Commuting diagram] There holds
+$<span class="math notranslate nohighlight">\(
+\Pi_{L_2}^{\Pi_{p-1}} u^\prime = (I_p u)^\prime 
+\)</span><span class="math notranslate nohighlight">\(
+\end{lemma}
+\begin{proof} The range of both sides is \)</span>\Pi_{p-1}<span class="math notranslate nohighlight">\(. We have to show that 
+\)</span>(I_p u)^\prime<span class="math notranslate nohighlight">\( is indeed the \)</span>L_2<span class="math notranslate nohighlight">\(-projection of \)</span>u^\prime<span class="math notranslate nohighlight">\(, i.e.
+\)</span><span class="math notranslate nohighlight">\( 
+\int_I (I_p u)^\prime q = \int_I u^\prime q \qquad \forall \, q \in \Pi_{p-1}.
+\)</span><span class="math notranslate nohighlight">\(
+This holds since \)</span>{ q^\prime : q \in \Pi_{p,0} } = { q \in \Pi_{p-1} : \int q = 0 }<span class="math notranslate nohighlight">\( and (\ref{equ_projbased2}), and 
+\)</span><span class="math notranslate nohighlight">\(
+\int_{-1}^1 (I_p u)^\prime \, 1 = (I_p u)(1)  - (I_p u)(-1) = u(1) - u(-1) = \int_{-1}^1 u^\prime \, 1.
+\)</span>$
+\end{proof}</p>
+<p>The <span class="math notranslate nohighlight">\(H^1\)</span>-error estimate follows directly from the commuting diagram property:
+$<span class="math notranslate nohighlight">\(
+| u - I_p u |_{H^1(I)} = \| u^\prime - (I_p u)^\prime \|_{L_2} = 
+\| u^\prime - P_{L_2}^{\Pi_{p-1}} u^\prime \|_{L_2} \leq \frac{c}{p^{m-1}} | u^\prime |_{H^{m-1}}.
+\)</span><span class="math notranslate nohighlight">\(
+By the Aubin-Nitsche technique one obtains an extra \)</span>p<span class="math notranslate nohighlight">\( for the \)</span>L_2<span class="math notranslate nohighlight">\(-error:
+\)</span><span class="math notranslate nohighlight">\(
+\| u - I_p u \|_{L_2(I)} \preceq \frac{1}{p} | u - I_p u |_{H^1(I)} \leq \frac{1}{p^m} | u |_{H^m(I)}
+\)</span><span class="math notranslate nohighlight">\(
+One also gets for \)</span>q \in \Pi_p<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+| u - I_p u |_{H^1} = | u-q - I_p (u-q) |_1 \leq || Id - I_p ||_{H^1\rightarrow H^1} \, | u - q |_{H^1}
+\)</span>$</p>
+<p>\subsubsection{Projection based interpolation on triangles}</p>
+<p>We define the operator <span class="math notranslate nohighlight">\(I_p : H^2(T) \rightarrow \Pi_p(T)\)</span> as follows:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d061b4e9-25fe-4f09-ba1c-eb0ee0cd4eb4">
+<span class="eqno">(22.6)<a class="headerlink" href="#equation-d061b4e9-25fe-4f09-ba1c-eb0ee0cd4eb4" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+I_p u(x) &amp; = &amp; u(x) \qquad \forall \text{ vertices } x \\
+\int_E \partial_\tau (I_p u) \partial_\tau q &amp; = &amp;  
+\int_E \partial_\tau u  \partial_\tau q \qquad \forall \text{ edges } E, \; \forall \, q \in \Pi_{p,0}(E) \\
+\int_T \nabla (I_p u) \nabla q &amp; = &amp; \int_T \nabla u \nabla q \qquad \forall \, q \in \Pi_{p,0}(T)
+\end{eqnarray}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(I_p u\)</span> on the edge <span class="math notranslate nohighlight">\(E\)</span> depends  only on <span class="math notranslate nohighlight">\(u|_E\)</span>, and thus the interpolant is
+continuous across neighbouring elements.</p>
+<p>\begin{lemma}  \label{lemma_polext}  Let <span class="math notranslate nohighlight">\(v \in C(\partial T)\)</span> such that <span class="math notranslate nohighlight">\(v|_E \in \Pi_p(E)\)</span>. Then there exists
+an extension <span class="math notranslate nohighlight">\(\tilde v \in \Pi_p(T)\)</span> such that <span class="math notranslate nohighlight">\(\tilde v|_{\partial T} = v\)</span> and
+$<span class="math notranslate nohighlight">\(
+| \tilde v |_{H^1} \leq c \, | v |_{H^{1/2}(\partial T)},
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>c<span class="math notranslate nohighlight">\( is independent of \)</span>p<span class="math notranslate nohighlight">\(.
+\end{lemma}
+Major steps have been shown in exercises 5.2 and 6.6.
+Note that the minimal-norm extension \)</span>\tilde v<span class="math notranslate nohighlight">\( is the solution of the Dirichlet problem, i.e.
+\)</span><span class="math notranslate nohighlight">\(
+\int_T \nabla \tilde v \nabla w = 0 \qquad \forall \, w \in \Pi_{p,0}
+\)</span>$</p>
+<p>\begin{theorem} [error estimate] There holds
+$<span class="math notranslate nohighlight">\(
+| u - I_p u |_{H^1} \preceq
+\inf_{q \in \Pi_p} | u - q |_{H^1(T)} + 
+\sum_{E \subset \partial T} \frac{1}{\sqrt{p}} \inf_{q \in \Pi_p(E)} | u - q |_{H^1(E)}
+\preceq 
+\frac{1}{p^{m-1}} | u |_{H^m} 
+\)</span><span class="math notranslate nohighlight">\(
+for \)</span>u \in H^m, m \geq 2<span class="math notranslate nohighlight">\(.  
+\end{theorem}
+\begin{proof} Let \)</span>u_p<span class="math notranslate nohighlight">\( be the \)</span>|\cdot |_{H^1}<span class="math notranslate nohighlight">\( best approximation to \)</span>u<span class="math notranslate nohighlight">\(, i.e.
+\)</span><span class="math notranslate nohighlight">\(
+\int_T \nabla u_p \nabla v = \int_T \nabla u \nabla v \qquad \forall \, v \in \Pi_p,
+\)</span><span class="math notranslate nohighlight">\(
+and, for uniqueness, mean values are preserved: \)</span>\int_T u_p = \int_T u<span class="math notranslate nohighlight">\(. There holds
+\)</span><span class="math notranslate nohighlight">\(
+| u - u_p |_{H^1} \leq  \frac{c}{p^{m-1}} | u |_{H^m}.
+\)</span>$</p>
+<p>We apply the triangle inequality:
+$<span class="math notranslate nohighlight">\(
+| u - I_p u |_{H^1} \leq | u - u_p |_{H^1} + | u_p - I_p u |_{H^1}
+\)</span><span class="math notranslate nohighlight">\(
+Since 
+\)</span><span class="math notranslate nohighlight">\(
+\int_T \nabla u_p \nabla v = \int_T \nabla u \nabla v = \int_T \nabla I_p u  \nabla v
+\qquad \forall \, v \in \Pi_{p,0}(T),
+\)</span><span class="math notranslate nohighlight">\(
+we have that
+\)</span><span class="math notranslate nohighlight">\(
+u_p - I_p u \; \bot_{H^1} \; \Pi_{p,0},
+\)</span><span class="math notranslate nohighlight">\(
+i.e. \)</span>u_p - I_p u<span class="math notranslate nohighlight">\( is solution of the Dirichlet problem with boundary values
+\)</span> (u_p - I_p u)|_{\partial T}<span class="math notranslate nohighlight">\(. Lemma~\ref{lemma_polext} implies that
+\)</span><span class="math notranslate nohighlight">\(
+| u_p - I_p u |_{H^1(T)} \preceq | u_p - I_p u |_{H^{1/2}(\partial T)}
+\)</span>$</p>
+<p>We insert an <span class="math notranslate nohighlight">\(u\)</span> on the boundary to obtain</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+| u - I_p u |_{H^1} &amp; \preceq &amp; | u - u_p |_{H^1(T)} + | u_p - I_p u |_{H^{1/2}(\partial T)} \\
+&amp; \leq &amp; | u - u_p |_{H^1(T)} + | u_p - u |_{H^{1/2}(\partial T)} + | u - I_p u |_{H^{1/2}(\partial T)} \\
+&amp; \leq &amp; | u - u_p |_{H^1(T)} + 
+\| u - I_p u \|_{L_2(\partial T)}^{1/2} 
+| u - I_p u |_{H^1(\partial T)}^{1/2}.
+\end{eqnarray*}\]</div>
+<p>In the last step we used that <span class="math notranslate nohighlight">\(H^{1/2}(\partial T) = [L_2, H^1]_{1/2}\)</span> (i.e. the interpolation space).
+Next, we observe that <span class="math notranslate nohighlight">\(I_p\)</span> restricted to one edge <span class="math notranslate nohighlight">\(E\)</span> is exactly the 1D operator. Using Aubin-Nitsche we get</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+| u - I_p u |_{H^1} &amp; \preceq &amp; | u - u_p |_{H^1(T)} + p^{-1/2} \| u - I_p u\|_{H^1(\partial T)} \\
+&amp; \preceq &amp; | u  - u_p |_{H^1(T)} + \sum_E p^{1-m} \, | u |_{H^{m-1/2}(E)} \\
+&amp; \preceq &amp; p^{1-m} | u |_{H^m(T)}
+\end{eqnarray*}\]</div>
+<p>In the last step we used the trace theorem.
+\end{proof}</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pversion"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../aposteriori/equilibrated.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">21. </span>Equilibrated Residual Error Estimates</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../mixed/stokes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>Stokes Equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

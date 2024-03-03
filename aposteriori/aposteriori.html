@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>20. A posteriori error estimates &#8212; Interactive Finite Elements</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'aposteriori/aposteriori';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="21. Equilibrated Residual Error Estimates" href="equilibrated.html" />
+    <link rel="prev" title="19. Non-conforming Finite Element Methods" href="../FEM/nonconforming.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Interactive Finite Elements - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Interactive Finite Elements - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An Interactive Introduction to the Finite Element Method
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">5. 3D Solid Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/BasicProperties.html">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/RieszRepresentation.html">9. Riesz representation theorem and symmetric variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/Coercive.html">10. Coercive variational problems and their approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/infsup.html">11. Inf-sup stable variational problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sobolev Spaces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/GeneralizedDerivatives.html">12. Generalized derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/SobolevSpaces.html">13. Sobolev spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/Traces.html">14. Trace theorems and their applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/equivalentnorms.html">15. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../FEM/finiteelements.html">16. Finite Element Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/sytemassembling.html">17. Finite element system assembling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/erroranalysis.html">18. Finite element error analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/nonconforming.html">19. Non-conforming Finite Element Methods</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">A posteriori error estimates</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">20. A posteriori error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equilibrated.html">21. Equilibrated Residual Error Estimates</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pversion/hpfem.html">22. hp - Finite Elements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">23. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">24. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">25. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">26. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">27. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">28. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">29. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">30. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">31. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">33. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">34. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">35. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">36. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">37. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">38. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">39. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">40. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">41. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">42. Hybridization Techniques</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">43. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">44. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">45. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">46. Preconditioning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">48. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">49. Conjugate Gradients</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">50. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">51. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">52. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">53. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">54. Exercise: Robust preconditioners</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">55. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">56. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">57. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">58. Multi-level Extension</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">59. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">60. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">61. A Small Number of Constraints</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">63. Parameter Dependent Problems</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">65. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">66. Traces spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">68. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">69. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">70. BDDC - Preconditioner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">71. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">72. Distributed Meshes and Spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">74. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">75. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">76. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">77. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">78. Solving Stokes in parallel</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/JSchoeberl/iFEM" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/aposteriori/aposteriori.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>A posteriori error estimates</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="a-posteriori-error-estimates">
+<h1><span class="section-number">20. </span>A posteriori error estimates<a class="headerlink" href="#a-posteriori-error-estimates" title="Link to this heading">#</a></h1>
+<p>We will derive methods to estimate the error of the computed finite
+element approximation. Such {\em a posteriori} error estimates may use the finite element solution <span class="math notranslate nohighlight">\(u_h\)</span>, and input data such as the source term <span class="math notranslate nohighlight">\(f\)</span>.
+$<span class="math notranslate nohighlight">\(
+\eta(u_h, f)
+\)</span>$</p>
+<p>An error estimator is called {\em reliable}, if it is an upper bound for the error,
+i.e., there exists a constant <span class="math notranslate nohighlight">\(C_1\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2799b851-c2b6-4a7c-bfcc-a5c05bf6cb4c">
+<span class="eqno">(20.1)<a class="headerlink" href="#equation-2799b851-c2b6-4a7c-bfcc-a5c05bf6cb4c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_reliable}
+\| u - u_h \|_V \leq C_1 \, \eta(u_h, f)
+\end{equation}\]</div>
+<p>An error estimator is {\em efficient}, if it is a lower bound for the error,
+i.e., there exists a constant <span class="math notranslate nohighlight">\(C_2\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3768abb4-16a6-48f0-9c01-4e71cac5d53e">
+<span class="eqno">(20.2)<a class="headerlink" href="#equation-3768abb4-16a6-48f0-9c01-4e71cac5d53e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_efficient}
+\| u - u_h \|_V \geq C_2 \, \eta(u_h, f).
+\end{equation}\]</div>
+<p>The constants may depend on the domain, and the shape of the triangles,
+but may not depend on the source term <span class="math notranslate nohighlight">\(f\)</span>, or the (unknown)
+solution <span class="math notranslate nohighlight">\(u\)</span>.</p>
+<p>\bigskip</p>
+<p>One use of the a posteriori error estimator is to know the accuracy of
+the finite element approximation. A second one is to guide the
+construction of a new mesh to improve the accuracy of a new finite
+element approximation.</p>
+<p>The usual error estimators are defined as sum over element contributions:
+$<span class="math notranslate nohighlight">\(
+\eta^2 (u_h, f) = \sum_{T \in {\cal T}} \eta_T^2 (u_h, f)
+\)</span>$</p>
+<p>The local contributions should correspond to the local error. For
+the common error estimators there hold the local efficiency estimates
+$<span class="math notranslate nohighlight">\(
+\| u - u_h \|_{H^1(\omega_T)} \geq C_2 \, \eta_T(u_h, f).
+\)</span><span class="math notranslate nohighlight">\(
+The patch \)</span>\omega_T<span class="math notranslate nohighlight">\( contains \)</span>T$ and all its neighbor elements.</p>
+<p>\bigskip</p>
+<p>In the following, we consider the Poisson equation <span class="math notranslate nohighlight">\(-\Delta u = f\)</span> with
+homogenous Dirichlet boundary conditions <span class="math notranslate nohighlight">\(u = 0\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>. We choose
+piecewise linear finite elements on triangles.</p>
+<p>\subsubsection{The Zienkiewicz Zhu error estimator}
+The simplest a posteriori error estimator is the one by
+Zienkiewicz and Zhu, the so called ZZ error estimator.</p>
+<p>The error is measured in the <span class="math notranslate nohighlight">\(H^1\)</span>-semi norm:
+$<span class="math notranslate nohighlight">\(
+\| \nabla u - \nabla u_h \|_{L_2}
+\)</span>$</p>
+<p>Define the gradient <span class="math notranslate nohighlight">\(p = \nabla u\)</span> and the discrete gradient <span class="math notranslate nohighlight">\(p_h = \nabla u_h\)</span>.
+The discrete gradient <span class="math notranslate nohighlight">\(p_h\)</span> is a constant on each element.
+Let <span class="math notranslate nohighlight">\(\tilde p_h\)</span> be the p.w. linear and continuous
+finite element function obtained by averaging the element values of <span class="math notranslate nohighlight">\(p_h\)</span> in the vertices:
+$<span class="math notranslate nohighlight">\(
+\tilde p_h(x_i) = \frac{1}{ | \{ T : x_i \in T \} |} \sum_{T : x_i \in T} 
+        p_{h|T}
+\qquad \mbox{for all vertices } x_i
+\)</span>$
+The hope is that the averaged gradient is a much better approximation to the true gradient,
+i.e.,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c243a53a-8580-49e6-842c-f4bb5eb2a4a0">
+<span class="eqno">(20.3)<a class="headerlink" href="#equation-c243a53a-8580-49e6-842c-f4bb5eb2a4a0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_superconvergence}
+\| p - \tilde p_h \|_{L_2} \leq \alpha \, \| p - p_h \|_{L_2}
+\end{equation}\]</div>
+<p>holds with a small constant <span class="math notranslate nohighlight">\(\alpha \ll 1\)</span>. This property is known as {\em super-convergence}.It is indeed true on (locally) uniform meshes, and smoothness assumptions onto the source term <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>The ZZ error estimator replaces the true gradient in the error <span class="math notranslate nohighlight">\(p-p_h\)</span> by the good approximation <span class="math notranslate nohighlight">\(\tilde p_h\)</span>:
+$<span class="math notranslate nohighlight">\(
+\eta (u_h) = \| \tilde p_h - p_h \|_{L_2(\Omega)}
+\)</span>$</p>
+<p>If the super-convergence property (\ref{equ_superconvergence}) is fulfilled,
+than the ZZ error estimator is reliable:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| \nabla u - \nabla u_h \|_{L_2} &amp; = &amp; \| p - p_h \|_{L_2} \leq 
+        \| p_h - \widetilde p_h \|_{L_2} + \| p - \widetilde p_h \|_{L_2} \\
+        &amp; \leq &amp; \| p_h - \widetilde p_h \|_{L_2} + \alpha \| p - p_h \|_{L_2},
+\end{eqnarray*}\]</div>
+<p>and
+$<span class="math notranslate nohighlight">\(
+\| \nabla u - \nabla u_h \|_{L_2} \leq \frac{1}{1-\alpha} \| p_h - \widetilde p_h \|_{L_2}.
+\)</span>$
+It is also efficient, a similar short application of the triangle inequality.</p>
+<p>There is a rigorous analysis of the ZZ error estimator, e.g., by showing equivalence
+to the following residual error estimator.</p>
+<p>\subsubsection{The residual error estimator}
+The idea is to compute the residual of the Poisson equation
+$<span class="math notranslate nohighlight">\(
+f + \Delta \, u_h,
+\)</span><span class="math notranslate nohighlight">\(
+in the natural norm \)</span>H^{-1}<span class="math notranslate nohighlight">\(. The classical \)</span>\Delta<span class="math notranslate nohighlight">\(-operator cannot be 
+applied  to \)</span>u_h<span class="math notranslate nohighlight">\(, since the first derivatives, \)</span>\nabla u_h<span class="math notranslate nohighlight">\(, are non-continuous across element 
+boundaries. One can compute the residuals on the elements
+\)</span><span class="math notranslate nohighlight">\(
+f_{|T} + \Delta \, u_{h|T} \qquad \forall \, T \in {\cal T},
+\)</span><span class="math notranslate nohighlight">\(
+and one can also compute the violation of the continuity of the gradients on the
+edge \)</span>E = T_1 \cap T_2<span class="math notranslate nohighlight">\(.  We define the normal-jump term
+\)</span><span class="math notranslate nohighlight">\(
+\left[\frac{\partial u_h}{\partial n} \right] := 
+\frac{\partial u_h}{\partial n_1}|_{T_1} + 
+\frac{\partial u_h}{\partial n_2}|_{T_2}.
+\)</span>$</p>
+<p>The residual error estimator is
+$<span class="math notranslate nohighlight">\(
+\eta^{res}(u_h,f)^2 := \sum_T \eta_T^{res}(u_h,f)^2
+\)</span><span class="math notranslate nohighlight">\(
+with the element contributions
+\)</span><span class="math notranslate nohighlight">\(
+\eta_T^{res}(u_h, f)^2 := h_T^2 \| f + \Delta u_h \|_{L_2(T)}^2 +
+ \sum_{E : E \subset T \atop E \subset \Omega} h_E \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)} ^2.
+\)</span>$</p>
+<p>The scaling with <span class="math notranslate nohighlight">\(h_T\)</span> corresponds to the natural <span class="math notranslate nohighlight">\(H^{-1}\)</span> norm of the residual.</p>
+<p>\bigskip</p>
+<p>To show the reliability of the residual error estimator, we need a new
+{\em quasi}-interpolation operator, the Cl’{e}ment- operator <span class="math notranslate nohighlight">\(\Pi_h\)</span>. In
+contrast to the interpolation operator, this operator is well defined
+for functions in <span class="math notranslate nohighlight">\(L_2\)</span>.</p>
+<p>We define the vertex patch of all elements connected with the vertex <span class="math notranslate nohighlight">\(x\)</span>
+$<span class="math notranslate nohighlight">\(
+\omega_x = \bigcup_{T : x \in T} T,
+\)</span><span class="math notranslate nohighlight">\(
+the edge patch consisting of all elements connected with the edge \)</span>E<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\omega_E = \bigcup_{T : E \cap T \neq \emptyset} T,
+\)</span><span class="math notranslate nohighlight">\(
+and the element patch consisting of the element \)</span>T<span class="math notranslate nohighlight">\( and all its neighbors
+\)</span><span class="math notranslate nohighlight">\(
+\omega_T = \bigcup_{T^\prime : T \cap T^\prime \neq \emptyset} T^\prime.
+\)</span>$</p>
+<p>The nodal interpolation operator <span class="math notranslate nohighlight">\(I_h\)</span> was defined as
+$<span class="math notranslate nohighlight">\(
+I_h v = \sum_{x_i \in {\cal V}} v(x_i) \varphi_i,
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\varphi_i<span class="math notranslate nohighlight">\( are the nodal basis functions.
+Now, we replace the nodal value \)</span>v(x_i)$ by a local mean value.</p>
+<p>\begin{definition}[Cl’ement quasi-interpolation operator] For each vertex <span class="math notranslate nohighlight">\(x\)</span>,let <span class="math notranslate nohighlight">\(\overline{v}^{\omega_x}\)</span> be the mean value of <span class="math notranslate nohighlight">\(v\)</span> on the patch <span class="math notranslate nohighlight">\(\omega_x\)</span>, i.e.,
+$<span class="math notranslate nohighlight">\(
+\overline{v}^{\omega_x} = \frac{1}{|\omega_x|} \int_{\omega_x} v \, dx.
+\)</span><span class="math notranslate nohighlight">\(
+The Cl\'ement operator is 
+\)</span><span class="math notranslate nohighlight">\(
+\Pi_h v := \sum_{x_i \in {\cal V}} \overline{v}^{\omega_{x_i}} \varphi_i.
+\)</span>$
+In the case of homogeneous Dirichlet boundary values, the sum contains only
+inner vertices.
+\end{definition}</p>
+<p>\bigskip</p>
+<p>\begin{theorem} The Cl’ement operator satisfies the following continuity and
+approximation estimates:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| \nabla \Pi_h v \|_{L_2(T)} &amp; \preceq &amp; \| \nabla v \|_{L_2(\omega_T)} \\
+\| v - \Pi_h v \|_{L_2(T)} &amp; \preceq &amp; h_T \| \nabla v \|_{L_2(\omega_T)} \\
+\| v - \Pi_h v \|_{L_2(E)} &amp; \preceq &amp; h_E^{1/2} \| \nabla v \|_{L_2(\omega_E)} \\
+\end{eqnarray*}\]</div>
+<p>\end{theorem}</p>
+<p>{\em Proof:} First, choose a reference patch <span class="math notranslate nohighlight">\(\widehat \omega_T\)</span> of
+dimension
+<span class="math notranslate nohighlight">\(\simeq 1\)</span>. The quasi-interpolation operator is bounded on <span class="math notranslate nohighlight">\(H^1(\omega_T)\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-73d0c5ca-6374-49e7-899f-e5a6f76c7c26">
+<span class="eqno">(20.4)<a class="headerlink" href="#equation-73d0c5ca-6374-49e7-899f-e5a6f76c7c26" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_clement_bh}
+\| v - \Pi_h v \|_{L_2(\widehat T)} + \| \nabla (v - \Pi_h v) \|_{L_2(\widehat T)} \preceq \| v \|_{H^1(\widehat \omega_T)}
+\end{equation}\]</div>
+<p>If <span class="math notranslate nohighlight">\(v\)</span> is constant on <span class="math notranslate nohighlight">\(\omega_T\)</span>, then the mean values in the vertices
+take the same values, and also <span class="math notranslate nohighlight">\((\Pi_h v)_{|T}\)</span> is the same constant.
+The constant function (on <span class="math notranslate nohighlight">\(\omega_T\)</span>) is in the kernel of
+<span class="math notranslate nohighlight">\(\| v - \Pi_h v \|_{H^1(T)}\)</span>. Due to
+the Bramble-Hilbert lemma, we can replace the norm on the right hand side
+of (\ref{equ_clement_bh}) by the semi-norm:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-097a7b3f-f02e-4233-9a7d-6af2ddd10642">
+<span class="eqno">(20.5)<a class="headerlink" href="#equation-097a7b3f-f02e-4233-9a7d-6af2ddd10642" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_clement_bh2}
+\| v - \Pi_h v \|_{L_2(\widehat T)} + \| \nabla (v - \Pi_h v) \|_{L_2(\widehat T)} \preceq \| \nabla v \|_{L_2(\widehat \omega_T)}
+\end{equation}\]</div>
+<p>The rest follows from scaling. Let <span class="math notranslate nohighlight">\(F : x \rightarrow h x\)</span> scale the reference patch <span class="math notranslate nohighlight">\(\widehat \omega_T\)</span> to the actual patch <span class="math notranslate nohighlight">\(\omega_T\)</span>. Then
+$<span class="math notranslate nohighlight">\(
+\| v - \Pi_h v \|_{L_2(T)} + h \, \| \nabla (v-\Pi_h v) \|_{L_2(T)} \preceq h \, \| \nabla v \|_{L_2(\omega_T)}
+\)</span>$</p>
+<p>The estimate for the edge term is similar. One needs the scaling of integrals
+from the reference edge <span class="math notranslate nohighlight">\(\widehat E\)</span> to <span class="math notranslate nohighlight">\(E\)</span>:
+$<span class="math notranslate nohighlight">\(
+\| v \|_{L_2(E)} = h_E^{1/2} \| v \circ F \|_{L_2(\hat E)}
+\)</span>$
+\bigskip</p>
+<p>\begin{theorem}The residual error estimator is reliable:
+$<span class="math notranslate nohighlight">\(
+\| u - u_h \| \preceq \eta^{res} (u_h, f)
+\)</span><span class="math notranslate nohighlight">\(
+\end{theorem}
+{\em Proof:} From the coercivity of \)</span>A(.,.)<span class="math notranslate nohighlight">\( we get
+\)</span><span class="math notranslate nohighlight">\(
+\| u - u_h \|_{H^1} \preceq \frac{A(u-u_h, u-u_h)}{ \| u-u_h \|_{H^1} } \leq 
+        \sup_{0 \neq v \in H^1} \frac{A(u-u_h, v)}{ \| v \|_{H^1} }.
+\)</span><span class="math notranslate nohighlight">\(
+The Galerkin orthogonality \)</span>A(u-u_h,v_h) = 0<span class="math notranslate nohighlight">\( for all \)</span>v_h \in V_h<span class="math notranslate nohighlight">\( allows
+to insert the Cl\'ement interpolant in the numerator. It is well defined for
+\)</span>v \in H^1<span class="math notranslate nohighlight">\(:
+\)</span><span class="math notranslate nohighlight">\(
+\| u - u_h \|_{H^1} \leq
+        \sup_{0 \neq v \in H^1} \frac{A(u-u_h, v - \Pi_h v)}{ \| v \|_{H^1} }.
+\)</span><span class="math notranslate nohighlight">\(
+We use that the true solution \)</span>u<span class="math notranslate nohighlight">\( fulfills \)</span>A(u,v) = f(v)<span class="math notranslate nohighlight">\(, and insert
+the definitions of \)</span>A(.,.)<span class="math notranslate nohighlight">\( and \)</span>f(.)$:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+A(u-u_h, v-\Pi_h v) &amp; = &amp; f(v-\Pi_h v) - A(u_h, v - \Pi_h v) \\
+        &amp; = &amp; \int_{\Omega} f (v-\Pi_h v) \, dx - \int_\Omega \nabla u_h \nabla (v - \Pi_h v) \, dx \\
+        &amp; = &amp; \sum_{T \in \cal T} \int_{T} f (v-\Pi_h v) \, dx - \sum_{T \in \cal T} \int_T \nabla u_h \nabla (v - \Pi_h v) \, dx
+\end{eqnarray*}\]</div>
+<p>On each <span class="math notranslate nohighlight">\(T\)</span>, the finite element function <span class="math notranslate nohighlight">\(u_h\)</span> is a polynomial. This allows
+integration by  parts on each element:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+A(u-u_h, v-\Pi_h v) 
+        &amp; = &amp; \sum_{T \in \cal T} \int_{T} f (v-\Pi_h v) \, dx - \sum_{T \in \cal T} 
+ \left\{ -\int_T \Delta u_h (v - \Pi_h v) \, dx + \int_{\partial T} \frac{\partial u_h}{\partial n} (v - \Pi_h v) \, ds \right\}
+\end{eqnarray*}\]</div>
+<p>All inner edges <span class="math notranslate nohighlight">\(E\)</span> have contributions from normal derivatives from their two adjacent triangles <span class="math notranslate nohighlight">\(T_{E,1}\)</span> and <span class="math notranslate nohighlight">\(T_{E,2}\)</span>. On boundary edges, <span class="math notranslate nohighlight">\(v-\Pi_h v\)</span> vanishes.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\lefteqn{A(u-u_h, v-\Pi_h v)} \\
+         &amp; = &amp; \sum_T \int_T (f + \Delta u_h) (v - \Pi_h v) \, dx
+        + \sum_E \int_E \left\{
+         \frac{\partial u_h}{\partial n}|_{T_{E,1}} +
+         \frac{\partial u_h}{\partial n}|_{T_{E,2}}  \right\} (v - \Pi_h v) \, ds \\
+&amp; = &amp; \sum_T \int_T (f + \Delta u_h) (v - \Pi_h v) \, dx
+        + \sum_E \int_E \left[ \frac{\partial u_h}{\partial n} \right] (v - \Pi_h v) \, ds
+\end{eqnarray*}\]</div>
+<p>Applying Cauchy-Schwarz first on <span class="math notranslate nohighlight">\(L_2(T)\)</span> and <span class="math notranslate nohighlight">\(L_2(E)\)</span>, and then in <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\lefteqn{A(u-u_h, v-\Pi_h v)} \\
+        &amp; \leq &amp; \sum_T \| f + \Delta u_h \|_{L_2(T)} \| v - \Pi_h v \|_{L_2(T)}
+        + \sum_E \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)} \| v - \Pi_h v \|_{L_2(E)} \\
+        &amp; = &amp; \sum_T h_T \| f + \Delta u_h \|_{L_2(T)} h_T^{-1} \| v - \Pi_h v \|_{L_2(T)}
+        + \sum_E h_E^{1/2} \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)} h_E^{-1/2} \| v - \Pi_h v \|_{L_2(E)} \\
+        &amp; \leq &amp; 
+        \left\{ \sum_T h_T^2 \| f + \Delta u_h \|_{L_2(T)}^2 \right\}^{1/2}  
+        \left\{ \sum_T h_T^{-2} \| v - \Pi_h v \|_{L_2(T)}^2 \right\}^{1/2} + \\
+        &amp; &amp; + 
+        \left\{ \sum_E h_E \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)}^2 \right\}^{1/2}  
+        \left\{ \sum_E h_E^{-1} \| v - \Pi_h v \|_{L_2(E)}^2 \right\}^{1/2}
+\end{eqnarray*}\]</div>
+<p>We apply the approximation estimates of the Cl’ement operator, and use that
+only a bounded number of patches are overlapping:
+$<span class="math notranslate nohighlight">\(
+\sum_T h_T^{-2} \| v - \Pi_h v \|_{L_2(T)}^2 
+ \preceq
+\sum_T \| \nabla v \|_{L_2(\omega_T)}^2  \preceq \| \nabla v \|_{L_2(\Omega)}^2,
+\)</span><span class="math notranslate nohighlight">\(
+and similar for the edges
+\)</span><span class="math notranslate nohighlight">\(
+\sum_E h_E^{-1} \| v - \Pi_h v \|_{L_2(E)}^2 \leq \| \nabla v \|_{L_2(\Omega)}^2.
+\)</span>$
+Combining the steps above we observe</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| u - u_h \|_V &amp; \preceq &amp; \sup_{v \in H^1} \frac{A(u-u_h, v -\Pi_h v)}{\| v \|_H^1} \\
+ &amp; \preceq &amp;  \sup_{V \in H^1}
+         \frac{
+        \left\{ 
+        \sum_T h_T^2 \| f + \Delta u_h \|_{L_2(T)}^2  +
+        \sum_E h_E \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)}^2 \right\}^{1/2}  
+        \; \| \nabla v \|_{L_2(\Omega)} }
+        { \| v \|_{H^1} } \\
+        &amp; \leq &amp;
+        \left\{ 
+        \sum_T h_T^2 \| f + \Delta u_h \|_{L_2(T)}^2  +
+        \sum_E h_E \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)}^2 \right\}^{1/2},
+\end{eqnarray*}\]</div>
+<p>what is the reliability of the  error estimator <span class="math notranslate nohighlight">\(\eta^{res}(u_h,f)\)</span></p>
+<p>\bigskip</p>
+<p>\begin{theorem} If the source term <span class="math notranslate nohighlight">\(f\)</span> is piecewise polynomial on the mesh, then the error estimator <span class="math notranslate nohighlight">\(\eta^{res}\)</span> is efficient:
+$<span class="math notranslate nohighlight">\(
+\| u - u_h \|_V \geqc \eta^{res} (u_h, f)
+\)</span>$
+\end{theorem}</p>
+<p>\subsubsection{Goal driven error estimates}</p>
+<p>The above error estimators estimate the error in the energy norm <span class="math notranslate nohighlight">\(V\)</span>.
+Some applications require to compute certain values (such as point values, average values, line integrals, fluxes through surfaces, …). These
+values are descibed by linear functionals <span class="math notranslate nohighlight">\(b : V \rightarrow {\mathbb R}\)</span>.
+We want to design a method such that the error in this goal, i.e.,
+$<span class="math notranslate nohighlight">\(
+b(u) - b(u_h) 
+\)</span><span class="math notranslate nohighlight">\(
+is small. The technique is to solve additionally the dual problem, where 
+the right hand side is the goal functional:
+\)</span><span class="math notranslate nohighlight">\(
+\mbox{Find } w \in V : \qquad A(v, w) = b(v) \qquad \forall \, v \in V.
+\)</span><span class="math notranslate nohighlight">\(
+Usually, one cannot solve the dual problem either, and one applies a Galerkin method also for the dual problem:
+\)</span><span class="math notranslate nohighlight">\(
+\mbox{Find } w_h \in V_h : \qquad A(v_h, w_h) = b(v_h) \qquad \forall \, v_h \in V_h.
+\)</span><span class="math notranslate nohighlight">\(
+In the case of point values, the solution of the dual problem is the Green
+function (which is not in \)</span>H^1<span class="math notranslate nohighlight">\(). The error in the goal is
+\)</span><span class="math notranslate nohighlight">\(
+b(u-u_h) = A(u-u_h, w) = A(u-u_h, w-w_h).
+\)</span><span class="math notranslate nohighlight">\(
+A rigorous upper bound for the error in the goal is obtained by using
+continuity of the bilinear-form, and energy error estimates 
+\)</span>\eta^1<span class="math notranslate nohighlight">\( and \)</span>\eta^2<span class="math notranslate nohighlight">\( for the primal and
+dual problem, respectively:
+\)</span><span class="math notranslate nohighlight">\(
+| b(u-u_h) | \preceq \| u - u_h \|_V \| w - w_h \|_V \preceq
+         \eta^1(u_h, f) \, \eta^2(w_h, b).
+\)</span>$</p>
+<p>A good heuristic is the following (unfortunately, not correct)
+estimate</p>
+<div class="amsmath math notranslate nohighlight" id="equation-39f595fa-09c7-459f-ac4d-a4e4e12b0784">
+<span class="eqno">(20.6)<a class="headerlink" href="#equation-39f595fa-09c7-459f-ac4d-a4e4e12b0784" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\label{equ_incorrect}
+b(u-u_h)  = A(u-u_h, w-w_h) \preceq \sum_{T \in {\cal T} } 
+        \| u - u_h \|_{H^1(T)} \, \| w - w_h \|_{H^1(T)} 
+        \preceq \sum_{T} \eta_T^1 (u_h, f) \, \eta_T^2 (w_h, b)
+\end{equation}\]</div>
+<p>The last step would require a local reliability estimate. But, this is
+not true.</p>
+<p>We can interpret (\ref{equ_incorrect}) that way: The local estimators
+<span class="math notranslate nohighlight">\(\eta^2_T(w_h)\)</span> provide a way for weighting the primal local estimators
+according to the desired goal.</p>
+<p>\subsubsection{Mesh refinement algorithms}</p>
+<p>A posteriori error estimates are used to control recursive mesh refinement:</p>
+<p>\begin{quote}
+Start with initial mesh <span class="math notranslate nohighlight">\({\cal T}\)</span> \newline
+Loop \newline
+\hspace*{1cm} compute fe solution <span class="math notranslate nohighlight">\(u_h\)</span> on <span class="math notranslate nohighlight">\({\cal T}\)</span> \newline
+\hspace*{1cm} compute error estimator <span class="math notranslate nohighlight">\(\eta_T (u_h, f)\)</span> \newline
+\hspace*{1cm} if <span class="math notranslate nohighlight">\(\eta \leq\)</span> tolerance then stop \newline
+\hspace*{1cm} refine elements with large <span class="math notranslate nohighlight">\(\eta_T\)</span> to obtain a new mesh
+\end{quote}</p>
+<p>The mesh refinement algorithm has to take care of
+\begin{itemize}
+\item generating a sequence of regular meshes
+\item generating a sequence of shape regular meshes
+\end{itemize}</p>
+<p>{\bf Red-Green Refinement: \newline }
+A marked element is split into four equivalent elements (called red refinement):
+\begin{center}
+\includegraphics[height=2cm]{pictures/refine_irreg}
+\end{center}
+But, the obtained mesh is not regular. To avoid such irregular nodes,
+also neighboring elements must be split (called green closure):
+\begin{center}
+\includegraphics[height=2cm]{pictures/refine_reg}
+\end{center}
+If one continues to refine that way, the shape of the elements may get worse and worse:
+\begin{center}
+\includegraphics[height=2cm]{pictures/refinebad}
+\end{center}
+A solution is that elements of the green closure will not be further refined.
+Instead, remove the green closure, and replace it by red refinement.
+\begin{center}
+\includegraphics[height=2cm]{pictures/refinegood}
+\end{center}</p>
+<p>\bigskip
+{\bf Marked edge bisection:} \newline
+Each triangle has one marked edge.
+The triangle is only refined by cutting from the middle of the
+marked edge to the opposite vertex. The marked edges of the new triangles
+are the edges of the old triangle.</p>
+<p>If there occurs an irregular node, then also the neighbor triangle must be refined.
+\begin{center}
+\includegraphics[height=2cm]{pictures/bisect}
+\end{center}
+To ensure finite termination, one has to avoid cycles in the initial mesh.
+This can be obtained by first sorting the edges (e.g., by length), end then,
+always choose the largest edges as marked edge.</p>
+<p>\bigskip</p>
+<p>Both of these refinement algorithms are also possible in 3D.</p>
+<p>\input{equilibrated.tex}</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./aposteriori"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../FEM/nonconforming.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Non-conforming Finite Element Methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="equilibrated.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">21. </span>Equilibrated Residual Error Estimates</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
