@@ -33,6 +33,25 @@ parts:
     - file: sobolevspaces/equivalentnorms.ipynb  
 
 
+  - caption: Finite Element Method
+    numbered: True
+    chapters:
+    - file: FEM/finiteelements.ipynb
+    - file: FEM/sytemassembling.ipynb        
+    - file: FEM/erroranalysis.ipynb
+    - file: FEM/nonconforming.ipynb
+
+  - caption: A posteriori error estimates
+    numbered: True
+    chapters:
+    - file: aposteriori/aposteriori.ipynb
+    - file: aposteriori/equilibrated.ipynb 
+
+  - caption: High Order Finite Elements
+    numbered: True
+    chapters:
+    - file: pversion/hpfem.ipynb
+
   - caption: Mixed Finite Element Methods
     numbered: True
     chapters:
