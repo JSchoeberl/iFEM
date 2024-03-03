@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -479,7 +479,7 @@ there holds</p>
 \lambda \cdot u + \lambda \cdot v, \quad 
 (\lambda + \mu) \cdot u = \lambda \cdot u + \mu \cdot u\)</span></p></li>
 </ul>
-<p>Examples are <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>, the continuous functions <span class="math notranslate nohighlight">\(C^0([0,1])\)</span>, or the Lebesgue space <span class="math notranslate nohighlight">\(L_2\)</span>.</p>
+<p>Examples are <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>, the continuous functions <span class="math notranslate nohighlight">\(C^0([0,1])\)</span>, or the Lebesgue space <span class="math notranslate nohighlight">\(L_2(\Omega)\)</span>.</p>
 <p><strong>Definition:</strong> A <strong>normed</strong> vector space <span class="math notranslate nohighlight">\((V,\|\cdot\|)\)</span> is a vector
 space with the operation <span class="math notranslate nohighlight">\(\| . \| : V \rightarrow {\mathbb R}\)</span> being a norm, i.e.,
 for <span class="math notranslate nohighlight">\(u,v \in V\)</span> and <span class="math notranslate nohighlight">\(\lambda \in {\mathbb R}\)</span> there holds</p>
@@ -513,7 +513,7 @@ dual space <span class="math notranslate nohighlight">\(V^\ast\)</span>.</p>
 <span class="math notranslate nohighlight">\(A : V \times W \rightarrow {\mathbb R}\)</span> which is linear in <span class="math notranslate nohighlight">\(u\)</span> and in <span class="math notranslate nohighlight">\(v\)</span>.
 It is called <strong>symmetric</strong> if <span class="math notranslate nohighlight">\(V=W\)</span> and <span class="math notranslate nohighlight">\(A(u,v) = A(v,u)\)</span> for all <span class="math notranslate nohighlight">\(u,v \in V\)</span>.</p>
 <p>Examples are the bilinear form <span class="math notranslate nohighlight">\(A(u,v) = \int u v \, dx\)</span> on <span class="math notranslate nohighlight">\(L_2\)</span>, or
-<span class="math notranslate nohighlight">\(A(u,v) := u^T A v\)</span> on <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>, where <span class="math notranslate nohighlight">\(A\)</span> is a (symmetric) matrix.</p>
+<span class="math notranslate nohighlight">\(A(u,v) := u^T A v\)</span> on <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>, where <span class="math notranslate nohighlight">\(A\)</span> is a (symmetric) matrix, or <span class="math notranslate nohighlight">\(b(u,p) = \int \operatorname{div} u \, q \, dx\)</span> with <span class="math notranslate nohighlight">\(V = [C^1(\Omega)]^d\)</span> and <span class="math notranslate nohighlight">\(W=L_2(\Omega)\)</span>.</p>
 <p><strong>Definition:</strong> A symmetric bilinear form <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is
 called an <strong>inner product</strong> if it satisfies</p>
 <ul class="simple">
@@ -531,7 +531,7 @@ bilinear form such that <span class="math notranslate nohighlight">\(A(v,v) \geq
 \[
 A(u,v) \leq A(u,u)^{1/2} A(v,v)^{1/2}
 \]</div>
-<p><em>Proof:</em> For <span class="math notranslate nohighlight">\(t \in {\mathbb R}\)</span> there holds</p>
+<p><em>Proof:</em> For any <span class="math notranslate nohighlight">\(t \in {\mathbb R}\)</span> there holds</p>
 <div class="math notranslate nohighlight">
 \[
 0 \leq A(u-tv, u-tv) = A(u,u) - 2 t A(u,v) + t^2 A(v,v).
@@ -582,7 +582,7 @@ can be approximated by elements of <span class="math notranslate nohighlight">\(
 \[
 \forall {\varepsilon &gt; 0} \,  \forall { u \in V }  \, \exists { v \in S }  \mbox{ such that } \| u - v \|_V \leq \varepsilon.
 \]</div>
-<p><strong>Lemma:</strong> <strong>(extension principle)</strong> Let <span class="math notranslate nohighlight">\(S\)</span> be a dense subspace of the normed space <span class="math notranslate nohighlight">\(V\)</span>,
+<p><strong>Extension principle:</strong> Let <span class="math notranslate nohighlight">\(S\)</span> be a dense subspace of the normed space <span class="math notranslate nohighlight">\(V\)</span>,
 and let <span class="math notranslate nohighlight">\(W\)</span> be a complete space. Let <span class="math notranslate nohighlight">\(T : S \rightarrow W\)</span> be a bounded linear operator
 with respect to the norm <span class="math notranslate nohighlight">\(\| T \|_{V \rightarrow W}\)</span>. Then, the operator can be uniquely extended onto <span class="math notranslate nohighlight">\(V\)</span>.</p>
 <p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(u \in V\)</span>, and let <span class="math notranslate nohighlight">\(v_n\)</span> be a sequence such that <span class="math notranslate nohighlight">\(v_n \rightarrow u\)</span>. Thus, <span class="math notranslate nohighlight">\(v_n\)</span> is Cauchy. <span class="math notranslate nohighlight">\(T v_n\)</span> is a well defined sequence in <span class="math notranslate nohighlight">\(W\)</span>. Since <span class="math notranslate nohighlight">\(T\)</span> is continuous, <span class="math notranslate nohighlight">\(T v_n\)</span> is also Cauchy. Since <span class="math notranslate nohighlight">\(W\)</span> is complete, there exists a limit <span class="math notranslate nohighlight">\(w\)</span> such that <span class="math notranslate nohighlight">\(T v_n \rightarrow w\)</span>. The limit is independent of the sequence, and thus <span class="math notranslate nohighlight">\(T u\)</span> can be defined as the limit <span class="math notranslate nohighlight">\(w\)</span>.</p>

@@ -536,7 +536,7 @@ the inf-sup condition</p>
 <div class="math notranslate nohighlight">
 \[
   \inf_{u \in V \atop u \neq 0} \sup_{v \in W \atop v \neq 0}
-  \frac{ B(u,v) } { \| u \|_V \, \| v \|_W } \geq \beta_1.
+  \frac{ B(u,v) } { \| u \|_V \, \| v \|_W } \geq \beta_1
   \]</div>
 <p>and the condition</p>
 <div class="math notranslate nohighlight">
@@ -567,8 +567,7 @@ W^\ast = R(B) \oplus R(B)^\bot.
 \[
 (B u, g)_{W^\ast} = 0 \qquad \forall \, u \in V.
 \]</div>
-<p>Let <span class="math notranslate nohighlight">\(v_g \in W\)</span> be the Riesz representation of <span class="math notranslate nohighlight">\(g\)</span>, i.e., <span class="math notranslate nohighlight">\((v_g, w)_W = g(w)\)</span> for all <span class="math notranslate nohighlight">\(w \in W\)</span>. This <span class="math notranslate nohighlight">\(v_g\)</span> is in contradiction to the assumption
-(\ref{equ_infsup2})</p>
+<p>Let <span class="math notranslate nohighlight">\(v_g \in W\)</span> be the Riesz representation of <span class="math notranslate nohighlight">\(g\)</span>, i.e., <span class="math notranslate nohighlight">\((v_g, w)_W = g(w)\)</span> for all <span class="math notranslate nohighlight">\(w \in W\)</span>. This <span class="math notranslate nohighlight">\(v_g\)</span> is in contradiction to the second assumption, namely</p>
 <div class="math notranslate nohighlight">
 \[
 \sup_{u \in V} \frac{B(u,v_g)}{ \| u \|_V} = 
@@ -632,11 +631,11 @@ can skip the second condition.</p>
 <blockquote>
 <div><p><strong>Theorem:</strong>
 Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> is continuous with bound <span class="math notranslate nohighlight">\(\beta_2\)</span>, and fulfills the conditions
-of the Babuška-Aziz theorem. Furhtermore,
+of the Babuška-Aziz theorem. Furthermore,
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-48418447-4f4a-4893-bc04-97a0bc571ea5">
-<span class="eqno">()<a class="headerlink" href="#equation-48418447-4f4a-4893-bc04-97a0bc571ea5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-14ff1ec3-d69e-4547-b0b6-8e557c182bae">
+<span class="eqno">()<a class="headerlink" href="#equation-14ff1ec3-d69e-4547-b0b6-8e557c182bae" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
   \end{equation}\]</div>
 </div></blockquote>

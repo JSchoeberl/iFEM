@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -538,7 +538,7 @@ bilinear form</p>
 A(u,v) = \int \nabla u \, \nabla v \, dx + \int b \cdot \nabla u \, v \, dx + \int u v \, dx.
 \]</div>
 <p>If <span class="math notranslate nohighlight">\(\operatorname{div} \, b \leq 0\)</span>, what is an important case arising from incompressible flow
-fields (<span class="math notranslate nohighlight">\(\operatorname{div} \, b = 0\)</span>), then <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is coercive and continuous w.r.t. the same norm as above.</p>
+fields (<span class="math notranslate nohighlight">\(\operatorname{div} \, b = 0\)</span>), then <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> is coercive and continuous w.r.t. the same norm as above (Exercise!).</p>
 <p>Instead of the linear form <span class="math notranslate nohighlight">\(f(\cdot)\)</span>, we will often write <span class="math notranslate nohighlight">\(f \in V^\ast\)</span>. The evaluation is written as the duality product</p>
 <div class="math notranslate nohighlight">
 \[
@@ -652,8 +652,8 @@ Let <span class="math notranslate nohighlight">\(v_1, v_2 \in V\)</span>, and se
 \[
 L^2 = 1 - \alpha_1^2 / \alpha_2^2 \in [0,1).
 \]</div>
-<p>Banach’s contraction mapping theorem state that (\ref{equ_fixedpointequ})
-has a unique fixed point. Finally, we obtain the bound (\ref{equ_lax_milgram_bound}) from</p>
+<p>Banach’s contraction mapping theorem state that <span class="math notranslate nohighlight">\(u = u - \tau J_V (A u - f)\)</span>,
+has a unique fixed point. Finally, we obtain the claimed bound from</p>
 <div class="math notranslate nohighlight">
 \[
 \| u \|_V^2 \leq \alpha_1^{-1} A(u,u) = \alpha_1^{-1} \, f(u) \leq \alpha_1^{-1} \| f\|_{V^\ast} \| u \|_V,
