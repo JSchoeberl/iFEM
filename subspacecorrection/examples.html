@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>52. Same Examples of ASM preconditioners &#8212; Interactive Finite Elements</title>
+    <title>52. Some Examples of ASM preconditioners &#8212; Interactive Finite Elements</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -261,7 +261,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="asm.html">51. Additive Schwarz Methods</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">52. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">52. Some Examples of ASM preconditioners</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minimaldd.html">53. Domain Decomposition with minimal overlap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overlapping.html">54. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise.html">55. Exercise: Robust preconditioners</a></li>
@@ -454,7 +454,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Same Examples of ASM preconditioners</h1>
+    <h1>Some Examples of ASM preconditioners</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -478,8 +478,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="same-examples-of-asm-preconditioners">
-<h1><span class="section-number">52. </span>Same Examples of ASM preconditioners<a class="headerlink" href="#same-examples-of-asm-preconditioners" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="some-examples-of-asm-preconditioners">
+<h1><span class="section-number">52. </span>Some Examples of ASM preconditioners<a class="headerlink" href="#some-examples-of-asm-preconditioners" title="Link to this heading">#</a></h1>
 <section id="diagonal-preconditioner-for-l-2-norm">
 <h2><span class="section-number">52.1. </span>Diagonal preconditioner for <span class="math notranslate nohighlight">\(L_2\)</span>-norm<a class="headerlink" href="#diagonal-preconditioner-for-l-2-norm" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span>, and <span class="math notranslate nohighlight">\(M\)</span> be the finite element
@@ -552,12 +552,6 @@ of the transformation rule of integrals:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.5084873825636222 1.9999985124304929
-kappa= 3.9332313465619806
-</pre></div>
-</div>
-</div>
 </div>
 <p><em>Exercise:</em> Do some experiments with the mesh-size <span class="math notranslate nohighlight">\(h\)</span> and the order <span class="math notranslate nohighlight">\(p\)</span>.</p>
 </section>
@@ -627,12 +621,6 @@ and together with the transformation rule we get</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.04897732520654302 1.5008305152546493
-kappa= 30.643374437568287
-</pre></div>
-</div>
-</div>
 </div>
 <p>Exercise:</p>
 <ul class="simple">
@@ -662,12 +650,6 @@ A(u,v) = \int_\Omega \nabla u \nabla v \, dx + \varepsilon \int_\Omega u v \, dx
 <span class="n">lam</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;lammin, lam2, lammax=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;kappa=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lam2, lammax= 2.445649917934279e-05 0.02174192758618282 1.691719831029388
-kappa= 69172.60800999273
 </pre></div>
 </div>
 </div>
@@ -707,13 +689,6 @@ C_{ASM}^{-1} = E_0 \, (E_0^T A E_0)^{-1} E_0^T  + C_{Jac}^{-1},
 <span class="n">lam</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;lammin, lam2, lammax=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;kappa=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a0= 0.010000000000006034
-lammin, lam2, lammax= 0.021639697370106015 0.04467208226450642 1.6917198213704379
-kappa= 78.1766857658301
 </pre></div>
 </div>
 </div>
