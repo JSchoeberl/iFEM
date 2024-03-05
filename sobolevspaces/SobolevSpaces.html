@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -524,16 +524,18 @@ of smooth functions in the domain, i.e.,</p>
 <p><strong>Definition:</strong> The domain <span class="math notranslate nohighlight">\(\Omega\)</span> has a {\bf Lipschitz boundary}, <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, if there exists a collection of open sets <span class="math notranslate nohighlight">\(O_i\)</span>, a positive parameter <span class="math notranslate nohighlight">\(\varepsilon\)</span>, an integer <span class="math notranslate nohighlight">\(N\)</span> and a finite number <span class="math notranslate nohighlight">\(L\)</span>, such that for all <span class="math notranslate nohighlight">\(x \in \partial \Omega\)</span> the ball of radius <span class="math notranslate nohighlight">\(\varepsilon\)</span> centered at <span class="math notranslate nohighlight">\(x\)</span> is contained in some <span class="math notranslate nohighlight">\(O_i\)</span>, no more than <span class="math notranslate nohighlight">\(N\)</span> of the sets <span class="math notranslate nohighlight">\(O_i\)</span> intersect non-trivially, and each
 part of the boundary <span class="math notranslate nohighlight">\(O_i \cap \Omega\)</span> is a graph of a Lipschitz function <span class="math notranslate nohighlight">\(\varphi_i : {\mathbb R}^{d-1} \rightarrow {\mathbb R}\)</span> with Lipschitz norm bounded by <span class="math notranslate nohighlight">\(L\)</span>.</p>
 <p><strong>Theorem:</strong> Assume that <span class="math notranslate nohighlight">\(\Omega\)</span> has a Lipschitz boundary, and let <span class="math notranslate nohighlight">\(1 \leq p &lt; \infty\)</span>. Then  <span class="math notranslate nohighlight">\(\widehat W_p^k  = W_p^k\)</span>.</p>
-<p>The case <span class="math notranslate nohighlight">\(W_2^k\)</span> is special, it is a Hilbert space. We denote it by
-$<span class="math notranslate nohighlight">\(
+<p>The case <span class="math notranslate nohighlight">\(W_2^k\)</span> is special, it is a Hilbert space. We denote it by</p>
+<div class="math notranslate nohighlight">
+\[
 H^k(\Omega) := W_2^k(\Omega).
-\)</span><span class="math notranslate nohighlight">\(
-The inner product is 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The inner product is</p>
+<div class="math notranslate nohighlight">
+\[
 (u,v)_{H^k} := \sum_{|\alpha| \leq k} (D^\alpha u, D^\alpha v)_{L_2}
-\)</span><span class="math notranslate nohighlight">\(
-In the following, we will prove most theorems for the Hilbert spaces \)</span>H^k<span class="math notranslate nohighlight">\(,
-and state the general results for \)</span>W_p^k$.</p>
+\]</div>
+<p>In the following, we will prove most theorems for the Hilbert spaces <span class="math notranslate nohighlight">\(H^k\)</span>,
+and state the general results for <span class="math notranslate nohighlight">\(W_p^k\)</span>.</p>
 </section>
 
     <script type="text/x-thebe-config">

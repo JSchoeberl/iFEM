@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -465,7 +465,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-by-parts">14.1. Integration by parts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobolev-spaces-over-sub-domains">14.2. Sobolev spaces over sub-domains}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobolev-spaces-over-sub-domains">14.2. Sobolev spaces over sub-domains</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-operators">14.3. Extension operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trace-space-h-1-2">14.4. The trace space <span class="math notranslate nohighlight">\(H^{1/2}\)</span></a></li>
 </ul>
@@ -641,7 +641,7 @@ Again, the short proof is based on the density of <span class="math notranslate 
 in <span class="math notranslate nohighlight">\(H^1\)</span>.</p>
 </section>
 <section id="sobolev-spaces-over-sub-domains">
-<h2><span class="section-number">14.2. </span>Sobolev spaces over sub-domains}<a class="headerlink" href="#sobolev-spaces-over-sub-domains" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>Sobolev spaces over sub-domains<a class="headerlink" href="#sobolev-spaces-over-sub-domains" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> consist of <span class="math notranslate nohighlight">\(M\)</span> Lipschitz-continuous sub-domains <span class="math notranslate nohighlight">\(\Omega_i\)</span>
 such that</p>
 <ul class="simple">
@@ -735,55 +735,61 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 Define the domain \)</span>\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M$.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e5249bc2-9451-4235-aac2-0318ebe4004b">
-<span class="eqno">(14.1)<a class="headerlink" href="#equation-e5249bc2-9451-4235-aac2-0318ebe4004b" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
+<div class="amsmath math notranslate nohighlight" id="equation-66363347-9863-42b8-b1d7-e939727bb5cb">
+<span class="eqno">()<a class="headerlink" href="#equation-66363347-9863-42b8-b1d7-e939727bb5cb" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
 \end{array}
 \end{equation}\]</div>
-<p>\begin{theorem} The extension operator <span class="math notranslate nohighlight">\(E : H^1(\Omega) \rightarrow H^1(\widetilde \Omega)\)</span> is well defined and bounded with respect to the norms
-$<span class="math notranslate nohighlight">\(
-\| E u \|_{L_2(\widetilde \Omega)} \leq c \, \| u \|_{L_2(\Omega)}
-\)</span><span class="math notranslate nohighlight">\(
-and
-\)</span><span class="math notranslate nohighlight">\(
-\| \nabla E u \|_{L_2(\widetilde \Omega)} \leq c \, \| \nabla u \|_{L_2(\Omega)}
-\)</span><span class="math notranslate nohighlight">\(
-\end{theorem}
-{\em Proof:} Let \)</span>u \in C^1(\overline \Omega)<span class="math notranslate nohighlight">\(. First, we prove the estimates
-for the individual pieces \)</span>S_i<span class="math notranslate nohighlight">\(:
-\)</span><span class="math notranslate nohighlight">\(
+<blockquote>
+<div><p><strong>Theorem:</strong> The extension operator <span class="math notranslate nohighlight">\(E : H^1(\Omega) \rightarrow H^1(\widetilde \Omega)\)</span> is well defined and bounded with respect to the norms</p>
+<div class="math notranslate nohighlight">
+\[
+  \| E u \|_{L_2(\widetilde \Omega)} \leq c \, \| u \|_{L_2(\Omega)}
+  \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+  \| \nabla E u \|_{L_2(\widetilde \Omega)} \leq c \, \| \nabla u \|_{L_2(\Omega)}
+  \]</div>
+</div></blockquote>
+<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(u \in C^1(\overline \Omega)\)</span>. First, we prove the estimates
+for the individual pieces <span class="math notranslate nohighlight">\(S_i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \int_{S_i \setminus \Omega} E u (\hat x)^2 \, d \hat x =
 \int_{S_i \cap \Omega} u (x)^2 \, \det \left( \frac{d \hat x}{d x} \right) d x \leq
-c \| u \|_{L_2(S_i \cap \Omega)}^2 
-\)</span><span class="math notranslate nohighlight">\(
-For the derivatives we use
-\)</span><span class="math notranslate nohighlight">\(
+c \| u \|_{L_2(S_i \cap \Omega)}^2 \]</div>
+<p>For the derivatives we use</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{d E u(\hat x)}{d\hat x} = \frac{d u(x(\hat x))}{d \hat x} =
         \frac{d u}{dx} \frac{dx}{d \hat x}.
-\)</span><span class="math notranslate nohighlight">\(
-Since \)</span>\frac{d x}{d \hat x}<span class="math notranslate nohighlight">\( and \)</span>(\frac{d x}{d \hat x})^{-1} = \frac{d \hat x}{dx}<span class="math notranslate nohighlight">\( are bounded, one obtains
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\frac{d x}{d \hat x}\)</span> and <span class="math notranslate nohighlight">\((\frac{d x}{d \hat x})^{-1} = \frac{d \hat x}{dx}\)</span> are bounded, one obtains</p>
+<div class="math notranslate nohighlight">
+\[
 | \nabla_{\hat x} E u (\hat x) | \simeq | \nabla_x u(x) |,
-\)</span><span class="math notranslate nohighlight">\(
-and 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
 \int_{S_i \setminus \Omega} | \nabla_{\hat x} E u |^2 \, d \hat x \leq 
         c \int_{S_i \cap \Omega} | \nabla u |^2 \, dx
-\)</span><span class="math notranslate nohighlight">\(
-These estimates prove that \)</span>E<span class="math notranslate nohighlight">\( is a bounded operator into \)</span>H^1<span class="math notranslate nohighlight">\( on the
-sub-domains \)</span>S_i \setminus \Omega<span class="math notranslate nohighlight">\(. The construction 
-was such that for \)</span>u \in C^1(\overline \Omega)<span class="math notranslate nohighlight">\(, the extension \)</span>E u<span class="math notranslate nohighlight">\( is 
-continuous across \)</span>\partial \Omega<span class="math notranslate nohighlight">\(, and also across the individual \)</span>S_i<span class="math notranslate nohighlight">\(.
-By Theorem~\ref{theo_subdomainh1}, \)</span>E u <span class="math notranslate nohighlight">\( belongs
-to \)</span>H^1 (\widetilde \Omega)<span class="math notranslate nohighlight">\(, and
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>These estimates prove that <span class="math notranslate nohighlight">\(E\)</span> is a bounded operator into <span class="math notranslate nohighlight">\(H^1\)</span> on the
+sub-domains <span class="math notranslate nohighlight">\(S_i \setminus \Omega\)</span>. The construction
+was such that for <span class="math notranslate nohighlight">\(u \in C^1(\overline \Omega)\)</span>, the extension <span class="math notranslate nohighlight">\(E u\)</span> is
+continuous across <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, and also across the individual <span class="math notranslate nohighlight">\(S_i\)</span>.
+By Theorem~\ref{theo_subdomainh1}, <span class="math notranslate nohighlight">\(E u \)</span> belongs
+to <span class="math notranslate nohighlight">\(H^1 (\widetilde \Omega)\)</span>, and</p>
+<div class="math notranslate nohighlight">
+\[
 \| \nabla E u \|_{L_2(\widetilde \Omega)}^2 = 
 \| \nabla u \|_{\Omega}^2 + \sum_{i=1}^M \| \nabla u \|_{S_i \setminus \Omega}^2 \leq c \| \nabla u \|_{L_2(\Omega)}^2,
-\)</span><span class="math notranslate nohighlight">\(
-By density, we get the result for \)</span>H^1(\Omega)<span class="math notranslate nohighlight">\(. Let \)</span>u_j  \in C^1(\overline \Omega) \rightarrow  u<span class="math notranslate nohighlight">\(, than \)</span>u_j<span class="math notranslate nohighlight">\( is Cauchy, \)</span>E u_j<span class="math notranslate nohighlight">\( is Cauchy in \)</span>H^1(\widetilde \Omega)<span class="math notranslate nohighlight">\(, and thus converges to \)</span>u \in H^1(\widetilde \Omega)$.</p>
-<p>\bigskip</p>
+\]</div>
+<p>By density, we get the result for <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span>. Let <span class="math notranslate nohighlight">\(u_j  \in C^1(\overline \Omega) \rightarrow  u\)</span>, than <span class="math notranslate nohighlight">\(u_j\)</span> is Cauchy, <span class="math notranslate nohighlight">\(E u_j\)</span> is Cauchy in <span class="math notranslate nohighlight">\(H^1(\widetilde \Omega)\)</span>, and thus converges to <span class="math notranslate nohighlight">\(u \in H^1(\widetilde \Omega)\)</span>.</p>
 <p>The extension of functions from <span class="math notranslate nohighlight">\(H_0^1(\Omega)\)</span> onto larger domains is
 trivial: Extension by <span class="math notranslate nohighlight">\(0\)</span> is a bounded operator.
 One can extend functions from <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span> into <span class="math notranslate nohighlight">\(H_0^1(\widetilde \Omega)\)</span>,
@@ -793,14 +799,14 @@ $<span class="math notranslate nohighlight">\(
 E_0 u (\hat x) = (1-\eta) \, u(x) 
 \)</span><span class="math notranslate nohighlight">\(
 This extension vanishes at \)</span>\partial \widetilde \Omega$</p>
-<p>\begin{theorem}
-The extension <span class="math notranslate nohighlight">\(E_0\)</span> is an extension from <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span> to <span class="math notranslate nohighlight">\(H_0^1(\widetilde \Omega)\)</span>. It is bounded w.r.t.
-$<span class="math notranslate nohighlight">\(
-\| E_0 u \|_{H^1(\widetilde \Omega)} \leq c \| u \|_{H^1(\Omega)}
-\)</span>$
-\end{theorem}
-\noindent
-{\em Proof:} Exercises</p>
+<blockquote>
+<div><p><strong>Theorem:</strong> The extension <span class="math notranslate nohighlight">\(E_0\)</span> is an extension from <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span> to <span class="math notranslate nohighlight">\(H_0^1(\widetilde \Omega)\)</span>. It is bounded w.r.t.</p>
+<div class="math notranslate nohighlight">
+\[
+  \| E_0 u \|_{H^1(\widetilde \Omega)} \leq c \| u \|_{H^1(\Omega)}
+  \]</div>
+</div></blockquote>
+<p><em>Proof:</em> Exercises</p>
 <p>In this case, it is not possible to bound the gradient term only by gradients.
 To see this, take the constant function on <span class="math notranslate nohighlight">\(\Omega\)</span>. The gradient vanishes,
 but the extension is not constant.</p>
@@ -818,8 +824,8 @@ $<span class="math notranslate nohighlight">\(
 W = \{ \operatorname{tr} \, u : u \in H^1(\Omega) \}
 \)</span>$
 with the norm</p>
-<div class="amsmath math notranslate nohighlight" id="equation-174318aa-ee8c-4b85-8c9e-be4ff341da80">
-<span class="eqno">(14.2)<a class="headerlink" href="#equation-174318aa-ee8c-4b85-8c9e-be4ff341da80" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8932aa1e-025f-4c3c-83bd-4af8890f884b">
+<span class="eqno">()<a class="headerlink" href="#equation-8932aa1e-025f-4c3c-83bd-4af8890f884b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_tracenorm}
 \| \operatorname{tr} u \|_W = \inf_{v \in V \atop \operatorname{tr} \, u = \operatorname{tr} \, v } \| v \|_V.
 \end{equation}\]</div>
@@ -908,8 +914,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1d59ff94-b44c-457b-8c13-92501bddd7a6">
-<span class="eqno">(14.3)<a class="headerlink" href="#equation-1d59ff94-b44c-457b-8c13-92501bddd7a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-385c93e3-2be7-4bb1-b05b-cf7c36dbf79e">
+<span class="eqno">()<a class="headerlink" href="#equation-385c93e3-2be7-4bb1-b05b-cf7c36dbf79e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
@@ -944,44 +950,52 @@ norm (<span class="math notranslate nohighlight">\(s \in (0,1)\)</span>)</p>
 \| u \|_{H^s(0,1)}^2 = \sum_{k=0}^\infty (1+k^2 \pi^2)^s (u,z_k)_{L_2}^2
 \]</div>
 <p>We consider the trace <span class="math notranslate nohighlight">\(\operatorname{tr}|_E\)</span> of <span class="math notranslate nohighlight">\(H^1((0,1)^2)\)</span> onto one edge <span class="math notranslate nohighlight">\(E = (0,1) \times \{ 0 \}\)</span>. For <span class="math notranslate nohighlight">\(g \in W_E := \operatorname{tr} H^1((0,1)^2)\)</span>, the norm <span class="math notranslate nohighlight">\(\| g \|_W\)</span> is
-defined by
-$<span class="math notranslate nohighlight">\(
+defined by</p>
+<div class="math notranslate nohighlight">
+\[
 \| g \|_W = \| u_g \|_{H^1}.
-\)</span><span class="math notranslate nohighlight">\(
-Here, \)</span>u_g<span class="math notranslate nohighlight">\( solves the Dirichlet problem \)</span>u_g|<em>E = g<span class="math notranslate nohighlight">\(, and \)</span>(u_g,v)</em>{H^1} = 0 ; \forall , v \in H^1<span class="math notranslate nohighlight">\( such that \)</span>\operatorname{tr}_E v = 0$.</p>
-<p>Since <span class="math notranslate nohighlight">\(W \subset L_2(E)\)</span>, we can expand <span class="math notranslate nohighlight">\(g\)</span> in the <span class="math notranslate nohighlight">\(L_2\)</span>-orthonormal cosine basis <span class="math notranslate nohighlight">\(z_k\)</span>
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(u_g\)</span> solves the Dirichlet problem <span class="math notranslate nohighlight">\(u_g|_E = g\)</span>, and <span class="math notranslate nohighlight">\((u_g,v)_{H^1} = 0 \; \forall \, v \in H^1\)</span> such that <span class="math notranslate nohighlight">\(\operatorname{tr}_E v = 0\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(W \subset L_2(E)\)</span>, we can expand <span class="math notranslate nohighlight">\(g\)</span> in the <span class="math notranslate nohighlight">\(L_2\)</span>-orthonormal cosine basis <span class="math notranslate nohighlight">\(z_k\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 g(x) = \sum g_n z_k(x)
-\)</span><span class="math notranslate nohighlight">\(
-The Dirichlet problems for the \)</span>z_k<span class="math notranslate nohighlight">\(,
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The Dirichlet problems for the <span class="math notranslate nohighlight">\(z_k\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{array}{rcll}
 -\Delta u_k + u_k &amp; = &amp; 0  \qquad &amp; \mbox{in } \Omega \\
  u_k &amp; = &amp; z_k \qquad &amp; \mbox{on } E \\
 \frac{\partial u_k}{\partial n} &amp; = &amp; 0 \qquad &amp; \mbox{on } \partial \Omega \setminus E,
 \end{array}
-\)</span><span class="math notranslate nohighlight">\(
-have the explicit solution
-\)</span><span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>have the explicit solution</p>
+<div class="math notranslate nohighlight">
+\[
 u_0(x,y) = 1
-\)</span><span class="math notranslate nohighlight">\(
-and
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
 u_k(x,y) = \sqrt 2 \cos (k \pi x) \frac{e^{k \pi (1-y)} + e^{-k \pi (1-y)}}{e^{k \pi} + e^{-k \pi}}.
-\)</span><span class="math notranslate nohighlight">\(
-The asymptotic is
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The asymptotic is</p>
+<div class="math notranslate nohighlight">
+\[
 \| u_k \|_{L_2}^2 \simeq (k+1)^{-1}
-\)</span><span class="math notranslate nohighlight">\(
-and
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
 \| \nabla u_k \|_{L_2}^2 \simeq k 
-\)</span><span class="math notranslate nohighlight">\(
-Furthermore, the \)</span>u_k<span class="math notranslate nohighlight">\( are orthogonal in \)</span>(.,.)_{H^1}<span class="math notranslate nohighlight">\(. Thus \)</span>u_g = \sum_n g_n u_k<span class="math notranslate nohighlight">\( has the norm
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Furthermore, the <span class="math notranslate nohighlight">\(u_k\)</span> are orthogonal in <span class="math notranslate nohighlight">\((.,.)_{H^1}\)</span>. Thus <span class="math notranslate nohighlight">\(u_g = \sum_n g_n u_k\)</span> has the norm</p>
+<div class="math notranslate nohighlight">
+\[
 \| u_g \|_{H^1}^2 = \sum g_n^2 \| u_k \|_{H^1}^2 \simeq \sum g_n^2 (1+k).
-\)</span><span class="math notranslate nohighlight">\(
-This norm is equivalent to \)</span>H^{1/2}(E)$.</p>
+\]</div>
+<p>This norm is equivalent to <span class="math notranslate nohighlight">\(H^{1/2}(E)\)</span>.</p>
 <p>We have proven that the trace space onto one edge is the interpolation
 space <span class="math notranslate nohighlight">\(H^{1/2}(E)\)</span>. This is also true for general domains (Lipschitz, with piecewise smooth boundary).</p>
 </section>
@@ -1052,7 +1066,7 @@ space <span class="math notranslate nohighlight">\(H^{1/2}(E)\)</span>. This is 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-by-parts">14.1. Integration by parts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobolev-spaces-over-sub-domains">14.2. Sobolev spaces over sub-domains}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobolev-spaces-over-sub-domains">14.2. Sobolev spaces over sub-domains</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-operators">14.3. Extension operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trace-space-h-1-2">14.4. The trace space <span class="math notranslate nohighlight">\(H^{1/2}\)</span></a></li>
 </ul>
