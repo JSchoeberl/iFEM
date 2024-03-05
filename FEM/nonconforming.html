@@ -261,7 +261,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">51. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">52. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">52. Some Examples of ASM preconditioners</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">53. Domain Decomposition with minimal overlap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">54. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">55. Exercise: Robust preconditioners</a></li>
@@ -534,8 +534,8 @@ We use the uniform coercivity, and the definitions of <span class="math notransl
         &amp; = &amp; A(u-v_h, w_h) + [ A(v_h, w_h) - A_h(v_h, w_h) ] + [ f_h(w_h) - f(w_h)]
 \end{eqnarray*}\]</div>
 <p>Divide by <span class="math notranslate nohighlight">\(\| u_h - v_h \| = \| w_h \|\)</span>, and use the continuity of <span class="math notranslate nohighlight">\(A(.,.)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7c2b63b6-ffbe-4190-91d7-4cd56447dc3f">
-<span class="eqno">(19.1)<a class="headerlink" href="#equation-7c2b63b6-ffbe-4190-91d7-4cd56447dc3f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5b381b0a-1e18-49b0-ba1f-d09e3b5d158d">
+<span class="eqno">(19.1)<a class="headerlink" href="#equation-5b381b0a-1e18-49b0-ba1f-d09e3b5d158d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_strang1a}
 \| u_h - v_h \| \preceq \| u - v_h \| + \frac{|A(v_h, w_h) - A_h(v_h, w_h)|}{\| w_h  \|} + \frac{ | f(w_h) - f_h(w_h) | } { \| w_h \| }
 \end{equation}\]</div>
@@ -576,16 +576,16 @@ $<span class="math notranslate nohighlight">\(
         \right.
 \)</span>$</p>
 <p>To apply the first lemma of Strang, we have to verify the uniform coercivity</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a20394f9-182f-4b6b-b2a2-78dc34a23e22">
-<span class="eqno">(19.2)<a class="headerlink" href="#equation-a20394f9-182f-4b6b-b2a2-78dc34a23e22" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-00d7ef8b-716d-40f7-b8ad-9bc5d5f4a044">
+<span class="eqno">(19.2)<a class="headerlink" href="#equation-00d7ef8b-716d-40f7-b8ad-9bc5d5f4a044" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_uniformell}
 \sum_T \frac{|T|}{3} \sum_{\alpha = 1}^3 |v_h(x_{T,\alpha})|^2 \geq 
 \alpha_1 \sum_T \int_T | v_h |^2 \, dx \qquad \forall \, v_h \in V_h,
 \end{equation}\]</div>
 <p>which is done by transformation to the reference element.
 The consistency error can be estimated by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-102dcc08-6f8a-426d-bff0-b6364245256b">
-<span class="eqno">(19.3)<a class="headerlink" href="#equation-102dcc08-6f8a-426d-bff0-b6364245256b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-47966c2c-fc39-42f0-85b8-fc82657dc7e3">
+<span class="eqno">(19.3)<a class="headerlink" href="#equation-47966c2c-fc39-42f0-85b8-fc82657dc7e3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_consist}
 | \int_T u_h v_h \, dx - \frac{|T|}{3} \sum_{\alpha=1}^3 u_h(x_\alpha) v_h(x_\alpha) |
  \preceq h_T^2 \, \| \nabla u_h \|_{L_2(T)} \, \| \nabla v_h \|_{L_2(T)}
@@ -632,8 +632,8 @@ A_h (u, v_h) \leq \alpha_2 \| u \|_h \| v_h \|_h \qquad \forall \, u \in V + V_h
 <p>The error can now be measured only in the discrete norm <span class="math notranslate nohighlight">\(\| u - u_h \|_{V_h}\)</span>.
 \begin{lemma}
 Under the above assumptions there holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7fdbcad3-c47e-42e2-afc9-17e45e993ec0">
-<span class="eqno">(19.4)<a class="headerlink" href="#equation-7fdbcad3-c47e-42e2-afc9-17e45e993ec0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-55de7545-28e0-4d67-932c-dda941cb2974">
+<span class="eqno">(19.4)<a class="headerlink" href="#equation-55de7545-28e0-4d67-932c-dda941cb2974" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_strang2}
 \| u - u_h \|_h \preceq \inf_{v_h \in V_h} \| u - v_h \|_h +
          \sup_{w_h \in V_h} \frac{| A_h(u,w_h) - f_h(w_h) |}{\| w_h \|_h}

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -261,7 +261,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">51. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">52. Same Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">52. Some Examples of ASM preconditioners</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">53. Domain Decomposition with minimal overlap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">54. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">55. Exercise: Robust preconditioners</a></li>
@@ -735,8 +735,8 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 Define the domain \)</span>\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M$.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-33b43cb5-7838-47f2-8716-25c9dbad1353">
-<span class="eqno">()<a class="headerlink" href="#equation-33b43cb5-7838-47f2-8716-25c9dbad1353" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
+<div class="amsmath math notranslate nohighlight" id="equation-e5249bc2-9451-4235-aac2-0318ebe4004b">
+<span class="eqno">(14.1)<a class="headerlink" href="#equation-e5249bc2-9451-4235-aac2-0318ebe4004b" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
@@ -818,8 +818,8 @@ $<span class="math notranslate nohighlight">\(
 W = \{ \operatorname{tr} \, u : u \in H^1(\Omega) \}
 \)</span>$
 with the norm</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7590d353-edea-4d29-95b6-2b601015e44c">
-<span class="eqno">()<a class="headerlink" href="#equation-7590d353-edea-4d29-95b6-2b601015e44c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-174318aa-ee8c-4b85-8c9e-be4ff341da80">
+<span class="eqno">(14.2)<a class="headerlink" href="#equation-174318aa-ee8c-4b85-8c9e-be4ff341da80" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_tracenorm}
 \| \operatorname{tr} u \|_W = \inf_{v \in V \atop \operatorname{tr} \, u = \operatorname{tr} \, v } \| v \|_V.
 \end{equation}\]</div>
@@ -908,8 +908,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cc7e766d-ff20-4d7f-b89b-2a7b9d349872">
-<span class="eqno">()<a class="headerlink" href="#equation-cc7e766d-ff20-4d7f-b89b-2a7b9d349872" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1d59ff94-b44c-457b-8c13-92501bddd7a6">
+<span class="eqno">(14.3)<a class="headerlink" href="#equation-1d59ff94-b44c-457b-8c13-92501bddd7a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
