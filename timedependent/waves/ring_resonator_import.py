@@ -63,13 +63,13 @@ normals = data["normals"]
 
 
 mesh = Mesh(geo.GenerateMesh(maxh=0.05))
-
+mesh.Curve(3)
 Draw(mesh)
 
 eps_r = {"air" : 1,
          "eps_nine" : 3**3}
 
-order = 4
+order = 3
 
 for mat in mesh.GetMaterials():
     if mat.startswith("pml_normal_wg"):
