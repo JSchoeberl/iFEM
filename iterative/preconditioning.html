@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -590,25 +590,25 @@ w := C^{-1} * r
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5628463859901822
-1.3004844587339313
-1.3642450612653387
-1.4017278282832693
+1.3004844587339315
+1.3642450612653385
+1.4017278282832695
 1.428927912054942
-1.4511979272962623
-1.4709697187344926
-1.489456390475471
+1.451197927296262
+1.4709697187344923
+1.4894563904754712
 1.5072557909082451
 1.5246072026789994
 1.5415208146951107
-1.557860994429892
+1.5578609944298918
 1.5734139487420604
-1.5879473334387257
-1.601258905051369
-1.6132090247120108
+1.587947333438726
+1.6012589050513686
+1.613209024712011
 1.6237346368041081
-1.632846787976177
+1.6328467879761772
 1.6406169867162068
-1.6471585575973842
+1.6471585575973837
 </pre></div>
 </div>
 </div>
@@ -876,6 +876,9 @@ of the forward GS and the backward GS are <span class="math notranslate nohighli
 \[
 \left&lt; M_{FGS} x, M_{FGS} x \right&gt;_A = \left&lt; M_{BGS} M_{FGS} x, x \right&gt;_A \leq \| M_{FBGS} \|_A \| x \|_A^2
 \]</div>
+<p><strong>Exercise:</strong>
+Repeat the experiments with the forward-backward Gauss-Seidel preconditioner. You get it via
+<code class="docutils literal notranslate"><span class="pre">pre</span> <span class="pre">=</span> <span class="pre">a.mat.CreateSmoother(GS=True)</span></code>. What do you observe for the spectral radius of <span class="math notranslate nohighlight">\(C^{-1} A\)</span> ?</p>
 </section>
 </section>
 
