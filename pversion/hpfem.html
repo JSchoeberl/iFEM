@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>23. hp - Finite Elements &#8212; Interactive Finite Elements</title>
+    <title>25. hp - Finite Elements &#8212; Interactive Finite Elements</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'pversion/hpfem';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="24. Stokes Equation" href="../mixed/stokes.html" />
-    <link rel="prev" title="22. Equilibrated Residual Error Estimates" href="../aposteriori/equilibrated.html" />
+    <link rel="next" title="26. Stokes Equation" href="../mixed/stokes.html" />
+    <link rel="prev" title="24. Equilibrated Residual Error Estimates" href="../aposteriori/equilibrated.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -213,93 +213,95 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">A posteriori error estimates</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../aposteriori/aposteriori.html">21. A posteriori error estimates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">22. Equilibrated Residual Error Estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/residualEE.html">22. The residual error estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/goaldriven.html">23. Goal driven error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">24. Equilibrated Residual Error Estimates</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. hp - Finite Elements</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">25. hp - Finite Elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">24. Stokes Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">25. Boundary Conditions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">26. Mixed Methods for second order equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">27. Abstract Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">28. Abstract theory for mixed finite element methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">29. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">26. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">27. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">28. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">29. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">30. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">31. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">30. Stationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">31. Instationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">32. Nitsche’s Method for boundary and interface conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">32. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">33. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">34. Nitsche’s Method for boundary and interface conditions</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">34. Hybrid DG for elliptic equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">35. Splitting Methods for the time-dependent convection diffusion equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">36. Fourth Order Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">37. H(div)-conforming Stokes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">36. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">37. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">38. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">39. H(div)-conforming Stokes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">38. Application of the abstract theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">39. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">40. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">41. Finite Element Error Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">42. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">43. Hybridization Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">40. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">41. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">42. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">43. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">44. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">45. Hybridization Techniques</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">44. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">45. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">46. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">47. Preconditioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">48. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">49. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">46. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">47. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">48. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">49. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">50. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">51. Conjugate Gradients</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">50. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">51. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">52. Domain Decomposition with minimal overlap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">53. Overlapping Domain Decomposition Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">54. Exercise: Robust preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">52. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">53. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">54. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">55. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">56. Exercise: Robust preconditioners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">55. Multigrid and Multilevel Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">56. Analysis of the multi-level preconditioner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">57. Analysis of the Multigrid Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">58. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">57. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">58. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">59. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">60. Multi-level Extension</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">59. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">60. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">61. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">61. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">62. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">63. A Small Number of Constraints</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">63. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">65. Parameter Dependent Problems</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">65. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">66. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">67. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">68. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">68. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">69. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">70. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">70. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">71. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">72. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">71. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">72. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">73. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">74. Distributed Meshes and Spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">74. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">75. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">76. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">77. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">78. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">76. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">77. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">78. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">79. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">80. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -463,12 +465,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legendre-polynomials">23.1. Legendre Polynomials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-estimate-of-the-l-2-projection">23.2. Error estimate of the <span class="math notranslate nohighlight">\(L_2\)</span> projection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-polynomials-on-triangles">23.3. Orthogonal polynomials on triangles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-based-interpolation">23.4. Projection based interpolation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-1d-case">23.4.1. The 1D case</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-based-interpolation-on-triangles">23.4.2. Projection based interpolation on triangles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legendre-polynomials">25.1. Legendre Polynomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-estimate-of-the-l-2-projection">25.2. Error estimate of the <span class="math notranslate nohighlight">\(L_2\)</span> projection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-polynomials-on-triangles">25.3. Orthogonal polynomials on triangles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-based-interpolation">25.4. Projection based interpolation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-1d-case">25.4.1. The 1D case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-based-interpolation-on-triangles">25.4.2. Projection based interpolation on triangles</a></li>
 </ul>
 </li>
 </ul>
@@ -483,7 +485,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hp-finite-elements">
-<h1><span class="section-number">23. </span>hp - Finite Elements<a class="headerlink" href="#hp-finite-elements" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">25. </span>hp - Finite Elements<a class="headerlink" href="#hp-finite-elements" title="Link to this heading">#</a></h1>
 <p>Let <span class="math notranslate nohighlight">\(V_{hp}\)</span> be a <span class="math notranslate nohighlight">\(p\)</span>-th order finite element sub-space of <span class="math notranslate nohighlight">\(H^1\)</span>.
 By scaling and Bramble-Hilbert technique one obtains the best-approxiamtion error estimate</p>
 <div class="math notranslate nohighlight">
@@ -506,7 +508,7 @@ exponential convergence</p>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of unknowns.</p>
 <p>We will prove the <span class="math notranslate nohighlight">\(p\)</span>-version estimate, but not the <span class="math notranslate nohighlight">\(hp\)</span>-result.</p>
 <section id="legendre-polynomials">
-<h2><span class="section-number">23.1. </span>Legendre Polynomials<a class="headerlink" href="#legendre-polynomials" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">25.1. </span>Legendre Polynomials<a class="headerlink" href="#legendre-polynomials" title="Link to this heading">#</a></h2>
 <p>Orthogonal polynomials are important to construct stable basis
 functions for the <span class="math notranslate nohighlight">\(p\)</span>-FEM, as well as for error estimates.</p>
 <p>Let <span class="math notranslate nohighlight">\(\Pi_n\)</span> denote the space of polynomials up to order <span class="math notranslate nohighlight">\(n\)</span>. We write <span class="math notranslate nohighlight">\(\pi_n\)</span> for
@@ -526,16 +528,16 @@ P_2(x) &amp; = \tfrac{3}{2} x^2 - \tfrac{1}{2}
 <p><span class="math notranslate nohighlight">\(P_n\)</span> is even if <span class="math notranslate nohighlight">\(n\)</span> is even, and <span class="math notranslate nohighlight">\(P_n\)</span> is odd if <span class="math notranslate nohighlight">\(n\)</span> is odd.
 Since <span class="math notranslate nohighlight">\((x^2-1)^n = x^{2n} - n x^{2n-2} + \pi_{2n-4}\)</span> (with proper
 modification for small <span class="math notranslate nohighlight">\(n\)</span>) we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f3fac052-a993-4260-bc18-97f40c5a8980">
-<span class="eqno">()<a class="headerlink" href="#equation-f3fac052-a993-4260-bc18-97f40c5a8980" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0f36f1aa-bb8e-4c1b-b21a-1a061430ec72">
+<span class="eqno">(25.1)<a class="headerlink" href="#equation-0f36f1aa-bb8e-4c1b-b21a-1a061430ec72" title="Permalink to this equation">#</a></span>\[\begin{equation}
 % \label{equ_leadingcoef}
 P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n-2)!} {(n-2)!} x^{n-2} + \pi_{n-4}
 \end{equation}\]</div>
 <blockquote>
 <div><p><strong>Lemma: Orthogonality</strong></p>
 <p>There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e38da8b-c79d-4650-8c5e-b70cfda3c168">
-<span class="eqno">()<a class="headerlink" href="#equation-3e38da8b-c79d-4650-8c5e-b70cfda3c168" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_ortho}
+<div class="amsmath math notranslate nohighlight" id="equation-204d474a-ffca-46d7-aa9d-0b429c19147f">
+<span class="eqno">(25.2)<a class="headerlink" href="#equation-204d474a-ffca-46d7-aa9d-0b429c19147f" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_ortho}
   \int_{-1}^1 P_n(x) P_m(x) \, dx = \frac{2}{2n+1} \delta_{n,m}.
   \end{equation}\]</div>
 </div></blockquote>
@@ -564,8 +566,8 @@ P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n
 <blockquote>
 <div><p><strong>Lemma: Three term recurrence:</strong></p>
 <p>There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-36cee6ca-9bd4-4114-b158-987a2ffa9537">
-<span class="eqno">()<a class="headerlink" href="#equation-36cee6ca-9bd4-4114-b158-987a2ffa9537" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
+<div class="amsmath math notranslate nohighlight" id="equation-50cfe505-1fc9-4066-9e3b-bc444eaa2e41">
+<span class="eqno">(25.3)<a class="headerlink" href="#equation-50cfe505-1fc9-4066-9e3b-bc444eaa2e41" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
   (n+1) P_{n+1} (x) = (2n+1) x P_n(x) - n P_{n-1}(x).
   \end{equation}\]</div>
 </div></blockquote>
@@ -607,7 +609,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 </section>
 <section id="error-estimate-of-the-l-2-projection">
-<h2><span class="section-number">23.2. </span>Error estimate of the <span class="math notranslate nohighlight">\(L_2\)</span> projection<a class="headerlink" href="#error-estimate-of-the-l-2-projection" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">25.2. </span>Error estimate of the <span class="math notranslate nohighlight">\(L_2\)</span> projection<a class="headerlink" href="#error-estimate-of-the-l-2-projection" title="Link to this heading">#</a></h2>
 <p>Since polynomials are dense in <span class="math notranslate nohighlight">\(L_2(-1,1)\)</span>, we get</p>
 <div class="math notranslate nohighlight">
 \[
@@ -636,8 +638,8 @@ P_{L_2}^{\Pi_p} u = \sum_{n=0}^p a_n P_n
 <blockquote>
 <div><p><strong>Lemma Projection error:</strong></p>
 <p>The <span class="math notranslate nohighlight">\(L_2\)</span>-projection error satisfies</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cf1fff5d-e300-4099-8e53-8c9507c14867">
-<span class="eqno">()<a class="headerlink" href="#equation-cf1fff5d-e300-4099-8e53-8c9507c14867" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f2d8799c-8ff8-4673-bdd7-70dfb6e10096">
+<span class="eqno">(25.4)<a class="headerlink" href="#equation-f2d8799c-8ff8-4673-bdd7-70dfb6e10096" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - P_{L_2}^{\Pi_p} u \|_{L_2(-1,1)} \leq \frac{1}{\sqrt{(p+1)(p+2)}}    \, | u |_{H^1(-1,1)}
   \end{equation}\]</div>
 </div></blockquote>
@@ -675,7 +677,7 @@ The projection error satisfies</p>
 \]</div>
 </section>
 <section id="orthogonal-polynomials-on-triangles">
-<h2><span class="section-number">23.3. </span>Orthogonal polynomials on triangles<a class="headerlink" href="#orthogonal-polynomials-on-triangles" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">25.3. </span>Orthogonal polynomials on triangles<a class="headerlink" href="#orthogonal-polynomials-on-triangles" title="Link to this heading">#</a></h2>
 <p>Orthogonal polynomials on tensor product elements are simply
 constructed by tensorization. Orthogonal polynomials on simplicial
 elements are more advanced. They are based on Jacobi polynomials:</p>
@@ -721,7 +723,7 @@ Note that <span class="math notranslate nohighlight">\(\varphi_{i,j} \in \Pi_{i+
 <p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 </section>
 <section id="projection-based-interpolation">
-<h2><span class="section-number">23.4. </span>Projection based interpolation<a class="headerlink" href="#projection-based-interpolation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">25.4. </span>Projection based interpolation<a class="headerlink" href="#projection-based-interpolation" title="Link to this heading">#</a></h2>
 <p>By means of the orthogonal polynomials one shows approximation error estimates
 of the form
 $<span class="math notranslate nohighlight">\(
@@ -730,10 +732,10 @@ $<span class="math notranslate nohighlight">\(
 with \)</span>c \neq c(p)<span class="math notranslate nohighlight">\(, easily in 1D and tensor product elements, and also on \)</span>n$-dimensional simplices [Braess+Schwab: Approximation on simplices with respect to weighted Sobolev norms, J. Approximation Theory 103, 329-337 (2000)].</p>
 <p>But, an interpolation operator to an <span class="math notranslate nohighlight">\(H^1\)</span>-conforming finite element space has to satisfy continuity constraints across element boundaries. We show that we get the same rate of convergence under these constraints.</p>
 <section id="the-1d-case">
-<h3><span class="section-number">23.4.1. </span>The 1D case<a class="headerlink" href="#the-1d-case" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">25.4.1. </span>The 1D case<a class="headerlink" href="#the-1d-case" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(I=(-1,1)\)</span>. We define the operator <span class="math notranslate nohighlight">\(I_p : H^1(I) \rightarrow \Pi_p\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-549ff43b-8eeb-4e8c-9d40-e0d6858ee206">
-<span class="eqno">()<a class="headerlink" href="#equation-549ff43b-8eeb-4e8c-9d40-e0d6858ee206" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-b594bf4e-2339-4ceb-a290-f9b9b3737098">
+<span class="eqno">(25.5)<a class="headerlink" href="#equation-b594bf4e-2339-4ceb-a290-f9b9b3737098" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 I_p u(x) &amp; = &amp; u(x) \qquad x \in \{ -1, 1 \}   \label{equ_projbased1} \\
 \int_I (I_p u)^\prime q^\prime &amp; = &amp;  \int_I u^\prime q^\prime \qquad \forall \, q \in \Pi_{p,0}(I),   \label{equ_projbased2} 
 \end{eqnarray}\]</div>
@@ -774,10 +776,10 @@ One also gets for \)</span>q \in \Pi_p<span class="math notranslate nohighlight"
 \)</span>$</p>
 </section>
 <section id="projection-based-interpolation-on-triangles">
-<h3><span class="section-number">23.4.2. </span>Projection based interpolation on triangles<a class="headerlink" href="#projection-based-interpolation-on-triangles" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">25.4.2. </span>Projection based interpolation on triangles<a class="headerlink" href="#projection-based-interpolation-on-triangles" title="Link to this heading">#</a></h3>
 <p>We define the operator <span class="math notranslate nohighlight">\(I_p : H^2(T) \rightarrow \Pi_p(T)\)</span> as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ebe12d8c-afbf-426b-916d-ca45d1da0a3a">
-<span class="eqno">()<a class="headerlink" href="#equation-ebe12d8c-afbf-426b-916d-ca45d1da0a3a" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-9ea790f9-e03a-41d2-8a7b-1f47c6acea24">
+<span class="eqno">(25.6)<a class="headerlink" href="#equation-9ea790f9-e03a-41d2-8a7b-1f47c6acea24" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 I_p u(x) &amp; = &amp; u(x) \qquad \forall \text{ vertices } x \\
 \int_E \partial_\tau (I_p u) \partial_\tau q &amp; = &amp;  
 \int_E \partial_\tau u  \partial_\tau q \qquad \forall \text{ edges } E, \; \forall \, q \in \Pi_{p,0}(E) \\
@@ -900,7 +902,7 @@ Next, we observe that <span class="math notranslate nohighlight">\(I_p\)</span> 
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">22. </span>Equilibrated Residual Error Estimates</p>
+        <p class="prev-next-title"><span class="section-number">24. </span>Equilibrated Residual Error Estimates</p>
       </div>
     </a>
     <a class="right-next"
@@ -908,7 +910,7 @@ Next, we observe that <span class="math notranslate nohighlight">\(I_p\)</span> 
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">24. </span>Stokes Equation</p>
+        <p class="prev-next-title"><span class="section-number">26. </span>Stokes Equation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -928,12 +930,12 @@ Next, we observe that <span class="math notranslate nohighlight">\(I_p\)</span> 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legendre-polynomials">23.1. Legendre Polynomials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-estimate-of-the-l-2-projection">23.2. Error estimate of the <span class="math notranslate nohighlight">\(L_2\)</span> projection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-polynomials-on-triangles">23.3. Orthogonal polynomials on triangles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-based-interpolation">23.4. Projection based interpolation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-1d-case">23.4.1. The 1D case</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-based-interpolation-on-triangles">23.4.2. Projection based interpolation on triangles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legendre-polynomials">25.1. Legendre Polynomials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-estimate-of-the-l-2-projection">25.2. Error estimate of the <span class="math notranslate nohighlight">\(L_2\)</span> projection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-polynomials-on-triangles">25.3. Orthogonal polynomials on triangles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-based-interpolation">25.4. Projection based interpolation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-1d-case">25.4.1. The 1D case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-based-interpolation-on-triangles">25.4.2. Projection based interpolation on triangles</a></li>
 </ul>
 </li>
 </ul>
