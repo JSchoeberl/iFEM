@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -497,13 +497,13 @@ document.write(`
 B(u,v) = \int_0^1 u^\prime v \, dx
 \]</div>
 <p>Show that the bilinear-form is continuous.
-Proof that the bilinear-form satisfies both <span class="math notranslate nohighlight">\(\inf-\sup\)</span> conditions, start with</p>
+Prove that the bilinear-form satisfies both <span class="math notranslate nohighlight">\(\inf-\sup\)</span> conditions, start with</p>
 <div class="math notranslate nohighlight">
 \[
 \inf_{ u \in V} \sup_{v \in W} \frac{B(u,v)}{ \| u \|_V \| v \|_W} \geq \beta_1 &gt; 0
 \]</div>
 <p>For a given <span class="math notranslate nohighlight">\(u \in V\)</span>, find some <span class="math notranslate nohighlight">\(v \in W\)</span> such that the fraction is large (how ?). This proves that the derivative is one-to-one on <span class="math notranslate nohighlight">\(V\)</span>. What if the boundary condition <span class="math notranslate nohighlight">\(v(0)=0\)</span> is skipped ?</p>
-<p>When swap order of the <span class="math notranslate nohighlight">\(\inf-\sup\)</span> condition:</p>
+<p>Then swap order of the <span class="math notranslate nohighlight">\(\inf-\sup\)</span> condition:</p>
 <div class="math notranslate nohighlight">
 \[
 \inf_{ v \in W} \sup_{u \in V} \frac{B(u,v)}{ \| u \|_V \| v \|_W} \geq \beta_1 &gt; 0
