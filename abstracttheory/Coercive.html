@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -654,8 +654,7 @@ Let <span class="math notranslate nohighlight">\(v_1, v_2 \in V\)</span>, and se
 \[
 L^2 = 1 - \alpha_1^2 / \alpha_2^2 \in [0,1).
 \]</div>
-<p>Banach’s contraction mapping theorem state that <span class="math notranslate nohighlight">\(u = u - \tau J_V (A u - f)\)</span>,
-has a unique fixed point. Finally, we obtain the claimed bound from</p>
+<p>Banach’s contraction mapping theorem state that <span class="math notranslate nohighlight">\(T(\cdot)\)</span> has a unique fixed point <span class="math notranslate nohighlight">\(u\)</span>, which satisfies <span class="math notranslate nohighlight">\(u = u - \tau J_V (A u - f)\)</span>, and thus <span class="math notranslate nohighlight">\(A u = f\)</span>. Finally, we obtain the claimed bound from</p>
 <div class="math notranslate nohighlight">
 \[
 \| u \|_V^2 \leq \alpha_1^{-1} A(u,u) = \alpha_1^{-1} \, f(u) \leq \alpha_1^{-1} \| f\|_{V^\ast} \| u \|_V,
@@ -674,13 +673,13 @@ A(u_h, v_h) = f(v_h) \qquad \forall \, v_h \in V_h.
 since, <span class="math notranslate nohighlight">\((V_h,\|.\|_V)\)</span> is
 a Hilbert space, and continuity and coercivity on <span class="math notranslate nohighlight">\(V_h\)</span> are inherited
 from the original problem on <span class="math notranslate nohighlight">\(V\)</span>.</p>
-<p>The next theorem says, that the solution defined by the Galerkin method is,
+<p>The next theorem says that the solution defined by the Galerkin method is,
 up to a constant factor, as good as the best possible approximation in the
 finite dimensional space.</p>
 <blockquote>
 <div><p><strong>Céa’s Lemma:</strong></p>
 <p>The approximation error of Galerkin’s method
-is quasi optimal</p>
+is quasi optimal:</p>
 <div class="math notranslate nohighlight">
 \[
   \| u - u_h \|_V \leq \frac{\alpha_2}{\alpha_1} \inf_{v \in V_h} \| u - v_h \|_V
