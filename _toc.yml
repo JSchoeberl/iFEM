@@ -46,6 +46,8 @@ parts:
     numbered: True
     chapters:
     - file: aposteriori/aposteriori.ipynb
+    - file: aposteriori/residualEE.ipynb
+    - file: aposteriori/goaldriven.ipynb    
     - file: aposteriori/equilibrated.ipynb 
 
   - caption: High Order Finite Elements
