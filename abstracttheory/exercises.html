@@ -466,14 +466,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inf-sup-condition-of-the-first-order-derivative-bilinear-form">12.1. inf-sup condition of the first-order derivative bilinear-form</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-exercise-in-2d">12.1.1. Repeat the exercise in 2D.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-problem">12.1. Minimization problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inf-sup-condition-of-the-first-order-derivative-bilinear-form">12.2. inf-sup condition of the first-order derivative bilinear-form</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-exercise-in-2d">12.2.1. Repeat the exercise in 2D.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-systems-from-building-blocks">12.2. Building systems from building-blocks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coercive-examples">12.2.1. Coercive examples</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inf-sup-condition">12.2.2. inf-sup condition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-valued-problem-as-real-system">12.2.3. complex-valued problem as real system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-systems-from-building-blocks">12.3. Building systems from building-blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coercive-examples">12.3.1. Coercive examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inf-sup-condition">12.3.2. inf-sup condition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-valued-problem-as-real-system">12.3.3. complex-valued problem as real system</a></li>
 </ul>
 </li>
 </ul>
@@ -489,8 +490,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercises">
 <h1><span class="section-number">12. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
+<section id="minimization-problem">
+<h2><span class="section-number">12.1. </span>Minimization problem<a class="headerlink" href="#minimization-problem" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> be a Hilbert space, <span class="math notranslate nohighlight">\(A(.,.)\)</span> a symmetric, coercive and continuous bilinear-form on <span class="math notranslate nohighlight">\(V\)</span>, and <span class="math notranslate nohighlight">\(f(.)\)</span> a continuous linear from. Let <span class="math notranslate nohighlight">\(u \in V\)</span> solve the variational problem</p>
+<div class="math notranslate nohighlight">
+\[
+A(u,v) = f(v) \qquad \forall v \in V.
+\]</div>
+<p>Then <span class="math notranslate nohighlight">\(u\)</span> is the unique solution of the minimization problem</p>
+<div class="math notranslate nohighlight">
+\[
+\min_{v \in V} J(v) \quad \text{with} \quad J(v) := 
+\tfrac{1}{2} A(v,v) - f(v)
+\]</div>
+<p>Hint: Show that <span class="math notranslate nohighlight">\(J(v) - J(u) = \tfrac{1}{2} A(u-v, u-v)\)</span></p>
+</section>
 <section id="inf-sup-condition-of-the-first-order-derivative-bilinear-form">
-<h2><span class="section-number">12.1. </span>inf-sup condition of the first-order derivative bilinear-form<a class="headerlink" href="#inf-sup-condition-of-the-first-order-derivative-bilinear-form" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>inf-sup condition of the first-order derivative bilinear-form<a class="headerlink" href="#inf-sup-condition-of-the-first-order-derivative-bilinear-form" title="Link to this heading">#</a></h2>
 <p>Define <span class="math notranslate nohighlight">\(V = \{ v \in H^1(0,1) : v(0) = 0 \}\)</span>, with <span class="math notranslate nohighlight">\(\| v \|_V = \| v^\prime \|_{L_2}\)</span>, and <span class="math notranslate nohighlight">\(W = L_2(0,1)\)</span>. Consider the bilinear-form <span class="math notranslate nohighlight">\(B : V \times W \rightarrow {\mathbb R}\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -510,7 +526,7 @@ Prove that the bilinear-form satisfies both <span class="math notranslate nohigh
 \]</div>
 <p>For a given <span class="math notranslate nohighlight">\(v\)</span> find a good <span class="math notranslate nohighlight">\(u\)</span>, how ? This shows that the derivative operator is onto. Can we add boundary conditions on both sides ?</p>
 <section id="repeat-the-exercise-in-2d">
-<h3><span class="section-number">12.1.1. </span>Repeat the exercise in 2D.<a class="headerlink" href="#repeat-the-exercise-in-2d" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.1. </span>Repeat the exercise in 2D.<a class="headerlink" href="#repeat-the-exercise-in-2d" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(\Omega = (0,1)^2\)</span>, set <span class="math notranslate nohighlight">\(V = H_0^1( \Omega )\)</span>, and <span class="math notranslate nohighlight">\(W = L_2(\Omega)^2\)</span>, and</p>
 <div class="math notranslate nohighlight">
 \[
@@ -520,9 +536,9 @@ B(u,v) = \int_\Omega \nabla u \cdot v \; dx
 </section>
 </section>
 <section id="building-systems-from-building-blocks">
-<h2><span class="section-number">12.2. </span>Building systems from building-blocks<a class="headerlink" href="#building-systems-from-building-blocks" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Building systems from building-blocks<a class="headerlink" href="#building-systems-from-building-blocks" title="Link to this heading">#</a></h2>
 <section id="coercive-examples">
-<h3><span class="section-number">12.2.1. </span>Coercive examples<a class="headerlink" href="#coercive-examples" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.3.1. </span>Coercive examples<a class="headerlink" href="#coercive-examples" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(V\)</span> be a Hilbert-space, and <span class="math notranslate nohighlight">\(a(\cdot,\cdot)\)</span>, <span class="math notranslate nohighlight">\(b(\cdot,\cdot)\)</span> and <span class="math notranslate nohighlight">\(c(\cdot,\cdot)\)</span> be continuous and coercive bilinear-forms with continuity bounds <span class="math notranslate nohighlight">\(\alpha_2\)</span>, <span class="math notranslate nohighlight">\(\beta_2\)</span>, and <span class="math notranslate nohighlight">\(\gamma_2\)</span>, and coercivity constants <span class="math notranslate nohighlight">\(\alpha_1\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span>, and <span class="math notranslate nohighlight">\(\gamma_1\)</span> (all positive). Define the big bilinear-form <span class="math notranslate nohighlight">\(B : V^2 \times V^2 \rightarrow {\mathbb R}\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -532,11 +548,11 @@ B( (u_1,v_1), (u_2, v_2) ) = a(u_1, v_1) + b(u_1, v_2) + c(u_2, v_2)
 Give expressions for continuity and coercivity constants in terms of <span class="math notranslate nohighlight">\(\alpha_1, \alpha^2, \beta_1, \ldots\)</span>.</p>
 </section>
 <section id="inf-sup-condition">
-<h3><span class="section-number">12.2.2. </span>inf-sup condition<a class="headerlink" href="#inf-sup-condition" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.3.2. </span>inf-sup condition<a class="headerlink" href="#inf-sup-condition" title="Link to this heading">#</a></h3>
 <p>Repeat the example from above, but now assume inf-sup instead of coercive for <span class="math notranslate nohighlight">\(a(.,.)\)</span>, <span class="math notranslate nohighlight">\(b(.,.)\)</span>, and <span class="math notranslate nohighlight">\(c(.,.)\)</span>. Prove that then <span class="math notranslate nohighlight">\(B(.,.)\)</span> also satisfies inf-sup, without further restrictions onto the constants.</p>
 </section>
 <section id="complex-valued-problem-as-real-system">
-<h3><span class="section-number">12.2.3. </span>complex-valued problem as real system<a class="headerlink" href="#complex-valued-problem-as-real-system" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.3.3. </span>complex-valued problem as real system<a class="headerlink" href="#complex-valued-problem-as-real-system" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(a(\cdot,\cdot)\)</span> and <span class="math notranslate nohighlight">\(b(\cdot,\cdot)\)</span> be two symmetric, continuous, and coercive bilinear-forms on the Hilbert-space <span class="math notranslate nohighlight">\(V\)</span>.</p>
 <p>Define the form <span class="math notranslate nohighlight">\(B(\cdot, \cdot) : V^2 \times V^2 \mapsto {\mathbb R}\)</span> as</p>
 <div class="math notranslate nohighlight">
@@ -623,14 +639,15 @@ B( (u_1, u_2), (v_1, v_2) ) := a(u_1, v_1) + b(u_2, v_1) + b(u_1, v_2) - a(u_2, 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inf-sup-condition-of-the-first-order-derivative-bilinear-form">12.1. inf-sup condition of the first-order derivative bilinear-form</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-exercise-in-2d">12.1.1. Repeat the exercise in 2D.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimization-problem">12.1. Minimization problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inf-sup-condition-of-the-first-order-derivative-bilinear-form">12.2. inf-sup condition of the first-order derivative bilinear-form</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-the-exercise-in-2d">12.2.1. Repeat the exercise in 2D.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-systems-from-building-blocks">12.2. Building systems from building-blocks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coercive-examples">12.2.1. Coercive examples</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inf-sup-condition">12.2.2. inf-sup condition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-valued-problem-as-real-system">12.2.3. complex-valued problem as real system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-systems-from-building-blocks">12.3. Building systems from building-blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coercive-examples">12.3.1. Coercive examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inf-sup-condition">12.3.2. inf-sup condition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-valued-problem-as-real-system">12.3.3. complex-valued problem as real system</a></li>
 </ul>
 </li>
 </ul>
