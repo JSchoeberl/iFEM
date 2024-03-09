@@ -477,6 +477,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-valued-problem-as-real-system">12.3.3. complex-valued problem as real system</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sup-is-enough">12.4. One sup is enough</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-inf-sup-condition-means-onto">12.5. Second inf-sup condition means onto</a></li>
 </ul>
             </nav>
         </div>
@@ -573,6 +575,55 @@ B( (u_1, u_2), (v_1, v_2) ) := a(u_1, v_1) + b(u_2, v_1) + b(u_1, v_2) - a(u_2, 
 <p>Show that <span class="math notranslate nohighlight">\(B(\cdot, \cdot)\)</span> is continuous and inf-sup stable. Give good constants.</p>
 </section>
 </section>
+<section id="one-sup-is-enough">
+<h2><span class="section-number">12.4. </span>One sup is enough<a class="headerlink" href="#one-sup-is-enough" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(A(.,.)\)</span> be a continuous and symmetric bilinear-form on the Hilbert-space <span class="math notranslate nohighlight">\(V\)</span>. Proof that</p>
+<div class="math notranslate nohighlight">
+\[
+\sup_{x \in V} \sup_{y \in V} \frac{A(x,y)}{\| x \| \, \| y \| } =
+\sup_{x \in V}  \frac{A(x,x)}{\| x \|^2  } 
+\]</div>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>Show the claim for <span class="math notranslate nohighlight">\(V = {\mathbb R}^2\)</span>, and <span class="math notranslate nohighlight">\(A(u,v) = v^T A u\)</span> with a symmetric, positive definite <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p>Show the claim for an arbitrary, two-dimensional sub-space of <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+<li><p>Prove it for the general case by reducing it to a two-dimensional sub-space</p></li>
+</ul>
+</section>
+<section id="second-inf-sup-condition-means-onto">
+<h2><span class="section-number">12.5. </span>Second inf-sup condition means onto<a class="headerlink" href="#second-inf-sup-condition-means-onto" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(W\)</span> be Hilbert spaces, <span class="math notranslate nohighlight">\(B(\cdot, \cdot) : V \times W \rightarrow {\mathbb R}\)</span> a continuous bilinear-form satisfying the second inf-sup condition</p>
+<div class="math notranslate nohighlight">
+\[
+\inf_{v \in W} \sup_{u \in V} \frac{B(u,v)}{\|u\|_V \, \|v\|_W} \geq \beta_1
+\]</div>
+<p>Prove that for every <span class="math notranslate nohighlight">\(f \in W^\ast\)</span> there exists an <span class="math notranslate nohighlight">\(u \in V\)</span> (not necessarily unique) such that</p>
+<div class="math notranslate nohighlight">
+\[
+B(u,v) = f(v) \quad \forall \, v \in W
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_V \leq \frac{1}{\beta_1} \| f \|_{W^\ast}
+\]</div>
+<p><em>Hint:</em> Define the operator <span class="math notranslate nohighlight">\(B^\ast : W \rightarrow V^\ast\)</span> via</p>
+<div class="math notranslate nohighlight">
+\[
+\left&lt; B v, z \right&gt;_{V^\ast \times V} = B(z,v) \quad \forall \, z \in V \; \forall \, v \in W
+\]</div>
+<p>and the bilinear-form <span class="math notranslate nohighlight">\(A(\cdot, \cdot) : W \times W \rightarrow {\mathbb R}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+A(z,v) = (B^\ast z, B^\ast v)_{W^\ast}
+\]</div>
+<p>Verify that <span class="math notranslate nohighlight">\(A(\cdot,\cdot)\)</span> satisfies the conditions of the Lax-Milgram theorem, which implies the unique solvability of: find <span class="math notranslate nohighlight">\(z \in W\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+A(z,v) = f(v) \quad \forall \, v \in W
+\]</div>
+<p>Construct the searched solution <span class="math notranslate nohighlight">\(u \in V\)</span> from that <span class="math notranslate nohighlight">\(z \in W\)</span>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -650,6 +701,8 @@ B( (u_1, u_2), (v_1, v_2) ) := a(u_1, v_1) + b(u_2, v_1) + b(u_1, v_2) - a(u_2, 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-valued-problem-as-real-system">12.3.3. complex-valued problem as real system</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-sup-is-enough">12.4. One sup is enough</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-inf-sup-condition-means-onto">12.5. Second inf-sup condition means onto</a></li>
 </ul>
   </nav></div>
 
