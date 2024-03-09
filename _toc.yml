@@ -22,7 +22,8 @@ parts:
     - file: abstracttheory/subspaceprojection.ipynb
     - file: abstracttheory/RieszRepresentation.ipynb
     - file: abstracttheory/Coercive.ipynb    
-    - file: abstracttheory/infsup.ipynb    
+    - file: abstracttheory/infsup.ipynb
+    - file: abstracttheory/exercises.ipynb        
 
   - caption: Sobolev Spaces
     numbered: True
