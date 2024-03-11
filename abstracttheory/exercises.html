@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -520,13 +520,13 @@ Prove that the bilinear-form satisfies both <span class="math notranslate nohigh
 \[
 \inf_{ u \in V} \sup_{v \in W} \frac{B(u,v)}{ \| u \|_V \| v \|_W} \geq \beta_1 &gt; 0
 \]</div>
-<p>For a given <span class="math notranslate nohighlight">\(u \in V\)</span>, find some <span class="math notranslate nohighlight">\(v \in W\)</span> such that the fraction is large (how ?). This proves that the derivative is one-to-one on <span class="math notranslate nohighlight">\(V\)</span>. What if the boundary condition <span class="math notranslate nohighlight">\(v(0)=0\)</span> is skipped ?</p>
+<p>For a given <span class="math notranslate nohighlight">\(u \in V\)</span>, find some <span class="math notranslate nohighlight">\(v \in W\)</span> such that the fraction is large (how ?). This proves that the derivative is one-to-one (injective) on <span class="math notranslate nohighlight">\(V\)</span>. What if the boundary condition <span class="math notranslate nohighlight">\(v(0)=0\)</span> is skipped ?</p>
 <p>Then swap order of the <span class="math notranslate nohighlight">\(\inf-\sup\)</span> condition:</p>
 <div class="math notranslate nohighlight">
 \[
 \inf_{ v \in W} \sup_{u \in V} \frac{B(u,v)}{ \| u \|_V \| v \|_W} \geq \beta_1 &gt; 0
 \]</div>
-<p>For a given <span class="math notranslate nohighlight">\(v\)</span> find a good <span class="math notranslate nohighlight">\(u\)</span>, how ? This shows that the derivative operator is onto. Can we add boundary conditions on both sides ?</p>
+<p>For a given <span class="math notranslate nohighlight">\(v\)</span> find a good <span class="math notranslate nohighlight">\(u\)</span>, how ? This shows that the derivative operator is onto (surjective). Can we add boundary conditions on both sides ?</p>
 <section id="repeat-the-exercise-in-2d">
 <h3><span class="section-number">12.2.1. </span>Repeat the exercise in 2D.<a class="headerlink" href="#repeat-the-exercise-in-2d" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(\Omega = (0,1)^2\)</span>, set <span class="math notranslate nohighlight">\(V = H_0^1( \Omega )\)</span>, and <span class="math notranslate nohighlight">\(W = L_2(\Omega)^2\)</span>, and</p>
@@ -572,7 +572,10 @@ B( (u_1, u_2), (v_1, v_2) ) := a(u_1, v_1) + b(u_2, v_1) + b(u_1, v_2) - a(u_2, 
 \| (u_1, u_2) \|_{V^2} := \sqrt{  \| u_1 \|_V^2 + \| u_2 \|_V^2 }
 \quad \text{for } (u_1, u_2) \in V^2.
 \]</div>
-<p>Show that <span class="math notranslate nohighlight">\(B(\cdot, \cdot)\)</span> is continuous and inf-sup stable. Give good constants.</p>
+<p>Show that <span class="math notranslate nohighlight">\(B(\cdot, \cdot)\)</span> is continuous and inf-sup stable. Give explicit constants.</p>
+<p>Hint: Try first with the simplified forms
+<span class="math notranslate nohighlight">\(\tilde B((u_1,u_2),(v_1,v_2)) := a(u_1,v_1) - a(u_2,v_2)\)</span>, and
+<span class="math notranslate nohighlight">\(\hat B((u_1,u_2),(v_1,v_2)) := b(u_2,v_1) + b(u_1,v_2)\)</span> and prove continuity and inf-sup. For given <span class="math notranslate nohighlight">\(v = (v_1,v_2)\)</span>, come up with some candidates <span class="math notranslate nohighlight">\(u = (u_1,u_2)\)</span> for the supremum. Try a combination of both for the original bilinear-from <span class="math notranslate nohighlight">\(B(.,.)\)</span></p>
 </section>
 </section>
 <section id="one-sup-is-enough">
