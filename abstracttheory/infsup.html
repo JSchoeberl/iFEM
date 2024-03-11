@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -507,7 +507,7 @@ B(u,v) \leq \beta_2 \| u \|_V \| v \|_W \qquad \forall \, u \in V, \; \forall \,
 \[
 \| B u \|_{W^\ast} \geq \beta_1 \| u \|_V.
 \]</div>
-<p>We immediately obtain that <span class="math notranslate nohighlight">\(B\)</span> is one to one, since</p>
+<p>We immediately obtain that <span class="math notranslate nohighlight">\(B\)</span> is one to one (aka injective), since</p>
 <div class="math notranslate nohighlight">
 \[
 B u = 0 \Rightarrow u = 0
@@ -519,7 +519,7 @@ closed range.</p>
 <p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(B u^n\)</span> be a Cauchy sequence in <span class="math notranslate nohighlight">\(W^\ast\)</span>. From <span class="math notranslate nohighlight">\(\| Bu \| \geq \beta_1 \| u \|\)</span> we conclude that also <span class="math notranslate nohighlight">\(u^n\)</span> is Cauchy in <span class="math notranslate nohighlight">\(V\)</span>. Since <span class="math notranslate nohighlight">\(V\)</span> is complete, <span class="math notranslate nohighlight">\(u_n\)</span>
 converges to some <span class="math notranslate nohighlight">\(u \in V\)</span>. By continuity of <span class="math notranslate nohighlight">\(B\)</span>, the sequence <span class="math notranslate nohighlight">\(B u^n\)</span> converges to <span class="math notranslate nohighlight">\(B u \in W^\ast\)</span>.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
-<p>The inf-sup condition does not imply that <span class="math notranslate nohighlight">\(B\)</span> is onto <span class="math notranslate nohighlight">\(W^\ast\)</span>. To insure that, we can pose an inf-sup condition the other way around:</p>
+<p>The inf-sup condition does not imply that <span class="math notranslate nohighlight">\(B\)</span> is onto <span class="math notranslate nohighlight">\(W^\ast\)</span>. To insure that, we can pose an inf-sup condition the other way around (aka surjective):</p>
 <div class="math notranslate nohighlight">
 \[
 \inf_{v \in W \atop v \neq 0} \sup_{u \in V \atop u \neq 0}
@@ -636,8 +636,8 @@ Assume that <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span>
 of the Babuška-Aziz theorem. Furthermore,
 <span class="math notranslate nohighlight">\(B(\cdot,\cdot)\)</span> fulfills the discrete inf-sup condition with bound <span class="math notranslate nohighlight">\(\beta_{1h}\)</span>.
 Then there holds the quasi-optimal error estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e14b1323-ff75-4015-bcf6-b7df75032693">
-<span class="eqno">()<a class="headerlink" href="#equation-e14b1323-ff75-4015-bcf6-b7df75032693" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-908c16fa-2431-4975-8643-bd4697baf652">
+<span class="eqno">()<a class="headerlink" href="#equation-908c16fa-2431-4975-8643-bd4697baf652" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - u_h \| \leq (1 + \beta_2 / \beta_{1h}) \inf_{v_h \in V_h} \| u - v_h \|
   \end{equation}\]</div>
 </div></blockquote>
