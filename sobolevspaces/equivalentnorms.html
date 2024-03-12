@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -485,7 +485,7 @@ norm. We want to replace the <span class="math notranslate nohighlight">\(L_2\)<
 the <span class="math notranslate nohighlight">\(L_2\)</span>-norm on a part of <span class="math notranslate nohighlight">\(\Omega\)</span>, or the <span class="math notranslate nohighlight">\(L_2\)</span>-norm on <span class="math notranslate nohighlight">\(\partial
 \Omega\)</span>), and want to obtain an equivalent norm.</p>
 <p>We formulate an abstract theorem relating a norm <span class="math notranslate nohighlight">\(\|.\|_V\)</span> to a semi-norm
-<span class="math notranslate nohighlight">\(\|.\|_A\)</span>. An equivalent theorem was proven by Tartar.</p>
+<span class="math notranslate nohighlight">\(\|.\|_A\)</span>. This theorem can be found as Thm 2.1 in the textbook <em>Finite Element Methods for Naiver-Stokes Equations</em> by Girault and Raviart:</p>
 <blockquote>
 <div><p><strong>Theorem by Tartar:</strong></p>
 <p>Let <span class="math notranslate nohighlight">\((V, (.,.)_V)\)</span> and <span class="math notranslate nohighlight">\((W, (.,.)_W)\)</span> be Hilbert spaces, such that
@@ -501,8 +501,8 @@ with kernel <span class="math notranslate nohighlight">\(V_0 = \{ v : A(v,v) = 0
 <li><p>The kernel <span class="math notranslate nohighlight">\(V_0\)</span> is finite dimensional. On the factor space <span class="math notranslate nohighlight">\(V/V_0\)</span>,
 <span class="math notranslate nohighlight">\(A(.,.)\)</span> is an equivalent norm to the quotient norm</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-77cd8b37-ba78-46a3-95d4-6016a9b51c8c">
-<span class="eqno">(16.1)<a class="headerlink" href="#equation-77cd8b37-ba78-46a3-95d4-6016a9b51c8c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bf2195c3-343b-4ca3-ab62-f38c652014d3">
+<span class="eqno">()<a class="headerlink" href="#equation-bf2195c3-343b-4ca3-ab62-f38c652014d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_V \qquad \forall \, u \in V
     \end{equation}\]</div>
 <ol class="arabic simple" start="2">
@@ -550,7 +550,7 @@ converging in <span class="math notranslate nohighlight">\(\| . \|_W\)</span>, a
 equivalence (\ref{equ_tartar_cond}) there follows</p>
 <div class="math notranslate nohighlight">
 \[
-2 = \| u_k - u_l \|_V^2 \leqc \| u_k - u_l \|_W + \| u_k - u_l \|_A \rightarrow 0
+2 = \| u_k - u_l \|_V^2 \preceq \| u_k - u_l \|_W + \| u_k - u_l \|_A \rightarrow 0
 \]</div>
 <ol class="arabic simple" start="2">
 <li><p>On <span class="math notranslate nohighlight">\(V_0\)</span>, <span class="math notranslate nohighlight">\(\| . \|_B\)</span> is a norm. Since <span class="math notranslate nohighlight">\(V_0\)</span> is finite dimensional, it
@@ -585,8 +585,10 @@ to <span class="math notranslate nohighlight">\(V_1\)</span>.</p></li>
 and <span class="math notranslate nohighlight">\(\|v \|_A = \| \nabla v \|_{L_2}\)</span>.
 The theorem requires that the embedding <span class="math notranslate nohighlight">\(id : H^1 \rightarrow L_2\)</span> is
 compact. This is indeed true for bounded domains <span class="math notranslate nohighlight">\(\Omega\)</span>:</p>
-<p><strong>Theorem</strong> The embedding of <span class="math notranslate nohighlight">\(H^k \rightarrow H^l\)</span> for <span class="math notranslate nohighlight">\(k &gt; l\)</span> is
+<blockquote>
+<div><p><strong>Theorem</strong> The embedding of <span class="math notranslate nohighlight">\(H^k \rightarrow H^l\)</span> for <span class="math notranslate nohighlight">\(k &gt; l\)</span> is
 compact.</p>
+</div></blockquote>
 <p>We sketch a proof for the embedding <span class="math notranslate nohighlight">\(H^1 \subset L_2\)</span>.
 First, prove the compact embedding <span class="math notranslate nohighlight">\(H_0^1(Q) \rightarrow L_2(Q)\)</span> for
 a square <span class="math notranslate nohighlight">\(Q\)</span>, w.l.o.g. set <span class="math notranslate nohighlight">\(Q = (0,1)^2\)</span>.
@@ -606,7 +608,7 @@ mapping, and thus is compact.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>The kernel <span class="math notranslate nohighlight">\(V_0\)</span> of the semi-norm <span class="math notranslate nohighlight">\(\| \nabla v \|\)</span> is the constant function.</p>
 <blockquote>
-<div><p><strong>Theorem: (Friedrichs’ inequality)</strong>
+<div><p><strong>Friedrichs’ inequality:</strong>
 Let <span class="math notranslate nohighlight">\(\Gamma_D \subset \partial \Omega\)</span> be of positive measure <span class="math notranslate nohighlight">\(|\Gamma_D|\)</span>.
 Let <span class="math notranslate nohighlight">\(V_D = \{ v \in H^1(\Omega) : \operatorname{tr}_{\Gamma_D} v = 0 \}\)</span>. Then</p>
 <div class="math notranslate nohighlight">
@@ -622,11 +624,11 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 \)</span>\Box$</p>
 <blockquote>
-<div><p><strong>Theorem: (Poincaré inequality)</strong></p>
+<div><p><strong>Poincaré inequality:</strong></p>
 <p>There holds</p>
 <div class="math notranslate nohighlight">
 \[
-  \| v \|_{H^1(\Omega)}^2 \preceq \| \nabla v \|_{L_2}^2 + (\int_\Omega v \, dx)^2
+  \| v \|_{H^1(\Omega)}^2 \preceq \| \nabla v \|_{L_2}^2 + \left(\int_\Omega v \, dx\right)^2
   \]</div>
 </div></blockquote>
 <p><em>Proof:</em> <span class="math notranslate nohighlight">\(B(u,v) := (\int_\Omega u \, dx) (\int_\Omega v \, dx)\)</span> is
@@ -683,14 +685,14 @@ A_2(u,v) := (L u, Lv)_U + A(u,v)
 <p>i.e., the claim.</p>
 <p>We will need point evaluation of functions in Sobolev spaces <span class="math notranslate nohighlight">\(H^s\)</span>. This is
 possible, we <span class="math notranslate nohighlight">\(u \in H^s\)</span> implies that <span class="math notranslate nohighlight">\(u\)</span> is continuous.</p>
-<p><strong>Sobolev’s embedding theorem:</strong> Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span> with Lipschitz boundary. If <span class="math notranslate nohighlight">\(u \in H^s\)</span> with <span class="math notranslate nohighlight">\(s &gt; d/2\)</span>, then <span class="math notranslate nohighlight">\(u \in L_\infty\)</span>
-with</p>
+<blockquote>
+<div><p><strong>Sobolev’s embedding theorem:</strong> Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span> with &gt; Lipschitz boundary. If <span class="math notranslate nohighlight">\(u \in H^s\)</span> with <span class="math notranslate nohighlight">\(s &gt; d/2\)</span>, then <span class="math notranslate nohighlight">\(u \in L_\infty\)</span> with</p>
 <div class="math notranslate nohighlight">
 \[
-\| u \|_{L_\infty} \preceq \| u \|_{H^s}
-\]</div>
-<p>There is a function in <span class="math notranslate nohighlight">\(C^0\)</span> within the <span class="math notranslate nohighlight">\(L_\infty\)</span> equivalence class.
-\end{theorem}</p>
+  \| u \|_{L_\infty} \preceq \| u \|_{H^s}
+  \]</div>
+<p>There is a function in <span class="math notranslate nohighlight">\(C^0\)</span> within the <span class="math notranslate nohighlight">\(L_\infty\)</span> equivalence class.</p>
+</div></blockquote>
 </section>
 
     <script type="text/x-thebe-config">

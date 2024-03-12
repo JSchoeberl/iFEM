@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -539,8 +539,8 @@ match on <span class="math notranslate nohighlight">\(s_i( \{ 0,1 \} \times (0,1
 There exists a well defined and continuous operator</p>
 <div class="math notranslate nohighlight">
 \[
-&gt; \operatorname{tr} : H^1 (\Omega) \rightarrow L_2(\partial \Omega)
-&gt; \]</div>
+  \operatorname{tr} : H^1 (\Omega) \rightarrow L_2(\partial \Omega)
+  \]</div>
 <p>which coincides with <span class="math notranslate nohighlight">\(u|_{\partial \Omega}\)</span> for <span class="math notranslate nohighlight">\(u \in C^1(\overline{\Omega})\)</span>.</p>
 </div></blockquote>
 <p><em>Proof:</em> Again, we prove that</p>
@@ -561,12 +561,12 @@ Define the functions <span class="math notranslate nohighlight">\(u_i\)</span> o
 <p>We transfer the <span class="math notranslate nohighlight">\(L_2\)</span> norm to the simple domain:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\| \operatorname{tr} u \|_{L_2(\partial \Omega)}^2 &amp; = &amp; 
+\| \operatorname{tr} u \|_{L_2(\partial \Omega)}^2 &amp; =  
 %       \sum_{i=1}^M \| u \|_{L_2(\Gamma_i)}^2 =
         \sum_{i=1}^M \int_{\Gamma_i} u(x)^2 \, dx \\
-        &amp; = &amp; 
+        &amp; =  
         \sum_{i=1}^M \int_0^1 u(s_i(\xi,0))^2 \left| \frac{\partial s_i}{\partial \xi} (\xi, 0) \right| \, d \xi \\
-        &amp; \leq &amp; c \sum_{i=1}^M \int_0^1 \tilde u_i(\xi,0)^2  \, d \xi  
+        &amp; \leq  c \sum_{i=1}^M \int_0^1 \tilde u_i(\xi,0)^2  \, d \xi  
 \end{align*}\]</div>
 <p>To transform the <span class="math notranslate nohighlight">\(H^1\)</span>-norm,
 we differentiate with respect to <span class="math notranslate nohighlight">\(\tilde x\)</span> by applying the chain rule</p>
@@ -590,10 +590,10 @@ c^{-1} \, |\nabla_x u | \leq | \nabla_{\tilde x} \tilde u | \leq c \, | \nabla_x
 <p>We start from the right hand side of the stated estimate:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\| u \|_{H^1(\Omega)}^2 &amp; \geq &amp;
+\| u \|_{H^1(\Omega)}^2 &amp; \geq 
  \sum_{i=1}^M \int_{S_i} | \nabla_x u |^2 \, dx \\
- &amp; = &amp; \sum_{i=1}^M \int_Q \left| \nabla_x u (s_i (\tilde x)) \right|^2    \det ( s^\prime ) \, d \tilde x \\
- &amp; \geq &amp; c \,  \sum_{i=1}^M \int_Q \left| \nabla_{\tilde x} \tilde u (\tilde x) \right| ^2  \, d \tilde x
+ &amp; =  \sum_{i=1}^M \int_Q \left| \nabla_x u (s_i (\tilde x)) \right|^2    \det ( s^\prime ) \, d \tilde x \\
+ &amp; \geq  c \,  \sum_{i=1}^M \int_Q \left| \nabla_{\tilde x} \tilde u (\tilde x) \right| ^2  \, d \tilde x
 \end{align*}\]</div>
 <p>We got a lower bound for <span class="math notranslate nohighlight">\(\det (s^\prime) = (\det (s^\prime)^{-1})^{-1}\)</span> from the upper bound for <span class="math notranslate nohighlight">\((s^\prime)^{-1}\)</span>.</p>
 <p>It remains to prove the trace estimate on <span class="math notranslate nohighlight">\(Q\)</span>. Here, we apply the previous
@@ -606,18 +606,19 @@ one dimensional result</p>
 <p>The result follows from integrating over <span class="math notranslate nohighlight">\(\xi\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\int_0^1 |  u(\xi, 0)|^2 \, d\xi &amp; \leq &amp; 
+\int_0^1 |  u(\xi, 0)|^2 \, d\xi &amp; \leq  
  c \, \int_0^1  \int_0^1  \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u(\xi,\eta)}{\partial \eta}\right)^2 \right\} \, d \eta \, d \xi \\
-        &amp; \leq &amp; c \, \| u \|_{H^1(Q)}^2.
+        &amp; \leq  c \, \| u \|_{H^1(Q)}^2.
 \end{align*}\]</div>
 <p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>Considering the trace operator from <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span> to <span class="math notranslate nohighlight">\(L_2(\partial \Omega)\)</span> is
 not sharp with respect to the norms. We will improve the embedding later.</p>
-<p>By means of the trace operator we can define the sub-space
-$<span class="math notranslate nohighlight">\(
+<p>By means of the trace operator we can define the sub-space</p>
+<div class="math notranslate nohighlight">
+\[
 H_0^1(\Omega) = \{ u \in H^1(\Omega) : \operatorname{tr} \, u = 0 \}
-\)</span><span class="math notranslate nohighlight">\(
-It is a true sub-space, since \)</span>u = 1<span class="math notranslate nohighlight">\( does belong to \)</span>H^1<span class="math notranslate nohighlight">\(, but not to \)</span>H_0^1$.
+\]</div>
+<p>It is a true sub-space, since <span class="math notranslate nohighlight">\(u = 1\)</span> does belong to <span class="math notranslate nohighlight">\(H^1\)</span>, but not to <span class="math notranslate nohighlight">\(H_0^1\)</span>.
 It is a closed sub-space, since it is the kernel of a continuous operator.</p>
 <p>By means of the trace inequality, one verifies that the linear functional</p>
 <div class="math notranslate nohighlight">
@@ -631,7 +632,7 @@ g(v) := \int_{\Gamma_N} g \, \operatorname{tr} \, v \, dx
 parts in <span class="math notranslate nohighlight">\(H^1\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{\Omega} \nabla u \varphi \, dx = -\int_\Omega u \opdiv \, \varphi \, dx 
+\int_{\Omega} \nabla u \varphi \, dx = -\int_\Omega u \operatorname{div} \, \varphi \, dx 
         + \int_{\partial \Omega} \operatorname{tr} u \, \varphi \cdot n \, dx 
 \qquad \forall \, \varphi \in [C^1(\overline{\Omega})]^2
 \]</div>
@@ -672,7 +673,7 @@ weak gradient</p></li>
 is the weak gradient of <span class="math notranslate nohighlight">\(u\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[
-\int_\Omega g \cdot \varphi \, dx = - \int_\Omega u \, \opdiv \varphi \, dx
+\int_\Omega g \cdot \varphi \, dx = - \int_\Omega u \, \operatorname{div} \varphi \, dx
 \qquad \forall \, \varphi \in [C_0^\infty(\Omega)]^d
 \]</div>
 <p>We are using Green’s formula on the sub-domains</p>
@@ -682,14 +683,14 @@ is the weak gradient of <span class="math notranslate nohighlight">\(u\)</span>,
         \sum_{i=1}^M \int_{\Omega_i} g_i \cdot \varphi \, dx =
         \sum_{i=1}^M \int_{\Omega_i} \nabla u_i \cdot \varphi \, dx \\
         &amp; =  
-        \sum_{i=1}^M -\int_{\Omega_i} u_i  \opdiv \varphi \, dx 
+        \sum_{i=1}^M -\int_{\Omega_i} u_i  \operatorname{div} \varphi \, dx 
            + \int_{\partial \Omega_i} \operatorname{tr} u_i \, \varphi \cdot n_i \, ds \\
-        &amp; =  -\int_\Omega u \opdiv \varphi \, dx 
+        &amp; =  -\int_\Omega u \operatorname{div} \varphi \, dx 
         + \sum_{\gamma_{ij}} \int_{\gamma_{ij}} 
         \left\{ \operatorname{tr}_{\gamma_{ij}} u_i \, \varphi \cdot n_i +
                 \operatorname{tr}_{\gamma_{ij}} u_j \, \varphi \cdot n_j
         \right\} \, ds \\
-        &amp; =  -\int_\Omega u \, \opdiv \varphi \, dx
+        &amp; =  -\int_\Omega u \, \operatorname{div} \varphi \, dx
 \end{align*}\]</div>
 <p>We have used that <span class="math notranslate nohighlight">\(\varphi = 0\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, and <span class="math notranslate nohighlight">\(n_i = -n_j\)</span> on <span class="math notranslate nohighlight">\(\gamma_{ij}\)</span>.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
@@ -720,25 +721,27 @@ s_i ( (0,1) \times (-1,0) ) &amp; = &amp; S_i \setminus \overline \Omega
 \end{eqnarray*}\]</div>
 <p>Assume that <span class="math notranslate nohighlight">\(\| \frac{ds_i}{dx} \|_{L_\infty}\)</span> and <span class="math notranslate nohighlight">\(\| \left( \frac{ds_i}{dx} \right)^{-1} \|_{L_\infty}\)</span> are bounded.</p>
 <p>This defines an invertible mapping <span class="math notranslate nohighlight">\(x \rightarrow \hat x (x)\)</span> from the inside
-to the outside by
-$<span class="math notranslate nohighlight">\(
+to the outside by</p>
+<div class="math notranslate nohighlight">
+\[
 \hat x(x) = s_i (\xi(x), -\eta(x)).
-\)</span><span class="math notranslate nohighlight">\(
-The mapping preserve the boundary \)</span>\Gamma_i<span class="math notranslate nohighlight">\(.
-The transformations \)</span>s_i<span class="math notranslate nohighlight">\( should be such that \)</span>x \rightarrow \hat x<span class="math notranslate nohighlight">\( is
-consistent at the interfaces between \)</span>S_i<span class="math notranslate nohighlight">\( and \)</span>S_j$.</p>
+\]</div>
+<p>The mapping preserve the boundary <span class="math notranslate nohighlight">\(\Gamma_i\)</span>.
+The transformations <span class="math notranslate nohighlight">\(s_i\)</span> should be such that <span class="math notranslate nohighlight">\(x \rightarrow \hat x\)</span> is
+consistent at the interfaces between <span class="math notranslate nohighlight">\(S_i\)</span> and <span class="math notranslate nohighlight">\(S_j\)</span>.</p>
 <p>With the flipping operator <span class="math notranslate nohighlight">\(f : (\xi, \eta) \rightarrow (\xi, -\eta)\)</span>, the
 mapping is the composite <span class="math notranslate nohighlight">\(\hat x(x) = s_i (f(s_i^{-1}))\)</span>. From that, we
-obtain the bound
-$<span class="math notranslate nohighlight">\(
+obtain the bound</p>
+<div class="math notranslate nohighlight">
+\[
 \left\| \frac{d \hat x}{d x } \right\| \leq
          \left\| \frac{ds}{dx} \right\|
          \left\| \left( \frac{ds}{dx} \right)^{-1} \right\|.
-\)</span><span class="math notranslate nohighlight">\(
-Define the domain \)</span>\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M$.</p>
+\]</div>
+<p>Define the domain <span class="math notranslate nohighlight">\(\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M\)</span>.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-75c8623e-6550-4817-ac72-cbec74b5b7c1">
-<span class="eqno">(15.1)<a class="headerlink" href="#equation-75c8623e-6550-4817-ac72-cbec74b5b7c1" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
+<div class="amsmath math notranslate nohighlight" id="equation-71014cf3-0134-4539-a7c6-788484ae5498">
+<span class="eqno">()<a class="headerlink" href="#equation-71014cf3-0134-4539-a7c6-788484ae5498" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
@@ -821,92 +824,100 @@ space <span class="math notranslate nohighlight">\(H^{1/2}(\partial \Omega)\)</s
 <p>We introduce a stronger space, such that the trace operator is still
 continuous, and onto.
 Let <span class="math notranslate nohighlight">\(V = H^1(\Omega)\)</span>, and define the trace space as the range of the
-trace operator
-$<span class="math notranslate nohighlight">\(
+trace operator</p>
+<div class="math notranslate nohighlight">
+\[
 W = \{ \operatorname{tr} \, u : u \in H^1(\Omega) \}
-\)</span>$
-with the norm</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dac09e3b-179c-486b-9b35-53f043648fc3">
-<span class="eqno">(15.2)<a class="headerlink" href="#equation-dac09e3b-179c-486b-9b35-53f043648fc3" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\label{equ_tracenorm}
+\]</div>
+<p>with the norm</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4a10ce0c-d851-4a92-8271-551e471aabdf">
+<span class="eqno">()<a class="headerlink" href="#equation-4a10ce0c-d851-4a92-8271-551e471aabdf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \| \operatorname{tr} u \|_W = \inf_{v \in V \atop \operatorname{tr} \, u = \operatorname{tr} \, v } \| v \|_V.
 \end{equation}\]</div>
 <p>This is indeed a norm on <span class="math notranslate nohighlight">\(W\)</span>. The trace operator is continuous from <span class="math notranslate nohighlight">\(V \rightarrow W\)</span> with norm <span class="math notranslate nohighlight">\(1\)</span>.</p>
-<p>\begin{lemma} The space <span class="math notranslate nohighlight">\((W, \|.\|_W)\)</span> is a Banach space. For all <span class="math notranslate nohighlight">\(g \in W\)</span>
-there exists an <span class="math notranslate nohighlight">\(u \in V\)</span> such that <span class="math notranslate nohighlight">\(\operatorname{tr} \, u = g\)</span> and <span class="math notranslate nohighlight">\(\| u \|_V = \| g \|_W\)</span>
-\end{lemma}
-\noindent {\em Proof:}
+<blockquote>
+<div><p><strong>Lemma:</strong> The space <span class="math notranslate nohighlight">\((W, \|.\|_W)\)</span> is a Banach space. For all <span class="math notranslate nohighlight">\(g \in W\)</span>
+there exists an <span class="math notranslate nohighlight">\(u \in V\)</span> such that <span class="math notranslate nohighlight">\(\operatorname{tr} \, u = g\)</span> and <span class="math notranslate nohighlight">\(\| u \|_V = \| g \|_W\)</span></p>
+</div></blockquote>
+<p><em>Proof:</em>
 The kernel space <span class="math notranslate nohighlight">\(V_0 := \{ v : \operatorname{tr} \, v = 0 \}\)</span> is a closed sub-space of
-<span class="math notranslate nohighlight">\(V\)</span>. If <span class="math notranslate nohighlight">\(\operatorname{tr} \, u = \operatorname{tr} \, v\)</span>, then <span class="math notranslate nohighlight">\(z := u - v \in V_0\)</span>. We can rewrite
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(V\)</span>. If <span class="math notranslate nohighlight">\(\operatorname{tr} \, u = \operatorname{tr} \, v\)</span>, then <span class="math notranslate nohighlight">\(z := u - v \in V_0\)</span>. We can rewrite</p>
+<div class="math notranslate nohighlight">
+\[
 \| \operatorname{tr} \, u \|_W = \inf_{z \in V_0} \| u - z \|_V = \| u - P_{V_0} u \|_V
 \qquad  \forall \, u \in V
-\)</span><span class="math notranslate nohighlight">\(
-Now, let \)</span>g_n = \operatorname{tr} , u_n \in W<span class="math notranslate nohighlight">\( be a Cauchy sequence. This does not
-imply that \)</span>u_n<span class="math notranslate nohighlight">\( is Cauchy, but \)</span>P_{V_0^\bot} u_n<span class="math notranslate nohighlight">\( is 
-Cauchy in \)</span>V<span class="math notranslate nohighlight">\(:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Now, let <span class="math notranslate nohighlight">\(g_n = \operatorname{tr} \, u_n \in W\)</span> be a Cauchy sequence. This does not
+imply that <span class="math notranslate nohighlight">\(u_n\)</span> is Cauchy, but <span class="math notranslate nohighlight">\(P_{V_0^\bot} u_n\)</span> is
+Cauchy in <span class="math notranslate nohighlight">\(V\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \| P_{V_0^\bot} (u_n - u_m) \|_V = \| \operatorname{tr} \, (u_n - u_m) \|_W.
-\)</span><span class="math notranslate nohighlight">\(
-The \)</span>P_{V_0^\bot} u_n<span class="math notranslate nohighlight">\( converge to some \)</span>u \in V_0^\bot<span class="math notranslate nohighlight">\(, and \)</span>g_n<span class="math notranslate nohighlight">\( converge
-to \)</span>g := \operatorname{tr} , u<span class="math notranslate nohighlight">\(. 
-\hfill \)</span>\Box$</p>
-<p>The minimizer in (\ref{equ_tracenorm}) fulfills
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>The <span class="math notranslate nohighlight">\(P_{V_0^\bot} u_n\)</span> converge to some <span class="math notranslate nohighlight">\(u \in V_0^\bot\)</span>, and <span class="math notranslate nohighlight">\(g_n\)</span> converge
+to <span class="math notranslate nohighlight">\(g := \operatorname{tr} \, u\)</span>.
+<span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>The minimizer in (\ref{equ_tracenorm}) fulfills</p>
+<div class="math notranslate nohighlight">
+\[
 \operatorname{tr} \, u = g \qquad \mbox{and} \qquad (u,v)_V = 0 \qquad \forall \, v \in V_0.
-\)</span><span class="math notranslate nohighlight">\(
-This means that \)</span>u<span class="math notranslate nohighlight">\( is the solution of the weak form of the
-Dirichlet problem 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>This means that <span class="math notranslate nohighlight">\(u\)</span> is the solution of the weak form of the
+Dirichlet problem</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{array}{rcll}
 -\Delta u + u &amp; = &amp; 0 \qquad &amp; \mbox{ in }  \Omega \\
 u &amp; = &amp; g \qquad &amp; \mbox{ on } \partial \Omega.
 \end{array}
-\)</span>$</p>
-<p>\bigskip</p>
+\end{split}\]</div>
 <p>To give an explicit characterization of the norm <span class="math notranslate nohighlight">\(\|.\|_W\)</span>, we introduce
-{\bf Hilbert space interpolation}:</p>
+<em>Hilbert space interpolation</em>:</p>
 <p>Let <span class="math notranslate nohighlight">\(V_1 \subset V_0\)</span> be two Hilbert spaces, such that <span class="math notranslate nohighlight">\(V_1\)</span> is dense
 in <span class="math notranslate nohighlight">\(V_0\)</span>, and the embedding operator <span class="math notranslate nohighlight">\(id : V_1 \rightarrow V_0\)</span>
-is compact. We can pose the eigen-value problem: Find <span class="math notranslate nohighlight">\(z \in V_1\)</span>, <span class="math notranslate nohighlight">\(\lambda \in {\mathbb R}\)</span> such that
-$<span class="math notranslate nohighlight">\(
+is compact. We can pose the eigen-value problem: Find <span class="math notranslate nohighlight">\(z \in V_1\)</span>, <span class="math notranslate nohighlight">\(\lambda \in {\mathbb R}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
 (z, v)_{V_1} = \lambda (z, v)_{V_0} \qquad \forall \, v \in V_1.
-\)</span><span class="math notranslate nohighlight">\(
-There exists a sequence of eigen-pairs \)</span>(z_k, \lambda_k)<span class="math notranslate nohighlight">\( such that \)</span>\lambda_k
-\rightarrow \infty<span class="math notranslate nohighlight">\(. The \)</span>z_k<span class="math notranslate nohighlight">\( form an orthonormal basis in \)</span>V_0<span class="math notranslate nohighlight">\(, and
-an orthogonal basis in \)</span>V_1$.</p>
-<p>\bigskip</p>
+\]</div>
+<p>There exists a sequence of eigen-pairs <span class="math notranslate nohighlight">\((z_k, \lambda_k)\)</span> such that <span class="math notranslate nohighlight">\(\lambda_k
+\rightarrow \infty\)</span>. The <span class="math notranslate nohighlight">\(z_k\)</span> form an orthonormal basis in <span class="math notranslate nohighlight">\(V_0\)</span>, and
+an orthogonal basis in <span class="math notranslate nohighlight">\(V_1\)</span>.</p>
 <p>The converse is also true. If <span class="math notranslate nohighlight">\(z_k\)</span> is a basis for <span class="math notranslate nohighlight">\(V_0\)</span>, and the eigenvalues
 <span class="math notranslate nohighlight">\(\lambda_k \rightarrow \infty\)</span>, then the embedding <span class="math notranslate nohighlight">\(V_1 \subset V_0\)</span> is compact.</p>
-<p>\bigskip</p>
-<p>Given <span class="math notranslate nohighlight">\(u \in V_0\)</span>, it can be expanded in the orthonormal eigen-vector basis:
-$<span class="math notranslate nohighlight">\(
+<p>Given <span class="math notranslate nohighlight">\(u \in V_0\)</span>, it can be expanded in the orthonormal eigen-vector basis:</p>
+<div class="math notranslate nohighlight">
+\[
 u = \sum_{k=0}^\infty u_k z_k \qquad \mbox{with} \qquad u_k = (u, z_k)_{V_0}
-\)</span><span class="math notranslate nohighlight">\(
-The \)</span>|.|_{V_0}<span class="math notranslate nohighlight">\( - norm of \)</span>u<span class="math notranslate nohighlight">\( is 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The <span class="math notranslate nohighlight">\(\|.\|_{V_0}\)</span> - norm of <span class="math notranslate nohighlight">\(u\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
 \| u \|_{V_0}^2 = (\sum_k u_k z_k, \sum_l u_l z_l)_{V_0} = 
         \sum_{k,l} u_k u_l (z_k,z_l)_{V_0} = \sum_k u_k^2.
-\)</span><span class="math notranslate nohighlight">\(
-If \)</span>u \in V_1<span class="math notranslate nohighlight">\(, then 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(u \in V_1\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
 \| u \|_{V_1}^2 = (\sum_k u_k z_k, \sum_l u_l z_l)_{V_1} = 
         \sum_{k,l} u_k u_l (z_k,z_l)_{V_1} = 
         \sum_{k,l} u_k u_l \lambda_k (z_k,z_l)_{V_0} = 
         \sum_k u_k^2 \lambda_k
-\)</span><span class="math notranslate nohighlight">\(
-The sub-space space \)</span>V_1<span class="math notranslate nohighlight">\( consists of all \)</span>u = \sum u_k z_k<span class="math notranslate nohighlight">\( such 
-that \)</span>\sum_k \lambda_k u_k^2<span class="math notranslate nohighlight">\( is finite. This suggests the definition
-of the interpolation norm
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The sub-space space <span class="math notranslate nohighlight">\(V_1\)</span> consists of all <span class="math notranslate nohighlight">\(u = \sum u_k z_k\)</span> such
+that <span class="math notranslate nohighlight">\(\sum_k \lambda_k u_k^2\)</span> is finite. This suggests the definition
+of the interpolation norm</p>
+<div class="math notranslate nohighlight">
+\[
 \| u \|_{V_s}^2 = \sum_k (u, z_k)_{V_0}^2 \lambda_k^s,
-\)</span><span class="math notranslate nohighlight">\(
-and the interpolation space \)</span>V_s = [V_0, V_1]<em>s<span class="math notranslate nohighlight">\( as
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and the interpolation space <span class="math notranslate nohighlight">\(V_s = [V_0, V_1]_s\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
 V_s = \{ u \in V_0 : \| u \|_{V_s} &lt; \infty \}.
-\)</span><span class="math notranslate nohighlight">\(
-We have been fast with using infinite sums. To make everything precise,
-one first works with finite dimensional sub-spaces \)</span>{ u : \exists n \in {\mathbb N} \mbox{ and } u = \sum</em>{k=1}^n u_k z_k }$, and takes the closure.</p>
+\]</div>
+<p>We have been fast with using infinite sums. To make everything precise,
+one first works with finite dimensional sub-spaces <span class="math notranslate nohighlight">\(\{ u : \exists n \in {\mathbb N} \mbox{ and } u = \sum_{k=1}^n u_k z_k \}\)</span>, and takes the closure.</p>
 <p>In our case, we apply Hilbert space interpolation to <span class="math notranslate nohighlight">\(H^1(0,1) \subset L_2(0,1)\)</span>. The eigen-value problem is to find <span class="math notranslate nohighlight">\(z_k \in H^1\)</span> and <span class="math notranslate nohighlight">\(\lambda_k \in {\mathbb R}\)</span>
 such that</p>
 <div class="math notranslate nohighlight">
@@ -916,8 +927,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60efd251-65b9-4c12-8add-967095fa89c6">
-<span class="eqno">(15.3)<a class="headerlink" href="#equation-60efd251-65b9-4c12-8add-967095fa89c6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2d04fff9-933b-4eaf-a122-e7d4f06baeb8">
+<span class="eqno">()<a class="headerlink" href="#equation-2d04fff9-933b-4eaf-a122-e7d4f06baeb8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
