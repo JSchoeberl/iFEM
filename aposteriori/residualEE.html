@@ -264,7 +264,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">53. Additive Schwarz Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">54. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. Schwarz preconditioners for high order finite elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. high order fem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">56. Domain Decomposition with minimal overlap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">57. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">58. Exercise: Robust preconditioners</a></li>
@@ -545,8 +545,8 @@ approximation estimates:</p>
 <p>{\em Proof:} First, choose a reference patch <span class="math notranslate nohighlight">\(\widehat \omega_T\)</span> of
 dimension
 <span class="math notranslate nohighlight">\(\simeq 1\)</span>. The quasi-interpolation operator is bounded on <span class="math notranslate nohighlight">\(H^1(\omega_T)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0320ce1d-e887-4c21-94e4-66b30a3db323">
-<span class="eqno">(23.1)<a class="headerlink" href="#equation-0320ce1d-e887-4c21-94e4-66b30a3db323" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e1349d49-5794-4840-9282-5a4863284901">
+<span class="eqno">(23.1)<a class="headerlink" href="#equation-e1349d49-5794-4840-9282-5a4863284901" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_clement_bh}
 \| v - \Pi_h v \|_{L_2(\widehat T)} + \| \nabla (v - \Pi_h v) \|_{L_2(\widehat T)} \preceq \| v \|_{H^1(\widehat \omega_T)}
 \end{equation}\]</div>
@@ -556,8 +556,8 @@ The constant function (on <span class="math notranslate nohighlight">\(\omega_T\
 <span class="math notranslate nohighlight">\(\| v - \Pi_h v \|_{H^1(T)}\)</span>. Due to
 the Bramble-Hilbert lemma, we can replace the norm on the right hand side
 of (\ref{equ_clement_bh}) by the semi-norm:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2aae06a7-bf64-4204-94ee-72749736fd1e">
-<span class="eqno">(23.2)<a class="headerlink" href="#equation-2aae06a7-bf64-4204-94ee-72749736fd1e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-410050b2-03dc-41f2-ae9c-4e43fd336bb0">
+<span class="eqno">(23.2)<a class="headerlink" href="#equation-410050b2-03dc-41f2-ae9c-4e43fd336bb0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_clement_bh2}
 \| v - \Pi_h v \|_{L_2(\widehat T)} + \| \nabla (v - \Pi_h v) \|_{L_2(\widehat T)} \preceq \| \nabla v \|_{L_2(\widehat \omega_T)}
 \end{equation}\]</div>

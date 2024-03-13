@@ -264,7 +264,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">53. Additive Schwarz Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">54. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. Schwarz preconditioners for high order finite elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. high order fem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">56. Domain Decomposition with minimal overlap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">57. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">58. Exercise: Robust preconditioners</a></li>
@@ -488,15 +488,15 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 <p>An error estimator is called {\em reliable}, if it is an upper bound for the error,
 i.e., there exists a constant <span class="math notranslate nohighlight">\(C_1\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3374ad12-a10d-4ef4-9983-29b6d483d9bb">
-<span class="eqno">(22.1)<a class="headerlink" href="#equation-3374ad12-a10d-4ef4-9983-29b6d483d9bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-aa3bff2e-694a-4186-bc36-bef0aa73a49f">
+<span class="eqno">(22.1)<a class="headerlink" href="#equation-aa3bff2e-694a-4186-bc36-bef0aa73a49f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_reliable}
 \| u - u_h \|_V \leq C_1 \, \eta(u_h, f)
 \end{equation}\]</div>
 <p>An error estimator is {\em efficient}, if it is a lower bound for the error,
 i.e., there exists a constant <span class="math notranslate nohighlight">\(C_2\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6b5fc25f-623c-4b57-ba20-6ea8cea7b4bd">
-<span class="eqno">(22.2)<a class="headerlink" href="#equation-6b5fc25f-623c-4b57-ba20-6ea8cea7b4bd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-47e244b7-3e93-4971-b371-03f720b0756d">
+<span class="eqno">(22.2)<a class="headerlink" href="#equation-47e244b7-3e93-4971-b371-03f720b0756d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_efficient}
 \| u - u_h \|_V \geq C_2 \, \eta(u_h, f).
 \end{equation}\]</div>
@@ -541,8 +541,8 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$
 The hope is that the averaged gradient is a much better approximation to the true gradient,
 i.e.,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ebf1c4e3-abc9-4acd-8d07-45cd737a9b19">
-<span class="eqno">(22.3)<a class="headerlink" href="#equation-ebf1c4e3-abc9-4acd-8d07-45cd737a9b19" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3d94bf4b-9439-44dd-9983-f8570ca87252">
+<span class="eqno">(22.3)<a class="headerlink" href="#equation-3d94bf4b-9439-44dd-9983-f8570ca87252" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_superconvergence}
 \| p - \tilde p_h \|_{L_2} \leq \alpha \, \| p - p_h \|_{L_2}
 \end{equation}\]</div>

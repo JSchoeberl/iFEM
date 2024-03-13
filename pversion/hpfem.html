@@ -264,7 +264,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">53. Additive Schwarz Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">54. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. Schwarz preconditioners for high order finite elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. high order fem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">56. Domain Decomposition with minimal overlap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">57. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">58. Exercise: Robust preconditioners</a></li>
@@ -530,16 +530,16 @@ P_2(x) &amp; = \tfrac{3}{2} x^2 - \tfrac{1}{2}
 <p><span class="math notranslate nohighlight">\(P_n\)</span> is even if <span class="math notranslate nohighlight">\(n\)</span> is even, and <span class="math notranslate nohighlight">\(P_n\)</span> is odd if <span class="math notranslate nohighlight">\(n\)</span> is odd.
 Since <span class="math notranslate nohighlight">\((x^2-1)^n = x^{2n} - n x^{2n-2} + \pi_{2n-4}\)</span> (with proper
 modification for small <span class="math notranslate nohighlight">\(n\)</span>) we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c225fe52-ae3c-4ac8-887e-e4752375590c">
-<span class="eqno">(26.1)<a class="headerlink" href="#equation-c225fe52-ae3c-4ac8-887e-e4752375590c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b4ae5f38-7a79-4388-9ca3-2cf909334ae4">
+<span class="eqno">(26.1)<a class="headerlink" href="#equation-b4ae5f38-7a79-4388-9ca3-2cf909334ae4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 % \label{equ_leadingcoef}
 P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n-2)!} {(n-2)!} x^{n-2} + \pi_{n-4}
 \end{equation}\]</div>
 <blockquote>
 <div><p><strong>Lemma: Orthogonality</strong></p>
 <p>There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7912ee79-ba84-4f5f-8ecc-19301b7b7eec">
-<span class="eqno">(26.2)<a class="headerlink" href="#equation-7912ee79-ba84-4f5f-8ecc-19301b7b7eec" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_ortho}
+<div class="amsmath math notranslate nohighlight" id="equation-14b96162-b561-47d6-84f2-0ef935d389a4">
+<span class="eqno">(26.2)<a class="headerlink" href="#equation-14b96162-b561-47d6-84f2-0ef935d389a4" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_ortho}
   \int_{-1}^1 P_n(x) P_m(x) \, dx = \frac{2}{2n+1} \delta_{n,m}.
   \end{equation}\]</div>
 </div></blockquote>
@@ -568,8 +568,8 @@ P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n
 <blockquote>
 <div><p><strong>Lemma: Three term recurrence:</strong></p>
 <p>There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-29dc4cb1-17fc-433a-8d9a-bd17fce024d1">
-<span class="eqno">(26.3)<a class="headerlink" href="#equation-29dc4cb1-17fc-433a-8d9a-bd17fce024d1" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
+<div class="amsmath math notranslate nohighlight" id="equation-88460c0c-a535-4e0c-9d13-0f2f27dfe11f">
+<span class="eqno">(26.3)<a class="headerlink" href="#equation-88460c0c-a535-4e0c-9d13-0f2f27dfe11f" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
   (n+1) P_{n+1} (x) = (2n+1) x P_n(x) - n P_{n-1}(x).
   \end{equation}\]</div>
 </div></blockquote>
@@ -640,8 +640,8 @@ P_{L_2}^{\Pi_p} u = \sum_{n=0}^p a_n P_n
 <blockquote>
 <div><p><strong>Lemma Projection error:</strong></p>
 <p>The <span class="math notranslate nohighlight">\(L_2\)</span>-projection error satisfies</p>
-<div class="amsmath math notranslate nohighlight" id="equation-206ff77f-f2f9-4f90-97b5-14d0e0b1063c">
-<span class="eqno">(26.4)<a class="headerlink" href="#equation-206ff77f-f2f9-4f90-97b5-14d0e0b1063c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b9ac1210-94b3-421b-857a-a9a309a7505f">
+<span class="eqno">(26.4)<a class="headerlink" href="#equation-b9ac1210-94b3-421b-857a-a9a309a7505f" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - P_{L_2}^{\Pi_p} u \|_{L_2(-1,1)} \leq \frac{1}{\sqrt{(p+1)(p+2)}}    \, | u |_{H^1(-1,1)}
   \end{equation}\]</div>
 </div></blockquote>
@@ -736,8 +736,8 @@ with \)</span>c \neq c(p)<span class="math notranslate nohighlight">\(, easily i
 <section id="the-1d-case">
 <h3><span class="section-number">26.4.1. </span>The 1D case<a class="headerlink" href="#the-1d-case" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(I=(-1,1)\)</span>. We define the operator <span class="math notranslate nohighlight">\(I_p : H^1(I) \rightarrow \Pi_p\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4b79a9ea-63d3-4b90-b213-09d77a90e8e5">
-<span class="eqno">(26.5)<a class="headerlink" href="#equation-4b79a9ea-63d3-4b90-b213-09d77a90e8e5" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-7547068d-f273-4637-a69b-9fdd7c361839">
+<span class="eqno">(26.5)<a class="headerlink" href="#equation-7547068d-f273-4637-a69b-9fdd7c361839" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 I_p u(x) &amp; = &amp; u(x) \qquad x \in \{ -1, 1 \}   \label{equ_projbased1} \\
 \int_I (I_p u)^\prime q^\prime &amp; = &amp;  \int_I u^\prime q^\prime \qquad \forall \, q \in \Pi_{p,0}(I),   \label{equ_projbased2} 
 \end{eqnarray}\]</div>
@@ -780,8 +780,8 @@ One also gets for \)</span>q \in \Pi_p<span class="math notranslate nohighlight"
 <section id="projection-based-interpolation-on-triangles">
 <h3><span class="section-number">26.4.2. </span>Projection based interpolation on triangles<a class="headerlink" href="#projection-based-interpolation-on-triangles" title="Link to this heading">#</a></h3>
 <p>We define the operator <span class="math notranslate nohighlight">\(I_p : H^2(T) \rightarrow \Pi_p(T)\)</span> as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8a6917b7-bd2d-4c19-96aa-de75233aa44a">
-<span class="eqno">(26.6)<a class="headerlink" href="#equation-8a6917b7-bd2d-4c19-96aa-de75233aa44a" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-444bfa15-897c-4848-b42a-ee95404f660f">
+<span class="eqno">(26.6)<a class="headerlink" href="#equation-444bfa15-897c-4848-b42a-ee95404f660f" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 I_p u(x) &amp; = &amp; u(x) \qquad \forall \text{ vertices } x \\
 \int_E \partial_\tau (I_p u) \partial_\tau q &amp; = &amp;  
 \int_E \partial_\tau u  \partial_\tau q \qquad \forall \text{ edges } E, \; \forall \, q \in \Pi_{p,0}(E) \\

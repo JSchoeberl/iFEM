@@ -264,7 +264,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">53. Additive Schwarz Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">54. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. Schwarz preconditioners for high order finite elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. high order fem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">56. Domain Decomposition with minimal overlap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">57. Overlapping Domain Decomposition Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">58. Exercise: Robust preconditioners</a></li>
@@ -741,8 +741,8 @@ obtain the bound</p>
 \]</div>
 <p>Define the domain <span class="math notranslate nohighlight">\(\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M\)</span>.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b94c0dfc-80f8-4de5-9b15-d8f547af58a3">
-<span class="eqno">(15.1)<a class="headerlink" href="#equation-b94c0dfc-80f8-4de5-9b15-d8f547af58a3" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
+<div class="amsmath math notranslate nohighlight" id="equation-04becc8c-af04-4055-8eed-f786cb8573e5">
+<span class="eqno">(15.1)<a class="headerlink" href="#equation-04becc8c-af04-4055-8eed-f786cb8573e5" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
@@ -831,8 +831,8 @@ trace operator</p>
 W = \{ \operatorname{tr} \, u : u \in H^1(\Omega) \}
 \]</div>
 <p>with the norm</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0f63395d-158f-45d6-9c22-c95816947fad">
-<span class="eqno">(15.2)<a class="headerlink" href="#equation-0f63395d-158f-45d6-9c22-c95816947fad" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-aa9bead2-d8ac-4add-84f9-d674853931c9">
+<span class="eqno">(15.2)<a class="headerlink" href="#equation-aa9bead2-d8ac-4add-84f9-d674853931c9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \| \operatorname{tr} u \|_W = \inf_{v \in V \atop \operatorname{tr} \, u = \operatorname{tr} \, v } \| v \|_V.
 \end{equation}\]</div>
 <p>This is indeed a norm on <span class="math notranslate nohighlight">\(W\)</span>. The trace operator is continuous from <span class="math notranslate nohighlight">\(V \rightarrow W\)</span> with norm <span class="math notranslate nohighlight">\(1\)</span>.</p>
@@ -928,8 +928,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e8d03e6-5d1c-4bf8-bf88-d6b12acf463e">
-<span class="eqno">(15.3)<a class="headerlink" href="#equation-7e8d03e6-5d1c-4bf8-bf88-d6b12acf463e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a3f90fbf-5597-48aa-8e29-ff530446fec6">
+<span class="eqno">(15.3)<a class="headerlink" href="#equation-a3f90fbf-5597-48aa-8e29-ff530446fec6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
