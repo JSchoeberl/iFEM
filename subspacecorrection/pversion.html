@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>55. Schwarz preconditioners for high order finite elements &#8212; Interactive Finite Elements</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"0bf4707312e24f2892a0d622f4971a9e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "50vh", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "100%"}}, "dd4d917326054673b53ba1367f8f1940": {"model_name": "WebguiModel", "model_module": "webgui_jupyter_widgets", "model_module_version": "0.2.29", "state": {"_dom_classes": [], "_model_module": "webgui_jupyter_widgets", "_model_module_version": "0.2.29", "_model_name": "WebguiModel", "_view_count": null, "_view_module": "webgui_jupyter_widgets", "_view_module_version": "0.2.29", "_view_name": "WebguiView", "layout": "IPY_MODEL_0bf4707312e24f2892a0d622f4971a9e", "tabbable": null, "tooltip": null, "value": {"gui_settings": {}, "ngsolve_version": "6.2.2402-5-gcbd285f39", "mesh_dim": 2, "order2d": 2, "order3d": 2, "draw_vol": false, "draw_surf": true, "objects": [], "deformation": false, "funcdim": 1, "show_wireframe": true, "show_mesh": true, "Bezier_points": ["PG4ppc3MTD4AAAAA/gczPDxuKaXNzEw+AAAAAP4HMzzNzEw+AAAAAAAAAAD/DjM8crt1PqKyej4AAAAAOu9ZPHK7dT6isno+AAAAADrvWTzNzMw+AAAAAAAAAADWhlc8ZVf6PjzzRD4AAAAAmTeHPGVX+j4880Q+AAAAAJk3hzyamRk/AAAAAAAAAAD384E8crt1PqKyej4AAAAAOu9ZPHK7dT6isno+AAAAADrvWTxlV/o+PPNEPgAAAACZN4c8pV4xPzImKj4AAAAA3V6dPKVeMT8yJio+AAAAAN1enTzNzEw/AAAAAAAAAAB+bpQ8ZVf6PjzzRD4AAAAAmTeHPGVX+j4880Q+AAAAAJk3hzylXjE/MiYqPgAAAADdXp08zcxMPwAAAAAAAAAAfm6UPM3MTD8AAAAAAAAAAH5ulDxpMVw/SDQOPgAAAADfRKc8pV4xPzImKj4AAAAA3V6dPKVeMT8yJio+AAAAAN1enTxpMVw/SDQOPgAAAADfRKc8aTFcP0g0Dj4AAAAA30SnPGkxXD9INA4+AAAAAN9EpzwAAIA/zcxMPgAAAAArg7o8PitQP+F5pj4AAAAAuHfVPD4rUD/heaY+AAAAALh31TwAAIA/zczMPgAAAACrn/w8aTFcP0g0Dj4AAAAA30SnPGkxXD9INA4+AAAAAN9Epzw+K1A/4XmmPgAAAAC4d9U8MSJXP6N2CD8AAAAAi/QQPTEiVz+jdgg/AAAAAIv0ED0AAIA/mpkZPwAAAADiSyQ9PitQP+F5pj4AAAAAuHfVPD4rUD/heaY+AAAAALh31TwxIlc/o3YIPwAAAACL9BA9odZWP5KmOj8AAAAAPxEyPaHWVj+Spjo/AAAAAD8RMj0AAIA/zcxMPwAAAACzYUU9MSJXP6N2CD8AAAAAi/QQPTEiVz+jdgg/AAAAAIv0ED2h1lY/kqY6PwAAAAA/ETI9AACAP83MTD8AAAAAs2FFPQAAgD/NzEw/AAAAALNhRT3NzEw/AACAPwAAAAAKd0U9RD8vP2/mVD8AAAAATm4qPUQ/Lz9v5lQ/AAAAAE5uKj2amRk/AACAPwAAAABsViQ9SvkAP+OISD8AAAAA5/oGPUr5AD/jiEg/AAAAAOf6Bj3NzMw+AACAPwAAAADlpPw8RD8vP2/mVD8AAAAATm4qPUQ/Lz9v5lQ/AAAAAE5uKj1K+QA/44hIPwAAAADn+gY97L+UPjwbVT8AAAAANJ7MPOy/lD48G1U/AAAAADSezDzNzEw+AACAPwAAAAAMiro8SvkAP+OISD8AAAAA5/oGPUr5AD/jiEg/AAAAAOf6Bj3sv5Q+PBtVPwAAAAA0nsw8zcxMPgAAgD8AAAAADIq6PM3MTD4AAIA/AAAAAAyKujxYJwY+RttdPwAAAAAFI6Y87L+UPjwbVT8AAAAANJ7MPOy/lD48G1U/AAAAADSezDxYJwY+RttdPwAAAAAFI6Y8WCcGPkbbXT8AAAAABSOmPFgnBj5G210/AAAAAAUjpjwAAACkzcxMPwAAAACQcZQ8O+chPgp+ND8AAAAAejWdPDvnIT4KfjQ/AAAAAHo1nTwAAMCkmpkZPwAAAABy94E8WCcGPkbbXT8AAAAABSOmPFgnBj5G210/AAAAAAUjpjw75yE+Cn40PwAAAAB6NZ08lFxAPocKAD8AAAAAMxGIPJRcQD6HCgA/AAAAADMRiDwAAAClzczMPgAAAACpi1c8O+chPgp+ND8AAAAAejWdPDvnIT4KfjQ/AAAAAHo1nTyUXEA+hwoAPwAAAAAzEYg8crt1PqKyej4AAAAAOu9ZPHK7dT6isno+AAAAADrvWTwAACClzcxMPgAAAAD+BzM8PG4ppc3MTD4AAAAA/gczPDxuKaXNzEw+AAAAAP4HMzxyu3U+orJ6PgAAAAA671k8odZWP5KmOj8AAAAAPxEyPaHWVj+Spjo/AAAAAD8RMj3NzEw/AACAPwAAAAAKd0U9odZWP5KmOj8AAAAAPxEyPaHWVj+Spjo/AAAAAD8RMj1EPy8/b+ZUPwAAAABObio9lFxAPocKAD8AAAAAMxGIPJRcQD6HCgA/AAAAADMRiDxyu3U+orJ6PgAAAAA671k8YqAZPw+Usz4AAAAAk627PGKgGT8PlLM+AAAAAJOtuzylXjE/MiYqPgAAAADdXp08l6/LPm2Y0T4AAAAAof+gPJevyz5tmNE+AAAAAKH/oDxlV/o+PPNEPgAAAACZN4c8l6/LPm2Y0T4AAAAAof+gPJevyz5tmNE+AAAAAKH/oDxioBk/D5SzPgAAAACTrbs8sh4vP60qJj8AAAAAomQTPbIeLz+tKiY/AAAAAKJkEz2h1lY/kqY6PwAAAAA/ETI9sh4vP60qJj8AAAAAomQTPbIeLz+tKiY/AAAAAKJkEz1EPy8/b+ZUPwAAAABObio9PitQP+F5pj4AAAAAuHfVPD4rUD/heaY+AAAAALh31TxpMVw/SDQOPgAAAADfRKc8YqAZPw+Usz4AAAAAk627PGKgGT8PlLM+AAAAAJOtuzw+K1A/4XmmPgAAAAC4d9U8O+chPgp+ND8AAAAAejWdPDvnIT4KfjQ/AAAAAHo1nTxYJwY+RttdPwAAAAAFI6Y8Yb2wPtlKIT8AAAAA96G/PGG9sD7ZSiE/AAAAAPehvzw75yE+Cn40PwAAAAB6NZ08Yb2wPtlKIT8AAAAA96G/PGG9sD7ZSiE/AAAAAPehvzzsv5Q+PBtVPwAAAAA0nsw8sh4vP60qJj8AAAAAomQTPbIeLz+tKiY/AAAAAKJkEz1K+QA/44hIPwAAAADn+gY9Yb2wPtlKIT8AAAAA96G/PGG9sD7ZSiE/AAAAAPehvzyUXEA+hwoAPwAAAAAzEYg8lFxAPocKAD8AAAAAMxGIPJRcQD6HCgA/AAAAADMRiDyXr8s+bZjRPgAAAACh/6A8Yb2wPtlKIT8AAAAA96G/PGG9sD7ZSiE/AAAAAPehvzyXr8s+bZjRPgAAAACh/6A8jo4xPwOM9j4AAAAANOj0PI6OMT8DjPY+AAAAADTo9DwxIlc/o3YIPwAAAACL9BA9YqAZPw+Usz4AAAAAk627PGKgGT8PlLM+AAAAAJOtuzyOjjE/A4z2PgAAAAA06PQ8zDEJP7QaDD8AAAAA5wbiPMwxCT+0Ggw/AAAAAOcG4jxhvbA+2UohPwAAAAD3ob88jo4xPwOM9j4AAAAANOj0PI6OMT8DjPY+AAAAADTo9DyyHi8/rSomPwAAAACiZBM9zDEJP7QaDD8AAAAA5wbiPMwxCT+0Ggw/AAAAAOcG4jyOjjE/A4z2PgAAAAA06PQ8l6/LPm2Y0T4AAAAAof+gPJevyz5tmNE+AAAAAKH/oDzMMQk/tBoMPwAAAADnBuI8jo4xPwOM9j4AAAAANOj0PI6OMT8DjPY+AAAAADTo9DzMMQk/tBoMPwAAAADnBuI8Yb2wPtlKIT8AAAAA96G/PGG9sD7ZSiE/AAAAAPehvzzMMQk/tBoMPwAAAADnBuI8sh4vP60qJj8AAAAAomQTPbIeLz+tKiY/AAAAAKJkEz3MMQk/tBoMPwAAAADnBuI8", "PG6ppM3MzD0AAAAAXz0kPM3MzD3NzMw9AAAAAGTWJTzNzMw9AAAAAAAAAABTPSQ8H0RhPqKy+j0AAAAAA8Y2PEPVoz6isvo9AAAAAGAlTDyamZk+AAAAAAAAAABN+0E8GZLjPjzzxD0AAAAAPkhiPKZiCz8888Q9AAAAABrYezwAAAA/AAAAAAAAAAB8UG48Q9WjPqKy+j0AAAAAYCVMPI+auj7v0l8+AAAAAA0xcjwZkuM+PPPEPQAAAAA+SGI8H3wlPzImqj0AAAAAgHaHPLkVPz8yJqo9AAAAAPwakjwzMzM/AAAAAAAAAAAjPI08pmILPzzzxD0AAAAAGth7PCxFFz+3jDc+AAAAAAq/kzwffCU/MiaqPQAAAACAdoc8ZmZmPwAAAAAAAAAAiRScPBt/VD9INI49AAAAAKEilzy0GG4/SDSOPQAAAADKI508uRU/PzImqj0AAAAA/BqSPAfIRj89LRw+AAAAAD19pDwbf1Q/SDSOPQAAAAChIpc8tBhuP0g0jj0AAAAAyiOdPLQYbj+KgC0+AAAAANbxsTwAAIA/zczMPQAAAABvNJ48nxVoPyRwhj4AAAAAcO/LPJ8VaD9Xo7k+AAAAADp77TwAAIA/mpmZPgAAAAAVe9Y8tBhuP4qALT4AAAAA1vGxPFQuVj8FlG0+AAAAAN86uTyfFWg/JHCGPgAAAABw78s8GJFrPwnd7j4AAAAA69gKPRiRaz8eCBE/AAAAALaJHT0AAIA/AAAAPwAAAABRSRE9nxVoP1ejuT4AAAAAOnvtPLimUz+Ts9s+AAAAADdj+TwYkWs/Cd3uPgAAAADr2Ao9UGtrPxYgKj8AAAAATlswPVBraz+vuUM/AAAAACvoPz0AAIA/MzMzPwAAAAB9Vjc9GJFrPx4IET8AAAAAtokdPWn8Vj+ajiE/AAAAAIUGIz1Qa2s/FiAqPwAAAABOWzA9AACAP2ZmZj8AAAAAUbpTPWZmZj9mZmY/AAAAACmrUj1mZmY/AACAPwAAAAAsulM9CAY+Pzdzaj8AAAAAo3Q8PW9sJD83c2o/AAAAANLvKz0zMzM/AACAPwAAAACQMjc9ckkNP3JEZD8AAAAAdiUaPbBf5z5yRGQ/AAAAAOPgBz0AAAA/AACAPwAAAABFQhE9b2wkPzdzaj8AAAAA0u8rPUccGD+pt04/AAAAACRMGT1ySQ0/ckRkPwAAAAB2JRo9XcawPp6Naj8AAAAA/fnmPFMmez6ejWo/AAAAAIX2xjyamZk+AACAPwAAAACOWtY8sF/nPnJEZD8AAAAA4+AHPUBZyz4P0k4/AAAAAORD7DxdxrA+no1qPwAAAAD9+eY8zczMPQAAgD8AAAAA7yqePBJ6KT6j7W4/AAAAANLhsDxYJ4Y9o+1uPwAAAAB+/5w8UyZ7Pp6Naj8AAAAAhfbGPJnTVz5Be1k/AAAAAE31tDwSeik+o+1uPwAAAADS4bA8WCeGPaPtbj8AAAAAfv+cPFgnhj0JVFU/AAAAANJFlzwAAICjZmZmPwAAAAD1Epw8O+ehPWulQD8AAAAAMFOSPDvnoT3SCyc/AAAAAPAEiDwAAICkMzMzPwAAAAAYOI08WCeGPQlUVT8AAAAA0kWXPEoHFD6oLEk/AAAAAIS1ozw756E9a6VAPwAAAAAwU5I8lFzAPRHSDD8AAAAAILp8PJRcwD3ucOY+AAAAAExKYzwAAOCkAAAAPwAAAACuSm48O+ehPdILJz8AAAAA8ASIPOchMT5JRBo/AAAAANNAlDyUXMA9EdIMPwAAAAAgunw8crv1PQ8TpT4AAAAAuWpMPHK79T23v2M+AAAAAK8ENzwAABClmpmZPgAAAABO/0E8zczMPc3MzD0AAAAAZNYlPHK79T23v2M+AAAAAK8ENzwfRGE+orL6PQAAAAADxjY8UGtrP6+5Qz8AAAAAK+g/PbfRUT9JU10/AAAAAJ4QRj1mZmY/ZmZmPwAAAAApq1I9t9FRP0lTXT8AAAAAnhBGPfIKQz+Axkc/AAAAAIMjMj0IBj4/N3NqPwAAAACjdDw9lFzAPe5w5j4AAAAATEpjPAMMWz4wt74+AAAAAJgoczxyu/U9DxOlPgAAAAC5akw8CmYLP9cGiz4AAAAA2R2cPIR/JT+UU4Q+AAAAABTvqjwsRRc/t4w3PgAAAAAKv5M8qEajPt94pz4AAAAAtLl/PH4D4z4FCZo+AAAAANZlkzyPmro+79JfPgAAAAANMXI8fgPjPgUJmj4AAAAA1mWTPC54/z4+lsI+AAAAAKhHsDwKZgs/1waLPgAAAADZHZw8cSBDP6hQFz8AAAAAgHsVPan6Qj+faDA/AAAAADIWJD1p/FY/mo4hPwAAAACFBiM9qfpCP59oMD8AAAAAMhYkPfsuLz+OiD0/AAAAAO8sIT3yCkM/gMZHPwAAAACDIzI98sRAP/qMez4AAAAASji0PFQuVj8FlG0+AAAAAN86uTwHyEY/PS0cPgAAAAA9faQ8hH8lP5RThD4AAAAAFO+qPNDlND/4Bq0+AAAAAL+DzDzyxEA/+ox7PgAAAABKOLQ8irNlPqPMRD8AAAAAtjuxPEoHFD6oLEk/AAAAAIS1ozyZ01c+QXtZPwAAAABN9bQ8p76iPgozOz8AAAAA5JfKPH/YgD5x5Co/AAAAANLQqzyKs2U+o8xEPwAAAAC2O7E8+lfZPt7pND8AAAAAGbXjPKe+oj4KMzs/AAAAAOSXyjxAWcs+D9JOPwAAAADkQ+w8+y4vP46IPT8AAAAA7ywhPf4LGD/IWTc/AAAAAGPgED1HHBg/qbdOPwAAAAAkTBk9f9iAPnHkKj8AAAAA0tCrPNV1iD6wqhA/AAAAAD4onjznITE+SUQaPwAAAADTQJQ8AwxbPjC3vj4AAAAAmChzPPHulT6+1ug+AAAAACO+kzyoRqM+33inPgAAAAC0uX881XWIPrCqED8AAAAAPiiePHw2vj6ICwU/AAAAAH6Psjzx7pU+vtboPgAAAAAjvpM85txAP/KCzj4AAAAA5BnoPGBYRD9S3gE/AAAAAJx0Bj24plM/k7PbPgAAAAA3Y/k80OU0P/gGrT4AAAAAv4PMPHiXJT8JENU+AAAAAHX21Tzm3EA/8oLOPgAAAADkGeg8ixUFP8xRKj8AAAAAGl79PH2Q4T7HshY/AAAAAM/90jz6V9k+3uk0PwAAAAAZteM8YFhEP1LeAT8AAAAAnHQGPaBWMD9XuBA/AAAAAGKDBz1xIEM/qFAXPwAAAACAexU9F2kRP7zk5T4AAAAAF2vQPC1gHT9bsAM/AAAAANOZ7jx4lyU/CRDVPgAAAAB19tU8Lnj/Pj6Wwj4AAAAAqEewPJgJ7z7r5vQ+AAAAACx+vTwXaRE/vOTlPgAAAAAXa9A8oFYwP1e4ED8AAAAAYoMHPS1gHT9bsAM/AAAAANOZ7jw/KBw/sCIZPwAAAABAqgE9fDa+PogLBT8AAAAAfo+yPH2Q4T7HshY/AAAAAM/90jyYCe8+6+b0PgAAAAAsfr08/gsYP8hZNz8AAAAAY+AQPT8oHD+wIhk/AAAAAECqAT2LFQU/zFEqPwAAAAAaXv08", "AAAAAAAAAAAAAAAACDwkPM3MTD4AAAAAAAAAAP8OMzwAAAAAAAAAAAAAAAAIPCQ8zcxMPgAAAAAAAAAA/w4zPM3MzD4AAAAAAAAAANaGVzzNzEw+AAAAAAAAAAD/DjM8zczMPgAAAAAAAAAA1oZXPJqZGT8AAAAAAAAAAPfzgTzNzMw+AAAAAAAAAADWhlc8zczMPgAAAAAAAAAA1oZXPGVX+j4880Q+AAAAAJk3hzzNzMw+AAAAAAAAAADWhlc8mpkZPwAAAAAAAAAA9/OBPM3MTD8AAAAAAAAAAH5ulDyamRk/AAAAAAAAAAD384E8mpkZPwAAAAAAAAAA9/OBPKVeMT8yJio+AAAAAN1enTyamRk/AAAAAAAAAAD384E8AACAPwAAAAAAAAAA/NObPGkxXD9INA4+AAAAAN9EpzwAAIA/AAAAAAAAAAD805s8zcxMPwAAAAAAAAAAfm6UPGkxXD9INA4+AAAAAN9EpzzNzEw/AAAAAAAAAAB+bpQ8AACAPwAAAAAAAAAA/NObPAAAgD/NzEw+AAAAACuDujwAAIA/AAAAAAAAAAD805s8AACAP83MTD4AAAAAK4O6PAAAgD/NzMw+AAAAAKuf/DwAAIA/zcxMPgAAAAArg7o8AACAP83MTD4AAAAAK4O6PD4rUD/heaY+AAAAALh31TwAAIA/zcxMPgAAAAArg7o8AACAP83MzD4AAAAAq5/8PAAAgD+amRk/AAAAAOJLJD0AAIA/zczMPgAAAACrn/w8AACAP83MzD4AAAAAq5/8PDEiVz+jdgg/AAAAAIv0ED0AAIA/zczMPgAAAACrn/w8AACAP5qZGT8AAAAA4kskPQAAgD/NzEw/AAAAALNhRT0AAIA/mpkZPwAAAADiSyQ9AACAP5qZGT8AAAAA4kskPaHWVj+Spjo/AAAAAD8RMj0AAIA/mpkZPwAAAADiSyQ9AACAPwAAgD8AAAAA5WlUPc3MTD8AAIA/AAAAAAp3RT0AAIA/AACAPwAAAADlaVQ9zcxMPwAAgD8AAAAACndFPZqZGT8AAIA/AAAAAGxWJD3NzEw/AACAPwAAAAAKd0U9mpkZPwAAgD8AAAAAbFYkPc3MzD4AAIA/AAAAAOWk/DyamRk/AACAPwAAAABsViQ9mpkZPwAAgD8AAAAAbFYkPUr5AD/jiEg/AAAAAOf6Bj2amRk/AACAPwAAAABsViQ9zczMPgAAgD8AAAAA5aT8PM3MTD4AAIA/AAAAAAyKujzNzMw+AACAPwAAAADlpPw8zczMPgAAgD8AAAAA5aT8POy/lD48G1U/AAAAADSezDzNzMw+AACAPwAAAADlpPw8AAAAAAAAgD8AAAAArtebPFgnBj5G210/AAAAAAUjpjwAAAAAAACAPwAAAACu15s8zcxMPgAAgD8AAAAADIq6PFgnBj5G210/AAAAAAUjpjzNzEw+AACAPwAAAAAMiro8AAAAAAAAgD8AAAAArtebPAAAAKTNzEw/AAAAAJBxlDwAAAAAAACAPwAAAACu15s8AAAApM3MTD8AAAAAkHGUPAAAwKSamRk/AAAAAHL3gTwAAACkzcxMPwAAAACQcZQ8AAAApM3MTD8AAAAAkHGUPDvnIT4KfjQ/AAAAAHo1nTwAAACkzcxMPwAAAACQcZQ8AADApJqZGT8AAAAAcveBPAAAAKXNzMw+AAAAAKmLVzwAAMCkmpkZPwAAAABy94E8AADApJqZGT8AAAAAcveBPJRcQD6HCgA/AAAAADMRiDwAAMCkmpkZPwAAAABy94E8AAAApc3MzD4AAAAAqYtXPAAAIKXNzEw+AAAAAP4HMzwAAAClzczMPgAAAACpi1c8zcxMPgAAAAAAAAAA/w4zPHK7dT6isno+AAAAADrvWTzNzEw+AAAAAAAAAAD/DjM8AACAP83MTD8AAAAAs2FFPc3MTD8AAIA/AAAAAAp3RT0AAIA/zcxMPwAAAACzYUU9zcxMPwAAgD8AAAAACndFPUQ/Lz9v5lQ/AAAAAE5uKj3NzEw/AACAPwAAAAAKd0U9AAAApc3MzD4AAAAAqYtXPHK7dT6isno+AAAAADrvWTwAAAClzczMPgAAAACpi1c8ZVf6PjzzRD4AAAAAmTeHPKVeMT8yJio+AAAAAN1enTxlV/o+PPNEPgAAAACZN4c8crt1PqKyej4AAAAAOu9ZPGVX+j4880Q+AAAAAJk3hzxyu3U+orJ6PgAAAAA671k8ZVf6PjzzRD4AAAAAmTeHPGKgGT8PlLM+AAAAAJOtuzxlV/o+PPNEPgAAAACZN4c8MSJXP6N2CD8AAAAAi/QQPaHWVj+Spjo/AAAAAD8RMj0xIlc/o3YIPwAAAACL9BA9odZWP5KmOj8AAAAAPxEyPUQ/Lz9v5lQ/AAAAAE5uKj2h1lY/kqY6PwAAAAA/ETI9pV4xPzImKj4AAAAA3V6dPGkxXD9INA4+AAAAAN9EpzylXjE/MiYqPgAAAADdXp08pV4xPzImKj4AAAAA3V6dPD4rUD/heaY+AAAAALh31TylXjE/MiYqPgAAAADdXp087L+UPjwbVT8AAAAANJ7MPFgnBj5G210/AAAAAAUjpjzsv5Q+PBtVPwAAAAA0nsw87L+UPjwbVT8AAAAANJ7MPDvnIT4KfjQ/AAAAAHo1nTzsv5Q+PBtVPwAAAAA0nsw8SvkAP+OISD8AAAAA5/oGPey/lD48G1U/AAAAADSezDxK+QA/44hIPwAAAADn+gY9RD8vP2/mVD8AAAAATm4qPUr5AD/jiEg/AAAAAOf6Bj1EPy8/b+ZUPwAAAABObio9O+chPgp+ND8AAAAAejWdPJRcQD6HCgA/AAAAADMRiDw75yE+Cn40PwAAAAB6NZ08crt1PqKyej4AAAAAOu9ZPJevyz5tmNE+AAAAAKH/oDxyu3U+orJ6PgAAAAA671k8lFxAPocKAD8AAAAAMxGIPJevyz5tmNE+AAAAAKH/oDyUXEA+hwoAPwAAAAAzEYg8PitQP+F5pj4AAAAAuHfVPDEiVz+jdgg/AAAAAIv0ED0+K1A/4XmmPgAAAAC4d9U8PitQP+F5pj4AAAAAuHfVPI6OMT8DjPY+AAAAADTo9Dw+K1A/4XmmPgAAAAC4d9U8SvkAP+OISD8AAAAA5/oGPWG9sD7ZSiE/AAAAAPehvzxK+QA/44hIPwAAAADn+gY9MSJXP6N2CD8AAAAAi/QQPbIeLz+tKiY/AAAAAKJkEz0xIlc/o3YIPwAAAACL9BA9YqAZPw+Usz4AAAAAk627PI6OMT8DjPY+AAAAADTo9DxioBk/D5SzPgAAAACTrbs8YqAZPw+Usz4AAAAAk627PMwxCT+0Ggw/AAAAAOcG4jxioBk/D5SzPgAAAACTrbs8sh4vP60qJj8AAAAAomQTPcwxCT+0Ggw/AAAAAOcG4jyyHi8/rSomPwAAAACiZBM9l6/LPm2Y0T4AAAAAof+gPMwxCT+0Ggw/AAAAAOcG4jyXr8s+bZjRPgAAAACh/6A8SvkAP+OISD8AAAAA5/oGPcwxCT+0Ggw/AAAAAOcG4jxK+QA/44hIPwAAAADn+gY9"], "edges": ["zcxMPgAAAAAAAAAAAAAAAM3MzD4AAAAAAAAAAAAAAACamRk/AAAAAAAAAAAAAAAAzcxMPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/zcxMPgAAAAAAAAAAAACAP83MzD4AAAAAAAAAAAAAgD+amRk/AAAAAAAAAAAAAIA/zcxMPwAAAAAAAAAAAACAPwAAgD8AAAAAAAAAAM3MTD8AAIA/AAAAAAAAAACamRk/AACAPwAAAAAAAAAAzczMPgAAgD8AAAAAAAAAAM3MTD4AAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAPG4ppM3MTD8AAAAAAAAAADxuqaSamRk/AAAAAAAAAABZJf6kzczMPgAAAAAAAAAAPG4ppc3MTD4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=", "zczMPQAAAAAAAAAAAAAAAJqZmT4AAAAAAAAAAAAAAAAAAAA/AAAAAAAAAAAAAAAAMzMzPwAAAAAAAAAAAAAAAGZmZj8AAAAAAAAAAAAAAAAAAIA/zczMPQAAAAAAAAAAAACAP5qZmT4AAAAAAAAAAAAAgD8AAAA/AAAAAAAAAAAAAIA/MzMzPwAAAAAAAAAAAACAP2ZmZj8AAAAAAAAAAGZmZj8AAIA/AAAAAAAAAAAzMzM/AACAPwAAAAAAAAAAAAAAPwAAgD8AAAAAAAAAAJqZmT4AAIA/AAAAAAAAAADNzMw9AACAPwAAAAAAAAAAPG6po2ZmZj8AAAAAAAAAAFklfqQzMzM/AAAAAAAAAADKydOkAAAAPwAAAAAAAAAAdEAUpZqZmT4AAAAAAAAAADxuqaTNzMw9AAAAAAAAAAA=", "AAAAAAAAAAAAAAAAAAAAAM3MTD4AAAAAAAAAAAAAAADNzMw+AAAAAAAAAAAAAAAAmpkZPwAAAAAAAAAAAAAAAM3MTD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAP83MTD4AAAAAAAAAAAAAgD/NzMw+AAAAAAAAAAAAAIA/mpkZPwAAAAAAAAAAAACAP83MTD8AAAAAAAAAAAAAgD8AAIA/AAAAAAAAAADNzEw/AACAPwAAAAAAAAAAmpkZPwAAgD8AAAAAAAAAAM3MzD4AAIA/AAAAAAAAAADNzEw+AACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAADxuKaTNzEw/AAAAAAAAAAA8bqmkmpkZPwAAAAAAAAAAWSX+pM3MzD4AAAAAAAAAADxuKaXNzEw+AAAAAAAAAAA="], "Bezier_trig_points": ["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"], "mesh_center": [0.49999999999999994, 0.5000000000000001, 1.1125369292536007e-308], "mesh_radius": 0.7071067811865477, "funcmin": 0.01002407814781594, "funcmax": 0.051858802727447015, "autoscale": true, "fullscreen": false}}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'subspacecorrection/pversion';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="56. Domain Decomposition with minimal overlap" href="minimaldd.html" />
+    <link rel="prev" title="54. Some Examples of ASM preconditioners" href="examples.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Interactive Finite Elements - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Interactive Finite Elements - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An Interactive Introduction to the Finite Element Method
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">5. 3D Solid Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/BasicProperties.html">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/RieszRepresentation.html">9. Riesz representation theorem and symmetric variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/Coercive.html">10. Coercive variational problems and their approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/infsup.html">11. Inf-sup stable variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/exercises.html">12. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sobolev Spaces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/GeneralizedDerivatives.html">13. Generalized derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/SobolevSpaces.html">14. Sobolev spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/Traces.html">15. Trace theorems and their applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../FEM/finiteelements.html">17. Finite Element Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/sytemassembling.html">18. Finite element system assembling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/erroranalysis.html">19. Finite element error analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/nonconforming.html">20. Non-conforming Finite Element Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/myFiniteElement.html">21. Implementation of Finite Elements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">A posteriori error estimates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/aposteriori.html">22. A posteriori error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/residualEE.html">23. The residual error estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/goaldriven.html">24. Goal driven error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">25. Equilibrated Residual Error Estimates</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pversion/hpfem.html">26. hp - Finite Elements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">27. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">28. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">29. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">30. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">31. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">32. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">33. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">34. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">35. Nitsche’s Method for boundary and interface conditions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">37. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">38. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">39. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">40. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">41. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">42. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">43. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">44. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">45. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">46. Hybridization Techniques</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">47. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">48. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">49. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">50. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">51. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">52. Conjugate Gradients</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="asm.html">53. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">54. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">55. Schwarz preconditioners for high order finite elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimaldd.html">56. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overlapping.html">57. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise.html">58. Exercise: Robust preconditioners</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">59. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">60. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">61. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">62. Multi-level Extension</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">63. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">64. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">65. A Small Number of Constraints</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">67. Parameter Dependent Problems</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">69. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">70. Traces spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">72. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">73. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">74. BDDC - Preconditioner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">75. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">76. Distributed Meshes and Spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">78. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">79. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">80. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">81. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">82. Solving Stokes in parallel</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/JSchoeberl/iFEM" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/subspacecorrection/pversion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Schwarz preconditioners for high order finite elements</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlapping-blocks">55.1. Overlapping blocks</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="schwarz-preconditioners-for-high-order-finite-elements">
+<h1><span class="section-number">55. </span>Schwarz preconditioners for high order finite elements<a class="headerlink" href="#schwarz-preconditioners-for-high-order-finite-elements" title="Link to this heading">#</a></h1>
+<p>Basis functions for high order finite element methods (aka p-version fem) are associated with vertices, edges, faces and cells of the triangulation. Thus, there is a natural way to define block-Jacobi (or block-Gauss-Seidel) preconditioners by combining dofs sitting on the same geometric entities (called nodes).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ngsolve.la</span> <span class="kn">import</span> <span class="n">EigenValues_Preconditioner</span>
+<span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">unit_square</span><span class="o">.</span><span class="n">GenerateMesh</span><span class="p">(</span><span class="n">maxh</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">DefineProblem</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">printing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">fes</span> <span class="o">=</span> <span class="n">H1</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">TnT</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">BilinearForm</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">*</span><span class="n">dx</span><span class="o">+</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">LinearForm</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+
+    <span class="n">blocks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">freedofs</span> <span class="o">=</span> <span class="n">fes</span><span class="o">.</span><span class="n">FreeDofs</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">:</span>
+        <span class="n">blocks</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">GetDofNrs</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">ed</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+        <span class="n">blocks</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">GetDofNrs</span><span class="p">(</span><span class="n">ed</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">fa</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">:</span>
+        <span class="n">blocks</span><span class="o">.</span><span class="n">append</span> <span class="p">(</span><span class="n">fes</span><span class="o">.</span><span class="n">GetDofNrs</span><span class="p">(</span><span class="n">fa</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">printing</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">blocks</span><span class="p">)</span>
+    <span class="n">pre</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">CreateBlockSmoother</span><span class="p">(</span><span class="n">blocks</span><span class="p">,</span> <span class="n">GS</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">pre</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">pre</span> <span class="o">=</span> <span class="n">DefineProblem</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0,), (1,), (2,), (3,), (4,), (5,), (6,), (7,), (8,), (9,), (10,), (11,), (12,), (13,), (14,), (15,), (16,), (17,), (18,), (19,), (20,), (21,), (22,), (23,), (24,), (25,), (26,), (27,), (28,), (29,), (30,), (31,), (32,), (33,), (34,), (35,), (36,), (37,), (38,), (39,), (40,), (41,), (42,), (43,), (44,), (45,), (46,), (47,), (48,), (49,), (50,), (51,), (52,), (53,), (54,), (55,), (56,), (57,), (58,), (59,), (60,), (61,), (62,), (63,), (64,), (65,), (66,), (67,), (68,), (69,), (70,), (71,), (72,), (73,), (74,), (75,), (76,), (77,), (78,), (79,), (80,), (81,), (82,), (83,), (84,), (85,), (86,), (87,), (88,), (89,), (90,), (91,), (92,), (93,), (94,), (95,), (96,), (97,), (98,), (99,), (100,), (101,), (102,), (103,), (104,), (105,), (106,), (107,), (108,), (109,), (110,), (111,), (112,), (113,), (114,), (115,), (116,), (117,), (118,), (119,), (120,), (121,), (122,), (123,), (124,), (125,), (126,), (127,), (128,), (129,), (130,), (131,), (132,), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), ()]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gfu</span> <span class="o">=</span> <span class="n">GridFunction</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">ngsolve.krylovspace</span> <span class="kn">import</span> <span class="n">CGSolver</span>
+<span class="n">inv</span> <span class="o">=</span> <span class="n">CGSolver</span><span class="p">(</span><span class="n">mat</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">,</span> <span class="n">printrates</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">inv</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Draw</span> <span class="p">(</span><span class="n">gfu</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CG iteration 1, residual = 0.03616817538237669     
+CG iteration 2, residual = 0.03857888668744418     
+CG iteration 3, residual = 0.028786277945169293     
+CG iteration 4, residual = 0.02717043861464371     
+CG iteration 5, residual = 0.017929160922748977     
+CG iteration 6, residual = 0.011843671131637515     
+CG iteration 7, residual = 0.008858810330184638     
+CG iteration 8, residual = 0.005512321246644724     
+CG iteration 9, residual = 0.003574219306953747     
+CG iteration 10, residual = 0.0022787217503585588     
+CG iteration 11, residual = 0.0018222848385735502     
+CG iteration 12, residual = 0.0011428466557880715     
+CG iteration 13, residual = 0.0005434954855783918     
+CG iteration 14, residual = 0.00034376527186874876     
+CG iteration 15, residual = 0.00017718883102318825     
+CG iteration 16, residual = 0.00011375493321065005     
+CG iteration 17, residual = 7.4907621899412e-05     
+CG iteration 18, residual = 3.840321566246377e-05     
+CG iteration 19, residual = 2.3546130827285374e-05     
+CG iteration 20, residual = 1.3136911569268121e-05     
+CG iteration 21, residual = 7.4025463555281195e-06     
+CG iteration 22, residual = 4.554507451136701e-06     
+CG iteration 23, residual = 2.8011714685268314e-06     
+CG iteration 24, residual = 2.1678144767741104e-06     
+CG iteration 25, residual = 1.5293620323637304e-06     
+CG iteration 26, residual = 9.902098365795223e-07     
+CG iteration 27, residual = 6.076773468362969e-07     
+CG iteration 28, residual = 3.9335995335618187e-07     
+CG iteration 29, residual = 2.083842442717831e-07     
+CG iteration 30, residual = 1.1715084968823205e-07     
+CG iteration 31, residual = 6.653829414967272e-08     
+CG iteration 32, residual = 4.229139870798432e-08     
+CG iteration 33, residual = 2.1880847771540054e-08     
+CG iteration 34, residual = 1.2931264312198406e-08     
+CG iteration 35, residual = 8.452500262063096e-09     
+CG iteration 36, residual = 5.420344679804681e-09     
+CG iteration 37, residual = 2.6351941581130015e-09     
+CG iteration 38, residual = 1.2285806360324723e-09     
+CG iteration 39, residual = 6.734731997623056e-10     
+CG iteration 40, residual = 3.564004473485092e-10     
+CG iteration 41, residual = 1.8274090136404198e-10     
+CG iteration 42, residual = 8.80856292047645e-11     
+CG iteration 43, residual = 4.797673704463442e-11     
+CG iteration 44, residual = 2.3671435534644103e-11     
+CG iteration 45, residual = 1.2073949988325153e-11     
+CG iteration 46, residual = 5.336431186577623e-12     
+CG iteration 47, residual = 2.592476359925851e-12     
+CG iteration 48, residual = 1.256116511067676e-12     
+CG iteration 49, residual = 5.54230889474067e-13     
+CG iteration 50, residual = 2.7131385530349625e-13     
+CG iteration 51, residual = 1.1614965288134767e-13     
+CG iteration 52, residual = 5.841670291669274e-14     
+CG iteration 53, residual = 3.027236450845933e-14     
+CG converged in 53 iterations to residual 3.027236450845933e-14
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "dd4d917326054673b53ba1367f8f1940"}</script></div>
+</div>
+<p><strong>Exercise:</strong></p>
+<ul class="simple">
+<li><p>Plot the dependency of the extremal eigenvalues on the polynomial order <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
+<li><p>Compare time to solution. To get comparable results, plot number of dofs per second.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">pre</span> <span class="o">=</span> <span class="n">DefineProblem</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">EigenValues_Preconditioner</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mat</span><span class="p">,</span> <span class="n">pre</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;lammin, lammax=&quot;</span><span class="p">,</span> <span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lam</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.06934594552348536 2.7187250629149236
+</pre></div>
+</div>
+</div>
+</div>
+<section id="overlapping-blocks">
+<h2><span class="section-number">55.1. </span>Overlapping blocks<a class="headerlink" href="#overlapping-blocks" title="Link to this heading">#</a></h2>
+<p>One can improve the condition number by letting blocks overlap. Examples:</p>
+<ul class="simple">
+<li><p>One can assign all dofs associated with one element (including the boundary) to a block. The number of blocks is the number of elements.</p></li>
+<li><p>One can combine all dofs on all elements sharing a vertex to blocks. The number of blocks is now the number of vertics.</p></li>
+<li><p>One can combine all dofs on all edges sharing a vertex to blocks. The dofs on faces and cells are left as extra blocks.</p></li>
+</ul>
+<p><strong>Exercise:</strong></p>
+<ul class="simple">
+<li><p>Implement these definition of blocks.</p></li>
+<li><p>Find some more possibilities.</p></li>
+<li><p>Which one gives the best condition number ?</p></li>
+<li><p>Which one computes the solution in least time ?</p></li>
+</ul>
+<p>Consult NGSolve documentation:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docu.ngsolve.org/latest/i-tutorials/unit-1.8-meshtopology/meshtopology.html">Exploring the mesh topology</a></p></li>
+<li><p><a class="reference external" href="https://docu.ngsolve.org/latest/i-tutorials/unit-2.1.2-blockjacobi/blockjacobi.html">Building blocks for programming preconditioners</a></p></li>
+</ul>
+<p>The <span class="math notranslate nohighlight">\(p\)</span>-robust analysis for triangular and tetrahedral meshes can be found in:
+<a class="reference external" href="https://academic.oup.com/imajna/article/28/1/1/674492">Additive Schwarz preconditioning for p-version triangular and tetrahedral finite elements</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./subspacecorrection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="examples.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">54. </span>Some Examples of ASM preconditioners</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="minimaldd.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">56. </span>Domain Decomposition with minimal overlap</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlapping-blocks">55.1. Overlapping blocks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
