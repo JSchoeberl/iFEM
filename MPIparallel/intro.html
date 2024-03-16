@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>75. Introduction to MPI with mpi4py &#8212; Interactive Finite Elements</title>
+    <title>78. Introduction to MPI with mpi4py &#8212; Interactive Finite Elements</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -59,14 +59,14 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"90b12928a2554b7497730042d7e7fafb": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c3f129d302b9499aafa4133089f16eff": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "378d58b4176a4d44b3362c7ee69c1df2": {"model_name": "FloatProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_90b12928a2554b7497730042d7e7fafb", "max": 4.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_c3f129d302b9499aafa4133089f16eff", "tabbable": null, "tooltip": null, "value": 4.0}}, "4b4083b9948848d1b8153934180d1f41": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a787ccb2f037499fad29a10f70d0c62f": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "11df617137404afab75670921322b29b": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_4b4083b9948848d1b8153934180d1f41", "placeholder": "\u200b", "style": "IPY_MODEL_a787ccb2f037499fad29a10f70d0c62f", "tabbable": null, "tooltip": null, "value": "100%"}}, "26b8dece27da4080b1b341487cd07fcf": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "531171565da64608a04acb50183298e8": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "4b1a072b01354455be6dc00d2922fa7f": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_26b8dece27da4080b1b341487cd07fcf", "placeholder": "\u200b", "style": "IPY_MODEL_531171565da64608a04acb50183298e8", "tabbable": null, "tooltip": null, "value": "\u20074/4\u2007[00:05&lt;00:00,\u2007\u20075.95s/engine]"}}, "ff522112154744f8b06b6c6a62ff92b2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2c3f4b25f9ae4b28b3086a675f552c94": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_11df617137404afab75670921322b29b", "IPY_MODEL_378d58b4176a4d44b3362c7ee69c1df2", "IPY_MODEL_4b1a072b01354455be6dc00d2922fa7f"], "layout": "IPY_MODEL_ff522112154744f8b06b6c6a62ff92b2", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"cd8396a8404046128108580c190b1d98": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "42664cc6808b470a9e07f251a0c09a73": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "4530395fb8c54089a1a6abc885161ed7": {"model_name": "FloatProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_cd8396a8404046128108580c190b1d98", "max": 4.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_42664cc6808b470a9e07f251a0c09a73", "tabbable": null, "tooltip": null, "value": 4.0}}, "6781949fb630499ebefa29b289769959": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6449127577434bce87dc7d77b5836d24": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "a142fd8b719540968958bf035524d5de": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_6781949fb630499ebefa29b289769959", "placeholder": "\u200b", "style": "IPY_MODEL_6449127577434bce87dc7d77b5836d24", "tabbable": null, "tooltip": null, "value": "100%"}}, "59f937c50127429fac4b5068816d0831": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "98f8c5339e124f40b66d774d310538ab": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "ae3534c733704b55a676dde47db6103d": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_59f937c50127429fac4b5068816d0831", "placeholder": "\u200b", "style": "IPY_MODEL_98f8c5339e124f40b66d774d310538ab", "tabbable": null, "tooltip": null, "value": "\u20074/4\u2007[00:05&lt;00:00,\u2007\u20075.99s/engine]"}}, "1ae19abf509b42f8bcbdf60b62e67a5f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "dc379d0bd011499a8ea65388e8d71a89": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_a142fd8b719540968958bf035524d5de", "IPY_MODEL_4530395fb8c54089a1a6abc885161ed7", "IPY_MODEL_ae3534c733704b55a676dde47db6103d"], "layout": "IPY_MODEL_1ae19abf509b42f8bcbdf60b62e67a5f", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MPIparallel/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="76. Distributed Meshes and Spaces" href="distmesh.html" />
-    <link rel="prev" title="74. BDDC - Preconditioner" href="../domaindecomposition/BDDC.html" />
+    <link rel="next" title="79. Distributed Meshes and Spaces" href="distmesh.html" />
+    <link rel="prev" title="77. BDDC - Preconditioner" href="../domaindecomposition/BDDC.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -205,108 +205,111 @@
 <li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/SobolevSpaces.html">14. Sobolev spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/Traces.html">15. Trace theorems and their applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/experiments.html">18. Experiments with norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/exercises.html">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../FEM/finiteelements.html">17. Finite Element Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FEM/sytemassembling.html">18. Finite element system assembling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FEM/erroranalysis.html">19. Finite element error analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FEM/nonconforming.html">20. Non-conforming Finite Element Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FEM/myFiniteElement.html">21. Implementation of Finite Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/finiteelements.html">20. Finite Element Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/sytemassembling.html">21. Finite element system assembling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/erroranalysis.html">22. Finite element error analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/nonconforming.html">23. Non-conforming Finite Element Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/myFiniteElement.html">24. Implementation of Finite Elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">A posteriori error estimates</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../aposteriori/aposteriori.html">22. A posteriori error estimates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aposteriori/residualEE.html">23. The residual error estimator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aposteriori/goaldriven.html">24. Goal driven error estimates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">25. Equilibrated Residual Error Estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/aposteriori.html">25. A posteriori error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/residualEE.html">26. The residual error estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/goaldriven.html">27. Goal driven error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">28. Equilibrated Residual Error Estimates</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../pversion/hpfem.html">26. hp - Finite Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pversion/hpfem.html">29. hp - Finite Elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">27. Stokes Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">28. Boundary Conditions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">29. Mixed Methods for second order equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">30. Abstract Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">31. Abstract theory for mixed finite element methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">32. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">30. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">31. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">32. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">33. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">34. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">35. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">33. Stationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">34. Instationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">35. Nitsche’s Method for boundary and interface conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">36. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">37. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">38. Nitsche’s Method for boundary and interface conditions</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">37. Hybrid DG for elliptic equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">38. Splitting Methods for the time-dependent convection diffusion equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">39. Fourth Order Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">40. H(div)-conforming Stokes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">40. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">41. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">42. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">43. H(div)-conforming Stokes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">41. Application of the abstract theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">42. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">43. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">44. Finite Element Error Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">45. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">46. Hybridization Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">44. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">45. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">46. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">47. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">48. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">49. Hybridization Techniques</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">47. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">48. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">49. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">50. Preconditioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">51. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">52. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">50. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">51. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">52. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">53. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">54. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">55. Conjugate Gradients</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">53. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">54. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. high order fem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">56. Domain Decomposition with minimal overlap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">57. Overlapping Domain Decomposition Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">58. Exercise: Robust preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">56. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">57. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">58. high order fem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">59. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">60. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">61. Exercise: Robust preconditioners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">59. Multigrid and Multilevel Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">60. Analysis of the multi-level preconditioner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">61. Analysis of the Multigrid Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">62. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">62. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">63. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">64. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">65. Multi-level Extension</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">63. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">64. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">65. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">66. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">67. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">68. A Small Number of Constraints</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">67. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">70. Parameter Dependent Problems</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">69. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">70. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">72. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">73. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">72. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">73. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">74. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">75. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">76. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">77. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">75. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distmesh.html">76. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">78. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distmesh.html">79. Distributed Meshes and Spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="vectypes.html">78. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="paralleliteration.html">79. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="petsc.html">80. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PETSc_interface.html">81. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parallelstokes.html">82. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectypes.html">81. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paralleliteration.html">82. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="petsc.html">83. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETSc_interface.html">84. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallelstokes.html">85. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -470,7 +473,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mpi-library">75.1. The MPI library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mpi-library">78.1. The MPI library</a></li>
 </ul>
             </nav>
         </div>
@@ -483,7 +486,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-mpi-with-mpi4py">
-<h1><span class="section-number">75. </span>Introduction to MPI with mpi4py<a class="headerlink" href="#introduction-to-mpi-with-mpi4py" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">78. </span>Introduction to MPI with mpi4py<a class="headerlink" href="#introduction-to-mpi-with-mpi4py" title="Link to this heading">#</a></h1>
 <p>MPI (abbreviation for message passing interface) is the standard library for communication within a cluster of processors.</p>
 <p>The library is available for many languages, such as C or Python. In this tutorial we use MPI within jupyter notebooks</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">ipyparallel</span></code> module let us communicate with the cluster. The <code class="docutils literal notranslate"><span class="pre">Cluster</span></code> class represents the cluster. Every processor starts its own Python instance.</p>
@@ -506,7 +509,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting 4 engines with &lt;class &#39;ipyparallel.cluster.launcher.MPIEngineSetLauncher&#39;&gt;
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2c3f4b25f9ae4b28b3086a675f552c94"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3]
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "dc379d0bd011499a8ea65388e8d71a89"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3]
 </pre></div>
 </div>
 </div>
@@ -543,7 +546,7 @@ b = a*a
 </div>
 </div>
 <section id="the-mpi-library">
-<h2><span class="section-number">75.1. </span>The MPI library<a class="headerlink" href="#the-mpi-library" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">78.1. </span>The MPI library<a class="headerlink" href="#the-mpi-library" title="Link to this heading">#</a></h2>
 <p>MPI provides functions to communicate within the cluster. The back-bone is a communicator object which knows about the participating processors. The standard communicator is the world-communicator where all processors of the cluster are included.</p>
 <p>The communicator knows the own number (called rank) within this group, and the size of the group:</p>
 <div class="cell docutils container">
@@ -562,10 +565,10 @@ print (&#39;I am proc&#39;, comm.rank, &#39;within the team of&#39;, comm.size)
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] I am proc 0 within the team of 4
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] I am proc 2 within the team of 4
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] I am proc 3 within the team of 4
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] I am proc 3 within the team of 4
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] I am proc 2 within the team of 4
 </pre></div>
 </div>
 </div>
@@ -585,9 +588,6 @@ for src in range(comm.rank):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] got a apple
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] got a apple
 got a banana
 got a clementine
@@ -595,6 +595,9 @@ got a clementine
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] got a apple
 got a banana
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] got a apple
 </pre></div>
 </div>
 </div>
@@ -667,7 +670,7 @@ personal note to 3
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">74. </span>BDDC - Preconditioner</p>
+        <p class="prev-next-title"><span class="section-number">77. </span>BDDC - Preconditioner</p>
       </div>
     </a>
     <a class="right-next"
@@ -675,7 +678,7 @@ personal note to 3
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">76. </span>Distributed Meshes and Spaces</p>
+        <p class="prev-next-title"><span class="section-number">79. </span>Distributed Meshes and Spaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -695,7 +698,7 @@ personal note to 3
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mpi-library">75.1. The MPI library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mpi-library">78.1. The MPI library</a></li>
 </ul>
   </nav></div>
 

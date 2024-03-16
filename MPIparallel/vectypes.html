@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>78. Consistent and Distributed Vectors &#8212; Interactive Finite Elements</title>
+    <title>81. Consistent and Distributed Vectors &#8212; Interactive Finite Elements</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -59,14 +59,14 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"02f4146c29a64d12a0030d8540ba800f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "920f71e12aad48d99be0bfd1a3caa5e3": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "b6d8d8d3db314acb9018b7d5b0026abc": {"model_name": "FloatProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_02f4146c29a64d12a0030d8540ba800f", "max": 4.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_920f71e12aad48d99be0bfd1a3caa5e3", "tabbable": null, "tooltip": null, "value": 4.0}}, "5b0483ed0fca40758450498bc5444a1a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a9759f61ee4d4ef1b4da1a0d3a9b8faa": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "413653548e144371b9cd1344e9e8813c": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_5b0483ed0fca40758450498bc5444a1a", "placeholder": "\u200b", "style": "IPY_MODEL_a9759f61ee4d4ef1b4da1a0d3a9b8faa", "tabbable": null, "tooltip": null, "value": "100%"}}, "4de195e9a98b4678bdf096cedcc18f30": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ea2d35a9713e4893ba17293076b620b0": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "4371235ec65d4e609c49cd4625aa1d91": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_4de195e9a98b4678bdf096cedcc18f30", "placeholder": "\u200b", "style": "IPY_MODEL_ea2d35a9713e4893ba17293076b620b0", "tabbable": null, "tooltip": null, "value": "\u20074/4\u2007[00:05&lt;00:00,\u2007\u20075.98s/engine]"}}, "7596429f5486497eac90a2b70f785aaa": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e4304d7f99264d9190d9882733bc656b": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_413653548e144371b9cd1344e9e8813c", "IPY_MODEL_b6d8d8d3db314acb9018b7d5b0026abc", "IPY_MODEL_4371235ec65d4e609c49cd4625aa1d91"], "layout": "IPY_MODEL_7596429f5486497eac90a2b70f785aaa", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"cb00b84d425641b5b14f8283ab430c56": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4729a54e618e4b5994d012a7770ac453": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "4f8532c3dae14b0883c558f49ca3df99": {"model_name": "FloatProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_cb00b84d425641b5b14f8283ab430c56", "max": 4.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_4729a54e618e4b5994d012a7770ac453", "tabbable": null, "tooltip": null, "value": 4.0}}, "08bb6b8cfac448f2800d4df793399ab2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3f146e022f164cbfb7ab208988779021": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "f3e33e0e440a4c498a243fb9a2f88784": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_08bb6b8cfac448f2800d4df793399ab2", "placeholder": "\u200b", "style": "IPY_MODEL_3f146e022f164cbfb7ab208988779021", "tabbable": null, "tooltip": null, "value": "100%"}}, "3254de7e185740bf858d41c368e705ef": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b2895dd8d156442ea92d1f3b9155f428": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "0ea28e6c857e4d63a692156d1474c0b4": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_3254de7e185740bf858d41c368e705ef", "placeholder": "\u200b", "style": "IPY_MODEL_b2895dd8d156442ea92d1f3b9155f428", "tabbable": null, "tooltip": null, "value": "\u20074/4\u2007[00:05&lt;00:00,\u2007\u20075.98s/engine]"}}, "abc8ca822b7a4cbea9cc8187b649b526": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6f17d46515e34ba9a7a61bccded3043e": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_f3e33e0e440a4c498a243fb9a2f88784", "IPY_MODEL_4f8532c3dae14b0883c558f49ca3df99", "IPY_MODEL_0ea28e6c857e4d63a692156d1474c0b4"], "layout": "IPY_MODEL_abc8ca822b7a4cbea9cc8187b649b526", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MPIparallel/vectypes';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="79. Iteration methods in parallel" href="paralleliteration.html" />
-    <link rel="prev" title="76. Distributed Meshes and Spaces" href="distmesh.html" />
+    <link rel="next" title="82. Iteration methods in parallel" href="paralleliteration.html" />
+    <link rel="prev" title="79. Distributed Meshes and Spaces" href="distmesh.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -205,108 +205,111 @@
 <li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/SobolevSpaces.html">14. Sobolev spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/Traces.html">15. Trace theorems and their applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/experiments.html">18. Experiments with norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/exercises.html">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../FEM/finiteelements.html">17. Finite Element Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FEM/sytemassembling.html">18. Finite element system assembling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FEM/erroranalysis.html">19. Finite element error analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FEM/nonconforming.html">20. Non-conforming Finite Element Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../FEM/myFiniteElement.html">21. Implementation of Finite Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/finiteelements.html">20. Finite Element Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/sytemassembling.html">21. Finite element system assembling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/erroranalysis.html">22. Finite element error analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/nonconforming.html">23. Non-conforming Finite Element Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/myFiniteElement.html">24. Implementation of Finite Elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">A posteriori error estimates</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../aposteriori/aposteriori.html">22. A posteriori error estimates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aposteriori/residualEE.html">23. The residual error estimator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aposteriori/goaldriven.html">24. Goal driven error estimates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">25. Equilibrated Residual Error Estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/aposteriori.html">25. A posteriori error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/residualEE.html">26. The residual error estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/goaldriven.html">27. Goal driven error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">28. Equilibrated Residual Error Estimates</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../pversion/hpfem.html">26. hp - Finite Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pversion/hpfem.html">29. hp - Finite Elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">27. Stokes Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">28. Boundary Conditions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">29. Mixed Methods for second order equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">30. Abstract Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">31. Abstract theory for mixed finite element methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">32. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">30. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">31. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">32. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">33. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">34. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">35. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">33. Stationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">34. Instationary Transport Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">35. Nitsche’s Method for boundary and interface conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">36. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">37. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">38. Nitsche’s Method for boundary and interface conditions</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">37. Hybrid DG for elliptic equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">38. Splitting Methods for the time-dependent convection diffusion equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">39. Fourth Order Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">40. H(div)-conforming Stokes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">40. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">41. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">42. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">43. H(div)-conforming Stokes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">41. Application of the abstract theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">42. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">43. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">44. Finite Element Error Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">45. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">46. Hybridization Techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">44. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">45. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">46. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">47. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">48. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">49. Hybridization Techniques</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">47. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">48. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">49. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">50. Preconditioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">51. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">52. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">50. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">51. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">52. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">53. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">54. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">55. Conjugate Gradients</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">53. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">54. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">55. high order fem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">56. Domain Decomposition with minimal overlap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">57. Overlapping Domain Decomposition Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">58. Exercise: Robust preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">56. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">57. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">58. high order fem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">59. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">60. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">61. Exercise: Robust preconditioners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">59. Multigrid and Multilevel Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">60. Analysis of the multi-level preconditioner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">61. Analysis of the Multigrid Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">62. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">62. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">63. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">64. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">65. Multi-level Extension</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">63. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">64. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">65. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">66. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">67. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">68. A Small Number of Constraints</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">67. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">70. Parameter Dependent Problems</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">69. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">70. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">72. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">73. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">72. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">73. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">74. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">75. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">76. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">77. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">75. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distmesh.html">76. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">78. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distmesh.html">79. Distributed Meshes and Spaces</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">78. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="paralleliteration.html">79. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="petsc.html">80. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PETSc_interface.html">81. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parallelstokes.html">82. Solving Stokes in parallel</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">81. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paralleliteration.html">82. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="petsc.html">83. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETSc_interface.html">84. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallelstokes.html">85. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -470,11 +473,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-vectors">78.1. Consistent vectors:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-vectors-and-matrices">78.2. Distributed vectors and matrices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products">78.3. Inner products:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-multiplication">78.4. Matrix vector multiplication:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">78.5. Vector operations:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-vectors">81.1. Consistent vectors:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-vectors-and-matrices">81.2. Distributed vectors and matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products">81.3. Inner products:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-multiplication">81.4. Matrix vector multiplication:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">81.5. Vector operations:</a></li>
 </ul>
             </nav>
         </div>
@@ -487,7 +490,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="consistent-and-distributed-vectors">
-<h1><span class="section-number">78. </span>Consistent and Distributed Vectors<a class="headerlink" href="#consistent-and-distributed-vectors" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">81. </span>Consistent and Distributed Vectors<a class="headerlink" href="#consistent-and-distributed-vectors" title="Link to this heading">#</a></h1>
 <p>CC Douglas, G Haase, U Langer: <em>A tutorial on elliptic PDE solvers and their parallelization</em>, SIAM (2003)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -501,7 +504,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting 4 engines with &lt;class &#39;ipyparallel.cluster.launcher.MPIEngineSetLauncher&#39;&gt;
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e4304d7f99264d9190d9882733bc656b"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3]
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6f17d46515e34ba9a7a61bccded3043e"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3]
 </pre></div>
 </div>
 </div>
@@ -520,7 +523,7 @@ mesh = Mesh(unit_square.GenerateMesh(maxh=0.2, comm=comm))
 </div>
 </div>
 <section id="consistent-vectors">
-<h2><span class="section-number">78.1. </span>Consistent vectors:<a class="headerlink" href="#consistent-vectors" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">81.1. </span>Consistent vectors:<a class="headerlink" href="#consistent-vectors" title="Link to this heading">#</a></h2>
 <p>All local coefficient vectors of a <code class="docutils literal notranslate"><span class="pre">GridFunction</span></code> store the same value. We call this <em>consistent</em> or <em>cumulated</em> representation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -553,9 +556,6 @@ print (&quot;parallel vector:&quot;, gfu.vec)
        1
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] parallel vector: CUMULATED
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] parallel vector: CUMULATED
        1
        1
@@ -574,6 +574,9 @@ print (&quot;parallel vector:&quot;, gfu.vec)
        1
        1
        1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] parallel vector: CUMULATED
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] parallel vector: CUMULATED
@@ -600,7 +603,7 @@ print (&quot;parallel vector:&quot;, gfu.vec)
 </div>
 </section>
 <section id="distributed-vectors-and-matrices">
-<h2><span class="section-number">78.2. </span>Distributed vectors and matrices<a class="headerlink" href="#distributed-vectors-and-matrices" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">81.2. </span>Distributed vectors and matrices<a class="headerlink" href="#distributed-vectors-and-matrices" title="Link to this heading">#</a></h2>
 <p>Recall the finite element assembling of the matrix and the right hand side vector. One computes element-vectors <span class="math notranslate nohighlight">\(f_T\)</span> and element-matrices <span class="math notranslate nohighlight">\(A_T\)</span> as the contribution from each single element to the integral, and assembles them together using connectivity matrices <span class="math notranslate nohighlight">\(C_T\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -639,6 +642,26 @@ print (f.vec)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:0] DISTRIBUTED
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] DISTRIBUTED
+ 0.00929141
+ 0.0115905
+ 0.0143129
+ 0.0157114
+ 0.012363
+ 0.0183463
+ 0.0327422
+ 0.0232373
+ 0.0382184
+ 0.0151684
+ 0.0134339
+ 0.0339567
+ 0.0187142
+ 0.0148526
+ 0.0133493
+ 0.0228366
+ 0.0344815
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] DISTRIBUTED
@@ -681,26 +704,6 @@ print (f.vec)
  0.00674705
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:2] DISTRIBUTED
- 0.00929141
- 0.0115905
- 0.0143129
- 0.0157114
- 0.012363
- 0.0183463
- 0.0327422
- 0.0232373
- 0.0382184
- 0.0151684
- 0.0134339
- 0.0339567
- 0.0187142
- 0.0148526
- 0.0133493
- 0.0228366
- 0.0344815
-</pre></div>
-</div>
 </div>
 </div>
 <p>If <span class="math notranslate nohighlight">\(u\)</span> is a global vector of a gridfunction, then the sub-domain wise
@@ -712,7 +715,7 @@ u_{\Omega_i} = C_{\Omega_i}^T u
 <p>These <span class="math notranslate nohighlight">\(u_{\Omega_i}\)</span> are stored as consistent vectors.</p>
 </section>
 <section id="inner-products">
-<h2><span class="section-number">78.3. </span>Inner products:<a class="headerlink" href="#inner-products" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">81.3. </span>Inner products:<a class="headerlink" href="#inner-products" title="Link to this heading">#</a></h2>
 <p>It is natural to form the Euclidean inner product of a distributed vector and a consistent vector:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -770,7 +773,7 @@ print (&quot;local=&quot;, localip, &quot;global=&quot;, comm.allreduce(localip)
 </div>
 </section>
 <section id="matrix-vector-multiplication">
-<h2><span class="section-number">78.4. </span>Matrix vector multiplication:<a class="headerlink" href="#matrix-vector-multiplication" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">81.4. </span>Matrix vector multiplication:<a class="headerlink" href="#matrix-vector-multiplication" title="Link to this heading">#</a></h2>
 <p>Assume <span class="math notranslate nohighlight">\(A\)</span> is stored as distributed matrix, and <span class="math notranslate nohighlight">\(u\)</span> is a consistent vector. Then</p>
 <div class="math notranslate nohighlight">
 \[
@@ -780,7 +783,7 @@ r = A u = \sum C_{\Omega_i} A_i C_{\Omega_i}^T u
 <p>We perform local matrix-vector products <span class="math notranslate nohighlight">\(r_i = A_i u_i\)</span>, and interpret the results <span class="math notranslate nohighlight">\(r_i\)</span> as local vectors of the global result in distributed storage. Here, no communication is needed at all.</p>
 </section>
 <section id="vector-operations">
-<h2><span class="section-number">78.5. </span>Vector operations:<a class="headerlink" href="#vector-operations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">81.5. </span>Vector operations:<a class="headerlink" href="#vector-operations" title="Link to this heading">#</a></h2>
 <p><strong>Adding</strong> vectors of the same type is a purely local operation. One can simple add the local vectors, if both are either stored consistently, or distributed.</p>
 <p><strong>Distributed to Consistent</strong> conversion:</p>
 <p>This operation requires global communication. All local values identified as the same global dof are summed up, and all processors get the same value.</p>
@@ -803,24 +806,24 @@ print (gfu.vec)
 CUMULATED
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] DISTRIBUTED
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] DISTRIBUTED
+       1
+       0
+       0
        1
        1
        1
        1
        1
        1
+       0
        1
        1
-       1
-       1
-       1
-       1
-       1
-       1
-       1
-       1
-       1
+       0
+       0
+       0
+       0
+       0
 
 
 CUMULATED
@@ -883,24 +886,24 @@ CUMULATED
        1
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:3] DISTRIBUTED
-       1
-       0
-       0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[stdout:1] DISTRIBUTED
        1
        1
        1
        1
        1
        1
-       0
        1
        1
-       0
-       0
-       0
-       0
-       0
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
+       1
 
 
 CUMULATED
@@ -964,7 +967,7 @@ CUMULATED
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">76. </span>Distributed Meshes and Spaces</p>
+        <p class="prev-next-title"><span class="section-number">79. </span>Distributed Meshes and Spaces</p>
       </div>
     </a>
     <a class="right-next"
@@ -972,7 +975,7 @@ CUMULATED
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">79. </span>Iteration methods in parallel</p>
+        <p class="prev-next-title"><span class="section-number">82. </span>Iteration methods in parallel</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -992,11 +995,11 @@ CUMULATED
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-vectors">78.1. Consistent vectors:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-vectors-and-matrices">78.2. Distributed vectors and matrices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products">78.3. Inner products:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-multiplication">78.4. Matrix vector multiplication:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">78.5. Vector operations:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-vectors">81.1. Consistent vectors:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-vectors-and-matrices">81.2. Distributed vectors and matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inner-products">81.3. Inner products:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-multiplication">81.4. Matrix vector multiplication:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-operations">81.5. Vector operations:</a></li>
 </ul>
   </nav></div>
 
