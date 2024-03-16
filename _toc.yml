@@ -32,6 +32,9 @@ parts:
     - file: sobolevspaces/SobolevSpaces.ipynb
     - file: sobolevspaces/Traces.ipynb        
     - file: sobolevspaces/equivalentnorms.ipynb  
+    - file: sobolevspaces/preciseweak.ipynb
+    - file: sobolevspaces/experiments.ipynb
+    - file: sobolevspaces/exercises.ipynb    
 
 
   - caption: Finite Element Method
@@ -108,6 +111,8 @@ parts:
     chapters:
     - file: subspacecorrection/asm.ipynb
     - file: subspacecorrection/examples.ipynb
+    - file: subspacecorrection/pversion.ipynb
+      title: high order fem
     - file: subspacecorrection/minimaldd.ipynb
     - file: subspacecorrection/overlapping.ipynb
     - file: subspacecorrection/exercise.ipynb
