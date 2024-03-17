@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Traces.html">15. Trace theorems and their applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms (WIP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises.html">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
@@ -484,15 +484,17 @@ document.write(`
 \[
 \| u \|_{W_\infty^k(\Omega)} := \max_{|\alpha| \leq k}  \| D^\alpha u \|_{L_\infty}.
 \]</div>
-<p>In both cases, we define the {\bf Sobolev spaces} via</p>
+<p>In both cases, we define the <strong>Sobolev spaces</strong> via</p>
 <div class="math notranslate nohighlight">
 \[
 W_p^k(\Omega) = \{ u \in L_1^{loc} : \| u \|_{W_p^k} &lt; \infty \}
 \]</div>
 <p>In the previous chapter we have seen the importance of complete spaces.
-This is the case for Sobolev spaces:
-<strong>Theorem:</strong> The Sobolev space <span class="math notranslate nohighlight">\(W_p^k(\Omega)\)</span> is a Banach space.
-<em>Proof:</em> Let <span class="math notranslate nohighlight">\(v_j\)</span> be a Cauchy sequence with respect to <span class="math notranslate nohighlight">\(\| \cdot \|_{W_p^k}\)</span>. This implies that <span class="math notranslate nohighlight">\(D^\alpha v_j\)</span> is a Cauchy sequence in <span class="math notranslate nohighlight">\(L_p\)</span>, and
+This is the case for Sobolev spaces:</p>
+<blockquote>
+<div><p><strong>Theorem:</strong> The Sobolev space <span class="math notranslate nohighlight">\(W_p^k(\Omega)\)</span> is a Banach space.</p>
+</div></blockquote>
+<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(v_j\)</span> be a Cauchy sequence with respect to <span class="math notranslate nohighlight">\(\| \cdot \|_{W_p^k}\)</span>. This implies that <span class="math notranslate nohighlight">\(D^\alpha v_j\)</span> is a Cauchy sequence in <span class="math notranslate nohighlight">\(L_p\)</span>, and
 thus converges to some <span class="math notranslate nohighlight">\(v^\alpha\)</span> in <span class="math notranslate nohighlight">\(\|. \|_{L_p}\)</span>.</p>
 <p>We verify that <span class="math notranslate nohighlight">\(D^\alpha v_j \rightarrow v^\alpha\)</span> implies
 <span class="math notranslate nohighlight">\(\int_\Omega D^\alpha v_j \varphi \, dx \rightarrow \int_\Omega v^\alpha \varphi \, dx\)</span> for all <span class="math notranslate nohighlight">\(\varphi \in {\cal D}\)</span>. Let <span class="math notranslate nohighlight">\(K\)</span> be the compact support
@@ -527,7 +529,11 @@ of smooth functions in the domain, i.e.,</p>
 \]</div>
 <p>Under moderate restrictions, these definitions lead to the same spaces:</p>
 <p><strong>Theorem:</strong> Let <span class="math notranslate nohighlight">\(1 \leq p &lt; \infty\)</span>. Then <span class="math notranslate nohighlight">\(\widetilde W_p^k  = W_p^k\)</span>.</p>
-<p><strong>Definition:</strong> The domain <span class="math notranslate nohighlight">\(\Omega\)</span> has a {\bf Lipschitz boundary}, <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, if there exists a collection of open sets <span class="math notranslate nohighlight">\(O_i\)</span>, a positive parameter <span class="math notranslate nohighlight">\(\varepsilon\)</span>, an integer <span class="math notranslate nohighlight">\(N\)</span> and a finite number <span class="math notranslate nohighlight">\(L\)</span>, such that for all <span class="math notranslate nohighlight">\(x \in \partial \Omega\)</span> the ball of radius <span class="math notranslate nohighlight">\(\varepsilon\)</span> centered at <span class="math notranslate nohighlight">\(x\)</span> is contained in some <span class="math notranslate nohighlight">\(O_i\)</span>, no more than <span class="math notranslate nohighlight">\(N\)</span> of the sets <span class="math notranslate nohighlight">\(O_i\)</span> intersect non-trivially, and each
+<blockquote>
+<div><p>A domain is called a Lipschitz domain, if its boundary <span class="math notranslate nohighlight">\(\partial \Omega\)</span> can be locally represented by a Lipschitz-continuous function.</p>
+</div></blockquote>
+<p>A precise definition which applies also to unbounded domains is the following:</p>
+<p><strong>Definition:</strong> The domain <span class="math notranslate nohighlight">\(\Omega\)</span> has a <strong>Lipschitz boundary</strong>, <span class="math notranslate nohighlight">\(\partial \Omega\)</span>, if there exists a collection of open sets <span class="math notranslate nohighlight">\(O_i\)</span>, a positive parameter <span class="math notranslate nohighlight">\(\varepsilon\)</span>, an integer <span class="math notranslate nohighlight">\(N\)</span> and a finite number <span class="math notranslate nohighlight">\(L\)</span>, such that for all <span class="math notranslate nohighlight">\(x \in \partial \Omega\)</span> the ball of radius <span class="math notranslate nohighlight">\(\varepsilon\)</span> centered at <span class="math notranslate nohighlight">\(x\)</span> is contained in some <span class="math notranslate nohighlight">\(O_i\)</span>, no more than <span class="math notranslate nohighlight">\(N\)</span> of the sets <span class="math notranslate nohighlight">\(O_i\)</span> intersect non-trivially, and each
 part of the boundary <span class="math notranslate nohighlight">\(O_i \cap \Omega\)</span> is a graph of a Lipschitz function <span class="math notranslate nohighlight">\(\varphi_i : {\mathbb R}^{d-1} \rightarrow {\mathbb R}\)</span> with Lipschitz norm bounded by <span class="math notranslate nohighlight">\(L\)</span>.</p>
 <p><strong>Theorem:</strong> Assume that <span class="math notranslate nohighlight">\(\Omega\)</span> has a Lipschitz boundary, and let <span class="math notranslate nohighlight">\(1 \leq p &lt; \infty\)</span>. Then  <span class="math notranslate nohighlight">\(\widehat W_p^k  = W_p^k\)</span>.</p>
 <p>The case <span class="math notranslate nohighlight">\(W_2^k\)</span> is special, it is a Hilbert space. We denote it by</p>
@@ -542,6 +548,12 @@ H^k(\Omega) := W_2^k(\Omega).
 \]</div>
 <p>In the following, we will prove most theorems for the Hilbert spaces <span class="math notranslate nohighlight">\(H^k\)</span>,
 and state the general results for <span class="math notranslate nohighlight">\(W_p^k\)</span>.</p>
+<p>We define semi-norms</p>
+<div class="math notranslate nohighlight">
+\[
+| u |_{H^k}^2 = \left( \sum_{|\alpha| = k} \| D^\alpha u \|_{L_2}^2 \right)^{1/2}
+\]</div>
+<p>The null-space of these semi-norms consists of polynomials up to order <span class="math notranslate nohighlight">\(k-1\)</span>.</p>
 </section>
 
     <script type="text/x-thebe-config">

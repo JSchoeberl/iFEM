@@ -203,7 +203,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Trace theorems and their applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms (WIP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises.html">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
@@ -474,6 +474,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobolev-spaces-over-sub-domains">15.2. Sobolev spaces over sub-domains</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-operators">15.3. Extension operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trace-space-h-1-2">15.4. The trace space <span class="math notranslate nohighlight">\(H^{1/2}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-spaces">15.5. Interpolation spaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-definition">15.5.1. General definition:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trace-space-on-one-edge-of-the-square">15.5.2. The trace space on one edge of the square</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -492,13 +497,18 @@ this is not well defined for <span class="math notranslate nohighlight">\(H^0 = 
 <span class="math notranslate nohighlight">\(H^1\)</span> and higher order Sobolev spaces, it makes sense to talk about <span class="math notranslate nohighlight">\(u
 |_{\partial \Omega}\)</span>. The definition of traces is essential to
 formulate boundary conditions of PDEs in weak form.</p>
-<p>We start in one dimension. Let <span class="math notranslate nohighlight">\(u \in C^1 ([0,h])\)</span> with some <span class="math notranslate nohighlight">\(h &gt; 0\)</span>. Then,
-we can bound</p>
+<p>We start in one dimension. Let <span class="math notranslate nohighlight">\(u \in C^1 ([0,h])\)</span> with some <span class="math notranslate nohighlight">\(h &gt; 0\)</span>.
+We multiply <span class="math notranslate nohighlight">\(u\)</span> with the cut-off function <span class="math notranslate nohighlight">\(1-x/h\)</span> (which does not change
+the value at <span class="math notranslate nohighlight">\(x=0\)</span>, and apply the fundamental theorem of calculus:</p>
+<div class="math notranslate nohighlight">
+\[
+u(0) =  \left(1 - \frac{x}{h} \right) u(x) |_{x=0} = 
+        - \int_0^h \left\{ \left(1-\frac{x}{h} \right) u(x) \right\}^\prime \, dx 
+\]</div>
+<p>Using the product rule and the Cauchy-Schwarz inequality for <span class="math notranslate nohighlight">\(L_2\)</span>, we can bound</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-u(0) &amp; =  \left(1 - \frac{x}{h} \right) u(x) |_{x=0} = 
-        - \int_0^h \left\{ \left(1-\frac{x}{h} \right) u(x) \right\}^\prime \, dx \\
-        &amp; =  -\int_0^h  \frac{-1}{h} u(x) + \left(1-\frac{x}{h} \right) u^\prime(x)  \, dx \\
+u(0)  &amp; =  -\int_0^h  \frac{-1}{h} u(x) + \left(1-\frac{x}{h} \right) u^\prime(x)  \, dx \\
         &amp; \leq  \left\| \frac{1}{h} \right\|_{L_2} \| u \|_{L_2} + 
                 \left\| 1-\frac{x}{h} \right\|_{L_2} \| u^\prime \|_{L_2} \\
         &amp; \simeq h^{-1/2} \| u \|_{L_2(0,h)} + h^{1/2} \| u^\prime \|_{L_2(0,h)}.
@@ -525,8 +535,8 @@ There is a well defined and continuous trace operator</p>
   \]</div>
 </div></blockquote>
 <p><em>Proof:</em> Use that <span class="math notranslate nohighlight">\(C^1([0,h])\)</span> is dense in <span class="math notranslate nohighlight">\(H^1(0,h)\)</span>. Take a sequence
-<span class="math notranslate nohighlight">\(u_j\)</span> in <span class="math notranslate nohighlight">\(C^1([0,h])\)</span> converging to <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(H^1\)</span>-norm. The values
-<span class="math notranslate nohighlight">\(u_j(0)\)</span> are Cauchy, and thus converge to an <span class="math notranslate nohighlight">\(u_0\)</span>. The limit is independent
+<span class="math notranslate nohighlight">\(u_j\)</span> in <span class="math notranslate nohighlight">\(C^1([0,h])\)</span> converging to <span class="math notranslate nohighlight">\(u\)</span> in <span class="math notranslate nohighlight">\(H^1\)</span>-norm. This sequence is Cauchy. By continuity of the boundary trace, the sequence of boundary values
+<span class="math notranslate nohighlight">\(u_j(0)\)</span> is Cauchy as well, and thus converges to a limit <span class="math notranslate nohighlight">\(u_0\)</span>. The limit is independent
 of the choice of the sequence <span class="math notranslate nohighlight">\(u_j\)</span>. This allows to define <span class="math notranslate nohighlight">\(\operatorname{tr} u := u_0\)</span>.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>Now, we extend this 1D result to domains in more dimensions. Let
@@ -553,16 +563,29 @@ There exists a well defined and continuous operator</p>
 \operatorname{tr} : C^1(\overline{\Omega}) \rightarrow L_2(\partial \Omega)
         : u \rightarrow u |_{\partial \Omega}
 \]</div>
-<p>is a bounded operator w.r.t. the norms <span class="math notranslate nohighlight">\(\|.\|_{H^1}\)</span> and <span class="math notranslate nohighlight">\(L_2\)</span>, and conclude by
-density.
-We use the partitioning of <span class="math notranslate nohighlight">\(\partial \Omega\)</span> into the pieces <span class="math notranslate nohighlight">\(\Gamma_i\)</span>, and
-transform to the simple square domain <span class="math notranslate nohighlight">\(Q = (0,1)^2\)</span>.
-Define the functions <span class="math notranslate nohighlight">\(u_i\)</span> on <span class="math notranslate nohighlight">\(Q = (0,1)^2\)</span> as</p>
+<p>is a bounded operator w.r.t. the norms <span class="math notranslate nohighlight">\(\|.\|_{H^1(\Omega)}\)</span> and <span class="math notranslate nohighlight">\(\|.\|_{L_2(\partial \Omega)}\)</span>, and conclude by
+density.</p>
+<p>We start proving the trace estimate on the square <span class="math notranslate nohighlight">\(Q := (0,1)^2\)</span>, and taking boundary values on the bottom side <span class="math notranslate nohighlight">\(\Gamma_b := (0,1) \times \{0\}\)</span>. For every <span class="math notranslate nohighlight">\(\xi \in (0,1)\)</span> we apply the one-dimensional trace inequality in <span class="math notranslate nohighlight">\(y\)</span>-direction:</p>
 <div class="math notranslate nohighlight">
 \[
-\tilde u_i (\tilde x) = u(s_i(\tilde x))
+| u(\xi, 0)|^2 \leq c \int_0^1 \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u}{\partial \eta}(\xi,\eta)\right)^2 \right\} \, d \eta
+\qquad \forall \, \xi \in (0,1)
 \]</div>
-<p>We transfer the <span class="math notranslate nohighlight">\(L_2\)</span> norm to the simple domain:</p>
+<p>The result follows from integrating over <span class="math notranslate nohighlight">\(\xi\)</span> and Fubini:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\| u \|_{L_2(\Gamma_b)}^2 &amp;= \int_0^1 |  u(\xi, 0)|^2 \, d\xi \\
+ &amp; \leq  
+ c \, \int_0^1  \int_0^1  \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u}{\partial \eta}(\xi,\eta) \right)^2 \right\} \, d \eta \, d \xi \\
+        &amp; \leq  c \, \| u \|_{H^1(Q)}^2.
+\end{align*}\]</div>
+<p>We use the partitioning of <span class="math notranslate nohighlight">\(\partial \Omega\)</span> into non-overlapping parts <span class="math notranslate nohighlight">\(\Gamma_i\)</span>, <span class="math notranslate nohighlight">\(1 \leq i \leq M\)</span>. For each part <span class="math notranslate nohighlight">\(\Gamma_i\)</span> we define an injective transformation <span class="math notranslate nohighlight">\(s_i : \overline Q \rightarrow \overline \Omega\)</span> such that the bottom edge of <span class="math notranslate nohighlight">\(Q\)</span> is mapped onto <span class="math notranslate nohighlight">\(\Gamma_i\)</span>. We define <span class="math notranslate nohighlight">\(S_i = s_i(Q)\)</span>. We assume that <span class="math notranslate nohighlight">\(s_i^\prime\)</span> and <span class="math notranslate nohighlight">\((s_i^\prime)^{-1}\)</span> are bounded functions a.e.</p>
+<p>This allows to pull-back functions <span class="math notranslate nohighlight">\(u \in H^1(S_i)\)</span> locally to the square domain <span class="math notranslate nohighlight">\(Q\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde u_i = u \circ s_i
+\]</div>
+<p>We transfer the <span class="math notranslate nohighlight">\(L_2(\Gamma_i)\)</span>-norms to the bottom edges:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \| \operatorname{tr} u \|_{L_2(\partial \Omega)}^2 &amp; =  
@@ -572,64 +595,58 @@ Define the functions <span class="math notranslate nohighlight">\(u_i\)</span> o
         \sum_{i=1}^M \int_0^1 u(s_i(\xi,0))^2 \left| \frac{\partial s_i}{\partial \xi} (\xi, 0) \right| \, d \xi \\
         &amp; \leq  c \sum_{i=1}^M \int_0^1 \tilde u_i(\xi,0)^2  \, d \xi  
 \end{align*}\]</div>
-<p>To transform the <span class="math notranslate nohighlight">\(H^1\)</span>-norm,
-we differentiate with respect to <span class="math notranslate nohighlight">\(\tilde x\)</span> by applying the chain rule</p>
+<p>To transform the <span class="math notranslate nohighlight">\(H^1\)</span>-norm, we use the chain-rule</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{d \tilde u_i}{d \tilde x} (\tilde x) = \frac{d u}{d x} (s_i(\tilde x))
- \frac{d s_i}{d \tilde x} (\tilde x).
+\tilde u_i^\prime = (u^\prime \circ s_i) \; s_i^\prime
 \]</div>
-<p>Solving for <span class="math notranslate nohighlight">\(\frac{d u }{d x}\)</span> is</p>
+<p>Since <span class="math notranslate nohighlight">\(s_i^\prime\)</span> and <span class="math notranslate nohighlight">\((s_i^\prime)^{-1}\)</span> are uniformly bounded, we get</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{d u }{dx} (s_i(\tilde x)) = \frac{ d \tilde u_i}{d \tilde x}(\tilde x)
-\left( \frac{ds }{d \tilde x} \right)^{-1} (\tilde x)
-% \nabla_x u(s_i(\xi,\eta)) = \nabla_{(\xi,\eta)} \tilde u_i (\xi,\eta)\, (\nabla s)^{-1}.
+| \nabla \tilde u_i (x) | \simeq | \nabla u (s_i(x) | \quad 
+\forall \, a.e. \, x \in Q,
 \]</div>
-<p>The bounds onto <span class="math notranslate nohighlight">\(s^\prime\)</span> and <span class="math notranslate nohighlight">\((s^\prime)^{-1}\)</span> imply that</p>
+<p>and, furthermore</p>
 <div class="math notranslate nohighlight">
 \[
-c^{-1} \, |\nabla_x u | \leq | \nabla_{\tilde x} \tilde u | \leq c \, | \nabla_x u |
+\| \nabla \tilde u_i \|_{L_2(Q)} \simeq \| \nabla u \|_{L_2(S_i)} 
 \]</div>
-<p>We start from the right hand side of the stated estimate:</p>
+<p>Combining the estimates we have proven</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\| u \|_{H^1(\Omega)}^2 &amp; \geq 
- \sum_{i=1}^M \int_{S_i} | \nabla_x u |^2 \, dx \\
- &amp; =  \sum_{i=1}^M \int_Q \left| \nabla_x u (s_i (\tilde x)) \right|^2    \det ( s^\prime ) \, d \tilde x \\
- &amp; \geq  c \,  \sum_{i=1}^M \int_Q \left| \nabla_{\tilde x} \tilde u (\tilde x) \right| ^2  \, d \tilde x
-\end{align*}\]</div>
-<p>We got a lower bound for <span class="math notranslate nohighlight">\(\det (s^\prime) = (\det (s^\prime)^{-1})^{-1}\)</span> from the upper bound for <span class="math notranslate nohighlight">\((s^\prime)^{-1}\)</span>.</p>
-<p>It remains to prove the trace estimate on <span class="math notranslate nohighlight">\(Q\)</span>. Here, we apply the previous
-one dimensional result</p>
-<div class="math notranslate nohighlight">
-\[
-| u(\xi, 0)|^2 \leq c \int_0^1 \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u(\xi,\eta)}{\partial \eta}\right)^2 \right\} \, d \eta
-\qquad \forall \, \xi \in (0,1)
-\]</div>
-<p>The result follows from integrating over <span class="math notranslate nohighlight">\(\xi\)</span></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\int_0^1 |  u(\xi, 0)|^2 \, d\xi &amp; \leq  
- c \, \int_0^1  \int_0^1  \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u(\xi,\eta)}{\partial \eta}\right)^2 \right\} \, d \eta \, d \xi \\
-        &amp; \leq  c \, \| u \|_{H^1(Q)}^2.
+\| \operatorname{tr} u \|_{\partial \Omega}^2 &amp; \simeq
+\sum_i \| \tilde u_i \|_{L_2(\Gamma_b)}^2
+\preceq \sum_i \| \tilde u_i \|_{H^1(Q)}^2  \\
+&amp; \simeq \sum_i \| u \|_{H^1(S_i)}^2 \preceq
+\| u \|_{H^1(\Omega)}^2
 \end{align*}\]</div>
 <p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>Considering the trace operator from <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span> to <span class="math notranslate nohighlight">\(L_2(\partial \Omega)\)</span> is
 not sharp with respect to the norms. We will improve the embedding later.</p>
-<p>By means of the trace operator we can define the sub-space</p>
+<p>By means of the trace operator we define the sub-space</p>
 <div class="math notranslate nohighlight">
 \[
 H_0^1(\Omega) = \{ u \in H^1(\Omega) : \operatorname{tr} \, u = 0 \}
 \]</div>
 <p>It is a true sub-space, since <span class="math notranslate nohighlight">\(u = 1\)</span> does belong to <span class="math notranslate nohighlight">\(H^1\)</span>, but not to <span class="math notranslate nohighlight">\(H_0^1\)</span>.
 It is a closed sub-space, since it is the kernel of a continuous operator.</p>
-<p>By means of the trace inequality, one verifies that the linear functional</p>
+<p>By means of the trace inequality, one verifies that the linear-form</p>
 <div class="math notranslate nohighlight">
 \[
 g(v) := \int_{\Gamma_N} g \, \operatorname{tr} \, v \, dx
 \]</div>
 <p>is bounded on <span class="math notranslate nohighlight">\(H^1\)</span>.</p>
+<p>Using the Cauchy-Schwarz inequality on <span class="math notranslate nohighlight">\(L_2(\Gamma_N)\)</span>, and continuity of the trace operator we obtain:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+| g(v) | \leq &amp; \| g \|_{L_2(\Gamma_N)} \| \operatorname{tr} v \|_{L_2(\Gamma_N)} \\
+\leq &amp; \| g \|_{L_2(\Gamma_N)} \| \operatorname{tr} \|_{H^1(\Omega)\rightarrow L_2(\Gamma_N)} \| v \|_{H^1(\Omega)}
+\end{align*}\]</div>
+<p>Thus, the dual-norm of the linear-form is bounded by</p>
+<div class="math notranslate nohighlight">
+\[
+\| g(\cdot) \|_{H^1(\Omega)^*} = \| g \|_{L_2} \| \operatorname{tr}  \|
+\]</div>
 <section id="integration-by-parts">
 <h2><span class="section-number">15.1. </span>Integration by parts<a class="headerlink" href="#integration-by-parts" title="Link to this heading">#</a></h2>
 <p>The definition of the trace allows us to perform integration by
@@ -641,7 +658,7 @@ parts in <span class="math notranslate nohighlight">\(H^1\)</span>:</p>
 \qquad \forall \, \varphi \in [C^1(\overline{\Omega})]^2
 \]</div>
 <p>The definition of the weak derivative (e.g. the weak gradient) looks similar.
-It allows only test functions <span class="math notranslate nohighlight">\(\varphi\)</span> with compact support in <span class="math notranslate nohighlight">\(\Omega\)</span>, i.e.,
+However, it allows only test functions <span class="math notranslate nohighlight">\(\varphi\)</span> with compact support in <span class="math notranslate nohighlight">\(\Omega\)</span>, i.e.,
 having zero boundary values. Only by choosing a normed space, for which the
 trace operator is well defined, we can state and prove integration by parts.
 Again, the short proof is based on the density of <span class="math notranslate nohighlight">\(C^1(\overline \Omega)\)</span>
@@ -680,7 +697,8 @@ is the weak gradient of <span class="math notranslate nohighlight">\(u\)</span>,
 \int_\Omega g \cdot \varphi \, dx = - \int_\Omega u \, \operatorname{div} \varphi \, dx
 \qquad \forall \, \varphi \in [C_0^\infty(\Omega)]^d
 \]</div>
-<p>We are using Green’s formula on the sub-domains</p>
+<p>We split the integral over sub-domains, use the definition of the local gradient, perform integration by parts on the sub-domains, and combine boundary
+terms from <span class="math notranslate nohighlight">\(\Omega_i\)</span> and <span class="math notranslate nohighlight">\(\Omega_j\)</span> to the common interface <span class="math notranslate nohighlight">\(\gamma_{ij}\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \int_\Omega g \cdot \varphi \, dx &amp; =  
@@ -744,8 +762,8 @@ obtain the bound</p>
 \]</div>
 <p>Define the domain <span class="math notranslate nohighlight">\(\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M\)</span>.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-72d1044b-d6ce-4996-b267-e28bb714b5a0">
-<span class="eqno">()<a class="headerlink" href="#equation-72d1044b-d6ce-4996-b267-e28bb714b5a0" title="Permalink to this equation">#</a></span>\[\begin{equation} \label{extension}
+<div class="amsmath math notranslate nohighlight" id="equation-e42f7476-fef8-404f-83e4-49890ef6ed4f">
+<span class="eqno">()<a class="headerlink" href="#equation-e42f7476-fef8-404f-83e4-49890ef6ed4f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
@@ -769,7 +787,8 @@ for the individual pieces <span class="math notranslate nohighlight">\(S_i\)</sp
 \[
 \int_{S_i \setminus \Omega} E u (\hat x)^2 \, d \hat x =
 \int_{S_i \cap \Omega} u (x)^2 \, \det \left( \frac{d \hat x}{d x} \right) d x \leq
-c \| u \|_{L_2(S_i \cap \Omega)}^2 \]</div>
+c \| u \|_{L_2(S_i \cap \Omega)}^2 
+\]</div>
 <p>For the derivatives we use</p>
 <div class="math notranslate nohighlight">
 \[
@@ -822,11 +841,10 @@ but the extension is not constant.</p>
 </section>
 <section id="the-trace-space-h-1-2">
 <h2><span class="section-number">15.4. </span>The trace space <span class="math notranslate nohighlight">\(H^{1/2}\)</span><a class="headerlink" href="#the-trace-space-h-1-2" title="Link to this heading">#</a></h2>
-<p>\label{sec_traceh1}</p>
 <p>The trace operator is continuous from <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span> into <span class="math notranslate nohighlight">\(L_2(\partial \Omega)\)</span>. But, not every <span class="math notranslate nohighlight">\(g \in L_2(\partial \Omega)\)</span> is a trace of some <span class="math notranslate nohighlight">\(u \in H^1(\Omega)\)</span>. We will motivate why the trace space is the fractional order Sobolev
 space <span class="math notranslate nohighlight">\(H^{1/2}(\partial \Omega)\)</span>.</p>
-<p>We introduce a stronger space, such that the trace operator is still
-continuous, and onto.
+<p>We introduce a space with a stronger norm, such that the trace operator is still
+continuous, and also surjective.
 Let <span class="math notranslate nohighlight">\(V = H^1(\Omega)\)</span>, and define the trace space as the range of the
 trace operator</p>
 <div class="math notranslate nohighlight">
@@ -834,10 +852,10 @@ trace operator</p>
 W = \{ \operatorname{tr} \, u : u \in H^1(\Omega) \}
 \]</div>
 <p>with the norm</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf0392ee-65c7-4344-aa69-876680507a6d">
-<span class="eqno">()<a class="headerlink" href="#equation-bf0392ee-65c7-4344-aa69-876680507a6d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \| \operatorname{tr} u \|_W = \inf_{v \in V \atop \operatorname{tr} \, u = \operatorname{tr} \, v } \| v \|_V.
-\end{equation}\]</div>
+\]</div>
 <p>This is indeed a norm on <span class="math notranslate nohighlight">\(W\)</span>. The trace operator is continuous from <span class="math notranslate nohighlight">\(V \rightarrow W\)</span> with norm <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <blockquote>
 <div><p><strong>Lemma:</strong> The space <span class="math notranslate nohighlight">\((W, \|.\|_W)\)</span> is a Banach space. For all <span class="math notranslate nohighlight">\(g \in W\)</span>
@@ -861,7 +879,7 @@ Cauchy in <span class="math notranslate nohighlight">\(V\)</span>:</p>
 <p>The <span class="math notranslate nohighlight">\(P_{V_0^\bot} u_n\)</span> converge to some <span class="math notranslate nohighlight">\(u \in V_0^\bot\)</span>, and <span class="math notranslate nohighlight">\(g_n\)</span> converge
 to <span class="math notranslate nohighlight">\(g := \operatorname{tr} \, u\)</span>.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
-<p>The minimizer in (\ref{equ_tracenorm}) fulfills</p>
+<p>The minimizer fulfills</p>
 <div class="math notranslate nohighlight">
 \[
 \operatorname{tr} \, u = g \qquad \mbox{and} \qquad (u,v)_V = 0 \qquad \forall \, v \in V_0.
@@ -877,6 +895,55 @@ u &amp; = &amp; g \qquad &amp; \mbox{ on } \partial \Omega.
 \end{split}\]</div>
 <p>To give an explicit characterization of the norm <span class="math notranslate nohighlight">\(\|.\|_W\)</span>, we introduce
 <em>Hilbert space interpolation</em>:</p>
+</section>
+<section id="interpolation-spaces">
+<h2><span class="section-number">15.5. </span>Interpolation spaces<a class="headerlink" href="#interpolation-spaces" title="Link to this heading">#</a></h2>
+<p>To explain the idea we expand <span class="math notranslate nohighlight">\(u \in L_2(0,1)\)</span> in a Fourier-sine-series</p>
+<div class="math notranslate nohighlight">
+\[
+u = \sum_{k=1}^\infty  u_k \sin (k\pi x) 
+\]</div>
+<p>with Fourier coefficients</p>
+<div class="math notranslate nohighlight">
+\[
+u_k = 2 \int_0^1 u(x) \sin (k\pi x) \, dx
+\]</div>
+<p>The <span class="math notranslate nohighlight">\(L_2\)</span>-norm is (by Parseval’s theorem)</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{L_2}^2 = \tfrac{1}{2} \sum_{k=1}^\infty u_k^2.
+\]</div>
+<p>Formally, its derivative is</p>
+<div class="math notranslate nohighlight">
+\[
+u^\prime(x) = \sum_{k=1}^\infty u_k k \pi \cos (k \pi x),
+\]</div>
+<p>and the <span class="math notranslate nohighlight">\(H^1\)</span> semi-norm (which is here actually equivalent to the norm) is</p>
+<div class="math notranslate nohighlight">
+\[
+| u |_{H^1}^2 = \frac{\pi^2}{2} \sum_{k=1}^\infty k^2 u_k^2
+\]</div>
+<p>The function <span class="math notranslate nohighlight">\(u\)</span> lies in <span class="math notranslate nohighlight">\(H_0^1 \subset L_2\)</span> if and only if this is a finite sum,
+i.e. <span class="math notranslate nohighlight">\((k u_k)_{k \in {\mathbb N}}\)</span> lies in <span class="math notranslate nohighlight">\(l_2\)</span>.</p>
+<p>This motivates to define the family of interpolation spaces</p>
+<div class="math notranslate nohighlight">
+\[
+H^s_0 = [L_2, H_0^1]_s \qquad \text{for} \; s \in (0,1)
+\]</div>
+<p>of functions</p>
+<div class="math notranslate nohighlight">
+\[
+u(x) = \sum_{k=1}^\infty u_k \sin (k \pi x) \qquad \text{such that} \; \sum_{k=1}^\infty k^{2s} u_k^2 &lt; \infty
+\]</div>
+<p>The norms are</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_{H^s}^2 = \sum_{k=1}^\infty k^{2s} u_k^2
+\]</div>
+<p>For the limiting values <span class="math notranslate nohighlight">\(s=0\)</span> and <span class="math notranslate nohighlight">\(s=1\)</span>, the interpolation space are <span class="math notranslate nohighlight">\(L_2\)</span> and <span class="math notranslate nohighlight">\(H_0^1\)</span>, respectively.</p>
+<p>Since all terms have zero boundary values, the Fourier-sine series spans <span class="math notranslate nohighlight">\(H_0^1\)</span>. If we use the Fourier-cosine series instead, we obtain the whole space <span class="math notranslate nohighlight">\(H^1\)</span>.</p>
+<section id="general-definition">
+<h3><span class="section-number">15.5.1. </span>General definition:<a class="headerlink" href="#general-definition" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(V_1 \subset V_0\)</span> be two Hilbert spaces, such that <span class="math notranslate nohighlight">\(V_1\)</span> is dense
 in <span class="math notranslate nohighlight">\(V_0\)</span>, and the embedding operator <span class="math notranslate nohighlight">\(id : V_1 \rightarrow V_0\)</span>
 is compact. We can pose the eigen-value problem: Find <span class="math notranslate nohighlight">\(z \in V_1\)</span>, <span class="math notranslate nohighlight">\(\lambda \in {\mathbb R}\)</span> such that</p>
@@ -931,8 +998,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7f6f14a6-4c67-4d79-aa4b-1e7fe6992245">
-<span class="eqno">()<a class="headerlink" href="#equation-7f6f14a6-4c67-4d79-aa4b-1e7fe6992245" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a9a86b0a-3322-4b4f-aba4-02c90aa2d0bb">
+<span class="eqno">()<a class="headerlink" href="#equation-a9a86b0a-3322-4b4f-aba4-02c90aa2d0bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
@@ -966,17 +1033,20 @@ norm (<span class="math notranslate nohighlight">\(s \in (0,1)\)</span>)</p>
 \[
 \| u \|_{H^s(0,1)}^2 = \sum_{k=0}^\infty (1+k^2 \pi^2)^s (u,z_k)_{L_2}^2
 \]</div>
-<p>We consider the trace <span class="math notranslate nohighlight">\(\operatorname{tr}|_E\)</span> of <span class="math notranslate nohighlight">\(H^1((0,1)^2)\)</span> onto one edge <span class="math notranslate nohighlight">\(E = (0,1) \times \{ 0 \}\)</span>. For <span class="math notranslate nohighlight">\(g \in W_E := \operatorname{tr} H^1((0,1)^2)\)</span>, the norm <span class="math notranslate nohighlight">\(\| g \|_W\)</span> is
+</section>
+<section id="the-trace-space-on-one-edge-of-the-square">
+<h3><span class="section-number">15.5.2. </span>The trace space on one edge of the square<a class="headerlink" href="#the-trace-space-on-one-edge-of-the-square" title="Link to this heading">#</a></h3>
+<p>We consider the trace <span class="math notranslate nohighlight">\(\operatorname{tr}|_E\)</span> of <span class="math notranslate nohighlight">\(H^1((0,1)^2)\)</span> on the bottom edge <span class="math notranslate nohighlight">\(E = (0,1) \times \{ 0 \}\)</span>. For <span class="math notranslate nohighlight">\(g \in W_E := \operatorname{tr}_E H^1((0,1)^2)\)</span>, the norm <span class="math notranslate nohighlight">\(\| g \|_W\)</span> is
 defined by</p>
 <div class="math notranslate nohighlight">
 \[
-\| g \|_W = \| u_g \|_{H^1}.
+\| g \|_W = \| u_g \|_{H^1},
 \]</div>
-<p>Here, <span class="math notranslate nohighlight">\(u_g\)</span> solves the Dirichlet problem <span class="math notranslate nohighlight">\(u_g|_E = g\)</span>, and <span class="math notranslate nohighlight">\((u_g,v)_{H^1} = 0 \; \forall \, v \in H^1\)</span> such that <span class="math notranslate nohighlight">\(\operatorname{tr}_E v = 0\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(u_g\)</span> solves the Dirichlet problem <span class="math notranslate nohighlight">\(u_g|_E = g\)</span>, and <span class="math notranslate nohighlight">\((u_g,v)_{H^1} = 0 \; \forall \, v \in H^1\)</span> such that <span class="math notranslate nohighlight">\(\operatorname{tr}_E v = 0\)</span>.</p>
 <p>Since <span class="math notranslate nohighlight">\(W \subset L_2(E)\)</span>, we can expand <span class="math notranslate nohighlight">\(g\)</span> in the <span class="math notranslate nohighlight">\(L_2\)</span>-orthonormal cosine basis <span class="math notranslate nohighlight">\(z_k\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-g(x) = \sum g_n z_k(x)
+g(x) = \sum_{k=0}^{\infty} g_k z_k(x)
 \]</div>
 <p>The Dirichlet problems for the <span class="math notranslate nohighlight">\(z_k\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -997,7 +1067,7 @@ u_0(x,y) = 1
 \[
 u_k(x,y) = \sqrt 2 \cos (k \pi x) \frac{e^{k \pi (1-y)} + e^{-k \pi (1-y)}}{e^{k \pi} + e^{-k \pi}}.
 \]</div>
-<p>The asymptotic is</p>
+<p>Ignoring constant factors, there holds</p>
 <div class="math notranslate nohighlight">
 \[
 \| u_k \|_{L_2}^2 \simeq (k+1)^{-1}
@@ -1007,14 +1077,15 @@ u_k(x,y) = \sqrt 2 \cos (k \pi x) \frac{e^{k \pi (1-y)} + e^{-k \pi (1-y)}}{e^{k
 \[
 \| \nabla u_k \|_{L_2}^2 \simeq k 
 \]</div>
-<p>Furthermore, the <span class="math notranslate nohighlight">\(u_k\)</span> are orthogonal in <span class="math notranslate nohighlight">\((.,.)_{H^1}\)</span>. Thus <span class="math notranslate nohighlight">\(u_g = \sum_n g_n u_k\)</span> has the norm</p>
+<p>Furthermore, the <span class="math notranslate nohighlight">\(u_k\)</span> are orthogonal in <span class="math notranslate nohighlight">\((.,.)_{H^1}\)</span>. Thus, <span class="math notranslate nohighlight">\(u_g = \sum_k g_k u_k\)</span> has the norm</p>
 <div class="math notranslate nohighlight">
 \[
-\| u_g \|_{H^1}^2 = \sum g_n^2 \| u_k \|_{H^1}^2 \simeq \sum g_n^2 (1+k).
+\| u_g \|_{H^1}^2 = \sum g_k^2 \| u_k \|_{H^1}^2 \simeq \sum_k g_k^2 (1+k).
 \]</div>
 <p>This norm is equivalent to <span class="math notranslate nohighlight">\(H^{1/2}(E)\)</span>.</p>
 <p>We have proven that the trace space onto one edge is the interpolation
 space <span class="math notranslate nohighlight">\(H^{1/2}(E)\)</span>. This is also true for general domains (Lipschitz, with piecewise smooth boundary).</p>
+</section>
 </section>
 </section>
 
@@ -1086,6 +1157,11 @@ space <span class="math notranslate nohighlight">\(H^{1/2}(E)\)</span>. This is 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobolev-spaces-over-sub-domains">15.2. Sobolev spaces over sub-domains</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-operators">15.3. Extension operators</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trace-space-h-1-2">15.4. The trace space <span class="math notranslate nohighlight">\(H^{1/2}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-spaces">15.5. Interpolation spaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-definition">15.5.1. General definition:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trace-space-on-one-edge-of-the-square">15.5.2. The trace space on one edge of the square</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

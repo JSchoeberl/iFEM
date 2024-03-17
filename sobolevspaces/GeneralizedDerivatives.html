@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Traces.html">15. Trace theorems and their applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms (WIP)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises.html">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
@@ -474,6 +474,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="generalized-derivatives">
 <h1><span class="section-number">13. </span>Generalized derivatives<a class="headerlink" href="#generalized-derivatives" title="Link to this heading">#</a></h1>
+<p>In the following, let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span> be an open and connected set. If not stated otherwise, we also assume <span class="math notranslate nohighlight">\(\Omega\)</span> is bounded.</p>
 <p>Let <span class="math notranslate nohighlight">\(\alpha = (\alpha_1, \ldots , \alpha_d) \in {\mathbb N}_0^d\)</span> be a multi-index,
 <span class="math notranslate nohighlight">\(| \alpha | = \sum \alpha_i\)</span>,
 and define the classical differential operator for functions in <span class="math notranslate nohighlight">\(C^\infty (\Omega)\)</span></p>
@@ -483,13 +484,13 @@ D^\alpha =
         \left( \frac{\partial}{\partial x_1} \right)^{\alpha_1} \cdots
         \left( \frac{\partial}{\partial x_n} \right)^{\alpha_d}.
 \]</div>
-<p>For a function <span class="math notranslate nohighlight">\(u \in C(\Omega)\)</span>, the support is defined as</p>
+<p>For a function <span class="math notranslate nohighlight">\(u \in C(\Omega)\)</span> (with <span class="math notranslate nohighlight">\(\Omega\)</span> not necessarily bounded), the support is defined as</p>
 <div class="math notranslate nohighlight">
 \[
 \operatorname{supp} \{ u \} := \overline{ \{ x \in \Omega : u(x) \neq 0 \} }.
 \]</div>
 <p>This is a compact set if and only if it is bounded. We say <span class="math notranslate nohighlight">\(u\)</span> has
-compact support in <span class="math notranslate nohighlight">\(\Omega\)</span>, if <span class="math notranslate nohighlight">\(\operatorname{supp} u \subset \Omega\)</span>.
+compact support in <span class="math notranslate nohighlight">\(\Omega\)</span>, if <span class="math notranslate nohighlight">\(\operatorname{supp} u \subset \Omega\)</span> is compact.
 If <span class="math notranslate nohighlight">\(\Omega\)</span> is a bounded domain, then <span class="math notranslate nohighlight">\(u\)</span> has compact support in <span class="math notranslate nohighlight">\(\Omega\)</span>
 if and only if <span class="math notranslate nohighlight">\(u\)</span> vanishes in a neighbourhood of <span class="math notranslate nohighlight">\(\partial \Omega\)</span>.</p>
 <p>The space of smooth functions with compact support is denoted as</p>
@@ -502,7 +503,6 @@ if and only if <span class="math notranslate nohighlight">\(u\)</span> vanishes 
 formula of integration by parts</p>
 <div class="math notranslate nohighlight">
 \[
-\label{equ_intbyparts}
 \int_\Omega D^\alpha u \varphi \, dx = (-1)^{|\alpha|} \int_\Omega u D^\alpha \varphi \, dx 
 \qquad \forall \, \varphi \in {\cal D}(\Omega).
 \]</div>
@@ -514,20 +514,22 @@ u(\varphi) := \left&lt; u, \varphi \right&gt;_{{\cal D}^\prime \times {\cal D}} 
 \]</div>
 <p>We call these functionals in <span class="math notranslate nohighlight">\({\cal D}^\prime\)</span> distributions.
 When <span class="math notranslate nohighlight">\(u\)</span> is a function, we identify it with the generated distribution.
-The formula (\ref{equ_intbyparts}) is valid for functions <span class="math notranslate nohighlight">\(u \in C^\alpha\)</span>.
+The integration by parts formula is valid for functions <span class="math notranslate nohighlight">\(u \in C^\alpha\)</span>.
 The strong regularity is needed only on the left hand side. Thus, we use
 the less demanding right hand side to extend the definition of differentiation
 for distributions:</p>
-<p><strong>Definition:</strong> For <span class="math notranslate nohighlight">\(u \in {\cal D}^\prime\)</span>, we define
+<blockquote>
+<div><p><strong>Definition:</strong> For <span class="math notranslate nohighlight">\(u \in {\cal D}^\prime\)</span>, we define
 <span class="math notranslate nohighlight">\(g \in {\cal D}^\prime\)</span> to be the generalized
-derivative <span class="math notranslate nohighlight">\(D_g^\alpha u\)</span> of <span class="math notranslate nohighlight">\(u\)</span> by</p>
+derivative of <span class="math notranslate nohighlight">\(u\)</span>, denoted as <span class="math notranslate nohighlight">\(g = D_g^\alpha u\)</span> by</p>
 <div class="math notranslate nohighlight">
 \[
-\left&lt;g, \varphi \right&gt;_{{\cal D}^\prime \times {\cal D}} = 
-(-1)^{|\alpha|} \left&lt;u, D^\alpha \varphi \right&gt;_{{\cal D}^\prime \times {\cal D}}  \qquad \forall \, \varphi \in {\cal D}
-\]</div>
+  \left&lt;g, \varphi \right&gt;_{{\cal D}^\prime \times {\cal D}} = 
+  (-1)^{|\alpha|} \left&lt;u, D^\alpha \varphi \right&gt;_{{\cal D}^\prime \times   {\cal D}}  \qquad \forall \, \varphi \in {\cal D}.
+  \]</div>
+</div></blockquote>
 <p>If <span class="math notranslate nohighlight">\(u \in C^\alpha\)</span>, then <span class="math notranslate nohighlight">\(D_g^\alpha\)</span> coincides with <span class="math notranslate nohighlight">\(D^\alpha\)</span>.</p>
-<p>The function space of {\bf locally integrable} functions on <span class="math notranslate nohighlight">\(\Omega\)</span>
+<p>The function space of <em>locally integrable</em> functions on <span class="math notranslate nohighlight">\(\Omega\)</span>
 is called</p>
 <div class="math notranslate nohighlight">
 \[
@@ -537,13 +539,15 @@ L_1^{loc} (\Omega) = \{ u : u_K \in L_1(K) \; \forall \mbox{ compact } K
 <p>It contains functions which can behave very badly near <span class="math notranslate nohighlight">\(\partial \Omega\)</span>.
 E.g., <span class="math notranslate nohighlight">\(e^{e^{1/x}}\)</span> is in <span class="math notranslate nohighlight">\(L_{loc}^1 (0,1)\)</span>. If <span class="math notranslate nohighlight">\(\Omega\)</span> is unbounded, then
 the constant function <span class="math notranslate nohighlight">\(1\)</span> is in <span class="math notranslate nohighlight">\(L_1^{loc}\)</span>, but not in <span class="math notranslate nohighlight">\(L_1\)</span>.</p>
-<p><strong>Definition:</strong> For <span class="math notranslate nohighlight">\(u \in L_1^{loc}\)</span>, we call <span class="math notranslate nohighlight">\(g\)</span> the weak derivative
-<span class="math notranslate nohighlight">\(D_w^\alpha u\)</span>, if <span class="math notranslate nohighlight">\(g \in L_1^{loc}\)</span> satisfies</p>
+<blockquote>
+<div><p><strong>Definition:</strong> For <span class="math notranslate nohighlight">\(u \in L_1^{loc}\)</span>, we call <span class="math notranslate nohighlight">\(g\)</span> the weak derivative
+<span class="math notranslate nohighlight">\(D_w^\alpha u\)</span>, if <span class="math notranslate nohighlight">\(g \in L_1^{loc}\)</span> and it satisfies</p>
 <div class="math notranslate nohighlight">
 \[
-\int_\Omega g(x) \varphi(x) \, dx =
-(-1)^{|\alpha|} \int_\Omega u(x) D^\alpha \varphi (x) \, dx  \qquad \forall \, \varphi \in {\cal D}.
-\]</div>
+  \int_\Omega g(x) \varphi(x) \, dx =
+  (-1)^{|\alpha|} \int_\Omega u(x) D^\alpha \varphi (x) \, dx  \qquad \forall     \, \varphi \in {\cal D}.
+  \]</div>
+</div></blockquote>
 <p>The weak derivative is more general than the classical derivative, but more
 restrictive than the generalized derivative.</p>
 <p><strong>Example:</strong>
@@ -568,12 +572,50 @@ g(x) = \left\{
         \right\}
 \end{split}\]</div>
 <p>is the first generalized derivative <span class="math notranslate nohighlight">\(D^1_g\)</span> of <span class="math notranslate nohighlight">\(u\)</span>, which is also
-a weak derivative. The second generalized derivative <span class="math notranslate nohighlight">\(h\)</span> is</p>
+a weak derivative.</p>
+<p><em>Proof:</em> We use the definition of the generalized derivative, and split the integral
+into parts:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\left&lt; D_g u, \varphi \right&gt; &amp; = -\left&lt; u, \varphi^\prime \right&gt; 
+   = -\int_{-1}^1 u(x) \varphi^\prime(x) \, dx \\
+   &amp; = -\int_{-1}^0 (1+x) \varphi^\prime(x) \, dx - \int_0^1 (1-x) \varphi^\prime(x) \, dx
+\end{align*}\]</div>
+<p>Next, we apply integration py parts on each sub-interval:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\left&lt; D_g u, \varphi \right&gt; &amp; = \int_{-1}^0 (1+x)^\prime \varphi(x) - (1+x) \varphi(x) |_{x=-1}^{x=0} \\
+&amp; + \int_{0}^1 (1-x)^\prime \varphi(x) - (1-x) \varphi(x) |_{x=0}^{x=1}
+\end{align*}\]</div>
+<p>Finally, we compute the derivatives of <span class="math notranslate nohighlight">\(u\)</span> on each sub-interval, use that <span class="math notranslate nohighlight">\(\varphi(-1) = \varphi(1) = 0\)</span>, and observe that the contributions at <span class="math notranslate nohighlight">\(x=0\)</span> cancel out:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\left&lt; D_g u, \varphi \right&gt; &amp;= \int_{-1}^0 1 \, \varphi(x) dx - 1 \varphi(0) + 
+\int_0^1 (-1) \varphi(x) dx + 1 \varphi(0) \\
+&amp;= \int_{-1}^1 g(x) \varphi(x) \, dx
+\end{align*}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(g\)</span> is a locally integrable function, the generalized derivative is also a weak derivative.</p>
+<p><strong>Example:</strong>
+The second generalized derivative <span class="math notranslate nohighlight">\(h = D_g^2 u\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 \left&lt; h, \varphi \right&gt; = -2 \varphi(0)  \qquad \forall \, \varphi \in {\cal D}
 \]</div>
-<p>It is not a weak derivative.</p>
+<p><em>Proof:</em> The second derivative of <span class="math notranslate nohighlight">\(u\)</span> is the first derivative of <span class="math notranslate nohighlight">\(g\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\left&lt; D^2_g u, \varphi\right&gt; = \left&lt; D_g g, \varphi \right&gt; &amp; = 
+  -\int_{-1}^1 g(x) \varphi^\prime \, dx \\
+  &amp;= -\int_{-1}^0 1 \varphi^\prime \, dx - \int_{0}^1 (-1) \varphi^\prime \, dx \\
+  &amp;= -\varphi(0) - \varphi(0) = -2 \varphi(0)
+\end{align*}\]</div>
+<p>The distribution <span class="math notranslate nohighlight">\(h : C_0^\infty \rightarrow {\mathbb R}\)</span> is (up to the factor <span class="math notranslate nohighlight">\(-2\)</span>) the point evaluation functional (aka <span class="math notranslate nohighlight">\(\delta\)</span>-distribution). It cannot be represented by an <span class="math notranslate nohighlight">\(L_1^{loc}\)</span> function, thus it is not a weak derivative.</p>
+<p><strong>Example:</strong> The third generalized derivative <span class="math notranslate nohighlight">\(D_g^3 u\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\left&lt; D_g^3 u, \varphi \right&gt; = 2 \varphi^\prime(0)
+\]</div>
+<p><em>Proof:</em> Follows directly from the definition.</p>
 <p>In the following, we will focus on weak derivatives. Unless it is essential
 we will skip the sub-scripts <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(g\)</span>.</p>
 </section>

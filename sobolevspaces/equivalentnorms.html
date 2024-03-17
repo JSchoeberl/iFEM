@@ -204,7 +204,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms (WIP)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises.html">19. Exercises (WIP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises.html">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
 <ul class="nav bd-sidenav">
@@ -505,8 +505,8 @@ with kernel <span class="math notranslate nohighlight">\(V_0 = \{ v : A(v,v) = 0
 <li><p>The kernel <span class="math notranslate nohighlight">\(V_0\)</span> is finite dimensional. On the factor space <span class="math notranslate nohighlight">\(V/V_0\)</span>,
 <span class="math notranslate nohighlight">\(A(.,.)\)</span> is an equivalent norm to the quotient norm</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-709fad16-b9a0-40f8-80c0-3a962854d8d8">
-<span class="eqno">()<a class="headerlink" href="#equation-709fad16-b9a0-40f8-80c0-3a962854d8d8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f9a0347f-187d-4678-9307-11b31237ff7d">
+<span class="eqno">()<a class="headerlink" href="#equation-f9a0347f-187d-4678-9307-11b31237ff7d" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_V \qquad \forall \, u \in V
     \end{equation}\]</div>
 <ol class="arabic simple" start="2">
@@ -621,7 +621,7 @@ Let <span class="math notranslate nohighlight">\(V_D = \{ v \in H^1(\Omega) : \o
   \]</div>
 </div></blockquote>
 <p><em>Proof:</em> The intersection <span class="math notranslate nohighlight">\(V_0 \cap V_D\)</span> is trivial <span class="math notranslate nohighlight">\(\{ 0 \}\)</span>.
-Thus, Tartar’s Theorem, statement 3, implies the equivalence<br />
+Thus, Tartar’s theorem, part 3, implies the equivalence<br />
 $<span class="math notranslate nohighlight">\(
 \| v \|_V^2 = \| v \|_{L_2}^2 + \| \nabla v \|_{L_2}^2 \simeq
 \| \nabla v \|_{L_2}.
@@ -637,7 +637,7 @@ $<span class="math notranslate nohighlight">\(
 </div></blockquote>
 <p><em>Proof:</em> <span class="math notranslate nohighlight">\(B(u,v) := (\int_\Omega u \, dx) (\int_\Omega v \, dx)\)</span> is
 a continuous bilinear form on <span class="math notranslate nohighlight">\(H^1\)</span>, and <span class="math notranslate nohighlight">\((\nabla u, \nabla v) + B(u,v)\)</span> is
-an inner product. Thus, Theorem~\ref{theo_tartar}, 2. implies the
+an inner product. Thus, Tartar’s theorem, part 2, implies the
 stated equivalence.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
 <ul>
@@ -659,16 +659,21 @@ Then</p>
 </ul>
 <blockquote>
 <div><p><strong>Bramble Hilbert lemma:</strong></p>
-<p>Let <span class="math notranslate nohighlight">\(U\)</span> be some Hilbert space, and <span class="math notranslate nohighlight">\(L : H^k \rightarrow U\)</span> be a continuous linear operator such that
-<span class="math notranslate nohighlight">\(L q = 0\)</span> for polynomials <span class="math notranslate nohighlight">\(q \in P^{k-1}\)</span>. Then there holds</p>
+<p>Let <span class="math notranslate nohighlight">\(U\)</span> be some Hilbert space, and <span class="math notranslate nohighlight">\(L : H^k \rightarrow U\)</span> be a continuous linear operator, i.e.</p>
 <div class="math notranslate nohighlight">
 \[
-  \| L v \|_U \preceq | v |_{H^k}.
+  \| L v \|_U \preceq \| v \|_{H^k} \qquad \forall \, v \in H^k.
+  \]</div>
+<p>Let <span class="math notranslate nohighlight">\(L\)</span> be such that <span class="math notranslate nohighlight">\(L q = 0\)</span> for polynomials <span class="math notranslate nohighlight">\(q \in P^{k-1}\)</span>. Then
+one can replace the norm by the semi-norm on the right hand side, i.e. there holds</p>
+<div class="math notranslate nohighlight">
+\[
+  \| L v \|_U \preceq | v |_{H^k} \qquad \forall \, v \in H^k.
   \]</div>
 </div></blockquote>
 <p><em>Proof:</em> The embedding <span class="math notranslate nohighlight">\(H^k \rightarrow H^{k-1}\)</span> is compact.</p>
 <p>The <span class="math notranslate nohighlight">\(V\)</span>-continuous, symmetric and non-negative bilinear form
-<span class="math notranslate nohighlight">\(A(u,v) = \sum_{\alpha : | \alpha | = k} (\partial^\alpha u, \partial^\alpha v)\)</span> has the kernel <span class="math notranslate nohighlight">\(P^{k-1}\)</span>. Decompose <span class="math notranslate nohighlight">\(\| u \|_{H^k}^2 = \| u \|_{H^{k-1}}^2 + A(u,u)\)</span>. By Tartar’s Theorem, part 1, there holds</p>
+<span class="math notranslate nohighlight">\(A(u,v) = \sum_{\alpha : | \alpha | = k} (\partial^\alpha u, \partial^\alpha v)\)</span> has the kernel <span class="math notranslate nohighlight">\(P^{k-1}\)</span>. Decompose <span class="math notranslate nohighlight">\(\| u \|_{H^k}^2 = \| u \|_{H^{k-1}}^2 + A(u,u)\)</span>. By Tartar’s theorem, part 1, there holds</p>
 <div class="math notranslate nohighlight">
 \[
 \| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_{H^k}
