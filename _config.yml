@@ -15,7 +15,7 @@ execute:
   execute_notebooks: auto
   exclude_patterns:
         - "iFEM.ipynb"    
-        - "ex*"  
+        - "ex20*"  
         - "MPIparallel/*/*"
         - "helmholtz/*"
         - "mixedelasticity/*"
