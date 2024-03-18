@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Traces.html">15. Trace theorems and their applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms (WIP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises.html">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
@@ -584,8 +584,8 @@ into parts:</p>
 <p>Next, we apply integration py parts on each sub-interval:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\left&lt; D_g u, \varphi \right&gt; &amp; = \int_{-1}^0 (1+x)^\prime \varphi(x) - (1+x) \varphi(x) |_{x=-1}^{x=0} \\
-&amp; + \int_{0}^1 (1-x)^\prime \varphi(x) - (1-x) \varphi(x) |_{x=0}^{x=1}
+\left&lt; D_g u, \varphi \right&gt; &amp; = \int_{-1}^0 (1+x)^\prime \varphi(x) dx - (1+x) \varphi(x) |_{x=-1}^{x=0} \\
+&amp; + \int_{0}^1 (1-x)^\prime \varphi(x) dx - (1-x) \varphi(x) |_{x=0}^{x=1}
 \end{align*}\]</div>
 <p>Finally, we compute the derivatives of <span class="math notranslate nohighlight">\(u\)</span> on each sub-interval, use that <span class="math notranslate nohighlight">\(\varphi(-1) = \varphi(1) = 0\)</span>, and observe that the contributions at <span class="math notranslate nohighlight">\(x=0\)</span> cancel out:</p>
 <div class="amsmath math notranslate nohighlight">
