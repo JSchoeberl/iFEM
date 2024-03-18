@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="20. Finite Element Method" href="../FEM/finiteelements.html" />
-    <link rel="prev" title="18. Experiments with norms (WIP)" href="experiments.html" />
+    <link rel="prev" title="18. Experiments with norms" href="experiments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Traces.html">15. Trace theorems and their applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms (WIP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
@@ -476,7 +476,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poincare-inequality">19.2. Poincaré inequality</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poincare-inequality-in-1d">19.2.1. Poincaré inequality in 1D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eqivalent-versions-of-the-poincare-inequality">19.2.1. Eqivalent versions of the Poincaré inequality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poincare-inequality-in-1d">19.2.2. Poincaré inequality in 1D</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bramble-hilbert-lemma">19.3. Bramble-Hilbert Lemma</a><ul class="nav section-nav flex-column">
@@ -525,15 +526,33 @@ document.write(`
 </section>
 <section id="poincare-inequality">
 <h2><span class="section-number">19.2. </span>Poincaré inequality<a class="headerlink" href="#poincare-inequality" title="Link to this heading">#</a></h2>
+<section id="eqivalent-versions-of-the-poincare-inequality">
+<h3><span class="section-number">19.2.1. </span>Eqivalent versions of the Poincaré inequality<a class="headerlink" href="#eqivalent-versions-of-the-poincare-inequality" title="Link to this heading">#</a></h3>
+<p>Prove that the following inequalities are equivalent</p>
+<ol class="arabic simple">
+<li><p>There exists a constant <span class="math notranslate nohighlight">\(c_p\)</span> such that</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[ \| u - \overline u \|_{L_2}^2 \leq c_P^2 \, \| \nabla u \|^2_{L_2} \; \forall \, u \in H^1(\Omega)\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\overline u\)</span> is the mean value of <span class="math notranslate nohighlight">\(u\)</span>, which is <span class="math notranslate nohighlight">\(\frac{1}{|\Omega|} \int_\Omega u(x) dx\)</span>, understood as a constant function.</p>
+<ol class="arabic" start="2">
+<li><p>There exists a constant <span class="math notranslate nohighlight">\(c_p\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[ \| u \|_{L_2}^2 \leq c_P^2 \, \| \nabla u \|_{L_2}^2 + \frac{1}{|\Omega|} \left( \int_\Omega u \right)^2 \]</div>
+</li>
+</ol>
+<p>Hint: Pythagoras. First, observe that <span class="math notranslate nohighlight">\(\overline u\)</span> and <span class="math notranslate nohighlight">\(u - \overline u\)</span> are orthogonal with respect to the <span class="math notranslate nohighlight">\(L_2\)</span> inner product.</p>
+</section>
 <section id="poincare-inequality-in-1d">
-<h3><span class="section-number">19.2.1. </span>Poincaré inequality in 1D<a class="headerlink" href="#poincare-inequality-in-1d" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.2.2. </span>Poincaré inequality in 1D<a class="headerlink" href="#poincare-inequality-in-1d" title="Link to this heading">#</a></h3>
 <p>Prove the Poincaré inequality on the interval <span class="math notranslate nohighlight">\(I = (a,b)\)</span> with elementary tools:</p>
 <div class="math notranslate nohighlight">
 \[
-\| u \|_{L_2(I)}^2 \leq c_P \left( \| u^\prime \|_{L_2(I)}^2 + \big( \int_I u dx \big)^2 \right)
+\| u - \overline u \|_{L_2(I)}^2 \leq c_P^2 \| u^\prime \|_{L_2(I)}^2
 \qquad \forall \, u \in C^1(\overline I)
 \]</div>
-<p>Hint: …</p>
+<p>How does the Poincaré constant depend on <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> ?</p>
+<p>Hint: Bring the left hand side to something similar to <span class="math notranslate nohighlight">\(\int \left( \int u(y) - u(x) dx\right) ^2 dy\)</span>. Then, use the fundamental theorem of calculus: <span class="math notranslate nohighlight">\(u(y)-u(x) = \int_x^y u^\prime(s) \, ds\)</span>. finally: Cauchy-Schwarz</p>
 </section>
 </section>
 <section id="bramble-hilbert-lemma">
@@ -546,7 +565,7 @@ document.write(`
 \| u - \overline u \|_{L_2(\Omega)} \leq c \, \| \nabla u \|_{L_2(\Omega)} \qquad \forall \, u \in H^1(\Omega),
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\overline u := | \Omega |^{-1} \int_\Omega u \, dx\)</span> is the mean value.</p>
-<p>Hint: apply the Bramble-Hilbert theorem</p>
+<p>Use the Bramble-Hilbert theorem</p>
 </section>
 <section id="scaled-domain">
 <h3><span class="section-number">19.3.2. </span>Scaled domain<a class="headerlink" href="#scaled-domain" title="Link to this heading">#</a></h3>
@@ -554,9 +573,10 @@ document.write(`
 constant <span class="math notranslate nohighlight">\(c\)</span>, independent of <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(p\)</span>, such that</p>
 <div class="math notranslate nohighlight">
 \[
-\| u - \overline u \|_{L_2(\Omega)} \leq c r \, \| \nabla u \|_{L_2(\Omega)} \qquad \forall \, u \in H^1(\Omega)
+\| u - \overline u \|_{L_2} \leq c r \, \| \nabla u \|_{L_2} \qquad \forall \, u \in H^1(B_r(p))
 \]</div>
-<p>Hint: Prove the estimate for the unit ball <span class="math notranslate nohighlight">\(B_1(0)\)</span>. Define a function <span class="math notranslate nohighlight">\(\Phi\)</span> mapping the unit-ball to the arbitrary ball <span class="math notranslate nohighlight">\(B_r(p)\)</span>. For <span class="math notranslate nohighlight">\(u \in H^1(B_r(p))\)</span>, define the pull-back <span class="math notranslate nohighlight">\(u \circ \Phi \in H^1(B_1(0))\)</span></p>
+<p>Hint: Prove the estimate for the unit ball <span class="math notranslate nohighlight">\(B_1(0)\)</span>. Define a function <span class="math notranslate nohighlight">\(\Phi\)</span> mapping the unit-ball to the arbitrary ball <span class="math notranslate nohighlight">\(B_r(p)\)</span>. For <span class="math notranslate nohighlight">\(u \in H^1(B_r(p))\)</span>, define the pull-back <span class="math notranslate nohighlight">\(u \circ \Phi \in H^1(B_1(0))\)</span>.
+Does mean-value and pull-back commute, i.e. does there hold <span class="math notranslate nohighlight">\(\overline u \circ \Phi = \overline{ u  \circ \Phi}\)</span> ?</p>
 </section>
 </section>
 <section id="fractional-sobolev-spaces">
@@ -627,7 +647,7 @@ f(v) \leq \, c \, \| v \|_{H^\alpha}
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">18. </span>Experiments with norms (WIP)</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Experiments with norms</p>
       </div>
     </a>
     <a class="right-next"
@@ -661,7 +681,8 @@ f(v) \leq \, c \, \| v \|_{H^\alpha}
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poincare-inequality">19.2. Poincaré inequality</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poincare-inequality-in-1d">19.2.1. Poincaré inequality in 1D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eqivalent-versions-of-the-poincare-inequality">19.2.1. Eqivalent versions of the Poincaré inequality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poincare-inequality-in-1d">19.2.2. Poincaré inequality in 1D</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bramble-hilbert-lemma">19.3. Bramble-Hilbert Lemma</a><ul class="nav section-nav flex-column">
