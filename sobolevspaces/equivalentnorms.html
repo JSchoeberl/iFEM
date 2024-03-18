@@ -505,10 +505,10 @@ with kernel <span class="math notranslate nohighlight">\(V_0 = \{ v : A(v,v) = 0
 <li><p>The kernel <span class="math notranslate nohighlight">\(V_0\)</span> is finite dimensional. On the factor space <span class="math notranslate nohighlight">\(V/V_0\)</span>,
 <span class="math notranslate nohighlight">\(A(.,.)\)</span> is an equivalent norm to the quotient norm</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-1f3f7730-666f-4499-8c21-179fd4484171">
-<span class="eqno">()<a class="headerlink" href="#equation-1f3f7730-666f-4499-8c21-179fd4484171" title="Permalink to this equation">#</a></span>\[\begin{equation}
-    \| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_V \qquad \forall \, u \in V
-    \end{equation}\]</div>
+<div class="math notranslate nohighlight">
+\[
+  \| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_V \qquad \forall \, u \in V
+  \]</div>
 <ol class="arabic simple" start="2">
 <li><p>Let <span class="math notranslate nohighlight">\(B(.,.)\)</span> be a continuous, non-negative, symmetric bilinear form
 on <span class="math notranslate nohighlight">\(V\)</span> such that <span class="math notranslate nohighlight">\(A(.,.) + B(.,.)\)</span> is an inner product. Then there
@@ -528,9 +528,8 @@ Then there holds</p></li>
   \]</div>
 </div></blockquote>
 <p><em>Proof:</em> 1. Assume that <span class="math notranslate nohighlight">\(V_0\)</span> is not finite dimensional. Then
-there exists an <span class="math notranslate nohighlight">\((.,.)_V\)</span>-orthonormal sequence <span class="math notranslate nohighlight">\(u_k \in V_0\)</span>. Since
-the embedding <span class="math notranslate nohighlight">\(id : V \rightarrow W\)</span> is compact, it has a sub-sequence
-converging in <span class="math notranslate nohighlight">\(\|. \|_W\)</span>. But, since</p>
+there exists an <span class="math notranslate nohighlight">\((.,.)_V\)</span>-orthonormal sequence in <span class="math notranslate nohighlight">\(V_0\)</span>. Since
+the embedding <span class="math notranslate nohighlight">\(id : V \rightarrow W\)</span> is compact, it has a sub-sequence named <span class="math notranslate nohighlight">\((u_k)\)</span> converging in <span class="math notranslate nohighlight">\(\|. \|_W\)</span>. But, since</p>
 <div class="math notranslate nohighlight">
 \[
 2 = \| u_k - u_l \|_V^2 \simeq \| u_k - u_l \|_W^2 + \| u_k - u_l \|_A
@@ -538,20 +537,20 @@ converging in <span class="math notranslate nohighlight">\(\|. \|_W\)</span>. Bu
 \]</div>
 <p>for <span class="math notranslate nohighlight">\(k \neq l\)</span>, <span class="math notranslate nohighlight">\(u_k\)</span> is not Cauchy in <span class="math notranslate nohighlight">\(W\)</span>. This is a contradiction to
 an infinite dimensional kernel space <span class="math notranslate nohighlight">\(V_0\)</span>.
-We prove the equivalence (\ref{equ_factor}). To bound the left hand side
+We prove the equivalence to the quotient norm. To bound the left hand side
 by the right hand side, we use that <span class="math notranslate nohighlight">\(V_0 = \operatorname {ker} A\)</span>, and
-norm equivalence (\ref{equ_tartar_cond}):</p>
+norm equivalence assumption:</p>
 <div class="math notranslate nohighlight">
 \[
 \| u \|_A = \inf_{v \in V_0} \| u - v \|_A \leq \inf_{v \in V_0} \| u - v \|_V 
 \]</div>
-<p>The quotient norm is equal to <span class="math notranslate nohighlight">\(\| P_{V_0^\bot} u \|\)</span>. We have to prove that
+<p>The quotient norm is equal to <span class="math notranslate nohighlight">\(\| P_{V_0^\bot} u \|_V\)</span>. We have to prove that
 <span class="math notranslate nohighlight">\(\| P_{V_0^\bot} u \|_V \leq \| P_{V_0^\bot} u \|_A\)</span> for all <span class="math notranslate nohighlight">\(u \in V\)</span>.
 This follows after proving <span class="math notranslate nohighlight">\(\| u \|_V \leq \| u \|_A\)</span> for all <span class="math notranslate nohighlight">\(u \in V_0^\bot\)</span>.
 Assume that this is not true. I.e., there exists a <span class="math notranslate nohighlight">\(V\)</span>-orthogonal sequence
 <span class="math notranslate nohighlight">\((u_k)\)</span> such that <span class="math notranslate nohighlight">\(\| u_k \|_A \leq k^{-1} \| u_k \|_V\)</span>. Extract a sub-sequence
 converging in <span class="math notranslate nohighlight">\(\| . \|_W\)</span>, and call it <span class="math notranslate nohighlight">\(u_k\)</span> again. From the norm
-equivalence (\ref{equ_tartar_cond}) there follows</p>
+equivalence in the assumption there follows</p>
 <div class="math notranslate nohighlight">
 \[
 2 = \| u_k - u_l \|_V^2 \preceq \| u_k - u_l \|_W + \| u_k - u_l \|_A \rightarrow 0
@@ -590,7 +589,7 @@ and <span class="math notranslate nohighlight">\(\|v \|_A = \| \nabla v \|_{L_2}
 The theorem requires that the embedding <span class="math notranslate nohighlight">\(id : H^1 \rightarrow L_2\)</span> is
 compact. This is indeed true for bounded domains <span class="math notranslate nohighlight">\(\Omega\)</span>:</p>
 <blockquote>
-<div><p><strong>Theorem</strong> The embedding of <span class="math notranslate nohighlight">\(H^k \rightarrow H^l\)</span> for <span class="math notranslate nohighlight">\(k &gt; l\)</span> is
+<div><p><strong>Theorem:</strong> The embedding of <span class="math notranslate nohighlight">\(H^k \rightarrow H^l\)</span> for <span class="math notranslate nohighlight">\(k &gt; l\)</span> is
 compact.</p>
 </div></blockquote>
 <p>We sketch a proof for the embedding <span class="math notranslate nohighlight">\(H^1 \subset L_2\)</span>.
@@ -610,7 +609,7 @@ into <span class="math notranslate nohighlight">\(H_0^1(Q)\)</span>, embed <span
 onto <span class="math notranslate nohighlight">\(L_2(\Omega)\)</span>. This is the composite of two continuous and a compact
 mapping, and thus is compact.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
-<p>The kernel <span class="math notranslate nohighlight">\(V_0\)</span> of the semi-norm <span class="math notranslate nohighlight">\(\| \nabla v \|\)</span> is the constant function.</p>
+<p>The kernel <span class="math notranslate nohighlight">\(V_0\)</span> of the semi-norm <span class="math notranslate nohighlight">\(\| \nabla v \|\)</span> is the 1-dimensional space of all constant functions.</p>
 <blockquote>
 <div><p><strong>Friedrichs’ inequality:</strong>
 Let <span class="math notranslate nohighlight">\(\Gamma_D \subset \partial \Omega\)</span> be of positive measure <span class="math notranslate nohighlight">\(|\Gamma_D|\)</span>.
@@ -621,18 +620,19 @@ Let <span class="math notranslate nohighlight">\(V_D = \{ v \in H^1(\Omega) : \o
   \]</div>
 </div></blockquote>
 <p><em>Proof:</em> The intersection <span class="math notranslate nohighlight">\(V_0 \cap V_D\)</span> is trivial <span class="math notranslate nohighlight">\(\{ 0 \}\)</span>.
-Thus, Tartar’s theorem, part 3, implies the equivalence<br />
-$<span class="math notranslate nohighlight">\(
+Thus, Tartar’s theorem, part 3, implies the equivalence</p>
+<div class="math notranslate nohighlight">
+\[
 \| v \|_V^2 = \| v \|_{L_2}^2 + \| \nabla v \|_{L_2}^2 \simeq
 \| \nabla v \|_{L_2}.
-\)</span><span class="math notranslate nohighlight">\(
-\)</span>\Box$</p>
+\]</div>
+<p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 <blockquote>
 <div><p><strong>Poincaré inequality:</strong></p>
 <p>There holds</p>
 <div class="math notranslate nohighlight">
 \[
-  \| v \|_{H^1(\Omega)}^2 \preceq \| \nabla v \|_{L_2}^2 + \left(\int_\Omega v \, dx\right)^2
+  \| v \|_{H^1(\Omega)}^2 \preceq \| \nabla v \|_{L_2(\Omega)}^2 + \left(\int_\Omega v \, dx\right)^2
   \]</div>
 </div></blockquote>
 <p><em>Proof:</em> <span class="math notranslate nohighlight">\(B(u,v) := (\int_\Omega u \, dx) (\int_\Omega v \, dx)\)</span> is
@@ -640,20 +640,21 @@ a continuous bilinear form on <span class="math notranslate nohighlight">\(H^1\)
 an inner product. Thus, Tartar’s theorem, part 2, implies the
 stated equivalence.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>Some more immediate corollaries from Tartar’s theorem:</p>
 <ul>
 <li><p>Let <span class="math notranslate nohighlight">\(\omega \subset \Omega\)</span> have positive measure <span class="math notranslate nohighlight">\(| \omega|\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^d\)</span>.
 Then</p>
 <div class="math notranslate nohighlight">
 \[
   \| u \|_{H^1(\Omega)}^2 \simeq
-  \| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\omega)},
+  \| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\omega)}^2,
   \]</div>
 </li>
 <li><p>Let <span class="math notranslate nohighlight">\(\gamma \subset \partial \Omega\)</span> have positive measure <span class="math notranslate nohighlight">\(| \gamma|\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^{d-1}\)</span>.    Then</p>
 <div class="math notranslate nohighlight">
 \[
   \| u \|_{H^1(\Omega)}^2 \simeq
-  \| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\gamma)},
+  \| \nabla v \|_{L_2(\Omega)}^2 + \| v \|_{L_2(\gamma)}^2,
  \]</div>
 </li>
 </ul>
@@ -664,7 +665,7 @@ Then</p>
 \[
   \| L v \|_U \preceq \| v \|_{H^k} \qquad \forall \, v \in H^k.
   \]</div>
-<p>Let <span class="math notranslate nohighlight">\(L\)</span> be such that <span class="math notranslate nohighlight">\(L q = 0\)</span> for polynomials <span class="math notranslate nohighlight">\(q \in P^{k-1}\)</span>. Then
+<p>Let <span class="math notranslate nohighlight">\(L\)</span> be such that <span class="math notranslate nohighlight">\(L q = 0\)</span> for all polynomials <span class="math notranslate nohighlight">\(q \in P^{k-1}\)</span>. Then
 one can replace the norm by the semi-norm on the right hand side, i.e. there holds</p>
 <div class="math notranslate nohighlight">
 \[
@@ -673,10 +674,10 @@ one can replace the norm by the semi-norm on the right hand side, i.e. there hol
 </div></blockquote>
 <p><em>Proof:</em> The embedding <span class="math notranslate nohighlight">\(H^k \rightarrow H^{k-1}\)</span> is compact.</p>
 <p>The <span class="math notranslate nohighlight">\(V\)</span>-continuous, symmetric and non-negative bilinear form
-<span class="math notranslate nohighlight">\(A(u,v) = \sum_{\alpha : | \alpha | = k} (\partial^\alpha u, \partial^\alpha v)\)</span> has the kernel <span class="math notranslate nohighlight">\(P^{k-1}\)</span>. Decompose <span class="math notranslate nohighlight">\(\| u \|_{H^k}^2 = \| u \|_{H^{k-1}}^2 + A(u,u)\)</span>. By Tartar’s theorem, part 1, there holds</p>
+<span class="math notranslate nohighlight">\(A(u,v) = \sum_{\alpha : | \alpha | = k} (\partial^\alpha u, \partial^\alpha v)\)</span> has the kernel <span class="math notranslate nohighlight">\(V_0 = P^{k-1}\)</span>. Decompose <span class="math notranslate nohighlight">\(\| u \|_{H^k}^2 = \| u \|_{H^{k-1}}^2 + A(u,u)\)</span>. By Tartar’s theorem, part 1, there holds</p>
 <div class="math notranslate nohighlight">
 \[
-\| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_{H^k}
+\| u \|_A \simeq \inf_{v \in V_0} \| u - v \|_{H^k} \qquad \forall \, u \in V.
 \]</div>
 <p>The same holds for the bilinear-form</p>
 <div class="math notranslate nohighlight">
