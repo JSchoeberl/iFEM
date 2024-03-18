@@ -203,7 +203,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Trace theorems and their applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms (WIP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises.html">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
@@ -675,6 +675,7 @@ such that</p>
 </ul>
 <p>The interfaces are <span class="math notranslate nohighlight">\(\gamma_{ij} = \overline \Omega_i \cap \overline \Omega_j\)</span>.
 The outer normal vector of <span class="math notranslate nohighlight">\(\Omega_i\)</span> is <span class="math notranslate nohighlight">\(n_i\)</span>.</p>
+<a class="reference internal image-reference" href="../_images/domaindecomposition.png"><img alt="Alternative text" class="align-center" src="../_images/domaindecomposition.png" style="width: 250px;" /></a>
 <blockquote>
 <div><p><strong>Theorem:</strong>
 Let <span class="math notranslate nohighlight">\(u \in L_2(\Omega)\)</span> such that</p>
@@ -764,8 +765,8 @@ obtain the bound</p>
 \]</div>
 <p>Define the domain <span class="math notranslate nohighlight">\(\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M\)</span>.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-db688cc6-56eb-421c-980a-3f3724546b80">
-<span class="eqno">()<a class="headerlink" href="#equation-db688cc6-56eb-421c-980a-3f3724546b80" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6f205c09-6ef5-4f39-ad24-b8cb50bbc7bb">
+<span class="eqno">()<a class="headerlink" href="#equation-6f205c09-6ef5-4f39-ad24-b8cb50bbc7bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
@@ -1000,8 +1001,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d4c7c393-7e43-4018-abf4-2b99875187d1">
-<span class="eqno">()<a class="headerlink" href="#equation-d4c7c393-7e43-4018-abf4-2b99875187d1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ade41b7a-a0b7-4956-8dca-8de5868fa5df">
+<span class="eqno">()<a class="headerlink" href="#equation-ade41b7a-a0b7-4956-8dca-8de5868fa5df" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
