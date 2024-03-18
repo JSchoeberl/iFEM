@@ -548,10 +548,11 @@ B(u,v) = \int_\Omega \nabla u \cdot v \; dx
 <p>Let <span class="math notranslate nohighlight">\(V\)</span> be a Hilbert-space, and <span class="math notranslate nohighlight">\(a(\cdot,\cdot)\)</span>, <span class="math notranslate nohighlight">\(b(\cdot,\cdot)\)</span> and <span class="math notranslate nohighlight">\(c(\cdot,\cdot)\)</span> be continuous and coercive bilinear-forms with continuity bounds <span class="math notranslate nohighlight">\(\alpha_2\)</span>, <span class="math notranslate nohighlight">\(\beta_2\)</span>, and <span class="math notranslate nohighlight">\(\gamma_2\)</span>, and coercivity constants <span class="math notranslate nohighlight">\(\alpha_1\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span>, and <span class="math notranslate nohighlight">\(\gamma_1\)</span> (all positive). Define the big bilinear-form <span class="math notranslate nohighlight">\(B : V^2 \times V^2 \rightarrow {\mathbb R}\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[
-B( (u_1,v_1), (u_2, v_2) ) = a(u_1, v_1) + b(u_1, v_2) + c(u_2, v_2)
+B( (u_1,u_2), (v_1, v_2) ) = a(u_1, v_1) + b(u_1, v_2) + c(u_2, v_2)
 \]</div>
-<p>Show that <span class="math notranslate nohighlight">\(B(\cdot, \cdot)\)</span> is continuous. Show that for <span class="math notranslate nohighlight">\(2 \beta_2 &lt; \sqrt{\alpha_1 \gamma_1}\)</span> the bilinear-form <span class="math notranslate nohighlight">\(B(\cdot, \cdot)\)</span> is coercive (hint: use Young’s inequality <span class="math notranslate nohighlight">\(2 x y \leq x^2 + y^2\)</span>.
+<p>Show that <span class="math notranslate nohighlight">\(B(\cdot, \cdot)\)</span> is continuous. Show that for <span class="math notranslate nohighlight">\(\beta_2 &lt; 2 \sqrt{\alpha_1 \gamma_1}\)</span> the bilinear-form <span class="math notranslate nohighlight">\(B(\cdot, \cdot)\)</span> is coercive.
 Give expressions for continuity and coercivity constants in terms of <span class="math notranslate nohighlight">\(\alpha_1, \alpha^2, \beta_1, \ldots\)</span>.</p>
+<p>Hint: express <span class="math notranslate nohighlight">\(\beta_2 = 2 q \sqrt{\alpha_1 \gamma_1}\)</span> with <span class="math notranslate nohighlight">\(q &lt; 1\)</span>. use Young’s inequality <span class="math notranslate nohighlight">\(2 x y \leq x^2 + y^2\)</span>.</p>
 </section>
 <section id="inf-sup-condition">
 <h3><span class="section-number">12.3.2. </span>inf-sup condition<a class="headerlink" href="#inf-sup-condition" title="Link to this heading">#</a></h3>
