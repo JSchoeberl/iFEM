@@ -572,7 +572,7 @@ u(x) = \left\{ \begin{array}{cl}
       \end{array} \right.
 \end{split}\]</div>
 <p>Find all <span class="math notranslate nohighlight">\(\alpha \in [0,1]\)</span> such that <span class="math notranslate nohighlight">\(u \in H^\alpha ( (-\pi, \pi) )\)</span>.</p>
-<p>Hint: compute Fourier coefficients <span class="math notranslate nohighlight">\(a_i\)</span> and <span class="math notranslate nohighlight">\(b_i\)</span> and find all <span class="math notranslate nohighlight">\(\alpha\)</span> such that <span class="math notranslate nohighlight">\(\sum_{i=0}^\infty i^{2s} (a_i^2 + b_i^2) &lt; \infty\)</span></p>
+<p>Hint: compute Fourier coefficients <span class="math notranslate nohighlight">\(a_k\)</span> and <span class="math notranslate nohighlight">\(b_k\)</span> of <span class="math notranslate nohighlight">\(u(x) = \sum a_k \cos(k x) + b_k \sin(k x)\)</span>, and find all <span class="math notranslate nohighlight">\(\alpha\)</span> such that <span class="math notranslate nohighlight">\(\sum_{k=0}^\infty k^{2\alpha} (a_k^2 + b_k^2) &lt; \infty\)</span></p>
 </section>
 <section id="point-evaluation-functional">
 <h3><span class="section-number">19.4.2. </span>Point evaluation functional<a class="headerlink" href="#point-evaluation-functional" title="Link to this heading">#</a></h3>
@@ -586,6 +586,7 @@ f : C([-\pi,\pi]) \rightarrow {\mathbb R} : v \mapsto v(0)
 \[
 f(v) \leq \, c \, \| v \|_{H^\alpha}
 \]</div>
+<p>Hint: Expand <span class="math notranslate nohighlight">\(v\)</span> as a Fourier series <span class="math notranslate nohighlight">\(v(x) = \sum a_k \cos(k x) + b_k \sin(k x)\)</span>, and express <span class="math notranslate nohighlight">\(f(v)\)</span> by means of the <span class="math notranslate nohighlight">\(a_k\)</span> and <span class="math notranslate nohighlight">\(b_k\)</span>.</p>
 </section>
 </section>
 </section>

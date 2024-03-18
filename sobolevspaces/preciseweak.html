@@ -204,7 +204,7 @@
 <li class="toctree-l1"><a class="reference internal" href="equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">17. The weak formulation of the Poisson equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experiments.html">18. Experiments with norms (WIP)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises.html">19. Exercises (WIP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises.html">19. Exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
 <ul class="nav bd-sidenav">
@@ -527,17 +527,17 @@ A(u,v) = \int_\Omega \nabla u \, \nabla v \, dx + \int_{\Gamma_R} \alpha u v \, 
 f(v) = \int_\Omega f v \, dx + \int_{\Gamma_N \cup \Gamma_R} g v \, dx.
 \]</div>
 <blockquote>
-<div><p>Theorem: The weak formulation of the Poisson problem: find <span class="math notranslate nohighlight">\(u \in V_D\)</span> such that</p>
+<div><p><strong>Theorem:</strong> The weak formulation of the Poisson problem: find <span class="math notranslate nohighlight">\(u \in V_D\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[
   A(u,v) = f(v) \qquad \forall \, v \in V_0
   \]</div>
-<p>has a unique solution <span class="math notranslate nohighlight">\(u\)</span>.
-<em>Proof:</em>
+<p>has a unique solution <span class="math notranslate nohighlight">\(u \in V\)</span>.</p>
+</div></blockquote>
+<p><em>Proof:</em>
 The bilinear-form <span class="math notranslate nohighlight">\(A(.,.)\)</span> and the linear-form <span class="math notranslate nohighlight">\(f(.)\)</span> are continuous
 on <span class="math notranslate nohighlight">\(V\)</span>. Tartar’s theorem of equivalent norms proves that <span class="math notranslate nohighlight">\(A(.,.)\)</span> is coercive
 on <span class="math notranslate nohighlight">\(V_0\)</span>.</p>
-</div></blockquote>
 <p>Since <span class="math notranslate nohighlight">\(u_D\)</span> is in the closed range of
 <span class="math notranslate nohighlight">\(\operatorname{tr}_{\Gamma_D}\)</span>, there exists an <span class="math notranslate nohighlight">\(\tilde u_D \in V_D\)</span> such that</p>
 <div class="math notranslate nohighlight">

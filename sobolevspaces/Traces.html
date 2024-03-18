@@ -579,6 +579,7 @@ density.</p>
  c \, \int_0^1  \int_0^1  \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u}{\partial \eta}(\xi,\eta) \right)^2 \right\} \, d \eta \, d \xi \\
         &amp; \leq  c \, \| u \|_{H^1(Q)}^2.
 \end{align*}\]</div>
+<a class="reference internal image-reference" href="../_images/tracemapping.png"><img alt="Alternative text" class="align-center" src="../_images/tracemapping.png" style="width: 300px;" /></a>
 <p>We use the partitioning of <span class="math notranslate nohighlight">\(\partial \Omega\)</span> into non-overlapping parts <span class="math notranslate nohighlight">\(\Gamma_i\)</span>, <span class="math notranslate nohighlight">\(1 \leq i \leq M\)</span>. For each part <span class="math notranslate nohighlight">\(\Gamma_i\)</span> we define an injective transformation <span class="math notranslate nohighlight">\(s_i : \overline Q \rightarrow \overline \Omega\)</span> such that the bottom edge of <span class="math notranslate nohighlight">\(Q\)</span> is mapped onto <span class="math notranslate nohighlight">\(\Gamma_i\)</span>. We define <span class="math notranslate nohighlight">\(S_i = s_i(Q)\)</span>. We assume that <span class="math notranslate nohighlight">\(s_i^\prime\)</span> and <span class="math notranslate nohighlight">\((s_i^\prime)^{-1}\)</span> are bounded functions a.e.</p>
 <p>This allows to pull-back functions <span class="math notranslate nohighlight">\(u \in H^1(S_i)\)</span> locally to the square domain <span class="math notranslate nohighlight">\(Q\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -730,6 +731,7 @@ One technique to transfer these results to general domains is to extend
 a function <span class="math notranslate nohighlight">\(u \in H^1(\Omega)\)</span> onto a larger square <span class="math notranslate nohighlight">\(Q\)</span>, apply the result
 for the  square, and restrict the result onto the general domain <span class="math notranslate nohighlight">\(\Omega\)</span>.
 This is now the motivation to study extension operators.</p>
+<a class="reference internal image-reference" href="../_images/extension.png"><img alt="Alternative text" class="align-center" src="../_images/extension.png" style="width: 300px;" /></a>
 <p>We construct a non-overlapping covering <span class="math notranslate nohighlight">\(\{ S_i \}\)</span> of a neighbourhood
 of <span class="math notranslate nohighlight">\(\partial \Omega\)</span> on both sides.
 Let <span class="math notranslate nohighlight">\(\partial \Omega = \cup \Gamma_i\)</span> consist of smooth parts.
@@ -762,8 +764,8 @@ obtain the bound</p>
 \]</div>
 <p>Define the domain <span class="math notranslate nohighlight">\(\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M\)</span>.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e42f7476-fef8-404f-83e4-49890ef6ed4f">
-<span class="eqno">()<a class="headerlink" href="#equation-e42f7476-fef8-404f-83e4-49890ef6ed4f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-db688cc6-56eb-421c-980a-3f3724546b80">
+<span class="eqno">()<a class="headerlink" href="#equation-db688cc6-56eb-421c-980a-3f3724546b80" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
@@ -998,8 +1000,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a9a86b0a-3322-4b4f-aba4-02c90aa2d0bb">
-<span class="eqno">()<a class="headerlink" href="#equation-a9a86b0a-3322-4b4f-aba4-02c90aa2d0bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d4c7c393-7e43-4018-abf4-2b99875187d1">
+<span class="eqno">()<a class="headerlink" href="#equation-d4c7c393-7e43-4018-abf4-2b99875187d1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
