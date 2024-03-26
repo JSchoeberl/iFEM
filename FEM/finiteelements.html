@@ -476,13 +476,14 @@ document.write(`
 <h1><span class="section-number">20. </span>Finite Element Method<a class="headerlink" href="#finite-element-method" title="Link to this heading">#</a></h1>
 <p>Ciarlet’s definition of a finite element is:</p>
 <blockquote>
-<div><p><strong>Definition: Finite element</strong> A finite element is a triple <span class="math notranslate nohighlight">\((T, V_{T}, \Psi_{T})\)</span>, where</p>
+<div><p><strong>Definition:</strong> A <strong>Finite element</strong> is a triple <span class="math notranslate nohighlight">\((T, V_{T}, \Psi_{T})\)</span>, where</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(T\)</span> is a bounded set</p></li>
 <li><p><span class="math notranslate nohighlight">\(V_{T}\)</span> is function space on <span class="math notranslate nohighlight">\(T\)</span> of finite dimension <span class="math notranslate nohighlight">\(N_T\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\Psi_{T} = \{ \psi^1_T, \ldots , \psi^{N_T}_T \}\)</span> is a set of linearly independent functionals on <span class="math notranslate nohighlight">\(V_{T}\)</span>.</p></li>
 </ul>
 </div></blockquote>
+<p>Typical sets <span class="math notranslate nohighlight">\(T\)</span> are intervals, triangles, quadrilaterals, tetrahedra, …</p>
 <p>The nodal basis <span class="math notranslate nohighlight">\(\{\varphi^1_T\, \ldots \varphi^{N_T}_T\}\)</span> for <span class="math notranslate nohighlight">\(V_T\)</span> is the basis
 dual to <span class="math notranslate nohighlight">\(\Psi_T\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
@@ -495,9 +496,10 @@ finite elements, elements using also derivatives are called Hermite finite eleme
 <p>Usual function spaces on <span class="math notranslate nohighlight">\(T \subset {\mathbb R}^2\)</span> are</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-P^p &amp; := &amp; \mbox{span} \{ x^i y^j : 0 \leq i, \, 0 \leq j, \, i+j \leq p \} \\
-Q^p &amp; := &amp; \mbox{span} \{ x^i y^j : 0 \leq i \leq p, \, 0 \leq j \leq p  \}
+P^p &amp; := \mbox{span} \{ x^i y^j : 0 \leq i, \, 0 \leq j, \, i+j \leq p \}, \\
+Q^p &amp; := \mbox{span} \{ x^i y^j : 0 \leq i \leq p, \, 0 \leq j \leq p  \},
 \end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P^p\)</span> are called polynomials of total order <span class="math notranslate nohighlight">\(p\)</span>, and <span class="math notranslate nohighlight">\(Q^p\)</span> are called polynomials of partial order <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p>Examples for finite elements are</p>
 <ul class="simple">
 <li><p>A linear line segment</p></li>
@@ -517,19 +519,17 @@ I_T v := \sum_{\alpha = 1}^{N_T} \psi^\alpha_T(v) \varphi^\alpha_T
 <p>It is a projection.</p>
 <p>Two finite elements <span class="math notranslate nohighlight">\((T,V_T, \Psi_T)\)</span> and
 <span class="math notranslate nohighlight">\((\widehat T, V_{\widehat T}, \Psi_{\widehat T})\)</span> are called
-<strong>equivalent</strong> if there exists an invertible function <span class="math notranslate nohighlight">\(F\)</span> such that</p>
+<strong>equivalent</strong> if there exists an invertible function <span class="math notranslate nohighlight">\(\Phi\)</span> such that</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(T = F (\widehat T)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(V_T = \{ \hat v \circ F^{-1} : \hat v \in V_{\widehat T} \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(T = \Phi (\widehat T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V_T = \{ \hat v \circ \Phi^{-1} : \hat v \in V_{\widehat T} \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Psi_T = \{ \psi^T_i : V_T \rightarrow {\mathbb R} : v \rightarrow \psi^{\hat T}_i (v \circ \Phi) \}\)</span></p></li>
 </ul>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Psi_T = \{ \psi^T_i : V_T \rightarrow {\mathbb R} : v \rightarrow \psi^{\hat T}_i (v \circ F) \}\)</span></p></li>
-</ul>
-<p>Two elements are called affine equivalent, if <span class="math notranslate nohighlight">\(F\)</span> is an affine-linear function.</p>
+<p>Two elements are called affine equivalent, if <span class="math notranslate nohighlight">\(\Phi\)</span> is an affine-linear function.</p>
 <p>Lagrangian finite elements defined above are equivalent. The Hermite elements are not equivalent.</p>
 <p>Two finite elements are called interpolation equivalent if there holds
 $<span class="math notranslate nohighlight">\(
-I_T (v) \circ F = I_{\widehat T} (v \circ F)
+I_T (v) \circ \Phi = I_{\widehat T} (v \circ \Phi)
 \)</span>$</p>
 <blockquote>
 <div><p><strong>Lemma:</strong> Equivalent elements are interpolation equivalent</p>
@@ -540,19 +540,17 @@ I_T (v) \circ F = I_{\widehat T} (v \circ F)
 such that <span class="math notranslate nohighlight">\(\overline \Omega = \cup T_i\)</span> and <span class="math notranslate nohighlight">\(T_i \cap T_j\)</span> is</p>
 <ul class="simple">
 <li><p>either empty</p></li>
-<li><p>or a common vertex of <span class="math notranslate nohighlight">\(T_i\)</span> and <span class="math notranslate nohighlight">\(T_j\)</span></p></li>
-<li><p>or a common edge of <span class="math notranslate nohighlight">\(T_i\)</span> and <span class="math notranslate nohighlight">\(T_j\)</span></p></li>
-<li><p>or <span class="math notranslate nohighlight">\(T_i = T_j\)</span> in the case <span class="math notranslate nohighlight">\(i = j\)</span>.
-\end{itemize}</p></li>
+<li><p>or a common vertex, edge, or face of <span class="math notranslate nohighlight">\(T_i\)</span> and <span class="math notranslate nohighlight">\(T_j\)</span></p></li>
+<li><p>or <span class="math notranslate nohighlight">\(T_i = T_j\)</span> in the case <span class="math notranslate nohighlight">\(i = j\)</span>.</p></li>
 </ul>
 <p>In a wider sense, a triangulation may consist of different element shapes such
 as segments, triangles,  quadrilaterals, tetrahedra, hexhedra, prisms, pyramids.</p>
 <p>A finite element complex <span class="math notranslate nohighlight">\(\{ (T, V_T, \Psi_T) \}\)</span> is a set of finite elements
 defined on the geometric elements of the triangulation <span class="math notranslate nohighlight">\({\cal T}\)</span>.</p>
 <p>It is convenient to construct finite element complexes such that all
-its finite elements are affine equivalent to one {\em reference finite element} <span class="math notranslate nohighlight">\((\widehat T, \hat V_T, \hat \Psi_T)\)</span>. The transformation <span class="math notranslate nohighlight">\(F_T\)</span> is such that
-<span class="math notranslate nohighlight">\(T = F_T (\widehat T)\)</span>.</p>
-<p><em>Examples:</em> linear reference line segment on <span class="math notranslate nohighlight">\((0,1)\)</span>.</p>
+its finite elements are affine equivalent to one <strong>reference finite element</strong> <span class="math notranslate nohighlight">\((\widehat T, \hat V_T, \hat \Psi_T)\)</span>. The transformation <span class="math notranslate nohighlight">\(\Phi_T\)</span> is such that
+<span class="math notranslate nohighlight">\(T = \Phi_T (\widehat T)\)</span>.</p>
+<p><em>Examples:</em> reference linear line segment on <span class="math notranslate nohighlight">\((0,1)\)</span>.</p>
 <p>The finite element complex allows the definition of the global
 interpolation operator for <span class="math notranslate nohighlight">\(C^m\)</span>-smooth functions by</p>
 <div class="math notranslate nohighlight">
@@ -565,7 +563,7 @@ I_{\cal T} v_{|T} = I_T v_T \qquad \forall \, T \in {\cal T}
 V_{\cal T} := \{ v = I_{\cal T} w : w \in C^m(\overline \Omega) \}
 \]</div>
 <p>We say that <span class="math notranslate nohighlight">\(V_{\cal T}\)</span> has regularity <span class="math notranslate nohighlight">\(r\)</span> if <span class="math notranslate nohighlight">\(V_{\cal T} \subset C^r\)</span>.
-If <span class="math notranslate nohighlight">\(V_{\cal T} \neq C^0\)</span>, the regularity is defined as~<span class="math notranslate nohighlight">\(-1\)</span>.</p>
+If <span class="math notranslate nohighlight">\(V_{\cal T} \neq C^0\)</span>, the regularity is defined as <span class="math notranslate nohighlight">\(-1\)</span>.</p>
 <p>Examples:</p>
 <ul class="simple">
 <li><p>The <span class="math notranslate nohighlight">\(P^1\)</span> - triangle with vertex nodes leads to regularity <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
@@ -590,7 +588,7 @@ $<span class="math notranslate nohighlight">\(
 There holds</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\varphi_i|_T &amp; = 
+\varphi_{i|_T} &amp; = 
 I_T \varphi_i = \sum_{\alpha = 1}^{N_T} \psi_T^\alpha (\varphi_i) \varphi^\alpha_T \\
 &amp; =  \sum_{\alpha = 1}^{N_T} (C_T^t \psi(\varphi_i))_\alpha \varphi_T^\alpha \\
 &amp; =  \sum_{\alpha = 1}^{N_T} (C_T^t e_i)_\alpha \varphi_T^\alpha = \sum_{\alpha = 1}^{N_T} C_{T,i\alpha} \varphi_T^\alpha 

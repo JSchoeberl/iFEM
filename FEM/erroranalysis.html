@@ -507,30 +507,30 @@ error:</p>
 <p>In the following, we will bound the interpolation error.</p>
 <blockquote>
 <div><p><strong>Lemma:</strong> Let <span class="math notranslate nohighlight">\(\widehat T\)</span> and <span class="math notranslate nohighlight">\(T\)</span> be <span class="math notranslate nohighlight">\(d\)</span>-dimensional domains related
-by the invertible affine linear transformation <span class="math notranslate nohighlight">\(F_T : \widehat T \rightarrow T \)</span></p>
+by the invertible affine linear transformation <span class="math notranslate nohighlight">\(\Phi_T : \widehat T \rightarrow T \)</span></p>
 <div class="math notranslate nohighlight">
 \[
-  F_T (x) = a + B x,
+  \Phi_T (x) = a + B x,
   \]</div>
 <p>where <span class="math notranslate nohighlight">\(a \in {\mathbb R}^d\)</span> and <span class="math notranslate nohighlight">\(B\)</span> is a regular matrix in <span class="math notranslate nohighlight">\({\mathbb R}^{d\times d}\)</span>.
 Then there holds:</p>
 <div class="math notranslate nohighlight">
 \[
-  \| u \circ F_T \|_{L_2(\widehat T)} = (\det B)^{-1/2} \, \| u  \|_{L_2(T)}
+  \| u \circ \Phi_T \|_{L_2(\widehat T)} = (\det B)^{-1/2} \, \| u  \|_{L_2(T)}
   \]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   \frac{\partial}{\partial x_{i_m}} \ldots 
-  \frac{\partial}{\partial x_{i_1}} \left( u \circ F_T \right) = 
+  \frac{\partial}{\partial x_{i_1}} \left( u \circ \Phi_T \right) = 
   \sum_{j_m = 1}^d \ldots \sum_{j_1=1}^d 
   \left(
   \frac{\partial}{\partial x_{j_m}} \ldots 
-  \frac{\partial}{\partial x_{j_1}} u \right) \circ F_T \; \;
+  \frac{\partial}{\partial x_{j_1}} u \right) \circ \Phi_T \; \;
   B_{j_m,i_m} \ldots B_{j_1, i_1}
   \end{align*}\]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-  | u \circ F |_{H^m(\widehat T)} \preceq (\det B)^{-1/2} \| B \|^m  \, | u |_{H^m(T)}
+  | u \circ \Phi |_{H^m(\widehat T)} \preceq (\det B)^{-1/2} \| B \|^m  \, | u |_{H^m(T)}
   \end{equation*}\]</div>
 </div></blockquote>
 <p><em>Proof:</em> Transformation of integrals, chain rule. <span class="math notranslate nohighlight">\(\Box\)</span></p>
@@ -548,7 +548,7 @@ h_T = \operatorname{diam} T
 of triangulations with decreasing element sizes <span class="math notranslate nohighlight">\(h_T\)</span>. In that case, the family
 of triangulations is called shape regular, if there is a common constant <span class="math notranslate nohighlight">\(C\)</span> such that
 all elements of all triangulations fulfill <span class="math notranslate nohighlight">\(| T | \geq C h_T^d\)</span>.</p>
-<p><strong>Lemma:</strong> Let <span class="math notranslate nohighlight">\(F_T = a + B x\)</span> be the mapping from the reference triangle
+<p><strong>Lemma:</strong> Let <span class="math notranslate nohighlight">\(\Phi_T = a + B x\)</span> be the mapping from the reference triangle
 to the triangle <span class="math notranslate nohighlight">\(T\)</span>. Let <span class="math notranslate nohighlight">\(|T| \succeq h_T^d\)</span>. Then there holds</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -559,8 +559,8 @@ to the triangle <span class="math notranslate nohighlight">\(T\)</span>. Let <sp
 application for the Bramble Hilbert lemma. Sometimes, it is called
 the Bramble Hilbert lemma itself:</p>
 <blockquote>
-<div><p>Bramble-Hilbert Lemma:</p>
-<p>Let <span class="math notranslate nohighlight">\((T, V_T, \Psi_T)\)</span> be a finite element such that
+<div><p><strong>Bramble-Hilbert Lemma:</strong></p>
+<p>Let <span class="math notranslate nohighlight">\((T, V_T, \Psi_T)\)</span> be a Lagrange finite element such that
 the element space <span class="math notranslate nohighlight">\(V_T\)</span> contains polynomials up to order <span class="math notranslate nohighlight">\(P^k\)</span>.
 Then there holds</p>
 <div class="math notranslate nohighlight">
@@ -581,7 +581,7 @@ from <span class="math notranslate nohighlight">\(H^m\)</span> to <span class="m
 \end{align*}\]</div>
 <p>The last step used that for <span class="math notranslate nohighlight">\(H^m\)</span>, with <span class="math notranslate nohighlight">\(m &gt; d/2\)</span>, point evaluation is continuous.
 Now, let <span class="math notranslate nohighlight">\(v \in P^k(T)\)</span>. Since <span class="math notranslate nohighlight">\(P^k \subset V_T\)</span>, and <span class="math notranslate nohighlight">\(I_T\)</span> is a projection on <span class="math notranslate nohighlight">\(V_T\)</span>,
-there holds <span class="math notranslate nohighlight">\(v - I_T v = 0\)</span>. The Bramble Hilbert Lemma applied for <span class="math notranslate nohighlight">\(U = H^1\)</span> and
+there holds <span class="math notranslate nohighlight">\(v - I_T v = 0\)</span>. The (first version of the) Bramble Hilbert Lemma applied for <span class="math notranslate nohighlight">\(U = H^1\)</span> and
 <span class="math notranslate nohighlight">\(L = id - I_T\)</span> proves the result.
 <span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>To bound the finite element interpolation error, we will transform
@@ -602,15 +602,15 @@ Let <span class="math notranslate nohighlight">\(V_{\cal T}\)</span> be a <span 
 \[\begin{align*}
 | v - I_{\cal T} v |_{H^1(\Omega)}^2 &amp; = 
         \sum_{T \in {\cal T}} | (id - I_T) v_T |_{H^1(T)}^2 \\
-        &amp; \preceq  \sum_{T \in {\cal T}} (\det B_T) \, \| B_T^{-1} \|^2 \, | (id - I_T) v_T \circ F_T |_{H^1(\widehat T)}^2  \\
-        &amp; =  \sum_{T \in {\cal T}} (\det B_T) \| B_T^{-1}  \|^2 \| (id - I_{\widehat T}) (v_T \circ F_T) \| _{H^1 (\widehat T)}^2
+        &amp; \preceq  \sum_{T \in {\cal T}} (\det B_T) \, \| B_T^{-1} \|^2 \, | (id - I_T) v_T \circ \Phi_T |_{H^1(\widehat T)}^2  \\
+        &amp; =  \sum_{T \in {\cal T}} (\det B_T) \| B_T^{-1}  \|^2 \| (id - I_{\widehat T}) (v_T \circ \Phi_T) \| _{H^1 (\widehat T)}^2
 \end{align*}\]</div>
 <p>On the reference element <span class="math notranslate nohighlight">\(\widehat T\)</span> we apply the Bramble-Hilbert lemma.
 Then, we transform back to the individual elements:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 | v - I_{\cal T} v |_{H^1(\Omega)}^2 &amp; \preceq 
-        \sum_{T \in {\cal T}} (\det B_T) \| B_T^{-1}  \|^2 | v_T \circ F_T | _{H^2 (\widehat T)}^2 \\
+        \sum_{T \in {\cal T}} (\det B_T) \| B_T^{-1}  \|^2 | v_T \circ \Phi_T | _{H^2 (\widehat T)}^2 \\
   &amp; \preceq   \sum_{T \in {\cal T}} (\det B_T) \, \| B_T^{-1} \|^2 \, (\det B_T^{-1}) \, \| B_T \|^4  \; | v_T |_{H^2 (T)}^2 \\
         &amp; \simeq  \sum_{T \in {\cal T}} h_T^2 \| v \|_{H^2 (T)}^2.
 \end{align*}\]</div>
@@ -708,85 +708,99 @@ A(u-u_h, w) = (u-u_h, u-u_h)_{L_2}.
 </section>
 <section id="approximation-of-dirichlet-boundary-conditions">
 <h2><span class="section-number">22.2. </span>Approximation of Dirichlet boundary conditions<a class="headerlink" href="#approximation-of-dirichlet-boundary-conditions" title="Link to this heading">#</a></h2>
-<p>Till now, we have neglected Dirichlet boundary conditions. In this case, the continuous problem is
-$<span class="math notranslate nohighlight">\(
+<p>Till now, we have neglected Dirichlet boundary conditions. In this case, the continuous problem is</p>
+<div class="math notranslate nohighlight">
+\[
 \mbox{Find } u \in V_D : \qquad A(u,v) = f(v) \qquad \forall \, v \in V_0,
-\)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\(
-V_D = \{ v \in H^1 : \optr_{\Gamma_D} v = u_D \} \qquad \mbox{and} \qquad
-V_0 = \{ v \in H^1 : \optr_{\Gamma_D} v = 0 \}.
-\)</span><span class="math notranslate nohighlight">\(
-The finite element problem is
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+V_D = \{ v \in H^1 : \operatorname{tr}_{\Gamma_D} v = u_D \} \qquad \mbox{and} \qquad
+V_0 = \{ v \in H^1 : \operatorname{tr}_{\Gamma_D} v = 0 \}.
+\]</div>
+<p>The finite element problem is</p>
+<div class="math notranslate nohighlight">
+\[
 \mbox{Find } u_h \in V_{hD} : \qquad A(u_h,v_h) = f(v_h) \qquad \forall \, v_h \in V_{h0},
-\)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
 V_{hD} = \{ I_{\cal T} v : v \in V_D \} \qquad \mbox{and} \qquad
 V_{h0} = \{ I_{\cal T} v : v \in V_0 \}.
-\)</span><span class="math notranslate nohighlight">\(
-The definition of \)</span>V_{hD}<span class="math notranslate nohighlight">\( coincides with
-\)</span>
-{ v_h \in V_h : v_h(x_i) = u_D(x_i) ; ; \forall \mbox{ vertices } x_i \mbox{ on } \Gamma_D }.
-$</p>
+\]</div>
+<p>The definition of <span class="math notranslate nohighlight">\(V_{hD}\)</span> coincides with
+<span class="math notranslate nohighlight">\(
+\{ v_h \in V_h : v_h(x_i) = u_D(x_i) \; \; \forall \mbox{ vertices } x_i \mbox{ on } \Gamma_D \}.
+\)</span></p>
 <p>There holds <span class="math notranslate nohighlight">\(V_{h0} \subset V_0\)</span>, but, in general, there does not hold <span class="math notranslate nohighlight">\(V_{hD} \subset V_D\)</span>.</p>
-<p>\begin{theorem}[Error estimate for Dirichlet boundary conditions] Assume that
-\begin{itemize}
-\item  <span class="math notranslate nohighlight">\(A(.,.)\)</span> is coercive on <span class="math notranslate nohighlight">\(V_{h0}\)</span>:
-$<span class="math notranslate nohighlight">\(
-A(v_h, v_h) \geq \alpha_1 \, \| v_h \|_V^2 \qquad \forall \, v_h \in V_{h0}
-\)</span><span class="math notranslate nohighlight">\(
-\item  \)</span>A(.,.)<span class="math notranslate nohighlight">\( is continuous on \)</span>V<span class="math notranslate nohighlight">\(:
-\)</span><span class="math notranslate nohighlight">\(
-A(u, v) \leq \alpha_2 \, \| u \|_V \| v \|_V \qquad \forall \, u, v \in V
-\)</span><span class="math notranslate nohighlight">\(
-\end{itemize}
-Then there holds the finite element error estimate
-\)</span><span class="math notranslate nohighlight">\(
-\| u - u_h \|_{H^1} \preceq h | u |_{H^2}
-\)</span><span class="math notranslate nohighlight">\(
-\end{theorem}
-{\em Proof: } To make use of the coercivity of \)</span>A(.,.)<span class="math notranslate nohighlight">\(, we need an element in \)</span>V_{h0}<span class="math notranslate nohighlight">\(. There holds Galerkin orthogonality \)</span>A(u-u_h, v_h) = 0 ; \forall , v_h \in V_{h0}$:</p>
+<blockquote>
+<div><p><strong>Error estimate for Dirichlet boundary conditions</strong> Assume that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A(.,.)\)</span> is coercive on <span class="math notranslate nohighlight">\(V_{h0}\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+  A(v_h, v_h) \geq \alpha_1 \, \| v_h \|_V^2 \qquad \forall \, v_h \in V_{h0}
+  \]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A(.,.)\)</span> is continuous on <span class="math notranslate nohighlight">\(V\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+  A(u, v) \leq \alpha_2 \, \| u \|_V \| v \|_V \qquad \forall \, u, v \in V
+  \]</div>
+<p>Then there holds the finite element error estimate</p>
+<div class="math notranslate nohighlight">
+\[
+  \| u - u_h \|_{H^1} \preceq h | u |_{H^2}
+  \]</div>
+</div></blockquote>
+<p><em>Proof:</em> To make use of the coercivity of <span class="math notranslate nohighlight">\(A(.,.)\)</span>, we need an element in <span class="math notranslate nohighlight">\(V_{h0}\)</span>. There holds Galerkin orthogonality <span class="math notranslate nohighlight">\(A(u-u_h, v_h) = 0 \; \forall \, v_h \in V_{h0}\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
+\[\begin{align*}
 \| u - u_h \|_V^2 
-        &amp; = &amp; \| u - I_h u + I_h u - u_h \|_V^2
+        &amp; =  \| u - I_h u + I_h u - u_h \|_V^2
           \leq 2 \, \| u - I_h u \|_V^2 + 2 \, \| I_h u - u_h \|_V^2 \\
         &amp; \leq &amp; 2 \, \| u - I_h u \|_V^2 + \frac{2}{\alpha_1} A(I_h u - u_h, I_h u - u_h) \\
-        &amp; \leq &amp; 2 \| u - I_h u \|_V^2 + \frac{2}{\alpha_1} A(I_h u - u, I_h u - u_h) +  \frac{2}{\alpha_1}  A(u - u_h, I_h u - u_h) \\
-        &amp; \leq &amp; 2 \, \| u - I_h u \|_V^2 + \frac{2 \alpha_2}{\alpha_1} \, \| I_h u - u \| \| I_h u - u_h \| + 0 \\
-        &amp; \leq &amp; 2 \, \| u - I_h u \|_V^2 +  \frac{2 \alpha_2}{\alpha_1} \, \| I_h u - u \| ( \| I_h u - u \| + \| u - u_h \| ) \\
-        &amp; = &amp; ( 2 + \frac{2 \alpha_2}{\alpha_1}) \, \| u - I_h u \|_V^2 +
+        &amp; \leq  2 \| u - I_h u \|_V^2 + \frac{2}{\alpha_1} A(I_h u - u, I_h u - u_h) +  \frac{2}{\alpha_1}  A(u - u_h, I_h u - u_h) \\
+        &amp; \leq  2 \, \| u - I_h u \|_V^2 + \frac{2 \alpha_2}{\alpha_1} \, \| I_h u - u \| \| I_h u - u_h \| + 0 \\
+        &amp; \leq  2 \, \| u - I_h u \|_V^2 +  \frac{2 \alpha_2}{\alpha_1} \, \| I_h u - u \| ( \| I_h u - u \| + \| u - u_h \| ) \\
+        &amp; =  ( 2 + \frac{2 \alpha_2}{\alpha_1}) \, \| u - I_h u \|_V^2 +
          \frac{2 \alpha_2}{\alpha_1} \, \| u - I_h u \|_V \| u - u_h \|_V
-\end{eqnarray*}\]</div>
-<p>Next, we apply <span class="math notranslate nohighlight">\(a b \leq \frac{1}{2} a^2 +  \frac{1}{2} b^2\)</span>  for <span class="math notranslate nohighlight">\(a = \frac{2 \alpha_2}{\alpha_1} \| u - I_h u \|_V\)</span> and <span class="math notranslate nohighlight">\(b = \| u - u_h \|_V\)</span>:
-$<span class="math notranslate nohighlight">\(
+\end{align*}\]</div>
+<p>Next, we apply <span class="math notranslate nohighlight">\(a b \leq \frac{1}{2} a^2 +  \frac{1}{2} b^2\)</span>  for <span class="math notranslate nohighlight">\(a = \frac{2 \alpha_2}{\alpha_1} \| u - I_h u \|_V\)</span> and <span class="math notranslate nohighlight">\(b = \| u - u_h \|_V\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_V^2 \leq 
     ( 2 + \frac{2 \alpha_2}{\alpha_1}) \| u - I_h u \|_V^2 +
          2  \frac{\alpha_2^2}{\alpha_1^2}  \| u - I_h u \|_V^2 + \frac{1}{2} \, \| u - u_h \|_V^2
-\)</span><span class="math notranslate nohighlight">\(
-Moving the term \)</span>\frac{1}{2} | u - u_h |<span class="math notranslate nohighlight">\( to the left, we obtain
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Moving the term <span class="math notranslate nohighlight">\(\frac{1}{2} \| u - u_h \|\)</span> to the left, we obtain</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_V^2 \preceq \| u - I_h u \|_V^2 \preceq h \, | u |_{H^2}
-\)</span><span class="math notranslate nohighlight">\(
-\hfill \)</span>\Box$</p>
+\]</div>
+<p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 </section>
 <section id="high-order-elements">
 <h2><span class="section-number">22.3. </span>High order elements<a class="headerlink" href="#high-order-elements" title="Link to this heading">#</a></h2>
 <p>One can obtain faster convergence, if the solution is smooth, and elements of higher
-order are used:
-\begin{theorem} Assume that
-\begin{itemize}
-\item the solution is smooth: <span class="math notranslate nohighlight">\(u \in H^m\)</span> for <span class="math notranslate nohighlight">\(m \geq 2\)</span>
-\item all element spaces <span class="math notranslate nohighlight">\(V_T\)</span> contain polynomials <span class="math notranslate nohighlight">\(P^p\)</span> for <span class="math notranslate nohighlight">\(p \geq 1\)</span>
-\item the mesh is quasi-uniform
-\end{itemize}
-Then there holds
-$<span class="math notranslate nohighlight">\(
-h^{-1} \| u - I_h u \|_{L_2} + \| u  - I_h u \|_{H^1} \preceq h^{\min\{ m-1,p\} } \| u \|_{H^m}
-\)</span>$
-\end{theorem}</p>
+order are used:</p>
+<blockquote>
+<div><p><strong>Theorem:</strong> Assume that</p>
+<ul class="simple">
+<li><p>the solution is smooth: <span class="math notranslate nohighlight">\(u \in H^m\)</span> for <span class="math notranslate nohighlight">\(m \geq 2\)</span></p></li>
+<li><p>all element spaces <span class="math notranslate nohighlight">\(V_T\)</span> contain polynomials <span class="math notranslate nohighlight">\(P^p\)</span> for <span class="math notranslate nohighlight">\(p \geq 1\)</span></p></li>
+<li><p>the mesh is quasi-uniform</p></li>
+</ul>
+<p>Then there holds</p>
+<div class="math notranslate nohighlight">
+\[
+  h^{-1} \| u - I_h u \|_{L_2} + \| u  - I_h u \|_{H^1} \preceq h^{\min\{ m-1,p\} }   \| u \|_{H^m}
+  \]</div>
+</div></blockquote>
 <p>The proof is analogous to the case <span class="math notranslate nohighlight">\(m=2\)</span> and <span class="math notranslate nohighlight">\(p=1\)</span>. The constants in
 the estimates depend on the Sobolev index <span class="math notranslate nohighlight">\(m\)</span> and on the polynomial
 order <span class="math notranslate nohighlight">\(p\)</span>. Nodal interpolation is instable (i.e., the constant grow
@@ -799,38 +813,42 @@ bound the best approximation error.</p>
 in some weighted Sobolev space. The information of the weight can be used to
 construct proper locally refined meshes.</p>
 <p>On a sector domain with a non-convex corner of angle <span class="math notranslate nohighlight">\(\omega &gt; \pi\)</span>, the
-solution is bounded in the weighted Sobolev norm
-$<span class="math notranslate nohighlight">\(
+solution is bounded in the weighted Sobolev norm</p>
+<div class="math notranslate nohighlight">
+\[
 \| r^\beta D^2 u \|_{L_2} \leq C,
-\)</span><span class="math notranslate nohighlight">\(
-with \)</span>\beta = \frac{\pi}{\omega}<span class="math notranslate nohighlight">\(. One may choose a mesh such that
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\beta = \frac{\pi}{\omega}\)</span>. One may choose a mesh such that</p>
+<div class="math notranslate nohighlight">
+\[
 h_T \simeq \underline h r_T^\beta, \qquad \forall \, T \in {\cal T}
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>r_T<span class="math notranslate nohighlight">\( is the distance of the center of the element to the singular
-corner, and \)</span>\underline h \in {\mathbb R}^+$ is a global mesh size parameter.</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_T\)</span> is the distance of the center of the element to the singular
+corner, and <span class="math notranslate nohighlight">\(\underline h \in {\mathbb R}^+\)</span> is a global mesh size parameter.</p>
 <p>We bound the interpolation error:</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\| u - I_{\cal T} u \|_{H^1}^2 &amp; \preceq &amp;
+\[\begin{align*}
+\| u - I_{\cal T} u \|_{H^1}^2 &amp; \preceq
 \sum_{T \in \cal T} h_T^2 | u |_{H^2(T)} \simeq
 \sum_{T \in \cal T} \underline h^2 \, | r^\beta D^2 u |_{L_2(T)} \\
-&amp; \simeq &amp; \underline h^2 \, \| r^\beta D^2 u \|_{L_2(\Omega)}^2
+&amp; \simeq \underline h^2 \, \| r^\beta D^2 u \|_{L_2(\Omega)}^2
 \preceq C \, \underline h^2
-\end{eqnarray*}\]</div>
+\end{align*}\]</div>
 <p>The number of elements in the domain can be roughly estimated by the
 integral over the density of elements. The density is number of elements per
-unit volume, i.e., the inverse of the area of the element:
-$<span class="math notranslate nohighlight">\(
+unit volume, i.e., the inverse of the area of the element:</p>
+<div class="math notranslate nohighlight">
+\[
 N_{el} \simeq \int_\Omega |T|^{-1} \, dx =  \int_\Omega \underline h^{-2} r^{-2 \beta} \, dx = \underline h^{-2} \int r^{-2\beta} \, dx \simeq C \underline h^{-2}
-\)</span><span class="math notranslate nohighlight">\(
-In two dimensions, and \)</span>\beta \in (0,1)$, the integral is finite.</p>
+\]</div>
+<p>In two dimensions, and <span class="math notranslate nohighlight">\(\beta \in (0,1)\)</span>, the integral is finite.</p>
 <p>Combining the two estimates, one obtains a relation between the error and the
-number of elements:
-$<span class="math notranslate nohighlight">\(
+number of elements:</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - I_{\cal T} u \|_V^2 \preceq N_{el}^{-1}
-\)</span><span class="math notranslate nohighlight">\(
-This is the same order of convergence as in the \)</span>H^2$ regular case !</p>
+\]</div>
+<p>This is the same order of convergence as in the <span class="math notranslate nohighlight">\(H^2\)</span> regular case !</p>
 </section>
 </section>
 
