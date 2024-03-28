@@ -616,10 +616,11 @@ Then, we transform back to the individual elements:</p>
 \end{align*}\]</div>
 <p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 <p>A triangulation is called <span class="math notranslate nohighlight">\({\bf quasi-uniform}\)</span>, if all elements are essentially of the
-same size, i.e., there exists one global <span class="math notranslate nohighlight">\(h\)</span> such that
-$<span class="math notranslate nohighlight">\(
+same size, i.e., there exists one global <span class="math notranslate nohighlight">\(h\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
 h \simeq h_T \qquad \forall \, T \in {\cal T}.
-\)</span>$</p>
+\]</div>
 <p>On a quasi-uniform mesh, there hold the interpolation error estimates</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -628,18 +629,21 @@ h \simeq h_T \qquad \forall \, T \in {\cal T}.
 \end{eqnarray*}\]</div>
 <p>We are interested in the rate of the error in terms of the mesh-size <span class="math notranslate nohighlight">\(h\)</span>.</p>
 <blockquote>
-<div><p>Theorem: Finite element error estimate</p>
+<div><p><strong>Theorem:</strong> Finite element error estimate</p>
 <p>Assume that</p>
 <ul class="simple">
 <li><p>the solution <span class="math notranslate nohighlight">\(u\)</span> of the weak bvp is in <span class="math notranslate nohighlight">\(H^2\)</span>,</p></li>
 <li><p>the triangulation <span class="math notranslate nohighlight">\({\cal T}\)</span> is quasi-uniform of mesh-size <span class="math notranslate nohighlight">\(h\)</span>,</p></li>
-<li><p>the element spaces contain <span class="math notranslate nohighlight">\(P^1\)</span>.
-Then, the finite element error is bounded by
-$<span class="math notranslate nohighlight">\(
-\| u - u_h \|_{H^1} \preceq h \, | u |_{H^2}
-\)</span>$</p></li>
+<li><p>the element spaces contain <span class="math notranslate nohighlight">\(P^1\)</span>.</p></li>
 </ul>
+<p>Then, the finite element error is bounded by</p>
+<div class="math notranslate nohighlight">
+\[
+  \| u - u_h \|_{H^1} \preceq h \, | u |_{H^2}
+\]</div>
 </div></blockquote>
+<p><em>Proof:</em> the result follows directly from Cea’s lemma and estimates for the interpolation error.
+<span class="math notranslate nohighlight">\(\Box\)</span></p>
 <section id="error-estimates-in-l-2-norm">
 <h2><span class="section-number">22.1. </span>Error estimates in <span class="math notranslate nohighlight">\(L_2\)</span>-norm<a class="headerlink" href="#error-estimates-in-l-2-norm" title="Link to this heading">#</a></h2>
 <p>The above theorem bounds the error in the <span class="math notranslate nohighlight">\(L_2\)</span>-norm of the function, and the
@@ -763,7 +767,7 @@ V_{h0} = \{ I_{\cal T} v : v \in V_0 \}.
 \| u - u_h \|_V^2 
         &amp; =  \| u - I_h u + I_h u - u_h \|_V^2
           \leq 2 \, \| u - I_h u \|_V^2 + 2 \, \| I_h u - u_h \|_V^2 \\
-        &amp; \leq &amp; 2 \, \| u - I_h u \|_V^2 + \frac{2}{\alpha_1} A(I_h u - u_h, I_h u - u_h) \\
+        &amp; \leq 2 \, \| u - I_h u \|_V^2 + \frac{2}{\alpha_1} A(I_h u - u_h, I_h u - u_h) \\
         &amp; \leq  2 \| u - I_h u \|_V^2 + \frac{2}{\alpha_1} A(I_h u - u, I_h u - u_h) +  \frac{2}{\alpha_1}  A(u - u_h, I_h u - u_h) \\
         &amp; \leq  2 \, \| u - I_h u \|_V^2 + \frac{2 \alpha_2}{\alpha_1} \, \| I_h u - u \| \| I_h u - u_h \| + 0 \\
         &amp; \leq  2 \, \| u - I_h u \|_V^2 +  \frac{2 \alpha_2}{\alpha_1} \, \| I_h u - u \| ( \| I_h u - u \| + \| u - u_h \| ) \\
@@ -780,7 +784,7 @@ V_{h0} = \{ I_{\cal T} v : v \in V_0 \}.
 <p>Moving the term <span class="math notranslate nohighlight">\(\frac{1}{2} \| u - u_h \|\)</span> to the left, we obtain</p>
 <div class="math notranslate nohighlight">
 \[
-\| u - u_h \|_V^2 \preceq \| u - I_h u \|_V^2 \preceq h \, | u |_{H^2}
+\| u - u_h \|_V^2 \preceq \| u - I_h u \|_V^2 \preceq h^2 \, | u |_{H^2}^2
 \]</div>
 <p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 </section>
@@ -818,7 +822,7 @@ solution is bounded in the weighted Sobolev norm</p>
 \[
 \| r^\beta D^2 u \|_{L_2} \leq C,
 \]</div>
-<p>with <span class="math notranslate nohighlight">\(\beta = \frac{\pi}{\omega}\)</span>. One may choose a mesh such that</p>
+<p>with <span class="math notranslate nohighlight">\(\beta = \frac{\pi}{\omega} \in (\tfrac{1}{2}, 1)\)</span>. One may choose a mesh such that</p>
 <div class="math notranslate nohighlight">
 \[
 h_T \simeq \underline h r_T^\beta, \qquad \forall \, T \in {\cal T}
