@@ -471,6 +471,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zienkiewicz-zhu-error-estimator">25.1. The Zienkiewicz Zhu error estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-refinement-algorithms">25.2. Mesh refinement algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-green-refinement">25.2.1. Red-Green Refinement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marked-edge-bisection">25.2.2. Marked edge bisection</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -485,140 +490,134 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="a-posteriori-error-estimates">
 <h1><span class="section-number">25. </span>A posteriori error estimates<a class="headerlink" href="#a-posteriori-error-estimates" title="Link to this heading">#</a></h1>
 <p>We will derive methods to estimate the error of the computed finite
-element approximation. Such {\em a posteriori} error estimates may use the finite element solution <span class="math notranslate nohighlight">\(u_h\)</span>, and input data such as the source term <span class="math notranslate nohighlight">\(f\)</span>.
-$<span class="math notranslate nohighlight">\(
+element approximation. Such {\em a posteriori} error estimates may use the finite element solution <span class="math notranslate nohighlight">\(u_h\)</span>, and input data such as the source term <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
 \eta(u_h, f)
-\)</span>$</p>
-<p>An error estimator is called {\em reliable}, if it is an upper bound for the error,
+\]</div>
+<p>An error estimator is called <strong>reliable</strong>, if it is an upper bound for the error,
 i.e., there exists a constant <span class="math notranslate nohighlight">\(C_1\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b89c34b0-e9bf-436c-98f4-6e896700d7d5">
-<span class="eqno">()<a class="headerlink" href="#equation-b89c34b0-e9bf-436c-98f4-6e896700d7d5" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\label{equ_reliable}
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_V \leq C_1 \, \eta(u_h, f)
-\end{equation}\]</div>
-<p>An error estimator is {\em efficient}, if it is a lower bound for the error,
+\]</div>
+<p>An error estimator is <strong>efficient</strong>, if it is a lower bound for the error,
 i.e., there exists a constant <span class="math notranslate nohighlight">\(C_2\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a3c7de6e-e13d-479e-81f8-0eb3c7199e67">
-<span class="eqno">()<a class="headerlink" href="#equation-a3c7de6e-e13d-479e-81f8-0eb3c7199e67" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\label{equ_efficient}
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_V \geq C_2 \, \eta(u_h, f).
-\end{equation}\]</div>
+\]</div>
 <p>The constants may depend on the domain, and the shape of the triangles,
 but may not depend on the source term <span class="math notranslate nohighlight">\(f\)</span>, or the (unknown)
 solution <span class="math notranslate nohighlight">\(u\)</span>.</p>
-<p>\bigskip</p>
 <p>One use of the a posteriori error estimator is to know the accuracy of
 the finite element approximation. A second one is to guide the
 construction of a new mesh to improve the accuracy of a new finite
 element approximation.</p>
-<p>The usual error estimators are defined as sum over element contributions:
-$<span class="math notranslate nohighlight">\(
+<p>The usual error estimators are defined as sum over element contributions:</p>
+<div class="math notranslate nohighlight">
+\[
 \eta^2 (u_h, f) = \sum_{T \in {\cal T}} \eta_T^2 (u_h, f)
-\)</span>$</p>
+\]</div>
 <p>The local contributions should correspond to the local error. For
-the common error estimators there hold the local efficiency estimates
-$<span class="math notranslate nohighlight">\(
+the common error estimators there hold the local efficiency estimates</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_{H^1(\omega_T)} \geq C_2 \, \eta_T(u_h, f).
-\)</span><span class="math notranslate nohighlight">\(
-The patch \)</span>\omega_T<span class="math notranslate nohighlight">\( contains \)</span>T$ and all its neighbor elements.</p>
-<p>\bigskip</p>
+\]</div>
+<p>The patch <span class="math notranslate nohighlight">\(\omega_T\)</span> contains <span class="math notranslate nohighlight">\(T\)</span> and all its neighbor elements.</p>
 <p>In the following, we consider the Poisson equation <span class="math notranslate nohighlight">\(-\Delta u = f\)</span> with
-homogenous Dirichlet boundary conditions <span class="math notranslate nohighlight">\(u = 0\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>. We choose
-piecewise linear finite elements on triangles.</p>
+homogeneous Dirichlet boundary conditions <span class="math notranslate nohighlight">\(u = 0\)</span> on <span class="math notranslate nohighlight">\(\partial \Omega\)</span>. We choose piecewise linear finite elements on triangles.</p>
 <section id="the-zienkiewicz-zhu-error-estimator">
 <h2><span class="section-number">25.1. </span>The Zienkiewicz Zhu error estimator<a class="headerlink" href="#the-zienkiewicz-zhu-error-estimator" title="Link to this heading">#</a></h2>
 <p>The simplest a posteriori error estimator is the one by
 Zienkiewicz and Zhu, the so called ZZ error estimator.</p>
-<p>The error is measured in the <span class="math notranslate nohighlight">\(H^1\)</span>-semi norm:
-$<span class="math notranslate nohighlight">\(
+<p>The error is measured in the <span class="math notranslate nohighlight">\(H^1\)</span>-semi norm:</p>
+<div class="math notranslate nohighlight">
+\[
 \| \nabla u - \nabla u_h \|_{L_2}
-\)</span>$</p>
+\]</div>
 <p>Define the gradient <span class="math notranslate nohighlight">\(p = \nabla u\)</span> and the discrete gradient <span class="math notranslate nohighlight">\(p_h = \nabla u_h\)</span>.
 The discrete gradient <span class="math notranslate nohighlight">\(p_h\)</span> is a constant on each element.
 Let <span class="math notranslate nohighlight">\(\tilde p_h\)</span> be the p.w. linear and continuous
-finite element function obtained by averaging the element values of <span class="math notranslate nohighlight">\(p_h\)</span> in the vertices:
-$<span class="math notranslate nohighlight">\(
+finite element function obtained by averaging the element values of <span class="math notranslate nohighlight">\(p_h\)</span> in the vertices:</p>
+<div class="math notranslate nohighlight">
+\[
 \tilde p_h(x_i) = \frac{1}{ | \{ T : x_i \in T \} |} \sum_{T : x_i \in T} 
         p_{h|T}
 \qquad \mbox{for all vertices } x_i
-\)</span>$
-The hope is that the averaged gradient is a much better approximation to the true gradient,
+\]</div>
+<p>The hope is that the averaged gradient is a much better approximation to the true gradient,
 i.e.,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89c9c5f0-0dfe-4282-9e9d-9ace0f75ac22">
-<span class="eqno">()<a class="headerlink" href="#equation-89c9c5f0-0dfe-4282-9e9d-9ace0f75ac22" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\label{equ_superconvergence}
+<div class="math notranslate nohighlight">
+\[
 \| p - \tilde p_h \|_{L_2} \leq \alpha \, \| p - p_h \|_{L_2}
-\end{equation}\]</div>
-<p>holds with a small constant <span class="math notranslate nohighlight">\(\alpha \ll 1\)</span>. This property is known as {\em super-convergence}.It is indeed true on (locally) uniform meshes, and smoothness assumptions onto the source term <span class="math notranslate nohighlight">\(f\)</span>.</p>
-<p>The ZZ error estimator replaces the true gradient in the error <span class="math notranslate nohighlight">\(p-p_h\)</span> by the good approximation <span class="math notranslate nohighlight">\(\tilde p_h\)</span>:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>holds with a small constant <span class="math notranslate nohighlight">\(\alpha \ll 1\)</span>. This property is known as <em>em super-convergence</em>.It is indeed true on (locally) uniform meshes, and smoothness assumptions onto the source term <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>The ZZ error estimator replaces the true gradient in the error <span class="math notranslate nohighlight">\(p-p_h\)</span> by the good approximation <span class="math notranslate nohighlight">\(\tilde p_h\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \eta (u_h) = \| \tilde p_h - p_h \|_{L_2(\Omega)}
-\)</span>$</p>
-<p>If the super-convergence property (\ref{equ_superconvergence}) is fulfilled,
+\]</div>
+<p>If the super-convergence property is fulfilled,
 than the ZZ error estimator is reliable:</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\| \nabla u - \nabla u_h \|_{L_2} &amp; = &amp; \| p - p_h \|_{L_2} \leq 
+\[\begin{align*}
+\| \nabla u - \nabla u_h \|_{L_2} &amp; = \| p - p_h \|_{L_2} \leq 
         \| p_h - \widetilde p_h \|_{L_2} + \| p - \widetilde p_h \|_{L_2} \\
-        &amp; \leq &amp; \| p_h - \widetilde p_h \|_{L_2} + \alpha \| p - p_h \|_{L_2},
-\end{eqnarray*}\]</div>
-<p>and
-$<span class="math notranslate nohighlight">\(
+        &amp; \leq \| p_h - \widetilde p_h \|_{L_2} + \alpha \| p - p_h \|_{L_2},
+\end{align*}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
 \| \nabla u - \nabla u_h \|_{L_2} \leq \frac{1}{1-\alpha} \| p_h - \widetilde p_h \|_{L_2}.
-\)</span>$
-It is also efficient, a similar short application of the triangle inequality.</p>
+\]</div>
+<p>It is also efficient, a similar short application of the triangle inequality.</p>
 <p>There is a rigorous analysis of the ZZ error estimator, e.g., by showing equivalence
 to the following residual error estimator.</p>
-<p>\subsubsection{Mesh refinement algorithms}</p>
+</section>
+<section id="mesh-refinement-algorithms">
+<h2><span class="section-number">25.2. </span>Mesh refinement algorithms<a class="headerlink" href="#mesh-refinement-algorithms" title="Link to this heading">#</a></h2>
 <p>A posteriori error estimates are used to control recursive mesh refinement:</p>
-<p>\begin{quote}
-Start with initial mesh <span class="math notranslate nohighlight">\({\cal T}\)</span> \newline
-Loop \newline
-\hspace*{1cm} compute fe solution <span class="math notranslate nohighlight">\(u_h\)</span> on <span class="math notranslate nohighlight">\({\cal T}\)</span> \newline
-\hspace*{1cm} compute error estimator <span class="math notranslate nohighlight">\(\eta_T (u_h, f)\)</span> \newline
-\hspace*{1cm} if <span class="math notranslate nohighlight">\(\eta \leq\)</span> tolerance then stop \newline
-\hspace*{1cm} refine elements with large <span class="math notranslate nohighlight">\(\eta_T\)</span> to obtain a new mesh
-\end{quote}</p>
-<p>The mesh refinement algorithm has to take care of
-\begin{itemize}
-\item generating a sequence of regular meshes
-\item generating a sequence of shape regular meshes
-\end{itemize}</p>
-<p>{\bf Red-Green Refinement: \newline }
-A marked element is split into four equivalent elements (called red refinement):
-\begin{center}
-\includegraphics[height=2cm]{pictures/refine_irreg}
-\end{center}
-But, the obtained mesh is not regular. To avoid such irregular nodes,
-also neighboring elements must be split (called green closure):
-\begin{center}
-\includegraphics[height=2cm]{pictures/refine_reg}
-\end{center}
-If one continues to refine that way, the shape of the elements may get worse and worse:
-\begin{center}
-\includegraphics[height=2cm]{pictures/refinebad}
-\end{center}
-A solution is that elements of the green closure will not be further refined.
-Instead, remove the green closure, and replace it by red refinement.
-\begin{center}
-\includegraphics[height=2cm]{pictures/refinegood}
-\end{center}</p>
-<p>\bigskip
-{\bf Marked edge bisection:} \newline
-Each triangle has one marked edge.
+<blockquote>
+<div><p>Start with initial mesh <span class="math notranslate nohighlight">\({\cal T}\)</span> \newline <br>
+Loop <br>
+<span class="math notranslate nohighlight">\(\qquad\)</span> compute fe solution <span class="math notranslate nohighlight">\(u_h\)</span> on <span class="math notranslate nohighlight">\({\cal T}\)</span> <br>
+<span class="math notranslate nohighlight">\(\qquad\)</span> compute error estimator <span class="math notranslate nohighlight">\(\eta_T (u_h, f)\)</span> <br>
+<span class="math notranslate nohighlight">\(\qquad\)</span> if <span class="math notranslate nohighlight">\(\eta \leq\)</span> tolerance then stop <br>
+<span class="math notranslate nohighlight">\(\qquad\)</span> refine elements with large <span class="math notranslate nohighlight">\(\eta_T\)</span> to obtain a new mesh</p>
+</div></blockquote>
+<p>The mesh refinement algorithm has to take care of</p>
+<ul class="simple">
+<li><p>generating a sequence of regular meshes</p></li>
+<li><p>generating a sequence of shape regular meshes</p></li>
+</ul>
+<section id="red-green-refinement">
+<h3><span class="section-number">25.2.1. </span>Red-Green Refinement<a class="headerlink" href="#red-green-refinement" title="Link to this heading">#</a></h3>
+<p>A marked element is split into four equivalent elements (called red refinement):</p>
+<p><img alt="" src="../_images/refine_irreg.pdf" /></p>
+<p>But, the obtained mesh is not regular. To avoid such irregular nodes,
+also neighboring elements must be split (called green closure):</p>
+<p><img alt="" src="../_images/refine_reg.pdf" /></p>
+<p>If one continues to refine that way, the shape of the elements may get worse and worse:</p>
+<p><img alt="" src="../_images/refinebad.pdf" /></p>
+<p>A solution is that elements of the green closure will not be further refined.
+Instead, remove the green closure, and replace it by red refinement.</p>
+<p><img alt="" src="../_images/refinegood.pdf" /></p>
+</section>
+<section id="marked-edge-bisection">
+<h3><span class="section-number">25.2.2. </span>Marked edge bisection<a class="headerlink" href="#marked-edge-bisection" title="Link to this heading">#</a></h3>
+<p>Each triangle has one marked edge.
 The triangle is only refined by cutting from the middle of the
 marked edge to the opposite vertex. The marked edges of the new triangles
 are the edges of the old triangle.</p>
-<p>If there occurs an irregular node, then also the neighbor triangle must be refined.
-\begin{center}
-\includegraphics[height=2cm]{pictures/bisect}
-\end{center}
-To ensure finite termination, one has to avoid cycles in the initial mesh.
+<p>If there occurs an irregular node, then also the neighbor triangle must be refined.</p>
+<p><img alt="" src="../_images/bisect.pdf" /></p>
+<p>To ensure finite termination, one has to avoid cycles in the initial mesh.
 This can be obtained by first sorting the edges (e.g., by length), end then,
 always choose the largest edges as marked edge.</p>
-<p>\bigskip</p>
 <p>Both of these refinement algorithms are also possible in 3D.</p>
-<p>\input{equilibrated.tex}</p>
+</section>
 </section>
 </section>
 
@@ -687,6 +686,11 @@ always choose the largest edges as marked edge.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zienkiewicz-zhu-error-estimator">25.1. The Zienkiewicz Zhu error estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-refinement-algorithms">25.2. Mesh refinement algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-green-refinement">25.2.1. Red-Green Refinement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marked-edge-bisection">25.2.2. Marked edge bisection</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
