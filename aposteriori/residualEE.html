@@ -447,7 +447,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -463,6 +465,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-clement-operator">26.1. The Clément- operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reliability-of-the-residual-error-estimator">26.2. Reliability of the residual error estimator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#efficiency-of-the-residual-error-estimator">26.2.1. Efficiency of the residual error estimator</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -474,36 +488,42 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-residual-error-estimator">
 <h1><span class="section-number">26. </span>The residual error estimator<a class="headerlink" href="#the-residual-error-estimator" title="Link to this heading">#</a></h1>
-<p>The idea is to compute the residual of the Poisson equation
-$<span class="math notranslate nohighlight">\(
+<p>The idea is to compute the residual of the Poisson equation</p>
+<div class="math notranslate nohighlight">
+\[
 f + \Delta \, u_h,
-\)</span><span class="math notranslate nohighlight">\(
-in the natural norm \)</span>H^{-1}<span class="math notranslate nohighlight">\(. The classical \)</span>\Delta<span class="math notranslate nohighlight">\(-operator cannot be 
-applied  to \)</span>u_h<span class="math notranslate nohighlight">\(, since the first derivatives, \)</span>\nabla u_h<span class="math notranslate nohighlight">\(, are non-continuous across element 
-boundaries. One can compute the residuals on the elements
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>in the natural norm <span class="math notranslate nohighlight">\(H^{-1}\)</span>. The classical <span class="math notranslate nohighlight">\(\Delta\)</span>-operator cannot be
+applied  to <span class="math notranslate nohighlight">\(u_h\)</span>, since the first derivatives, <span class="math notranslate nohighlight">\(\nabla u_h\)</span>, are non-continuous across element
+boundaries. One can compute the residuals on the elements</p>
+<div class="math notranslate nohighlight">
+\[
 f_{|T} + \Delta \, u_{h|T} \qquad \forall \, T \in {\cal T},
-\)</span><span class="math notranslate nohighlight">\(
-and one can also compute the violation of the continuity of the gradients on the
-edge \)</span>E = T_1 \cap T_2<span class="math notranslate nohighlight">\(.  We define the normal-jump term
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and one can also compute the violation of the continuity of the gradients on the
+edge <span class="math notranslate nohighlight">\(E = T_1 \cap T_2\)</span>.  We define the normal-jump term</p>
+<div class="math notranslate nohighlight">
+\[
 \left[\frac{\partial u_h}{\partial n} \right] := 
 \frac{\partial u_h}{\partial n_1}|_{T_1} + 
 \frac{\partial u_h}{\partial n_2}|_{T_2}.
-\)</span>$</p>
-<p>The residual error estimator is
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>The residual error estimator is</p>
+<div class="math notranslate nohighlight">
+\[
 \eta^{res}(u_h,f)^2 := \sum_T \eta_T^{res}(u_h,f)^2
-\)</span><span class="math notranslate nohighlight">\(
-with the element contributions
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>with the element contributions</p>
+<div class="math notranslate nohighlight">
+\[
 \eta_T^{res}(u_h, f)^2 := h_T^2 \| f + \Delta u_h \|_{L_2(T)}^2 +
  \sum_{E : E \subset T \atop E \subset \Omega} h_E \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)} ^2.
-\)</span>$</p>
+\]</div>
 <p>The scaling with <span class="math notranslate nohighlight">\(h_T\)</span> corresponds to the natural <span class="math notranslate nohighlight">\(H^{-1}\)</span> norm of the residual.</p>
-<p>\bigskip</p>
+<section id="the-clement-operator">
+<h2><span class="section-number">26.1. </span>The Clément- operator<a class="headerlink" href="#the-clement-operator" title="Link to this heading">#</a></h2>
 <p>To show the reliability of the residual error estimator, we need a new
-{\em quasi}-interpolation operator, the Cl’{e}ment- operator <span class="math notranslate nohighlight">\(\Pi_h\)</span>. In
+<strong>quasi-interpolation operator</strong>, the  Clément- operator <span class="math notranslate nohighlight">\(\Pi_h\)</span>. In
 contrast to the interpolation operator, this operator is well defined
 for functions in <span class="math notranslate nohighlight">\(L_2\)</span>.</p>
 <p>We define the vertex patch of all elements connected with the vertex <span class="math notranslate nohighlight">\(x\)</span>
@@ -518,38 +538,44 @@ and the element patch consisting of the element \)</span>T<span class="math notr
 \)</span><span class="math notranslate nohighlight">\(
 \omega_T = \bigcup_{T^\prime : T \cap T^\prime \neq \emptyset} T^\prime.
 \)</span>$</p>
-<p>The nodal interpolation operator <span class="math notranslate nohighlight">\(I_h\)</span> was defined as
-$<span class="math notranslate nohighlight">\(
+<p>The nodal interpolation operator <span class="math notranslate nohighlight">\(I_h\)</span> was defined as</p>
+<div class="math notranslate nohighlight">
+\[
 I_h v = \sum_{x_i \in {\cal V}} v(x_i) \varphi_i,
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\varphi_i<span class="math notranslate nohighlight">\( are the nodal basis functions.
-Now, we replace the nodal value \)</span>v(x_i)$ by a local mean value.</p>
-<p>\begin{definition}[Cl’ement quasi-interpolation operator] For each vertex <span class="math notranslate nohighlight">\(x\)</span>,let <span class="math notranslate nohighlight">\(\overline{v}^{\omega_x}\)</span> be the mean value of <span class="math notranslate nohighlight">\(v\)</span> on the patch <span class="math notranslate nohighlight">\(\omega_x\)</span>, i.e.,
-$<span class="math notranslate nohighlight">\(
-\overline{v}^{\omega_x} = \frac{1}{|\omega_x|} \int_{\omega_x} v \, dx.
-\)</span><span class="math notranslate nohighlight">\(
-The Cl\'ement operator is 
-\)</span><span class="math notranslate nohighlight">\(
-\Pi_h v := \sum_{x_i \in {\cal V}} \overline{v}^{\omega_{x_i}} \varphi_i.
-\)</span>$
-In the case of homogeneous Dirichlet boundary values, the sum contains only
-inner vertices.
-\end{definition}</p>
-<p>\bigskip</p>
-<p>\begin{theorem} The Cl’ement operator satisfies the following continuity and
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\varphi_i\)</span> are the nodal basis functions.
+Now, we replace the nodal value <span class="math notranslate nohighlight">\(v(x_i)\)</span> by a local mean value.</p>
+<blockquote>
+<div><p><strong>Definition: Clément quasi-interpolation operator</strong></p>
+<p>For each vertex <span class="math notranslate nohighlight">\(x\)</span>,let <span class="math notranslate nohighlight">\(\overline{v}^{\omega_x}\)</span> be the mean value of <span class="math notranslate nohighlight">\(v\)</span> on the patch <span class="math notranslate nohighlight">\(\omega_x\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+  \overline{v}^{\omega_x} = \frac{1}{|\omega_x|} \int_{\omega_x} v \, dx.
+  \]</div>
+<p>The Clément operator is</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pi_h v := \sum_{x_i \in {\cal V}} \overline{v}^{\omega_{x_i}} \varphi_i.
+  \]</div>
+<p>In the case of homogeneous Dirichlet boundary values, the sum contains only
+inner vertices.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Theorem:</strong></p>
+<p>The Clément operator satisfies the following continuity and
 approximation estimates:</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\| \nabla \Pi_h v \|_{L_2(T)} &amp; \preceq &amp; \| \nabla v \|_{L_2(\omega_T)} \\
-\| v - \Pi_h v \|_{L_2(T)} &amp; \preceq &amp; h_T \| \nabla v \|_{L_2(\omega_T)} \\
-\| v - \Pi_h v \|_{L_2(E)} &amp; \preceq &amp; h_E^{1/2} \| \nabla v \|_{L_2(\omega_E)} \\
-\end{eqnarray*}\]</div>
-<p>\end{theorem}</p>
-<p>{\em Proof:} First, choose a reference patch <span class="math notranslate nohighlight">\(\widehat \omega_T\)</span> of
+\[\begin{align*}
+  \| \nabla \Pi_h v \|_{L_2(T)} &amp; \preceq \| \nabla v \|_{L_2(\omega_T)} \\
+  \| v - \Pi_h v \|_{L_2(T)} &amp; \preceq h_T \| \nabla v \|_{L_2(\omega_T)} \\
+  \| v - \Pi_h v \|_{L_2(E)} &amp; \preceq h_E^{1/2} \| \nabla v \|_{L_2(\omega_E)} \\
+  \end{align*}\]</div>
+</div></blockquote>
+<p><em>Proof:</em> First, choose a reference patch <span class="math notranslate nohighlight">\(\widehat \omega_T\)</span> of
 dimension
 <span class="math notranslate nohighlight">\(\simeq 1\)</span>. The quasi-interpolation operator is bounded on <span class="math notranslate nohighlight">\(H^1(\omega_T)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-48f48b1c-0a05-4091-91ff-71320294a0e4">
-<span class="eqno">()<a class="headerlink" href="#equation-48f48b1c-0a05-4091-91ff-71320294a0e4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0138a163-150f-4fb0-93fe-72874afab26c">
+<span class="eqno">()<a class="headerlink" href="#equation-0138a163-150f-4fb0-93fe-72874afab26c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_clement_bh}
 \| v - \Pi_h v \|_{L_2(\widehat T)} + \| \nabla (v - \Pi_h v) \|_{L_2(\widehat T)} \preceq \| v \|_{H^1(\widehat \omega_T)}
 \end{equation}\]</div>
@@ -559,80 +585,89 @@ The constant function (on <span class="math notranslate nohighlight">\(\omega_T\
 <span class="math notranslate nohighlight">\(\| v - \Pi_h v \|_{H^1(T)}\)</span>. Due to
 the Bramble-Hilbert lemma, we can replace the norm on the right hand side
 of (\ref{equ_clement_bh}) by the semi-norm:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf91651e-1506-4d51-b3f7-a51888e095eb">
-<span class="eqno">()<a class="headerlink" href="#equation-bf91651e-1506-4d51-b3f7-a51888e095eb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-33908b6e-f4e0-4784-be77-4ecb70e732a9">
+<span class="eqno">()<a class="headerlink" href="#equation-33908b6e-f4e0-4784-be77-4ecb70e732a9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \label{equ_clement_bh2}
 \| v - \Pi_h v \|_{L_2(\widehat T)} + \| \nabla (v - \Pi_h v) \|_{L_2(\widehat T)} \preceq \| \nabla v \|_{L_2(\widehat \omega_T)}
 \end{equation}\]</div>
-<p>The rest follows from scaling. Let <span class="math notranslate nohighlight">\(F : x \rightarrow h x\)</span> scale the reference patch <span class="math notranslate nohighlight">\(\widehat \omega_T\)</span> to the actual patch <span class="math notranslate nohighlight">\(\omega_T\)</span>. Then
-$<span class="math notranslate nohighlight">\(
+<p>The rest follows from scaling. Let <span class="math notranslate nohighlight">\(F : x \rightarrow h x\)</span> scale the reference patch <span class="math notranslate nohighlight">\(\widehat \omega_T\)</span> to the actual patch <span class="math notranslate nohighlight">\(\omega_T\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
 \| v - \Pi_h v \|_{L_2(T)} + h \, \| \nabla (v-\Pi_h v) \|_{L_2(T)} \preceq h \, \| \nabla v \|_{L_2(\omega_T)}
-\)</span>$</p>
+\]</div>
 <p>The estimate for the edge term is similar. One needs the scaling of integrals
-from the reference edge <span class="math notranslate nohighlight">\(\widehat E\)</span> to <span class="math notranslate nohighlight">\(E\)</span>:
-$<span class="math notranslate nohighlight">\(
+from the reference edge <span class="math notranslate nohighlight">\(\widehat E\)</span> to <span class="math notranslate nohighlight">\(E\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \| v \|_{L_2(E)} = h_E^{1/2} \| v \circ F \|_{L_2(\hat E)}
-\)</span>$
-\bigskip</p>
-<p>\begin{theorem}The residual error estimator is reliable:
-$<span class="math notranslate nohighlight">\(
-\| u - u_h \| \preceq \eta^{res} (u_h, f)
-\)</span><span class="math notranslate nohighlight">\(
-\end{theorem}
-{\em Proof:} From the coercivity of \)</span>A(.,.)<span class="math notranslate nohighlight">\( we get
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+</section>
+<section id="reliability-of-the-residual-error-estimator">
+<h2><span class="section-number">26.2. </span>Reliability of the residual error estimator<a class="headerlink" href="#reliability-of-the-residual-error-estimator" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><strong>Theorem:</strong></p>
+<p>The residual error estimator is reliable:</p>
+<div class="math notranslate nohighlight">
+\[
+  \| u - u_h \| \preceq \eta^{res} (u_h, f)
+  \]</div>
+</div></blockquote>
+<p><em>Proof:</em> From the coercivity of <span class="math notranslate nohighlight">\(A(.,.)\)</span> we get</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_{H^1} \preceq \frac{A(u-u_h, u-u_h)}{ \| u-u_h \|_{H^1} } \leq 
         \sup_{0 \neq v \in H^1} \frac{A(u-u_h, v)}{ \| v \|_{H^1} }.
-\)</span><span class="math notranslate nohighlight">\(
-The Galerkin orthogonality \)</span>A(u-u_h,v_h) = 0<span class="math notranslate nohighlight">\( for all \)</span>v_h \in V_h<span class="math notranslate nohighlight">\( allows
-to insert the Cl\'ement interpolant in the numerator. It is well defined for
-\)</span>v \in H^1<span class="math notranslate nohighlight">\(:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The Galerkin orthogonality <span class="math notranslate nohighlight">\(A(u-u_h,v_h) = 0\)</span> for all <span class="math notranslate nohighlight">\(v_h \in V_h\)</span> allows
+to insert the Cl’ement interpolant in the numerator. It is well defined for
+<span class="math notranslate nohighlight">\(v \in H^1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_{H^1} \leq
         \sup_{0 \neq v \in H^1} \frac{A(u-u_h, v - \Pi_h v)}{ \| v \|_{H^1} }.
-\)</span><span class="math notranslate nohighlight">\(
-We use that the true solution \)</span>u<span class="math notranslate nohighlight">\( fulfills \)</span>A(u,v) = f(v)<span class="math notranslate nohighlight">\(, and insert
-the definitions of \)</span>A(.,.)<span class="math notranslate nohighlight">\( and \)</span>f(.)$:</p>
+\]</div>
+<p>We use that the true solution <span class="math notranslate nohighlight">\(u\)</span> fulfills <span class="math notranslate nohighlight">\(A(u,v) = f(v)\)</span>, and insert
+the definitions of <span class="math notranslate nohighlight">\(A(.,.)\)</span> and <span class="math notranslate nohighlight">\(f(.)\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-A(u-u_h, v-\Pi_h v) &amp; = &amp; f(v-\Pi_h v) - A(u_h, v - \Pi_h v) \\
-        &amp; = &amp; \int_{\Omega} f (v-\Pi_h v) \, dx - \int_\Omega \nabla u_h \nabla (v - \Pi_h v) \, dx \\
-        &amp; = &amp; \sum_{T \in \cal T} \int_{T} f (v-\Pi_h v) \, dx - \sum_{T \in \cal T} \int_T \nabla u_h \nabla (v - \Pi_h v) \, dx
-\end{eqnarray*}\]</div>
+\[\begin{align*}
+A(u-u_h, v-\Pi_h v) &amp; = f(v-\Pi_h v) - A(u_h, v - \Pi_h v) \\
+        &amp; = \int_{\Omega} f (v-\Pi_h v) \, dx - \int_\Omega \nabla u_h \nabla (v - \Pi_h v) \, dx \\
+        &amp; = \sum_{T \in \cal T} \int_{T} f (v-\Pi_h v) \, dx - \sum_{T \in \cal T} \int_T \nabla u_h \nabla (v - \Pi_h v) \, dx
+\end{align*}\]</div>
 <p>On each <span class="math notranslate nohighlight">\(T\)</span>, the finite element function <span class="math notranslate nohighlight">\(u_h\)</span> is a polynomial. This allows
 integration by  parts on each element:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 A(u-u_h, v-\Pi_h v) 
-        &amp; = &amp; \sum_{T \in \cal T} \int_{T} f (v-\Pi_h v) \, dx - \sum_{T \in \cal T} 
+        &amp; = \sum_{T \in \cal T} \int_{T} f (v-\Pi_h v) \, dx - \sum_{T \in \cal T} 
  \left\{ -\int_T \Delta u_h (v - \Pi_h v) \, dx + \int_{\partial T} \frac{\partial u_h}{\partial n} (v - \Pi_h v) \, ds \right\}
 \end{eqnarray*}\]</div>
 <p>All inner edges <span class="math notranslate nohighlight">\(E\)</span> have contributions from normal derivatives from their two adjacent triangles <span class="math notranslate nohighlight">\(T_{E,1}\)</span> and <span class="math notranslate nohighlight">\(T_{E,2}\)</span>. On boundary edges, <span class="math notranslate nohighlight">\(v-\Pi_h v\)</span> vanishes.</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\lefteqn{A(u-u_h, v-\Pi_h v)} \\
-         &amp; = &amp; \sum_T \int_T (f + \Delta u_h) (v - \Pi_h v) \, dx
+\[\begin{align*}
+A(u-u_h, v-\Pi_h v)
+         &amp; = \sum_T \int_T (f + \Delta u_h) (v - \Pi_h v) \, dx
         + \sum_E \int_E \left\{
          \frac{\partial u_h}{\partial n}|_{T_{E,1}} +
          \frac{\partial u_h}{\partial n}|_{T_{E,2}}  \right\} (v - \Pi_h v) \, ds \\
-&amp; = &amp; \sum_T \int_T (f + \Delta u_h) (v - \Pi_h v) \, dx
+&amp; = \sum_T \int_T (f + \Delta u_h) (v - \Pi_h v) \, dx
         + \sum_E \int_E \left[ \frac{\partial u_h}{\partial n} \right] (v - \Pi_h v) \, ds
-\end{eqnarray*}\]</div>
+\end{align*}\]</div>
 <p>Applying Cauchy-Schwarz first on <span class="math notranslate nohighlight">\(L_2(T)\)</span> and <span class="math notranslate nohighlight">\(L_2(E)\)</span>, and then in <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\lefteqn{A(u-u_h, v-\Pi_h v)} \\
-        &amp; \leq &amp; \sum_T \| f + \Delta u_h \|_{L_2(T)} \| v - \Pi_h v \|_{L_2(T)}
+\[\begin{align*}
+A(u-u_h, v-\Pi_h v) 
+        &amp; \leq \sum_T \| f + \Delta u_h \|_{L_2(T)} \| v - \Pi_h v \|_{L_2(T)}
         + \sum_E \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)} \| v - \Pi_h v \|_{L_2(E)} \\
-        &amp; = &amp; \sum_T h_T \| f + \Delta u_h \|_{L_2(T)} h_T^{-1} \| v - \Pi_h v \|_{L_2(T)}
+        &amp; = \sum_T h_T \| f + \Delta u_h \|_{L_2(T)} h_T^{-1} \| v - \Pi_h v \|_{L_2(T)}
         + \sum_E h_E^{1/2} \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)} h_E^{-1/2} \| v - \Pi_h v \|_{L_2(E)} \\
-        &amp; \leq &amp; 
+        &amp; \leq 
         \left\{ \sum_T h_T^2 \| f + \Delta u_h \|_{L_2(T)}^2 \right\}^{1/2}  
         \left\{ \sum_T h_T^{-2} \| v - \Pi_h v \|_{L_2(T)}^2 \right\}^{1/2} + \\
-        &amp; &amp; + 
+        &amp;  + 
         \left\{ \sum_E h_E \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)}^2 \right\}^{1/2}  
         \left\{ \sum_E h_E^{-1} \| v - \Pi_h v \|_{L_2(E)}^2 \right\}^{1/2}
-\end{eqnarray*}\]</div>
+\end{align*}\]</div>
 <p>We apply the approximation estimates of the Cl’ement operator, and use that
 only a bounded number of patches are overlapping:
 $<span class="math notranslate nohighlight">\(
@@ -661,12 +696,18 @@ Combining the steps above we observe</p>
         \sum_E h_E \left\| \left[ \frac{\partial u_h}{\partial n} \right] \right\|_{L_2(E)}^2 \right\}^{1/2},
 \end{eqnarray*}\]</div>
 <p>what is the reliability of the  error estimator <span class="math notranslate nohighlight">\(\eta^{res}(u_h,f)\)</span></p>
-<p>\bigskip</p>
-<p>\begin{theorem} If the source term <span class="math notranslate nohighlight">\(f\)</span> is piecewise polynomial on the mesh, then the error estimator <span class="math notranslate nohighlight">\(\eta^{res}\)</span> is efficient:
-$<span class="math notranslate nohighlight">\(
-\| u - u_h \|_V \geqc \eta^{res} (u_h, f)
-\)</span>$
-\end{theorem}</p>
+<section id="efficiency-of-the-residual-error-estimator">
+<h3><span class="section-number">26.2.1. </span>Efficiency of the residual error estimator<a class="headerlink" href="#efficiency-of-the-residual-error-estimator" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>If the source term <span class="math notranslate nohighlight">\(f\)</span> is piecewise polynomial on the mesh, then the error estimator <span class="math notranslate nohighlight">\(\eta^{res}\)</span> is efficient:</p>
+<div class="math notranslate nohighlight">
+\[
+  \| u - u_h \|_V \succeq \eta^{res} (u_h, f)
+  \]</div>
+</div></blockquote>
+<p><em>Proof:</em> Literature</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -724,7 +765,24 @@ $<span class="math notranslate nohighlight">\(
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-clement-operator">26.1. The Clément- operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reliability-of-the-residual-error-estimator">26.2. Reliability of the residual error estimator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#efficiency-of-the-residual-error-estimator">26.2.1. Efficiency of the residual error estimator</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

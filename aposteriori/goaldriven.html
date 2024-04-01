@@ -476,45 +476,50 @@ document.write(`
 <h1><span class="section-number">27. </span>Goal driven error estimates<a class="headerlink" href="#goal-driven-error-estimates" title="Link to this heading">#</a></h1>
 <p>The above error estimators estimate the error in the energy norm <span class="math notranslate nohighlight">\(V\)</span>.
 Some applications require to compute certain values (such as point values, average values, line integrals, fluxes through surfaces, …). These
-values are descibed by linear functionals <span class="math notranslate nohighlight">\(b : V \rightarrow {\mathbb R}\)</span>.
-We want to design a method such that the error in this goal, i.e.,
-$<span class="math notranslate nohighlight">\(
+values are described by linear functionals <span class="math notranslate nohighlight">\(b : V \rightarrow {\mathbb R}\)</span>.
+We want to design a method such that the error in this goal, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
 b(u) - b(u_h) 
-\)</span><span class="math notranslate nohighlight">\(
-is small. The technique is to solve additionally the dual problem, where 
-the right hand side is the goal functional:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>is small. The technique is to solve additionally the dual problem, where
+the right hand side is the goal functional:</p>
+<div class="math notranslate nohighlight">
+\[
 \mbox{Find } w \in V : \qquad A(v, w) = b(v) \qquad \forall \, v \in V.
-\)</span><span class="math notranslate nohighlight">\(
-Usually, one cannot solve the dual problem either, and one applies a Galerkin method also for the dual problem:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Usually, one cannot solve the dual problem either, and one applies a Galerkin method also for the dual problem:</p>
+<div class="math notranslate nohighlight">
+\[
 \mbox{Find } w_h \in V_h : \qquad A(v_h, w_h) = b(v_h) \qquad \forall \, v_h \in V_h.
-\)</span><span class="math notranslate nohighlight">\(
-In the case of point values, the solution of the dual problem is the Green
-function (which is not in \)</span>H^1<span class="math notranslate nohighlight">\(). The error in the goal is
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>In the case of point values, the solution of the dual problem is the Green
+function (which is not in <span class="math notranslate nohighlight">\(H^1\)</span>). The error in the goal is</p>
+<div class="math notranslate nohighlight">
+\[
 b(u-u_h) = A(u-u_h, w) = A(u-u_h, w-w_h).
-\)</span><span class="math notranslate nohighlight">\(
-A rigorous upper bound for the error in the goal is obtained by using
-continuity of the bilinear-form, and energy error estimates 
-\)</span>\eta^1<span class="math notranslate nohighlight">\( and \)</span>\eta^2<span class="math notranslate nohighlight">\( for the primal and
-dual problem, respectively:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>A rigorous upper bound for the error in the goal is obtained by using
+continuity of the bilinear-form, and energy error estimates
+<span class="math notranslate nohighlight">\(\eta^1\)</span> and <span class="math notranslate nohighlight">\(\eta^2\)</span> for the primal and
+dual problem, respectively:</p>
+<div class="math notranslate nohighlight">
+\[
 | b(u-u_h) | \preceq \| u - u_h \|_V \| w - w_h \|_V \preceq
          \eta^1(u_h, f) \, \eta^2(w_h, b).
-\)</span>$</p>
+\]</div>
 <p>A good heuristic is the following (unfortunately, not correct)
 estimate</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d82626a1-3c05-4945-990e-44c87a8738b2">
-<span class="eqno">()<a class="headerlink" href="#equation-d82626a1-3c05-4945-990e-44c87a8738b2" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\label{equ_incorrect}
-b(u-u_h)  = A(u-u_h, w-w_h) \preceq \sum_{T \in {\cal T} } 
-        \| u - u_h \|_{H^1(T)} \, \| w - w_h \|_{H^1(T)} 
-        \preceq \sum_{T} \eta_T^1 (u_h, f) \, \eta_T^2 (w_h, b)
-\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+b(u-u_h)  &amp; = A(u-u_h, w-w_h) \\
+     &amp; \preceq \sum_{T \in {\cal T} } 
+        \| u - u_h \|_{H^1(T)} \, \| w - w_h \|_{H^1(T)} \\
+       &amp; \preceq \sum_{T} \eta_T^1 (u_h, f) \, \eta_T^2 (w_h, b)
+\end{align*}\]</div>
 <p>The last step would require a local reliability estimate. But, this is
 not true.</p>
-<p>We can interpret (\ref{equ_incorrect}) that way: The local estimators
+<p>We can interpret the last sum that way: The local estimators
 <span class="math notranslate nohighlight">\(\eta^2_T(w_h)\)</span> provide a way for weighting the primal local estimators
 according to the desired goal.</p>
 </section>
