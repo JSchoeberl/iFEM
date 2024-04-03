@@ -527,14 +527,15 @@ I_T v := \sum_{\alpha = 1}^{N_T} \psi^\alpha_T(v) \varphi^\alpha_T
 </ul>
 <p>Two elements are called affine equivalent, if <span class="math notranslate nohighlight">\(\Phi\)</span> is an affine-linear function.</p>
 <p>Lagrangian finite elements defined above are equivalent. The Hermite elements are not equivalent.</p>
-<p>Two finite elements are called interpolation equivalent if there holds
-$<span class="math notranslate nohighlight">\(
+<p>Two finite elements are called interpolation equivalent if there holds</p>
+<div class="math notranslate nohighlight">
+\[
 I_T (v) \circ \Phi = I_{\widehat T} (v \circ \Phi)
-\)</span>$</p>
+\]</div>
 <blockquote>
 <div><p><strong>Lemma:</strong> Equivalent elements are interpolation equivalent</p>
 </div></blockquote>
-<p>The Hermite elements define above are also interpolation equivalent.</p>
+<p>The Hermite elements define above are interpolation equivalent.</p>
 <p>A regular triangulation <span class="math notranslate nohighlight">\({\cal T} = \{ T_1, \ldots, T_M \}\)</span> of a domain
 <span class="math notranslate nohighlight">\(\Omega\)</span> is the subdivision of a domain <span class="math notranslate nohighlight">\(\Omega\)</span> into closed triangles <span class="math notranslate nohighlight">\(T_i\)</span>
 such that <span class="math notranslate nohighlight">\(\overline \Omega = \cup T_i\)</span> and <span class="math notranslate nohighlight">\(T_i \cap T_j\)</span> is</p>
@@ -581,11 +582,12 @@ that the local functionals are derived from the global ones by</p>
 \]</div>
 <p>Examples in 1D and 2D</p>
 <p>The nodal basis for the global finite element space is the
-basis in <span class="math notranslate nohighlight">\(V_{\cal T}\)</span> dual to the global functionals <span class="math notranslate nohighlight">\(\psi_j\)</span>, i.e.,
-$<span class="math notranslate nohighlight">\(
+basis in <span class="math notranslate nohighlight">\(V_{\cal T}\)</span> dual to the global functionals <span class="math notranslate nohighlight">\(\psi_j\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
 \psi_j(\varphi_i) = \delta_{ij}
-\)</span>$
-There holds</p>
+\]</div>
+<p>There holds</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \varphi_{i|_T} &amp; = 

@@ -447,7 +447,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -463,6 +465,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-framework">28.1. General framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-of-the-lifting-sigma-delta">28.2. Computation of the lifting <span class="math notranslate nohighlight">\(\| \sigma^\Delta \|\)</span></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -474,49 +485,57 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="equilibrated-residual-error-estimates">
 <h1><span class="section-number">28. </span>Equilibrated Residual Error Estimates<a class="headerlink" href="#equilibrated-residual-error-estimates" title="Link to this heading">#</a></h1>
-<p>\subsection{General framework}
-Equilibrated residual error estimators provide upper bounds for the discretization error in energy norm without any generic constant.
-We consider the standard problem: find <span class="math notranslate nohighlight">\(u \in V := H_0^1(\Omega)\)</span> such that
-$<span class="math notranslate nohighlight">\(
+<section id="general-framework">
+<h2><span class="section-number">28.1. </span>General framework<a class="headerlink" href="#general-framework" title="Link to this heading">#</a></h2>
+<p>Equilibrated residual error estimators provide upper bounds for the discretization error in energy norm without any generic constant.
+We consider the standard problem: find <span class="math notranslate nohighlight">\(u \in V := H_0^1(\Omega)\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
 \int_\Omega \lambda \nabla u \cdot \nabla v = \int_\Omega f v \qquad \forall \, v \in V
-\)</span><span class="math notranslate nohighlight">\(
-The left hand side defines the bilinear-form \)</span>A(\cdot, \cdot)<span class="math notranslate nohighlight">\(, the right hand side the linear-form \)</span>f(\cdot)<span class="math notranslate nohighlight">\(. We define a finite element sub-space \)</span>V_h \subset V<span class="math notranslate nohighlight">\( of order \)</span>k<span class="math notranslate nohighlight">\(, and the finite element solution
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The left hand side defines the bilinear-form <span class="math notranslate nohighlight">\(A(\cdot, \cdot)\)</span>, the right hand side the linear-form <span class="math notranslate nohighlight">\(f(\cdot)\)</span>. We define a finite element sub-space <span class="math notranslate nohighlight">\(V_h \subset V\)</span> of order <span class="math notranslate nohighlight">\(k\)</span>, and the finite element solution</p>
+<div class="math notranslate nohighlight">
+\[
 \text{find } u_h \in V_h: \quad A(u_h, v_h) = f(v_h) \qquad \forall \, v_h \in V_h.
-\)</span><span class="math notranslate nohighlight">\(
-We assume that \)</span>f<span class="math notranslate nohighlight">\( is element-wise polynomial of order \)</span>k-1<span class="math notranslate nohighlight">\(, and \)</span>\lambda$ is element-wise constant and positive.</p>
+\]</div>
+<p>We assume that <span class="math notranslate nohighlight">\(f\)</span> is element-wise polynomial of order <span class="math notranslate nohighlight">\(k-1\)</span>, and <span class="math notranslate nohighlight">\(\lambda\)</span> is element-wise constant and positive.</p>
 <p>\qquad</p>
-<p>The residual <span class="math notranslate nohighlight">\(r(\cdot) \in V^*\)</span> is
-$<span class="math notranslate nohighlight">\(
+<p>The residual <span class="math notranslate nohighlight">\(r(\cdot) \in V^*\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
 r(v) = f(v) - A(u_h, v) \qquad v \in V
-\)</span><span class="math notranslate nohighlight">\(
-Since 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - u_h \|_A = \sup_{v \in V} \frac{A(u-u_h, v)}{\| v \|_A} = 
  \sup_{v \in V} \frac { r(v) }{\| v \|_A},
-\)</span><span class="math notranslate nohighlight">\(
-we aim in estimating \)</span>|r |<span class="math notranslate nohighlight">\( in the norm dual to \)</span>| \cdot |_A<span class="math notranslate nohighlight">\(, which is essentially the \)</span>H^{-1}<span class="math notranslate nohighlight">\(-norm. In general, the direct evaluation of this norm is not feasible.
-Using the structure of the problem, we can represent the residual as
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>we aim in estimating <span class="math notranslate nohighlight">\(\|r \|\)</span> in the norm dual to <span class="math notranslate nohighlight">\(\| \cdot \|_A\)</span>, which is essentially the <span class="math notranslate nohighlight">\(H^{-1}\)</span>-norm. In general, the direct evaluation of this norm is not feasible.
+Using the structure of the problem, we can represent the residual as</p>
+<div class="math notranslate nohighlight">
+\[
 r(v) = \sum_{T \in \mathcal{T}} \int_T r_T v + \sum_{E \in \mathcal{E}} \int_E r_E v,
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>r_T<span class="math notranslate nohighlight">\( and \)</span>r_E<span class="math notranslate nohighlight">\( are given given as
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_T\)</span> and <span class="math notranslate nohighlight">\(r_E\)</span> are given given as</p>
+<div class="math notranslate nohighlight">
+\[
 r_T = f_T + \opdiv \lambda_T \nabla u_{h|T}  \qquad \text{and} \qquad
 r_E = \left[  \lambda \frac{\partial u_h} {\partial n}  \right]_E
-\)</span><span class="math notranslate nohighlight">\(
-The element-residual \)</span>r_T<span class="math notranslate nohighlight">\( is a polynomial of order \)</span>k-1<span class="math notranslate nohighlight">\( on the element \)</span>T<span class="math notranslate nohighlight">\(, and the edge residual (the normal jump) is a polynomial of order \)</span>k-1<span class="math notranslate nohighlight">\( on the edge \)</span>E$.</p>
-<p>The {\em residual error estimator} estimates the residual in terms of weighted <span class="math notranslate nohighlight">\(L_2\)</span>-norms:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>The element-residual <span class="math notranslate nohighlight">\(r_T\)</span> is a polynomial of order <span class="math notranslate nohighlight">\(k-1\)</span> on the element <span class="math notranslate nohighlight">\(T\)</span>, and the edge residual (the normal jump) is a polynomial of order <span class="math notranslate nohighlight">\(k-1\)</span> on the edge <span class="math notranslate nohighlight">\(E\)</span>.</p>
+<p>The {\em residual error estimator} estimates the residual in terms of weighted <span class="math notranslate nohighlight">\(L_2\)</span>-norms:</p>
+<div class="math notranslate nohighlight">
+\[
 \| r \|^2 \eqc \eta^{res}(u_h, f)^2 := \sum_T \frac{ h_T^2}{\lambda_T}  \| r_T \|_{L_2(T)}^2 + \sum_E \frac{ h_E }{\lambda_E} \| r_E \|_{L_2(E)}^2
-\)</span><span class="math notranslate nohighlight">\(
-Here, \)</span>\lambda_E<span class="math notranslate nohighlight">\( is some averaging of the coefficients on the two elements containing the edge~\)</span>E<span class="math notranslate nohighlight">\(. The equivalence holds with constants depending on the shape of elements, the relative jump of the coefficient, and the polynomial order \)</span>k$.</p>
-<p>The {\em equilibrated residual error estimator} <span class="math notranslate nohighlight">\(\eta^{er}\)</span> is defined in terms of the same data <span class="math notranslate nohighlight">\(r_T\)</span> and <span class="math notranslate nohighlight">\(r_E\)</span>. It satisfies</p>
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\lambda_E\)</span> is some averaging of the coefficients on the two elements containing the edge~<span class="math notranslate nohighlight">\(E\)</span>. The equivalence holds with constants depending on the shape of elements, the relative jump of the coefficient, and the polynomial order <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>The <strong>equilibrated residual error estimator</strong> <span class="math notranslate nohighlight">\(\eta^{er}\)</span> is defined in terms of the same data <span class="math notranslate nohighlight">\(r_T\)</span> and <span class="math notranslate nohighlight">\(r_E\)</span>. It satisfies</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\| u - u_h \|_A &amp; \leq &amp; \eta^{er} \qquad \text{reliable with constant 1} \\
-\| u - u_h \|_A &amp; \geq &amp; c \, \eta^{er} \qquad \text{efficient with a generic constant $c$} \\
-\end{eqnarray*}\]</div>
+\[\begin{align*}
+\| u - u_h \|_A &amp; \leq  \eta^{er} \qquad \text{reliable with constant 1} \\
+\| u - u_h \|_A &amp; \geq  c \, \eta^{er} \qquad \text{efficient with a generic constant $c$} \\
+\end{align*}\]</div>
 <p>The lower bound depends on the shape of elements and the coefficient <span class="math notranslate nohighlight">\(\lambda\)</span>, but is robust with respect to the polynomial order <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <p>The main idea is the following: Instead of calculating the <span class="math notranslate nohighlight">\(H^{-1}\)</span>-norm of <span class="math notranslate nohighlight">\(r\)</span>, we compute a lifting <span class="math notranslate nohighlight">\(\sigma^\Delta\)</span> such that <span class="math notranslate nohighlight">\(\opdiv \sigma^\Delta = r\)</span>, and calculate the <span class="math notranslate nohighlight">\(L_2\)</span>-norm of <span class="math notranslate nohighlight">\(\sigma^\Delta\)</span>. Since <span class="math notranslate nohighlight">\(r\)</span> is not a regular function, the equation must be posed in distributional form:
 $<span class="math notranslate nohighlight">\(
@@ -532,48 +551,58 @@ Then, the residual can be estimated without envolving any generic constant:</p>
 \end{eqnarray*}\]</div>
 <p>The norm <span class="math notranslate nohighlight">\(\| \sigma^\Delta \| := \int \lambda^{-1} | \sigma^\Delta|^2\)</span> can be evaluated easily.</p>
 <p>Remark: The flux-postprocessing <span class="math notranslate nohighlight">\(\sigma := \lambda \nabla u_h + \sigma^\Delta\)</span> provides a flux <span class="math notranslate nohighlight">\(\sigma \in H(\opdiv)\)</span> such that <span class="math notranslate nohighlight">\(\opdiv \sigma = f\)</span>, i.e. the flux is in exact equilibrium with the source <span class="math notranslate nohighlight">\(f\)</span>. Thus the name.</p>
-<p>\subsection{Computation of the lifting <span class="math notranslate nohighlight">\(\| \sigma^\Delta \|\)</span>}</p>
-<p>The residual is a functional of the form
-$<span class="math notranslate nohighlight">\(
+</section>
+<section id="computation-of-the-lifting-sigma-delta">
+<h2><span class="section-number">28.2. </span>Computation of the lifting <span class="math notranslate nohighlight">\(\| \sigma^\Delta \|\)</span><a class="headerlink" href="#computation-of-the-lifting-sigma-delta" title="Link to this heading">#</a></h2>
+<p>The residual is a functional of the form</p>
+<div class="math notranslate nohighlight">
+\[
 r(v) = \sum_T (r_T, v)_{L_2(T)} + \sum_E (r_E, v)_{L_2(E)},
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>r_T<span class="math notranslate nohighlight">\( and \)</span>r_E<span class="math notranslate nohighlight">\( are polynomials of order \)</span>k-1<span class="math notranslate nohighlight">\(. We search for \)</span>\sigma^\Delta<span class="math notranslate nohighlight">\( which is element-wise a vector-valued polynomial of order \)</span>k<span class="math notranslate nohighlight">\(, and not continuous across edges. Element-wise integration by parts gives
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_T\)</span> and <span class="math notranslate nohighlight">\(r_E\)</span> are polynomials of order <span class="math notranslate nohighlight">\(k-1\)</span>. We search for <span class="math notranslate nohighlight">\(\sigma^\Delta\)</span> which is element-wise a vector-valued polynomial of order <span class="math notranslate nohighlight">\(k\)</span>, and not continuous across edges. Element-wise integration by parts gives</p>
+<div class="math notranslate nohighlight">
+\[
 \int_\Omega \sigma \cdot \nabla \varphi = -\sum_T \int_T \opdiv \sigma_{|T} \varphi + \sum_E \int_E [\sigma \cdot n]_E \varphi.
-\)</span><span class="math notranslate nohighlight">\(
-Thus \)</span>\opdiv \sigma = r<span class="math notranslate nohighlight">\( in distributional sense reads as
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Thus <span class="math notranslate nohighlight">\(\opdiv \sigma = r\)</span> in distributional sense reads as</p>
+<div class="math notranslate nohighlight">
+\[
 \opdiv \sigma{|T} = r_T \qquad \text{and} \qquad [\sigma \cdot n]_E = -r_E
-\)</span><span class="math notranslate nohighlight">\(
-for all elements \)</span>T<span class="math notranslate nohighlight">\( and edges \)</span>E<span class="math notranslate nohighlight">\(. We could now pose the problem 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>for all elements <span class="math notranslate nohighlight">\(T\)</span> and edges <span class="math notranslate nohighlight">\(E\)</span>. We could now pose the problem</p>
+<div class="math notranslate nohighlight">
+\[
 \min_{ \sigma \in P^k({\mathcal T})^2 \atop \opdiv \sigma = r} \| \sigma \|_{L_2, 1/\lambda}
-\)</span><span class="math notranslate nohighlight">\(
-We minimize the weighted-\)</span>L_2<span class="math notranslate nohighlight">\( norm since we want to find the smallest possible upper bound for the error. This is already a computable approach. 
-But, the problem is global, and its solution is of comparable cost as the solution of the original finite element system.  The existence of a \)</span>\sigma<span class="math notranslate nohighlight">\( such that \)</span>\opdiv , \sigma = r$ also needs a proof.</p>
+\]</div>
+<p>We minimize the weighted-<span class="math notranslate nohighlight">\(L_2\)</span> norm since we want to find the smallest possible upper bound for the error. This is already a computable approach.
+But, the problem is global, and its solution is of comparable cost as the solution of the original finite element system.  The existence of a <span class="math notranslate nohighlight">\(\sigma\)</span> such that <span class="math notranslate nohighlight">\(\opdiv \, \sigma = r\)</span> also needs a proof.</p>
 <p>We want to localize the construction of the flux. Local problems are associated with vertex-patches <span class="math notranslate nohighlight">\(\omega_V = \cup_{T : V \in T} T\)</span>. We proceed in two steps:
 \begin{enumerate}
 \item localization of the residual: <span class="math notranslate nohighlight">\(r = \sum_V r^V\)</span>
 \item local liftings: find <span class="math notranslate nohighlight">\(\sigma^V\)</span> such that <span class="math notranslate nohighlight">\(\opdiv \sigma^V = r^V\)</span> on the vertex patch
 \end{enumerate}
 Then, for <span class="math notranslate nohighlight">\(\sigma := \sum \sigma^V\)</span> there holds <span class="math notranslate nohighlight">\(\opdiv \sigma = r\)</span></p>
-<p>The localization is given by multiplication of the <span class="math notranslate nohighlight">\(P^1\)</span> vertex basis functions (hat-functions) <span class="math notranslate nohighlight">\(\phi_V\)</span>:
-$<span class="math notranslate nohighlight">\(
+<p>The localization is given by multiplication of the <span class="math notranslate nohighlight">\(P^1\)</span> vertex basis functions (hat-functions) <span class="math notranslate nohighlight">\(\phi_V\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 r^V(v) := r( \phi_V v)
-\)</span><span class="math notranslate nohighlight">\(
-Since \)</span>\sum_V \phi_V = 1<span class="math notranslate nohighlight">\(, there holds \)</span>\sum r^V(\cdot) = r(\cdot)<span class="math notranslate nohighlight">\(. The localized residual has the same structure of element and edge terms:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\sum_V \phi_V = 1\)</span>, there holds <span class="math notranslate nohighlight">\(\sum r^V(\cdot) = r(\cdot)\)</span>. The localized residual has the same structure of element and edge terms:</p>
+<div class="math notranslate nohighlight">
+\[
 r^V(v) = \sum_{T \subset \omega_V} (r_T^V, v)_{L_2(T)} + \sum_{E \subset \omega_V} (r_E^V, v)_{L_2(E)},
-\)</span><span class="math notranslate nohighlight">\(
-with 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
 r_T^V = \phi_V r_T \qquad \text{and} \qquad r_E^V = \phi_V r_E
-\)</span><span class="math notranslate nohighlight">\(
-The local residual vanishes on constants on the patch:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The local residual vanishes on constants on the patch:</p>
+<div class="math notranslate nohighlight">
+\[
 r^V(1) = r(\phi_V \, 1) = A(u-u_h, \phi_V) = 0
-\)</span>$
-The last equality follows from the Galerkin-orthogonality.</p>
+\]</div>
+<p>The last equality follows from the Galerkin-orthogonality.</p>
 <p>We give an explicit construction of the lifting <span class="math notranslate nohighlight">\(\sigma^V\)</span> in terms of the Brezzi-Douglas-Marini (BDM) element. The <span class="math notranslate nohighlight">\(k^{th}\)</span> order BDM element on a triangle is given by <span class="math notranslate nohighlight">\(V_T = [P^k]^2\)</span> and the degrees of freedom:
 \begin{enumerate}
 \item[(i)] <span class="math notranslate nohighlight">\(\int_E \sigma\cdot n \, q_i\)</span>  with <span class="math notranslate nohighlight">\(q_i\)</span> a basis for <span class="math notranslate nohighlight">\( P^k(E)\)</span>
@@ -599,30 +628,30 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 which follows from \)</span>r^V(1) = 0<span class="math notranslate nohighlight">\(. Thus, also \)</span>[\sigma \cdot n]<em>{E_1} = r</em>{E_1}^V$ is satisfied.
 \end{enumerate}</p>
-<p>This explicit construction proves the existence of an equilibrated flux. Instead of this explicit construction, one may solve a local constrained optimization problem
-$<span class="math notranslate nohighlight">\(
+<p>This explicit construction proves the existence of an equilibrated flux. Instead of this explicit construction, one may solve a local constrained optimization problem</p>
+<div class="math notranslate nohighlight">
+\[
 \min_{\sigma^V : \opdiv \sigma^V = r^V} \| \sigma \|_{L_2, \lambda^{-1}}
-\)</span><span class="math notranslate nohighlight">\(
-This applies also for 3D. Furthoer notes
-\begin{itemize}
-\item mixed boundary conditions are possible
-\item the efficiency for the h-FEM is shown by scaling arguments, and equivalence to the residual error estimator
-\item efficiency is also proven to be robust with respect to polynomial order \)</span>k$, examples show overestimation less than 1.5
-\end{itemize}</p>
-<p>\bigskip \noindent
-{\bf Literature:}
-\begin{enumerate}
-\item
-D. Braess and J. Sch”oberl.
+\]</div>
+<p>This applies also for 3D. Furthoer notes</p>
+<ul class="simple">
+<li><p>mixed boundary conditions are possible</p></li>
+<li><p>the efficiency for the h-FEM is shown by scaling arguments, and equivalence to the residual error estimator</p></li>
+<li><p>efficiency is also proven to be robust with respect to polynomial order <span class="math notranslate nohighlight">\(k\)</span>, examples show overestimation less than 1.5</p></li>
+</ul>
+<p><strong>Literature:</strong></p>
+<ul class="simple">
+<li><p>D. Braess and J. Sch”oberl.
 \newblock  Equilibrated Residual Error Estimator for Maxwell’s
 Equations.
-\newblock {\em Mathematics of Computation}, Vol 77(262), 651-672, 2008
-\item
-D. Braess, V. Pillwein and J. Sch”oberl:
+\newblock {\em Mathematics of Computation}, Vol 77(262), 651-672, 2008</p></li>
+<li><p>D. Braess, V. Pillwein and J. Sch”oberl:
 \newblock Equilibrated Residual Error Estimates are p-Robust. Computer
 \newblock {\em Methods in Applied Mechanics and Engineering.} Vol 198,
 1189-1197, 2009
-\end{enumerate}</p>
+\end{enumerate}</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -680,7 +709,21 @@ D. Braess, V. Pillwein and J. Sch”oberl:
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-framework">28.1. General framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-of-the-lifting-sigma-delta">28.2. Computation of the lifting <span class="math notranslate nohighlight">\(\| \sigma^\Delta \|\)</span></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
