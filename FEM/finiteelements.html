@@ -493,8 +493,7 @@ dual to <span class="math notranslate nohighlight">\(\Psi_T\)</span>, i.e.,</p>
 \psi^i_T (\varphi^j_T) = \delta_{ij}
 \]</div>
 <p>Barycentric coordinates are useful to express the nodal basis functions.</p>
-<p>Finite elements with point evaluation functionals are called Lagrange<br />
-finite elements, elements using also derivatives are called Hermite finite elements.</p>
+<p>Finite elements with point evaluation functionals are called Lagrange finite elements, elements using also derivatives are called Hermite finite elements.</p>
 <p>Usual function spaces on <span class="math notranslate nohighlight">\(T \subset {\mathbb R}^2\)</span> are</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -537,7 +536,7 @@ I_T (v) \circ \Phi = I_{\widehat T} (v \circ \Phi)
 <blockquote>
 <div><p><strong>Lemma:</strong> Equivalent elements are interpolation equivalent</p>
 </div></blockquote>
-<p>The Hermite elements define above are interpolation equivalent.</p>
+<p>The Hermite elements defined above are interpolation equivalent.</p>
 <p>A regular triangulation <span class="math notranslate nohighlight">\({\cal T} = \{ T_1, \ldots, T_M \}\)</span> of a domain
 <span class="math notranslate nohighlight">\(\Omega\)</span> is the subdivision of a domain <span class="math notranslate nohighlight">\(\Omega\)</span> into closed triangles <span class="math notranslate nohighlight">\(T_i\)</span>
 such that <span class="math notranslate nohighlight">\(\overline \Omega = \cup T_i\)</span> and <span class="math notranslate nohighlight">\(T_i \cap T_j\)</span> is</p>
@@ -594,7 +593,7 @@ basis in <span class="math notranslate nohighlight">\(V_{\cal T}\)</span> dual t
 \[\begin{align*}
 \varphi_{i|_T} &amp; = 
 I_T \varphi_i = \sum_{\alpha = 1}^{N_T} \psi_T^\alpha (\varphi_i) \varphi^\alpha_T \\
-&amp; =  \sum_{\alpha = 1}^{N_T} (C_T^t \psi(\varphi_i))_\alpha \varphi_T^\alpha \\
+&amp; =  \sum_{\alpha = 1}^{N_T} (C_T^t \Psi(\varphi_i))_\alpha \varphi_T^\alpha \\
 &amp; =  \sum_{\alpha = 1}^{N_T} (C_T^t e_i)_\alpha \varphi_T^\alpha = \sum_{\alpha = 1}^{N_T} C_{T,i\alpha} \varphi_T^\alpha 
 \end{align*}\]</div>
 </section>
