@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -588,11 +588,11 @@ integration rules with integration points <span class="math notranslate nohighli
 \[
 \int_{\widehat T} g(\hat x) d \hat x \approx \sum_{k=1}^m \omega_k g(x_k)
 \]</div>
-<p>The order of an integration rule is the largest number such that all polynomials up to this number are integrated exact.</p>
-<p>We write <span class="math notranslate nohighlight">\(\widehat \varphi_{\widehat T}\)</span> for the vector of <span class="math notranslate nohighlight">\(N_T\)</span> basis functions. Then, up to accuracy of numerical integration, we get</p>
+<p>The order of an integration rule is the largest number such that all polynomials up to this order are integrated exact.</p>
+<p>We write <span class="math notranslate nohighlight">\(\widehat \varphi_{\widehat T}\)</span> for the vector of <span class="math notranslate nohighlight">\(N_T\)</span> basis functions. Then, up to accuracy of numerical integration, we obtain the element vector <span class="math notranslate nohighlight">\(\underline f_T \in {\mathbb R}^{N_T}\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-f_T = \sum_{k=1}^m \omega_k | J(x_k) | (f \circ \Phi_T) (x_k)  \; \widehat \varphi_{\widehat T} (x_k)
+\underline f_T = \sum_{k=1}^m \omega_k | J(x_k) | (f \circ \Phi_T) (x_k)  \; \widehat \varphi_{\widehat T} (x_k)
 \]</div>
 <p>For the pull-back of gradients we use that</p>
 <div class="math notranslate nohighlight">
@@ -607,25 +607,25 @@ f_T = \sum_{k=1}^m \omega_k | J(x_k) | (f \circ \Phi_T) (x_k)  \; \widehat \varp
 <p>multiply with the inverse of the Jacobi-matrix, write the derivative as a column vector <span class="math notranslate nohighlight">\(\nabla \varphi\)</span> to obtain</p>
 <div class="math notranslate nohighlight">
 \[
-\nabla \varphi_\alpha (x) = F^{-T} \nabla \widehat \varphi_\alpha (\hat x)
+\nabla \varphi_\alpha (x) = F^{-t} \nabla \widehat \varphi_\alpha (\hat x)
 \]</div>
-<p>for <span class="math notranslate nohighlight">\(x = \Phi_T(\hat x)\)</span>.</p>
+<p>for <span class="math notranslate nohighlight">\(x = \Phi_T(\hat x)\)</span>, and the inverse of the transpose <span class="math notranslate nohighlight">\(F^{-t}\)</span>.</p>
 <p>The transformation of gradients allows to compute the element-matrix by integration on the reference element:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 A_{T,\alpha \beta} &amp;= \int_T \lambda(x) \nabla \varphi_\alpha(x) \nabla \varphi_\beta(x) \, dx  \\
- &amp;= \int_{\widehat T} \lambda(\Phi(\hat x)) \big[ F^{-T} \nabla \widehat \varphi_\alpha (\hat x)  \big]
- \big[ F^{-T} \nabla \widehat \varphi_\beta (\hat x)  \big] \, |J| \, d \hat x
+ &amp;= \int_{\widehat T} \lambda(\Phi(\hat x)) \big[ F^{-t} \nabla \widehat \varphi_\alpha (\hat x)  \big]
+ \big[ F^{-t} \nabla \widehat \varphi_\beta (\hat x)  \big] \, |J| \, d \hat x
 \end{align*}\]</div>
 <p>We define the <span class="math notranslate nohighlight">\(d \times N_T\)</span> matrix-function <span class="math notranslate nohighlight">\(B\)</span> with columns</p>
 <div class="math notranslate nohighlight">
 \[
-B_{:\alpha}(\hat x) =  F^{-T} \nabla \widehat \varphi_\alpha (\hat x), \qquad 1 \leq \alpha \leq N_T
+B_{:\alpha}(\hat x) =  F^{-t} \nabla \widehat \varphi_\alpha (\hat x), \qquad 1 \leq \alpha \leq N_T
 \]</div>
 <p>With numerical integration we obtain the element matrix</p>
 <div class="math notranslate nohighlight">
 \[
-A_T = \sum_{k=1}^m \omega_k \lambda(\Phi(\hat x_k)) | J(\hat x_k) |  \,  B^T(\hat x)  B(\hat x)
+A_T = \sum_{k=1}^m \omega_k \lambda(\Phi(\hat x_k)) | J(\hat x_k) |  \,  B^t(\hat x)  B(\hat x)
 \]</div>
 </section>
 </section>
