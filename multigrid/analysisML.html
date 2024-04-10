@@ -472,7 +472,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearly-optimal-analysis-of-the-ml-preconditioner">64.1. Nearly optimal analysis of the ML - preconditioner</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">64.2. Optimal analysis of the multi-level preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">64.2. Optimal analysis of the multi-level preconditioner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularity-free-estimate">64.2.1. Regularity-free estimate</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -625,8 +628,8 @@ A(u_l, v_k) &amp; = &amp; \int_\Omega \nabla u_l \nabla v_k \, dx \\
 \[
 \| u \|_{H^2} \preceq \| f \|_{L_2}.
 \]</div>
-<p>This assumption is satisfied if the domain <span class="math notranslate nohighlight">\(\Omega\)</span> is either convex, or its boundary is <span class="math notranslate nohighlight">\(C^1\)</span>-continuous.</p>
-<p><strong>Nitsche-lemma:</strong> Assume that the differential equation satisfies full elliptic regularity. Then there holds</p>
+<p>This assumption is satisfied if the domain <span class="math notranslate nohighlight">\(\Omega\)</span> is convex, or its boundary is <span class="math notranslate nohighlight">\(C^1\)</span>-continuous.</p>
+<p><strong>Aubin-Nitsche lemma:</strong> Assume that the differential equation satisfies full elliptic regularity. Then there holds</p>
 <div class="math notranslate nohighlight">
 \[
 \| u - u_h \|_{L_2} \preceq h \| u - u_h \|_{H^1},
@@ -648,12 +651,12 @@ A(u_h, v_h) = A(u, v_h) \qquad \forall \, v_h
 \[
 A(u_l, v_l) = A(u, v_l) \qquad \forall \, v_l \in V_l
 \]</div>
-<p>By the Nitsche-lemma we obtain</p>
+<p>By the Aubin-Nitsche lemma we obtain</p>
 <div class="math notranslate nohighlight">
 \[
 \| u - u_l \|_{L_2} \preceq h_l \| u - u_l \|_A
 \]</div>
-<p>Since the spaces are nested we get <span class="math notranslate nohighlight">\(u_{l-1} = \Pi_{l-1} u = \Pi_{l-1} \Pi_l u = \Pi_{l-1} u_l\)</span>, and by Nitsche</p>
+<p>Since the spaces are nested we get <span class="math notranslate nohighlight">\(u_{l-1} = \Pi_{l-1} u = \Pi_{l-1} \Pi_l u = \Pi_{l-1} u_l\)</span>, and by Aubin-Nitsche</p>
 <div class="math notranslate nohighlight">
 \[
 \| u_{l-1} - u_l \|_{L_2} \preceq h_l \| u_{l-1} - u_l \|_A
@@ -663,7 +666,7 @@ A(u_l, v_l) = A(u, v_l) \qquad \forall \, v_l \in V_l
 \[
 u_0 = \Pi_0 u \qquad \text{and} \qquad w_l := \Pi_l u - \Pi_{l-1} u.
 \]</div>
-<p>Thus</p>
+<p>Thus, using the Pythagorean theorem</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 \| u_0 \|_A^2 + \sum_l h_l^{-2} \| w_l \|_{L_2} 
@@ -671,7 +674,60 @@ u_0 = \Pi_0 u \qquad \text{and} \qquad w_l := \Pi_l u - \Pi_{l-1} u.
 &amp; = &amp; \| u \|_A^2,
 \end{eqnarray*}\]</div>
 <p>and the proof is complete.</p>
-<p>For the case of non full elliptic regularity we refer to literature: Xu, Jinchao: Iterative methods by space decomposition and subspace correction. SIAM Rev. 34 (1992), no. 4, 581–613 <a class="reference external" href="https://epubs.siam.org/doi/10.1137/1034116">https://epubs.siam.org/doi/10.1137/1034116</a></p>
+<section id="regularity-free-estimate">
+<h3><span class="section-number">64.2.1. </span>Regularity-free estimate<a class="headerlink" href="#regularity-free-estimate" title="Link to this heading">#</a></h3>
+<p>Now we show <span class="math notranslate nohighlight">\(\| u \|_{ML} \preceq \| u \|_{H^1}\)</span> without any regularity assumption.
+The technique is based on Hilbert-space interpolation theory by the K-functional,see  <a class="reference download internal" download="" href="../_downloads/900feda304f95ee42fd24abe742d7564/numpde.pdf"><span class="xref download myst">numpde lecture notes, pp43</span></a>.</p>
+<p>We proceed similar as above.
+Let <span class="math notranslate nohighlight">\(\Pi_l : L_2 \rightarrow V_l\)</span> be an Clément-type operator
+such that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\| \Pi_l u \|_{L_2} &amp; \leq &amp; \| u \|_{L_2}  \qquad \forall \, u \in L_2 \\
+\| u - \Pi_l u \|_{L_2} &amp; \preceq &amp; h_l^2 \| u \|_{H^2} \quad \forall \, u \in H^2.
+\end{eqnarray*}\]</div>
+<p>We define <span class="math notranslate nohighlight">\(u_0 = \Pi_0 u\)</span> and <span class="math notranslate nohighlight">\(u_l = \Pi_l u - \Pi_{l-1} u\)</span>. We obtain
+the 2 estimates</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+h_l^{-2} \| u_l \|_{L_2}^2 &amp; \preceq &amp; h_l^{-2} \| u \|_{L_2}^2, \\
+h_l^{-2} \| u_l \|_{L_2}^2 &amp; \preceq &amp; h_l^2 \| u \|_{H^2}.
+\end{eqnarray*}\]</div>
+<p>The idea of the proof is that <span class="math notranslate nohighlight">\(H^1\)</span> is the interpolation space <span class="math notranslate nohighlight">\([L_2, H^2]_{1/2}\)</span>. We define the K-functional</p>
+<div class="math notranslate nohighlight">
+\[
+K(t,u)^2 = \inf_{u = u_0 + u_2 \atop u_0 \in L_2, u_2 \in H^2}
+\big\{ \| u_0 \|_{L_2}^2 + t^2 \| u_2 \|_{H^2}^2 \big\}.
+\]</div>
+<p>Combining the 2 estimates above we get</p>
+<div class="math notranslate nohighlight">
+\[
+h_l^{-2} \| u_l \|_{L_2}^2 \preceq h_l^{-2} K^2 (h_l^2, u)
+\]</div>
+<p>Thus, the sum over <span class="math notranslate nohighlight">\(L\)</span> levels is</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{l=1}^L h_l^{-2} \| u_l \|_{L_2}^2 \leq \sum_{l=1}^L h_l^{-2} K^2 (h_l^2, u) \simeq \sum_{l=1}^L 2^l K^2(2^{-l}, u)
+\]</div>
+<p>Next we use that <span class="math notranslate nohighlight">\(K(s,.) \simeq K(t,.)\)</span> for <span class="math notranslate nohighlight">\(t \leq s \leq 2t\)</span> and replace
+the sum by an integral, and substitute <span class="math notranslate nohighlight">\(t := 2^{-l}, dt \simeq -2^{-l} dl = -t dl\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\sum_{l=1}^L h_l^{-2} \| u_l \|_{L_2}^2 &amp; \leq &amp; 
+\int_{l=1}^{L+1} 2^l K^2(2^{-l}, u) dl \\
+&amp; \simeq &amp; \int_{2^{-L-1}}^1 t^{-1} K^2(t,u) \frac{dt}{t}  \\
+&amp; \preceq &amp; \int_0^\infty t^{-1} K^2(t,u) \frac{dt}{t} \\
+&amp; = &amp; \| u \|_{[L_2,H^2]_{1/2}}^2 \simeq \| u \|_{H^1}^2
+\end{eqnarray*}\]</div>
+<p><span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>An intuitive explanation of the proof is that different terms of
+the sum
+<span class="math notranslate nohighlight">\(\sum_{l=1}^L h_l^{-2} \| \Pi_l u - \Pi_{l-1} u \|_{L_2}^2\)</span>
+are dominated by different frequency
+components of <span class="math notranslate nohighlight">\(u\)</span>. The squared <span class="math notranslate nohighlight">\(H^1\)</span>-norm is the sum over <span class="math notranslate nohighlight">\(H^1\)</span>-norms of
+the individual frequency components.</p>
+<p>Literature: Xu, Jinchao: Iterative methods by space decomposition and subspace correction. SIAM Rev. 34 (1992), no. 4, 581–613 <a class="reference external" href="https://epubs.siam.org/doi/10.1137/1034116">https://epubs.siam.org/doi/10.1137/1034116</a></p>
+</section>
 </section>
 </section>
 
@@ -740,7 +796,10 @@ u_0 = \Pi_0 u \qquad \text{and} \qquad w_l := \Pi_l u - \Pi_{l-1} u.
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearly-optimal-analysis-of-the-ml-preconditioner">64.1. Nearly optimal analysis of the ML - preconditioner</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">64.2. Optimal analysis of the multi-level preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-analysis-of-the-multi-level-preconditioner">64.2. Optimal analysis of the multi-level preconditioner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularity-free-estimate">64.2.1. Regularity-free estimate</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

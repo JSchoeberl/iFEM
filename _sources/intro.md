@@ -32,7 +32,7 @@ If you like the material, show it by giving a star on github.
 
 ## Literature
 
-* Lecture notes Schöberl and Faustmann+Schöberl (available in TU-Wien TUWEL)
+* Lecture notes [Schöberl](numpde.pdf) and Faustmann+Schöberl (available in TU-Wien TUWEL)
 
 Books:
 
