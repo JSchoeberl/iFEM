@@ -291,28 +291,27 @@
 <li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/structure.html">70. Structure of Saddle-point Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/bramblepasciak.html">71. The Bramble-Pasciak Transformation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/fewconstraints.html">72. A Small Number of Constraints</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/parameterdependent.html">74. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/parameterdependent.html">73. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">75. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">76. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">74. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">75. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">78. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">79. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">80. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">77. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">78. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">79. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">81. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">82. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">80. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">81. Distributed Meshes and Spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">84. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">85. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">86. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">87. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">88. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">83. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">84. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">85. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">86. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">87. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -536,8 +535,8 @@ b(p,v) = \sum_{T}
 \)</span><span class="math notranslate nohighlight">\(
 for some \)</span>\alpha \in {\mathbb R}<span class="math notranslate nohighlight">\(, the form is consistent for the gradient. If \)</span>p<span class="math notranslate nohighlight">\( is globally continuous, then \)</span>p = { p }<span class="math notranslate nohighlight">\(, and the boundary term cancels out, even for discontinuous test-functions \)</span>v$.</p>
 <p>From integration by parts we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6f083595-75d9-47b3-be87-b6d0d6766b07">
-<span class="eqno">()<a class="headerlink" href="#equation-6f083595-75d9-47b3-be87-b6d0d6766b07" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-448150d8-197f-4f1d-ab5e-aecf0ba7b180">
+<span class="eqno">()<a class="headerlink" href="#equation-448150d8-197f-4f1d-ab5e-aecf0ba7b180" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 b(p,v) = \sum_{T}
 \Big\{ -\int_T p \operatorname{div} \, v + 
 \alpha \int_{\partial T} \{ p \} \, v_n \, ds +
@@ -602,7 +601,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0fc4cd2e2df549758e79608e5cd08c82"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fb00330b99e9412484bdeb761d1fe3cb"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "17cdb0364e3748b7bc580df424f73860"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a945f263ee19484ea26366bd916e778c"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -617,7 +616,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d8935e506b4e4e1eab107c5127eee6bf"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "4efd693c854e4de9a8e5fc4be4f4c35a"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
@@ -671,7 +670,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "135ff5a6abfb44f79762910beee9c140"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "da11f01710b4441dab077138965b7081"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -712,7 +711,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cc8ad6dfcdea405aa571cbb6540704f7"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1a906d25b57545c78c237fc4b5c578c0"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -807,22 +806,17 @@ SumMatrix, h = 1727565, w = 575855
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bd1ecffabda0409493ea80f2b07e1a4d"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0209bdb78b3c4e2d8e079899d31fcad4"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">24</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">gftr</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">traceop</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
-<span class="ne">---&gt; </span><span class="mi">24</span> <span class="n">scene</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
-
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:225,</span> in <span class="ni">WebGLScene.Redraw</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;b64&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">225</span> <span class="k">def</span> <span class="nf">Redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="k">if</span> <span class="n">args</span> <span class="ow">or</span> <span class="n">kwargs</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="k">if</span> <span class="s1">&#39;show&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">with</span> <span class="n">TaskManager</span><span class="p">():</span> 
+<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">tend</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">+</span><span class="n">dt</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">invmassu</span> <span class="o">@</span> <span class="n">B</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
