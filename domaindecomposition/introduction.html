@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>76. Introduction to Non-overlapping Domain Decomposition &#8212; Interactive Finite Elements</title>
+    <title>75. Introduction to Non-overlapping Domain Decomposition &#8212; Interactive Finite Elements</title>
   
   
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'domaindecomposition/introduction';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="77. Traces spaces" href="traces.html" />
+    <link rel="next" title="76. Traces spaces" href="traces.html" />
     <link rel="prev" title="74. Parameter Dependent Problems" href="../saddlepoint/parameterdependent.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -293,27 +293,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">72. A Small Number of Constraints</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">74. Parameter Dependent Problems</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">76. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="traces.html">77. Traces spaces</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">75. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traces.html">76. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="FETI.html">79. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FETI-DP.html">80. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="BDDC.html">81. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FETI.html">78. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FETI-DP.html">79. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BDDC.html">80. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">82. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">83. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">81. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">82. Distributed Meshes and Spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">85. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">86. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">87. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">88. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">89. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">84. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">85. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">86. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">87. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">88. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -477,7 +476,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-decomposition-with-lagrange-parameters">76.1. Domain Decomposition with Lagrange parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-decomposition-with-lagrange-parameters">75.1. Domain Decomposition with Lagrange parameters</a></li>
 </ul>
             </nav>
         </div>
@@ -490,7 +489,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-non-overlapping-domain-decomposition">
-<h1><span class="section-number">76. </span>Introduction to Non-overlapping Domain Decomposition<a class="headerlink" href="#introduction-to-non-overlapping-domain-decomposition" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">75. </span>Introduction to Non-overlapping Domain Decomposition<a class="headerlink" href="#introduction-to-non-overlapping-domain-decomposition" title="Link to this heading">#</a></h1>
 <p>We want to use a big parallel computer to solve discretized PDEs. The idea is to decompose the domain into sub-domain, and every processor has information only about its sub-domain, and the interfaces to the neighbor domains.</p>
 <p>It is complicated to split a complex geometry into sub-domains. In particular if the mesh is locally refined, a well balanced decomposition of the work-load is hard to reach.</p>
 <p>Graph-based mesh partitioning is a practical approach to domain decomposition. Such algorithms aim in partition the mesh into sub-domains of approximately equal number of elements, such that the interfaces between sub-domains are minimal.</p>
@@ -500,7 +499,7 @@ document.write(`
 <p>The goal of such domain decomposition methods is to reduce the communication effort between the sub-problems. The costs for sending information consists of latency time (i.e. how long it takes to get the communication started), and band-width (i.e. how much data per second one can send when the communication is established). When performing a multigrid preconditioner in parallel, one has to communicate on every level. Since the number of unknowns decrease geometrically for coarser levels, the amount of data exchange also decreases geometrically. Here, the latency becomes more and more relevant.</p>
 <p>In domain decomposition methods, the data exchanges is blocked to one (or a few) communication steps per preconditioning step. This may be the advantage when compared to optimal order multi-grid methods. Multi-grid techniques may be used for the local operations.</p>
 <section id="domain-decomposition-with-lagrange-parameters">
-<h2><span class="section-number">76.1. </span>Domain Decomposition with Lagrange parameters<a class="headerlink" href="#domain-decomposition-with-lagrange-parameters" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">75.1. </span>Domain Decomposition with Lagrange parameters<a class="headerlink" href="#domain-decomposition-with-lagrange-parameters" title="Link to this heading">#</a></h2>
 <p>The domain <span class="math notranslate nohighlight">\(\Omega\)</span> is split into non-overlapping sub-domains <span class="math notranslate nohighlight">\(\Omega_i\)</span>. Let <span class="math notranslate nohighlight">\(\gamma_{ij} := \overline{\Omega_i} \cap \overline{\Omega_j}\)</span> be the interface between sub-domains <span class="math notranslate nohighlight">\(\Omega_i\)</span> and <span class="math notranslate nohighlight">\(\Omega_j\)</span>. We are posing local problems, and enforcing continuity of the field by a Lagrange parameter: find <span class="math notranslate nohighlight">\(u_i \in H^1(\Omega_i)\)</span> and <span class="math notranslate nohighlight">\(\lambda_{ij} \in H^{-1/2} (\gamma_{ij})\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -565,7 +564,7 @@ For the beginning, we have added the <span class="math notranslate nohighlight">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">77. </span>Traces spaces</p>
+        <p class="prev-next-title"><span class="section-number">76. </span>Traces spaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -585,7 +584,7 @@ For the beginning, we have added the <span class="math notranslate nohighlight">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-decomposition-with-lagrange-parameters">76.1. Domain Decomposition with Lagrange parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-decomposition-with-lagrange-parameters">75.1. Domain Decomposition with Lagrange parameters</a></li>
 </ul>
   </nav></div>
 

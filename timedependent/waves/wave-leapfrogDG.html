@@ -293,27 +293,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/fewconstraints.html">72. A Small Number of Constraints</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/parameterdependent.html">74. Parameter Dependent Problems</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">76. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">77. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">75. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">76. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">79. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">80. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">81. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">78. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">79. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">80. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">82. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">83. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">81. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">82. Distributed Meshes and Spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">85. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">86. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">87. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">88. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">89. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">84. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">85. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">86. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">87. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">88. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -537,8 +536,8 @@ b(p,v) = \sum_{T}
 \)</span><span class="math notranslate nohighlight">\(
 for some \)</span>\alpha \in {\mathbb R}<span class="math notranslate nohighlight">\(, the form is consistent for the gradient. If \)</span>p<span class="math notranslate nohighlight">\( is globally continuous, then \)</span>p = { p }<span class="math notranslate nohighlight">\(, and the boundary term cancels out, even for discontinuous test-functions \)</span>v$.</p>
 <p>From integration by parts we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba30065e-7887-483f-a318-cc175274b385">
-<span class="eqno">()<a class="headerlink" href="#equation-ba30065e-7887-483f-a318-cc175274b385" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-6f083595-75d9-47b3-be87-b6d0d6766b07">
+<span class="eqno">()<a class="headerlink" href="#equation-6f083595-75d9-47b3-be87-b6d0d6766b07" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 b(p,v) = \sum_{T}
 \Big\{ -\int_T p \operatorname{div} \, v + 
 \alpha \int_{\partial T} \{ p \} \, v_n \, ds +
@@ -603,7 +602,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ada194eb27cf459d8afdf10889474f91"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "417ab4b057274233b85f443b5b8e77e2"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0fc4cd2e2df549758e79608e5cd08c82"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fb00330b99e9412484bdeb761d1fe3cb"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -618,7 +617,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "119aaf56bf034ae7889920ef8621ed40"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d8935e506b4e4e1eab107c5127eee6bf"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
@@ -672,7 +671,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "31a1d129c2434cdf85da9982f174cb10"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "135ff5a6abfb44f79762910beee9c140"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -713,7 +712,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7e5d821c4fbf43a2a28d9e1777c3ddd6"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cc8ad6dfcdea405aa571cbb6540704f7"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -808,17 +807,22 @@ SumMatrix, h = 1727565, w = 575855
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "13e59bb490fb4478a0b4dd48a2440397"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bd1ecffabda0409493ea80f2b07e1a4d"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">with</span> <span class="n">TaskManager</span><span class="p">():</span> 
-<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">tend</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">+</span><span class="n">dt</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">invmassu</span> <span class="o">@</span> <span class="n">B</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">24</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">gftr</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">traceop</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
+<span class="ne">---&gt; </span><span class="mi">24</span> <span class="n">scene</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:225,</span> in <span class="ni">WebGLScene.Redraw</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;b64&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">225</span> <span class="k">def</span> <span class="nf">Redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="k">if</span> <span class="n">args</span> <span class="ow">or</span> <span class="n">kwargs</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="k">if</span> <span class="s1">&#39;show&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

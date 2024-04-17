@@ -293,27 +293,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">72. A Small Number of Constraints</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">74. Parameter Dependent Problems</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">76. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">77. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">75. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">76. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">79. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">80. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">81. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">78. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">79. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">80. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">82. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">83. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">81. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">82. Distributed Meshes and Spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">85. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">86. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">87. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">88. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">89. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">84. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">85. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">86. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">87. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">88. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -575,8 +574,8 @@ Let <span class="math notranslate nohighlight">\(\Omega = (0,a)\)</span>. Let <s
 \tilde u(x) = u(x) (1 - x/a)
 \]</div>
 <p>There is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1ce12638-eab3-4ce0-911d-ae320dc75ea2">
-<span class="eqno">()<a class="headerlink" href="#equation-1ce12638-eab3-4ce0-911d-ae320dc75ea2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-d72c9728-6b04-434b-81c5-506d28be3929">
+<span class="eqno">()<a class="headerlink" href="#equation-d72c9728-6b04-434b-81c5-506d28be3929" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 |u(0)| &amp; = &amp; | \, \tilde u(0) - \tilde u(a) \, | 
   = \Big| \, \int_0^a \tilde u^\prime(x) \, dx  \, \Big| \\
   &amp; = &amp; \Big| \, \int_0^a u^\prime(x) (1-x/a) + u(x) \, (1-x/a)^\prime \, dx \, \Big| \\
@@ -593,8 +592,8 @@ Let <span class="math notranslate nohighlight">\(\Omega = (0,a) \times (0,1)\)</
 | u(0,y) | \leq \sqrt{a} \, \| u^\prime(\cdot,y) \|_{L_2(0,a)} + \tfrac{1}{\sqrt{a}} \, \| u(\cdot,y) \|_{L_2(0,a)}
 \]</div>
 <p>Integrating in <span class="math notranslate nohighlight">\(y\)</span>-direction and Fubini leads to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6719a317-6b6b-4f87-85de-54996751f222">
-<span class="eqno">()<a class="headerlink" href="#equation-6719a317-6b6b-4f87-85de-54996751f222" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-e0f09295-94a7-4998-8a3b-6243c600fe99">
+<span class="eqno">()<a class="headerlink" href="#equation-e0f09295-94a7-4998-8a3b-6243c600fe99" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \int_0^1 |u(0,y)|^2 \, dy &amp; \leq &amp; 2  a \int_0^1 \int_0^a | \partial_x u(x,y) |^2  + \frac{1}{a} \int_0^1 \int_0^a |u(x,y)|^2
 \end{eqnarray}\]</div>
 <p>i.e.</p>
