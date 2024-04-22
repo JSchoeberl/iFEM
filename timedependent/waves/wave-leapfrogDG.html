@@ -225,7 +225,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../pversion/hpfem.html">30. hp - Finite Elements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../pversion/myhighorder.html">31. High Order Finite Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pversion/myhighorder.html">31. Implementation of High Order Finite Elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
 <ul class="nav bd-sidenav">
@@ -536,8 +536,8 @@ b(p,v) = \sum_{T}
 \)</span><span class="math notranslate nohighlight">\(
 for some \)</span>\alpha \in {\mathbb R}<span class="math notranslate nohighlight">\(, the form is consistent for the gradient. If \)</span>p<span class="math notranslate nohighlight">\( is globally continuous, then \)</span>p = { p }<span class="math notranslate nohighlight">\(, and the boundary term cancels out, even for discontinuous test-functions \)</span>v$.</p>
 <p>From integration by parts we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dced617b-3e69-41fe-825b-37202f0cc099">
-<span class="eqno">()<a class="headerlink" href="#equation-dced617b-3e69-41fe-825b-37202f0cc099" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-770188c8-00a8-4f8b-aa12-7c80e88c00b6">
+<span class="eqno">()<a class="headerlink" href="#equation-770188c8-00a8-4f8b-aa12-7c80e88c00b6" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 b(p,v) = \sum_{T}
 \Big\{ -\int_T p \operatorname{div} \, v + 
 \alpha \int_{\partial T} \{ p \} \, v_n \, ds +
@@ -602,7 +602,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "751330a13ccb4ca4ae509bd91ba476f1"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b86d95031c354259b27123cdfb37748e"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "524d7f7b063741f5b01084025bccc7c3"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "627ed28c84d546978346fd816a6e100f"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -617,7 +617,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6851ca275ff748f685505f4d03f45efc"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cadca4a01933455caeab0152bec6f0d1"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
@@ -671,7 +671,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f17a2f9daced455abf9053769b6a5550"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1ce2493c31634de9810810e9fbb0fd2a"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -712,7 +712,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d40eb8b64e8647f1a18dad9ca06e040d"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "97d0c246090e4ed1ba639554d5b92573"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -807,7 +807,7 @@ SumMatrix, h = 1727565, w = 575855
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3c82430d1f954cdcbc7a874e42c5e317"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bc4a2f6c10cb4413aad62f81bb779a88"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>

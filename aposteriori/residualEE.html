@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -225,7 +225,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../pversion/hpfem.html">30. hp - Finite Elements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pversion/myhighorder.html">31. High Order Finite Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pversion/myhighorder.html">31. Implementation of High Order Finite Elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
 <ul class="nav bd-sidenav">
@@ -532,18 +532,21 @@ edge <span class="math notranslate nohighlight">\(E = T_1 \cap T_2\)</span>.  We
 <strong>quasi-interpolation operator</strong>, the  Clément- operator <span class="math notranslate nohighlight">\(\Pi_h\)</span>. In
 contrast to the interpolation operator, this operator is well defined
 for functions in <span class="math notranslate nohighlight">\(L_2\)</span>.</p>
-<p>We define the vertex patch of all elements connected with the vertex <span class="math notranslate nohighlight">\(x\)</span>
-$<span class="math notranslate nohighlight">\(
+<p>We define the vertex patch of all elements connected with the vertex <span class="math notranslate nohighlight">\(x\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \omega_x = \bigcup_{T : x \in T} T,
-\)</span><span class="math notranslate nohighlight">\(
-the edge patch consisting of all elements connected with the edge \)</span>E<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>the edge patch consisting of all elements connected with the edge <span class="math notranslate nohighlight">\(E\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \omega_E = \bigcup_{T : E \cap T \neq \emptyset} T,
-\)</span><span class="math notranslate nohighlight">\(
-and the element patch consisting of the element \)</span>T<span class="math notranslate nohighlight">\( and all its neighbors
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and the element patch consisting of the element <span class="math notranslate nohighlight">\(T\)</span> and all its neighbors</p>
+<div class="math notranslate nohighlight">
+\[
 \omega_T = \bigcup_{T^\prime : T \cap T^\prime \neq \emptyset} T^\prime.
-\)</span>$</p>
+\]</div>
 <p>The nodal interpolation operator <span class="math notranslate nohighlight">\(I_h\)</span> was defined as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -580,9 +583,9 @@ approximation estimates:</p>
 <p><em>Proof:</em> First, choose a reference patch <span class="math notranslate nohighlight">\(\widehat \omega_T\)</span> of
 dimension
 <span class="math notranslate nohighlight">\(\simeq 1\)</span>. The quasi-interpolation operator is bounded on <span class="math notranslate nohighlight">\(H^1(\omega_T)\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e87c34ae-2608-44f7-9ed7-b77e9c9d0771">
-<span class="eqno">(27.1)<a class="headerlink" href="#equation-e87c34ae-2608-44f7-9ed7-b77e9c9d0771" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\label{equ_clement_bh}
+<div class="amsmath math notranslate nohighlight" id="equation-f3376a05-20fc-435c-9d5e-6f1a9ad0510c">
+<span class="eqno">(27.1)<a class="headerlink" href="#equation-f3376a05-20fc-435c-9d5e-6f1a9ad0510c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+% \label{equ_clement_bh}
 \| v - \Pi_h v \|_{L_2(\widehat T)} + \| \nabla (v - \Pi_h v) \|_{L_2(\widehat T)} \preceq \| v \|_{H^1(\widehat \omega_T)}
 \end{equation}\]</div>
 <p>If <span class="math notranslate nohighlight">\(v\)</span> is constant on <span class="math notranslate nohighlight">\(\omega_T\)</span>, then the mean values in the vertices
@@ -591,9 +594,9 @@ The constant function (on <span class="math notranslate nohighlight">\(\omega_T\
 <span class="math notranslate nohighlight">\(\| v - \Pi_h v \|_{H^1(T)}\)</span>. Due to
 the Bramble-Hilbert lemma, we can replace the norm on the right hand side
 of (\ref{equ_clement_bh}) by the semi-norm:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-596242cb-7779-4e6b-8e2b-f85ae3c3811e">
-<span class="eqno">(27.2)<a class="headerlink" href="#equation-596242cb-7779-4e6b-8e2b-f85ae3c3811e" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\label{equ_clement_bh2}
+<div class="amsmath math notranslate nohighlight" id="equation-8e827d51-a913-471d-adcb-d29804d4624e">
+<span class="eqno">(27.2)<a class="headerlink" href="#equation-8e827d51-a913-471d-adcb-d29804d4624e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+% \label{equ_clement_bh2}
 \| v - \Pi_h v \|_{L_2(\widehat T)} + \| \nabla (v - \Pi_h v) \|_{L_2(\widehat T)} \preceq \| \nabla v \|_{L_2(\widehat \omega_T)}
 \end{equation}\]</div>
 <p>The rest follows from scaling. Let <span class="math notranslate nohighlight">\(F : x \rightarrow h x\)</span> scale the reference patch <span class="math notranslate nohighlight">\(\widehat \omega_T\)</span> to the actual patch <span class="math notranslate nohighlight">\(\omega_T\)</span>. Then</p>
@@ -675,17 +678,19 @@ A(u-u_h, v-\Pi_h v)
         \left\{ \sum_E h_E^{-1} \| v - \Pi_h v \|_{L_2(E)}^2 \right\}^{1/2}
 \end{align*}\]</div>
 <p>We apply the approximation estimates of the Cl’ement operator, and use that
-only a bounded number of patches are overlapping:
-$<span class="math notranslate nohighlight">\(
+only a bounded number of patches are overlapping:</p>
+<div class="math notranslate nohighlight">
+\[
 \sum_T h_T^{-2} \| v - \Pi_h v \|_{L_2(T)}^2 
  \preceq
 \sum_T \| \nabla v \|_{L_2(\omega_T)}^2  \preceq \| \nabla v \|_{L_2(\Omega)}^2,
-\)</span><span class="math notranslate nohighlight">\(
-and similar for the edges
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and similar for the edges</p>
+<div class="math notranslate nohighlight">
+\[
 \sum_E h_E^{-1} \| v - \Pi_h v \|_{L_2(E)}^2 \leq \| \nabla v \|_{L_2(\Omega)}^2.
-\)</span>$
-Combining the steps above we observe</p>
+\]</div>
+<p>Combining the steps above we observe</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 \| u - u_h \|_V &amp; \preceq &amp; \sup_{v \in H^1} \frac{A(u-u_h, v -\Pi_h v)}{\| v \|_H^1} \\
