@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -539,18 +539,18 @@ P_2(x) &amp; = \tfrac{3}{2} x^2 - \tfrac{1}{2}
 <p><span class="math notranslate nohighlight">\(P_n\)</span> is even if <span class="math notranslate nohighlight">\(n\)</span> is even, and <span class="math notranslate nohighlight">\(P_n\)</span> is odd if <span class="math notranslate nohighlight">\(n\)</span> is odd.
 Since <span class="math notranslate nohighlight">\((x^2-1)^n = x^{2n} - n x^{2n-2} + \pi_{2n-4}\)</span> (with proper
 modification for small <span class="math notranslate nohighlight">\(n\)</span>) we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f2956302-db99-4037-b71c-a3f51965ec4b">
-<span class="eqno">(30.1)<a class="headerlink" href="#equation-f2956302-db99-4037-b71c-a3f51965ec4b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 % \label{equ_leadingcoef}
 P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n-2)!} {(n-2)!} x^{n-2} + \pi_{n-4}
-\end{equation}\]</div>
+\]</div>
 <blockquote>
 <div><p><strong>Lemma: Orthogonality</strong></p>
 <p>There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cb9c7619-751f-48e3-808e-9a6cd67fe50b">
-<span class="eqno">(30.2)<a class="headerlink" href="#equation-cb9c7619-751f-48e3-808e-9a6cd67fe50b" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_ortho}
+<div class="math notranslate nohighlight">
+\[
   \int_{-1}^1 P_n(x) P_m(x) \, dx = \frac{2}{2n+1} \delta_{n,m}.
-  \end{equation}\]</div>
+  \]</div>
 </div></blockquote>
 <p><em>Proof:</em> W.l.o.g. let <span class="math notranslate nohighlight">\(n \leq m\)</span>. Multiple integration by parts gives</p>
 <div class="amsmath math notranslate nohighlight">
@@ -577,19 +577,20 @@ P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n
 <blockquote>
 <div><p><strong>Lemma: Three term recurrence:</strong></p>
 <p>There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-914c75ca-be43-4a48-8bb4-8f11c5741362">
-<span class="eqno">(30.3)<a class="headerlink" href="#equation-914c75ca-be43-4a48-8bb4-8f11c5741362" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
+<div class="amsmath math notranslate nohighlight" id="equation-b8cbd658-0138-4c0e-baf2-6451ff152f88">
+<span class="eqno">(30.1)<a class="headerlink" href="#equation-b8cbd658-0138-4c0e-baf2-6451ff152f88" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
   (n+1) P_{n+1} (x) = (2n+1) x P_n(x) - n P_{n-1}(x).
   \end{equation}\]</div>
 </div></blockquote>
 <p><em>Proof:</em> Set <span class="math notranslate nohighlight">\(r(x) = (n+1) P_{n+1} (x) - (2n+1) x P_n(x) + n P_{n-1}(x)\)</span>.
 Using (\ref{equ_leadingcoef}), we see that the leading coefficients cancel,
 and thus <span class="math notranslate nohighlight">\(r \in \Pi_{n-2}\)</span>. From Lemma~\ref{lemma_ortho} we get for
-any <span class="math notranslate nohighlight">\(q \in \Pi_{n-2}\)</span>
-$<span class="math notranslate nohighlight">\(
+any <span class="math notranslate nohighlight">\(q \in \Pi_{n-2}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \int_{-1}^1 r(x) q(x) \, dx = (n+1) \int_{-1}^1 P_{n+1} \, q - (2n+1) \int_{-1}^1 P_n \underbrace{x q}_{\in \Pi_{n-1}} + n \int_{-1}^1 P_{n-1} \, q = 0,
-\)</span><span class="math notranslate nohighlight">\(
-and thus \)</span>r = 0<span class="math notranslate nohighlight">\(. \)</span>\Box$</p>
+\]</div>
+<p>and thus <span class="math notranslate nohighlight">\(r = 0\)</span>. <span class="math notranslate nohighlight">\(\Box\)</span></p>
 <blockquote>
 <div><p><strong>Lemma: Sturm-Liouville</strong></p>
 <p>Legendre polynomials satisfy the Sturm-Liouville differential equation</p>
@@ -649,8 +650,8 @@ P_{L_2}^{\Pi_p} u = \sum_{n=0}^p a_n P_n
 <blockquote>
 <div><p><strong>Lemma Projection error:</strong></p>
 <p>The <span class="math notranslate nohighlight">\(L_2\)</span>-projection error satisfies</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a95fadf-b934-4d06-87b5-1e07caf19eba">
-<span class="eqno">(30.4)<a class="headerlink" href="#equation-9a95fadf-b934-4d06-87b5-1e07caf19eba" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6ab2c65f-93f9-42ae-ab0b-4d0dc798c91d">
+<span class="eqno">(30.2)<a class="headerlink" href="#equation-6ab2c65f-93f9-42ae-ab0b-4d0dc798c91d" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - P_{L_2}^{\Pi_p} u \|_{L_2(-1,1)} \leq \frac{1}{\sqrt{(p+1)(p+2)}}    \, | u |_{H^1(-1,1)}
   \end{equation}\]</div>
 </div></blockquote>
@@ -658,18 +659,18 @@ P_{L_2}^{\Pi_p} u = \sum_{n=0}^p a_n P_n
 there holds</p>
 <div class="math notranslate nohighlight">
 \[
-\| u^\prime \|_{L_2, 1-x^2}^2 = \sum_{n \in \setN} a_n^2 \, \| P_n^\prime \|_{1-x^2}^2,
+\| u^\prime \|_{L_2, 1-x^2}^2 = \sum_{n \in {\mathbb N}} a_n^2 \, \| P_n^\prime \|_{1-x^2}^2,
 \]</div>
 <p>provided that <span class="math notranslate nohighlight">\(u\)</span> is in <span class="math notranslate nohighlight">\(H^1\)</span>.
 The projection error satisfies</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\| u - P_{L_2}^{\Pi_p} u \|^2_{L_2} &amp; = &amp; \sum_{n &gt; p} a_n^2 \| P_n \|^2_{L_2} 
+\[\begin{align*}
+\| u - P_{L_2}^{\Pi_p} u \|^2_{L_2} &amp; =  \sum_{n &gt; p} a_n^2 \| P_n \|^2_{L_2} 
  = \sum_{n &gt; p} a_n^2 \frac{1}{n (n+1)} \| P_n^\prime \|^2_{1-x^2} \\
-&amp; \leq &amp; \frac{1}{(p+1)(p+2)} \sum_{n &gt; p} a_n^2 \|P_n^\prime \|^2_{1-x^2} 
-\leq  \frac{1}{(p+1)(p+2)} \sum_{n \in \setN} a_n^2 \|P_n^\prime \|^2_{1-x^2} \\
-&amp; = &amp; \frac{1}{(p+1)(p+2)} \| u^\prime \|_{1-x^2}^2 \\
-\end{eqnarray*}\]</div>
+&amp; \leq  \frac{1}{(p+1)(p+2)} \sum_{n &gt; p} a_n^2 \|P_n^\prime \|^2_{1-x^2} 
+\leq  \frac{1}{(p+1)(p+2)} \sum_{n \in {\mathbb N}} a_n^2 \|P_n^\prime \|^2_{1-x^2} \\
+&amp; =  \frac{1}{(p+1)(p+2)} \| u^\prime \|_{1-x^2}^2 \\
+\end{align*}\]</div>
 <p>Finally, the result follows from</p>
 <div class="math notranslate nohighlight">
 \[
@@ -745,11 +746,11 @@ with \)</span>c \neq c(p)<span class="math notranslate nohighlight">\(, easily i
 <section id="the-1d-case">
 <h3><span class="section-number">30.4.1. </span>The 1D case<a class="headerlink" href="#the-1d-case" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(I=(-1,1)\)</span>. We define the operator <span class="math notranslate nohighlight">\(I_p : H^1(I) \rightarrow \Pi_p\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-640ba7ba-fa33-443e-8630-2984d7b466f7">
-<span class="eqno">(30.5)<a class="headerlink" href="#equation-640ba7ba-fa33-443e-8630-2984d7b466f7" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
-I_p u(x) &amp; = &amp; u(x) \qquad x \in \{ -1, 1 \}   \label{equ_projbased1} \\
-\int_I (I_p u)^\prime q^\prime &amp; = &amp;  \int_I u^\prime q^\prime \qquad \forall \, q \in \Pi_{p,0}(I),   \label{equ_projbased2} 
-\end{eqnarray}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+I_p u(x) &amp; =  u(x) \qquad x \in \{ -1, 1 \}  \\
+\int_I (I_p u)^\prime q^\prime &amp; =   \int_I u^\prime q^\prime \qquad \forall \, q \in \Pi_{p,0}(I),  
+\end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Pi_{p,0}(D) := \{ q \in \Pi_p(D) : q = 0 \text{ on } \partial D\}\)</span>.
 This procedure is exactly a <span class="math notranslate nohighlight">\(p\)</span>-version Galerkin-method for the
 Dirichlet problem.  Since boundary values are preserved, the
@@ -757,40 +758,47 @@ interpolation operator produces a globally continuous function.  The
 operator <span class="math notranslate nohighlight">\(I_p\)</span> is a kind of mixture of interpolation and projection,
 thus the term {\em projection based interpolation} introduced by
 Demkowicz has been established.</p>
-<p>\begin{lemma}[Commuting diagram] There holds
-$<span class="math notranslate nohighlight">\(
-\Pi_{L_2}^{\Pi_{p-1}} u^\prime = (I_p u)^\prime 
-\)</span><span class="math notranslate nohighlight">\(
-\end{lemma}
-\begin{proof} The range of both sides is \)</span>\Pi_{p-1}<span class="math notranslate nohighlight">\(. We have to show that 
-\)</span>(I_p u)^\prime<span class="math notranslate nohighlight">\( is indeed the \)</span>L_2<span class="math notranslate nohighlight">\(-projection of \)</span>u^\prime<span class="math notranslate nohighlight">\(, i.e.
-\)</span><span class="math notranslate nohighlight">\( 
+<blockquote>
+<div><p>Lemma: <strong>Commuting diagram</strong> There holds</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pi_{L_2}^{\Pi_{p-1}} u^\prime = (I_p u)^\prime 
+  \]</div>
+</div></blockquote>
+<p><em>Proof</em>: The range of both sides is <span class="math notranslate nohighlight">\(\Pi_{p-1}\)</span>. We have to show that
+<span class="math notranslate nohighlight">\((I_p u)^\prime\)</span> is indeed the <span class="math notranslate nohighlight">\(L_2\)</span>-projection of <span class="math notranslate nohighlight">\(u^\prime\)</span>, i.e.</p>
+<div class="math notranslate nohighlight">
+\[ 
 \int_I (I_p u)^\prime q = \int_I u^\prime q \qquad \forall \, q \in \Pi_{p-1}.
-\)</span><span class="math notranslate nohighlight">\(
-This holds since \)</span>{ q^\prime : q \in \Pi_{p,0} } = { q \in \Pi_{p-1} : \int q = 0 }<span class="math notranslate nohighlight">\( and (\ref{equ_projbased2}), and 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>This holds since <span class="math notranslate nohighlight">\(\{ q^\prime : q \in \Pi_{p,0} \} = \{ q \in \Pi_{p-1} : \int q = 0 \}\)</span> and (\ref{equ_projbased2}), and</p>
+<div class="math notranslate nohighlight">
+\[
 \int_{-1}^1 (I_p u)^\prime \, 1 = (I_p u)(1)  - (I_p u)(-1) = u(1) - u(-1) = \int_{-1}^1 u^\prime \, 1.
-\)</span>$
-\end{proof}</p>
-<p>The <span class="math notranslate nohighlight">\(H^1\)</span>-error estimate follows directly from the commuting diagram property:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p><span class="math notranslate nohighlight">\(\Box\)</span></p>
+<p>The <span class="math notranslate nohighlight">\(H^1\)</span>-error estimate follows directly from the commuting diagram property:</p>
+<div class="math notranslate nohighlight">
+\[
 | u - I_p u |_{H^1(I)} = \| u^\prime - (I_p u)^\prime \|_{L_2} = 
 \| u^\prime - P_{L_2}^{\Pi_{p-1}} u^\prime \|_{L_2} \leq \frac{c}{p^{m-1}} | u^\prime |_{H^{m-1}}.
-\)</span><span class="math notranslate nohighlight">\(
-By the Aubin-Nitsche technique one obtains an extra \)</span>p<span class="math notranslate nohighlight">\( for the \)</span>L_2<span class="math notranslate nohighlight">\(-error:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>By the Aubin-Nitsche technique one obtains an extra <span class="math notranslate nohighlight">\(p\)</span> for the <span class="math notranslate nohighlight">\(L_2\)</span>-error:</p>
+<div class="math notranslate nohighlight">
+\[
 \| u - I_p u \|_{L_2(I)} \preceq \frac{1}{p} | u - I_p u |_{H^1(I)} \leq \frac{1}{p^m} | u |_{H^m(I)}
-\)</span><span class="math notranslate nohighlight">\(
-One also gets for \)</span>q \in \Pi_p<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>One also gets for <span class="math notranslate nohighlight">\(q \in \Pi_p\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 | u - I_p u |_{H^1} = | u-q - I_p (u-q) |_1 \leq || Id - I_p ||_{H^1\rightarrow H^1} \, | u - q |_{H^1}
-\)</span>$</p>
+\]</div>
 </section>
 <section id="projection-based-interpolation-on-triangles">
 <h3><span class="section-number">30.4.2. </span>Projection based interpolation on triangles<a class="headerlink" href="#projection-based-interpolation-on-triangles" title="Link to this heading">#</a></h3>
 <p>We define the operator <span class="math notranslate nohighlight">\(I_p : H^2(T) \rightarrow \Pi_p(T)\)</span> as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0c97283a-71b7-481b-8e4c-0a1c1e0df739">
-<span class="eqno">(30.6)<a class="headerlink" href="#equation-0c97283a-71b7-481b-8e4c-0a1c1e0df739" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-6bce152f-aa43-4b14-9d94-79f768ea7e23">
+<span class="eqno">(30.3)<a class="headerlink" href="#equation-6bce152f-aa43-4b14-9d94-79f768ea7e23" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 I_p u(x) &amp; = &amp; u(x) \qquad \forall \text{ vertices } x \\
 \int_E \partial_\tau (I_p u) \partial_\tau q &amp; = &amp;  
 \int_E \partial_\tau u  \partial_\tau q \qquad \forall \text{ edges } E, \; \forall \, q \in \Pi_{p,0}(E) \\
@@ -798,16 +806,18 @@ I_p u(x) &amp; = &amp; u(x) \qquad \forall \text{ vertices } x \\
 \end{eqnarray}\]</div>
 <p>Note that <span class="math notranslate nohighlight">\(I_p u\)</span> on the edge <span class="math notranslate nohighlight">\(E\)</span> depends  only on <span class="math notranslate nohighlight">\(u|_E\)</span>, and thus the interpolant is
 continuous across neighbouring elements.</p>
-<p>\begin{lemma}  \label{lemma_polext}  Let <span class="math notranslate nohighlight">\(v \in C(\partial T)\)</span> such that <span class="math notranslate nohighlight">\(v|_E \in \Pi_p(E)\)</span>. Then there exists
-an extension <span class="math notranslate nohighlight">\(\tilde v \in \Pi_p(T)\)</span> such that <span class="math notranslate nohighlight">\(\tilde v|_{\partial T} = v\)</span> and
+<blockquote>
+<div><p><strong>Lemma:</strong> Let <span class="math notranslate nohighlight">\(v \in C(\partial T)\)</span> such that <span class="math notranslate nohighlight">\(v|_E \in \Pi_p(E)\)</span>. Then there exists
+an extension <span class="math notranslate nohighlight">\(\tilde v \in \Pi_p(T)\)</span> such that <span class="math notranslate nohighlight">\(\tilde v|_{\partial T} = v\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+  | \tilde v |_{H^1} \leq c \, | v |_{H^{1/2}(\partial T)},
+  \]</div>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> is independent of <span class="math notranslate nohighlight">\(p\)</span>.</p>
+</div></blockquote>
+<p>Major steps have been shown in exercises 5.2 and 6.6.
+Note that the minimal-norm extension <span class="math notranslate nohighlight">\(\tilde v\)</span> is the solution of the Dirichlet problem, i.e.
 $<span class="math notranslate nohighlight">\(
-| \tilde v |_{H^1} \leq c \, | v |_{H^{1/2}(\partial T)},
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>c<span class="math notranslate nohighlight">\( is independent of \)</span>p<span class="math notranslate nohighlight">\(.
-\end{lemma}
-Major steps have been shown in exercises 5.2 and 6.6.
-Note that the minimal-norm extension \)</span>\tilde v<span class="math notranslate nohighlight">\( is the solution of the Dirichlet problem, i.e.
-\)</span><span class="math notranslate nohighlight">\(
 \int_T \nabla \tilde v \nabla w = 0 \qquad \forall \, w \in \Pi_{p,0}
 \)</span>$</p>
 <blockquote>
