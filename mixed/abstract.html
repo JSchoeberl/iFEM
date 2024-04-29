@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -303,17 +303,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">79. FETI-DP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">80. BDDC - Preconditioner</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">81. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">82. Distributed Meshes and Spaces</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">84. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">85. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">86. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">87. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">88. Solving Stokes in parallel</a></li>
-</ul>
 
     </div>
 </nav></div>
@@ -495,14 +484,16 @@ document.write(`
 <h1><span class="section-number">35. </span>Abstract Theory<a class="headerlink" href="#abstract-theory" title="Link to this heading">#</a></h1>
 <p><span class="math notranslate nohighlight">\(\DeclareMathOperator{\opdiv}{div}\)</span>
 We have seen a couple of examples leading to variational problems of the form:</p>
-<p><em>Mixed variational problem</em>: Find <span class="math notranslate nohighlight">\(u \in V\)</span> and <span class="math notranslate nohighlight">\(p \in Q\)</span> such that</p>
+<blockquote>
+<div><p><em>Mixed variational problem</em>: Find <span class="math notranslate nohighlight">\(u \in V\)</span> and <span class="math notranslate nohighlight">\(p \in Q\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{array}{ccccll}
-a(u,v) &amp; + &amp; b(v,p) &amp; = &amp; f(v) &amp; \forall \, v \in V \\
-b(u,q) &amp; &amp; &amp; = &amp; g(q) &amp; \forall \, q \in Q
-\end{array}
-\end{split}\]</div>
+ \begin{array}{ccccll}
+  a(u,v) &amp; + &amp; b(v,p) &amp; = &amp; f(v) &amp; \forall \, v \in V \\
+  b(u,q) &amp; &amp; &amp; = &amp; g(q) &amp; \forall \, q \in Q
+  \end{array}
+  \end{split}\]</div>
+</div></blockquote>
 <p>We introduce operators</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -531,7 +522,7 @@ B u &amp; &amp; &amp; = &amp; g
 \[
 V_0 = \{ v \in V : B v = 0 \}
 \]</div>
-<p>We split the space <span class="math notranslate nohighlight">\(V\)</span> orthogonally as <span class="math notranslate nohighlight">\(V = V_0 \otimes V_0^\bot\)</span>, and decompose vectors and operators accordingly:</p>
+<p>We split the space <span class="math notranslate nohighlight">\(V\)</span> orthogonally as <span class="math notranslate nohighlight">\(V = V_0 \times V_0^\bot\)</span>, and decompose vectors and operators accordingly:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \left( \begin{array}{ccc}
@@ -547,28 +538,132 @@ V_0 = \{ v \in V : B v = 0 \}
    f_\bot \\ f_0 \\ g
      \end{array} \right)
 \end{split}\]</div>
-<p>This is a block-triangular system. First we use the third equation to solve for <span class="math notranslate nohighlight">\(u_\bot\)</span>, then we use the second equation to solve for <span class="math notranslate nohighlight">\(u_0\)</span>, and finally we use the first equation to solve for <span class="math notranslate nohighlight">\(p\)</span>. For this construction, we need regularity of <span class="math notranslate nohighlight">\(B_\bot\)</span> (and thus also <span class="math notranslate nohighlight">\(B_\bot^*\)</span>), and <span class="math notranslate nohighlight">\(A_{00}\)</span>. Regularity of <span class="math notranslate nohighlight">\(B_\bot\)</span> follow from the LBB condition. We require that the bilinear-form <span class="math notranslate nohighlight">\(a(.,.)\)</span> is coercive on the null-space <span class="math notranslate nohighlight">\(V_0\)</span> to guarantee regularity of <span class="math notranslate nohighlight">\(A_{00}\)</span>. We collect the finding to the following</p>
-<p><em>Brezzi’s theorem</em>:</p>
+<p>This is a block-triangular system. First we use the third equation to solve for <span class="math notranslate nohighlight">\(u_\bot\)</span>, then we use the second equation to solve for <span class="math notranslate nohighlight">\(u_0\)</span>, and finally we use the first equation to solve for <span class="math notranslate nohighlight">\(p\)</span>. For this construction, we need regularity of <span class="math notranslate nohighlight">\(B_\bot\)</span> (and thus also <span class="math notranslate nohighlight">\(B_\bot^*\)</span>), and <span class="math notranslate nohighlight">\(A_{00}\)</span>. Regularity of <span class="math notranslate nohighlight">\(B_\bot\)</span> follow from the LBB condition. We require that the bilinear-form <span class="math notranslate nohighlight">\(a(.,.)\)</span> is coercive on the null-space <span class="math notranslate nohighlight">\(V_0\)</span> to guarantee regularity of <span class="math notranslate nohighlight">\(A_{00}\)</span>.</p>
+<p>By forming the product space <span class="math notranslate nohighlight">\(X = V \times Q\)</span>, we can consider one problem:
+find <span class="math notranslate nohighlight">\((u,p) \in X\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+B( (u,p), (v,q) ) = F( (v,q) ) \qquad \forall \, (v,q) \in X
+\]</div>
+<p>with the big bilinear-form</p>
+<div class="math notranslate nohighlight">
+\[
+B( (u,p), (v,q) ) = a(u,v) + b(u,q) + b(v,p) 
+\]</div>
+<p>and the big linear-from</p>
+<div class="math notranslate nohighlight">
+\[
+F ( (v,q) ) = f(v) + g(q)
+\]</div>
+<p>We collect the finding to the following</p>
+<blockquote>
+<div><p><em>Brezzi’s theorem</em>:</p>
 <ul class="simple">
 <li><p>V and Q Hilbert spaces,</p></li>
 <li><p><span class="math notranslate nohighlight">\(a(.,.)\)</span> and <span class="math notranslate nohighlight">\(b(.,.)\)</span> continuous bilinear-forms,</p></li>
 <li><p><span class="math notranslate nohighlight">\(f(.)\)</span> and <span class="math notranslate nohighlight">\(g(.)\)</span> continuous linear-forms.</p></li>
 </ul>
-<p>There holds the LBB condition</p>
+<p>Assume there holds the LBB condition</p>
 <div class="math notranslate nohighlight">
 \[
-\sup_{u \in V} \frac{b(u,p)}{\| u \|_V} \geq \beta \| p \|_Q
-\]</div>
+  \sup_{u \in V} \frac{b(u,p)}{\| u \|_V} \geq \beta \| p \|_Q
+  \]</div>
 <p>and the kernel coercivity</p>
 <div class="math notranslate nohighlight">
 \[
-A(v,v) \geq \alpha \| v \|_V^2 \quad \forall \, v \in V_0.
-\]</div>
+  A(v,v) \geq \alpha \| v \|_V^2 \quad \forall \, v \in V_0.
+  \]</div>
 <p>Then the mixed variational problem is uniquely solvable with</p>
 <div class="math notranslate nohighlight">
 \[
-\| u \|_V + \| p \|_Q \leq c \, ( \| f \|_{V^\ast} + \| g \|_{Q^\ast})
+&gt; \| u \|_V + \| p \|_Q \leq c \, ( \| f \|_{V^\ast} + \| g \|_{Q^\ast})
+&gt; \]</div>
+</div></blockquote>
+<p><em>Proof:</em> The big bilinear-form <span class="math notranslate nohighlight">\(B(.,.)\)</span> is continuous</p>
+<div class="math notranslate nohighlight">
+\[
+B((u,p),(v,q)) \preceq ( \| u \| + \| p \| ) \, ( \| v \| + \| q \| ).
 \]</div>
+<p>We prove that it fulfills the <span class="math notranslate nohighlight">\(\inf-\sup\)</span> condition</p>
+<div class="math notranslate nohighlight">
+\[
+\inf_{v,q} \sup_{u,p} \frac{B((u,p),(v,q))}{ ( \|v\|_V+\|q\|_Q) (\|u\|_V+\|p\|_Q)} \succeq \beta.
+\]</div>
+<p>Then, we use Theorem by Babuska-Aziz to conclude
+continuous solvability.</p>
+<p>To prove the <span class="math notranslate nohighlight">\(\inf-\sup\)</span>-condition, we choose
+arbitrary <span class="math notranslate nohighlight">\(v \in V\)</span> and <span class="math notranslate nohighlight">\(q \in Q\)</span>. We will construct <span class="math notranslate nohighlight">\(u \in V\)</span> and
+<span class="math notranslate nohighlight">\(p \in Q\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_V + \| p \|_Q \preceq \| v \|_V + \| q \|_Q
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+B((u,p),(v,q)) = \| v \|_V^2 + \| q \|_Q^2.
+\]</div>
+<p>First, we use the LBB-condition to choose <span class="math notranslate nohighlight">\(u_1 \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+b(u_1,q) = \| q \|_Q^2 \qquad \mbox{and} \qquad \| u_1 \|_V \leq 2 \beta_1^{-1} \, \| q \|_Q.
+\]</div>
+<p>Next, we solve a problem on the kernel:</p>
+<div class="math notranslate nohighlight">
+\[
+\mbox{Find } u_0 \in V_0 : \quad
+a(u_0, w_0) = (v,w_0)_V - a(u_1, w_0) \qquad \forall \, w_0 \in V_0
+\]</div>
+<p>Due to kernel ellipticity, the left hand side is a coercive
+bilinear-form on <span class="math notranslate nohighlight">\(V_0\)</span>. The right hand side is a continuous linear-form.
+By Lax-Milgram, the problem has a unique solution fulfilling</p>
+<div class="math notranslate nohighlight">
+\[
+\| u_0 \|_V \preceq \| v \|_V + \| u_1 \|_V
+\]</div>
+<p>We set</p>
+<div class="math notranslate nohighlight">
+\[
+u = u_0 + u_1.
+\]</div>
+<p>By the Riesz-isomorphism, we define a <span class="math notranslate nohighlight">\(z \in V\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+(z,w)_V = (v,w)_V - a(u, w) \qquad \forall \, w \in V
+\]</div>
+<p>By construction, it fulfills <span class="math notranslate nohighlight">\(z \bot_V V_0\)</span>. The LBB condition implies</p>
+<div class="math notranslate nohighlight">
+\[
+\| p \|_Q \leq 
+\beta_1^{-1} \sup_v \frac{b(v,p)}{\| v\|_V} 
+= \beta_1^{-1} \sup_v \frac{(v, B^\ast p)_V}{\| v\|_V} 
+= \beta_1^{-1} \| B^\ast p \|_V,
+\]</div>
+<p>and thus <span class="math notranslate nohighlight">\(B^\ast Q\)</span> is closed, and <span class="math notranslate nohighlight">\(z \in B^\ast Q\)</span>. Take the <span class="math notranslate nohighlight">\(p \in Q\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+z = B^\ast p.
+\]</div>
+<p>It fulfills</p>
+<div class="math notranslate nohighlight">
+\[
+\| p \|_Q \leq \beta_1^{-1} \| z \|_V \preceq \| v \|_V + \| q \|_Q
+\]</div>
+<p>Concluding, we have constructed <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(p\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\| u \|_V + \| p \|_Q \preceq \| v \|_V + \| q \|_Q,
+\]</div>
+<p>and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+B((u,p),(v,q)) &amp; =  a(u,v) + b(v,p) + b(u,q) \\
+        &amp; =  a(u,v) + (z,v)_V + b(u,q) \\
+        &amp; = a(u,v) + (v,v)_V - a(u,v) + b(u,q) \\
+        &amp; =  \| v \|_V^2 + b(u_1, q) \\
+        &amp; =  \| v \|_V^2 + \| q \|_Q^2.
+\end{align*}\]</div>
+<p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 <section id="constrained-minimization-problem">
 <h2><span class="section-number">35.1. </span>Constrained minimization problem<a class="headerlink" href="#constrained-minimization-problem" title="Link to this heading">#</a></h2>
 <p>Now assume that <span class="math notranslate nohighlight">\(a(.,.)\)</span> is symmetric and coercive. Consider the constrained minimization problem</p>
@@ -582,12 +677,17 @@ A(v,v) \geq \alpha \| v \|_V^2 \quad \forall \, v \in V_0.
 L(v,q) &amp; = &amp;  \tfrac{1}{2} a(v,v) - f(v) + \left&lt;Bv-g,q\right&gt; \\
   &amp; = &amp; \tfrac{1}{2} a(v,v) - f(v) + b(v,q) - g(q)
   \end{eqnarray*}\]</div>
-<p>Zeroing the directional derivatives with respect to both variables we get</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\partial_v L(u,p) = a(u,v) + b(v,p) - f(v) &amp; = &amp; 0 \\
-\partial_q L(u,p) = b(u,q) - g(q) &amp; = &amp; 0
-\end{eqnarray*}\]</div>
+<p>Zeroing the directional derivatives with respect to the <span class="math notranslate nohighlight">\(V\)</span>-variable we
+get</p>
+<div class="math notranslate nohighlight">
+\[
+\partial_v L(u,p) = a(u,v) + b(v,p) - f(v) = 0
+\]</div>
+<p>and for the <span class="math notranslate nohighlight">\(Q\)</span>-variable we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+\partial_q L(u,p) = b(u,q) - g(q) = 0
+\]</div>
 <p>The mixed variational problem is recovered from the Karush Kuhn Tucker (KKT) conditions.</p>
 </section>
 <section id="stokes-equation-within-the-abstract-theory">

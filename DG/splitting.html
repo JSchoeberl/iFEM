@@ -303,17 +303,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">79. FETI-DP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">80. BDDC - Preconditioner</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">81. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">82. Distributed Meshes and Spaces</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">84. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">85. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">86. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">87. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">88. Solving Stokes in parallel</a></li>
-</ul>
 
     </div>
 </nav></div>
@@ -571,7 +560,7 @@ f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ngsolve.comp.LinearForm at 0x110259cf0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ngsolve.comp.LinearForm at 0x119217270&gt;
 </pre></div>
 </div>
 </div>
@@ -603,44 +592,14 @@ f
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ad94de41882b4860a8e9ec8f5c4bd8c2"}</script><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "49f2731ea0094b329a877003ca1599ba"}</script><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">21</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="k">if</span> <span class="n">cnt</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">21</span>     <span class="n">scene</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
-
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:234,</span> in <span class="ni">WebGLScene.Redraw</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span>     <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">new_scene</span><span class="o">.</span><span class="n">args</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">new_scene</span><span class="o">.</span><span class="n">kwargs</span>
-<span class="ne">--&gt; </span><span class="mi">234</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/webgui_jupyter_widgets/widget.py:81,</span> in <span class="ni">BaseWebGuiScene.Redraw</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">def</span> <span class="nf">Redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span>
-<span class="ne">---&gt; </span><span class="mi">81</span>     <span class="bp">self</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetData</span><span class="p">(</span><span class="n">set_minmax</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:247,</span> in <span class="ni">WebGLScene.GetData</span><span class="nt">(self, set_minmax)</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span>     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmro</span><span class="p">(</span><span class="n">typ</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">246</span>         <span class="k">if</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">_registered_draw_types</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">247</span>             <span class="n">d</span> <span class="o">=</span> <span class="n">_registered_draw_types</span><span class="p">[</span><span class="n">t</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span>             <span class="k">break</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;_webgui_data&quot;</span><span class="p">):</span>
-
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/ngsolve/webgui.py:84,</span> in <span class="ni">GetData</span><span class="nt">(obj, args, kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span> <span class="k">if</span> <span class="s1">&#39;intpoints&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;intpoints&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">---&gt; </span><span class="mi">84</span> <span class="n">d</span> <span class="o">=</span> <span class="n">BuildRenderData</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cf</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">],</span> <span class="n">draw_surf</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;draw_surf&#39;</span><span class="p">],</span> <span class="n">draw_vol</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;draw_vol&#39;</span><span class="p">],</span> <span class="n">intpoints</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;intpoints&#39;</span><span class="p">],</span> <span class="n">deformation</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;deformation&#39;</span><span class="p">],</span> <span class="n">regions</span><span class="o">=</span><span class="n">regions</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">],</span> <span class="n">nodal_p1</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nodal_p1&#39;</span><span class="p">],</span> <span class="n">settings</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;settings&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cf</span><span class="p">,</span> <span class="n">ngs</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">vecs</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="c1"># multidim gridfunction - generate data for each component</span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span>     <span class="n">gf</span> <span class="o">=</span> <span class="n">ngs</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
-
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/ngsolve/webgui.py:395,</span> in <span class="ni">BuildRenderData</span><span class="nt">(mesh, func, order, draw_surf, draw_vol, intpoints, deformation, regions, objects, nodal_p1, encoding, settings)</span>
-<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">393</span>     <span class="n">pts</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">MapToAllElements</span><span class="p">({</span><span class="n">ngs</span><span class="o">.</span><span class="n">ET</span><span class="o">.</span><span class="n">TRIG</span><span class="p">:</span> <span class="n">ir_trig</span><span class="p">,</span> <span class="n">ngs</span><span class="o">.</span><span class="n">ET</span><span class="o">.</span><span class="n">QUAD</span><span class="p">:</span> <span class="n">ir_quad</span><span class="p">},</span> <span class="n">reg</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">395</span> <span class="n">pmat</span> <span class="o">=</span> <span class="n">ngs</span><span class="o">.</span><span class="n">CoefficientFunction</span><span class="p">(</span> <span class="n">func1</span> <span class="k">if</span> <span class="n">draw_surf</span> <span class="k">else</span> <span class="n">func0</span> <span class="p">)</span> <span class="p">(</span><span class="n">pts</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">398</span> <span class="n">timer3minmax</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span> <span class="n">pmima</span> <span class="o">=</span> <span class="n">updatePMinMax</span><span class="p">(</span><span class="n">pmat</span><span class="p">,</span> <span class="n">pmima</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">tend</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">t</span> <span class="o">+=</span> <span class="n">tau</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="n">aconv</span><span class="o">.</span><span class="n">Apply</span><span class="p">(</span><span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">convu</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">r</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">vec</span> <span class="o">-</span> <span class="n">convu</span> <span class="o">-</span> <span class="n">adiff</span><span class="o">.</span><span class="n">mat</span> <span class="o">*</span> <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">w</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">inv</span> <span class="o">*</span> <span class="n">r</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
