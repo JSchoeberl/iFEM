@@ -576,10 +576,11 @@ F ( (v,q) ) = f(v) + g(q)
 <p>Then the mixed variational problem is uniquely solvable with</p>
 <div class="math notranslate nohighlight">
 \[
-&gt; \| u \|_V + \| p \|_Q \leq c \, ( \| f \|_{V^\ast} + \| g \|_{Q^\ast})
-&gt; \]</div>
+  \| u \|_V + \| p \|_Q \leq c \, ( \| f \|_{V^\ast} + \| g \|_{Q^\ast})
+  \]</div>
 </div></blockquote>
-<p><em>Proof:</em> The big bilinear-form <span class="math notranslate nohighlight">\(B(.,.)\)</span> is continuous</p>
+<p><em>Proof:</em> The proof follows solving the triangular system above.</p>
+<p>The big bilinear-form <span class="math notranslate nohighlight">\(B(.,.)\)</span> is continuous</p>
 <div class="math notranslate nohighlight">
 \[
 B((u,p),(v,q)) \preceq ( \| u \| + \| p \| ) \, ( \| v \| + \| q \| ).
@@ -707,10 +708,11 @@ g(q) &amp; = &amp; 0
 \sup_{u \in V} \frac{ \int_\Omega \operatorname{div} u \, q } { \| u \|_{H^1} } \geq \beta \, \| q \|_{L_2}
 \]</div>
 <p>for <span class="math notranslate nohighlight">\(q \in L_2\)</span> with <span class="math notranslate nohighlight">\(\int q = 0\)</span> is true, but non-trivial to prove.</p>
-<p>The kernel space is
-$<span class="math notranslate nohighlight">\(
+<p>The kernel space is</p>
+<div class="math notranslate nohighlight">
+\[
 V_0 = \{ v \in [H_0^1]^d : \operatorname{div} v = 0 \},
-\)</span>$</p>
+\]</div>
 <p>the bilinear-form <span class="math notranslate nohighlight">\(a(.,.)\)</span> is coercive on the whole space <span class="math notranslate nohighlight">\(V\)</span>, and so also on the sub-space <span class="math notranslate nohighlight">\(V_0\)</span>.</p>
 </section>
 <section id="dirichlet-boundary-conditions-as-mixed-system">
