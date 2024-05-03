@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -303,6 +303,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">79. FETI-DP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">80. BDDC - Preconditioner</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">81. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">82. Distributed Meshes and Spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">84. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">85. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">86. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">87. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">88. Solving Stokes in parallel</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -525,8 +536,8 @@ b(p,v) = \sum_{T}
 \)</span><span class="math notranslate nohighlight">\(
 for some \)</span>\alpha \in {\mathbb R}<span class="math notranslate nohighlight">\(, the form is consistent for the gradient. If \)</span>p<span class="math notranslate nohighlight">\( is globally continuous, then \)</span>p = { p }<span class="math notranslate nohighlight">\(, and the boundary term cancels out, even for discontinuous test-functions \)</span>v$.</p>
 <p>From integration by parts we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9f5f08b0-5de0-4efd-8149-ff915b5429ca">
-<span class="eqno">()<a class="headerlink" href="#equation-9f5f08b0-5de0-4efd-8149-ff915b5429ca" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-83782cb1-4e9a-440e-824f-8278bf6e22a2">
+<span class="eqno">()<a class="headerlink" href="#equation-83782cb1-4e9a-440e-824f-8278bf6e22a2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 b(p,v) = \sum_{T}
 \Big\{ -\int_T p \operatorname{div} \, v + 
 \alpha \int_{\partial T} \{ p \} \, v_n \, ds +
@@ -591,7 +602,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "4ba7434c06f8406cbd069e791ba177a3"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "368c0a422770484e88f852d9fa5edb33"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3b887e31845b42678c439c117cde2529"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2494e79bd5574dc99dca1ff538526499"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -606,7 +617,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2e234a251854444697d464db28c8e4ba"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "acb90b1fa09345ad81e39d4605ea6302"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
@@ -660,7 +671,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "39110387cecd4ba6b695887283b1b792"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b7b508d31da04da19c062ff232f82edb"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -701,7 +712,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "00832463bc214bde812403554c329d12"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1e74a8ef52cb49ccb43aa093e141f67f"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -796,7 +807,7 @@ SumMatrix, h = 1727565, w = 575855
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "58ff065e75c14e718001b50d4c79ba94"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1416047308df4982abfc39ac40bf137b"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
