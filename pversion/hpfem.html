@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -576,8 +576,8 @@ P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n
 <blockquote>
 <div><p><strong>Lemma: Three term recurrence:</strong></p>
 <p>There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d0d8b49f-b001-46d9-b02b-09714ac9b1a9">
-<span class="eqno">(30.1)<a class="headerlink" href="#equation-d0d8b49f-b001-46d9-b02b-09714ac9b1a9" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
+<div class="amsmath math notranslate nohighlight" id="equation-b9fe5e6f-cf5e-4c2e-96ae-b5f8ec30b863">
+<span class="eqno">(30.1)<a class="headerlink" href="#equation-b9fe5e6f-cf5e-4c2e-96ae-b5f8ec30b863" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
   (n+1) P_{n+1} (x) = (2n+1) x P_n(x) - n P_{n-1}(x).
   \end{equation}\]</div>
 </div></blockquote>
@@ -649,8 +649,8 @@ P_{L_2}^{\Pi_p} u = \sum_{n=0}^p a_n P_n
 <blockquote>
 <div><p><strong>Lemma Projection error:</strong></p>
 <p>The <span class="math notranslate nohighlight">\(L_2\)</span>-projection error satisfies</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8bf5b440-7ac1-48fd-9367-f1175fda1ce3">
-<span class="eqno">(30.2)<a class="headerlink" href="#equation-8bf5b440-7ac1-48fd-9367-f1175fda1ce3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-12a3d936-fb93-4156-80c0-d14afd4dbf42">
+<span class="eqno">(30.2)<a class="headerlink" href="#equation-12a3d936-fb93-4156-80c0-d14afd4dbf42" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - P_{L_2}^{\Pi_p} u \|_{L_2(-1,1)} \leq \frac{1}{\sqrt{(p+1)(p+2)}}    \, | u |_{H^1(-1,1)}
   \end{equation}\]</div>
 </div></blockquote>
@@ -796,8 +796,8 @@ Demkowicz has been established.</p>
 <section id="projection-based-interpolation-on-triangles">
 <h3><span class="section-number">30.4.2. </span>Projection based interpolation on triangles<a class="headerlink" href="#projection-based-interpolation-on-triangles" title="Link to this heading">#</a></h3>
 <p>We define the operator <span class="math notranslate nohighlight">\(I_p : H^2(T) \rightarrow \Pi_p(T)\)</span> as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d54c945-9e4f-4385-8f82-d0f142e9f6b5">
-<span class="eqno">(30.3)<a class="headerlink" href="#equation-3d54c945-9e4f-4385-8f82-d0f142e9f6b5" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-15c4b944-b593-4386-b9e9-3a7fb5ff9fd2">
+<span class="eqno">(30.3)<a class="headerlink" href="#equation-15c4b944-b593-4386-b9e9-3a7fb5ff9fd2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 I_p u(x) &amp; = &amp; u(x) \qquad \forall \text{ vertices } x \\
 \int_E \partial_\tau (I_p u) \partial_\tau q &amp; = &amp;  
 \int_E \partial_\tau u  \partial_\tau q \qquad \forall \text{ edges } E, \; \forall \, q \in \Pi_{p,0}(E) \\
