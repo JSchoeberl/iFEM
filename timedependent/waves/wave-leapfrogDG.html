@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Discontinuous Galerkin for the Wave Equation &#8212; Interactive Finite Elements</title>
+    <title>55. Discontinuous Galerkin for the Wave Equation &#8212; Interactive Finite Elements</title>
   
   
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'timedependent/waves/wave-leapfrogDG';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="56. Nano-optics: A ring-resonator" href="ringresonator.html" />
+    <link rel="prev" title="54. Mass-lumping and Local time-stepping" href="lts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -257,61 +257,63 @@
 <li class="toctree-l1"><a class="reference internal" href="../../secondorder/hybridization.html">51. Hybridization Techniques</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../intro/heatequation.html">52. Heat Equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro/waveequation.html">53. Wave Equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lts.html">54. Mass-lumping and Local time-stepping</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">55. Discontinuous Galerkin for the Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ringresonator.html">56. Nano-optics: A ring-resonator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/simple.html">55. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/Richardson.html">56. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/gradientmethod.html">57. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/preconditioning.html">58. Preconditioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/Chebyshev.html">59. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/conjugategradients.html">60. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/simple.html">57. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/Richardson.html">58. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/gradientmethod.html">59. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/preconditioning.html">60. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/Chebyshev.html">61. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/conjugategradients.html">62. Conjugate Gradients</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/asm.html">61. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/examples.html">62. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/pversion.html">63. high order fem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/minimaldd.html">64. Domain Decomposition with minimal overlap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/overlapping.html">65. Overlapping Domain Decomposition Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/exercise.html">66. Exercise: Robust preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/asm.html">63. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/examples.html">64. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/pversion.html">65. high order fem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/minimaldd.html">66. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/overlapping.html">67. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/exercise.html">68. Exercise: Robust preconditioners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/algorithms.html">67. Multigrid and Multilevel Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisML.html">68. Analysis of the multi-level preconditioner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisMG.html">69. Analysis of the Multigrid Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/multilevel-extension.html">70. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/algorithms.html">69. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisML.html">70. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisMG.html">71. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/multilevel-extension.html">72. Multi-level Extension</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/structure.html">71. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/bramblepasciak.html">72. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/fewconstraints.html">73. A Small Number of Constraints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/parameterdependent.html">74. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/structure.html">73. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/bramblepasciak.html">74. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/fewconstraints.html">75. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/parameterdependent.html">76. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">75. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">76. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">77. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">78. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">78. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">79. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">80. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">80. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">81. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">82. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">81. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">82. Distributed Meshes and Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">83. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">84. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">85. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">86. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">87. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">83. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">84. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">85. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">86. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">87. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">88. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">89. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -475,16 +477,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Discontinuous Galerkin for the Wave Equation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-differential-operators">Testing the differential operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-implementation">Efficient implementation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-wave-equation">Solving the wave equation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-differential-operators">55.1. Testing the differential operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-implementation">55.2. Efficient implementation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-wave-equation">55.3. Solving the wave equation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-discretized-laplace-operator">55.4. Eigenvalues of the discretized Laplace-operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">55.5. Exercise:</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-discretized-laplace-operator">Eigenvalues of the discretized Laplace-operator</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -496,7 +494,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="discontinuous-galerkin-for-the-wave-equation">
-<h1>Discontinuous Galerkin for the Wave Equation<a class="headerlink" href="#discontinuous-galerkin-for-the-wave-equation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">55. </span>Discontinuous Galerkin for the Wave Equation<a class="headerlink" href="#discontinuous-galerkin-for-the-wave-equation" title="Link to this heading">#</a></h1>
 <p>We solve the first order wave equation by a matrix-free explicit DG method:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -535,8 +533,8 @@ b(p,v) = \sum_{T}
 \)</span><span class="math notranslate nohighlight">\(
 for some \)</span>\alpha \in {\mathbb R}<span class="math notranslate nohighlight">\(, the form is consistent for the gradient. If \)</span>p<span class="math notranslate nohighlight">\( is globally continuous, then \)</span>p = { p }<span class="math notranslate nohighlight">\(, and the boundary term cancels out, even for discontinuous test-functions \)</span>v$.</p>
 <p>From integration by parts we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c14088cd-0d42-401f-af79-02a5fbcb5d32">
-<span class="eqno">()<a class="headerlink" href="#equation-c14088cd-0d42-401f-af79-02a5fbcb5d32" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-5c307f2c-d53c-4ed7-8632-1cdaf028889d">
+<span class="eqno">(55.1)<a class="headerlink" href="#equation-5c307f2c-d53c-4ed7-8632-1cdaf028889d" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 b(p,v) = \sum_{T}
 \Big\{ -\int_T p \operatorname{div} \, v + 
 \alpha \int_{\partial T} \{ p \} \, v_n \, ds +
@@ -548,7 +546,7 @@ b(p,v) = \sum_{T}
 <p>with the normal-jump <span class="math notranslate nohighlight">\([v_n] := v_l n_l + v_r n_r\)</span>. If we choose <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, then the boundary terms cancel for normal-continuous <span class="math notranslate nohighlight">\(v \)</span>, even for discontinuous test-functions <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p>Literature: <em>Hesthaven+Warbuton</em>: Nodal Discontinuous Galerkin Methods</p>
 <section id="testing-the-differential-operators">
-<h2>Testing the differential operators<a class="headerlink" href="#testing-the-differential-operators" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">55.1. </span>Testing the differential operators<a class="headerlink" href="#testing-the-differential-operators" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
@@ -601,7 +599,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "707050b43f9e40e7aa12c2f37ef3436f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "de1753c48e8c43f094a8c99d92c35769"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "53dca9a56c25459f92de5b2cc5f2aab0"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7fb01c419b9840b0b64c4f7fad9f8e94"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -616,11 +614,11 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3da4fcca2b3e4127969e869c46a6254c"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0b645ff1efc645caafb03f1851cd392c"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
-<h2>Efficient implementation:<a class="headerlink" href="#efficient-implementation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">55.2. </span>Efficient implementation:<a class="headerlink" href="#efficient-implementation" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>due to orthogonal basis on the reference element, mass-matrices a diagonal, FESpace provides efficient operator for <span class="math notranslate nohighlight">\(M^{-1}\)</span>. They are not diagonal anymore if elements are curved, or for non-constant coefficients. Efficient inverse anyway.</p></li>
 <li><p>due to Piola-mapping of the vector-variable, element matrices are the same for all elements, and need to be stored just for the reference element (<span class="math notranslate nohighlight">\(F\)</span> the Jacobian, and <span class="math notranslate nohighlight">\(J = \det F\)</span>):
@@ -631,7 +629,7 @@ $<span class="math notranslate nohighlight">\(
 <p>Thus, the huge memory requirement for storing matrices is completely avoided. On highly parallel processors the matrix-free version gets faster and faster in comparison to matrix-based implementations, since more and more computations can be done per memory-transfer.</p>
 </section>
 <section id="solving-the-wave-equation">
-<h2>Solving the wave equation:<a class="headerlink" href="#solving-the-wave-equation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">55.3. </span>Solving the wave equation:<a class="headerlink" href="#solving-the-wave-equation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
@@ -670,7 +668,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e35eb870e2e3420abdf96e34f03157ca"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "653a9cf424c74af991eae0758391d2f4"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -711,7 +709,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "296e4a818c574c2ebb6d49e6fe5a75f1"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cf8ed4004ba84bb4a36190afad6c863e"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -806,7 +804,7 @@ SumMatrix, h = 1727565, w = 575855
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "13834f57fd4a4d17a706c8241ddeb6f7"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "45984c49d1af46ca8134f45cc2f1fa53"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -824,9 +822,8 @@ SumMatrix, h = 1727565, w = 575855
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="eigenvalues-of-the-discretized-laplace-operator">
-<h1>Eigenvalues of the discretized Laplace-operator<a class="headerlink" href="#eigenvalues-of-the-discretized-laplace-operator" title="Link to this heading">#</a></h1>
+<section id="eigenvalues-of-the-discretized-laplace-operator">
+<h2><span class="section-number">55.4. </span>Eigenvalues of the discretized Laplace-operator<a class="headerlink" href="#eigenvalues-of-the-discretized-laplace-operator" title="Link to this heading">#</a></h2>
 <p>Combining operators we obtain a discretization for the Laplace-operator:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -893,14 +890,22 @@ SumMatrix, h = 1727565, w = 575855
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## </span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="exercise">
-<h1>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h1>
+<section id="exercise">
+<h2><span class="section-number">55.5. </span>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>check conservation of energy over time</p></li>
 <li><p>design some wave-guide: <br>
 A thin strip with (e.g. 2-times) higher refraction index, i.e. the coefficient in the coefficient of <span class="math notranslate nohighlight">\(M_p\)</span>. Start with a peak in the wave-guide, it should travel within the strip.</p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -933,6 +938,24 @@ A thin strip with (e.g. 2-times) higher refraction index, i.e. the coefficient i
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">54. </span>Mass-lumping and Local time-stepping</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ringresonator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">56. </span>Nano-optics: A ring-resonator</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -949,16 +972,12 @@ A thin strip with (e.g. 2-times) higher refraction index, i.e. the coefficient i
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Discontinuous Galerkin for the Wave Equation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-differential-operators">Testing the differential operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-implementation">Efficient implementation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-wave-equation">Solving the wave equation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-differential-operators">55.1. Testing the differential operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-implementation">55.2. Efficient implementation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-wave-equation">55.3. Solving the wave equation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-discretized-laplace-operator">55.4. Eigenvalues of the discretized Laplace-operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">55.5. Exercise:</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-discretized-laplace-operator">Eigenvalues of the discretized Laplace-operator</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
