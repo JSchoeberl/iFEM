@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -533,16 +533,17 @@ b(p,v) = \sum_{T}
 \)</span><span class="math notranslate nohighlight">\(
 for some \)</span>\alpha \in {\mathbb R}<span class="math notranslate nohighlight">\(, the form is consistent for the gradient. If \)</span>p<span class="math notranslate nohighlight">\( is globally continuous, then \)</span>p = { p }<span class="math notranslate nohighlight">\(, and the boundary term cancels out, even for discontinuous test-functions \)</span>v$.</p>
 <p>From integration by parts we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5c307f2c-d53c-4ed7-8632-1cdaf028889d">
-<span class="eqno">(55.1)<a class="headerlink" href="#equation-5c307f2c-d53c-4ed7-8632-1cdaf028889d" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
-b(p,v) = \sum_{T}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+b(p,v) &amp;= \sum_{T}
 \Big\{ -\int_T p \operatorname{div} \, v + 
 \alpha \int_{\partial T} \{ p \} \, v_n \, ds +
-(1-\alpha) \int_{\partial T}  p  v_n  \, ds \Big\} = 
+(1-\alpha) \int_{\partial T}  p  v_n  \, ds \Big\}  \\
+&amp;= 
 \Big\{ -\int_T p \operatorname{div} \, v + 
 \alpha \int_{\partial T} p  \, [ v_n ] \, ds +
 (1-\alpha) \int_{\partial T}  p  v_n  \, ds \Big\},
-\end{eqnarray}\]</div>
+\end{align*}\]</div>
 <p>with the normal-jump <span class="math notranslate nohighlight">\([v_n] := v_l n_l + v_r n_r\)</span>. If we choose <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, then the boundary terms cancel for normal-continuous <span class="math notranslate nohighlight">\(v \)</span>, even for discontinuous test-functions <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p>Literature: <em>Hesthaven+Warbuton</em>: Nodal Discontinuous Galerkin Methods</p>
 <section id="testing-the-differential-operators">
@@ -599,7 +600,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "53dca9a56c25459f92de5b2cc5f2aab0"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7fb01c419b9840b0b64c4f7fad9f8e94"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c2a81dbb764f47988c87549b1504b366"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0430e82996574d9ea3da771971d810a3"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -614,7 +615,7 @@ b(p,v) = \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0b645ff1efc645caafb03f1851cd392c"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f596bae27b95454b875811e64e8d576e"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
@@ -638,7 +639,7 @@ $<span class="math notranslate nohighlight">\(
 <span class="kn">from</span> <span class="nn">ngsolve.webgui</span> <span class="kn">import</span> <span class="n">Draw</span>
 <span class="kn">from</span> <span class="nn">netgen.webgui</span> <span class="kn">import</span> <span class="n">Draw</span> <span class="k">as</span> <span class="n">DrawGeo</span>
 
-<span class="n">dim</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="k">if</span> <span class="n">dim</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
     <span class="n">rect</span> <span class="o">=</span> <span class="n">MoveTo</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">Face</span><span class="p">()</span>
@@ -646,18 +647,13 @@ $<span class="math notranslate nohighlight">\(
     <span class="n">shape</span> <span class="o">=</span> <span class="n">rect</span><span class="o">-</span><span class="n">circ</span>
     <span class="n">DrawGeo</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">OCCGeometry</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="mf">0.02</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mf">0.05</span>
 
 <span class="k">else</span><span class="p">:</span>
     <span class="n">box</span> <span class="o">=</span> <span class="n">Box</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
     <span class="n">sp</span> <span class="o">=</span> <span class="n">Sphere</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">0.2</span><span class="p">)</span>
     <span class="n">shape</span> <span class="o">=</span> <span class="n">box</span><span class="o">-</span><span class="n">sp</span>
     <span class="n">geo</span> <span class="o">=</span> <span class="n">OCCGeometry</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
-    <span class="c1"># from netgen.csg import *</span>
-    <span class="c1"># geo = CSGeometry()</span>
-    <span class="c1"># box = OrthoBrick (Pnt(-1,-1,-1), Pnt(1,1,0))</span>
-    <span class="c1"># hole = Sphere( Pnt(0.5, 0, 0), 0.2 )</span>
-    <span class="c1"># geo.Add ( (box-hole).bc(&quot;outer&quot;))</span>
     <span class="n">h</span> <span class="o">=</span> <span class="mf">0.1</span>
     
     
@@ -668,7 +664,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "653a9cf424c74af991eae0758391d2f4"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3bcaac1aec42447fb84f5c6bde5ebbef"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1e39683642314c29bcafc1744bf85c30"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -693,7 +689,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ndof_p =  575855 + 521910 , ndof_u = 1727565
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ndof_p =  50835 + 25880 , ndof_u = 101670
 </pre></div>
 </div>
 </div>
@@ -709,7 +705,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cf8ed4004ba84bb4a36190afad6c863e"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b79bda515148436ea0d2254d96099c13"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -758,9 +754,9 @@ Print base-matrix
 Scale b = 1
 Print base-matrix
 
-SumMatrix, h = 1727565, w = 575855
-  ConstantEBEMatrix (bs = 105x35), h = 1727565, w = 575855
-  ConstantEBEMatrix (bs = 105x35), h = 1727565, w = 575855
+SumMatrix, h = 101670, w = 50835
+  ConstantEBEMatrix (bs = 30x15), h = 101670, w = 50835
+  ConstantEBEMatrix (bs = 30x15), h = 101670, w = 50835
 </pre></div>
 </div>
 </div>
@@ -780,7 +776,7 @@ SumMatrix, h = 1727565, w = 575855
 <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="n">scene</span> <span class="o">=</span> <span class="n">Draw</span> <span class="p">(</span><span class="n">gfp</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="n">Draw</span> <span class="p">(</span><span class="n">gfp</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">deformation</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">scene</span> <span class="o">=</span> <span class="n">Draw</span> <span class="p">(</span><span class="n">gftr</span><span class="p">,</span> <span class="n">draw_vol</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
 
@@ -804,17 +800,58 @@ SumMatrix, h = 1727565, w = 575855
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "45984c49d1af46ca8134f45cc2f1fa53"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.001
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1232f3baca374b34b8991e963090f38a"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">with</span> <span class="n">TaskManager</span><span class="p">():</span> 
-<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">tend</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">+</span><span class="n">dt</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">invmassu</span> <span class="o">@</span> <span class="n">B</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">24</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">gftr</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">traceop</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
+<span class="ne">---&gt; </span><span class="mi">24</span> <span class="n">scene</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:234,</span> in <span class="ni">WebGLScene.Redraw</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span>     <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">new_scene</span><span class="o">.</span><span class="n">args</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">new_scene</span><span class="o">.</span><span class="n">kwargs</span>
+<span class="ne">--&gt; </span><span class="mi">234</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/webgui_jupyter_widgets/widget.py:81,</span> in <span class="ni">BaseWebGuiScene.Redraw</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">def</span> <span class="nf">Redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span>
+<span class="ne">---&gt; </span><span class="mi">81</span>     <span class="bp">self</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetData</span><span class="p">(</span><span class="n">set_minmax</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:241,</span> in <span class="ni">WebGLScene.GetData</span><span class="nt">(self, set_minmax)</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="n">d</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_registered_draw_types</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">241</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">_registered_draw_types</span><span class="p">[</span><span class="n">typ</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="kn">import</span> <span class="nn">inspect</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/ngsolve/webgui.py:84,</span> in <span class="ni">GetData</span><span class="nt">(obj, args, kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span> <span class="k">if</span> <span class="s1">&#39;intpoints&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;intpoints&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">---&gt; </span><span class="mi">84</span> <span class="n">d</span> <span class="o">=</span> <span class="n">BuildRenderData</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cf</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">],</span> <span class="n">draw_surf</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;draw_surf&#39;</span><span class="p">],</span> <span class="n">draw_vol</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;draw_vol&#39;</span><span class="p">],</span> <span class="n">intpoints</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;intpoints&#39;</span><span class="p">],</span> <span class="n">deformation</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;deformation&#39;</span><span class="p">],</span> <span class="n">regions</span><span class="o">=</span><span class="n">regions</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">],</span> <span class="n">nodal_p1</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nodal_p1&#39;</span><span class="p">],</span> <span class="n">settings</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;settings&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cf</span><span class="p">,</span> <span class="n">ngs</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">vecs</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="c1"># multidim gridfunction - generate data for each component</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span>     <span class="n">gf</span> <span class="o">=</span> <span class="n">ngs</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/ngsolve/webgui.py:324,</span> in <span class="ni">BuildRenderData</span><span class="nt">(mesh, func, order, draw_surf, draw_vol, intpoints, deformation, regions, objects, nodal_p1, encoding, settings)</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span> <span class="n">timer2list</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>        
+<span class="g g-Whitespace">    </span><span class="mi">323</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">og</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">324</span>     <span class="n">Bezier_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">BezierPnts</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span> <span class="n">timer2list</span><span class="o">.</span><span class="n">Stop</span><span class="p">()</span>        
+<span class="g g-Whitespace">    </span><span class="mi">327</span> <span class="k">if</span> <span class="n">func2</span> <span class="ow">and</span> <span class="n">draw_surf</span><span class="p">:</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/ngsolve/webgui.py:183,</span> in <span class="ni">BuildRenderData.&lt;locals&gt;.encode</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">183</span>     <span class="k">return</span> <span class="n">encodeData</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:17,</span> in <span class="ni">encodeData</span><span class="nt">(data, dtype, encoding)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64encode</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">dtype</span>
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="k">if</span> <span class="n">encoding</span><span class="o">==</span><span class="s1">&#39;b64&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="k">return</span> <span class="n">b64encode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -886,13 +923,6 @@ SumMatrix, h = 1727565, w = 575855
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span> <span class="p">(</span><span class="n">PINVIT</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## </span>
 </pre></div>
 </div>
 </div>

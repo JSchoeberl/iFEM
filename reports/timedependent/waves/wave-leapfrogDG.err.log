@@ -37,7 +37,7 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['gfp.Interpolate( exp(-100*(x**2+y**2+z**2)))', 'gfu.vec[:] = 0', '', 'if dim == 2:', '    scene = Draw (gfp, order=3);']
+['gfp.Interpolate( exp(-100*(x**2+y**2+z**2)))', 'gfu.vec[:] = 0', '', 'if dim == 2:', '    scene = Draw (gfp, order=3, deformation=True);']
 ...
 ['        cnt = cnt+1', '        if cnt%10 == 0:', '            if dim == 3:', '                gftr.vec.data = traceop * gfp.vec', '            scene.Redraw()']
 -------------------
