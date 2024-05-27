@@ -1,0 +1,843 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>56. Structural mechanics &#8212; Interactive Finite Elements</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'plates_shells/structural';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="57. Kirchhoff plate equation" href="1_hhj.html" />
+    <link rel="prev" title="55. Linearized elasticity" href="../elasticity/linearized_elasticity.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-light" alt="Interactive Finite Elements - Home"/>
+    <script>document.write(`<img src="../_static/ASC_Logo_transparent_300ppi_RGB.png" class="logo__image only-dark" alt="Interactive Finite Elements - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    An Interactive Introduction to the Finite Element Method
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Galerkin Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../primal/first_example.html">1. Solving the Poisson Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/boundary_conditions.html">2. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/subdomains.html">3. Variable Coefficients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/solvers.html">4. Iterative Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/elasticity3D.html">5. 3D Solid Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primal/exercises.html">6. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Abstract Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/BasicProperties.html">7. Basic properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/subspaceprojection.html">8. Projection onto subspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/RieszRepresentation.html">9. Riesz representation theorem and symmetric variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/Coercive.html">10. Coercive variational problems and their approximation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/infsup.html">11. Inf-sup stable variational problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../abstracttheory/exercises.html">12. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sobolev Spaces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/GeneralizedDerivatives.html">13. Generalized derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/SobolevSpaces.html">14. Sobolev spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/Traces.html">15. Trace theorems and their applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/equivalentnorms.html">16. Equivalent norms on <span class="math notranslate nohighlight">\(H^1\)</span> and on sub-spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/preciseweak.html">17. The weak formulation of the Poisson equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/experiments.html">18. Experiments with norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sobolevspaces/exercises.html">19. Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Element Method</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../FEM/finiteelements.html">20. Finite Element Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/myFiniteElement.html">21. Implementation of Finite Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/systemassembling.html">22. Finite element system assembling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/myassembling.html">23. Implement our own system assembling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/erroranalysis.html">24. Finite element error analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FEM/nonconforming.html">25. Non-conforming Finite Element Methods</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">A posteriori error estimates</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/aposteriori.html">26. A posteriori error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/residualEE.html">27. The residual error estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/goaldriven.html">28. Goal driven error estimates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aposteriori/equilibrated.html">29. Equilibrated Residual Error Estimates</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">High Order Finite Elements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pversion/hpfem.html">30. hp - Finite Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pversion/myhighorder.html">31. Implementation of High Order Finite Elements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Finite Element Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mixed/stokes.html">32. Stokes Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/boundary.html">33. Boundary Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/secondorder.html">34. Mixed Methods for second order equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstract.html">35. Abstract Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/abstractfem.html">36. Abstract theory for mixed finite element methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mixed/pardep.html">37. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discontinuous Galerkin Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../DG/stationary.html">38. Stationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/instationary.html">39. Instationary Transport Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/Nitsche.html">40. Nitsche’s Method for boundary and interface conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic_stdDG.html">41. DG - Methods for elliptic problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/elliptic.html">42. Hybrid DG for elliptic equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/splitting.html">43. Splitting Methods for the time-dependent convection diffusion equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/fourthorder.html">44. Fourth Order Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DG/stokes.html">45. H(div)-conforming Stokes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed Methods for Second Order Equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/framework.html">46. Application of the abstract theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hdiv.html">47. The function space <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/finiteelements.html">48. Finite Elements in <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysis.html">49. Finite Element Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/erroranalysisl2h1.html">50. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../secondorder/hybridization.html">51. Hybridization Techniques</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Elasticity</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../elasticity/modeling.html">52. Elasticity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elasticity/Newton.html">53. Newton’s method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elasticity/elasticity2D.html">54. Nonlinear Elasticity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elasticity/linearized_elasticity.html">55. Linearized elasticity</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plates and Shells</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">56. Structural mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_hhj.html">57. Kirchhoff plate equation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="2_ReissnerMindlin.html">59. Reissner Mindlin plates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_shell.html">60. Naghdi shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_rollup.html">61. Fully nonlinear Koiter shell model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/heatequation.html">62. Heat Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/waveequation.html">63. Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/lts.html">64. Mass-lumping and Local time-stepping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/wave-leapfrogDG.html">65. Discontinuous Galerkin for the Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/ringresonator.html">66. Nano-optics: A ring-resonator</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">67. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">68. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">69. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">70. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">71. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">72. Conjugate Gradients</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">73. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">74. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">75. high order fem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">76. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">77. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">78. Exercise: Robust preconditioners</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">79. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">80. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">81. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">82. Multi-level Extension</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">83. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">84. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">85. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">86. Parameter Dependent Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">87. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">88. Traces spaces</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">90. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">91. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">92. BDDC - Preconditioner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">93. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">94. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">95. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">96. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">97. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">98. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">99. Solving Stokes in parallel</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/JSchoeberl/iFEM" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/plates_shells/structural.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Structural mechanics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="structural-mechanics">
+<h1><span class="section-number">56. </span>Structural mechanics<a class="headerlink" href="#structural-mechanics" title="Link to this heading">#</a></h1>
+<p>Many engineering applications involve thin structures (walls of a building, body of a car, …).
+On thin structures, the standard approach has a problem: One observed that the simulation
+results get worse as the thickness decreases. The explanation is that the constant in
+Korn’s inequality gets small for thin structures. To understand and overcome this problem,
+we go over to beam, plate and shell models.</p>
+<p>We consider a thin (<span class="math notranslate nohighlight">\(t \ll 1\)</span>) two-dimensional body</p>
+<div class="math notranslate nohighlight">
+\[
+\Omega = I \times (-t/2, t/2) \qquad \mbox{with} \qquad I = (0,1)
+\]</div>
+<p>The goal is to derive a system of one-dimensional equations to describe the two-dimensional
+deformation. This we obtain by a semi-discretization. Define</p>
+<div class="math notranslate nohighlight">
+\[
+\widetilde V_M = \left\{ \left(u_x(x,y) \atop u_y(x,y) \right) \in V :
+ u_x(x,y) = \sum_{i=0}^{M_x} u_x^i(x) y^i , \; u_y(x,y) = \sum_{i=0}^{M_y} u_y^i(x) y^i \right\}.
+\]</div>
+<p>This function space on <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^2\)</span> is isomorph to a one-dimensional
+function space with values in <span class="math notranslate nohighlight">\({\mathbb R}^{M_x+M_y+2}\)</span>. We perform semi-discretization
+by searching for
+<span class="math notranslate nohighlight">\(\tilde u \in \widetilde V_M\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+A(\tilde u, \tilde v) = f(\tilde v) \qquad \forall \, \tilde v \in \widetilde V_M.
+\]</div>
+<p>As <span class="math notranslate nohighlight">\(M_x, M_y \rightarrow \infty\)</span>, <span class="math notranslate nohighlight">\(\widetilde V_M \rightarrow V\)</span>, and
+we obtain convergence <span class="math notranslate nohighlight">\(\tilde u \rightarrow u\)</span>.</p>
+<p>The lowest order (qualitative) good approximating semi-discrete space is to set
+<span class="math notranslate nohighlight">\(M_x = 1\)</span> and <span class="math notranslate nohighlight">\(M_y = 0\)</span>. This is</p>
+<div class="math notranslate nohighlight">
+\[
+\widetilde V = \left\{ \left( U(x) - \beta(x) y  \atop w(x) \right) \right\}
+\]</div>
+<p>Evaluating the bilinear-form (of an isotropic material) leads to</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  A\left( \left( U - y \beta \atop w \right), \left( \tilde U - y \tilde \beta \atop \tilde w \right) \right) &amp; =  
+  (2 \mu + \lambda) t \int_0^1 U^\prime \tilde U^\prime \, dx + \\
+&amp;  (2 \mu + \lambda) \frac{t^3}{12} \int_0^1 \beta^\prime \tilde \beta^\prime + 
+  2 \mu \frac{t}{2} \int_0^1 (w^\prime - \beta) (\tilde w^\prime - \tilde \beta) \, dx
+\end{align*}\]</div>
+<p>The meaning of the three functions is as follows. The function <span class="math notranslate nohighlight">\(U(x)\)</span> is the average
+(over the cross section) longitudinal displacement, <span class="math notranslate nohighlight">\(w(x)\)</span> is the vertical displacement.
+The function <span class="math notranslate nohighlight">\(\beta\)</span> is the linearized rotation of the normal vector.</p>
+<p>We assume that the load <span class="math notranslate nohighlight">\(f(x,y)\)</span> does not depend on <span class="math notranslate nohighlight">\(y\)</span>. Then, the linear form is</p>
+<div class="math notranslate nohighlight">
+\[
+f \left( \tilde U-y \tilde  \beta \atop \tilde w \right) = 
+t \int_0^1 f_x \tilde U \, dx + t \int_0^1 f_y \tilde w \, dx
+\]</div>
+<p>The semi-discretization in this space leads to two decoupled problems. The first one
+describes the longitudinal displacement: Find <span class="math notranslate nohighlight">\(U \in H^1(I)\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+(2 \mu + \lambda) t \, \int_0^1 U^\prime \tilde U^\prime \, dx = 
+t \int_0^1 f_x \tilde U \, dx \qquad \forall \, \tilde U \in H^1(I).
+\]</div>
+<p>The small thickness parameter <span class="math notranslate nohighlight">\(t\)</span> cancels out. It is a simple second order problem
+for the longitudinal displacement.</p>
+<p>The second problems involves the 1D functions <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>: Find <span class="math notranslate nohighlight">\((w,\beta) \in V = ?\)</span>
+such that
+$<span class="math notranslate nohighlight">\(
+(2\mu+\lambda) \frac{t^3}{12} \int_0^1 \beta^\prime \tilde \beta^\prime \, dx + \mu t \int_0^1 (w^\prime - \beta) (\tilde w^\prime - \tilde \beta) \, dx = t \int_0^1 f_y \tilde w \, dx
+\qquad \forall \, (\tilde w, \tilde \beta) \in V
+\)</span><span class="math notranslate nohighlight">\(
+The first term models bending. The derivative of the rotation \)</span>\beta<span class="math notranslate nohighlight">\( is (approximative)
+the curvature of the deformed beam. The second one is called the shear term: For thin
+beams, the angle \)</span>\beta \approx \tan \beta<span class="math notranslate nohighlight">\( is approximatively \)</span>w^\prime<span class="math notranslate nohighlight">\(. This term
+measures the difference \)</span>w^\prime - \beta$.
+This second problem is called the Timoshenko beam model.</p>
+<p>For simplification, we skip the parameters <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span>, and the constants.
+We rescale the equation by dividing by <span class="math notranslate nohighlight">\(t^3\)</span>: Find <span class="math notranslate nohighlight">\((w,\beta)\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\int \beta^\prime \tilde \beta^\prime \, dx + \frac{1}{t^2} \int (w^\prime - \beta) (\tilde w^\prime - \tilde \beta) \, dx = \int t^{-2} f \tilde w \, dx.
+\]</div>
+<p>This scaling in <span class="math notranslate nohighlight">\(t\)</span> is natural. With <span class="math notranslate nohighlight">\(t \rightarrow 0\)</span>, and a force density <span class="math notranslate nohighlight">\(f \sim t^2\)</span>,
+the deformation converges to a limit. We define the scaled force density
+$<span class="math notranslate nohighlight">\(
+\tilde f = t^{-2} f
+\)</span>$</p>
+<p>In principle, this is a well posed problem in <span class="math notranslate nohighlight">\([H^1]^2\)</span>:</p>
+<blockquote>
+<div><p><strong>Lemma:</strong> Assume boundary conditions <span class="math notranslate nohighlight">\(w(0) = \beta(0) = 0\)</span>. The
+bilinear-form <span class="math notranslate nohighlight">\(A((w,\beta), (\tilde w, \tilde \beta))\)</span> of the Timoshenko model is
+continuous</p>
+<div class="math notranslate nohighlight">
+\[
+  A( (w,\beta), (\tilde w, \tilde \beta)) \preceq t^{-2} 
+  ( \| w \|_{H^1} + \| \beta \|_{H^1} ) ( \| \tilde w \|_{H^1} + \| \tilde \beta \|_{H^1} )
+  \]</div>
+<p>and coercive
+$<span class="math notranslate nohighlight">\(
+  A ( (w, \beta), (w, \beta) ) \succeq \| w \|_{H^1}^2 + \| \beta \|_{H^1}^2
+  \)</span>$</p>
+</div></blockquote>
+<p><em>Proof:</em> exercise</p>
+<p>As the thickness <span class="math notranslate nohighlight">\(t\)</span> becomes small, the ratio of the continuity and coercivity
+bounds becomes large ! This ratio occurs in the error estimates, and indicates
+problems. Really, numerical computations show bad convergence for small thickness <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>The large coefficient in front of the term <span class="math notranslate nohighlight">\(\int (w^\prime - \beta) (\tilde w^\prime - \tilde \beta)\)</span> forces the difference <span class="math notranslate nohighlight">\(w^\prime - \beta\)</span> to be small. If we use piece-wise linear
+finite elements for <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>, then <span class="math notranslate nohighlight">\(w_h^\prime\)</span> is a piece-wise constant function,
+and <span class="math notranslate nohighlight">\(\beta_h\)</span> is continuous. If <span class="math notranslate nohighlight">\(w_h^\prime - \beta_h \approx 0\)</span>, then <span class="math notranslate nohighlight">\(\beta_h\)</span> must
+be a constant function !</p>
+<p>The idea is to weaken the term with the large coefficient. We plug in the
+projection <span class="math notranslate nohighlight">\(P^0\)</span> into piece-wise constant functions: Find <span class="math notranslate nohighlight">\((w_h, \beta_h)\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\int \beta_h^\prime \tilde \beta_h^\prime \, dx + \frac{1}{t^2} \int P^0 (w_h^\prime - \beta_h) \, P^0 (\tilde w_h^\prime - \tilde \beta_h) \, dx = \int \tilde f \tilde w_h \, dx.
+\]</div>
+<p>Now, there are finite element functions <span class="math notranslate nohighlight">\(w_h\)</span> and <span class="math notranslate nohighlight">\(\beta_h\)</span> fulfilling <span class="math notranslate nohighlight">\(P^0 (w_h^\prime - \beta_h) \approx 0\)</span>.</p>
+<p>In the engineering community there are many such tricks to modify the bilinear-form.
+Our goal is to understand and analyze the obtained method.</p>
+<p>Again, the key is a mixed method. Start from the bilinear-form and introduce a
+new variable</p>
+<div class="math notranslate nohighlight">
+\[
+p = t^{-2} (w^\prime - \beta).
+\]</div>
+<p>Using the new variable in the bilinear-form, and formulating the definition
+of <span class="math notranslate nohighlight">\(p\)</span> in weak form
+leads to the big system: Find <span class="math notranslate nohighlight">\((w,\beta) \in V\)</span> and <span class="math notranslate nohighlight">\(p \in Q\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccccll}
+\int \beta^\prime \tilde \beta^\prime \, dx &amp; + &amp; \int (\tilde
+                                                  w^\prime - \tilde \beta) p \, dx &amp; = &amp;
+\int \tilde f \tilde w \, dx \qquad &amp; \forall \, (\tilde w, \tilde \beta) \in V  \\[0.5em]
+\int (w^\prime - \beta) \tilde p \, dx &amp; - &amp; t^2 \int p \, \tilde p \, dx &amp; = &amp; 0 &amp; 
+\forall \, \tilde p \in Q.
+\end{array}
+\end{split}\]</div>
+<p>This is a mixed formulation of the abstract structure: Find <span class="math notranslate nohighlight">\(u \in V\)</span> and <span class="math notranslate nohighlight">\(p \in Q\)</span> such
+that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-308f61e1-2955-4f6a-8736-862bf32992b6">
+<span class="eqno">(56.1)<a class="headerlink" href="#equation-308f61e1-2955-4f6a-8736-862bf32992b6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\begin{array}{ccccll}
+a(u,v) &amp; + &amp; b(v,p) &amp; = &amp; f(v) \quad &amp; \forall \, v \in V, \\[0.2em]
+b(u,q) &amp; - &amp; t^2 c(p,q) &amp; = &amp; 0 \quad &amp; \forall \, q \in Q.
+\end{array}
+\end{equation}\]</div>
+<p>The big advantage now is that the parameter <span class="math notranslate nohighlight">\(t\)</span> does not occur in the denominator,
+and the limit <span class="math notranslate nohighlight">\(t \rightarrow 0\)</span> can be performed.</p>
+<p>This is a family of well posed problems:</p>
+<blockquote>
+<div><p><strong>Theorem: extended Brezzi:</strong> Assume that the assumptions of Brezzi’s Theorem
+are true. Furthermore, assume that</p>
+<div class="math notranslate nohighlight">
+\[
+  a(u,u) \geq 0,
+  \]</div>
+<p>and <span class="math notranslate nohighlight">\(c(p,q)\)</span> is a symmetric, continuous and non-negative bilinear-form.
+Then, the big form
+$<span class="math notranslate nohighlight">\(
+  B((u,p),(v,q)) = a(u,v) + b(u,q) + b(v,p) - t^2 \, c(p,q)
+  \)</span><span class="math notranslate nohighlight">\(
+is continuous and stable uniformly in \)</span>t \in [0,1]$.</p>
+</div></blockquote>
+<p>We check Brezzi’s condition for the beam model. The spaces are <span class="math notranslate nohighlight">\(V = [H^1]^2\)</span>
+and <span class="math notranslate nohighlight">\(Q = L_2\)</span>. Continuity of the bilinear-forms <span class="math notranslate nohighlight">\(a(.,.)\)</span>, <span class="math notranslate nohighlight">\(b(.,.)\)</span>, and <span class="math notranslate nohighlight">\(c(.,.)\)</span>
+is clear. The LBB condition is</p>
+<div class="math notranslate nohighlight">
+\[
+\sup_{w,\beta} \frac{ \int (w^\prime - \beta) q \, dx } { \| w \|_{H^1} + \| \beta \|_{H^1} }
+\succeq \| q \|_{L_2}
+\]</div>
+<p>We construct a candidate for the supremum:</p>
+<div class="math notranslate nohighlight">
+\[
+w(x) = \int_0^x q(s) \, ds \qquad \mbox{and} \qquad \beta = 0
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{ \int (w^\prime - \beta) q \, dx } { \| w \|_{H^1} + \| \beta \|_{H^1} }
+\succeq \frac{ \int q^2 \, dx } { \| w^\prime \| } = \| q \|_{L_2}
+\]</div>
+<p>Finally, we have to check kernel coercivity. The kernel is</p>
+<div class="math notranslate nohighlight">
+\[
+V_0 = \{ (w, \beta) : \beta = w^\prime \}.
+\]</div>
+<p>On <span class="math notranslate nohighlight">\(V_0\)</span> there holds</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\| w \|_{H^1}^1 + \| \beta \|_{H^1}^2 &amp; \preceq \| w^\prime \|^2 + \| \beta \|_{H^1}^2 
+= \| \beta \|_{L_2}^2 + \| \beta \|_{H^1}^2 \\
+&amp; \preceq \| \beta^\prime \|_{L_2} 
+=  a((w,\beta), (w, \beta))
+\end{align*}\]</div>
+<p>The lowest order finite element discretization of the mixed system is to choose
+continuous and piece-wise linear elements for <span class="math notranslate nohighlight">\(w_h\)</span> and <span class="math notranslate nohighlight">\(\beta_h\)</span>, and piecewise
+constants for <span class="math notranslate nohighlight">\(p_h\)</span>. The discrete problem reads as: Find <span class="math notranslate nohighlight">\((w_h, \beta_h) \in V_h\)</span>
+and <span class="math notranslate nohighlight">\(p_h \in Q_h\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccccll}
+\int \beta_h^\prime \tilde \beta_h^\prime \, dx &amp; + &amp; \int (\tilde w_h^\prime - \beta_h) p_h \, dx &amp; = &amp;
+\int \tilde f \tilde w_h \, dx \qquad &amp; \forall \, (w_h,\beta_h) \in V_h  \\[0.5em]
+\int (w_h^\prime - \beta_h) \tilde p_h \, dx &amp; - &amp; t^2 \int p_h \, \tilde p_h \, dx &amp; = &amp; 0 &amp; 
+\forall \, \tilde p_h \in Q_h.
+\end{array}
+\end{split}\]</div>
+<p>This is a inf-sup stable system on the discrete spaces <span class="math notranslate nohighlight">\(V_h\)</span> and <span class="math notranslate nohighlight">\(Q_h\)</span>. This means,
+we obtain the <em>uniform</em> a priori error estimate</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\| (w - w_h, \beta - \beta_h) \|_{H_1} + \| p - p_h \|_{L_2} &amp; \preceq  
+\inf_{\tilde w_h, \tilde \beta_h, \tilde p_h}
+\| (w - \tilde w_h, \beta - \tilde \beta_h) \|_{H_1} + \| p - \tilde p_h \|_{L_2}  \\
+&amp; \preceq h \left\{ \| w \|_{H^2} + \| \beta \|_{H^2} + \| p \|_{H^1} \right\}
+\end{align*}\]</div>
+<p>The required regularity is realistic.</p>
+<p>The second equation of the discrete mixed system states that</p>
+<div class="math notranslate nohighlight">
+\[
+p_h = t^{-2} P^0 (w_h^\prime - \beta_h)
+\]</div>
+<p>If we insert this observation into the first row, we obtain exactly the discretization
+method (\ref{equ_timo_h}) ! Here, the mixed formulation is a tool for analyzing a
+non-standard (primal) discretization method. Both formulations are equivalent. They produce
+exactly the same finite element functions. The mixed formulation is the key for the
+error estimates.</p>
+<p>The two pictures below show simulations of a Timoshenko beam. It is fixed at the
+left end, the load density is constant one. We compute the vertical deformation <span class="math notranslate nohighlight">\(w(1)\)</span>
+at the right boundary. We vary the thickness <span class="math notranslate nohighlight">\(t\)</span> between <span class="math notranslate nohighlight">\(10^{-1}\)</span> and <span class="math notranslate nohighlight">\(10^{-3}\)</span>.
+The left pictures shows the result of a standard conforming method, the right picture
+shows the results of the method using the projection. As the thickness decreases, the
+standard method becomes worse. Unless <span class="math notranslate nohighlight">\(h\)</span> is less than <span class="math notranslate nohighlight">\(t\)</span>, the results are completely
+wrong ! The improved method converges uniformly well with respect to <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<p>\begin{center}
+\includegraphics[width=5cm]{pictures/timowntbad}
+\hspace{2cm}
+\includegraphics[width=5cm]{pictures/timowntgood}
+\end{center}</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./plates_shells"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../elasticity/linearized_elasticity.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">55. </span>Linearized elasticity</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="1_hhj.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">57. </span>Kirchhoff plate equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By J. Schöberl
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

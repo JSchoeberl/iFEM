@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>55. Discontinuous Galerkin for the Wave Equation &#8212; Interactive Finite Elements</title>
+    <title>64. Discontinuous Galerkin for the Wave Equation &#8212; Interactive Finite Elements</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'timedependent/waves/wave-leapfrogDG';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="56. Nano-optics: A ring-resonator" href="ringresonator.html" />
-    <link rel="prev" title="54. Mass-lumping and Local time-stepping" href="lts.html" />
+    <link rel="next" title="65. Nano-optics: A ring-resonator" href="ringresonator.html" />
+    <link rel="prev" title="63. Mass-lumping and Local time-stepping" href="lts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -256,64 +256,79 @@
 <li class="toctree-l1"><a class="reference internal" href="../../secondorder/erroranalysisl2h1.html">50. Error Analysis in <span class="math notranslate nohighlight">\(L_2 \times H^1\)</span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../secondorder/hybridization.html">51. Hybridization Techniques</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Elasticity</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../elasticity/modeling.html">52. Elasticity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elasticity/Newton.html">53. Newton’s method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elasticity/elasticity2D.html">54. Nonlinear Elasticity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elasticity/linearized_elasticity.html">55. Linearized elasticity</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plates and Shells</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../plates_shells/structural.html">56. Structural mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plates_shells/1_hhj.html">57. Kirchhoff plate equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plates_shells/2_ReissnerMindlin.html">58. Reissner Mindlin plates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plates_shells/3_shell.html">59. Naghdi shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plates_shells/4_rollup.html">60. Fully nonlinear Koiter shell model</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../intro/heatequation.html">52. Heat Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/waveequation.html">53. Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lts.html">54. Mass-lumping and Local time-stepping</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">55. Discontinuous Galerkin for the Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ringresonator.html">56. Nano-optics: A ring-resonator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/heatequation.html">61. Heat Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/waveequation.html">62. Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lts.html">63. Mass-lumping and Local time-stepping</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">64. Discontinuous Galerkin for the Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ringresonator.html">65. Nano-optics: A ring-resonator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/simple.html">57. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/Richardson.html">58. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/gradientmethod.html">59. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/preconditioning.html">60. Preconditioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/Chebyshev.html">61. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/conjugategradients.html">62. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/simple.html">66. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/Richardson.html">67. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/gradientmethod.html">68. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/preconditioning.html">69. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/Chebyshev.html">70. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/conjugategradients.html">71. Conjugate Gradients</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/asm.html">63. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/examples.html">64. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/pversion.html">65. high order fem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/minimaldd.html">66. Domain Decomposition with minimal overlap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/overlapping.html">67. Overlapping Domain Decomposition Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/exercise.html">68. Exercise: Robust preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/asm.html">72. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/examples.html">73. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/pversion.html">74. high order fem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/minimaldd.html">75. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/overlapping.html">76. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/exercise.html">77. Exercise: Robust preconditioners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/algorithms.html">69. Multigrid and Multilevel Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisML.html">70. Analysis of the multi-level preconditioner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisMG.html">71. Analysis of the Multigrid Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/multilevel-extension.html">72. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/algorithms.html">78. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisML.html">79. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisMG.html">80. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/multilevel-extension.html">81. Multi-level Extension</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/structure.html">73. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/bramblepasciak.html">74. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/fewconstraints.html">75. A Small Number of Constraints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/parameterdependent.html">76. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/structure.html">82. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/bramblepasciak.html">83. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/fewconstraints.html">84. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/parameterdependent.html">85. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">77. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">78. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">86. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">87. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">80. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">81. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">82. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">89. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">90. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">91. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">83. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">84. Distributed Meshes and Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">85. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">86. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">87. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">88. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">89. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">92. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">93. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">94. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">95. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">96. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">97. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">98. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -477,11 +492,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-differential-operators">55.1. Testing the differential operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-implementation">55.2. Efficient implementation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-wave-equation">55.3. Solving the wave equation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-discretized-laplace-operator">55.4. Eigenvalues of the discretized Laplace-operator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">55.5. Exercise:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-differential-operators">64.1. Testing the differential operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-implementation">64.2. Efficient implementation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-wave-equation">64.3. Solving the wave equation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-discretized-laplace-operator">64.4. Eigenvalues of the discretized Laplace-operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">64.5. Exercise:</a></li>
 </ul>
             </nav>
         </div>
@@ -494,7 +509,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="discontinuous-galerkin-for-the-wave-equation">
-<h1><span class="section-number">55. </span>Discontinuous Galerkin for the Wave Equation<a class="headerlink" href="#discontinuous-galerkin-for-the-wave-equation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">64. </span>Discontinuous Galerkin for the Wave Equation<a class="headerlink" href="#discontinuous-galerkin-for-the-wave-equation" title="Link to this heading">#</a></h1>
 <p>We solve the first order wave equation by a matrix-free explicit DG method:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -547,7 +562,7 @@ b(p,v) &amp;= \sum_{T}
 <p>with the normal-jump <span class="math notranslate nohighlight">\([v_n] := v_l n_l + v_r n_r\)</span>. If we choose <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, then the boundary terms cancel for normal-continuous <span class="math notranslate nohighlight">\(v \)</span>, even for discontinuous test-functions <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p>Literature: <em>Hesthaven+Warbuton</em>: Nodal Discontinuous Galerkin Methods</p>
 <section id="testing-the-differential-operators">
-<h2><span class="section-number">55.1. </span>Testing the differential operators<a class="headerlink" href="#testing-the-differential-operators" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.1. </span>Testing the differential operators<a class="headerlink" href="#testing-the-differential-operators" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
@@ -600,7 +615,7 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c2a81dbb764f47988c87549b1504b366"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0430e82996574d9ea3da771971d810a3"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cd0cf2ff3cd8455f8e4fd3f2d1fddad4"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a979947c012045e38b8f79fa814bbd4d"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -615,11 +630,11 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f596bae27b95454b875811e64e8d576e"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "bedaa81a05cd4f9e9f5dd1b32cbfc0d4"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
-<h2><span class="section-number">55.2. </span>Efficient implementation:<a class="headerlink" href="#efficient-implementation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.2. </span>Efficient implementation:<a class="headerlink" href="#efficient-implementation" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>due to orthogonal basis on the reference element, mass-matrices a diagonal, FESpace provides efficient operator for <span class="math notranslate nohighlight">\(M^{-1}\)</span>. They are not diagonal anymore if elements are curved, or for non-constant coefficients. Efficient inverse anyway.</p></li>
 <li><p>due to Piola-mapping of the vector-variable, element matrices are the same for all elements, and need to be stored just for the reference element (<span class="math notranslate nohighlight">\(F\)</span> the Jacobian, and <span class="math notranslate nohighlight">\(J = \det F\)</span>):
@@ -630,7 +645,7 @@ $<span class="math notranslate nohighlight">\(
 <p>Thus, the huge memory requirement for storing matrices is completely avoided. On highly parallel processors the matrix-free version gets faster and faster in comparison to matrix-based implementations, since more and more computations can be done per memory-transfer.</p>
 </section>
 <section id="solving-the-wave-equation">
-<h2><span class="section-number">55.3. </span>Solving the wave equation:<a class="headerlink" href="#solving-the-wave-equation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.3. </span>Solving the wave equation:<a class="headerlink" href="#solving-the-wave-equation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
@@ -664,7 +679,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3bcaac1aec42447fb84f5c6bde5ebbef"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1e39683642314c29bcafc1744bf85c30"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8e8a41cbf90941fbbacbe5c9a3282af6"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d864d6a10f86487099ae740d22e8b7df"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -705,7 +720,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b79bda515148436ea0d2254d96099c13"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9544c0dab2d4423e94b38e76dce765c5"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -800,7 +815,7 @@ SumMatrix, h = 101670, w = 50835
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1232f3baca374b34b8991e963090f38a"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "4a6cde64758f47dba8f69944ce1e68fa"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -820,38 +835,131 @@ SumMatrix, h = 101670, w = 50835
 <span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span>
 <span class="ne">---&gt; </span><span class="mi">81</span>     <span class="bp">self</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetData</span><span class="p">(</span><span class="n">set_minmax</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:241,</span> in <span class="ni">WebGLScene.GetData</span><span class="nt">(self, set_minmax)</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="n">d</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_registered_draw_types</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">241</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">_registered_draw_types</span><span class="p">[</span><span class="n">typ</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="kn">import</span> <span class="nn">inspect</span>
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/traitlets/traitlets.py:716,</span> in <span class="ni">TraitType.__set__</span><span class="nt">(self, obj, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_only</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span>     <span class="k">raise</span> <span class="n">TraitError</span><span class="p">(</span><span class="s1">&#39;The &quot;</span><span class="si">%s</span><span class="s1">&quot; trait is read-only.&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">716</span> <span class="bp">self</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/ngsolve/webgui.py:84,</span> in <span class="ni">GetData</span><span class="nt">(obj, args, kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span> <span class="k">if</span> <span class="s1">&#39;intpoints&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;intpoints&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">---&gt; </span><span class="mi">84</span> <span class="n">d</span> <span class="o">=</span> <span class="n">BuildRenderData</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cf</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">],</span> <span class="n">draw_surf</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;draw_surf&#39;</span><span class="p">],</span> <span class="n">draw_vol</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;draw_vol&#39;</span><span class="p">],</span> <span class="n">intpoints</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;intpoints&#39;</span><span class="p">],</span> <span class="n">deformation</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;deformation&#39;</span><span class="p">],</span> <span class="n">regions</span><span class="o">=</span><span class="n">regions</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">],</span> <span class="n">nodal_p1</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nodal_p1&#39;</span><span class="p">],</span> <span class="n">settings</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;settings&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cf</span><span class="p">,</span> <span class="n">ngs</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">vecs</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="c1"># multidim gridfunction - generate data for each component</span>
-<span class="g g-Whitespace">     </span><span class="mi">88</span>     <span class="n">gf</span> <span class="o">=</span> <span class="n">ngs</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/traitlets/traitlets.py:706,</span> in <span class="ni">TraitType.set</span><span class="nt">(self, obj, value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span>     <span class="n">silent</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span> <span class="k">if</span> <span class="n">silent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span>     <span class="c1"># we explicitly compare silent to True just in case the equality</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="c1"># comparison above returns something other than True/False</span>
+<span class="ne">--&gt; </span><span class="mi">706</span>     <span class="n">obj</span><span class="o">.</span><span class="n">_notify_trait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">old_value</span><span class="p">,</span> <span class="n">new_value</span><span class="p">)</span>
 
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/ngsolve/webgui.py:324,</span> in <span class="ni">BuildRenderData</span><span class="nt">(mesh, func, order, draw_surf, draw_vol, intpoints, deformation, regions, objects, nodal_p1, encoding, settings)</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span> <span class="n">timer2list</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>        
-<span class="g g-Whitespace">    </span><span class="mi">323</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">og</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">324</span>     <span class="n">Bezier_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">BezierPnts</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">325</span> <span class="n">timer2list</span><span class="o">.</span><span class="n">Stop</span><span class="p">()</span>        
-<span class="g g-Whitespace">    </span><span class="mi">327</span> <span class="k">if</span> <span class="n">func2</span> <span class="ow">and</span> <span class="n">draw_surf</span><span class="p">:</span>
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/traitlets/traitlets.py:1513,</span> in <span class="ni">HasTraits._notify_trait</span><span class="nt">(self, name, old_value, new_value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1512</span> <span class="k">def</span> <span class="nf">_notify_trait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">old_value</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">new_value</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1513</span>     <span class="bp">self</span><span class="o">.</span><span class="n">notify_change</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1514</span>         <span class="n">Bunch</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1515</span>             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1516</span>             <span class="n">old</span><span class="o">=</span><span class="n">old_value</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1517</span>             <span class="n">new</span><span class="o">=</span><span class="n">new_value</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1518</span>             <span class="n">owner</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1519</span>             <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1520</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1521</span>     <span class="p">)</span>
 
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/ngsolve/webgui.py:183,</span> in <span class="ni">BuildRenderData.&lt;locals&gt;.encode</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">183</span>     <span class="k">return</span> <span class="n">encodeData</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/ipywidgets/widgets/widget.py:700,</span> in <span class="ni">Widget.notify_change</span><span class="nt">(self, change)</span>
+<span class="g g-Whitespace">    </span><span class="mi">696</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="s1">&#39;kernel&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">697</span>     <span class="c1"># Make sure this isn&#39;t information that the front-end just sent us.</span>
+<span class="g g-Whitespace">    </span><span class="mi">698</span>     <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_send_property</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">699</span>         <span class="c1"># Send new state to front-end</span>
+<span class="ne">--&gt; </span><span class="mi">700</span>         <span class="bp">self</span><span class="o">.</span><span class="n">send_state</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">notify_change</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
 
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:17,</span> in <span class="ni">encodeData</span><span class="nt">(data, dtype, encoding)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64encode</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">dtype</span>
-<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="k">if</span> <span class="n">encoding</span><span class="o">==</span><span class="s1">&#39;b64&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="k">return</span> <span class="n">b64encode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/ipywidgets/widgets/widget.py:586,</span> in <span class="ni">Widget.send_state</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">state</span><span class="p">,</span> <span class="n">buffer_paths</span><span class="p">,</span> <span class="n">buffers</span> <span class="o">=</span> <span class="n">_remove_buffers</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span> <span class="s1">&#39;buffer_paths&#39;</span><span class="p">:</span> <span class="n">buffer_paths</span><span class="p">}</span>
+<span class="ne">--&gt; </span><span class="mi">586</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">buffers</span><span class="o">=</span><span class="n">buffers</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/ipywidgets/widgets/widget.py:825,</span> in <span class="ni">Widget._send</span><span class="nt">(self, msg, buffers)</span>
+<span class="g g-Whitespace">    </span><span class="mi">823</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Sends a message to the model in the front-end.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">824</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="s2">&quot;kernel&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">True</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">825</span>     <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="n">buffers</span><span class="o">=</span><span class="n">buffers</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/comm/base_comm.py:147,</span> in <span class="ni">BaseComm.send</span><span class="nt">(self, data, metadata, buffers)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">def</span> <span class="nf">send</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">MaybeDict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">metadata</span><span class="p">:</span> <span class="n">MaybeDict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">buffers</span><span class="p">:</span> <span class="n">BuffersType</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Send a message to the frontend-side version of this comm&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">147</span>     <span class="bp">self</span><span class="o">.</span><span class="n">publish_msg</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span>         <span class="s2">&quot;comm_msg&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span>         <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span>         <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">151</span>         <span class="n">buffers</span><span class="o">=</span><span class="n">buffers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">152</span>     <span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/ipykernel/comm/comm.py:37,</span> in <span class="ni">BaseComm.publish_msg</span><span class="nt">(self, msg_type, data, metadata, buffers, **keys)</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span> <span class="o">=</span> <span class="n">Kernel</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">session</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="ne">---&gt; </span><span class="mi">37</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">iopub_socket</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="n">msg_type</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="n">content</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="n">metadata</span><span class="o">=</span><span class="n">json_clean</span><span class="p">(</span><span class="n">metadata</span><span class="p">),</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(),</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="n">ident</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="n">buffers</span><span class="o">=</span><span class="n">buffers</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_client/session.py:852,</span> in <span class="ni">Session.send</span><span class="nt">(self, stream, msg_or_type, content, parent, ident, buffers, track, header, metadata)</span>
+<span class="g g-Whitespace">    </span><span class="mi">850</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">adapt_version</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">851</span>     <span class="n">msg</span> <span class="o">=</span> <span class="n">adapt</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">adapt_version</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">852</span> <span class="n">to_send</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">ident</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">853</span> <span class="n">to_send</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">buffers</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">854</span> <span class="n">longest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">to_send</span><span class="p">])</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_client/session.py:721,</span> in <span class="ni">Session.serialize</span><span class="nt">(self, msg, ident)</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span>     <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">none</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">721</span>     <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">723</span>     <span class="c1"># content is already packed, as in a relayed message</span>
+<span class="g g-Whitespace">    </span><span class="mi">724</span>     <span class="k">pass</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_client/session.py:95,</span> in <span class="ni">json_packer</span><span class="nt">(obj)</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Convert a json object to a bytes.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>         <span class="n">obj</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>         <span class="n">default</span><span class="o">=</span><span class="n">json_default</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>         <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>         <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;surrogateescape&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="c1"># Fallback to trying to clean the json before serializing</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="n">packed</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>         <span class="n">json_clean</span><span class="p">(</span><span class="n">obj</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>         <span class="n">default</span><span class="o">=</span><span class="n">json_default</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span>         <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>         <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;surrogateescape&quot;</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py:238,</span> in <span class="ni">dumps</span><span class="nt">(obj, skipkeys, ensure_ascii, check_circular, allow_nan, cls, indent, separators, default, sort_keys, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="bp">cls</span> <span class="o">=</span> <span class="n">JSONEncoder</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>     <span class="n">skipkeys</span><span class="o">=</span><span class="n">skipkeys</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="n">ensure_ascii</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>     <span class="n">check_circular</span><span class="o">=</span><span class="n">check_circular</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="n">allow_nan</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="n">separators</span><span class="o">=</span><span class="n">separators</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="n">sort_keys</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">238</span>     <span class="o">**</span><span class="n">kw</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py:200,</span> in <span class="ni">JSONEncoder.encode</span><span class="nt">(self, o)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>         <span class="k">return</span> <span class="n">encode_basestring</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span> <span class="c1"># This doesn&#39;t pass the iterator directly to &#39;&#39;.join() because the</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="c1"># exceptions aren&#39;t as detailed.  The list call should be roughly</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="c1"># equivalent to the PySequence_Fast that &#39;&#39;.join() would do.</span>
+<span class="ne">--&gt; </span><span class="mi">200</span> <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterencode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">_one_shot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="n">chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py:258,</span> in <span class="ni">JSONEncoder.iterencode</span><span class="nt">(self, o, _one_shot)</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span>     <span class="n">_iterencode</span> <span class="o">=</span> <span class="n">_make_iterencode</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span>         <span class="n">markers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">,</span> <span class="n">_encoder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">,</span> <span class="n">floatstr</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">256</span>         <span class="bp">self</span><span class="o">.</span><span class="n">key_separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort_keys</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span>         <span class="bp">self</span><span class="o">.</span><span class="n">skipkeys</span><span class="p">,</span> <span class="n">_one_shot</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">258</span> <span class="k">return</span> <span class="n">_iterencode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -860,7 +968,7 @@ SumMatrix, h = 101670, w = 50835
 </div>
 </section>
 <section id="eigenvalues-of-the-discretized-laplace-operator">
-<h2><span class="section-number">55.4. </span>Eigenvalues of the discretized Laplace-operator<a class="headerlink" href="#eigenvalues-of-the-discretized-laplace-operator" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.4. </span>Eigenvalues of the discretized Laplace-operator<a class="headerlink" href="#eigenvalues-of-the-discretized-laplace-operator" title="Link to this heading">#</a></h2>
 <p>Combining operators we obtain a discretization for the Laplace-operator:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -929,7 +1037,7 @@ SumMatrix, h = 101670, w = 50835
 </div>
 </section>
 <section id="exercise">
-<h2><span class="section-number">55.5. </span>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">64.5. </span>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>check conservation of energy over time</p></li>
 <li><p>design some wave-guide: <br>
@@ -974,7 +1082,7 @@ A thin strip with (e.g. 2-times) higher refraction index, i.e. the coefficient i
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">54. </span>Mass-lumping and Local time-stepping</p>
+        <p class="prev-next-title"><span class="section-number">63. </span>Mass-lumping and Local time-stepping</p>
       </div>
     </a>
     <a class="right-next"
@@ -982,7 +1090,7 @@ A thin strip with (e.g. 2-times) higher refraction index, i.e. the coefficient i
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">56. </span>Nano-optics: A ring-resonator</p>
+        <p class="prev-next-title"><span class="section-number">65. </span>Nano-optics: A ring-resonator</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1002,11 +1110,11 @@ A thin strip with (e.g. 2-times) higher refraction index, i.e. the coefficient i
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-differential-operators">55.1. Testing the differential operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-implementation">55.2. Efficient implementation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-wave-equation">55.3. Solving the wave equation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-discretized-laplace-operator">55.4. Eigenvalues of the discretized Laplace-operator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">55.5. Exercise:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-differential-operators">64.1. Testing the differential operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-implementation">64.2. Efficient implementation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-wave-equation">64.3. Solving the wave equation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-of-the-discretized-laplace-operator">64.4. Eigenvalues of the discretized Laplace-operator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">64.5. Exercise:</a></li>
 </ul>
   </nav></div>
 
