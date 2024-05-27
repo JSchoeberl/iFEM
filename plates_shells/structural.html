@@ -539,7 +539,20 @@ we obtain convergence <span class="math notranslate nohighlight">\(\tilde u \rig
 \[
 \widetilde V = \left\{ \left( U(x) - \beta(x) y  \atop w(x) \right) \right\}
 \]</div>
-<p>Evaluating the bilinear-form (of an isotropic material) leads to</p>
+<p>For</p>
+<div class="math notranslate nohighlight">
+\[
+u = \left( U(x) - \beta(x) y \atop w(x) \right) 
+\]</div>
+<p>one easily finds</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\varepsilon(u) = \left( \begin{array}{cc}
+     U^\prime(x) + y \beta^\prime &amp; \tfrac{1}{2} (w^\prime - \beta) \\
+     \text{sym} &amp; 0  
+     \end{array} \right)
+\end{split}\]</div>
+<p>Evaluating the bilinear-form (of an isotropic material) by integrating in vertical direction leads to</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   A\left( \left( U - y \beta \atop w \right), \left( \tilde U - y \tilde \beta \atop \tilde w \right) \right) &amp; =  
@@ -641,8 +654,8 @@ leads to the big system: Find <span class="math notranslate nohighlight">\((w,\b
 \end{split}\]</div>
 <p>This is a mixed formulation of the abstract structure: Find <span class="math notranslate nohighlight">\(u \in V\)</span> and <span class="math notranslate nohighlight">\(p \in Q\)</span> such
 that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b782e5fb-fb18-4764-9273-dbeebb4da13d">
-<span class="eqno">(56.1)<a class="headerlink" href="#equation-b782e5fb-fb18-4764-9273-dbeebb4da13d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-67afc2db-7dd6-4449-acd3-de3dd29537d3">
+<span class="eqno">(56.1)<a class="headerlink" href="#equation-67afc2db-7dd6-4449-acd3-de3dd29537d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{ccccll}
 a(u,v) &amp; + &amp; b(v,p) &amp; = &amp; f(v) \quad &amp; \forall \, v \in V, \\[0.2em]
 b(u,q) &amp; - &amp; t^2 c(p,q) &amp; = &amp; 0 \quad &amp; \forall \, q \in Q.
