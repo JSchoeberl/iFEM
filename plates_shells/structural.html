@@ -258,9 +258,9 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Elasticity</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../elasticity/modeling.html">52. Elasticity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elasticity/modeling.html">52. Modeling Elasticity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../elasticity/Newton.html">53. Newton’s method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../elasticity/elasticity2D.html">54. Nonlinear Elasticity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elasticity/elasticity2D.html">54. Solving nonlinear Elasticity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../elasticity/linearized_elasticity.html">55. Linearized elasticity</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Plates and Shells</span></p>
@@ -469,7 +469,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -485,6 +487,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-problem-fourth-order-equation">56.1. Limit problem: fourth order equation</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -631,8 +641,8 @@ leads to the big system: Find <span class="math notranslate nohighlight">\((w,\b
 \end{split}\]</div>
 <p>This is a mixed formulation of the abstract structure: Find <span class="math notranslate nohighlight">\(u \in V\)</span> and <span class="math notranslate nohighlight">\(p \in Q\)</span> such
 that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1111a098-db30-417f-9f97-137493265477">
-<span class="eqno">(56.1)<a class="headerlink" href="#equation-1111a098-db30-417f-9f97-137493265477" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b782e5fb-fb18-4764-9273-dbeebb4da13d">
+<span class="eqno">(56.1)<a class="headerlink" href="#equation-b782e5fb-fb18-4764-9273-dbeebb4da13d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{ccccll}
 a(u,v) &amp; + &amp; b(v,p) &amp; = &amp; f(v) \quad &amp; \forall \, v \in V, \\[0.2em]
 b(u,q) &amp; - &amp; t^2 c(p,q) &amp; = &amp; 0 \quad &amp; \forall \, q \in Q.
@@ -649,11 +659,12 @@ are true. Furthermore, assume that</p>
   a(u,u) \geq 0,
   \]</div>
 <p>and <span class="math notranslate nohighlight">\(c(p,q)\)</span> is a symmetric, continuous and non-negative bilinear-form.
-Then, the big form
-$<span class="math notranslate nohighlight">\(
+Then, the big form</p>
+<div class="math notranslate nohighlight">
+\[
   B((u,p),(v,q)) = a(u,v) + b(u,q) + b(v,p) - t^2 \, c(p,q)
-  \)</span><span class="math notranslate nohighlight">\(
-is continuous and stable uniformly in \)</span>t \in [0,1]$.</p>
+  \]</div>
+<p>is continuous and stable uniformly in <span class="math notranslate nohighlight">\(t \in [0,1]\)</span>.</p>
 </div></blockquote>
 <p>We check Brezzi’s condition for the beam model. The spaces are <span class="math notranslate nohighlight">\(V = [H^1]^2\)</span>
 and <span class="math notranslate nohighlight">\(Q = L_2\)</span>. Continuity of the bilinear-forms <span class="math notranslate nohighlight">\(a(.,.)\)</span>, <span class="math notranslate nohighlight">\(b(.,.)\)</span>, and <span class="math notranslate nohighlight">\(c(.,.)\)</span>
@@ -728,6 +739,32 @@ standard method becomes worse. Unless <span class="math notranslate nohighlight"
 wrong ! The improved method converges uniformly well with respect to <span class="math notranslate nohighlight">\(t\)</span>:</p>
 <a class="reference internal image-reference" href="../_images/timowntbad.png"><img alt="Alternative text" class="align-center" src="../_images/timowntbad.png" style="width: 300px;" /></a>
 <a class="reference internal image-reference" href="../_images/timowntgood.png"><img alt="Alternative text" class="align-center" src="../_images/timowntgood.png" style="width: 300px;" /></a>
+<section id="limit-problem-fourth-order-equation">
+<h2><span class="section-number">56.1. </span>Limit problem: fourth order equation<a class="headerlink" href="#limit-problem-fourth-order-equation" title="Link to this heading">#</a></h2>
+<p>In the mixed formulation, we can set the thickness parameter <span class="math notranslate nohighlight">\(t = 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccccll}
+\int \beta^\prime \tilde \beta^\prime \, dx &amp; + &amp; \int (\tilde
+                                                  w^\prime - \tilde \beta) p \, dx &amp; = &amp;
+\int \tilde f \tilde w \, dx \qquad &amp; \forall \, (\tilde w, \tilde \beta) \in V  \\[0.5em]
+\int (w^\prime - \beta) \tilde p \, dx &amp; &amp;  &amp; = &amp; 0 &amp; 
+\forall \, \tilde p \in Q.
+\end{array}
+\end{split}\]</div>
+<p>The second equation states that <span class="math notranslate nohighlight">\(\beta = w^\prime\)</span>. Testing the first equation with <span class="math notranslate nohighlight">\(\tilde \beta = \tilde w^\prime\)</span>, the upper right term on the left hand side vanishes.</p>
+<p>We have obtained the limit problem: find <span class="math notranslate nohighlight">\(w\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\int w^{\prime \prime} \tilde w^{\prime \prime} = \int f \tilde w
+\]</div>
+<p>for all test-functions <span class="math notranslate nohighlight">\(\tilde w\)</span>. Since <span class="math notranslate nohighlight">\(\beta = w^\prime \in H^1\)</span>, we have to search now <span class="math notranslate nohighlight">\(w \in H^2\)</span>.</p>
+<p>This model is called the <em>Euler</em> beam model. It is a coercive problem in <span class="math notranslate nohighlight">\(H^2\)</span>. The corresponding strong form is the fourth-order equation</p>
+<div class="math notranslate nohighlight">
+\[
+w^{\prime \prime \prime \prime} = f 
+\]</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -785,7 +822,20 @@ wrong ! The improved method converges uniformly well with respect to <span class
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-problem-fourth-order-equation">56.1. Limit problem: fourth order equation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
