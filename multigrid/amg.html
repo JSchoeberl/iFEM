@@ -305,32 +305,33 @@
 <li class="toctree-l1"><a class="reference internal" href="multilevel-extension.html">81. Multi-level Extension</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">82. Algebraic Multigrid Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hcurlamg.html">83. H(curl) - AMG</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">84. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">85. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">86. A Small Number of Constraints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">87. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">85. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">86. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">87. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">88. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">88. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">89. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">89. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">90. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">91. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">92. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">93. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">92. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">93. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">94. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">94. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">95. Distributed Meshes and Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">96. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">97. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">98. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">99. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">100. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">95. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">96. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">97. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">98. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">99. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">100. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">101. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -509,7 +510,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="algebraic-multigrid-methods">
 <h1><span class="section-number">82. </span>Algebraic Multigrid Methods<a class="headerlink" href="#algebraic-multigrid-methods" title="Link to this heading">#</a></h1>
-<p>Algebraic multigrid methods (AMG) build a multigrid hierarchy from the given matrix. In contrast to geometric multigrid methods, they do not need a mesh hierarchy. Just one finite element mesh is enough.</p>
+<p>Algebraic multigrid methods (AMG) build a multigrid hierarchy from the given matrix. In contrast to geometric multigrid methods, they do not need a mesh hierarchy. Just one finite element mesh is enough. This makes them useful for a wide range of of applications.</p>
 <p>AMG takes profit from providing the type of problem (Poisson equation, elasticity, Maxwell, …).</p>
 <p>NGSolve comes with builtin AMG solvers for scalar equations, and for Maxwell equations. It provides also  interfaces to external, parallel AMG solvers (hypre, gamg, …)</p>
 <section id="agglomeration-based-scalar-amg">
@@ -517,30 +518,34 @@ document.write(`
 <p>The coarsening of degrees of freedom is steered by the strength of connections between dofs, one may think of a network of resistors. For this, one finds edge-based weights <span class="math notranslate nohighlight">\(w_E\)</span> such that the energy norm is equivalent to the weighted sum of squared differences:</p>
 <div class="math notranslate nohighlight">
 \[
-u^T A u \approx \sum_{{\text edges} E} w_E \, (u_{E_1} - u_{E_2})^2
+u^T A u \approx \sum_{{\text edges} E} w_E \, (u_{E_1} - u_{E_2})^2,
 \]</div>
-<p><span class="math notranslate nohighlight">\(w_E\)</span> is the edge-weight (the conductivity of each resistor), and <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> are the vertex numbers of the end-points of the edge <span class="math notranslate nohighlight">\(E\)</span>. The right hand side is a norm represented by a surrogate matrix <span class="math notranslate nohighlight">\(\tilde A\)</span>.</p>
-<p>Coarse grid vertices are
-defined by the mapping</p>
+<p>where <span class="math notranslate nohighlight">\(w_E\)</span> is the edge-weight (i.e. the conductivity of each resistor), and <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> are the vertex numbers of the end-points of the edge <span class="math notranslate nohighlight">\(E\)</span>. The right hand side is a norm represented by a surrogate matrix <span class="math notranslate nohighlight">\(\tilde A\)</span>.</p>
+<p>Coarse grid vertices are defined by the index mapping</p>
 <div class="math notranslate nohighlight">
 \[
 Ind : \text{Vertex} \rightarrow \text{Cluster}
 \]</div>
-<p>Allows to define the full coarse grid topology: \
-<span class="math notranslate nohighlight">\(E_{IJ}\)</span> is a coarse grid edge if and only if <span class="math notranslate nohighlight">\(I \neq J\)</span>, and there are fine grid vertices <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> s.t.:
-$<span class="math notranslate nohighlight">\(
-I = Ind(i), \quad J = Ind(j), \qquad E_{ij} \mbox{ is a fine grid edge}
-\)</span>$</p>
+<p>All vertices having the same index are combined to a cluster. Each cluster is a degree of freedom on the coarse grid.</p>
 <a class="reference internal image-reference" href="../_images/agglomerates-h1.png"><img alt="Alternative text" class="align-center" src="../_images/agglomerates-h1.png" style="width: 300px;" /></a>
+<p>How to select the agglomerates ? The basic principle is to combine vertices to clusters which are connected by a strong conductivity.
+For each edge we compute the coarsening weight</p>
+<div class="math notranslate nohighlight">
+\[
+\frac { w_{E_{ij}} ^2 } { \sum_{k \neq j}  w_{E_{ik}} \sum_{k \neq i}   w_{E_{ik}} }
+\]</div>
+<p>which is the ratio of the edge-weight, to the geometric mean of the sum of all edge-weights connected to vertices i, and j. One sorts the edges by the coarsening weights, and selects all edges for collapsing whose vertices don’t belong to edges selected before.</p>
 </section>
 <section id="the-builtin-h1amg-preconditioner">
 <h2><span class="section-number">82.2. </span>The builtin <em>h1amg</em> preconditioner<a class="headerlink" href="#the-builtin-h1amg-preconditioner" title="Link to this heading">#</a></h2>
 <p>The h1amg preconditioner works for symmetric, scalar problems with nodal degrees of freedom. It uses unsmoothed agglomeration for the generation of coarse spaces.</p>
-<p>The first task is to determine the edge-weights . If one has access to element-matrices (instead of the assembled matrix), one has better possibilities. One may compute Schur complements with respect to all edges of each element, which gives a surrogate matrix for each element. Then sum up the weights (conductivities) of all elements sharing the edge.</p>
+<p>The first task is to determine the edge-weights. If one has access to element-matrices (instead of the assembled matrix), one has better possibilities. One may compute Schur complements with respect to all edges of each element, which gives a surrogate matrix for each element. Then sum up the weights (conductivities) of all elements sharing the edge.</p>
 <p>To have access to element matrices, the setup of the surrogate matrix is included into the assembling loop. Thus, the workflow is to</p>
-<p>define the biliear-form
-define the h1amg preconditioner, which registers at the bilinear-form
-finally assemble the bilinear-form, which also runs the setup of the preconditioner</p>
+<ul class="simple">
+<li><p>define the biliear-form</p></li>
+<li><p>define the h1amg preconditioner, which registers at the bilinear-form</p></li>
+<li><p>finally assemble the bilinear-form, which also runs the setup of the preconditioner</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ngsolve</span> <span class="kn">import</span> <span class="o">*</span>
@@ -577,11 +582,16 @@ finally assemble the bilinear-form, which also runs the setup of the preconditio
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ndof= 442577
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.18071473400438476, 0.20112839470043992, 0.24113984238197128] ... [0.9648042230905016, 0.9926905687847078]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.18097681147983669, 0.1985719871451886, 0.2409415318890591] ... [0.9647403109251911, 0.9926806770947283]
 </pre></div>
 </div>
 </div>
 </div>
+<p>Exercises:</p>
+<ul class="simple">
+<li><p>test the <code class="docutils literal notranslate"><span class="pre">h1amg</span></code> preconditioner with more complicated domains, varying coefficients across sub-domains, and additional <span class="math notranslate nohighlight">\(L_2(\Omega)\)</span> and <span class="math notranslate nohighlight">\(L_2(\Gamma)\)</span>-terms</p></li>
+<li><p>use the <code class="docutils literal notranslate"><span class="pre">h1amg</span></code> preconditioner as coarse grid preconditioner of a (low-order/high-order) multigrid preconditioner, or BDDC preconditioner</p></li>
+</ul>
 </section>
 </section>
 
