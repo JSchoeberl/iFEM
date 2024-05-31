@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>56. Structural mechanics &#8212; Interactive Finite Elements</title>
+    <title>57. Structural mechanics &#8212; Interactive Finite Elements</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'plates_shells/structural';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="57. Kirchhoff plate equation" href="1_hhj.html" />
-    <link rel="prev" title="55. Linearized elasticity" href="../elasticity/linearized_elasticity.html" />
+    <link rel="next" title="58. Kirchhoff plate equation" href="1_hhj.html" />
+    <link rel="prev" title="56. Elastodynamics with Newmark time-stepping" href="../elasticity/dynamics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -262,73 +262,77 @@
 <li class="toctree-l1"><a class="reference internal" href="../elasticity/Newton.html">53. Newton’s method</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../elasticity/elasticity2D.html">54. Solving nonlinear Elasticity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../elasticity/linearized_elasticity.html">55. Linearized elasticity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elasticity/dynamics.html">56. Elastodynamics with Newmark time-stepping</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Plates and Shells</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">56. Structural mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1_hhj.html">57. Kirchhoff plate equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_ReissnerMindlin.html">58. Reissner Mindlin plates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_shell.html">59. Naghdi shell</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_rollup.html">60. Fully nonlinear Koiter shell model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">57. Structural mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_hhj.html">58. Kirchhoff plate equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_ReissnerMindlin.html">59. Reissner Mindlin plates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_shell.html">60. Naghdi shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_rollup.html">61. Fully nonlinear Koiter shell model</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/heatequation.html">61. Heat Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/waveequation.html">62. Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/lts.html">63. Mass-lumping and Local time-stepping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/wave-leapfrogDG.html">64. Discontinuous Galerkin for the Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/ringresonator.html">65. Nano-optics: A ring-resonator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/heatequation.html">62. Heat Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/waveequation.html">63. Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/lts.html">64. Mass-lumping and Local time-stepping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/wave-leapfrogDG.html">65. Discontinuous Galerkin for the Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/ringresonator.html">66. Nano-optics: A ring-resonator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">66. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">67. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">68. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">69. Preconditioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">70. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">71. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">67. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">68. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">69. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">70. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">71. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">72. Conjugate Gradients</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">72. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">73. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">74. high order fem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">75. Domain Decomposition with minimal overlap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">76. Overlapping Domain Decomposition Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">77. Exercise: Robust preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">73. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">74. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">75. high order fem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">76. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">77. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">78. Exercise: Robust preconditioners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">78. Multigrid and Multilevel Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">79. Analysis of the multi-level preconditioner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">80. Analysis of the Multigrid Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">81. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">79. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">80. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">81. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">82. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/amg.html">83. Algebraic Multigrid Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/hcurlamg.html">84. H(curl) - AMG</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">82. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">83. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">84. A Small Number of Constraints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">85. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">86. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">87. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">88. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">89. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">86. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">87. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">90. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">91. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">89. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">90. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">91. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">93. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">94. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">95. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">92. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">93. Distributed Meshes and Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">94. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">95. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">96. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">97. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">98. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">96. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">97. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">98. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">99. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">100. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">101. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">102. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -492,7 +496,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-problem-fourth-order-equation">56.1. Limit problem: fourth order equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-problem-fourth-order-equation">57.1. Limit problem: fourth order equation</a></li>
 </ul>
             </nav>
         </div>
@@ -505,7 +509,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="structural-mechanics">
-<h1><span class="section-number">56. </span>Structural mechanics<a class="headerlink" href="#structural-mechanics" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">57. </span>Structural mechanics<a class="headerlink" href="#structural-mechanics" title="Link to this heading">#</a></h1>
 <p>Many engineering applications involve thin structures (walls of a building, body of a car, …).
 On thin structures, the standard approach has a problem: One observed that the simulation
 results get worse as the thickness decreases. The explanation is that the constant in
@@ -654,8 +658,8 @@ leads to the big system: Find <span class="math notranslate nohighlight">\((w,\b
 \end{split}\]</div>
 <p>This is a mixed formulation of the abstract structure: Find <span class="math notranslate nohighlight">\(u \in V\)</span> and <span class="math notranslate nohighlight">\(p \in Q\)</span> such
 that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-af005852-99ee-46fc-8a30-7e60918f3552">
-<span class="eqno">(56.1)<a class="headerlink" href="#equation-af005852-99ee-46fc-8a30-7e60918f3552" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b2afe5ea-2403-460f-9479-7b8406434740">
+<span class="eqno">(57.1)<a class="headerlink" href="#equation-b2afe5ea-2403-460f-9479-7b8406434740" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{ccccll}
 a(u,v) &amp; + &amp; b(v,p) &amp; = &amp; f(v) \quad &amp; \forall \, v \in V, \\[0.2em]
 b(u,q) &amp; - &amp; t^2 c(p,q) &amp; = &amp; 0 \quad &amp; \forall \, q \in Q.
@@ -753,7 +757,7 @@ wrong ! The improved method converges uniformly well with respect to <span class
 <a class="reference internal image-reference" href="../_images/timowntbad.png"><img alt="Alternative text" class="align-center" src="../_images/timowntbad.png" style="width: 300px;" /></a>
 <a class="reference internal image-reference" href="../_images/timowntgood.png"><img alt="Alternative text" class="align-center" src="../_images/timowntgood.png" style="width: 300px;" /></a>
 <section id="limit-problem-fourth-order-equation">
-<h2><span class="section-number">56.1. </span>Limit problem: fourth order equation<a class="headerlink" href="#limit-problem-fourth-order-equation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">57.1. </span>Limit problem: fourth order equation<a class="headerlink" href="#limit-problem-fourth-order-equation" title="Link to this heading">#</a></h2>
 <p>In the mixed formulation, we can set the thickness parameter <span class="math notranslate nohighlight">\(t = 0\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -811,12 +815,12 @@ w^{\prime \prime \prime \prime} = f
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../elasticity/linearized_elasticity.html"
+       href="../elasticity/dynamics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">55. </span>Linearized elasticity</p>
+        <p class="prev-next-title"><span class="section-number">56. </span>Elastodynamics with Newmark time-stepping</p>
       </div>
     </a>
     <a class="right-next"
@@ -824,7 +828,7 @@ w^{\prime \prime \prime \prime} = f
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">57. </span>Kirchhoff plate equation</p>
+        <p class="prev-next-title"><span class="section-number">58. </span>Kirchhoff plate equation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -844,7 +848,7 @@ w^{\prime \prime \prime \prime} = f
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-problem-fourth-order-equation">56.1. Limit problem: fourth order equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-problem-fourth-order-equation">57.1. Limit problem: fourth order equation</a></li>
 </ul>
   </nav></div>
 

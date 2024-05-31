@@ -5,7 +5,7 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 198, in ensure_async
     result = await obj
              ^^^^^^^^^
-  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_client/channels.py", line 315, in get_msg
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_client/channels.py", line 313, in get_msg
     raise Empty
 _queue.Empty
 
