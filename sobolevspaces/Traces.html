@@ -14,32 +14,32 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -73,27 +73,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -115,8 +111,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -348,7 +349,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -357,7 +358,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -605,7 +606,8 @@ density.</p>
  c \, \int_0^1  \int_0^1  \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u}{\partial \eta}(\xi,\eta) \right)^2 \right\} \, d \eta \, d \xi \\
         &amp; \leq  c \, \| u \|_{H^1(Q)}^2.
 \end{align*}\]</div>
-<a class="reference internal image-reference" href="../_images/tracemapping.png"><img alt="Alternative text" class="align-center" src="../_images/tracemapping.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/tracemapping.png"><img alt="Alternative text" class="align-center" src="../_images/tracemapping.png" style="width: 300px;" />
+</a>
 <p>We use the partitioning of <span class="math notranslate nohighlight">\(\partial \Omega\)</span> into non-overlapping parts <span class="math notranslate nohighlight">\(\Gamma_i\)</span>, <span class="math notranslate nohighlight">\(1 \leq i \leq M\)</span>. For each part <span class="math notranslate nohighlight">\(\Gamma_i\)</span> we define an injective transformation <span class="math notranslate nohighlight">\(s_i : \overline Q \rightarrow \overline \Omega\)</span> such that the bottom edge of <span class="math notranslate nohighlight">\(Q\)</span> is mapped onto <span class="math notranslate nohighlight">\(\Gamma_i\)</span>. We define <span class="math notranslate nohighlight">\(S_i = s_i(Q)\)</span>. We assume that <span class="math notranslate nohighlight">\(s_i^\prime\)</span> and <span class="math notranslate nohighlight">\((s_i^\prime)^{-1}\)</span> are bounded functions a.e.</p>
 <p>This allows to pull-back functions <span class="math notranslate nohighlight">\(u \in H^1(S_i)\)</span> locally to the square domain <span class="math notranslate nohighlight">\(Q\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -701,7 +703,8 @@ such that</p>
 </ul>
 <p>The interfaces are <span class="math notranslate nohighlight">\(\gamma_{ij} = \overline \Omega_i \cap \overline \Omega_j\)</span>.
 The outer normal vector of <span class="math notranslate nohighlight">\(\Omega_i\)</span> is <span class="math notranslate nohighlight">\(n_i\)</span>.</p>
-<a class="reference internal image-reference" href="../_images/domaindecomposition.png"><img alt="Alternative text" class="align-center" src="../_images/domaindecomposition.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/domaindecomposition.png"><img alt="Alternative text" class="align-center" src="../_images/domaindecomposition.png" style="width: 250px;" />
+</a>
 <blockquote>
 <div><p><strong>Theorem:</strong>
 Let <span class="math notranslate nohighlight">\(u \in L_2(\Omega)\)</span> such that</p>
@@ -758,7 +761,8 @@ One technique to transfer these results to general domains is to extend
 a function <span class="math notranslate nohighlight">\(u \in H^1(\Omega)\)</span> onto a larger square <span class="math notranslate nohighlight">\(Q\)</span>, apply the result
 for the  square, and restrict the result onto the general domain <span class="math notranslate nohighlight">\(\Omega\)</span>.
 This is now the motivation to study extension operators.</p>
-<a class="reference internal image-reference" href="../_images/extension.png"><img alt="Alternative text" class="align-center" src="../_images/extension.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/extension.png"><img alt="Alternative text" class="align-center" src="../_images/extension.png" style="width: 300px;" />
+</a>
 <p>We construct a non-overlapping covering <span class="math notranslate nohighlight">\(\{ S_i \}\)</span> of a neighbourhood
 of <span class="math notranslate nohighlight">\(\partial \Omega\)</span> on both sides.
 Let <span class="math notranslate nohighlight">\(\partial \Omega = \cup \Gamma_i\)</span> consist of smooth parts.
@@ -791,8 +795,8 @@ obtain the bound</p>
 \]</div>
 <p>Define the domain <span class="math notranslate nohighlight">\(\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M\)</span>.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4dd7d927-dc68-47b2-bd94-d9c9aa07c430">
-<span class="eqno">(15.1)<a class="headerlink" href="#equation-4dd7d927-dc68-47b2-bd94-d9c9aa07c430" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c45a800a-a4c4-42fe-b762-4618c789ecdf">
+<span class="eqno">(15.1)<a class="headerlink" href="#equation-c45a800a-a4c4-42fe-b762-4618c789ecdf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
@@ -1027,8 +1031,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-91004b02-abc8-4333-a8e2-2e876d77d6a2">
-<span class="eqno">(15.2)<a class="headerlink" href="#equation-91004b02-abc8-4333-a8e2-2e876d77d6a2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2c0be2e0-0a39-4649-865a-cd6d780613a8">
+<span class="eqno">(15.2)<a class="headerlink" href="#equation-2c0be2e0-0a39-4649-865a-cd6d780613a8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
@@ -1145,7 +1149,7 @@ space <span class="math notranslate nohighlight">\(H^{1/2}(E)\)</span>. This is 
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1239,8 +1243,8 @@ By J. Schöberl
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

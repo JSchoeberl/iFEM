@@ -14,32 +14,32 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -73,27 +73,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -115,8 +111,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -348,7 +349,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -357,7 +358,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -619,7 +620,7 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "31bfbef0bd74450ca1cb46f0d7d854d9"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "116d65c44c144e829502d9cab3dc922a"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6f7fd822d8a54a818bfff03aead4f4bd"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "40ee114695044915b258109c8f92efc5"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -634,7 +635,7 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9586c214e4e84d97b81f32cad58d13e1"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "92cb0c0aa0894703b6968edc5f73534e"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
@@ -683,7 +684,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "51085708dcf2444eac050e31d66c4a18"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8e59fda44cca46229f22434acd0650e7"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "742b9207f9654e09a9f174cea8d128c7"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "64fec4dc71c04ba19076c39e071ac4ea"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -724,7 +725,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ae0bbc2e51864ba18f61e13db884a595"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6ab978e8543a49f2b835f8e13c05273d"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -819,151 +820,17 @@ SumMatrix, h = 101670, w = 50835
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "50eefb16ef0247e6ac17ca2b3faf46ed"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "abd1e0623b1149108f0f90104a3a0be4"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">24</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">gftr</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">traceop</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
-<span class="ne">---&gt; </span><span class="mi">24</span> <span class="n">scene</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
-
-<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.12/site-packages/netgen/webgui.py:234,</span> in <span class="ni">WebGLScene.Redraw</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span>     <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">new_scene</span><span class="o">.</span><span class="n">args</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">new_scene</span><span class="o">.</span><span class="n">kwargs</span>
-<span class="ne">--&gt; </span><span class="mi">234</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/webgui_jupyter_widgets/widget.py:81,</span> in <span class="ni">BaseWebGuiScene.Redraw</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">def</span> <span class="nf">Redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span>
-<span class="ne">---&gt; </span><span class="mi">81</span>     <span class="bp">self</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetData</span><span class="p">(</span><span class="n">set_minmax</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/traitlets/traitlets.py:716,</span> in <span class="ni">TraitType.__set__</span><span class="nt">(self, obj, value)</span>
-<span class="g g-Whitespace">    </span><span class="mi">714</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_only</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">715</span>     <span class="k">raise</span> <span class="n">TraitError</span><span class="p">(</span><span class="s1">&#39;The &quot;</span><span class="si">%s</span><span class="s1">&quot; trait is read-only.&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">716</span> <span class="bp">self</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/traitlets/traitlets.py:706,</span> in <span class="ni">TraitType.set</span><span class="nt">(self, obj, value)</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span>     <span class="n">silent</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span> <span class="k">if</span> <span class="n">silent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">704</span>     <span class="c1"># we explicitly compare silent to True just in case the equality</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="c1"># comparison above returns something other than True/False</span>
-<span class="ne">--&gt; </span><span class="mi">706</span>     <span class="n">obj</span><span class="o">.</span><span class="n">_notify_trait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">old_value</span><span class="p">,</span> <span class="n">new_value</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/traitlets/traitlets.py:1513,</span> in <span class="ni">HasTraits._notify_trait</span><span class="nt">(self, name, old_value, new_value)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1512</span> <span class="k">def</span> <span class="nf">_notify_trait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">old_value</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">new_value</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1513</span>     <span class="bp">self</span><span class="o">.</span><span class="n">notify_change</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1514</span>         <span class="n">Bunch</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1515</span>             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1516</span>             <span class="n">old</span><span class="o">=</span><span class="n">old_value</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1517</span>             <span class="n">new</span><span class="o">=</span><span class="n">new_value</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1518</span>             <span class="n">owner</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1519</span>             <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;change&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1520</span>         <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1521</span>     <span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/ipywidgets/widgets/widget.py:700,</span> in <span class="ni">Widget.notify_change</span><span class="nt">(self, change)</span>
-<span class="g g-Whitespace">    </span><span class="mi">696</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="s1">&#39;kernel&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">697</span>     <span class="c1"># Make sure this isn&#39;t information that the front-end just sent us.</span>
-<span class="g g-Whitespace">    </span><span class="mi">698</span>     <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_send_property</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">699</span>         <span class="c1"># Send new state to front-end</span>
-<span class="ne">--&gt; </span><span class="mi">700</span>         <span class="bp">self</span><span class="o">.</span><span class="n">send_state</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">701</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">notify_change</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/ipywidgets/widgets/widget.py:586,</span> in <span class="ni">Widget.send_state</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">state</span><span class="p">,</span> <span class="n">buffer_paths</span><span class="p">,</span> <span class="n">buffers</span> <span class="o">=</span> <span class="n">_remove_buffers</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span> <span class="s1">&#39;buffer_paths&#39;</span><span class="p">:</span> <span class="n">buffer_paths</span><span class="p">}</span>
-<span class="ne">--&gt; </span><span class="mi">586</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">buffers</span><span class="o">=</span><span class="n">buffers</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/ipywidgets/widgets/widget.py:825,</span> in <span class="ni">Widget._send</span><span class="nt">(self, msg, buffers)</span>
-<span class="g g-Whitespace">    </span><span class="mi">823</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Sends a message to the model in the front-end.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">824</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="s2">&quot;kernel&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">True</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">825</span>     <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="n">buffers</span><span class="o">=</span><span class="n">buffers</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/comm/base_comm.py:147,</span> in <span class="ni">BaseComm.send</span><span class="nt">(self, data, metadata, buffers)</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">def</span> <span class="nf">send</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">MaybeDict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">metadata</span><span class="p">:</span> <span class="n">MaybeDict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">buffers</span><span class="p">:</span> <span class="n">BuffersType</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Send a message to the frontend-side version of this comm&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">147</span>     <span class="bp">self</span><span class="o">.</span><span class="n">publish_msg</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">148</span>         <span class="s2">&quot;comm_msg&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span>         <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span>         <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">151</span>         <span class="n">buffers</span><span class="o">=</span><span class="n">buffers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">152</span>     <span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/ipykernel/comm/comm.py:37,</span> in <span class="ni">BaseComm.publish_msg</span><span class="nt">(self, msg_type, data, metadata, buffers, **keys)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span> <span class="o">=</span> <span class="n">Kernel</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">session</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="ne">---&gt; </span><span class="mi">37</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">iopub_socket</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="n">msg_type</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="n">content</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="n">metadata</span><span class="o">=</span><span class="n">json_clean</span><span class="p">(</span><span class="n">metadata</span><span class="p">),</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(),</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="n">ident</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="n">buffers</span><span class="o">=</span><span class="n">buffers</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_client/session.py:852,</span> in <span class="ni">Session.send</span><span class="nt">(self, stream, msg_or_type, content, parent, ident, buffers, track, header, metadata)</span>
-<span class="g g-Whitespace">    </span><span class="mi">850</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">adapt_version</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">851</span>     <span class="n">msg</span> <span class="o">=</span> <span class="n">adapt</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">adapt_version</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">852</span> <span class="n">to_send</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">ident</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">853</span> <span class="n">to_send</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">buffers</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">854</span> <span class="n">longest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">to_send</span><span class="p">])</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_client/session.py:721,</span> in <span class="ni">Session.serialize</span><span class="nt">(self, msg, ident)</span>
-<span class="g g-Whitespace">    </span><span class="mi">719</span>     <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">none</span>
-<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">721</span>     <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">722</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">723</span>     <span class="c1"># content is already packed, as in a relayed message</span>
-<span class="g g-Whitespace">    </span><span class="mi">724</span>     <span class="k">pass</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/jupyter_client/session.py:95,</span> in <span class="ni">json_packer</span><span class="nt">(obj)</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Convert a json object to a bytes.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span>         <span class="n">obj</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>         <span class="n">default</span><span class="o">=</span><span class="n">json_default</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span>         <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span>         <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;surrogateescape&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="c1"># Fallback to trying to clean the json before serializing</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="n">packed</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span>         <span class="n">json_clean</span><span class="p">(</span><span class="n">obj</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span>         <span class="n">default</span><span class="o">=</span><span class="n">json_default</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span>         <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>         <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;surrogateescape&quot;</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py:238,</span> in <span class="ni">dumps</span><span class="nt">(obj, skipkeys, ensure_ascii, check_circular, allow_nan, cls, indent, separators, default, sort_keys, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="bp">cls</span> <span class="o">=</span> <span class="n">JSONEncoder</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span> <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>     <span class="n">skipkeys</span><span class="o">=</span><span class="n">skipkeys</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="n">ensure_ascii</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span>     <span class="n">check_circular</span><span class="o">=</span><span class="n">check_circular</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="n">allow_nan</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="n">separators</span><span class="o">=</span><span class="n">separators</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="n">sort_keys</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">238</span>     <span class="o">**</span><span class="n">kw</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py:200,</span> in <span class="ni">JSONEncoder.encode</span><span class="nt">(self, o)</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span>         <span class="k">return</span> <span class="n">encode_basestring</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span> <span class="c1"># This doesn&#39;t pass the iterator directly to &#39;&#39;.join() because the</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="c1"># exceptions aren&#39;t as detailed.  The list call should be roughly</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="c1"># equivalent to the PySequence_Fast that &#39;&#39;.join() would do.</span>
-<span class="ne">--&gt; </span><span class="mi">200</span> <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterencode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">_one_shot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="n">chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py:258,</span> in <span class="ni">JSONEncoder.iterencode</span><span class="nt">(self, o, _one_shot)</span>
-<span class="g g-Whitespace">    </span><span class="mi">253</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">254</span>     <span class="n">_iterencode</span> <span class="o">=</span> <span class="n">_make_iterencode</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">255</span>         <span class="n">markers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">,</span> <span class="n">_encoder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">,</span> <span class="n">floatstr</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">256</span>         <span class="bp">self</span><span class="o">.</span><span class="n">key_separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort_keys</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">257</span>         <span class="bp">self</span><span class="o">.</span><span class="n">skipkeys</span><span class="p">,</span> <span class="n">_one_shot</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">258</span> <span class="k">return</span> <span class="n">_iterencode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">with</span> <span class="n">TaskManager</span><span class="p">():</span> 
+<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">tend</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">+</span><span class="n">dt</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">invmassu</span> <span class="o">@</span> <span class="n">B</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1077,7 +944,7 @@ A thin strip with (e.g. 2-times) higher refraction index, i.e. the coefficient i
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1167,8 +1034,8 @@ By J. Schöberl
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

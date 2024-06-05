@@ -14,32 +14,32 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -73,27 +73,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -115,8 +111,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -348,7 +349,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -357,7 +358,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -597,8 +598,8 @@ P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n
 <blockquote>
 <div><p><strong>Lemma: Three term recurrence:</strong></p>
 <p>There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ac15a21e-63e8-4487-83c9-ab445fa8d748">
-<span class="eqno">(30.1)<a class="headerlink" href="#equation-ac15a21e-63e8-4487-83c9-ab445fa8d748" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
+<div class="amsmath math notranslate nohighlight" id="equation-709a213d-460d-4bf7-b49c-af07e3701e4b">
+<span class="eqno">(30.1)<a class="headerlink" href="#equation-709a213d-460d-4bf7-b49c-af07e3701e4b" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
   (n+1) P_{n+1} (x) = (2n+1) x P_n(x) - n P_{n-1}(x).
   \end{equation}\]</div>
 </div></blockquote>
@@ -670,8 +671,8 @@ P_{L_2}^{\Pi_p} u = \sum_{n=0}^p a_n P_n
 <blockquote>
 <div><p><strong>Lemma Projection error:</strong></p>
 <p>The <span class="math notranslate nohighlight">\(L_2\)</span>-projection error satisfies</p>
-<div class="amsmath math notranslate nohighlight" id="equation-df114768-03d8-4fc6-9ca4-a8103e3eb085">
-<span class="eqno">(30.2)<a class="headerlink" href="#equation-df114768-03d8-4fc6-9ca4-a8103e3eb085" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-964bac79-ef3c-42ab-9d66-ec1e0e198e89">
+<span class="eqno">(30.2)<a class="headerlink" href="#equation-964bac79-ef3c-42ab-9d66-ec1e0e198e89" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \| u - P_{L_2}^{\Pi_p} u \|_{L_2(-1,1)} \leq \frac{1}{\sqrt{(p+1)(p+2)}}    \, | u |_{H^1(-1,1)}
   \end{equation}\]</div>
 </div></blockquote>
@@ -817,8 +818,8 @@ Demkowicz has been established.</p>
 <section id="projection-based-interpolation-on-triangles">
 <h3><span class="section-number">30.4.2. </span>Projection based interpolation on triangles<a class="headerlink" href="#projection-based-interpolation-on-triangles" title="Link to this heading">#</a></h3>
 <p>We define the operator <span class="math notranslate nohighlight">\(I_p : H^2(T) \rightarrow \Pi_p(T)\)</span> as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ae8a4a48-ea97-43a9-93f1-b390fe330dba">
-<span class="eqno">(30.3)<a class="headerlink" href="#equation-ae8a4a48-ea97-43a9-93f1-b390fe330dba" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-76fed40e-41f3-4642-b8e0-d14ad18352d9">
+<span class="eqno">(30.3)<a class="headerlink" href="#equation-76fed40e-41f3-4642-b8e0-d14ad18352d9" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 I_p u(x) &amp; = &amp; u(x) \qquad \forall \text{ vertices } x \\
 \int_E \partial_\tau (I_p u) \partial_\tau q &amp; = &amp;  
 \int_E \partial_\tau u  \partial_\tau q \qquad \forall \text{ edges } E, \; \forall \, q \in \Pi_{p,0}(E) \\
@@ -934,7 +935,7 @@ Next, we observe that <span class="math notranslate nohighlight">\(I_p\)</span> 
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1027,8 +1028,8 @@ By J. Schöberl
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
