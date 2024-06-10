@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -278,7 +278,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Maxwell/magnetostatics.html">62. Maxwell equations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Maxwell/coil.html">63. Magnetic flux induced by a coil</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Maxwell/HCurl.html">64. The function space H(curl)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/deRham.html">65. de Rham complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/deRham.html">65. The de`Rham complex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
 <ul class="current nav bd-sidenav">
@@ -627,7 +627,7 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6f7fd822d8a54a818bfff03aead4f4bd"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "40ee114695044915b258109c8f92efc5"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ffb3a962af044eda80521c2887e7bbfd"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e94c1329bd8549a9951f0cca44be6312"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -642,7 +642,7 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "92cb0c0aa0894703b6968edc5f73534e"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c43fa86c8027495aae1f25933a3812a4"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
@@ -691,7 +691,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "742b9207f9654e09a9f174cea8d128c7"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "64fec4dc71c04ba19076c39e071ac4ea"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "051c44a078af4fc0b6df5a009e0da03c"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "46f14841eea34ef2b51846c53b0b26a7"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -732,7 +732,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6ab978e8543a49f2b835f8e13c05273d"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "07bbe304da0a4ac886481e0e7f88120b"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -827,7 +827,7 @@ SumMatrix, h = 101670, w = 50835
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "abd1e0623b1149108f0f90104a3a0be4"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "94edb5a683ac4371937a683d934c648c"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>

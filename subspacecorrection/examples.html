@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -278,7 +278,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Maxwell/magnetostatics.html">62. Maxwell equations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Maxwell/coil.html">63. Magnetic flux induced by a coil</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Maxwell/HCurl.html">64. The function space H(curl)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/deRham.html">65. de Rham complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/deRham.html">65. The de`Rham complex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
 <ul class="nav bd-sidenav">
@@ -593,8 +593,8 @@ of the transformation rule of integrals:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.020831301863592052 4.762472029308668
-kappa= 228.62095036087436
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.020831301863592395 4.762472029308668
+kappa= 228.6209503608706
 </pre></div>
 </div>
 </div>
@@ -668,8 +668,8 @@ and together with the transformation rule we get</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.048977325206532946 1.4967019608058028
-kappa= 30.559079216644562
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.04897732520653299 1.4967019608058028
+kappa= 30.559079216644538
 </pre></div>
 </div>
 </div>
@@ -706,8 +706,8 @@ A(u,v) = \int_\Omega \nabla u \nabla v \, dx + \varepsilon \int_\Omega u v \, dx
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lam2, lammax= 2.4456256298377443e-05 0.024384741600227126 1.6917198310276218
-kappa= 69173.29497973324
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lam2, lammax= 2.4456256298405192e-05 0.024384741600227022 1.6917198310276222
+kappa= 69173.29497965478
 </pre></div>
 </div>
 </div>
@@ -751,9 +751,9 @@ C_{ASM}^{-1} = E_0 \, (E_0^T A E_0)^{-1} E_0^T  + C_{Jac}^{-1},
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a0= 0.010000000000003366
-lammin, lam2, lammax= 0.024547976218035117 0.04252999718209487 1.6917198260952793
-kappa= 68.9148388881195
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a0= 0.010000000000006035
+lammin, lam2, lammax= 0.024547976218031113 0.042529997182085555 1.6917198260952784
+kappa= 68.9148388881307
 </pre></div>
 </div>
 </div>

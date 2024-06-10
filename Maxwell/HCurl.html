@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -532,8 +532,8 @@ The canonical norm is</p>
 <p>Similar to <span class="math notranslate nohighlight">\(H^1\)</span> and <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span>, there exists a trace operator for <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span>. Now,
 only the tangential components of the boundary values are well defined:</p>
 <blockquote>
-<div><p><strong>Trace theorem</strong>
-There exists a tangential trace operator <span class="math notranslate nohighlight">\(\operatorname{tr}_\tau v : H(\operatorname{curl}) \rightarrow W(\partial \Omega)\)</span> such that</p>
+<div><p><strong>Trace theorem:</strong>
+There exists a continuous tangential trace operator <span class="math notranslate nohighlight">\(\operatorname{tr}_\tau v : H(\operatorname{curl}) \rightarrow W(\partial \Omega)\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[
   \operatorname{tr}_\tau v = (v|_{\partial \Omega})_\tau
@@ -541,15 +541,16 @@ There exists a tangential trace operator <span class="math notranslate nohighlig
 <p>for smooth functions <span class="math notranslate nohighlight">\(v \in [C(\overline \Omega)]^3\)</span>.</p>
 </div></blockquote>
 <blockquote>
-<div><p><strong>Domain decomposition</strong> Let <span class="math notranslate nohighlight">\(\Omega = \cup \Omega_i\)</span>. Assume that <span class="math notranslate nohighlight">\(u|_{\Omega_i} \in H(\operatorname{curl},\Omega_i)\)</span>,
+<div><p><strong>Domain decomposition:</strong> Let <span class="math notranslate nohighlight">\(\Omega = \cup \Omega_i\)</span>. Assume that <span class="math notranslate nohighlight">\(u|_{\Omega_i} \in H(\operatorname{curl},\Omega_i)\)</span>,
 and the tangential traces are continuous across the interfaces <span class="math notranslate nohighlight">\(\gamma_{ij}\)</span>.
 Then <span class="math notranslate nohighlight">\(u \in H(\operatorname{curl}, \Omega)\)</span>.</p>
 </div></blockquote>
 <p>The theorems are according to the ones we have proven for <span class="math notranslate nohighlight">\(H(\operatorname{div})\)</span>. But, the proofs (in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>) are more involved.</p>
-<p>The gradient operator <span class="math notranslate nohighlight">\(\nabla\)</span> relates the space <span class="math notranslate nohighlight">\(H^1\)</span> and <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span>:
-$<span class="math notranslate nohighlight">\(
+<p>The gradient operator <span class="math notranslate nohighlight">\(\nabla\)</span> relates the space <span class="math notranslate nohighlight">\(H^1\)</span> and <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \nabla : H^1 \rightarrow H(\operatorname{curl})
-\)</span>$</p>
+\]</div>
 <p>Furthermore, the kernel space</p>
 <div class="math notranslate nohighlight">
 \[
@@ -561,8 +562,17 @@ H^0(\operatorname{curl}) = \{ v \in H(\operatorname{curl}) : \operatorname{curl}
 H^0(\operatorname{curl}) = \nabla \, H^1
 \]</div>
 <blockquote>
-<div><p>The mixed system for magnetostatics is a well posed problem
-on <span class="math notranslate nohighlight">\(H(\operatorname{curl}) \times H^1/\mathbb{R}\)</span>.</p>
+<div><p>The mixed system: Find <span class="math notranslate nohighlight">\(A \in V = H(\operatorname{curl})\)</span> and <span class="math notranslate nohighlight">\(\varphi \in Q = H^1 / \mathbb{R}\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*} 
+  \begin{array}{ccccll}
+  \int \mu^{-1} \operatorname{curl} A \, \cdot \operatorname{curl} v \, dx &amp; + &amp; 
+  \int \nabla \varphi \cdot v \, dx &amp; = &amp; 
+  \int j \cdot v \, dx \qquad &amp; \forall \, v \in V \\[0.5em]
+  \int A \cdot \nabla \psi \, dx &amp; &amp; &amp; = &amp; 0 &amp; \forall \, \psi \in Q
+  \end{array}
+  \end{equation*}\]</div>
+<p>has a unique solution which depends continuously on the right hand side.</p>
 </div></blockquote>
 <p><em>Proof:</em> The bilinear-forms</p>
 <div class="math notranslate nohighlight">
@@ -585,7 +595,7 @@ b(v, \varphi) = \int v \cdot \nabla \varphi \, dx
 <p>The difficult part is the kernel coercivity of <span class="math notranslate nohighlight">\(a(.,.)\)</span>.
 The norm involves also the <span class="math notranslate nohighlight">\(L_2\)</span>-norm, while the bilinear-form only involves the semi-norm
 <span class="math notranslate nohighlight">\(\| \operatorname{curl} \, v \|_{L_2}\)</span>. Coercivity cannot hold on the whole <span class="math notranslate nohighlight">\(V\)</span>: Take a gradient function
-<span class="math notranslate nohighlight">\(\nabla \psi\)</span>. On the kernel, the <span class="math notranslate nohighlight">\(L_2\)</span>-norm is bounded by the semi-norm:</p>
+<span class="math notranslate nohighlight">\(\nabla \psi\)</span>. On the kernel of the <span class="math notranslate nohighlight">\(b(.,.)\)</span>-form, the <span class="math notranslate nohighlight">\(L_2\)</span>-norm is bounded by the semi-norm:</p>
 <div class="math notranslate nohighlight">
 \[
 \| v \|_{L_2} \preceq \| \operatorname{curl} \, v \| \qquad \forall \, v \in V_0,
@@ -611,10 +621,10 @@ face, the tangential component has 2 components, and is linear. Thus, the tangen
 component has dimension 6. These 6 values are defined by the 6 degrees of freedom of the
 3 edges in the face. Neighboring elements share this 6 degrees of freedom in the face,
 and thus have the same tangential component.</p>
-<p>There is a cheaper element, called Nédélec, or edge-element.
+<p>There is a cheaper element, called lowest order Nédélec element, or edge-element.
 It has the same accuracy for the <span class="math notranslate nohighlight">\(\operatorname{curl}\)</span>-part (the <span class="math notranslate nohighlight">\(B\)</span>-field)  as the <span class="math notranslate nohighlight">\(P^1\)</span>-element.
 It is similar to the Raviart-Thomas element. It contains all constants,
-and some linear polynomials. All 3 components are defined in common. The element space is</p>
+and some linear polynomials. The three Cartesian components are defined in common. The element space is</p>
 <div class="math notranslate nohighlight">
 \[
 V_T = \{ a + b \times x : a, b \in \mathbb{R}^3 \}.
@@ -628,7 +638,7 @@ integral of the tangential component along the edge</p>
 <a class="reference internal image-reference" href="../_images/edgeelement.png"><img alt="Alternative text" class="align-center" src="../_images/edgeelement.png" style="width: 150px;" />
 </a>
 <blockquote>
-<div><p>The basis function <span class="math notranslate nohighlight">\(\varphi_{E_i}\)</span> associated with the edge <span class="math notranslate nohighlight">\(E_i\)</span> is</p>
+<div><p><strong>Lemma:</strong> The basis function <span class="math notranslate nohighlight">\(\varphi_{E_i}\)</span> associated with the edge <span class="math notranslate nohighlight">\(E_i\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
   \varphi_{E_i} = \lambda_{E_i^1} \nabla \lambda_{E_i^2} - \nabla \lambda_{E_i^2}   \lambda_{E_i^1},

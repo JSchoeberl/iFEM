@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -561,16 +561,16 @@ B = \operatorname{curl} \, A.
 \]</div>
 <p>Inserting the vector-potential into the system of equations, one obtains
 the second order equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d4e2ba62-e104-494f-8171-8fb7f5ca55c6">
-<span class="eqno">(62.1)<a class="headerlink" href="#equation-d4e2ba62-e104-494f-8171-8fb7f5ca55c6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2cee8890-689f-483e-af65-1ec3d9325a77">
+<span class="eqno">(62.1)<a class="headerlink" href="#equation-2cee8890-689f-483e-af65-1ec3d9325a77" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \operatorname{curl} \, \mu^{-1}  \operatorname{curl} A = j.
 \end{equation}\]</div>
 <p>The two original fields <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(H\)</span> can be obtained from the vector potential <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>The vector-potential <span class="math notranslate nohighlight">\(A\)</span> is not uniquely defined. One
 may add a gradient field to <span class="math notranslate nohighlight">\(A\)</span>, and the equation is still true. To obtain a unique
 solution, the so called Coloumb-Gauging can be applied:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e9adb746-8f2f-4346-9320-76dbea97f097">
-<span class="eqno">(62.2)<a class="headerlink" href="#equation-e9adb746-8f2f-4346-9320-76dbea97f097" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-42497d23-f80d-4de2-a419-e28a08f74f59">
+<span class="eqno">(62.2)<a class="headerlink" href="#equation-42497d23-f80d-4de2-a419-e28a08f74f59" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \operatorname{div} \, A = 0.
 \end{equation}\]</div>
 <p>As usual, we go over to the weak form. Both Equations together become: Find <span class="math notranslate nohighlight">\(A\)</span> such that</p>
@@ -588,8 +588,8 @@ then we have more equations than unknowns. The system is still solvable, since w
 have made the assumption <span class="math notranslate nohighlight">\(\operatorname{div} \, j = 0\)</span>, and thus <span class="math notranslate nohighlight">\(j\)</span> is in the range of the <span class="math notranslate nohighlight">\(\operatorname{curl}\)</span>-
 operator. To obtain a symmetric system, we add a new scalar variable <span class="math notranslate nohighlight">\(\varphi\)</span>.
 The problem is now: Find <span class="math notranslate nohighlight">\(A \in V = ?\)</span> and <span class="math notranslate nohighlight">\(\varphi \in Q = H^1 / \mathbb{R}\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c4b814d1-d9e2-44d6-bc60-cdbb8125c702">
-<span class="eqno">(62.3)<a class="headerlink" href="#equation-c4b814d1-d9e2-44d6-bc60-cdbb8125c702" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+<div class="amsmath math notranslate nohighlight" id="equation-0dfaac39-5b3d-4ccc-8f6f-7f3e5029c31c">
+<span class="eqno">(62.3)<a class="headerlink" href="#equation-0dfaac39-5b3d-4ccc-8f6f-7f3e5029c31c" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 \begin{array}{ccccll}
 \int \mu^{-1} \operatorname{curl} A \, \cdot \operatorname{curl} v \, dx &amp; + &amp; 
 \int \nabla \varphi \cdot v \, dx &amp; = &amp; 

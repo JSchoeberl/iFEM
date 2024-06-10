@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -544,24 +544,43 @@ already in the analysis of the mixed system.</p>
   S_h                                                                                 \end{array}
   \]</div>
 </div></blockquote>
+<a class="reference internal image-reference" href="../_images/allelements.png"><img alt="Alternative text" class="align-center" src="../_images/allelements.png" style="width: 500px;" />
+</a>
+<p>This combination of finite elements allow to discretize Stokes’ theorem and Gauss’ theorem exactly:</p>
+<ul>
+<li><p>Discretize the vector-potential <span class="math notranslate nohighlight">\(A\)</span> be edge elements, i.e. <span class="math notranslate nohighlight">\(\int_E A_\tau\)</span> is defined for every edge. Then the face integrals of the normal component of the <span class="math notranslate nohighlight">\(\operatorname{curl} A\)</span> can be evaluated as:</p>
+<div class="math notranslate nohighlight">
+\[
+  \int_F (\operatorname{curl} A)_n = \int_{\partial F} A_{\tau} = \sum_{E \subset \partial F} \int_E A_{\tau}
+  \]</div>
+<p><span class="math notranslate nohighlight">\(B_h = \operatorname{curl} A_h\)</span> lies in the Raviart-Thomas (face element) space.</p>
+</li>
+<li><p>Discretize a current <span class="math notranslate nohighlight">\(j\)</span> by face elements, i.e. <span class="math notranslate nohighlight">\(\int_F j_n\)</span> is defined for every face. Then the cell integral of <span class="math notranslate nohighlight">\(\operatorname{div} j\)</span> can be evaluated as:</p>
+<div class="math notranslate nohighlight">
+\[
+  \int_T \operatorname{div} j = \int_{\partial T} j_n = \sum_{F \subset \partial T} \int_F j_n
+  \]</div>
+<p><span class="math notranslate nohighlight">\(\dot q_h = \operatorname{div} j_h\)</span> lies in the element-wise constant (cell element) <span class="math notranslate nohighlight">\(L_2\)</span>-space.</p>
+</li>
+</ul>
 <p>Now, we discretize the mixed formulation of magnetostatics by choosing
 edge-finite elements for <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span>, and nodal finite elements for <span class="math notranslate nohighlight">\(H^1\)</span>: Find <span class="math notranslate nohighlight">\(A_h \in V_h\)</span> and <span class="math notranslate nohighlight">\(\varphi_h \in W_h\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-adbdb579-b6db-4af6-b77c-bbb9470914a1">
-<span class="eqno">(65.1)<a class="headerlink" href="#equation-adbdb579-b6db-4af6-b77c-bbb9470914a1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 \begin{array}{ccccll}
 \int \mu^{-1} \operatorname{curl} A_h \, \cdot \operatorname{curl} v_h \, dx &amp; + &amp; 
 \int \nabla \varphi_h \cdot v_h \, dx &amp; = &amp; 
 \int j \cdot v_h \, dx \qquad &amp; \forall \, v_h \in V_h \\[0.5em]
 \int A_h \cdot \nabla \psi_h \, dx &amp; &amp; &amp; = &amp; 0 &amp; \forall \, \psi_h \in W_h
 \end{array}
-\end{equation}\]</div>
+\end{equation*}\]</div>
 <p>The stability follows (roughly) from the discrete sequence property. The verification
 of the LBB condition is the same as on the continuous level. The kernel of the <span class="math notranslate nohighlight">\(a(.,.)\)</span>-
 form are the discrete gradients, the kernel of the <span class="math notranslate nohighlight">\(b(.,.)\)</span>-form is orthogonal to
 the gradients. This implies solvability. The discrete kernel-coercivity (with <span class="math notranslate nohighlight">\(h\)</span>-independent
-constants) is true (nontrivial).</p>
+constants) holds true, but requires a nontrivial proof.</p>
 <p>The exact sequences on the continuous level and on the discrete level are connected
-in the de’Rham complex: Choose the canonical interpolation operators
+via the de’Rham complex: Choose the canonical interpolation operators
 (vertex-interpolation <span class="math notranslate nohighlight">\(I^W\)</span>, edge-interpolation <span class="math notranslate nohighlight">\(I^V\)</span>, face-interpolation <span class="math notranslate nohighlight">\(I^Q\)</span>,
 <span class="math notranslate nohighlight">\(L_2\)</span>-projection <span class="math notranslate nohighlight">\(I^S\)</span>). This relates the continuous level to the discrete level:</p>
 <div class="math notranslate nohighlight">
@@ -584,8 +603,6 @@ L^2                                                                             
 S_h  \:.                                                                               \\[8pt]
 \end{array}
 \end{split}\]</div>
-<a class="reference internal image-reference" href="../_images/allelements.png"><img alt="Alternative text" class="align-center" src="../_images/allelements.png" style="width: 500px;" />
-</a>
 <blockquote>
 <div><p>The de’Rham complex is a commuting diagram:</p>
 <div class="math notranslate nohighlight">
@@ -635,17 +652,17 @@ also scale each of them by an arbitrary coefficient.</p>
 be an (element) transformation, with <span class="math notranslate nohighlight">\(F = \Phi^\prime\)</span>. Choose</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
-w(\Phi(x)) &amp; = &amp; \hat w(x) \\
-v(\Phi(x)) &amp; = &amp; F^{-T} \hat v(x) \qquad \qquad \quad \, \mbox{(covariant transformation)}\\
-q(\Phi(x)) &amp; = &amp; (\operatorname{det}{F})^{-1} (F) q(x) \qquad \mbox{(Piola-transformation)} \\
-s(\Phi(x)) &amp; = &amp; (\operatorname{det}{F})^{-1} \hat s(x)
+w(\Phi(x)) &amp; = &amp; \widehat w(x) \\
+v(\Phi(x)) &amp; = &amp; F^{-T} \widehat v(x) \qquad \qquad \quad \, \mbox{(covariant transformation)}\\
+q(\Phi(x)) &amp; = &amp; (\operatorname{det}{F})^{-1} (F) \widehat q(x) \qquad \mbox{(Piola-transformation)} \\
+s(\Phi(x)) &amp; = &amp; (\operatorname{det}{F})^{-1} \widehat s(x)
 \end{eqnarray*}\]</div>
 <p>Then</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
-\hat v = \nabla \hat w &amp; \Rightarrow &amp; v = \nabla  \, w \\
-\hat q = \operatorname{curl} \hat v &amp; \Rightarrow &amp; q = \operatorname{curl} \, v \\
-\hat s = \operatorname{div} \hat q &amp; \Rightarrow &amp; s = \operatorname{div} \, q
+\widehat v = \nabla \widehat w &amp; \Rightarrow &amp; v = \nabla  \, w \\
+\widehat q = \operatorname{curl} \widehat v &amp; \Rightarrow &amp; q = \operatorname{curl} \, v \\
+\widehat s = \operatorname{div} \widehat q &amp; \Rightarrow &amp; s = \operatorname{div} \, q
 \end{eqnarray*}\]</div>
 <p>Using these transformation rules, the implementation of matrix assembling for
 <span class="math notranslate nohighlight">\(H(\operatorname{curl})\)</span>-equations is very similar to the assembling for <span class="math notranslate nohighlight">\(H^1\)</span> problems

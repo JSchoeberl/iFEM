@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -278,7 +278,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Maxwell/magnetostatics.html">62. Maxwell equations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Maxwell/coil.html">63. Magnetic flux induced by a coil</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Maxwell/HCurl.html">64. The function space H(curl)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/deRham.html">65. de Rham complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/deRham.html">65. The de`Rham complex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
 <ul class="nav bd-sidenav">
@@ -568,6 +568,11 @@ For each edge we compute the coarsening weight</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>copy mesh complete
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -588,7 +593,7 @@ For each edge we compute the coarsening weight</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ndof= 442577
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.18071473400654503, 0.2011283947097393, 0.24113984238136676] ... [0.9648042230905591, 0.9926905687951322]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.18071473400353516, 0.20112839471453497, 0.24113984238174407] ... [0.9648042230973743, 0.9926905688031753]
 </pre></div>
 </div>
 </div>
@@ -628,7 +633,7 @@ For each edge we compute the coarsening weight</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ndof= 166262
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.23482446150984382, 0.24293911496224424, 0.2586032719213631] ... [0.9700774892860551, 0.9906464426052493]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.23482446150988417, 0.24293911496235493, 0.2586032719217159] ... [0.9700774892959718, 0.9906464426157355]
 </pre></div>
 </div>
 </div>
