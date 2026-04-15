@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -584,15 +584,19 @@ With <span class="math notranslate nohighlight">\(f \in V^\ast\)</span>, one sea
 A(u,v) = f(v) \qquad \forall \, v \in V
 \]</div>
 <p>The Lax-Milgram lemma and Cea’s lemma can be extended under the following hypothesis:</p>
-<ul class="simple">
-<li><p>continuous is replaced by Lipschitz-continuous:
-$<span class="math notranslate nohighlight">\(
-| A(u_1,v) - A(u_2,v) | \leq \alpha_2 \, \| u_1 - u_2 \|_V \, \| v \|_V
-\)</span>$</p></li>
-<li><p>coercive is replaced by monoton, what means:
-$<span class="math notranslate nohighlight">\(
-A(u_1, u_2-u_1) - A(u_2, u_2-u_1) \geq \alpha_1 \, \| u_1 - u_2 \|_V^2
-\)</span>$</p></li>
+<ul>
+<li><p>continuous is replaced by Lipschitz-continuous:</p>
+<div class="math notranslate nohighlight">
+\[
+  | A(u_1,v) - A(u_2,v) | \leq \alpha_2 \, \| u_1 - u_2 \|_V \, \| v \|_V
+  \]</div>
+</li>
+<li><p>coercive is replaced by monoton, what means:</p>
+<div class="math notranslate nohighlight">
+\[
+  A(u_1, u_2-u_1) - A(u_2, u_2-u_1) \geq \alpha_1 \, \| u_1 - u_2 \|_V^2
+  \]</div>
+</li>
 </ul>
 </section>
 <section id="finite-element-discretization">
