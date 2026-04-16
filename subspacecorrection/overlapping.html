@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>81. Overlapping Domain Decomposition Methods &#8212; Interactive Finite Elements</title>
+    <title>82. Overlapping Domain Decomposition Methods &#8212; Interactive Finite Elements</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'subspacecorrection/overlapping';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="82. Exercise: Robust preconditioners" href="exercise.html" />
-    <link rel="prev" title="80. Domain Decomposition with minimal overlap" href="minimaldd.html" />
+    <link rel="next" title="83. Exercise: Robust preconditioners" href="exercise.html" />
+    <link rel="prev" title="81. Domain Decomposition with minimal overlap" href="minimaldd.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -277,75 +277,76 @@
 <li class="toctree-l1"><a class="reference internal" href="../plates_shells/2_ReissnerMindlin.html">59. Reissner Mindlin plates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plates_shells/3_shell.html">60. Naghdi shell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plates_shells/4_rollup.html">61. Fully nonlinear Koiter shell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plates_shells/HCT.html">62. The Hsieh-Clough-Tocher (HCT) elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Maxwell Equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/magnetostatics.html">62. Maxwell equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/coil.html">63. Magnetic flux induced by a coil</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/HCurl.html">64. The function space H(curl)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/deRham.html">65. The de`Rham complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/magnetostatics.html">63. Maxwell equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/coil.html">64. Magnetic flux induced by a coil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/HCurl.html">65. The function space H(curl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/deRham.html">66. The de`Rham complex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/heatequation.html">66. Heat Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/waveequation.html">67. Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/lts.html">68. Mass-lumping and Local time-stepping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/wave-leapfrogDG.html">69. Discontinuous Galerkin for the Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/ringresonator.html">70. Nano-optics: A ring-resonator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/heatequation.html">67. Heat Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/waveequation.html">68. Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/lts.html">69. Mass-lumping and Local time-stepping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/wave-leapfrogDG.html">70. Discontinuous Galerkin for the Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/ringresonator.html">71. Nano-optics: A ring-resonator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">71. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">72. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">73. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">74. Preconditioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">75. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">76. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">72. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">73. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">74. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">75. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">76. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">77. Conjugate Gradients</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="asm.html">77. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">78. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pversion.html">79. high order fem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minimaldd.html">80. Domain Decomposition with minimal overlap</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">81. Overlapping Domain Decomposition Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercise.html">82. Exercise: Robust preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asm.html">78. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">79. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pversion.html">80. high order fem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimaldd.html">81. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">82. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise.html">83. Exercise: Robust preconditioners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">83. Multigrid and Multilevel Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">84. Analysis of the multi-level preconditioner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">85. Analysis of the Multigrid Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">86. Multi-level Extension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/amg.html">87. Algebraic Multigrid Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/hcurlamg.html">88. H(curl) - AMG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">84. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">85. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">86. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">87. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/amg.html">88. Algebraic Multigrid Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/hcurlamg.html">89. H(curl) - AMG</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">90. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">91. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">92. A Small Number of Constraints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">93. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">91. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">92. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">93. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">94. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">94. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">95. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">95. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">96. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">97. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">98. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">99. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">98. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">99. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">100. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">100. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">101. Distributed Meshes and Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">102. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">103. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">104. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">105. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">106. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/intro.html">101. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/distmesh.html">102. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/vectypes.html">103. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/paralleliteration.html">104. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/petsc.html">105. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/PETSc_interface.html">106. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MPIparallel/parallelstokes.html">107. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -509,11 +510,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments-with-overlapping-dd">81.1. Experiments with overlapping DD</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-dd-preconditioner">81.2. Analysis of the DD preconditioner</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlapping-dd-methods-with-coarse-grid">81.3. Overlapping DD Methods with coarse grid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-2-level-method">81.4. Analysis of the 2-level method:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-dd-with-minimal-overlap">81.5. Comparison to DD with minimal overlap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments-with-overlapping-dd">82.1. Experiments with overlapping DD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-dd-preconditioner">82.2. Analysis of the DD preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlapping-dd-methods-with-coarse-grid">82.3. Overlapping DD Methods with coarse grid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-2-level-method">82.4. Analysis of the 2-level method:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-dd-with-minimal-overlap">82.5. Comparison to DD with minimal overlap</a></li>
 </ul>
             </nav>
         </div>
@@ -526,7 +527,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="overlapping-domain-decomposition-methods">
-<h1><span class="section-number">81. </span>Overlapping Domain Decomposition Methods<a class="headerlink" href="#overlapping-domain-decomposition-methods" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">82. </span>Overlapping Domain Decomposition Methods<a class="headerlink" href="#overlapping-domain-decomposition-methods" title="Link to this heading">#</a></h1>
 <p>Let <span class="math notranslate nohighlight">\(\{ \Omega_i \}\)</span> be a non-overlapping decomposition of <span class="math notranslate nohighlight">\(\Omega\)</span> into open sub-domains, i.e.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -565,7 +566,7 @@ C^{-1} : r \mapsto w
 w = \sum w_i \quad \text{with} \quad w_i \in V_i : A(w_i, v_i) = r(v_i) \; \forall \, v_i \in V_i
 \]</div>
 <section id="experiments-with-overlapping-dd">
-<h2><span class="section-number">81.1. </span>Experiments with overlapping DD<a class="headerlink" href="#experiments-with-overlapping-dd" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">82.1. </span>Experiments with overlapping DD<a class="headerlink" href="#experiments-with-overlapping-dd" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ngsolve</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
@@ -640,7 +641,7 @@ kappa= 43.93475189644837
 </ul>
 </section>
 <section id="analysis-of-the-dd-preconditioner">
-<h2><span class="section-number">81.2. </span>Analysis of the DD preconditioner<a class="headerlink" href="#analysis-of-the-dd-preconditioner" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">82.2. </span>Analysis of the DD preconditioner<a class="headerlink" href="#analysis-of-the-dd-preconditioner" title="Link to this heading">#</a></h2>
 <p>Theorem: The eigenvalues of the domain decomposition preconditioner are bounded as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -735,7 +736,7 @@ we use the boundedness of the quasi-interpolation in the <span class="math notra
 <p>In the last step we used Friedrichs’ inequality to bound the <span class="math notranslate nohighlight">\(L_2\)</span>-norm by the <span class="math notranslate nohighlight">\(H^1\)</span> semi-norm. The factor <span class="math notranslate nohighlight">\(H^{-2}\)</span> we paid for the derivative of the pu-functions shows up in the final result.</p>
 </section>
 <section id="overlapping-dd-methods-with-coarse-grid">
-<h2><span class="section-number">81.3. </span>Overlapping DD Methods with coarse grid<a class="headerlink" href="#overlapping-dd-methods-with-coarse-grid" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">82.3. </span>Overlapping DD Methods with coarse grid<a class="headerlink" href="#overlapping-dd-methods-with-coarse-grid" title="Link to this heading">#</a></h2>
 <p>Now we add an additional coarse grid correction step. We assume that we have an additional finite element space <span class="math notranslate nohighlight">\(V_H\)</span>, where the element-size is in the order of the sub-domain size <span class="math notranslate nohighlight">\(H\)</span>. We assume that <span class="math notranslate nohighlight">\(V_H \subset V_h\)</span>.</p>
 <p>We define this two-level preconditioner <span class="math notranslate nohighlight">\(C_{2L}\)</span> by the preconditioning action in matrix notation</p>
 <div class="math notranslate nohighlight">
@@ -845,7 +846,7 @@ kappa= 3.5403184798707743
 </div>
 </section>
 <section id="analysis-of-the-2-level-method">
-<h2><span class="section-number">81.4. </span>Analysis of the 2-level method:<a class="headerlink" href="#analysis-of-the-2-level-method" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">82.4. </span>Analysis of the 2-level method:<a class="headerlink" href="#analysis-of-the-2-level-method" title="Link to this heading">#</a></h2>
 <p>We apply now the ASM - theory to the sub-space splitting</p>
 <div class="math notranslate nohighlight">
 \[
@@ -885,7 +886,7 @@ u_H := \pi_H u
 <p>The inverse factor <span class="math notranslate nohighlight">\(H^{-2}\)</span> we pay due to the partition of unity, we get back from the approximation error estimate of the coarse grid interpolant.</p>
 </section>
 <section id="comparison-to-dd-with-minimal-overlap">
-<h2><span class="section-number">81.5. </span>Comparison to DD with minimal overlap<a class="headerlink" href="#comparison-to-dd-with-minimal-overlap" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">82.5. </span>Comparison to DD with minimal overlap<a class="headerlink" href="#comparison-to-dd-with-minimal-overlap" title="Link to this heading">#</a></h2>
 <p>In comparison to the small overlap in the previous section, we have now an overlap of a fixed width, independent of the mesh-size. It is more expensive, but the condition number does not deteriorate for smaller mesh-size. The second difference is that we have now a coarse space containing the continuous, piecewise linear finite element functions. Thanks to this coarse space, we have a good approximation property of coarse grid functions.</p>
 </section>
 </section>
@@ -926,7 +927,7 @@ u_H := \pi_H u
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">80. </span>Domain Decomposition with minimal overlap</p>
+        <p class="prev-next-title"><span class="section-number">81. </span>Domain Decomposition with minimal overlap</p>
       </div>
     </a>
     <a class="right-next"
@@ -934,7 +935,7 @@ u_H := \pi_H u
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">82. </span>Exercise: Robust preconditioners</p>
+        <p class="prev-next-title"><span class="section-number">83. </span>Exercise: Robust preconditioners</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -954,11 +955,11 @@ u_H := \pi_H u
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments-with-overlapping-dd">81.1. Experiments with overlapping DD</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-dd-preconditioner">81.2. Analysis of the DD preconditioner</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlapping-dd-methods-with-coarse-grid">81.3. Overlapping DD Methods with coarse grid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-2-level-method">81.4. Analysis of the 2-level method:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-dd-with-minimal-overlap">81.5. Comparison to DD with minimal overlap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments-with-overlapping-dd">82.1. Experiments with overlapping DD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-dd-preconditioner">82.2. Analysis of the DD preconditioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlapping-dd-methods-with-coarse-grid">82.3. Overlapping DD Methods with coarse grid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-2-level-method">82.4. Analysis of the 2-level method:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-dd-with-minimal-overlap">82.5. Comparison to DD with minimal overlap</a></li>
 </ul>
   </nav></div>
 

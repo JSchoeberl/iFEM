@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>66. Heat Equation &#8212; Interactive Finite Elements</title>
+    <title>67. Heat Equation &#8212; Interactive Finite Elements</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'timedependent/intro/heatequation';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="67. Wave Equation" href="waveequation.html" />
-    <link rel="prev" title="65. The de`Rham complex" href="../../Maxwell/deRham.html" />
+    <link rel="next" title="68. Wave Equation" href="waveequation.html" />
+    <link rel="prev" title="66. The de`Rham complex" href="../../Maxwell/deRham.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -277,75 +277,76 @@
 <li class="toctree-l1"><a class="reference internal" href="../../plates_shells/2_ReissnerMindlin.html">59. Reissner Mindlin plates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../plates_shells/3_shell.html">60. Naghdi shell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../plates_shells/4_rollup.html">61. Fully nonlinear Koiter shell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plates_shells/HCT.html">62. The Hsieh-Clough-Tocher (HCT) elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Maxwell Equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/magnetostatics.html">62. Maxwell equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/coil.html">63. Magnetic flux induced by a coil</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/HCurl.html">64. The function space H(curl)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/deRham.html">65. The de`Rham complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/magnetostatics.html">63. Maxwell equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/coil.html">64. Magnetic flux induced by a coil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/HCurl.html">65. The function space H(curl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Maxwell/deRham.html">66. The de`Rham complex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">66. Heat Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="waveequation.html">67. Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../waves/lts.html">68. Mass-lumping and Local time-stepping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../waves/wave-leapfrogDG.html">69. Discontinuous Galerkin for the Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../waves/ringresonator.html">70. Nano-optics: A ring-resonator</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">67. Heat Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="waveequation.html">68. Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../waves/lts.html">69. Mass-lumping and Local time-stepping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../waves/wave-leapfrogDG.html">70. Discontinuous Galerkin for the Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../waves/ringresonator.html">71. Nano-optics: A ring-resonator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/simple.html">71. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/Richardson.html">72. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/gradientmethod.html">73. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/preconditioning.html">74. Preconditioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/Chebyshev.html">75. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../iterative/conjugategradients.html">76. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/simple.html">72. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/Richardson.html">73. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/gradientmethod.html">74. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/preconditioning.html">75. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/Chebyshev.html">76. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../iterative/conjugategradients.html">77. Conjugate Gradients</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/asm.html">77. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/examples.html">78. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/pversion.html">79. high order fem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/minimaldd.html">80. Domain Decomposition with minimal overlap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/overlapping.html">81. Overlapping Domain Decomposition Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/exercise.html">82. Exercise: Robust preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/asm.html">78. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/examples.html">79. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/pversion.html">80. high order fem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/minimaldd.html">81. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/overlapping.html">82. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subspacecorrection/exercise.html">83. Exercise: Robust preconditioners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/algorithms.html">83. Multigrid and Multilevel Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisML.html">84. Analysis of the multi-level preconditioner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisMG.html">85. Analysis of the Multigrid Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/multilevel-extension.html">86. Multi-level Extension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/amg.html">87. Algebraic Multigrid Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../multigrid/hcurlamg.html">88. H(curl) - AMG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/algorithms.html">84. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisML.html">85. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/analysisMG.html">86. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/multilevel-extension.html">87. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/amg.html">88. Algebraic Multigrid Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multigrid/hcurlamg.html">89. H(curl) - AMG</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/structure.html">90. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/bramblepasciak.html">91. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/fewconstraints.html">92. A Small Number of Constraints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/parameterdependent.html">93. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/structure.html">91. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/bramblepasciak.html">92. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/fewconstraints.html">93. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../saddlepoint/parameterdependent.html">94. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">94. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">95. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/introduction.html">95. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/traces.html">96. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">97. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">98. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">99. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI.html">98. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/FETI-DP.html">99. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domaindecomposition/BDDC.html">100. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">100. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">101. Distributed Meshes and Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">102. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">103. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">104. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">105. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">106. Solving Stokes in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/intro.html">101. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/distmesh.html">102. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/vectypes.html">103. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/paralleliteration.html">104. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/petsc.html">105. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/PETSc_interface.html">106. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MPIparallel/parallelstokes.html">107. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -509,9 +510,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-formulation-in-space">66.1. Variational formulation in space</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galerkin-method-in-space">66.2. Galerkin method in space</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-euler-time-stepping">66.3. Implicit Euler time-stepping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-formulation-in-space">67.1. Variational formulation in space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galerkin-method-in-space">67.2. Galerkin method in space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-euler-time-stepping">67.3. Implicit Euler time-stepping</a></li>
 </ul>
             </nav>
         </div>
@@ -524,7 +525,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="heat-equation">
-<h1><span class="section-number">66. </span>Heat Equation<a class="headerlink" href="#heat-equation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">67. </span>Heat Equation<a class="headerlink" href="#heat-equation" title="Link to this heading">#</a></h1>
 <p>The heat equation is a typical example of parabolic equations. We search for the temperature <span class="math notranslate nohighlight">\(u : \Omega \times[0,T] \rightarrow R\)</span> satisfying</p>
 <div class="math notranslate nohighlight">
 \[
@@ -541,7 +542,7 @@ u(x,0) = u_0(x) \qquad \forall \, x \in \Omega,
 u(x,t) = u_D(x,t) \qquad \forall \, x \in \partial \Omega, \; \forall  t \in(0,T]
 \]</div>
 <section id="variational-formulation-in-space">
-<h2><span class="section-number">66.1. </span>Variational formulation in space<a class="headerlink" href="#variational-formulation-in-space" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">67.1. </span>Variational formulation in space<a class="headerlink" href="#variational-formulation-in-space" title="Link to this heading">#</a></h2>
 <p>Similar as for elliptic equations we pass over to the weak formulations. We do this only for the spatial variables <span class="math notranslate nohighlight">\(x\)</span>, for all <span class="math notranslate nohighlight">\(t \in (0,T)\)</span>. The test functions <span class="math notranslate nohighlight">\(v\)</span> depend only on <span class="math notranslate nohighlight">\(x\)</span>. We multiply by <span class="math notranslate nohighlight">\(v\)</span>, integration over <span class="math notranslate nohighlight">\(\Omega\)</span>, and perform integration by parts to obtain:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -559,7 +560,7 @@ u(\cdot, 0) = u_0 \qquad \text{in} \; L_2(\Omega)
 \]</div>
 </section>
 <section id="galerkin-method-in-space">
-<h2><span class="section-number">66.2. </span>Galerkin method in space<a class="headerlink" href="#galerkin-method-in-space" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">67.2. </span>Galerkin method in space<a class="headerlink" href="#galerkin-method-in-space" title="Link to this heading">#</a></h2>
 <p>As a next step we apply the finite element method in space. Let <span class="math notranslate nohighlight">\(V_h\)</span> be a finite element sub-space of <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span>, with the basis functions <span class="math notranslate nohighlight">\(\{ p_1(x), \ldots p_N(x) \}\)</span>. We approximate the time-dependent function by</p>
 <div class="math notranslate nohighlight">
 \[
@@ -605,7 +606,7 @@ u(0) = u_0
 <p>for the unknown coefficient function <span class="math notranslate nohighlight">\(u(\cdot) = (u_1(\cdot), \ldots u_N(\cdot)) \in C^1([0,T], R^N)\)</span>.</p>
 </section>
 <section id="implicit-euler-time-stepping">
-<h2><span class="section-number">66.3. </span>Implicit Euler time-stepping<a class="headerlink" href="#implicit-euler-time-stepping" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">67.3. </span>Implicit Euler time-stepping<a class="headerlink" href="#implicit-euler-time-stepping" title="Link to this heading">#</a></h2>
 <p>We approximate the function <span class="math notranslate nohighlight">\(u\)</span> at time-steps <span class="math notranslate nohighlight">\(t_j = j \tau\)</span> by <span class="math notranslate nohighlight">\(u^j\)</span>, with the time-step <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(j \in \{0, \ldots m\}\)</span>. By replacing the time-derivative <span class="math notranslate nohighlight">\(\dot u\)</span> by the backward difference quotient we obtain</p>
 <div class="math notranslate nohighlight">
 \[
@@ -714,7 +715,7 @@ u^j &amp; = &amp; u^{j-1} + \tau w^j
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">65. </span>The de`Rham complex</p>
+        <p class="prev-next-title"><span class="section-number">66. </span>The de`Rham complex</p>
       </div>
     </a>
     <a class="right-next"
@@ -722,7 +723,7 @@ u^j &amp; = &amp; u^{j-1} + \tau w^j
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">67. </span>Wave Equation</p>
+        <p class="prev-next-title"><span class="section-number">68. </span>Wave Equation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -742,9 +743,9 @@ u^j &amp; = &amp; u^{j-1} + \tau w^j
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-formulation-in-space">66.1. Variational formulation in space</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galerkin-method-in-space">66.2. Galerkin method in space</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-euler-time-stepping">66.3. Implicit Euler time-stepping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-formulation-in-space">67.1. Variational formulation in space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galerkin-method-in-space">67.2. Galerkin method in space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-euler-time-stepping">67.3. Implicit Euler time-stepping</a></li>
 </ul>
   </nav></div>
 

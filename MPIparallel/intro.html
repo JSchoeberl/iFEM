@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>100. Introduction to MPI with mpi4py &#8212; Interactive Finite Elements</title>
+    <title>101. Introduction to MPI with mpi4py &#8212; Interactive Finite Elements</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'MPIparallel/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="101. Distributed Meshes and Spaces" href="distmesh.html" />
-    <link rel="prev" title="99. BDDC - Preconditioner" href="../domaindecomposition/BDDC.html" />
+    <link rel="next" title="102. Distributed Meshes and Spaces" href="distmesh.html" />
+    <link rel="prev" title="100. BDDC - Preconditioner" href="../domaindecomposition/BDDC.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -277,75 +277,76 @@
 <li class="toctree-l1"><a class="reference internal" href="../plates_shells/2_ReissnerMindlin.html">59. Reissner Mindlin plates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plates_shells/3_shell.html">60. Naghdi shell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plates_shells/4_rollup.html">61. Fully nonlinear Koiter shell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plates_shells/HCT.html">62. The Hsieh-Clough-Tocher (HCT) elements</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Maxwell Equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/magnetostatics.html">62. Maxwell equations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/coil.html">63. Magnetic flux induced by a coil</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/HCurl.html">64. The function space H(curl)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Maxwell/deRham.html">65. The de`Rham complex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/magnetostatics.html">63. Maxwell equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/coil.html">64. Magnetic flux induced by a coil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/HCurl.html">65. The function space H(curl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Maxwell/deRham.html">66. The de`Rham complex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Time-dependent problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/heatequation.html">66. Heat Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/waveequation.html">67. Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/lts.html">68. Mass-lumping and Local time-stepping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/wave-leapfrogDG.html">69. Discontinuous Galerkin for the Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/ringresonator.html">70. Nano-optics: A ring-resonator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/heatequation.html">67. Heat Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/intro/waveequation.html">68. Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/lts.html">69. Mass-lumping and Local time-stepping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/wave-leapfrogDG.html">70. Discontinuous Galerkin for the Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../timedependent/waves/ringresonator.html">71. Nano-optics: A ring-resonator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Iteration Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">71. Basic Iterative Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">72. The Richardson Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">73. The Gradient Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">74. Preconditioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">75. The Chebyshev Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">76. Conjugate Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/simple.html">72. Basic Iterative Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Richardson.html">73. The Richardson Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/gradientmethod.html">74. The Gradient Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/preconditioning.html">75. Preconditioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/Chebyshev.html">76. The Chebyshev Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../iterative/conjugategradients.html">77. Conjugate Gradients</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Sub-space Correction Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">77. Additive Schwarz Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">78. Some Examples of ASM preconditioners</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">79. high order fem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">80. Domain Decomposition with minimal overlap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">81. Overlapping Domain Decomposition Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">82. Exercise: Robust preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/asm.html">78. Additive Schwarz Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/examples.html">79. Some Examples of ASM preconditioners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/pversion.html">80. high order fem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/minimaldd.html">81. Domain Decomposition with minimal overlap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/overlapping.html">82. Overlapping Domain Decomposition Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subspacecorrection/exercise.html">83. Exercise: Robust preconditioners</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multigrid Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">83. Multigrid and Multilevel Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">84. Analysis of the multi-level preconditioner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">85. Analysis of the Multigrid Iteration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">86. Multi-level Extension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/amg.html">87. Algebraic Multigrid Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../multigrid/hcurlamg.html">88. H(curl) - AMG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/algorithms.html">84. Multigrid and Multilevel Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisML.html">85. Analysis of the multi-level preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/analysisMG.html">86. Analysis of the Multigrid Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/multilevel-extension.html">87. Multi-level Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/amg.html">88. Algebraic Multigrid Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multigrid/hcurlamg.html">89. H(curl) - AMG</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Saddle-point Problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">90. Structure of Saddle-point Problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">91. The Bramble-Pasciak Transformation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">92. A Small Number of Constraints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">93. Parameter Dependent Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/structure.html">91. Structure of Saddle-point Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/bramblepasciak.html">92. The Bramble-Pasciak Transformation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/fewconstraints.html">93. A Small Number of Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saddlepoint/parameterdependent.html">94. Parameter Dependent Problems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non-overlapping Domain Decomposition Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">94. Introduction to Non-overlapping Domain Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">95. Traces spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/introduction.html">95. Introduction to Non-overlapping Domain Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/traces.html">96. Traces spaces</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">97. FETI methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">98. FETI-DP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">99. BDDC - Preconditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI.html">98. FETI methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/FETI-DP.html">99. FETI-DP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domaindecomposition/BDDC.html">100. BDDC - Preconditioner</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parallel Solvers</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">100. Introduction to MPI with mpi4py</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distmesh.html">101. Distributed Meshes and Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vectypes.html">102. Consistent and Distributed Vectors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="paralleliteration.html">103. Iteration methods in parallel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="petsc.html">104. Using PETSc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PETSc_interface.html">105. NGSolve - PETSc interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="parallelstokes.html">106. Solving Stokes in parallel</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">101. Introduction to MPI with mpi4py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distmesh.html">102. Distributed Meshes and Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vectypes.html">103. Consistent and Distributed Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paralleliteration.html">104. Iteration methods in parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="petsc.html">105. Using PETSc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETSc_interface.html">106. NGSolve - PETSc interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallelstokes.html">107. Solving Stokes in parallel</a></li>
 </ul>
 
     </div>
@@ -509,15 +510,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-installation-instructions-are-found-here">100.1. Latest installation instructions are found here:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-installation-happens-in-three-steps">100.2. The installation happens in three steps:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-with-conda">100.2.1. Installing with conda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda-packages-using-pip">100.2.2. Installing conda-packages using pip</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-mpi-and-petsc-without-conda">100.2.3. Installing MPI and PETSc without conda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-installation-instructions-are-found-here">101.1. Latest installation instructions are found here:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-installation-happens-in-three-steps">101.2. The installation happens in three steps:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-with-conda">101.2.1. Installing with conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda-packages-using-pip">101.2.2. Installing conda-packages using pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-mpi-and-petsc-without-conda">101.2.3. Installing MPI and PETSc without conda</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ipyparallel">100.3. Using ipyparallel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mpi-library">100.4. The MPI library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ipyparallel">101.3. Using ipyparallel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mpi-library">101.4. The MPI library</a></li>
 </ul>
             </nav>
         </div>
@@ -530,22 +531,22 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-mpi-with-mpi4py">
-<h1><span class="section-number">100. </span>Introduction to MPI with mpi4py<a class="headerlink" href="#introduction-to-mpi-with-mpi4py" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">101. </span>Introduction to MPI with mpi4py<a class="headerlink" href="#introduction-to-mpi-with-mpi4py" title="Link to this heading">#</a></h1>
 <p>MPI (abbreviation for message passing interface) is the standard library for communication within a cluster of processors. The library is available for many languages, such as C or Python. In this tutorial we use MPI within jupyter notebooks</p>
 <section id="latest-installation-instructions-are-found-here">
-<h2><span class="section-number">100.1. </span>Latest installation instructions are found here:<a class="headerlink" href="#latest-installation-instructions-are-found-here" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">101.1. </span>Latest installation instructions are found here:<a class="headerlink" href="#latest-installation-instructions-are-found-here" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://docu.ngsolve.org/ngs24/intro.html#installing-parallel-ngsolve">Installing parallel NGSolve</a></p>
 <p>older alternative below:</p>
 </section>
 <section id="the-installation-happens-in-three-steps">
-<h2><span class="section-number">100.2. </span>The installation happens in three steps:<a class="headerlink" href="#the-installation-happens-in-three-steps" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">101.2. </span>The installation happens in three steps:<a class="headerlink" href="#the-installation-happens-in-three-steps" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>install MPI including mpi4py</p></li>
 <li><p>install PETSc including petsc4py (needed for advanced tutorials)</p></li>
 <li><p>install MPI-parallel ngsolve (shipped as binaries starting from NGSolve 24.04)</p></li>
 </ul>
 <section id="installing-with-conda">
-<h3><span class="section-number">100.2.1. </span>Installing with conda<a class="headerlink" href="#installing-with-conda" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">101.2.1. </span>Installing with conda<a class="headerlink" href="#installing-with-conda" title="Link to this heading">#</a></h3>
 <p>The quickest path is using conda. Conda-forge provides binary packages for MPI and PETSc for many platforms and versions (TODO: list versions). Install anaconda (or mini-conda), and run something like</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~/miniconda3/bin/conda install mpi4py petsc4py
 ~/miniconda3/bin/python3 -m pip install --pre --upgrade ngsolve
@@ -553,7 +554,7 @@ document.write(`
 </div>
 </section>
 <section id="installing-conda-packages-using-pip">
-<h3><span class="section-number">100.2.2. </span>Installing conda-packages using pip<a class="headerlink" href="#installing-conda-packages-using-pip" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">101.2.2. </span>Installing conda-packages using pip<a class="headerlink" href="#installing-conda-packages-using-pip" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><em>Linux/MacOS</em> <br></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install -i https://pypi.anaconda.org/mpi4py/simple mpi4py==4.0.0.dev0 openmpi
@@ -569,7 +570,7 @@ pip install -i https://pypi.anaconda.org/mpi4py/simple mpi4py==4.0.0.dev0
 </ul>
 </section>
 <section id="installing-mpi-and-petsc-without-conda">
-<h3><span class="section-number">100.2.3. </span>Installing MPI and PETSc without conda<a class="headerlink" href="#installing-mpi-and-petsc-without-conda" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">101.2.3. </span>Installing MPI and PETSc without conda<a class="headerlink" href="#installing-mpi-and-petsc-without-conda" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><em>Linux:</em> <br>
 install either one with your package manager: openmpi, mpich, or IntelMPI <br>
@@ -595,7 +596,7 @@ pip install --upgrade --no-deps --force-reinstall mpi4py petsc petsc4py
 </section>
 </section>
 <section id="using-ipyparallel">
-<h2><span class="section-number">100.3. </span>Using ipyparallel<a class="headerlink" href="#using-ipyparallel" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">101.3. </span>Using ipyparallel<a class="headerlink" href="#using-ipyparallel" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">ipyparallel</span></code> module let us communicate with the cluster. The <code class="docutils literal notranslate"><span class="pre">Cluster</span></code> class represents the cluster. Every processor starts its own Python instance. You have to install the ipyparallel package:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install ipyparallel
 </pre></div>
@@ -662,7 +663,7 @@ b = a*a
 </div>
 </section>
 <section id="the-mpi-library">
-<h2><span class="section-number">100.4. </span>The MPI library<a class="headerlink" href="#the-mpi-library" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">101.4. </span>The MPI library<a class="headerlink" href="#the-mpi-library" title="Link to this heading">#</a></h2>
 <p>MPI provides functions to communicate within the cluster. The back-bone is a communicator object which knows about the participating processors. The standard communicator is the world-communicator where all processors of the cluster are included.</p>
 <p>The communicator knows the own number (called rank) within this group, and the size of the group:</p>
 <div class="cell docutils container">
@@ -793,7 +794,7 @@ personal note to 3
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">99. </span>BDDC - Preconditioner</p>
+        <p class="prev-next-title"><span class="section-number">100. </span>BDDC - Preconditioner</p>
       </div>
     </a>
     <a class="right-next"
@@ -801,7 +802,7 @@ personal note to 3
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">101. </span>Distributed Meshes and Spaces</p>
+        <p class="prev-next-title"><span class="section-number">102. </span>Distributed Meshes and Spaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -821,15 +822,15 @@ personal note to 3
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-installation-instructions-are-found-here">100.1. Latest installation instructions are found here:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-installation-happens-in-three-steps">100.2. The installation happens in three steps:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-with-conda">100.2.1. Installing with conda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda-packages-using-pip">100.2.2. Installing conda-packages using pip</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-mpi-and-petsc-without-conda">100.2.3. Installing MPI and PETSc without conda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latest-installation-instructions-are-found-here">101.1. Latest installation instructions are found here:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-installation-happens-in-three-steps">101.2. The installation happens in three steps:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-with-conda">101.2.1. Installing with conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda-packages-using-pip">101.2.2. Installing conda-packages using pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-mpi-and-petsc-without-conda">101.2.3. Installing MPI and PETSc without conda</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ipyparallel">100.3. Using ipyparallel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mpi-library">100.4. The MPI library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ipyparallel">101.3. Using ipyparallel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mpi-library">101.4. The MPI library</a></li>
 </ul>
   </nav></div>
 
