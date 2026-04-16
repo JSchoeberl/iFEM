@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -564,16 +564,16 @@ B = \operatorname{curl} \, A.
 \]</div>
 <p>Inserting the vector-potential into the system of equations, one obtains
 the second order equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-acd86ed6-5d1a-4180-85c8-af88c19fd072">
-<span class="eqno">(63.1)<a class="headerlink" href="#equation-acd86ed6-5d1a-4180-85c8-af88c19fd072" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a7b71ab3-f9bb-49c0-ab77-d2b2dca96652">
+<span class="eqno">(63.1)<a class="headerlink" href="#equation-a7b71ab3-f9bb-49c0-ab77-d2b2dca96652" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \operatorname{curl} \, \mu^{-1}  \operatorname{curl} A = j.
 \end{equation}\]</div>
 <p>The two original fields <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(H\)</span> can be obtained from the vector potential <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>The vector-potential <span class="math notranslate nohighlight">\(A\)</span> is not uniquely defined. One
 may add a gradient field to <span class="math notranslate nohighlight">\(A\)</span>, and the equation is still true. To obtain a unique
 solution, the so called Coloumb-Gauging can be applied:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d44512c0-b682-4ae5-a79e-cf5b2575891d">
-<span class="eqno">(63.2)<a class="headerlink" href="#equation-d44512c0-b682-4ae5-a79e-cf5b2575891d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dc62e004-43c3-483a-8595-23b3a39aa33a">
+<span class="eqno">(63.2)<a class="headerlink" href="#equation-dc62e004-43c3-483a-8595-23b3a39aa33a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \operatorname{div} \, A = 0.
 \end{equation}\]</div>
 <p>As usual, we go over to the weak form. Both Equations together become: Find <span class="math notranslate nohighlight">\(A\)</span> such that</p>
@@ -591,8 +591,8 @@ then we have more equations than unknowns. The system is still solvable, since w
 have made the assumption <span class="math notranslate nohighlight">\(\operatorname{div} \, j = 0\)</span>, and thus <span class="math notranslate nohighlight">\(j\)</span> is in the range of the <span class="math notranslate nohighlight">\(\operatorname{curl}\)</span>-
 operator. To obtain a symmetric system, we add a new scalar variable <span class="math notranslate nohighlight">\(\varphi\)</span>.
 The problem is now: Find <span class="math notranslate nohighlight">\(A \in V = ?\)</span> and <span class="math notranslate nohighlight">\(\varphi \in Q = H^1 / \mathbb{R}\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d4351d3e-73b6-4620-a690-de6ac8471614">
-<span class="eqno">(63.3)<a class="headerlink" href="#equation-d4351d3e-73b6-4620-a690-de6ac8471614" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+<div class="amsmath math notranslate nohighlight" id="equation-c9f59164-d277-4c00-b695-22f81b692e5c">
+<span class="eqno">(63.3)<a class="headerlink" href="#equation-c9f59164-d277-4c00-b695-22f81b692e5c" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 \begin{array}{ccccll}
 \int \mu^{-1} \operatorname{curl} A \, \cdot \operatorname{curl} v \, dx &amp; + &amp; 
 \int \nabla \varphi \cdot v \, dx &amp; = &amp; 
