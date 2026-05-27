@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Runge Kutta Methods &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'timedependent/ODEs/runge_kutta';</script>
@@ -532,7 +530,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="runge-kutta-methods">
-<h1>Runge Kutta Methods<a class="headerlink" href="#runge-kutta-methods" title="Link to this heading">#</a></h1>
+<h1>Runge Kutta Methods<a class="headerlink" href="#runge-kutta-methods" title="Permalink to this heading">#</a></h1>
 <p>The Runge Kutta methods are the most prominent subset of single step methods.</p>
 <p>We start from the integral equation for one time-step:</p>
 <div class="math notranslate nohighlight">
@@ -587,7 +585,7 @@ c_s &amp; a_{s1} &amp; \ldots &amp; a_{ss} \\
 <p>If the matrix <span class="math notranslate nohighlight">\(a\)</span> is strictly lower triangular, the method is explicit.</p>
 <p>If the matrix <span class="math notranslate nohighlight">\(a\)</span> is (non strictly) lower triangular, one has to solve <span class="math notranslate nohighlight">\(s\)</span> decoupled non-linear systems for the individual stages.</p>
 <section id="butcher-tableaus-of-simple-methods">
-<h2>Butcher tableaus of simple methods<a class="headerlink" href="#butcher-tableaus-of-simple-methods" title="Link to this heading">#</a></h2>
+<h2>Butcher tableaus of simple methods<a class="headerlink" href="#butcher-tableaus-of-simple-methods" title="Permalink to this heading">#</a></h2>
 <p>Explicit Euler (1-stage):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -627,7 +625,7 @@ $<span class="math notranslate nohighlight">\(
 <p>One immediately verifies the consistency condition <span class="math notranslate nohighlight">\(c_j = \sum_i a_{ji}\)</span>.</p>
 </section>
 <section id="convergence-of-runge-kutta-methods">
-<h2>Convergence of Runge Kutta methods<a class="headerlink" href="#convergence-of-runge-kutta-methods" title="Link to this heading">#</a></h2>
+<h2>Convergence of Runge Kutta methods<a class="headerlink" href="#convergence-of-runge-kutta-methods" title="Permalink to this heading">#</a></h2>
 <p>The <strong>consistency order</strong> of a Runge Kutta method is determined by Tayloring the exact solution, Tayloring the numerical method, and matching coefficients [Deuflhard + Bornemann: Scientific Computing with Ordinary Differential Equations, Chapter 4.2.2]. These leads to the following equations: To satisfy a certain consistency order, all equation up to this order must be satisfied.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -656,10 +654,10 @@ g(z) = 1 + z b^T (I-zA)^{-1} {\mathbb 1}
 <p>If <span class="math notranslate nohighlight">\(A\)</span> is non-singular, and <span class="math notranslate nohighlight">\(b\)</span> coincides with one of the rows of <span class="math notranslate nohighlight">\(A\)</span>, then the Runge Kutta method is <span class="math notranslate nohighlight">\(L\)</span>-stable.</p>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Runge%E2%80%93Kutta_methods">https://en.wikipedia.org/wiki/List_of_Runge–Kutta_methods</a></p>
 <section id="explicit-methods">
-<h3>Explicit methods:<a class="headerlink" href="#explicit-methods" title="Link to this heading">#</a></h3>
+<h3>Explicit methods:<a class="headerlink" href="#explicit-methods" title="Permalink to this heading">#</a></h3>
 <p>Heun’s third-order method (3 stages, order 3):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -685,7 +683,7 @@ g(z) = 1 + z b^T (I-zA)^{-1} {\mathbb 1}
 \end{split}\]</div>
 </section>
 <section id="diagonally-implicit-runge-kutta-methods">
-<h3>Diagonally implicit Runge-Kutta methods:<a class="headerlink" href="#diagonally-implicit-runge-kutta-methods" title="Link to this heading">#</a></h3>
+<h3>Diagonally implicit Runge-Kutta methods:<a class="headerlink" href="#diagonally-implicit-runge-kutta-methods" title="Permalink to this heading">#</a></h3>
 <p>Crouzeix’s method = DIRK 2 (2 stages, order 3, L-stable):
 $<span class="math notranslate nohighlight">\(
 \begin{array}{c|cc}
@@ -700,7 +698,7 @@ with \)</span>\gamma = (3 + \sqrt{3})/6$</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercise">
-<h1>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h1>
+<h1>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Solve Transport equation with Improved Euler (RK2), Heun (RK3) and classical RK4</p></li>
 <li><p>Solve the parabolic equation with DIRK 2</p></li>

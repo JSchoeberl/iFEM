@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>76. Preconditioning &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'iterative/preconditioning';</script>
@@ -523,7 +521,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="preconditioning">
-<h1><span class="section-number">76. </span>Preconditioning<a class="headerlink" href="#preconditioning" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">76. </span>Preconditioning<a class="headerlink" href="#preconditioning" title="Permalink to this heading">#</a></h1>
 <p>We call <span class="math notranslate nohighlight">\(C\)</span> a preconditioner to the matrix <span class="math notranslate nohighlight">\(A\)</span> if</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(C^{-1} A \approx I\)</span></p></li>
@@ -543,7 +541,7 @@ A x = \lambda C x
 \]</div>
 <p>If <span class="math notranslate nohighlight">\(\lambda_i\)</span> is an eigenvalue with eigenvector <span class="math notranslate nohighlight">\(x_i\)</span>, then <span class="math notranslate nohighlight">\(x_i^T A x_i = \lambda_i x_i^T C x_i\)</span>, and thus <span class="math notranslate nohighlight">\(\lambda_i \in [\gamma_1, \gamma_2]\)</span>.</p>
 <section id="the-preconditioned-richardson-iteration">
-<h2><span class="section-number">76.1. </span>The preconditioned Richardson iteration<a class="headerlink" href="#the-preconditioned-richardson-iteration" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">76.1. </span>The preconditioned Richardson iteration<a class="headerlink" href="#the-preconditioned-richardson-iteration" title="Permalink to this heading">#</a></h2>
 <p>We use the preconditioner to obtain the correction from the residuum:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -641,19 +639,19 @@ w := C^{-1} * r
 1.4561802166072204
 1.4868555309160059
 1.5128136703803488
-1.5355453475830547
-1.5558649564062739
+1.535545347583055
+1.5558649564062736
 1.5741855880439362
 1.5906952640193426
-1.605474701035831
+1.6054747010358312
 1.6185726958131599
 1.6300483867518891
-1.6399887163860454
+1.6399887163860452
 1.6485095149568034
 1.655747823046611
 1.6618512508456817
 1.6669679855685193
-1.6712391516886005
+1.6712391516886007
 </pre></div>
 </div>
 </div>
@@ -709,7 +707,7 @@ A(u,v) = \int_\Omega \nabla u \nabla v \, dx + 10^8 \int_{\Gamma_R} u v \, ds,
 <p>the Jacobi preconditioner captures these parameters (experiment in  excercise, theory soon).</p>
 </section>
 <section id="the-preconditioned-gradient-method">
-<h2><span class="section-number">76.2. </span>The preconditioned gradient method<a class="headerlink" href="#the-preconditioned-gradient-method" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">76.2. </span>The preconditioned gradient method<a class="headerlink" href="#the-preconditioned-gradient-method" title="Permalink to this heading">#</a></h2>
 <p>To introduce the preconditioner into the gradient method we proceed as follows. Since <span class="math notranslate nohighlight">\(C\)</span> is SPD, we are allowed to form its square-root</p>
 <div class="math notranslate nohighlight">
 \[
@@ -829,7 +827,7 @@ for <span class="math notranslate nohighlight">\(k = 0, 1, 2, \ldots\)</span> <b
 </div>
 </section>
 <section id="jacobi-and-gauss-seidel-preconditioners">
-<h2><span class="section-number">76.3. </span>Jacobi and Gauss Seidel Preconditioners<a class="headerlink" href="#jacobi-and-gauss-seidel-preconditioners" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">76.3. </span>Jacobi and Gauss Seidel Preconditioners<a class="headerlink" href="#jacobi-and-gauss-seidel-preconditioners" title="Permalink to this heading">#</a></h2>
 <p>For a given residual <span class="math notranslate nohighlight">\(r\)</span>, the Jacobi preconditioner computes</p>
 <div class="math notranslate nohighlight">
 \[

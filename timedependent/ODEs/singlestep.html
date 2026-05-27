@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Single-step methods &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'timedependent/ODEs/singlestep';</script>
@@ -539,7 +537,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="single-step-methods">
-<h1>Single-step methods<a class="headerlink" href="#single-step-methods" title="Link to this heading">#</a></h1>
+<h1>Single-step methods<a class="headerlink" href="#single-step-methods" title="Permalink to this heading">#</a></h1>
 <p>We consider ordinary differential equations (ODE): find <span class="math notranslate nohighlight">\(y\)</span> satisfying</p>
 <div class="math notranslate nohighlight">
 \[
@@ -553,14 +551,14 @@ y(0) = y_0.
 <p>The unknown function is the state <span class="math notranslate nohighlight">\(y : [0,T] \rightarrow R^N\)</span>, and given is the right hand side <span class="math notranslate nohighlight">\(f : [0,T] \times R^N \rightarrow R^N\)</span>, and <span class="math notranslate nohighlight">\(y_0\)</span>.</p>
 <p>We discretize on the grid <span class="math notranslate nohighlight">\(t_0 = 0 &lt; t_1 &lt; \ldots &lt; t_n\)</span> to find approximations <span class="math notranslate nohighlight">\(y_j \approx y(t_j)\)</span>. In a single-step method the new value <span class="math notranslate nohighlight">\(y_{j+1}\)</span> depends only on <span class="math notranslate nohighlight">\(y_j\)</span>, and not on the history <span class="math notranslate nohighlight">\(y_k\)</span> for <span class="math notranslate nohighlight">\(k &lt; j\)</span>. The time-step <span class="math notranslate nohighlight">\(\tau_j := t_{j+1}-t_j\)</span> can be easily varied.</p>
 <section id="simple-methods-based-on-the-integral-equation">
-<h2>Simple methods based on the integral equation<a class="headerlink" href="#simple-methods-based-on-the-integral-equation" title="Link to this heading">#</a></h2>
+<h2>Simple methods based on the integral equation<a class="headerlink" href="#simple-methods-based-on-the-integral-equation" title="Permalink to this heading">#</a></h2>
 <p>One technique to derive numerical methods is to replace the ODE by a (formally) equivalent integral equation. On every sub-interval <span class="math notranslate nohighlight">\([t_j, t_{j+1}]\)</span>, the ODE with initial condition for <span class="math notranslate nohighlight">\(t_j\)</span> is equivalent to the integral equation</p>
 <div class="math notranslate nohighlight">
 \[
 y(t) = y(t_j) + \int_{t_j}^t f(s, y(s)) \, ds \qquad \forall \, t \in [t_j, t_{j+1}]
 \]</div>
 <section id="explicit-euler-method-ee">
-<h3>Explicit Euler method (EE)<a class="headerlink" href="#explicit-euler-method-ee" title="Link to this heading">#</a></h3>
+<h3>Explicit Euler method (EE)<a class="headerlink" href="#explicit-euler-method-ee" title="Permalink to this heading">#</a></h3>
 <p>We use the integral equation for <span class="math notranslate nohighlight">\(t = t_{j+1}\)</span>, and approximate the integral by the left rectangle numerical integration rule:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -575,7 +573,7 @@ y_{j+1} = y_j + \tau_j f(t_j, y_j) \qquad \forall \, j = 0, \ldots n-1.
 <p>It is the same method as motivated by forward difference quotients. It is very simple to apply since the new approximation is given by an explicit formula.</p>
 </section>
 <section id="implicit-euler-method-ie">
-<h3>Implicit Euler method (IE)<a class="headerlink" href="#implicit-euler-method-ie" title="Link to this heading">#</a></h3>
+<h3>Implicit Euler method (IE)<a class="headerlink" href="#implicit-euler-method-ie" title="Permalink to this heading">#</a></h3>
 <p>Now we use the right rectangle rule for numerical integration</p>
 <div class="math notranslate nohighlight">
 \[
@@ -589,7 +587,7 @@ y_{j+1} = y_j + \tau_j f(t_{j+1}, y_{j+1}) \qquad \forall \, j = 0, \ldots n-1
 <p>It is the same method as motivated by backward difference quotients. Now the unknown new value <span class="math notranslate nohighlight">\(y_{j+1}\)</span> shows up also on the right hand side. An (often non-linear) equation has to be solved, which makes the implicit Euler method more expensive to apply.</p>
 </section>
 <section id="trapezoidal-method">
-<h3>Trapezoidal method<a class="headerlink" href="#trapezoidal-method" title="Link to this heading">#</a></h3>
+<h3>Trapezoidal method<a class="headerlink" href="#trapezoidal-method" title="Permalink to this heading">#</a></h3>
 <p>The trapezoidal numerical integration rule is to approximate</p>
 <div class="math notranslate nohighlight">
 \[
@@ -603,7 +601,7 @@ y_{j+1} = y_j + \tfrac{\tau}{2} ( f(t_j, y_j)  + f(t_{j+1}, y_{j+1}))
 <p>It is an implicit method as well. In contrast to EE and IE methods it is second order accurate.</p>
 </section>
 <section id="explicit-mid-point-rule-improved-euler-method-rk2-method">
-<h3>Explicit mid-point rule (=improved Euler method = RK2 method)<a class="headerlink" href="#explicit-mid-point-rule-improved-euler-method-rk2-method" title="Link to this heading">#</a></h3>
+<h3>Explicit mid-point rule (=improved Euler method = RK2 method)<a class="headerlink" href="#explicit-mid-point-rule-improved-euler-method-rk2-method" title="Permalink to this heading">#</a></h3>
 <p>Another second-order integration rule is the mid-point rule leading to</p>
 <div class="math notranslate nohighlight">
 \[
@@ -618,7 +616,7 @@ y_{j+1/2} = y_j + \tfrac{\tau_j}{2} f(t_j, y_j)
 </section>
 </section>
 <section id="linear-stability-classification">
-<h2>Linear stability classification<a class="headerlink" href="#linear-stability-classification" title="Link to this heading">#</a></h2>
+<h2>Linear stability classification<a class="headerlink" href="#linear-stability-classification" title="Permalink to this heading">#</a></h2>
 <p>This concept applies to linear ODEs with constant coefficients</p>
 <div class="math notranslate nohighlight">
 \[
@@ -650,7 +648,7 @@ y_{j+1} = (1 + \lambda \tau) y_j
 y_{j+1} = \frac{1}{1 - \lambda \tau} y_j
 \]</div>
 <section id="stability-function">
-<h3>Stability function<a class="headerlink" href="#stability-function" title="Link to this heading">#</a></h3>
+<h3>Stability function<a class="headerlink" href="#stability-function" title="Permalink to this heading">#</a></h3>
 <p>The stability function <span class="math notranslate nohighlight">\(g : {\mathbb C} \rightarrow {\mathbb C}\)</span> is now defined such that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -699,7 +697,7 @@ y_{j+1} = g(\tau A) y_j
 </section>
 </section>
 <section id="stability-conditions">
-<h2>Stability conditions<a class="headerlink" href="#stability-conditions" title="Link to this heading">#</a></h2>
+<h2>Stability conditions<a class="headerlink" href="#stability-conditions" title="Permalink to this heading">#</a></h2>
 <p>The ODE <span class="math notranslate nohighlight">\(y^\prime = \lambda y\)</span> has the solution <span class="math notranslate nohighlight">\(y(t) = y(0) \exp (\lambda t)\)</span>.</p>
 <ul class="simple">
 <li><p>if the real part of <span class="math notranslate nohighlight">\(\lambda\)</span> is positive, the solution is exponentially growing</p></li>
@@ -767,7 +765,7 @@ S = \{ z \in {\mathbb C} : |g(z)| \leq 1 \}
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="single-step-methods-and-parabolic-equations">
-<h1>Single step methods and parabolic equations<a class="headerlink" href="#single-step-methods-and-parabolic-equations" title="Link to this heading">#</a></h1>
+<h1>Single step methods and parabolic equations<a class="headerlink" href="#single-step-methods-and-parabolic-equations" title="Permalink to this heading">#</a></h1>
 <p>We consider</p>
 <div class="math notranslate nohighlight">
 \[
@@ -810,7 +808,7 @@ K u = \lambda M u,
 <p>The <em>Courant–Friedrichs–Lewy</em> (in short <strong>CFL</strong>) condition is the condition for the time-step such that <span class="math notranslate nohighlight">\(\tau \lambda_i\)</span> is in the stability region for all <span class="math notranslate nohighlight">\(\lambda_i\)</span>.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="single-step-methods-and-hyperbolic-equations">
-<h1>Single step methods and hyperbolic equations<a class="headerlink" href="#single-step-methods-and-hyperbolic-equations" title="Link to this heading">#</a></h1>
+<h1>Single step methods and hyperbolic equations<a class="headerlink" href="#single-step-methods-and-hyperbolic-equations" title="Permalink to this heading">#</a></h1>
 <p>The second order hyperbolic equation is discretized as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -840,7 +838,7 @@ i \sqrt{\lambda}
 <p><strong>Corollary:</strong> For step-size <span class="math notranslate nohighlight">\(\tau \leq c h\)</span>, the RK3 - method is stable since it contains a symmetric interval on the imaginary axis. For EE and improved Euler, the shifted eigenvalues <span class="math notranslate nohighlight">\(\tau \lambda_i\)</span> are slightly outside the stability region.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises:<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
+<h1>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Implement the explicit Euler and trapezoidal method for the heat flow equation.</p>
 <ul>

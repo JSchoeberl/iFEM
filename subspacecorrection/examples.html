@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>80. Some Examples of ASM preconditioners &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'subspacecorrection/examples';</script>
@@ -523,9 +521,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="some-examples-of-asm-preconditioners">
-<h1><span class="section-number">80. </span>Some Examples of ASM preconditioners<a class="headerlink" href="#some-examples-of-asm-preconditioners" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">80. </span>Some Examples of ASM preconditioners<a class="headerlink" href="#some-examples-of-asm-preconditioners" title="Permalink to this heading">#</a></h1>
 <section id="diagonal-preconditioner-for-l-2-norm">
-<h2><span class="section-number">80.1. </span>Diagonal preconditioner for <span class="math notranslate nohighlight">\(L_2\)</span>-norm<a class="headerlink" href="#diagonal-preconditioner-for-l-2-norm" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">80.1. </span>Diagonal preconditioner for <span class="math notranslate nohighlight">\(L_2\)</span>-norm<a class="headerlink" href="#diagonal-preconditioner-for-l-2-norm" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span>, and <span class="math notranslate nohighlight">\(M\)</span> be the finite element
 discretization matrix of</p>
 <div class="math notranslate nohighlight">
@@ -606,7 +604,7 @@ kappa= 228.89191221979874
 <p><em>Exercise:</em> Do some experiments with the mesh-size <span class="math notranslate nohighlight">\(h\)</span> and the order <span class="math notranslate nohighlight">\(p\)</span>.</p>
 </section>
 <section id="diagonal-preconditioner-for-the-h-1-norm">
-<h2><span class="section-number">80.2. </span>Diagonal preconditioner for the <span class="math notranslate nohighlight">\(H^1\)</span> norm<a class="headerlink" href="#diagonal-preconditioner-for-the-h-1-norm" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">80.2. </span>Diagonal preconditioner for the <span class="math notranslate nohighlight">\(H^1\)</span> norm<a class="headerlink" href="#diagonal-preconditioner-for-the-h-1-norm" title="Permalink to this heading">#</a></h2>
 <p>Now let <span class="math notranslate nohighlight">\(V_h \subset H_0^1(\Omega)\)</span>, and the bilinear-form</p>
 <div class="math notranslate nohighlight">
 \[
@@ -672,8 +670,8 @@ and together with the transformation rule we get</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.04878125704854546 1.5176287010528218
-kappa= 31.11089776843038
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lammin, lammax= 0.04878125704854546 1.5176287010528227
+kappa= 31.110897768430398
 </pre></div>
 </div>
 </div>
@@ -687,7 +685,7 @@ kappa= 31.11089776843038
 Then <span class="math notranslate nohighlight">\(\| u \|_{C}^2 = \sum u_i^2 \| \nabla \varphi_i \|^2\)</span>. There holds <span class="math notranslate nohighlight">\(u_i \approx 1\)</span> and <span class="math notranslate nohighlight">\(\| \nabla \varphi_i \|^2 \approx h^{d-2}\)</span>, and there are <span class="math notranslate nohighlight">\(h^{-d}\)</span> summands, which verifies that the estimate is sharp.</p>
 </section>
 <section id="h-1-norm-with-small-l-2-term">
-<h2><span class="section-number">80.3. </span><span class="math notranslate nohighlight">\(H^1\)</span>-norm with small <span class="math notranslate nohighlight">\(L_2\)</span>-term<a class="headerlink" href="#h-1-norm-with-small-l-2-term" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">80.3. </span><span class="math notranslate nohighlight">\(H^1\)</span>-norm with small <span class="math notranslate nohighlight">\(L_2\)</span>-term<a class="headerlink" href="#h-1-norm-with-small-l-2-term" title="Permalink to this heading">#</a></h2>
 <p>We now consider <span class="math notranslate nohighlight">\(V_h \subset H^1\)</span>, and the bilinear-form</p>
 <div class="math notranslate nohighlight">
 \[
@@ -755,9 +753,9 @@ C_{ASM}^{-1} = E_0 \, (E_0^T A E_0)^{-1} E_0^T  + C_{Jac}^{-1},
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a0= 0.010000000000001032
-lammin, lam2, lammax= 0.023005935032131948 0.04552673753963504 1.707183006130534
-kappa= 74.206199563119
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a0= 0.010000000000001587
+lammin, lam2, lammax= 0.02300593503211929 0.04552673753966878 1.7071830061305335
+kappa= 74.20619956315981
 </pre></div>
 </div>
 </div>

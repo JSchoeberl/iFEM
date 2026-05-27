@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>15. Trace theorems and their applications &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sobolevspaces/Traces';</script>
@@ -529,7 +527,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="trace-theorems-and-their-applications">
-<h1><span class="section-number">15. </span>Trace theorems and their applications<a class="headerlink" href="#trace-theorems-and-their-applications" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">15. </span>Trace theorems and their applications<a class="headerlink" href="#trace-theorems-and-their-applications" title="Permalink to this heading">#</a></h1>
 <p>We consider boundary values of functions in Sobolev spaces. Clearly,
 this is not well defined for <span class="math notranslate nohighlight">\(H^0 = L_2\)</span>. But, as we will see, in
 <span class="math notranslate nohighlight">\(H^1\)</span> and higher order Sobolev spaces, it makes sense to talk about <span class="math notranslate nohighlight">\(u
@@ -617,8 +615,7 @@ density.</p>
  c \, \int_0^1  \int_0^1  \left\{ u(\xi,\eta)^2 + \left(\frac{\partial u}{\partial \eta}(\xi,\eta) \right)^2 \right\} \, d \eta \, d \xi \\
         &amp; \leq  c \, \| u \|_{H^1(Q)}^2.
 \end{align*}\]</div>
-<a class="reference internal image-reference" href="../_images/tracemapping.png"><img alt="Alternative text" class="align-center" src="../_images/tracemapping.png" style="width: 300px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/tracemapping.png"><img alt="Alternative text" class="align-center" src="../_images/tracemapping.png" style="width: 300px;" /></a>
 <p>We use the partitioning of <span class="math notranslate nohighlight">\(\partial \Omega\)</span> into non-overlapping parts <span class="math notranslate nohighlight">\(\Gamma_i\)</span>, <span class="math notranslate nohighlight">\(1 \leq i \leq M\)</span>. For each part <span class="math notranslate nohighlight">\(\Gamma_i\)</span> we define an injective transformation <span class="math notranslate nohighlight">\(s_i : \overline Q \rightarrow \overline \Omega\)</span> such that the bottom edge of <span class="math notranslate nohighlight">\(Q\)</span> is mapped onto <span class="math notranslate nohighlight">\(\Gamma_i\)</span>. We define <span class="math notranslate nohighlight">\(S_i = s_i(Q)\)</span>. We assume that <span class="math notranslate nohighlight">\(s_i^\prime\)</span> and <span class="math notranslate nohighlight">\((s_i^\prime)^{-1}\)</span> are bounded functions a.e.</p>
 <p>This allows to pull-back functions <span class="math notranslate nohighlight">\(u \in H^1(S_i)\)</span> locally to the square domain <span class="math notranslate nohighlight">\(Q\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -688,7 +685,7 @@ g(v) := \int_{\Gamma_N} g \, \operatorname{tr} \, v \, dx
 \| g(\cdot) \|_{H^1(\Omega)^*} = \| g \|_{L_2} \| \operatorname{tr}  \|
 \]</div>
 <section id="integration-by-parts">
-<h2><span class="section-number">15.1. </span>Integration by parts<a class="headerlink" href="#integration-by-parts" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.1. </span>Integration by parts<a class="headerlink" href="#integration-by-parts" title="Permalink to this heading">#</a></h2>
 <p>The definition of the trace allows us to perform integration by
 parts in <span class="math notranslate nohighlight">\(H^1\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -705,7 +702,7 @@ Again, the short proof is based on the density of <span class="math notranslate 
 in <span class="math notranslate nohighlight">\(H^1\)</span>.</p>
 </section>
 <section id="sobolev-spaces-over-sub-domains">
-<h2><span class="section-number">15.2. </span>Sobolev spaces over sub-domains<a class="headerlink" href="#sobolev-spaces-over-sub-domains" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.2. </span>Sobolev spaces over sub-domains<a class="headerlink" href="#sobolev-spaces-over-sub-domains" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> consist of <span class="math notranslate nohighlight">\(M\)</span> Lipschitz-continuous sub-domains <span class="math notranslate nohighlight">\(\Omega_i\)</span>
 such that</p>
 <ul class="simple">
@@ -714,8 +711,7 @@ such that</p>
 </ul>
 <p>The interfaces are <span class="math notranslate nohighlight">\(\gamma_{ij} = \overline \Omega_i \cap \overline \Omega_j\)</span>.
 The outer normal vector of <span class="math notranslate nohighlight">\(\Omega_i\)</span> is <span class="math notranslate nohighlight">\(n_i\)</span>.</p>
-<a class="reference internal image-reference" href="../_images/domaindecomposition.png"><img alt="Alternative text" class="align-center" src="../_images/domaindecomposition.png" style="width: 250px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/domaindecomposition.png"><img alt="Alternative text" class="align-center" src="../_images/domaindecomposition.png" style="width: 250px;" /></a>
 <blockquote>
 <div><p><strong>Theorem:</strong>
 Let <span class="math notranslate nohighlight">\(u \in L_2(\Omega)\)</span> such that</p>
@@ -766,14 +762,13 @@ continuous, i.e., the traces match on the interfaces. Thus, the finite
 element space is a sub-space of <span class="math notranslate nohighlight">\(H^1\)</span>.</p>
 </section>
 <section id="extension-operators">
-<h2><span class="section-number">15.3. </span>Extension operators<a class="headerlink" href="#extension-operators" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.3. </span>Extension operators<a class="headerlink" href="#extension-operators" title="Permalink to this heading">#</a></h2>
 <p>Some estimates are elementary to verify on simple domains such as squares <span class="math notranslate nohighlight">\(Q\)</span>.
 One technique to transfer these results to general domains is to extend
 a function <span class="math notranslate nohighlight">\(u \in H^1(\Omega)\)</span> onto a larger square <span class="math notranslate nohighlight">\(Q\)</span>, apply the result
 for the  square, and restrict the result onto the general domain <span class="math notranslate nohighlight">\(\Omega\)</span>.
 This is now the motivation to study extension operators.</p>
-<a class="reference internal image-reference" href="../_images/extension.png"><img alt="Alternative text" class="align-center" src="../_images/extension.png" style="width: 300px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/extension.png"><img alt="Alternative text" class="align-center" src="../_images/extension.png" style="width: 300px;" /></a>
 <p>We construct a non-overlapping covering <span class="math notranslate nohighlight">\(\{ S_i \}\)</span> of a neighbourhood
 of <span class="math notranslate nohighlight">\(\partial \Omega\)</span> on both sides.
 Let <span class="math notranslate nohighlight">\(\partial \Omega = \cup \Gamma_i\)</span> consist of smooth parts.
@@ -806,8 +801,8 @@ obtain the bound</p>
 \]</div>
 <p>Define the domain <span class="math notranslate nohighlight">\(\widetilde \Omega = \Omega \cup S_1 \cup \ldots \cup S_M\)</span>.</p>
 <p>We define the extension operator by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-665ada7c-724d-404c-a9fb-6df02b84186a">
-<span class="eqno">(15.1)<a class="headerlink" href="#equation-665ada7c-724d-404c-a9fb-6df02b84186a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7959aa2b-5be7-4e70-8921-d79c47cfbdf1">
+<span class="eqno">(15.1)<a class="headerlink" href="#equation-7959aa2b-5be7-4e70-8921-d79c47cfbdf1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 (E u) (\hat x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \cup S_i \\
 (Eu) (x) &amp; = &amp; u(x) &amp; \qquad \forall \, x \in \Omega
@@ -884,7 +879,7 @@ To see this, take the constant function on <span class="math notranslate nohighl
 but the extension is not constant.</p>
 </section>
 <section id="the-trace-space-h-1-2">
-<h2><span class="section-number">15.4. </span>The trace space <span class="math notranslate nohighlight">\(H^{1/2}\)</span><a class="headerlink" href="#the-trace-space-h-1-2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.4. </span>The trace space <span class="math notranslate nohighlight">\(H^{1/2}\)</span><a class="headerlink" href="#the-trace-space-h-1-2" title="Permalink to this heading">#</a></h2>
 <p>The trace operator is continuous from <span class="math notranslate nohighlight">\(H^1(\Omega)\)</span> into <span class="math notranslate nohighlight">\(L_2(\partial \Omega)\)</span>. But, not every <span class="math notranslate nohighlight">\(g \in L_2(\partial \Omega)\)</span> is a trace of some <span class="math notranslate nohighlight">\(u \in H^1(\Omega)\)</span>. We will motivate why the trace space is the fractional order Sobolev
 space <span class="math notranslate nohighlight">\(H^{1/2}(\partial \Omega)\)</span>.</p>
 <p>We introduce a space with a stronger norm, such that the trace operator is still
@@ -941,7 +936,7 @@ u &amp; = &amp; g \qquad &amp; \mbox{ on } \partial \Omega.
 <em>Hilbert space interpolation</em>:</p>
 </section>
 <section id="interpolation-spaces">
-<h2><span class="section-number">15.5. </span>Interpolation spaces<a class="headerlink" href="#interpolation-spaces" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.5. </span>Interpolation spaces<a class="headerlink" href="#interpolation-spaces" title="Permalink to this heading">#</a></h2>
 <p>To explain the idea we expand <span class="math notranslate nohighlight">\(u \in L_2(0,1)\)</span> in a Fourier-sine-series</p>
 <div class="math notranslate nohighlight">
 \[
@@ -987,7 +982,7 @@ u(x) = \sum_{k=1}^\infty u_k \sin (k \pi x) \qquad \text{such that} \; \sum_{k=1
 <p>For the limiting values <span class="math notranslate nohighlight">\(s=0\)</span> and <span class="math notranslate nohighlight">\(s=1\)</span>, the interpolation space are <span class="math notranslate nohighlight">\(L_2\)</span> and <span class="math notranslate nohighlight">\(H_0^1\)</span>, respectively.</p>
 <p>Since all terms have zero boundary values, the Fourier-sine series spans <span class="math notranslate nohighlight">\(H_0^1\)</span>. If we use the Fourier-cosine series instead, we obtain the whole space <span class="math notranslate nohighlight">\(H^1\)</span>.</p>
 <section id="general-definition">
-<h3><span class="section-number">15.5.1. </span>General definition:<a class="headerlink" href="#general-definition" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.5.1. </span>General definition:<a class="headerlink" href="#general-definition" title="Permalink to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(V_1 \subset V_0\)</span> be two Hilbert spaces, such that <span class="math notranslate nohighlight">\(V_1\)</span> is dense
 in <span class="math notranslate nohighlight">\(V_0\)</span>, and the embedding operator <span class="math notranslate nohighlight">\(id : V_1 \rightarrow V_0\)</span>
 is compact. We can pose the eigen-value problem: Find <span class="math notranslate nohighlight">\(z \in V_1\)</span>, <span class="math notranslate nohighlight">\(\lambda \in {\mathbb R}\)</span> such that</p>
@@ -1042,8 +1037,8 @@ such that</p>
 \]</div>
 <p>By definition of the weak derivative, there holds <span class="math notranslate nohighlight">\((z_k^\prime)^\prime = (1-\lambda_k) z_k\)</span>, i.e., <span class="math notranslate nohighlight">\(z^k \in H^2\)</span>. Since <span class="math notranslate nohighlight">\(H^2 \subset C^0\)</span>, there holds also
 <span class="math notranslate nohighlight">\(z \in C^2\)</span>, and a weak solution is also a solution of the strong form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fe6c9662-8ac8-445b-9b97-ef64cd212922">
-<span class="eqno">(15.2)<a class="headerlink" href="#equation-fe6c9662-8ac8-445b-9b97-ef64cd212922" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-02cada98-c0bf-42b4-b363-4314ae36e089">
+<span class="eqno">(15.2)<a class="headerlink" href="#equation-02cada98-c0bf-42b4-b363-4314ae36e089" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{rcll}
 z_k - z_k^{\prime \prime} &amp; = &amp; \lambda_k z_k \qquad &amp; \mbox{ on } (0,1) \\
 z_k^\prime(0) = z_k^\prime(1) &amp; = &amp; 0
@@ -1079,7 +1074,7 @@ norm (<span class="math notranslate nohighlight">\(s \in (0,1)\)</span>)</p>
 \]</div>
 </section>
 <section id="the-trace-space-on-one-edge-of-the-square">
-<h3><span class="section-number">15.5.2. </span>The trace space on one edge of the square<a class="headerlink" href="#the-trace-space-on-one-edge-of-the-square" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.5.2. </span>The trace space on one edge of the square<a class="headerlink" href="#the-trace-space-on-one-edge-of-the-square" title="Permalink to this heading">#</a></h3>
 <p>We consider the trace <span class="math notranslate nohighlight">\(\operatorname{tr}|_E\)</span> of <span class="math notranslate nohighlight">\(H^1((0,1)^2)\)</span> on the bottom edge <span class="math notranslate nohighlight">\(E = (0,1) \times \{ 0 \}\)</span>. For <span class="math notranslate nohighlight">\(g \in W_E := \operatorname{tr}_E H^1((0,1)^2)\)</span>, the norm <span class="math notranslate nohighlight">\(\| g \|_W\)</span> is
 defined by</p>
 <div class="math notranslate nohighlight">

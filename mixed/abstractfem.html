@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>36. Abstract theory for mixed finite element methods &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'mixed/abstractfem';</script>
@@ -523,7 +521,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="abstract-theory-for-mixed-finite-element-methods">
-<h1><span class="section-number">36. </span>Abstract theory for mixed finite element methods<a class="headerlink" href="#abstract-theory-for-mixed-finite-element-methods" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">36. </span>Abstract theory for mixed finite element methods<a class="headerlink" href="#abstract-theory-for-mixed-finite-element-methods" title="Permalink to this heading">#</a></h1>
 <p>In the finite element method we replace the spaces <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> by sub-spaces <span class="math notranslate nohighlight">\(V_h\)</span> and <span class="math notranslate nohighlight">\(Q_h\)</span>.</p>
 <p>We want to apply Brezzi’s theorem for the discrete setting: The (discrete) spaces are Hilbert-spaces,  continuity of the forms is inherited to the discrete level. But, the LBB condition and kernel ellipticity must be verified on the discrete level case by case.</p>
 <p>We write the system as one big equation:</p>
@@ -544,7 +542,7 @@ F(v_h, q_h) &amp; = &amp; f(v_h) + g(q_h)
 \inf_{u_h,p_h} \sup_{v_h,q_h} \frac{ B(u_h,p_h; v_h, q_h) } { (\| u_h \| + \|p_h \|) (\| v_h \| + \| q_h \|) } \geq \beta
 \]</div>
 <section id="finite-element-error-estimates">
-<h2><span class="section-number">36.1. </span>Finite element error estimates<a class="headerlink" href="#finite-element-error-estimates" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">36.1. </span>Finite element error estimates<a class="headerlink" href="#finite-element-error-estimates" title="Permalink to this heading">#</a></h2>
 <p>We compare the finite element solution <span class="math notranslate nohighlight">\(u_h, p_h\)</span> to the interpolated true solution <span class="math notranslate nohighlight">\(I_h u, I_h p\)</span>. The difference is a finite function, for which we apply the <span class="math notranslate nohighlight">\(\inf-\sup\)</span> condition. Then we use the Galerkin orthogonality, and continuity of the big-B:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -566,7 +564,7 @@ F(v_h, q_h) &amp; = &amp; f(v_h) + g(q_h)
 <p>We see that the error in both variables depend on the approximation of both fields. Later we will see cases where the discretization error of the first variable only depends on the approximation error for the first field.</p>
 </section>
 <section id="proving-discrete-lbb-by-the-fortin-operator">
-<h2><span class="section-number">36.2. </span>Proving discrete LBB by the Fortin operator<a class="headerlink" href="#proving-discrete-lbb-by-the-fortin-operator" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">36.2. </span>Proving discrete LBB by the Fortin operator<a class="headerlink" href="#proving-discrete-lbb-by-the-fortin-operator" title="Permalink to this heading">#</a></h2>
 <p>A Fortin-operator <span class="math notranslate nohighlight">\(I^F : V \rightarrow V_h\)</span> is a continuous operator (wrt to <span class="math notranslate nohighlight">\(\| \cdot \|_V\)</span>) which preservers the constraint in mean:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -592,7 +590,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 </section>
 <section id="example-finite-elements-for-stokes">
-<h2><span class="section-number">36.3. </span>Example: Finite elements for Stokes<a class="headerlink" href="#example-finite-elements-for-stokes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">36.3. </span>Example: Finite elements for Stokes<a class="headerlink" href="#example-finite-elements-for-stokes" title="Permalink to this heading">#</a></h2>
 <p>2D. Take the finite element pair <span class="math notranslate nohighlight">\([P^2]^2 \times P^0\)</span>:</p>
 <p>We define the Fortin operator such that</p>
 <ul class="simple">

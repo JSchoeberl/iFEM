@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>52. Modeling Elasticity &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'elasticity/modeling';</script>
@@ -524,7 +522,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modeling-elasticity">
-<h1><span class="section-number">52. </span>Modeling Elasticity<a class="headerlink" href="#modeling-elasticity" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">52. </span>Modeling Elasticity<a class="headerlink" href="#modeling-elasticity" title="Permalink to this heading">#</a></h1>
 <p>Elasticity models the deformation of solid bodies under external forces. We give a short introduction into the modeling of equations.</p>
 <p>References are:</p>
 <ul class="simple">
@@ -536,7 +534,7 @@ Mathematical Foundations of Elasticity,
 Dover, 1983</p></li>
 </ul>
 <section id="kinematics">
-<h2><span class="section-number">52.1. </span>Kinematics<a class="headerlink" href="#kinematics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">52.1. </span>Kinematics<a class="headerlink" href="#kinematics" title="Permalink to this heading">#</a></h2>
 <p>A body in rest is defined by the open set <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^3\)</span>.
 Due to external forces the body is deformed. The so called <em>deformation</em> is a function</p>
 <div class="math notranslate nohighlight">
@@ -556,8 +554,7 @@ u(x) = \phi(x) - x
 F = \nabla \phi
 \]</div>
 <p>A deformation is called feasible if <span class="math notranslate nohighlight">\(\det F &gt; 0\)</span>, i.e. the orientation is preserved.</p>
-<a class="reference internal image-reference" href="../_images/kinematics.png"><img alt="Alternative text" class="align-center" src="../_images/kinematics.png" style="width: 250px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/kinematics.png"><img alt="Alternative text" class="align-center" src="../_images/kinematics.png" style="width: 250px;" /></a>
 <p>The strength of a deformation is measured by the ration of distances. By squaring the
 distance the expressions become simpler:</p>
 <p>Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x + \Delta x\)</span> be two points in the body <span class="math notranslate nohighlight">\(\Omega\)</span>. Then there holds for smooth <span class="math notranslate nohighlight">\(\phi\)</span>:</p>
@@ -590,7 +587,7 @@ E = \frac{1}{2} \big( \nabla u + \nabla u^T + \nabla u^T \nabla u \big).
 \]</div>
 </section>
 <section id="elastic-material-laws">
-<h2><span class="section-number">52.2. </span>Elastic material laws<a class="headerlink" href="#elastic-material-laws" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">52.2. </span>Elastic material laws<a class="headerlink" href="#elastic-material-laws" title="Permalink to this heading">#</a></h2>
 <p>To deform a body, one has to apply work. This is stored as deformation energy in the body.
 A body is called elastic, if the work is returned after removing the external force.</p>
 <p>A constitutive relation is called <em>hyperelastic</em>, if the deformation energy can be
@@ -640,7 +637,7 @@ W(E) = \frac{\lambda}{2} \operatorname{tr} (E)^2 + \mu E:E,
 It is similar to an elastic spring: The stored energy is <span class="math notranslate nohighlight">\(\frac{1}{2} k E^2\)</span>, with the spring constant <span class="math notranslate nohighlight">\(k\)</span> and elongation <span class="math notranslate nohighlight">\(E\)</span>.</p>
 </section>
 <section id="variational-formulation-equilibrium">
-<h2><span class="section-number">52.3. </span>Variational formulation, equilibrium<a class="headerlink" href="#variational-formulation-equilibrium" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">52.3. </span>Variational formulation, equilibrium<a class="headerlink" href="#variational-formulation-equilibrium" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(V\)</span> be a function space of feasible displacements. On <span class="math notranslate nohighlight">\(\Gamma_D\)</span> the displacement is prescribed (i.e. homogeneous or inhomogeneous Dirichlet boundary conditions).</p>
 <p>The total energy consists of the deformation energy, and potential energy due to the external forces:</p>
 <div class="math notranslate nohighlight">
@@ -719,7 +716,7 @@ deformed configuration:</p>
 <p>Usually, modeling starts with the axiomatic introduction of the Cauchy stress tensor.</p>
 </section>
 <section id="summary">
-<h2><span class="section-number">52.4. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">52.4. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Summarizing the equation we obtain the non-linear system of partial differential equations
 of elasticity:</p>
 <blockquote>

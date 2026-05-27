@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>86. Analysis of the multi-level preconditioner &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'multigrid/analysisML';</script>
@@ -525,7 +523,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analysis-of-the-multi-level-preconditioner">
-<h1><span class="section-number">86. </span>Analysis of the multi-level preconditioner<a class="headerlink" href="#analysis-of-the-multi-level-preconditioner" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">86. </span>Analysis of the multi-level preconditioner<a class="headerlink" href="#analysis-of-the-multi-level-preconditioner" title="Permalink to this heading">#</a></h1>
 <p>We apply the Additive Schwarz Theory to prove an optimal conditioner number of the multi-level preconditioner.</p>
 <p>The outline is as follows. Provided that the <span class="math notranslate nohighlight">\(A\)</span>-norm is equivalent to the <span class="math notranslate nohighlight">\(H^1\)</span>-norm we will show easily that</p>
 <div class="math notranslate nohighlight">
@@ -569,7 +567,7 @@ C_{ML,L}^{-1} = E_0 A_0^{-1} E_0^T + \sum_{l=1}^L E_l D_l^{-1} E_l^T
 \]</div>
 <p>which proves the result. <span class="math notranslate nohighlight">\(\Box\)</span></p>
 <section id="nearly-optimal-analysis-of-the-ml-preconditioner">
-<h2><span class="section-number">86.1. </span>Nearly optimal analysis of the ML - preconditioner<a class="headerlink" href="#nearly-optimal-analysis-of-the-ml-preconditioner" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">86.1. </span>Nearly optimal analysis of the ML - preconditioner<a class="headerlink" href="#nearly-optimal-analysis-of-the-ml-preconditioner" title="Permalink to this heading">#</a></h2>
 <p>Define the multi-level norm</p>
 <div class="math notranslate nohighlight">
 \[
@@ -627,7 +625,7 @@ u_0 + \sum_{l=1}^L w_l = \pi_0 u + \sum_{l=1}^L (\pi_l - \pi_{l-1}) u
 <p>Since this holds for an arbitrary decomposition <span class="math notranslate nohighlight">\(u = \sum u_l\)</span>, it holds also for the minimal one.</p>
 </section>
 <section id="optimal-analysis-of-the-multi-level-preconditioner">
-<h2><span class="section-number">86.2. </span>Optimal analysis of the multi-level preconditioner<a class="headerlink" href="#optimal-analysis-of-the-multi-level-preconditioner" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">86.2. </span>Optimal analysis of the multi-level preconditioner<a class="headerlink" href="#optimal-analysis-of-the-multi-level-preconditioner" title="Permalink to this heading">#</a></h2>
 <p>By a refined analysis, both <span class="math notranslate nohighlight">\(L\)</span>-dependent estimates can be improved to uniform estimates. However, this requires more problem-specific assumptions, as well as advanced tools from interpolation spaces.</p>
 <p><strong>Theorem:</strong> There holds <span class="math notranslate nohighlight">\(\| u \|_{H^1} \preceq \| u \|_{ML}\)</span>.</p>
 <p>We first show that the estimate of <span class="math notranslate nohighlight">\(A\)</span>-inner products of functions from very different levels can be improved essentially:</p>
@@ -712,7 +710,7 @@ u_0 = \Pi_0 u \qquad \text{and} \qquad w_l := \Pi_l u - \Pi_{l-1} u.
 \end{eqnarray*}\]</div>
 <p>and the proof is complete.</p>
 <section id="regularity-free-estimate">
-<h3><span class="section-number">86.2.1. </span>Regularity-free estimate<a class="headerlink" href="#regularity-free-estimate" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">86.2.1. </span>Regularity-free estimate<a class="headerlink" href="#regularity-free-estimate" title="Permalink to this heading">#</a></h3>
 <p>Now we show <span class="math notranslate nohighlight">\(\| u \|_{ML} \preceq \| u \|_{H^1}\)</span> without any regularity assumption.
 The technique is based on Hilbert-space interpolation theory by the K-functional,see  <a class="reference download internal" download="" href="../_downloads/900feda304f95ee42fd24abe742d7564/numpde.pdf"><span class="xref download myst">numpde lecture notes, pp43</span></a>.</p>
 <p>We proceed similar as above.

@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>The Trace Inequality &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sobolev/trace';</script>
@@ -522,7 +520,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-trace-inequality">
-<h1>The Trace Inequality<a class="headerlink" href="#the-trace-inequality" title="Link to this heading">#</a></h1>
+<h1>The Trace Inequality<a class="headerlink" href="#the-trace-inequality" title="Permalink to this heading">#</a></h1>
 <p>Let <span class="math notranslate nohighlight">\(\Omega \subset {\mathbb R}^d\)</span> with a Lipschitz-continuous boundary. If <span class="math notranslate nohighlight">\(u \in H^1(\Omega)\)</span>, then <span class="math notranslate nohighlight">\(u\)</span> has well-defined boundary
 values <span class="math notranslate nohighlight">\(u_{|\partial \Omega}\)</span>, called the trace of <span class="math notranslate nohighlight">\(u\)</span>. There holds</p>
 <div class="math notranslate nohighlight">
@@ -531,7 +529,7 @@ values <span class="math notranslate nohighlight">\(u_{|\partial \Omega}\)</span
 \]</div>
 <p>We call <span class="math notranslate nohighlight">\(\operatorname{tr} : u \mapsto u_{|\partial \Omega}\)</span> the trace operator.</p>
 <section id="numerical-verification">
-<h2>Numerical verification<a class="headerlink" href="#numerical-verification" title="Link to this heading">#</a></h2>
+<h2>Numerical verification<a class="headerlink" href="#numerical-verification" title="Permalink to this heading">#</a></h2>
 <p>We setup two bilinear-forms</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -589,7 +587,7 @@ N u = \frac{1}{\lambda} T u.
 </ul>
 </section>
 <section id="proof-of-the-trace-inequality">
-<h2>Proof of the trace inequality:<a class="headerlink" href="#proof-of-the-trace-inequality" title="Link to this heading">#</a></h2>
+<h2>Proof of the trace inequality:<a class="headerlink" href="#proof-of-the-trace-inequality" title="Permalink to this heading">#</a></h2>
 <p>The construction of the trace operator follows the following plan:</p>
 <ul class="simple">
 <li><p>We use that <span class="math notranslate nohighlight">\(C^1\)</span> is dense in <span class="math notranslate nohighlight">\(H^1\)</span>.</p></li>
@@ -606,8 +604,8 @@ Let <span class="math notranslate nohighlight">\(\Omega = (0,a)\)</span>. Let <s
 \tilde u(x) = u(x) (1 - x/a)
 \]</div>
 <p>There is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7cfccf1c-3334-43f5-99c4-23b2b2c22bf7">
-<span class="eqno">()<a class="headerlink" href="#equation-7cfccf1c-3334-43f5-99c4-23b2b2c22bf7" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-9e9d9fa4-feb5-4aed-8a35-4ae248cadb91">
+<span class="eqno">()<a class="headerlink" href="#equation-9e9d9fa4-feb5-4aed-8a35-4ae248cadb91" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 |u(0)| &amp; = &amp; | \, \tilde u(0) - \tilde u(a) \, | 
   = \Big| \, \int_0^a \tilde u^\prime(x) \, dx  \, \Big| \\
   &amp; = &amp; \Big| \, \int_0^a u^\prime(x) (1-x/a) + u(x) \, (1-x/a)^\prime \, dx \, \Big| \\
@@ -624,8 +622,8 @@ Let <span class="math notranslate nohighlight">\(\Omega = (0,a) \times (0,1)\)</
 | u(0,y) | \leq \sqrt{a} \, \| u^\prime(\cdot,y) \|_{L_2(0,a)} + \tfrac{1}{\sqrt{a}} \, \| u(\cdot,y) \|_{L_2(0,a)}
 \]</div>
 <p>Integrating in <span class="math notranslate nohighlight">\(y\)</span>-direction and Fubini leads to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c621ccfa-d2cc-4931-a273-8118e5532860">
-<span class="eqno">()<a class="headerlink" href="#equation-c621ccfa-d2cc-4931-a273-8118e5532860" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-64286b9c-e50e-49a2-9d5c-a4608dfbd6fb">
+<span class="eqno">()<a class="headerlink" href="#equation-64286b9c-e50e-49a2-9d5c-a4608dfbd6fb" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \int_0^1 |u(0,y)|^2 \, dy &amp; \leq &amp; 2  a \int_0^1 \int_0^a | \partial_x u(x,y) |^2  + \frac{1}{a} \int_0^1 \int_0^a |u(x,y)|^2
 \end{eqnarray}\]</div>
 <p>i.e.</p>

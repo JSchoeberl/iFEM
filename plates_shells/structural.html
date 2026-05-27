@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>58. Structural mechanics &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'plates_shells/structural';</script>
@@ -521,7 +519,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="structural-mechanics">
-<h1><span class="section-number">58. </span>Structural mechanics<a class="headerlink" href="#structural-mechanics" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">58. </span>Structural mechanics<a class="headerlink" href="#structural-mechanics" title="Permalink to this heading">#</a></h1>
 <p>Many engineering applications involve thin structures (walls of a building, body of a car, …).
 On thin structures, the standard approach has a problem: One observed that the simulation
 results get worse as the thickness decreases. The explanation is that the constant in
@@ -670,8 +668,8 @@ leads to the big system: Find <span class="math notranslate nohighlight">\((w,\b
 \end{split}\]</div>
 <p>This is a mixed formulation of the abstract structure: Find <span class="math notranslate nohighlight">\(u \in V\)</span> and <span class="math notranslate nohighlight">\(p \in Q\)</span> such
 that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f795358a-30e2-403b-972f-cb271aae2d08">
-<span class="eqno">(58.1)<a class="headerlink" href="#equation-f795358a-30e2-403b-972f-cb271aae2d08" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-20ebf8ec-893d-40e1-93e7-68b0936fee63">
+<span class="eqno">(58.1)<a class="headerlink" href="#equation-20ebf8ec-893d-40e1-93e7-68b0936fee63" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{array}{ccccll}
 a(u,v) &amp; + &amp; b(v,p) &amp; = &amp; f(v) \quad &amp; \forall \, v \in V, \\[0.2em]
 b(u,q) &amp; - &amp; t^2 c(p,q) &amp; = &amp; 0 \quad &amp; \forall \, q \in Q.
@@ -766,12 +764,10 @@ The first plot shows the results of a standard conforming method, the second plo
 shows the results of the method using the projection. As the thickness decreases, the
 standard method becomes worse. Unless <span class="math notranslate nohighlight">\(h\)</span> is less than <span class="math notranslate nohighlight">\(t\)</span>, the results are completely
 wrong ! The improved method converges uniformly well with respect to <span class="math notranslate nohighlight">\(t\)</span>:</p>
-<a class="reference internal image-reference" href="../_images/timowntbad.png"><img alt="Alternative text" class="align-center" src="../_images/timowntbad.png" style="width: 300px;" />
-</a>
-<a class="reference internal image-reference" href="../_images/timowntgood.png"><img alt="Alternative text" class="align-center" src="../_images/timowntgood.png" style="width: 300px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/timowntbad.png"><img alt="Alternative text" class="align-center" src="../_images/timowntbad.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/timowntgood.png"><img alt="Alternative text" class="align-center" src="../_images/timowntgood.png" style="width: 300px;" /></a>
 <section id="limit-problem-fourth-order-equation">
-<h2><span class="section-number">58.1. </span>Limit problem: fourth order equation<a class="headerlink" href="#limit-problem-fourth-order-equation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">58.1. </span>Limit problem: fourth order equation<a class="headerlink" href="#limit-problem-fourth-order-equation" title="Permalink to this heading">#</a></h2>
 <p>In the mixed formulation, we can set the thickness parameter <span class="math notranslate nohighlight">\(t = 0\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}

@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>53. Newton’s method &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'elasticity/Newton';</script>
@@ -523,7 +521,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="newton-s-method">
-<h1><span class="section-number">53. </span>Newton’s method<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">53. </span>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this heading">#</a></h1>
 <p>We consider the non-linear equation</p>
 <div class="math notranslate nohighlight">
 \[
@@ -544,7 +542,7 @@ x^{k+1} = x^k - F^\prime(x^k)^{-1} F(x^k)
 \]</div>
 <p>The main idea is to replace the non-linear problem by a sequence of linearized problems, where one uses <span class="math notranslate nohighlight">\(F(x^k + \Delta x) \approx F(x^k) + F^\prime(x^k) \Delta x\)</span>.</p>
 <section id="minimization-problem">
-<h2><span class="section-number">53.1. </span>Minimization problem<a class="headerlink" href="#minimization-problem" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.1. </span>Minimization problem<a class="headerlink" href="#minimization-problem" title="Permalink to this heading">#</a></h2>
 <p>Now we consider the minimization problem</p>
 <div class="math notranslate nohighlight">
 \[
@@ -573,7 +571,7 @@ x^{k+1} = x^{k} - J^{\prime \prime}(x^k)^{-1} J^\prime(x^k)
 <p>The symmetric matrix <span class="math notranslate nohighlight">\(J^{\prime \prime}(x^k)\)</span> is the <span class="math notranslate nohighlight">\(n \times n\)</span> Hesse matrix at the point <span class="math notranslate nohighlight">\(x^k\)</span>, and <span class="math notranslate nohighlight">\(J^\prime\)</span> is the gradient of <span class="math notranslate nohighlight">\(J\)</span>.</p>
 </section>
 <section id="nonlinear-variational-problems">
-<h2><span class="section-number">53.2. </span>Nonlinear variational problems<a class="headerlink" href="#nonlinear-variational-problems" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.2. </span>Nonlinear variational problems<a class="headerlink" href="#nonlinear-variational-problems" title="Permalink to this heading">#</a></h2>
 <p>We extend the concept of bilinear-forms to non-linear forms</p>
 <div class="math notranslate nohighlight">
 \[
@@ -602,7 +600,7 @@ A(u,v) = f(v) \qquad \forall \, v \in V
 </ul>
 </section>
 <section id="finite-element-discretization">
-<h2><span class="section-number">53.3. </span>Finite element discretization:<a class="headerlink" href="#finite-element-discretization" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">53.3. </span>Finite element discretization:<a class="headerlink" href="#finite-element-discretization" title="Permalink to this heading">#</a></h2>
 <p>As for linear problems, one searches for an approximate solution</p>
 <div class="math notranslate nohighlight">
 \[

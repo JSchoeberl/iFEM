@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Tangential displacement normal normal stress continuous finite elements &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'mixedelasticity/tdnns';</script>
@@ -525,7 +523,7 @@ document.write(`
   <p><span class="math notranslate nohighlight">\(\DeclareMathOperator{\opdiv}{div}\)</span>
 <span class="math notranslate nohighlight">\(\DeclareMathOperator{\opcurl}{curl}\)</span></p>
 <section class="tex2jax_ignore mathjax_ignore" id="tangential-displacement-normal-normal-stress-continuous-finite-elements">
-<h1>Tangential displacement normal normal stress continuous finite elements<a class="headerlink" href="#tangential-displacement-normal-normal-stress-continuous-finite-elements" title="Link to this heading">#</a></h1>
+<h1>Tangential displacement normal normal stress continuous finite elements<a class="headerlink" href="#tangential-displacement-normal-normal-stress-continuous-finite-elements" title="Permalink to this heading">#</a></h1>
 <p>The TDNNS method fits in between the primal and dual form of the Hellinger-Reissner formulation.</p>
 <p>The degrees of freedom for the TDNNS method are:</p>
 <ul class="simple">
@@ -533,20 +531,17 @@ document.write(`
 <li><p>normal-normal component of stress tensor</p></li>
 </ul>
 <p>Three dofs on one edge fix rigid body modes:</p>
-<a class="reference internal image-reference" href="../_images/trig_dofs.pdf"><img alt="../_images/trig_dofs.pdf" src="../_images/trig_dofs.pdf" style="width: 150px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/trig_dofs.pdf"><img alt="../_images/trig_dofs.pdf" src="../_images/trig_dofs.pdf" style="width: 150px;" /></a>
 <p>Six dofs on one face of a tet fix rigid body modes:</p>
-<a class="reference internal image-reference" href="../_images/tet_dofs.pdf"><img alt="../_images/tet_dofs.pdf" src="../_images/tet_dofs.pdf" style="width: 150px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/tet_dofs.pdf"><img alt="../_images/tet_dofs.pdf" src="../_images/tet_dofs.pdf" style="width: 150px;" /></a>
 <p>Quadrilateral element:</p>
-<a class="reference internal image-reference" href="../_images/quad_dofs.pdf"><img alt="../_images/quad_dofs.pdf" src="../_images/quad_dofs.pdf" style="width: 300px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/quad_dofs.pdf"><img alt="../_images/quad_dofs.pdf" src="../_images/quad_dofs.pdf" style="width: 300px;" /></a>
 <p>The dofs decouple into stretching components
 <a class="reference internal" href="../_images/quad_dofs_stretching.pdf"><img alt="../_images/quad_dofs_stretching.pdf" src="../_images/quad_dofs_stretching.pdf" style="width: 400px;" /></a></p>
 <p>and bending components
 <a class="reference internal" href="../_images/quad_dofs_bending.pdf"><img alt="../_images/quad_dofs_bending.pdf" src="../_images/quad_dofs_bending.pdf" style="width: 350px;" /></a></p>
 <section id="the-divergence-of-nn-continuous-piece-wise-smooth-functions">
-<h2>The divergence of <span class="math notranslate nohighlight">\(nn\)</span>-continuous piece-wise smooth functions:<a class="headerlink" href="#the-divergence-of-nn-continuous-piece-wise-smooth-functions" title="Link to this heading">#</a></h2>
+<h2>The divergence of <span class="math notranslate nohighlight">\(nn\)</span>-continuous piece-wise smooth functions:<a class="headerlink" href="#the-divergence-of-nn-continuous-piece-wise-smooth-functions" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\sigma\)</span> be a <span class="math notranslate nohighlight">\(nn\)</span>-continuous finite element function, and <span class="math notranslate nohighlight">\(f = \opdiv \sigma\)</span> be the distributional divergence, i.e.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -597,7 +592,7 @@ H(\opdiv \opdiv) = \{ \sigma \in L_2^{\text{SYM}} : \opdiv \opdiv \sigma \in H^{
 <p>Normal-normal continuous symmetric matrix finite elements are (a slightly non-conforming) discretization of <span class="math notranslate nohighlight">\(H(\opdiv \opdiv)\)</span>.</p>
 </section>
 <section id="tdnns-variational-formulation">
-<h2>TDNNS Variational formulation:<a class="headerlink" href="#tdnns-variational-formulation" title="Link to this heading">#</a></h2>
+<h2>TDNNS Variational formulation:<a class="headerlink" href="#tdnns-variational-formulation" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\Sigma_h\)</span> be an nn-continuous symmetric matrix valued finite element space, and <span class="math notranslate nohighlight">\(V_h\)</span> a tangential continuous vector finite element space.</p>
 <p>The TDNNS method is:</p>
 <p>find: <span class="math notranslate nohighlight">\(\sigma_h \in \Sigma_h\)</span> and <span class="math notranslate nohighlight">\(u_h \in V_h\)</span> such that:</p>
@@ -617,7 +612,7 @@ b(\sigma_h, v_h) = \sum_T \int_T \opdiv \sigma_h v_h + \sum_E \int_{E} [\sigma_
 <p>References: Thesis Astrid Sinwel (now Astrid Pechstein), Pechstein+Schöberl</p>
 </section>
 <section id="error-estimates">
-<h2>Error estimates:<a class="headerlink" href="#error-estimates" title="Link to this heading">#</a></h2>
+<h2>Error estimates:<a class="headerlink" href="#error-estimates" title="Permalink to this heading">#</a></h2>
 <p>First results were in discrete norms (Pechstein+Schöberl, 07)</p>
 <div class="math notranslate nohighlight">
 \[

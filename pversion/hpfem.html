@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>30. hp - Finite Elements &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pversion/hpfem';</script>
@@ -528,7 +526,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hp-finite-elements">
-<h1><span class="section-number">30. </span>hp - Finite Elements<a class="headerlink" href="#hp-finite-elements" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">30. </span>hp - Finite Elements<a class="headerlink" href="#hp-finite-elements" title="Permalink to this heading">#</a></h1>
 <p>Let <span class="math notranslate nohighlight">\(V_{hp}\)</span> be a <span class="math notranslate nohighlight">\(p\)</span>-th order finite element sub-space of <span class="math notranslate nohighlight">\(H^1\)</span>.
 By scaling and Bramble-Hilbert technique one obtains the best-approxiamtion error estimate</p>
 <div class="math notranslate nohighlight">
@@ -551,7 +549,7 @@ exponential convergence</p>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of unknowns.</p>
 <p>We will prove the <span class="math notranslate nohighlight">\(p\)</span>-version estimate, but not the <span class="math notranslate nohighlight">\(hp\)</span>-result.</p>
 <section id="legendre-polynomials">
-<h2><span class="section-number">30.1. </span>Legendre Polynomials<a class="headerlink" href="#legendre-polynomials" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.1. </span>Legendre Polynomials<a class="headerlink" href="#legendre-polynomials" title="Permalink to this heading">#</a></h2>
 <p>Orthogonal polynomials are important to construct stable basis
 functions for the <span class="math notranslate nohighlight">\(p\)</span>-FEM, as well as for error estimates.</p>
 <p>Let <span class="math notranslate nohighlight">\(\Pi_n\)</span> denote the space of polynomials up to order <span class="math notranslate nohighlight">\(n\)</span>. We write <span class="math notranslate nohighlight">\(\pi_n\)</span> for
@@ -609,8 +607,8 @@ P_n(x) = \frac{1}{2^n n!} \frac{ (2n)! }{ n! } x^n - \frac{n}{2^n n!} \frac{ (2n
 <blockquote>
 <div><p><strong>Lemma: Three term recurrence:</strong></p>
 <p>There holds</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9bccf4dc-2f79-49d9-a70f-a1d6f518d649">
-<span class="eqno">(30.1)<a class="headerlink" href="#equation-9bccf4dc-2f79-49d9-a70f-a1d6f518d649" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
+<div class="amsmath math notranslate nohighlight" id="equation-dd27451e-85c0-4b52-bb8e-a87ba0f8383b">
+<span class="eqno">(30.1)<a class="headerlink" href="#equation-dd27451e-85c0-4b52-bb8e-a87ba0f8383b" title="Permalink to this equation">#</a></span>\[\begin{equation} % \label{equ_threeterm}
   (n+1) P_{n+1} (x) = (2n+1) x P_n(x) - n P_{n-1}(x).
   \end{equation}\]</div>
 </div></blockquote>
@@ -653,7 +651,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 </section>
 <section id="error-estimate-of-the-l-2-projection">
-<h2><span class="section-number">30.2. </span>Error estimate of the <span class="math notranslate nohighlight">\(L_2\)</span> projection<a class="headerlink" href="#error-estimate-of-the-l-2-projection" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.2. </span>Error estimate of the <span class="math notranslate nohighlight">\(L_2\)</span> projection<a class="headerlink" href="#error-estimate-of-the-l-2-projection" title="Permalink to this heading">#</a></h2>
 <p>Since polynomials are dense in <span class="math notranslate nohighlight">\(L_2(-1,1)\)</span>, we get</p>
 <div class="math notranslate nohighlight">
 \[
@@ -682,8 +680,8 @@ P_{L_2}^{\Pi_p} u = \sum_{n=0}^p a_n P_n
 <blockquote>
 <div><p><strong>Lemma Projection error:</strong></p>
 <p>The <span class="math notranslate nohighlight">\(L_2\)</span>-projection error satisfies</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f4a19983-10bb-4487-a099-a72510e05a32">
-<span class="eqno">(30.2)<a class="headerlink" href="#equation-f4a19983-10bb-4487-a099-a72510e05a32" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-18cc059d-8412-4935-917e-582f15fcdcdb">
+<span class="eqno">(30.2)<a class="headerlink" href="#equation-18cc059d-8412-4935-917e-582f15fcdcdb" title="Permalink to this equation">#</a></span>\[\begin{equation}
  \| u - P_{L_2}^{\Pi_p} u \|_{L_2(-1,1)} \leq \frac{1}{\sqrt{(p+1)(p+2)}}    \, | u |_{H^1(-1,1)}
  \end{equation}\]</div>
 </div></blockquote>
@@ -721,7 +719,7 @@ The projection error satisfies</p>
 \]</div>
 </section>
 <section id="orthogonal-polynomials-on-triangles">
-<h2><span class="section-number">30.3. </span>Orthogonal polynomials on triangles<a class="headerlink" href="#orthogonal-polynomials-on-triangles" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.3. </span>Orthogonal polynomials on triangles<a class="headerlink" href="#orthogonal-polynomials-on-triangles" title="Permalink to this heading">#</a></h2>
 <p>Orthogonal polynomials on tensor product elements are simply
 constructed by tensorization. Orthogonal polynomials on simplicial
 elements are more advanced. They are based on Jacobi polynomials:</p>
@@ -767,7 +765,7 @@ Note that <span class="math notranslate nohighlight">\(\varphi_{i,j} \in \Pi_{i+
 <p><span class="math notranslate nohighlight">\(\Box\)</span></p>
 </section>
 <section id="projection-based-interpolation">
-<h2><span class="section-number">30.4. </span>Projection based interpolation<a class="headerlink" href="#projection-based-interpolation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.4. </span>Projection based interpolation<a class="headerlink" href="#projection-based-interpolation" title="Permalink to this heading">#</a></h2>
 <p>By means of the orthogonal polynomials one shows approximation error estimates
 of the form
 $<span class="math notranslate nohighlight">\(
@@ -776,7 +774,7 @@ $<span class="math notranslate nohighlight">\(
 with \)</span>c \neq c(p)<span class="math notranslate nohighlight">\(, easily in 1D and tensor product elements, and also on \)</span>n$-dimensional simplices [Braess+Schwab: Approximation on simplices with respect to weighted Sobolev norms, J. Approximation Theory 103, 329-337 (2000)].</p>
 <p>But, an interpolation operator to an <span class="math notranslate nohighlight">\(H^1\)</span>-conforming finite element space has to satisfy continuity constraints across element boundaries. We show that we get the same rate of convergence under these constraints.</p>
 <section id="the-1d-case">
-<h3><span class="section-number">30.4.1. </span>The 1D case<a class="headerlink" href="#the-1d-case" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">30.4.1. </span>The 1D case<a class="headerlink" href="#the-1d-case" title="Permalink to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(I=(-1,1)\)</span>. We define the operator <span class="math notranslate nohighlight">\(I_p : H^1(I) \rightarrow \Pi_p\)</span> such that</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -827,10 +825,10 @@ Demkowicz has been established.</p>
 \]</div>
 </section>
 <section id="projection-based-interpolation-on-triangles">
-<h3><span class="section-number">30.4.2. </span>Projection based interpolation on triangles<a class="headerlink" href="#projection-based-interpolation-on-triangles" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">30.4.2. </span>Projection based interpolation on triangles<a class="headerlink" href="#projection-based-interpolation-on-triangles" title="Permalink to this heading">#</a></h3>
 <p>We define the operator <span class="math notranslate nohighlight">\(I_p : H^2(T) \rightarrow \Pi_p(T)\)</span> as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5ff69fee-a123-4972-94d1-a38b08a0dae0">
-<span class="eqno">(30.3)<a class="headerlink" href="#equation-5ff69fee-a123-4972-94d1-a38b08a0dae0" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-2a08528d-5ed5-4a69-b05e-4515c393a8b2">
+<span class="eqno">(30.3)<a class="headerlink" href="#equation-2a08528d-5ed5-4a69-b05e-4515c393a8b2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 I_p u(x) &amp; = &amp; u(x) \qquad \forall \text{ vertices } x \\
 \int_E \partial_\tau (I_p u) \partial_\tau q &amp; = &amp;  
 \int_E \partial_\tau u  \partial_\tau q \qquad \forall \text{ edges } E, \; \forall \, q \in \Pi_{p,0}(E) \\

@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Discontinuous Galerkin for the Wave Equation &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'timedependent/waves/test';</script>
@@ -525,7 +523,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="discontinuous-galerkin-for-the-wave-equation">
-<h1>Discontinuous Galerkin for the Wave Equation<a class="headerlink" href="#discontinuous-galerkin-for-the-wave-equation" title="Link to this heading">#</a></h1>
+<h1>Discontinuous Galerkin for the Wave Equation<a class="headerlink" href="#discontinuous-galerkin-for-the-wave-equation" title="Permalink to this heading">#</a></h1>
 <p>We solve the first order wave equation by a matrix-free explicit DG method:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -578,7 +576,7 @@ b(p,v) &amp;= \sum_{T}
 <p>with the normal-jump <span class="math notranslate nohighlight">\([v_n] := v_l n_l + v_r n_r\)</span>. If we choose <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, then the boundary terms cancel for normal-continuous <span class="math notranslate nohighlight">\(v \)</span>, even for discontinuous test-functions <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p>Literature: <em>Hesthaven+Warbuton</em>: Nodal Discontinuous Galerkin Methods</p>
 <section id="testing-the-differential-operators">
-<h2>Testing the differential operators<a class="headerlink" href="#testing-the-differential-operators" title="Link to this heading">#</a></h2>
+<h2>Testing the differential operators<a class="headerlink" href="#testing-the-differential-operators" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ngsolve</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
@@ -631,7 +629,7 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "066970c3fc544053ae93b0f5d62ea04b"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "4548e9534d8e4b999d72b20755f18ff5"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "dce321951d0848ac86e2dfd79d6d74c9"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9ce26941335f4cabbd55b847f2d56392"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -646,11 +644,11 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ac2c4c73c9c54f38baa4a1daf70a65e0"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "5f355321737f4cff9c69838d2d0c3396"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
-<h2>Efficient implementation:<a class="headerlink" href="#efficient-implementation" title="Link to this heading">#</a></h2>
+<h2>Efficient implementation:<a class="headerlink" href="#efficient-implementation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>due to orthogonal basis on the reference element, mass-matrices a diagonal, FESpace provides efficient operator for <span class="math notranslate nohighlight">\(M^{-1}\)</span>. They are not diagonal anymore if elements are curved, or for non-constant coefficients. Efficient inverse anyway.</p></li>
 <li><p>due to Piola-mapping of the vector-variable, element matrices are the same for all elements, and need to be stored just for the reference element (<span class="math notranslate nohighlight">\(F\)</span> the Jacobian, and <span class="math notranslate nohighlight">\(J = \det F\)</span>):
@@ -661,7 +659,7 @@ $<span class="math notranslate nohighlight">\(
 <p>Thus, the huge memory requirement for storing matrices is completely avoided. On highly parallel processors the matrix-free version gets faster and faster in comparison to matrix-based implementations, since more and more computations can be done per memory-transfer.</p>
 </section>
 <section id="solving-the-wave-equation">
-<h2>Solving the wave equation:<a class="headerlink" href="#solving-the-wave-equation" title="Link to this heading">#</a></h2>
+<h2>Solving the wave equation:<a class="headerlink" href="#solving-the-wave-equation" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ngsolve</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
@@ -695,7 +693,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "634a15ddee2749f58da4cd717c5d9846"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b76094d5e95c4d01b63758facf083c4c"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8b82d00f65d3416aa2865511e6645bbc"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "87337e5930e44c7292d4dae6ae75341b"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -736,7 +734,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "df6462ee0725435c89f8aa6066c4f4d1"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e08e39a0ac0c47cc9d42eacce463ca06"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -831,7 +829,7 @@ SumMatrix, h = 101970, w = 50985
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "57566158559f4679b01d3383413c1b1c"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2a6577b3ba2c459895da9e8655cc6e4d"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -853,7 +851,7 @@ SumMatrix, h = 101970, w = 50985
 </div>
 </section>
 <section id="eigenvalues-of-the-discretized-laplace-operator">
-<h2>Eigenvalues of the discretized Laplace-operator<a class="headerlink" href="#eigenvalues-of-the-discretized-laplace-operator" title="Link to this heading">#</a></h2>
+<h2>Eigenvalues of the discretized Laplace-operator<a class="headerlink" href="#eigenvalues-of-the-discretized-laplace-operator" title="Permalink to this heading">#</a></h2>
 <p>Combining operators we obtain a discretization for the Laplace-operator:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -922,7 +920,7 @@ SumMatrix, h = 101970, w = 50985
 </div>
 </section>
 <section id="exercise">
-<h2>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>check conservation of energy over time</p></li>
 <li><p>design some wave-guide: <br>

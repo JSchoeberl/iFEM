@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>96. Introduction to Non-overlapping Domain Decomposition &#8212; Interactive Finite Elements</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'domaindecomposition/introduction';</script>
@@ -521,7 +519,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-non-overlapping-domain-decomposition">
-<h1><span class="section-number">96. </span>Introduction to Non-overlapping Domain Decomposition<a class="headerlink" href="#introduction-to-non-overlapping-domain-decomposition" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">96. </span>Introduction to Non-overlapping Domain Decomposition<a class="headerlink" href="#introduction-to-non-overlapping-domain-decomposition" title="Permalink to this heading">#</a></h1>
 <p>We want to use a big parallel computer to solve discretized PDEs. The idea is to decompose the domain into sub-domain, and every processor has information only about its sub-domain, and the interfaces to the neighbor domains.</p>
 <p>It is complicated to split a complex geometry into sub-domains. In particular if the mesh is locally refined, a well balanced decomposition of the work-load is hard to reach.</p>
 <p>Graph-based mesh partitioning is a practical approach to domain decomposition. Such algorithms aim in partition the mesh into sub-domains of approximately equal number of elements, such that the interfaces between sub-domains are minimal.</p>
@@ -531,7 +529,7 @@ document.write(`
 <p>The goal of such domain decomposition methods is to reduce the communication effort between the sub-problems. The costs for sending information consists of latency time (i.e. how long it takes to get the communication started), and band-width (i.e. how much data per second one can send when the communication is established). When performing a multigrid preconditioner in parallel, one has to communicate on every level. Since the number of unknowns decrease geometrically for coarser levels, the amount of data exchange also decreases geometrically. Here, the latency becomes more and more relevant.</p>
 <p>In domain decomposition methods, the data exchanges is blocked to one (or a few) communication steps per preconditioning step. This may be the advantage when compared to optimal order multi-grid methods. Multi-grid techniques may be used for the local operations.</p>
 <section id="domain-decomposition-with-lagrange-parameters">
-<h2><span class="section-number">96.1. </span>Domain Decomposition with Lagrange parameters<a class="headerlink" href="#domain-decomposition-with-lagrange-parameters" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">96.1. </span>Domain Decomposition with Lagrange parameters<a class="headerlink" href="#domain-decomposition-with-lagrange-parameters" title="Permalink to this heading">#</a></h2>
 <p>The domain <span class="math notranslate nohighlight">\(\Omega\)</span> is split into non-overlapping sub-domains <span class="math notranslate nohighlight">\(\Omega_i\)</span>. Let <span class="math notranslate nohighlight">\(\gamma_{ij} := \overline{\Omega_i} \cap \overline{\Omega_j}\)</span> be the interface between sub-domains <span class="math notranslate nohighlight">\(\Omega_i\)</span> and <span class="math notranslate nohighlight">\(\Omega_j\)</span>. We are posing local problems, and enforcing continuity of the field by a Lagrange parameter: find <span class="math notranslate nohighlight">\(u_i \in H^1(\Omega_i)\)</span> and <span class="math notranslate nohighlight">\(\lambda_{ij} \in H^{-1/2} (\gamma_{ij})\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
