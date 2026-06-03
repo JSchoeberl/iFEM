@@ -629,7 +629,7 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "dce321951d0848ac86e2dfd79d6d74c9"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9ce26941335f4cabbd55b847f2d56392"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "364289e42f8c4c68807302c2ccc92155"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f398be09033140f7bd392d95df34547e"}</script></div>
 </div>
 <p>vice versa: compute <span class="math notranslate nohighlight">\(p = -\operatorname{div} u\)</span> via <span class="math notranslate nohighlight">\(p = M_u^{-1} B^T u\)</span></p>
 <div class="cell docutils container">
@@ -644,7 +644,7 @@ b(p,v) &amp;= \sum_{T}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "5f355321737f4cff9c69838d2d0c3396"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "49690dd6262b4113ad24c39344a7ccce"}</script></div>
 </div>
 </section>
 <section id="efficient-implementation">
@@ -693,7 +693,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8b82d00f65d3416aa2865511e6645bbc"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "87337e5930e44c7292d4dae6ae75341b"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "339ae9abddf74104b8471c16e15a76c3"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b2f7bc736d704a7dad4e1fbd0a3b29d6"}</script></div>
 </div>
 <p>A new component is the <code class="docutils literal notranslate"><span class="pre">TraceOperator</span></code>:</p>
 <p>Space provide geometry-free linear operators mapping form the element space to the face space. Face values can be averaged, or are summed up.</p>
@@ -734,7 +734,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e08e39a0ac0c47cc9d42eacce463ca06"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2705066364ba4226a677a81e3524564c"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -829,20 +829,72 @@ SumMatrix, h = 101970, w = 50985
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2a6577b3ba2c459895da9e8655cc6e4d"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2b204616430f4b0b8c6322094f1b6580"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dt =  0.0005
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">21</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">+</span><span class="n">dt</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">invmassu</span> <span class="o">@</span> <span class="n">B</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>         <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">-=</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">invmassp</span> <span class="o">@</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">gfu</span><span class="o">.</span><span class="n">vec</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">24</span>
 <span class="g g-Whitespace">     </span><span class="mi">20</span>         <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span><span class="o">+</span><span class="mi">1</span>
-<span class="ne">---&gt; </span><span class="mi">21</span>         <span class="k">if</span> <span class="n">cnt</span><span class="o">%</span><span class="k">10</span> == 0:
+<span class="g g-Whitespace">     </span><span class="mi">21</span>         <span class="k">if</span> <span class="n">cnt</span><span class="o">%</span><span class="k">10</span> == 0:
 <span class="g g-Whitespace">     </span><span class="mi">22</span>             <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">23</span>                 <span class="n">gftr</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">traceop</span> <span class="o">*</span> <span class="n">gfp</span><span class="o">.</span><span class="n">vec</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>             <span class="n">scene</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">24</span>             <span class="n">scene</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.14/site-packages/netgen/webgui.py:259,</span> in <span class="ni">WebGLScene.Redraw</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span>     <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">new_scene</span><span class="o">.</span><span class="n">args</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span>     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">new_scene</span><span class="o">.</span><span class="n">kwargs</span>
+<span class="ne">--&gt; </span><span class="mi">259</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">Redraw</span><span class="p">()</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/webgui_jupyter_widgets/widget.py:81,</span> in <span class="ni">BaseWebGuiScene.Redraw</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">def</span><span class="w"> </span><span class="nf">Redraw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span>
+<span class="ne">---&gt; </span><span class="mi">81</span>     <span class="bp">self</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetData</span><span class="p">(</span><span class="n">set_minmax</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.14/site-packages/netgen/webgui.py:266,</span> in <span class="ni">WebGLScene.GetData</span><span class="nt">(self, set_minmax)</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span> <span class="n">d</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">265</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span> <span class="ow">in</span> <span class="n">_registered_draw_types</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">266</span>     <span class="n">d</span> <span class="o">=</span> <span class="n">_registered_draw_types</span><span class="p">[</span><span class="n">typ</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">267</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">268</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.14/site-packages/ngsolve/webgui.py:163,</span> in <span class="ni">GetData</span><span class="nt">(obj, args, kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span> <span class="k">if</span> <span class="s1">&#39;intpoints&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;intpoints&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">163</span> <span class="n">d</span> <span class="o">=</span> <span class="n">BuildRenderData</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cf</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">],</span> <span class="n">draw_surf</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;draw_surf&#39;</span><span class="p">],</span> <span class="n">draw_vol</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;draw_vol&#39;</span><span class="p">],</span> <span class="n">intpoints</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;intpoints&#39;</span><span class="p">],</span> <span class="n">deformation</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;deformation&#39;</span><span class="p">],</span> <span class="n">regions</span><span class="o">=</span><span class="n">regions</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">],</span> <span class="n">nodal_p1</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nodal_p1&#39;</span><span class="p">],</span> <span class="n">settings</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;settings&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cf</span><span class="p">,</span> <span class="n">ngs</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">vecs</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span>     <span class="c1"># multidim gridfunction - generate data for each component</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="n">gf</span> <span class="o">=</span> <span class="n">ngs</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.14/site-packages/ngsolve/webgui.py:495,</span> in <span class="ni">BuildRenderData</span><span class="nt">(mesh, func, order, draw_surf, draw_vol, intpoints, deformation, regions, objects, nodal_p1, encoding, settings)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="n">timer3list</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>        
+<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndtrig</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">495</span>     <span class="n">Bezier_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">BezierPnts</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span> <span class="n">timer3list</span><span class="o">.</span><span class="n">Stop</span><span class="p">()</span>        
+<span class="g g-Whitespace">    </span><span class="mi">498</span> <span class="k">if</span> <span class="n">pmat2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.14/site-packages/ngsolve/webgui.py:264,</span> in <span class="ni">BuildRenderData.&lt;locals&gt;.encode</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span> <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">264</span>     <span class="k">return</span> <span class="n">encodeData</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+
+<span class="nn">File /Applications/Netgen.app/Contents/Resources/lib/python3.14/site-packages/netgen/webgui.py:22,</span> in <span class="ni">encodeData</span><span class="nt">(data, dtype, encoding)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="k">if</span> <span class="n">encoding</span><span class="o">==</span><span class="s1">&#39;b64&#39;</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="k">return</span> <span class="n">b64encode</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">elif</span> <span class="n">encoding</span><span class="o">==</span><span class="s1">&#39;binary&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/base64.py:55,</span> in <span class="ni">b64encode</span><span class="nt">(s, altchars)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="k">def</span><span class="w"> </span><span class="nf">b64encode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">altchars</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Encode the bytes-like object s using Base64 and return a bytes object.</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span><span class="sd">     Optional altchars should be a byte string of length 2 which specifies an</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span><span class="sd">     alternative alphabet for the &#39;+&#39; and &#39;/&#39; characters.  This allows an</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span><span class="sd">     application to e.g. generate url or filesystem safe Base64 strings.</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">55</span>     <span class="n">encoded</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">b2a_base64</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="k">if</span> <span class="n">altchars</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">altchars</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">altchars</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
